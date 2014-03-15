@@ -1,0 +1,304 @@
+/**
+* @package Jobs +
+* @author Arnold Bailey
+* @since version 1.0
+* @license GPL2+
+*/
+
+.pro-content-wrapper{
+	position relative;
+}
+
+.pro-content-wrapper:before {
+	content: " ";
+	position: absolute;
+	top: 0;
+	left: -20px;
+	width: 13px;
+	height: 24px;
+	background: url('../img/sprite-jobs.png') no-repeat 0 0;
+	display: none;
+}
+
+.pro-content-wrapper:before{
+	display: block;
+}
+
+/*Add item link */
+a.pro-add{
+	display: block;
+	font-weight: bold;
+	font-size: large;
+}
+
+.pro-edit {
+	float: right;
+	margin-top: -60px;
+	position: relative;
+	z-index: 10;
+}
+
+/* Portfolio layout */
+.pro-portfolio ul{
+	width: 100%;       /* 1up=100% - 2up=102% - 3up=103% -4up=102% - 5up=102% - 6up=106%*/
+}
+.pro-portfolio ul li{
+	max-width: 100%;   /* 1up=100% - 2up=48% - 3up=31% - 4up=23% - 5up=18% 6up=14% */
+	float: left;
+	margin: 0 2% 2% 0;
+}
+
+/* Skills gauge */
+
+.pro-skills ul{
+	width: 100%;    /* 1up=100% - 2up=102% - 3up=103% -4up=102% - 5up=102% - 6up=106%*/
+}
+
+.pro-skills li {
+	width: 100%;    /* 1up=100% - 2up=48% - 3up=31% - 4up=23% - 5up=18% 6up=14% */
+	float: left;
+	margin: 0 2% 2% 0;
+	background-image: none;
+}
+
+.skill-bar{
+	border: 1px solid #c5c5c5;
+	background-color: #f3f3f3;
+}
+
+.editable-skill
+.ui-slider-range-min,
+.skill-percent{
+	height: 13px;
+	background-color: #e23de9;
+	-moz-box-shadow: inset 0 4px 4px rgba(0,0,0,.1), inset 0 0 4px rgba(0,0,0,.21);
+	-webkit-box-shadow: inset 0 4px 4px rgba(0,0,0,.1), inset 0 0 4px rgba(0,0,0,.21);
+	box-shadow: inset 0 4px 4px rgba(0,0,0,.1), inset 0 0 4px rgba(0,0,0,.21);
+	background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDIwOSAxMyIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+PGxpbmVhckdyYWRpZW50IGlkPSJoYXQwIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9Ii0xLjQyMTA4NTQ3MTUyMDJlLTE0JSIgeTE9IjUwJSIgeDI9IjEwMCUiIHkyPSI1MCUiPgo8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjZTkzZDhkIiBzdG9wLW9wYWNpdHk9IjEiLz4KPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjZTIzZGU5IiBzdG9wLW9wYWNpdHk9IjEiLz4KICAgPC9saW5lYXJHcmFkaWVudD4KCjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIyMDkiIGhlaWdodD0iMTMiIGZpbGw9InVybCgjaGF0MCkiIC8+Cjwvc3ZnPg==);
+	background-image: -moz-linear-gradient(left, #e93d8d 0%, #e23de9 100%);
+	background-image: -o-linear-gradient(left, #e93d8d 0%, #e23de9 100%);
+	background-image: -webkit-linear-gradient(left, #e93d8d 0%, #e23de9 100%);
+	background-image: linear-gradient(left, #e93d8d 0%, #e23de9 100%);
+}
+
+.pro-skills p{
+	margin: 0 0 1em 2px;
+}
+
+
+.pro-skills .editable-container.editable-inline {
+	display: block;
+	border: 1px dashed #797b79;
+	padding: 10px 0 10px 20px;
+}
+
+
+.ui-slider .ui-slider-handle {
+	-webkit-transition: none;
+	-moz-transition: none;
+	-ms-transition: none;
+	-o-transition: none;
+	transition: none;
+}
+
+.pro-profile-wrapper{
+	width: 100%;
+}
+
+
+@media screen and (min-width: 800px) {
+
+	.pro-pad{
+		margin: 0 0 0 1em;
+	}
+
+	.pro-left{
+		float: left;
+		width: 30%;
+	}
+
+	.pro-content{
+		width: 70%;
+		float: right;
+	}
+}
+
+.pro-content label{
+	display: block;
+	margin: 0;
+}
+
+.pro-content label span{
+	display: inline-block;
+	vertical-align: top;
+}
+.pro-content label strong {
+	display: inline-block;
+	vertical-align: top;
+	font-weight: bold;
+}
+
+.pro-portfolio ul.pro-content-editable,
+.pro-skills ul.pro-content-editable,
+.pro-social ul.pro-content-editable,
+ul.pro-content-editable li{
+	list-style: none outside none !important;
+	margin-left: 0;
+	padding-left: 0;
+}
+
+.control-group button{
+	height:32px;
+	padding: 4px 7px;
+}
+
+.pro-contact,
+.pro-go-public-button{
+	margin:0 auto 20px auto;
+	display: block;
+	width: 70%;
+}
+
+/* Social links */
+
+.pro-social li{	background-image: none;	padding: 0;}
+.pro-social{margin:0;text-align:left;}.pro-social .social_t{display:block;font-variant:small-caps;margin-bottom:5px;}
+.pro-social ul{display:inline-block;*display:inline;*zoom:1;list-style-type:none;margin:0 auto;padding:0; max-width: 300px;}
+.pro-social ul li{float:left;margin:0 5px 5px 5px;padding:0;} .pro-social .social_i{display:block;width:36px;height:36px;overflow:hidden;margin-right:0px;color:transparent;text-indent:-9999px;background:url('../img/social_sprite.png') no-repeat;}
+.pro-social .social_i{background-position: 0 0; margin: 0;} .social_i.active,.social_i:hover{background-position:0 -36px;}.pro-social ul>li:last-child .social_i{margin-right:0;}
+.pro-social .fb{background-position:-36px 0;}  .pro-social .fb.active,.pro-social .fb:hover{background-position:-36px -36px;} /* Facebook */
+.pro-social .tw{background-position:-72px 0;}  .pro-social .tw.active,.pro-social .tw:hover{background-position:-72px -36px;} /* Twitter */
+.pro-social .gp{background-position:-108px 0;} .pro-social .gp.active,.pro-social .gp:hover{background-position:-108px -36px;}/* Google+ */
+.pro-social .rs{background-position:-144px 0;} .pro-social .rs.active,.pro-social .rs:hover{background-position:-144px -36px;}/* RSS Feed */
+.pro-social .pt{background-position:-180px 0;} .pro-social .pt.active,.pro-social .pt:hover{background-position:-180px -36px;}/* Pintrest */
+.pro-social .li{background-position:-216px 0;} .pro-social .li.active,.pro-social .li:hover{background-position:-216px -36px;}/* LinkedIn */
+.pro-social .yt{background-position:-252px 0;} .pro-social .yt.active,.pro-social .yt:hover{background-position:-252px -36px;}/* YouTube */
+.pro-social .em{background-position:-288px 0;} .pro-social .em.active,.pro-social .em:hover{background-position:-288px -36px;}/* Email */
+.pro-social .ad{background-position:-324px 0;} .pro-social .ad.active,.pro-social .ad:hover{background-position:-324px -36px;}/* Add */
+.pro-social .rd{background-position:-360px 0;} .pro-social .rd.active,.pro-social .rd:hover{background-position:-360px -36px;}/* Reddit */
+.pro-social .su{background-position:-396px 0;} .pro-social .su.active,.pro-social .su:hover{background-position:-396px -36px;}/* StumbleUpon */
+.pro-social .dl{background-position:-432px 0;} .pro-social .dl.active,.pro-social .dl:hover{background-position:-432px -36px;}/* Delicious */
+.pro-social .dg{background-position:-468px 0;} .pro-social .dg.active,.pro-social .dg:hover{background-position:-468px -36px;}/* Digg */
+.pro-social .sk{background-position:-504px 0;} .pro-social .sk.active,.pro-social .sk:hover{background-position:-504px -36px;}/* Skype */
+
+
+.pro-gravatar{
+	border: 1px solid #ddd;
+	text-align: center;
+	margin-bottom: 20px;
+	border-top-left-radius: 6px;
+	border-top-right-radius: 6px;
+}
+
+.pro-gravatar .avatar{
+	width: auto;
+	height: auto;
+	border-radius: 5px;
+	float: none;
+	margin: auto;
+	padding: 0;
+	border: 0;
+}
+.jbp-gravatar-border{
+	padding: 10px;
+	background-color: #ddd;
+	border-radius: 6px;
+}
+
+.pro-archive-wrapper {
+	position: relative;
+}
+
+.pro-grid-container{
+}
+
+.pro-grid-sizer{ width: 80px; }
+.pro-small{ width: 80px;}
+.pro-medium{ width: 160px;}
+.pro-large{ width: 160px;}
+
+.pro-archive{
+	position: relative;
+	text-align: center;
+	margin-bottom: 5px;
+	border: 1px solid #ddd;
+}
+
+.pro-archive:hover{
+	cursor: pointer;
+}
+
+.pro-archive.pro-large ul,
+.pro-archive.pro-medium ul,
+.pro-archive ul li{
+	list-style: none outside none !important;
+	padding: 0;
+	margin: 0;
+}
+
+.pro-archive-title{
+	font-weight: bold;
+	text-align: center;
+	border-top: 1px solid #ddd;
+	border-bottom: 1px solid #ddd;
+	padding: 4px;
+}
+
+.pro-archive .pro-archive-rating{
+	border-bottom: 1px solid #ddd;
+	margin: 4px 0;
+}
+
+.pro-archive .pro-archive-certify{
+	font-size: 90%;
+	border-bottom: 1px solid #ddd;
+	padding-bottom: 4px;
+}
+
+.pro-archive-skills{
+	font-size: 70%;
+	text-align: left;
+}
+
+.pro-archive-skills ul li{
+	margin: 4px 4%;
+}
+
+.pro-large .pro-archive-skills ul li{
+	width: 45%;
+	float: left;
+	margin: 4px 2%;
+}
+
+.pro-archive-skills .skill-percent{
+	height: 3px;
+}
+
+.pro-archive-image img.avatar{
+	display: block;
+	top: 0;
+	left: 0;
+	max-width: 100%;
+	height: auto;
+	padding: 0;
+	border: 0;
+}
+
+.pro-more{
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	color: #ddd;
+	background-color: black;
+	display: none;
+	font-size: .9em;
+	font-weight: bold;
+	line-height: normal;
+}
+
+.pro-small .pro-more > div{
+	margin-top: 20%;
+}
+

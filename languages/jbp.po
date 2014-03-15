@@ -1,0 +1,3181 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Jobs+ Plugin\n"
+"POT-Creation-Date: 2014-02-25 18:10-0500\n"
+"PO-Revision-Date: 2014-02-25 18:11-0500\n"
+"Last-Translator: Arnold Bailey <arnold@incsub.com>\n"
+"Language-Team: Arnold Bailey <arnold@incsub.com>\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.6.3\n"
+"X-Poedit-KeywordsList: __;_e;_n;_x;_ex;_nx;esc_attr__;esc_attr_e;esc_attr_x;"
+"esc_html__;esc_html_e;esc_html_x;_n_noop;_nx_noop\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../class/class-admin.php:35
+msgid "Jobs +"
+msgstr ""
+
+#: ../class/class-admin.php:63 ../lib/custompress/core/admin.php:142
+#: ../lib/custompress/core/admin.php:160
+msgid "Settings"
+msgstr ""
+
+#: ../class/class-admin.php:64
+msgid "Job Options"
+msgstr ""
+
+#: ../class/class-admin.php:65
+msgid "Pro Options"
+msgstr ""
+
+#: ../class/class-admin.php:66 ../lib/custompress/ui-admin/navigation.php:10
+msgid "Shortcodes"
+msgstr ""
+
+#: ../class/class-admin.php:105
+msgid "Jobs Plus + Certified"
+msgstr ""
+
+#: ../class/class-admin.php:114
+msgid "User is "
+msgstr ""
+
+#: ../class/class-core.php:245
+msgid "Virtual"
+msgstr ""
+
+#: ../class/class-core.php:250
+#, php-format
+msgid "Virtual <span class=\"count\">(%s)</span>"
+msgstr ""
+
+#: ../class/class-core.php:363
+msgid "<p>Virtual page. Editing this page won\\'t change anything.<br />"
+msgstr ""
+
+#: ../class/class-core.php:364
+msgid "You may edit the Title and/or the slug only.</p>"
+msgstr ""
+
+#: ../class/class-core.php:441
+msgid "Not so great"
+msgstr ""
+
+#: ../class/class-core.php:442
+msgid "Quite good"
+msgstr ""
+
+#: ../class/class-core.php:443
+msgid "Good"
+msgstr ""
+
+#: ../class/class-core.php:444
+msgid "Great!"
+msgstr ""
+
+#: ../class/class-core.php:445
+msgid "Excellent!"
+msgstr ""
+
+#: ../class/class-core.php:493
+#, php-format
+msgid "The %s has been updated"
+msgstr ""
+
+#: ../class/class-core.php:502
+#, php-format
+msgid "This %s has been updated"
+msgstr ""
+
+#: ../class/class-core.php:539 ../class/class-core.php:552
+#, php-format
+msgid "You must register and login to enter a %s."
+msgstr ""
+
+#: ../class/class-core.php:633 ../class/class-core.php:670
+#, php-format
+msgid "You do not have the permissions to enter a %s."
+msgstr ""
+
+#: ../class/class-core.php:638
+#, php-format
+msgid "You do not have permission to edit this %s."
+msgstr ""
+
+#: ../class/class-core.php:643 ../class/class-core.php:680
+#, php-format
+msgid "You have exceeded your quota of %s %s."
+msgstr ""
+
+#: ../class/class-core.php:675
+msgid "You do not have permission to edit this listing."
+msgstr ""
+
+#: ../class/class-core.php:808 ../ui-front/content-contact-pro.php:26
+#: ../ui-front/content-contact-pro.php:31
+msgid " &raquo; Contact"
+msgstr ""
+
+#: ../class/class-core.php:1189 ../class/class-core.php:1240
+msgid "Message Sent, Thank You"
+msgstr ""
+
+#: ../class/class-core.php:1193 ../class/class-core.php:1244
+msgid "Email is not Responding"
+msgstr ""
+
+#: ../class/class-core.php:1371
+msgid "Auto Draft"
+msgstr ""
+
+#: ../class/class-core.php:1444 ../class/class-core.php:1459
+#: ../class/class-core.php:2002
+msgid "This field must have a valid value"
+msgstr ""
+
+#: ../class/class-core.php:1488
+msgid "Not a valid email address"
+msgstr ""
+
+#: ../class/class-core.php:1657
+msgid "Gravatar"
+msgstr ""
+
+#: ../class/class-core.php:1672 ../class/class-core.php:1760
+#: ../ui-front/content-single-pro.php:117
+#: ../ui-front/content-update-job.php:231
+msgid "Portfolio"
+msgstr ""
+
+#: ../class/class-core.php:1687 ../ui-front/content-single-pro.php:157
+msgid "Skills"
+msgstr ""
+
+#: ../class/class-core.php:1702 ../ui-front/content-single-pro.php:153
+msgid "Social"
+msgstr ""
+
+#: ../class/class-core.php:1714 ../class/class-core.php:1787
+msgid "Contact Me"
+msgstr ""
+
+#: ../class/class-core.php:1775
+msgid "Job Excerpt"
+msgstr ""
+
+#: ../class/class-core.php:2119
+msgid "How long is this Job open from today?</option>"
+msgstr ""
+
+#: ../class/class-core.php:2124
+msgid "Expires on"
+msgstr ""
+
+#: ../class/class-data.php:1062 ../class/class-data.php:1077
+msgid "SITE_NAME Contact Request: [ POST_TITLE ]"
+msgstr ""
+
+#: ../class/class-data.php:1064 ../class/class-data.php:1079
+msgid ""
+"Hi TO_NAME, you have received a message from\n"
+"\n"
+"Name: FROM_NAME\n"
+"Email: FROM_EMAIL\n"
+"Message:\n"
+"\n"
+"FROM_MESSAGE\n"
+"\n"
+"\n"
+"Pro link: POST_LINK\n"
+msgstr ""
+
+#: ../class/class-term-img.php:38
+msgid "Terms Images"
+msgstr ""
+
+#: ../class/class-term-img.php:75
+msgid "Image"
+msgstr ""
+
+#: ../class/class-term-img.php:128
+msgid "Enable Images for"
+msgstr ""
+
+#: ../class/class-term-img.php:131
+msgid "Image Sizes"
+msgstr ""
+
+#: ../class/class-term-img.php:159
+msgid "Thumbnail Size: "
+msgstr ""
+
+#: ../class/class-term-img.php:164
+#, php-format
+msgid ""
+"Width <input type=\"text\" id=\"%s_thumb_width\" name=\"%s[%s]"
+"[thumb_width]\" value=\"%s\" size=\"2\" /> Height <input type=\"text\" id="
+"\"%s_thumb_height\" name=\"%s[%s][thumb_height]\" value=\"%s\" size=\"4\" /"
+"><br/>"
+msgstr ""
+
+#: ../class/class-term-img.php:179
+msgid "Medium Size: <br/>"
+msgstr ""
+
+#: ../class/class-term-img.php:183
+#, php-format
+msgid ""
+"Width <input type=\"text\" id=\"%s_medium_width\" name=\"%s[%s]"
+"[medium_width]\" value=\"%s\" size=\"2\" /> Height <input type=\"text\" id="
+"\"%s_medium_height\" name=\"%s[%s][medium_height]\" value=\"%s\" size=\"4\" /"
+"><br/>"
+msgstr ""
+
+#: ../class/class-term-img.php:198
+msgid "Large Size: <br/>"
+msgstr ""
+
+#: ../class/class-term-img.php:202
+#, php-format
+msgid ""
+"Width <input type=\"text\" id=\"%s_large_width\" name=\"%s[%s]"
+"[large_width]\" value=\"%s\" size=\"2\" /> Height <input type=\"text\" id="
+"\"%s_large_height\" name=\"%s[%s][large_height]\" value=\"%s\" size=\"4\" /"
+"><br/>"
+msgstr ""
+
+#: ../class/class-term-img.php:234
+#, php-format
+msgid "Term Images Settings %s"
+msgstr ""
+
+#: ../class/class-term-img.php:240
+msgid "Save Settings"
+msgstr ""
+
+#: ../lib/custompress/loader.php:17
+msgid "CustomPress - Custom Post, Taxonomy and Field Manager."
+msgstr ""
+
+#: ../lib/custompress/loader.php:18
+msgid "Ivan Shaovchev, Andrey Shipilov (Incsub), Arnold Bailey (Incsub)"
+msgstr ""
+
+#: ../lib/custompress/loader.php:19
+msgid "http://premium.wpmudev.org"
+msgstr ""
+
+#: ../lib/custompress/loader.php:20 ../lib/custompress/core/admin.php:134
+#: ../lib/custompress/core/admin.php:157
+msgid "CustomPress"
+msgstr ""
+
+#: ../lib/custompress/core/admin.php:137 ../lib/custompress/core/admin.php:159
+msgid "Content Types"
+msgstr ""
+
+#: ../lib/custompress/core/admin.php:143 ../lib/custompress/core/admin.php:162
+msgid "Export / Import"
+msgstr ""
+
+#: ../lib/custompress/core/admin.php:1018
+msgid "CustomPress Fields"
+msgstr ""
+
+#: ../lib/custompress/core/content-types.php:851
+msgid "Invalid Taxonomy name in [tax ] shortcode"
+msgstr ""
+
+#: ../lib/custompress/core/core.php:299
+msgid "Security check failed!"
+msgstr ""
+
+#: ../lib/custompress/core/wpmudev-dash-notification.php:57
+#, php-format
+msgid ""
+"Easily get updates, support, and one-click WPMU DEV plugin/theme "
+"installations right from in your dashboard - <strong><a href=\"%s\" title="
+"\"Install Now &raquo;\">install the free WPMU DEV Dashboard plugin</a></"
+"strong>. &nbsp;&nbsp;&nbsp;<small><a href=\"http://premium.wpmudev.org/wpmu-"
+"dev/update-notifications-plugin-information/\">(find out more)</a></small>"
+msgstr ""
+
+#: ../lib/custompress/core/wpmudev-dash-notification.php:61
+#, php-format
+msgid ""
+"Updates, Support, Premium Plugins, Community - <strong><a href=\"%s\" title="
+"\"Activate Now &raquo;\">activate the WPMU DEV Dashboard plugin now</a></"
+"strong>."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-custom-field.php:8
+#: ../lib/custompress/ui-admin/add-custom-field.php:227
+#: ../lib/custompress/ui-admin/custom-fields.php:40
+#: ../lib/custompress/ui-admin/custom-fields.php:164
+msgid "Add Custom Field"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-custom-field.php:13
+#: ../lib/custompress/ui-admin/add-custom-field.php:17
+#: ../lib/custompress/ui-admin/edit-custom-field.php:21
+#: ../lib/custompress/ui-admin/edit-custom-field.php:25
+msgid "Field Title"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-custom-field.php:17
+#: ../lib/custompress/ui-admin/add-custom-field.php:60
+#: ../lib/custompress/ui-admin/add-custom-field.php:180
+#: ../lib/custompress/ui-admin/add-custom-field.php:205
+#: ../lib/custompress/ui-admin/add-post-type.php:12
+#: ../lib/custompress/ui-admin/add-taxonomy.php:15
+#: ../lib/custompress/ui-admin/add-taxonomy.php:30
+#: ../lib/custompress/ui-admin/edit-custom-field.php:25
+#: ../lib/custompress/ui-admin/edit-custom-field.php:68
+#: ../lib/custompress/ui-admin/edit-custom-field.php:186
+#: ../lib/custompress/ui-admin/edit-post-type.php:24
+#: ../lib/custompress/ui-admin/edit-taxonomy.php:39
+#: ../lib/custompress/ui-admin/wip-update-taxonomy.php:28
+#: ../lib/custompress/ui-admin/wip-update-taxonomy.php:43
+msgid "required"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-custom-field.php:21
+#: ../lib/custompress/ui-admin/edit-custom-field.php:29
+msgid "The title of the custom field."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-custom-field.php:26
+#: ../lib/custompress/ui-admin/edit-custom-field.php:34
+msgid "Required Field"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-custom-field.php:30
+#: ../lib/custompress/ui-admin/edit-custom-field.php:38
+msgid "Make this a Required Field."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-custom-field.php:35
+#: ../lib/custompress/ui-admin/edit-custom-field.php:43
+msgid "Required Field Error Prompt"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-custom-field.php:39
+#: ../lib/custompress/ui-admin/edit-custom-field.php:47
+msgid ""
+"Custom Required Field Error prompt for this field or leave blank for default."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-custom-field.php:44
+#: ../lib/custompress/ui-admin/edit-custom-field.php:52
+msgid "Allow for WP/plugins"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-custom-field.php:45
+#: ../lib/custompress/ui-admin/edit-custom-field.php:52
+msgid "can't be changed"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-custom-field.php:49
+#: ../lib/custompress/ui-admin/edit-custom-field.php:57
+msgid "The WP and other plugins can use this custom field."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-custom-field.php:56
+#: ../lib/custompress/ui-admin/add-custom-field.php:60
+#: ../lib/custompress/ui-admin/custom-fields.php:49
+#: ../lib/custompress/ui-admin/custom-fields.php:60
+#: ../lib/custompress/ui-admin/edit-custom-field.php:64
+#: ../lib/custompress/ui-admin/edit-custom-field.php:68
+msgid "Field Type"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-custom-field.php:64
+msgid "Text Box"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-custom-field.php:65
+msgid "Multi-line Text Box"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-custom-field.php:66
+msgid "Radio Buttons"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-custom-field.php:67
+msgid "Checkboxes"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-custom-field.php:68
+msgid "Drop Down Select Box"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-custom-field.php:69
+msgid "Multi Select Box"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-custom-field.php:70
+msgid "Date Picker"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-custom-field.php:72
+#: ../lib/custompress/ui-admin/edit-custom-field.php:80
+msgid "Select type of the custom field."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-custom-field.php:75
+#: ../lib/custompress/ui-admin/add-custom-field.php:104
+#: ../lib/custompress/ui-admin/add-custom-field.php:116
+#: ../lib/custompress/ui-admin/edit-custom-field.php:83
+#: ../lib/custompress/ui-admin/edit-custom-field.php:112
+#: ../lib/custompress/ui-admin/edit-custom-field.php:123
+msgid "Fill in the options for this field"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-custom-field.php:77
+#: ../lib/custompress/ui-admin/edit-custom-field.php:85
+msgid "Regular Expression Validation"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-custom-field.php:81
+#: ../lib/custompress/ui-admin/edit-custom-field.php:88
+msgid "Options:"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-custom-field.php:83
+#: ../lib/custompress/ui-admin/edit-custom-field.php:90
+msgid "i = ignore case, g = global, m = multiline"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-custom-field.php:84
+#: ../lib/custompress/ui-admin/edit-custom-field.php:91
+msgid ""
+"Enter a regular expression to validate against or leave blank. Example for "
+"Email:"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-custom-field.php:85
+#: ../lib/custompress/ui-admin/edit-custom-field.php:92
+msgid "<code>^[\\w.%+-]+@[\\w.-]+\\.[A-Z]{2,4}$</code> <code>i</code>"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-custom-field.php:88
+#: ../lib/custompress/ui-admin/edit-custom-field.php:95
+msgid "Regular Expression Validation Error Message"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-custom-field.php:90
+#: ../lib/custompress/ui-admin/edit-custom-field.php:97
+msgid ""
+"Custom Regular Expression Validation Error message for this field or leave "
+"blank for default."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-custom-field.php:107
+#: ../lib/custompress/ui-admin/edit-custom-field.php:115
+#: ../lib/custompress/ui-admin/settings.php:270
+msgid "Select Date Format option or type your own"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-custom-field.php:111
+#: ../lib/custompress/ui-admin/edit-custom-field.php:118
+#: ../lib/custompress/ui-admin/settings.php:273
+msgid "Date picker sample"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-custom-field.php:118
+#: ../lib/custompress/ui-admin/edit-custom-field.php:125
+msgid "Order By"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-custom-field.php:120
+#: ../lib/custompress/ui-admin/edit-custom-field.php:127
+msgid "Order Entered"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-custom-field.php:131
+#: ../lib/custompress/ui-admin/add-custom-field.php:141
+#: ../lib/custompress/ui-admin/edit-custom-field.php:138
+#: ../lib/custompress/ui-admin/edit-custom-field.php:148
+msgid "Option"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-custom-field.php:134
+#: ../lib/custompress/ui-admin/add-custom-field.php:144
+#: ../lib/custompress/ui-admin/edit-custom-field.php:141
+#: ../lib/custompress/ui-admin/edit-custom-field.php:151
+msgid "Default Value"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-custom-field.php:150
+#: ../lib/custompress/ui-admin/edit-custom-field.php:157
+msgid "Add another option"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-custom-field.php:158
+#: ../lib/custompress/ui-admin/add-custom-field.php:162
+#: ../lib/custompress/ui-admin/edit-custom-field.php:165
+#: ../lib/custompress/ui-admin/edit-custom-field.php:169
+msgid "Field Description"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-custom-field.php:166
+#: ../lib/custompress/ui-admin/edit-custom-field.php:173
+msgid "Description for the custom field."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-custom-field.php:176
+#: ../lib/custompress/ui-admin/add-custom-field.php:180
+#: ../lib/custompress/ui-admin/add-custom-field.php:205
+#: ../lib/custompress/ui-admin/add-post-type.php:8
+#: ../lib/custompress/ui-admin/add-post-type.php:12
+#: ../lib/custompress/ui-admin/add-taxonomy.php:26
+#: ../lib/custompress/ui-admin/add-taxonomy.php:30
+#: ../lib/custompress/ui-admin/edit-custom-field.php:182
+#: ../lib/custompress/ui-admin/edit-custom-field.php:186
+#: ../lib/custompress/ui-admin/edit-custom-field.php:211
+#: ../lib/custompress/ui-admin/edit-post-type.php:20
+#: ../lib/custompress/ui-admin/edit-post-type.php:24
+#: ../lib/custompress/ui-admin/edit-taxonomy.php:35
+#: ../lib/custompress/ui-admin/edit-taxonomy.php:39
+#: ../lib/custompress/ui-admin/post-types.php:35
+#: ../lib/custompress/ui-admin/post-types.php:48
+#: ../lib/custompress/ui-admin/wip-update-taxonomy.php:39
+#: ../lib/custompress/ui-admin/wip-update-taxonomy.php:43
+msgid "Post Type"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-custom-field.php:191
+#: ../lib/custompress/ui-admin/edit-custom-field.php:197
+msgid "Select one or more post types to add this custom field to."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-custom-field.php:201
+#: ../lib/custompress/ui-admin/edit-custom-field.php:207
+msgid "Hide input for this Post Type"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-custom-field.php:216
+#: ../lib/custompress/ui-admin/edit-custom-field.php:222
+msgid ""
+"To hide this input field on the Admin edit page for a post type, select one "
+"or more post types to hide."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:3
+#: ../lib/custompress/ui-admin/add-post-type.php:783
+#: ../lib/custompress/ui-admin/post-types.php:29
+#: ../lib/custompress/ui-admin/post-types.php:140
+msgid "Add Post Type"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:16
+#: ../lib/custompress/ui-admin/edit-post-type.php:29
+msgid ""
+"The new post type system name ( max. 20 characters ). Alphanumeric lower-"
+"case characters and underscores only. Min 2 letters. Once added the post "
+"type system name cannot be changed."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:23
+#: ../lib/custompress/ui-admin/add-post-type.php:27
+#: ../lib/custompress/ui-admin/edit-post-type.php:36
+#: ../lib/custompress/ui-admin/edit-post-type.php:40
+#: ../lib/custompress/ui-admin/post-types.php:39
+#: ../lib/custompress/ui-admin/post-types.php:52
+msgid "Supports"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:30
+#: ../lib/custompress/ui-admin/edit-post-type.php:43
+msgid "Register support of certain features for a post type."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:33
+#: ../lib/custompress/ui-admin/edit-post-type.php:46
+msgid "Title"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:38
+#: ../lib/custompress/ui-admin/edit-post-type.php:51
+msgid "Editor"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:38
+#: ../lib/custompress/ui-admin/edit-post-type.php:51
+msgid "Content"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:43
+#: ../lib/custompress/ui-admin/edit-post-type.php:56
+msgid "Author"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:48
+#: ../lib/custompress/ui-admin/edit-post-type.php:61
+msgid "Thumbnail"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:48
+#: ../lib/custompress/ui-admin/edit-post-type.php:61
+msgid "Featured Image - current theme must also support post-thumbnails."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:53
+#: ../lib/custompress/ui-admin/edit-post-type.php:66
+msgid "Excerpt"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:58
+#: ../lib/custompress/ui-admin/edit-post-type.php:71
+msgid "Trackbacks"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:63
+#: ../lib/custompress/ui-admin/edit-post-type.php:76
+#: ../lib/custompress/ui-admin/edit-post-type.php:393
+#: ../lib/custompress/ui-admin/navigation.php:9
+msgid "Custom Fields"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:68
+#: ../lib/custompress/ui-admin/edit-post-type.php:81
+msgid "Comments"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:68
+#: ../lib/custompress/ui-admin/edit-post-type.php:81
+msgid "Also will see comment count balloon on edit screen."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:73
+#: ../lib/custompress/ui-admin/edit-post-type.php:86
+msgid "Revisions"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:73
+#: ../lib/custompress/ui-admin/edit-post-type.php:86
+msgid "Will store revisions."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:78
+#: ../lib/custompress/ui-admin/edit-post-type.php:91
+msgid "Page Attributes"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:78
+#: ../lib/custompress/ui-admin/edit-post-type.php:91
+msgid "Template and menu order - Hierarchical must be true!"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:83
+#: ../lib/custompress/ui-admin/edit-post-type.php:96
+msgid "Post Formats"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:83
+#: ../lib/custompress/ui-admin/edit-post-type.php:96
+msgid "Add post formats."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:91
+#: ../lib/custompress/ui-admin/add-post-type.php:95
+#: ../lib/custompress/ui-admin/edit-post-type.php:104
+#: ../lib/custompress/ui-admin/edit-post-type.php:108
+msgid "Support Regular Taxonomies"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:98
+#: ../lib/custompress/ui-admin/edit-post-type.php:111
+msgid "Assign regular taxonomies to this Post Type."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:102
+#: ../lib/custompress/ui-admin/edit-post-type.php:115
+msgid "Categories"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:109
+#: ../lib/custompress/ui-admin/edit-post-type.php:122
+msgid "Tags"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:118
+#: ../lib/custompress/ui-admin/add-post-type.php:122
+#: ../lib/custompress/ui-admin/edit-post-type.php:132
+#: ../lib/custompress/ui-admin/edit-post-type.php:136
+#: ../lib/custompress/ui-admin/post-types.php:40
+#: ../lib/custompress/ui-admin/post-types.php:53
+msgid "Capability Type"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:128
+#: ../lib/custompress/ui-admin/custom-fields.php:109
+#: ../lib/custompress/ui-admin/edit-post-type.php:144
+#: ../lib/custompress/ui-admin/post-types.php:83
+#: ../lib/custompress/ui-admin/taxonomies.php:74
+#: ../ui-front/content-single-pro.php:105
+#: ../ui-front/content-update-pro.php:230
+msgid "Edit"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:128
+#: ../lib/custompress/ui-admin/edit-post-type.php:144
+msgid "advanced"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:130
+#: ../lib/custompress/ui-admin/edit-post-type.php:145
+msgid ""
+"The post type to use for checking read, edit, and delete capabilities. "
+"Default: \"post\"."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:138
+#: ../lib/custompress/ui-admin/add-post-type.php:142
+#: ../lib/custompress/ui-admin/edit-post-type.php:153
+#: ../lib/custompress/ui-admin/edit-post-type.php:157
+msgid "Map Meta Capabilities"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:145
+#: ../lib/custompress/ui-admin/edit-post-type.php:160
+msgid "Use the internal default meta capability handling."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:148
+#: ../lib/custompress/ui-admin/add-post-type.php:338
+#: ../lib/custompress/ui-admin/add-post-type.php:385
+#: ../lib/custompress/ui-admin/add-post-type.php:417
+#: ../lib/custompress/ui-admin/add-post-type.php:445
+#: ../lib/custompress/ui-admin/add-post-type.php:473
+#: ../lib/custompress/ui-admin/add-post-type.php:501
+#: ../lib/custompress/ui-admin/add-post-type.php:529
+#: ../lib/custompress/ui-admin/add-post-type.php:564
+#: ../lib/custompress/ui-admin/add-post-type.php:730
+#: ../lib/custompress/ui-admin/add-post-type.php:767
+#: ../lib/custompress/ui-admin/add-taxonomy.php:196
+#: ../lib/custompress/ui-admin/add-taxonomy.php:226
+#: ../lib/custompress/ui-admin/add-taxonomy.php:259
+#: ../lib/custompress/ui-admin/add-taxonomy.php:287
+#: ../lib/custompress/ui-admin/add-taxonomy.php:316
+#: ../lib/custompress/ui-admin/add-taxonomy.php:344
+#: ../lib/custompress/ui-admin/add-taxonomy.php:372
+#: ../lib/custompress/ui-admin/add-taxonomy.php:531
+#: ../lib/custompress/ui-admin/edit-post-type.php:163
+#: ../lib/custompress/ui-admin/edit-post-type.php:435
+#: ../lib/custompress/ui-admin/edit-post-type.php:481
+#: ../lib/custompress/ui-admin/edit-post-type.php:507
+#: ../lib/custompress/ui-admin/edit-post-type.php:530
+#: ../lib/custompress/ui-admin/edit-post-type.php:553
+#: ../lib/custompress/ui-admin/edit-post-type.php:576
+#: ../lib/custompress/ui-admin/edit-post-type.php:599
+#: ../lib/custompress/ui-admin/edit-post-type.php:628
+#: ../lib/custompress/ui-admin/edit-post-type.php:788
+#: ../lib/custompress/ui-admin/edit-post-type.php:817
+#: ../lib/custompress/ui-admin/edit-taxonomy.php:204
+#: ../lib/custompress/ui-admin/edit-taxonomy.php:234
+#: ../lib/custompress/ui-admin/edit-taxonomy.php:267
+#: ../lib/custompress/ui-admin/edit-taxonomy.php:295
+#: ../lib/custompress/ui-admin/edit-taxonomy.php:325
+#: ../lib/custompress/ui-admin/edit-taxonomy.php:353
+#: ../lib/custompress/ui-admin/edit-taxonomy.php:381
+#: ../lib/custompress/ui-admin/edit-taxonomy.php:540
+#: ../lib/custompress/ui-admin/wip-update-taxonomy.php:218
+#: ../lib/custompress/ui-admin/wip-update-taxonomy.php:245
+#: ../lib/custompress/ui-admin/wip-update-taxonomy.php:269
+#: ../lib/custompress/ui-admin/wip-update-taxonomy.php:293
+#: ../lib/custompress/ui-admin/wip-update-taxonomy.php:317
+#: ../lib/custompress/ui-admin/wip-update-taxonomy.php:341
+#: ../lib/custompress/ui-admin/wip-update-taxonomy.php:387
+msgid "TRUE"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:153
+#: ../lib/custompress/ui-admin/add-post-type.php:349
+#: ../lib/custompress/ui-admin/add-post-type.php:392
+#: ../lib/custompress/ui-admin/add-post-type.php:422
+#: ../lib/custompress/ui-admin/add-post-type.php:450
+#: ../lib/custompress/ui-admin/add-post-type.php:478
+#: ../lib/custompress/ui-admin/add-post-type.php:506
+#: ../lib/custompress/ui-admin/add-post-type.php:534
+#: ../lib/custompress/ui-admin/add-post-type.php:571
+#: ../lib/custompress/ui-admin/add-post-type.php:735
+#: ../lib/custompress/ui-admin/add-post-type.php:772
+#: ../lib/custompress/ui-admin/add-taxonomy.php:201
+#: ../lib/custompress/ui-admin/add-taxonomy.php:231
+#: ../lib/custompress/ui-admin/add-taxonomy.php:264
+#: ../lib/custompress/ui-admin/add-taxonomy.php:292
+#: ../lib/custompress/ui-admin/add-taxonomy.php:321
+#: ../lib/custompress/ui-admin/add-taxonomy.php:349
+#: ../lib/custompress/ui-admin/add-taxonomy.php:379
+#: ../lib/custompress/ui-admin/add-taxonomy.php:536
+#: ../lib/custompress/ui-admin/edit-post-type.php:168
+#: ../lib/custompress/ui-admin/edit-post-type.php:448
+#: ../lib/custompress/ui-admin/edit-post-type.php:488
+#: ../lib/custompress/ui-admin/edit-post-type.php:512
+#: ../lib/custompress/ui-admin/edit-post-type.php:535
+#: ../lib/custompress/ui-admin/edit-post-type.php:558
+#: ../lib/custompress/ui-admin/edit-post-type.php:581
+#: ../lib/custompress/ui-admin/edit-post-type.php:604
+#: ../lib/custompress/ui-admin/edit-post-type.php:633
+#: ../lib/custompress/ui-admin/edit-post-type.php:793
+#: ../lib/custompress/ui-admin/edit-post-type.php:822
+#: ../lib/custompress/ui-admin/edit-taxonomy.php:209
+#: ../lib/custompress/ui-admin/edit-taxonomy.php:239
+#: ../lib/custompress/ui-admin/edit-taxonomy.php:272
+#: ../lib/custompress/ui-admin/edit-taxonomy.php:300
+#: ../lib/custompress/ui-admin/edit-taxonomy.php:330
+#: ../lib/custompress/ui-admin/edit-taxonomy.php:358
+#: ../lib/custompress/ui-admin/edit-taxonomy.php:388
+#: ../lib/custompress/ui-admin/edit-taxonomy.php:545
+#: ../lib/custompress/ui-admin/wip-update-taxonomy.php:221
+#: ../lib/custompress/ui-admin/wip-update-taxonomy.php:248
+#: ../lib/custompress/ui-admin/wip-update-taxonomy.php:272
+#: ../lib/custompress/ui-admin/wip-update-taxonomy.php:296
+#: ../lib/custompress/ui-admin/wip-update-taxonomy.php:320
+#: ../lib/custompress/ui-admin/wip-update-taxonomy.php:346
+#: ../lib/custompress/ui-admin/wip-update-taxonomy.php:390
+msgid "FALSE"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:162
+#: ../lib/custompress/ui-admin/add-taxonomy.php:49
+#: ../lib/custompress/ui-admin/edit-post-type.php:230
+#: ../lib/custompress/ui-admin/edit-taxonomy.php:56
+#: ../lib/custompress/ui-admin/wip-update-taxonomy.php:70
+msgid "Labels"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:166
+#: ../lib/custompress/ui-admin/add-taxonomy.php:53
+#: ../lib/custompress/ui-admin/edit-post-type.php:234
+#: ../lib/custompress/ui-admin/edit-taxonomy.php:60
+#: ../lib/custompress/ui-admin/post-types.php:36
+#: ../lib/custompress/ui-admin/post-types.php:49
+#: ../lib/custompress/ui-admin/taxonomies.php:32
+#: ../lib/custompress/ui-admin/taxonomies.php:42
+#: ../lib/custompress/ui-admin/wip-update-taxonomy.php:74
+msgid "Name"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:170
+#: ../lib/custompress/ui-admin/edit-post-type.php:238
+msgid "General name for the post type, usually plural."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:175
+#: ../lib/custompress/ui-admin/add-taxonomy.php:62
+#: ../lib/custompress/ui-admin/edit-post-type.php:243
+#: ../lib/custompress/ui-admin/edit-taxonomy.php:69
+#: ../lib/custompress/ui-admin/wip-update-taxonomy.php:83
+msgid "Singular Name"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:179
+#: ../lib/custompress/ui-admin/edit-post-type.php:247
+msgid "Name for one object of this post type. Defaults to value of name."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:184
+#: ../lib/custompress/ui-admin/edit-post-type.php:252
+msgid "Add New"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:188
+#: ../lib/custompress/ui-admin/edit-post-type.php:256
+msgid ""
+"The add new text. The default is Add New for both hierarchical and non-"
+"hierarchical types."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:193
+#: ../lib/custompress/ui-admin/add-taxonomy.php:71
+#: ../lib/custompress/ui-admin/edit-post-type.php:261
+#: ../lib/custompress/ui-admin/edit-taxonomy.php:78
+#: ../lib/custompress/ui-admin/wip-update-taxonomy.php:92
+msgid "Add New Item"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:197
+#: ../lib/custompress/ui-admin/edit-post-type.php:265
+msgid "The add new item text. Default is Add New Post/Add New Page."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:202
+#: ../lib/custompress/ui-admin/add-taxonomy.php:89
+#: ../lib/custompress/ui-admin/edit-post-type.php:270
+#: ../lib/custompress/ui-admin/edit-taxonomy.php:96
+#: ../lib/custompress/ui-admin/wip-update-taxonomy.php:110
+msgid "Edit Item"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:206
+#: ../lib/custompress/ui-admin/edit-post-type.php:274
+msgid "The edit item text. Default is Edit Post/Edit Page."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:211
+#: ../lib/custompress/ui-admin/edit-post-type.php:279
+msgid "New Item"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:215
+#: ../lib/custompress/ui-admin/edit-post-type.php:283
+msgid "The new item text. Default is New Post/New Page."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:220
+#: ../lib/custompress/ui-admin/edit-post-type.php:288
+msgid "View Item"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:224
+#: ../lib/custompress/ui-admin/edit-post-type.php:292
+msgid "The view item text. Default is View Post/View Page."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:229
+#: ../lib/custompress/ui-admin/add-taxonomy.php:107
+#: ../lib/custompress/ui-admin/edit-post-type.php:297
+#: ../lib/custompress/ui-admin/edit-taxonomy.php:114
+#: ../lib/custompress/ui-admin/wip-update-taxonomy.php:128
+msgid "Search Items"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:233
+#: ../lib/custompress/ui-admin/edit-post-type.php:301
+msgid "The search items text. Default is Search Posts/Search Pages."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:238
+#: ../lib/custompress/ui-admin/edit-post-type.php:306
+msgid "Not Found"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:242
+#: ../lib/custompress/ui-admin/edit-post-type.php:310
+msgid "The not found text. Default is No posts found/No pages found."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:247
+#: ../lib/custompress/ui-admin/edit-post-type.php:315
+msgid "Not Found In Trash"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:251
+#: ../lib/custompress/ui-admin/edit-post-type.php:319
+msgid ""
+"The not found in trash text. Default is No posts found in Trash/No pages "
+"found in Trash."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:256
+#: ../lib/custompress/ui-admin/add-taxonomy.php:143
+#: ../lib/custompress/ui-admin/edit-post-type.php:324
+#: ../lib/custompress/ui-admin/edit-taxonomy.php:150
+#: ../lib/custompress/ui-admin/wip-update-taxonomy.php:164
+msgid "Parent Item Colon"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:260
+#: ../lib/custompress/ui-admin/edit-post-type.php:328
+msgid ""
+"The parent text. This string isn't used on non-hierarchical types. In "
+"hierarchical ones the default is Parent Page"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:265
+#: ../lib/custompress/ui-admin/edit-post-type.php:333
+msgid "Custom Fields block"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:269
+#: ../lib/custompress/ui-admin/edit-post-type.php:337
+msgid "Title of Custom Fields block."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:276
+#: ../lib/custompress/ui-admin/add-post-type.php:280
+#: ../lib/custompress/ui-admin/custom-fields.php:50
+#: ../lib/custompress/ui-admin/custom-fields.php:61
+#: ../lib/custompress/ui-admin/edit-post-type.php:344
+#: ../lib/custompress/ui-admin/edit-post-type.php:348
+#: ../lib/custompress/ui-admin/post-types.php:37
+#: ../lib/custompress/ui-admin/post-types.php:50
+msgid "Description"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:284
+#: ../lib/custompress/ui-admin/edit-post-type.php:352
+msgid "A short descriptive summary of what the post type is."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:291
+#: ../lib/custompress/ui-admin/add-post-type.php:295
+#: ../lib/custompress/ui-admin/edit-post-type.php:359
+#: ../lib/custompress/ui-admin/edit-post-type.php:363
+msgid "Menu Position"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:299
+#: ../lib/custompress/ui-admin/edit-post-type.php:367
+msgid ""
+"5 - below Posts; 10 - below Media; 20 - below Pages; 60 - below first "
+"separator; 100 - below second separator"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:306
+#: ../lib/custompress/ui-admin/add-post-type.php:310
+#: ../lib/custompress/ui-admin/edit-post-type.php:374
+#: ../lib/custompress/ui-admin/edit-post-type.php:378
+#: ../lib/custompress/ui-admin/post-types.php:38
+#: ../lib/custompress/ui-admin/post-types.php:51
+msgid "Menu Icon"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:314
+#: ../lib/custompress/ui-admin/edit-post-type.php:382
+msgid "The url to the icon to be used for this menu."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:323
+#: ../lib/custompress/ui-admin/add-post-type.php:327
+#: ../lib/custompress/ui-admin/add-taxonomy.php:211
+#: ../lib/custompress/ui-admin/add-taxonomy.php:215
+#: ../lib/custompress/ui-admin/edit-post-type.php:425
+#: ../lib/custompress/ui-admin/edit-post-type.php:429
+#: ../lib/custompress/ui-admin/edit-taxonomy.php:219
+#: ../lib/custompress/ui-admin/edit-taxonomy.php:223
+#: ../lib/custompress/ui-admin/post-types.php:41
+#: ../lib/custompress/ui-admin/post-types.php:54
+#: ../lib/custompress/ui-admin/taxonomies.php:34
+#: ../lib/custompress/ui-admin/taxonomies.php:44
+#: ../lib/custompress/ui-admin/wip-update-taxonomy.php:204
+#: ../lib/custompress/ui-admin/wip-update-taxonomy.php:208
+msgid "Public"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:330
+#: ../lib/custompress/ui-admin/edit-post-type.php:432
+msgid ""
+"Meta argument used to define default values for publicly_queriable, show_ui, "
+"show_in_nav_menus and exclude_from_search."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:340
+#: ../lib/custompress/ui-admin/edit-post-type.php:439
+msgid "Display a user-interface for this \"post_type\""
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:341
+#: ../lib/custompress/ui-admin/edit-post-type.php:440
+msgid "Show \"post_type\" for selection in navigation menus"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:342
+#: ../lib/custompress/ui-admin/edit-post-type.php:441
+msgid "\"post_type\" queries can be performed from the front-end"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:343
+#: ../lib/custompress/ui-admin/add-post-type.php:354
+#: ../lib/custompress/ui-admin/edit-post-type.php:442
+#: ../lib/custompress/ui-admin/edit-post-type.php:455
+msgid "Exclude posts with this post type from search results"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:351
+#: ../lib/custompress/ui-admin/edit-post-type.php:452
+msgid "Do not display a user-interface for this \"post_type\""
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:352
+#: ../lib/custompress/ui-admin/edit-post-type.php:453
+msgid "Hide \"post_type\" for selection in navigation menus"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:353
+#: ../lib/custompress/ui-admin/edit-post-type.php:454
+msgid "\"post_type\" queries cannot be performed from the front-end"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:360
+#: ../lib/custompress/ui-admin/edit-post-type.php:461
+#: ../lib/custompress/ui-admin/post-types.php:110
+#: ../lib/custompress/ui-admin/taxonomies.php:107
+msgid "Advanced"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:362
+msgid "You can set each component manualy."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:370
+#: ../lib/custompress/ui-admin/add-post-type.php:374
+#: ../lib/custompress/ui-admin/add-taxonomy.php:244
+#: ../lib/custompress/ui-admin/add-taxonomy.php:248
+#: ../lib/custompress/ui-admin/edit-post-type.php:471
+#: ../lib/custompress/ui-admin/edit-post-type.php:475
+#: ../lib/custompress/ui-admin/edit-taxonomy.php:252
+#: ../lib/custompress/ui-admin/edit-taxonomy.php:256
+#: ../lib/custompress/ui-admin/wip-update-taxonomy.php:231
+#: ../lib/custompress/ui-admin/wip-update-taxonomy.php:235
+msgid "Show UI"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:377
+msgid "Whether to generate a default UI for managing this post type."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:387
+#: ../lib/custompress/ui-admin/edit-post-type.php:483
+msgid "Display a user-interface (admin panel) for this post type."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:394
+#: ../lib/custompress/ui-admin/edit-post-type.php:490
+msgid "Do not display a user-interface for this post type."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:402
+#: ../lib/custompress/ui-admin/add-taxonomy.php:301
+#: ../lib/custompress/ui-admin/edit-post-type.php:497
+#: ../lib/custompress/ui-admin/edit-taxonomy.php:310
+#: ../lib/custompress/ui-admin/wip-update-taxonomy.php:279
+msgid "Show In Nav Menus "
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:406
+#: ../lib/custompress/ui-admin/add-taxonomy.php:305
+#: ../lib/custompress/ui-admin/edit-post-type.php:501
+#: ../lib/custompress/ui-admin/edit-taxonomy.php:314
+#: ../lib/custompress/ui-admin/wip-update-taxonomy.php:283
+msgid "Show In Nav Menus"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:409
+#: ../lib/custompress/ui-admin/edit-post-type.php:504
+msgid "Whether post_type is available for selection in navigation menus."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:430
+#: ../lib/custompress/ui-admin/add-post-type.php:434
+#: ../lib/custompress/ui-admin/edit-post-type.php:520
+#: ../lib/custompress/ui-admin/edit-post-type.php:524
+msgid "Publicly Queryable"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:437
+#: ../lib/custompress/ui-admin/edit-post-type.php:527
+msgid "Whether post_type queries can be performed from the front end."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:458
+#: ../lib/custompress/ui-admin/add-post-type.php:462
+#: ../lib/custompress/ui-admin/edit-post-type.php:543
+#: ../lib/custompress/ui-admin/edit-post-type.php:547
+msgid "Exclude From Search"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:465
+#: ../lib/custompress/ui-admin/edit-post-type.php:550
+msgid "Whether to exclude posts with this post type from search results."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:486
+#: ../lib/custompress/ui-admin/add-post-type.php:490
+#: ../lib/custompress/ui-admin/add-taxonomy.php:329
+#: ../lib/custompress/ui-admin/add-taxonomy.php:333
+#: ../lib/custompress/ui-admin/edit-post-type.php:566
+#: ../lib/custompress/ui-admin/edit-post-type.php:570
+#: ../lib/custompress/ui-admin/edit-taxonomy.php:338
+#: ../lib/custompress/ui-admin/edit-taxonomy.php:342
+#: ../lib/custompress/ui-admin/post-types.php:42
+#: ../lib/custompress/ui-admin/post-types.php:55
+#: ../lib/custompress/ui-admin/taxonomies.php:35
+#: ../lib/custompress/ui-admin/taxonomies.php:45
+#: ../lib/custompress/ui-admin/wip-update-taxonomy.php:303
+#: ../lib/custompress/ui-admin/wip-update-taxonomy.php:307
+msgid "Hierarchical"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:493
+#: ../lib/custompress/ui-admin/edit-post-type.php:573
+#: ../lib/custompress/ui-admin/wip-update-taxonomy.php:310
+msgid "Whether the post type is hierarchical. Allows Parent to be specified."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:514
+#: ../lib/custompress/ui-admin/add-post-type.php:518
+#: ../lib/custompress/ui-admin/edit-post-type.php:589
+#: ../lib/custompress/ui-admin/edit-post-type.php:593
+msgid "Has Archive"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:521
+#: ../lib/custompress/ui-admin/edit-post-type.php:596
+msgid ""
+"Enables post type archives. Will use string as archive slug. Will generate "
+"the proper rewrite rules if rewrite is enabled."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:537
+#: ../lib/custompress/ui-admin/add-post-type.php:577
+#: ../lib/custompress/ui-admin/add-taxonomy.php:385
+#: ../lib/custompress/ui-admin/edit-post-type.php:607
+#: ../lib/custompress/ui-admin/edit-post-type.php:636
+#: ../lib/custompress/ui-admin/edit-taxonomy.php:394
+#: ../lib/custompress/ui-admin/wip-update-taxonomy.php:352
+msgid "Custom Slug"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:542
+#: ../lib/custompress/ui-admin/edit-post-type.php:611
+msgid "Custom slug for post type archive."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:549
+#: ../lib/custompress/ui-admin/add-post-type.php:553
+#: ../lib/custompress/ui-admin/add-taxonomy.php:357
+#: ../lib/custompress/ui-admin/add-taxonomy.php:361
+#: ../lib/custompress/ui-admin/edit-post-type.php:618
+#: ../lib/custompress/ui-admin/edit-post-type.php:622
+#: ../lib/custompress/ui-admin/edit-taxonomy.php:366
+#: ../lib/custompress/ui-admin/edit-taxonomy.php:370
+#: ../lib/custompress/ui-admin/post-types.php:43
+#: ../lib/custompress/ui-admin/post-types.php:56
+#: ../lib/custompress/ui-admin/taxonomies.php:36
+#: ../lib/custompress/ui-admin/taxonomies.php:46
+#: ../lib/custompress/ui-admin/wip-update-taxonomy.php:327
+#: ../lib/custompress/ui-admin/wip-update-taxonomy.php:331
+msgid "Rewrite"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:556
+#: ../lib/custompress/ui-admin/edit-post-type.php:625
+msgid "Rewrite permalinks with this format."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:567
+msgid "Default will use post type."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:574
+#: ../lib/custompress/ui-admin/add-taxonomy.php:382
+#: ../lib/custompress/ui-admin/edit-taxonomy.php:391
+#: ../lib/custompress/ui-admin/wip-update-taxonomy.php:348
+msgid "Prevent rewrite."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:581
+#: ../lib/custompress/ui-admin/add-taxonomy.php:390
+#: ../lib/custompress/ui-admin/edit-post-type.php:640
+#: ../lib/custompress/ui-admin/edit-taxonomy.php:398
+msgid "Prepend posts with this slug. If empty default will be used."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:585
+#: ../lib/custompress/ui-admin/add-taxonomy.php:394
+#: ../lib/custompress/ui-admin/edit-post-type.php:644
+#: ../lib/custompress/ui-admin/edit-taxonomy.php:402
+msgid "Allow Front Base"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:588
+#: ../lib/custompress/ui-admin/add-taxonomy.php:397
+#: ../lib/custompress/ui-admin/edit-post-type.php:647
+#: ../lib/custompress/ui-admin/edit-taxonomy.php:405
+msgid "Allowing permalinks to be prepended with front base."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:592
+#: ../lib/custompress/ui-admin/edit-post-type.php:651
+msgid "Feeds"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:595
+#: ../lib/custompress/ui-admin/edit-post-type.php:654
+msgid "Default will use has_archive."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:599
+#: ../lib/custompress/ui-admin/edit-post-type.php:658
+msgid "Pages"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:602
+#: ../lib/custompress/ui-admin/edit-post-type.php:661
+msgid "Defaults to true."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:611
+#: ../lib/custompress/ui-admin/add-post-type.php:615
+#: ../lib/custompress/ui-admin/add-taxonomy.php:412
+#: ../lib/custompress/ui-admin/add-taxonomy.php:416
+#: ../lib/custompress/ui-admin/edit-post-type.php:669
+#: ../lib/custompress/ui-admin/edit-post-type.php:673
+#: ../lib/custompress/ui-admin/edit-taxonomy.php:420
+#: ../lib/custompress/ui-admin/edit-taxonomy.php:424
+msgid "EP Mask"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:618
+#: ../lib/custompress/ui-admin/add-taxonomy.php:419
+#: ../lib/custompress/ui-admin/edit-post-type.php:676
+#: ../lib/custompress/ui-admin/edit-taxonomy.php:427
+msgid "Endpoint mask describing the places the endpoint should be added."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:627
+#: ../lib/custompress/ui-admin/add-taxonomy.php:428
+#: ../lib/custompress/ui-admin/edit-post-type.php:685
+#: ../lib/custompress/ui-admin/edit-taxonomy.php:437
+msgid "EP_NONE: for default, nothing."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:633
+#: ../lib/custompress/ui-admin/add-taxonomy.php:434
+#: ../lib/custompress/ui-admin/edit-post-type.php:691
+#: ../lib/custompress/ui-admin/edit-taxonomy.php:443
+msgid "EP_PERMALINK: for Permalink."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:639
+#: ../lib/custompress/ui-admin/add-taxonomy.php:440
+#: ../lib/custompress/ui-admin/edit-post-type.php:697
+#: ../lib/custompress/ui-admin/edit-taxonomy.php:449
+msgid "EP_ATTACHMENT: for Attachment."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:645
+#: ../lib/custompress/ui-admin/add-taxonomy.php:446
+#: ../lib/custompress/ui-admin/edit-post-type.php:703
+#: ../lib/custompress/ui-admin/edit-taxonomy.php:455
+msgid "EP_DATE: for Date."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:651
+#: ../lib/custompress/ui-admin/add-taxonomy.php:452
+#: ../lib/custompress/ui-admin/edit-post-type.php:709
+#: ../lib/custompress/ui-admin/edit-taxonomy.php:461
+msgid "EP_YEAR: for Year."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:657
+#: ../lib/custompress/ui-admin/add-taxonomy.php:458
+#: ../lib/custompress/ui-admin/edit-post-type.php:715
+#: ../lib/custompress/ui-admin/edit-taxonomy.php:467
+msgid "EP_MONTH: for Month."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:663
+#: ../lib/custompress/ui-admin/add-taxonomy.php:464
+#: ../lib/custompress/ui-admin/edit-post-type.php:721
+#: ../lib/custompress/ui-admin/edit-taxonomy.php:473
+msgid "EP_DAY: for Day."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:669
+#: ../lib/custompress/ui-admin/add-taxonomy.php:470
+#: ../lib/custompress/ui-admin/edit-post-type.php:727
+#: ../lib/custompress/ui-admin/edit-taxonomy.php:479
+msgid "EP_ROOT: for Root."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:675
+#: ../lib/custompress/ui-admin/add-taxonomy.php:476
+#: ../lib/custompress/ui-admin/edit-post-type.php:733
+#: ../lib/custompress/ui-admin/edit-taxonomy.php:485
+msgid "EP_COMMENTS: for Comments."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:681
+#: ../lib/custompress/ui-admin/add-taxonomy.php:482
+#: ../lib/custompress/ui-admin/edit-post-type.php:739
+#: ../lib/custompress/ui-admin/edit-taxonomy.php:491
+msgid "EP_SEARCH: for Search."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:687
+#: ../lib/custompress/ui-admin/add-taxonomy.php:488
+#: ../lib/custompress/ui-admin/edit-post-type.php:745
+#: ../lib/custompress/ui-admin/edit-taxonomy.php:497
+msgid "EP_CATEGORIES: for Categories."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:693
+#: ../lib/custompress/ui-admin/add-taxonomy.php:494
+#: ../lib/custompress/ui-admin/edit-post-type.php:751
+#: ../lib/custompress/ui-admin/edit-taxonomy.php:503
+msgid "EP_TAGS: for Tags."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:699
+#: ../lib/custompress/ui-admin/add-taxonomy.php:500
+#: ../lib/custompress/ui-admin/edit-post-type.php:757
+#: ../lib/custompress/ui-admin/edit-taxonomy.php:509
+msgid "EP_AUTHORS: for Authors."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:705
+#: ../lib/custompress/ui-admin/add-taxonomy.php:506
+#: ../lib/custompress/ui-admin/edit-post-type.php:763
+#: ../lib/custompress/ui-admin/edit-taxonomy.php:515
+msgid "EP_PAGES: for Pages."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:711
+#: ../lib/custompress/ui-admin/add-taxonomy.php:512
+#: ../lib/custompress/ui-admin/edit-post-type.php:769
+#: ../lib/custompress/ui-admin/edit-taxonomy.php:521
+msgid "EP_ALL: for everything."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:720
+#: ../lib/custompress/ui-admin/add-post-type.php:724
+#: ../lib/custompress/ui-admin/add-taxonomy.php:521
+#: ../lib/custompress/ui-admin/add-taxonomy.php:525
+#: ../lib/custompress/ui-admin/edit-post-type.php:778
+#: ../lib/custompress/ui-admin/edit-post-type.php:782
+#: ../lib/custompress/ui-admin/edit-taxonomy.php:530
+#: ../lib/custompress/ui-admin/edit-taxonomy.php:534
+#: ../lib/custompress/ui-admin/wip-update-taxonomy.php:373
+#: ../lib/custompress/ui-admin/wip-update-taxonomy.php:377
+msgid "Query var"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:727
+msgid ""
+"Name of the query var to use for this post type. False to prevent queries. "
+"Defaults to the post type name."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:738
+#: ../lib/custompress/ui-admin/add-taxonomy.php:539
+#: ../lib/custompress/ui-admin/edit-post-type.php:796
+#: ../lib/custompress/ui-admin/edit-taxonomy.php:548
+msgid "Custom Query Key"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:742
+#: ../lib/custompress/ui-admin/add-taxonomy.php:543
+#: ../lib/custompress/ui-admin/edit-post-type.php:800
+#: ../lib/custompress/ui-admin/edit-taxonomy.php:552
+msgid "Custom query var key."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:752
+#: ../lib/custompress/ui-admin/add-post-type.php:756
+#: ../lib/custompress/ui-admin/edit-post-type.php:807
+#: ../lib/custompress/ui-admin/edit-post-type.php:811
+msgid "Can Export"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-post-type.php:759
+#: ../lib/custompress/ui-admin/edit-post-type.php:814
+msgid "Can this post_type be exported."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-taxonomy.php:5
+#: ../lib/custompress/ui-admin/taxonomies.php:26
+#: ../lib/custompress/ui-admin/taxonomies.php:147
+#: ../lib/custompress/ui-admin/wip-update-taxonomy.php:19
+msgid "Add Taxonomy"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-taxonomy.php:10
+#: ../lib/custompress/ui-admin/add-taxonomy.php:14
+#: ../lib/custompress/ui-admin/edit-taxonomy.php:19
+#: ../lib/custompress/ui-admin/edit-taxonomy.php:23
+#: ../lib/custompress/ui-admin/taxonomies.php:31
+#: ../lib/custompress/ui-admin/taxonomies.php:41
+#: ../lib/custompress/ui-admin/wip-update-taxonomy.php:24
+#: ../lib/custompress/ui-admin/wip-update-taxonomy.php:28
+msgid "Taxonomy"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-taxonomy.php:19
+msgid ""
+"The system name of the taxonomy. Alphanumeric lower-case characters and "
+"underscores only. Min 2 letters. Once added the taxonomy system name cannot "
+"be changed."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-taxonomy.php:42
+#: ../lib/custompress/ui-admin/wip-update-taxonomy.php:63
+msgid "Select one or more post types to add this taxonomy to."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-taxonomy.php:57
+#: ../lib/custompress/ui-admin/edit-taxonomy.php:64
+#: ../lib/custompress/ui-admin/wip-update-taxonomy.php:78
+msgid "General name for the taxonomy, usually plural."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-taxonomy.php:66
+#: ../lib/custompress/ui-admin/edit-taxonomy.php:73
+#: ../lib/custompress/ui-admin/wip-update-taxonomy.php:87
+msgid "Name for one object of this taxonomy. Defaults to value of name."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-taxonomy.php:75
+#: ../lib/custompress/ui-admin/edit-taxonomy.php:82
+#: ../lib/custompress/ui-admin/wip-update-taxonomy.php:96
+msgid ""
+"The add new item text. Default is \"Add New Tag\" or \"Add New Category\"."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-taxonomy.php:80
+#: ../lib/custompress/ui-admin/edit-taxonomy.php:87
+#: ../lib/custompress/ui-admin/wip-update-taxonomy.php:101
+msgid "New Item Name"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-taxonomy.php:84
+#: ../lib/custompress/ui-admin/edit-taxonomy.php:91
+#: ../lib/custompress/ui-admin/wip-update-taxonomy.php:105
+msgid ""
+"The new item name text. Default is \"New Tag Name\" or \"New Category Name\"."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-taxonomy.php:93
+#: ../lib/custompress/ui-admin/edit-taxonomy.php:100
+#: ../lib/custompress/ui-admin/wip-update-taxonomy.php:114
+msgid "The edit item text. Default is \"Edit Tag\" or \"Edit Category\"."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-taxonomy.php:98
+#: ../lib/custompress/ui-admin/edit-taxonomy.php:105
+#: ../lib/custompress/ui-admin/wip-update-taxonomy.php:119
+msgid "Update Item"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-taxonomy.php:102
+#: ../lib/custompress/ui-admin/edit-taxonomy.php:109
+#: ../lib/custompress/ui-admin/wip-update-taxonomy.php:123
+msgid "The update item text. Default is \"Update Tag\" or \"Update Category\"."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-taxonomy.php:111
+#: ../lib/custompress/ui-admin/edit-taxonomy.php:118
+#: ../lib/custompress/ui-admin/wip-update-taxonomy.php:132
+msgid ""
+"The search items text. Default is \"Search Tags\" or \"Search Categories\"."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-taxonomy.php:116
+#: ../lib/custompress/ui-admin/edit-taxonomy.php:123
+#: ../lib/custompress/ui-admin/wip-update-taxonomy.php:137
+msgid "Popular Items"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-taxonomy.php:120
+#: ../lib/custompress/ui-admin/edit-taxonomy.php:127
+#: ../lib/custompress/ui-admin/wip-update-taxonomy.php:141
+msgid "The popular items text. Default is \"Popular Tags\" or null."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-taxonomy.php:125
+#: ../lib/custompress/ui-admin/edit-taxonomy.php:132
+#: ../lib/custompress/ui-admin/wip-update-taxonomy.php:146
+msgid "All Items"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-taxonomy.php:129
+#: ../lib/custompress/ui-admin/edit-taxonomy.php:136
+#: ../lib/custompress/ui-admin/wip-update-taxonomy.php:150
+msgid "The all items text. Default is \"All Tags\" or \"All Categories\"."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-taxonomy.php:134
+#: ../lib/custompress/ui-admin/edit-taxonomy.php:141
+#: ../lib/custompress/ui-admin/wip-update-taxonomy.php:155
+msgid "Parent Item"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-taxonomy.php:138
+#: ../lib/custompress/ui-admin/edit-taxonomy.php:145
+#: ../lib/custompress/ui-admin/wip-update-taxonomy.php:159
+msgid ""
+"The parent item text. This string is not used on non-hierarchical taxonomies "
+"such as post tags. Default is null or \"Parent Category\"."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-taxonomy.php:147
+#: ../lib/custompress/ui-admin/edit-taxonomy.php:154
+#: ../lib/custompress/ui-admin/wip-update-taxonomy.php:168
+msgid ""
+"The same as parent_item, but with colon : in the end null, \"Parent Category:"
+"\"."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-taxonomy.php:152
+#: ../lib/custompress/ui-admin/edit-taxonomy.php:159
+#: ../lib/custompress/ui-admin/wip-update-taxonomy.php:173
+msgid "Add Or Remove Items"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-taxonomy.php:156
+#: ../lib/custompress/ui-admin/edit-taxonomy.php:163
+#: ../lib/custompress/ui-admin/wip-update-taxonomy.php:177
+msgid ""
+"The add or remove items text is used in the meta box when JavaScript is "
+"disabled. This string isn't used on hierarchical taxonomies. Default is "
+"\"Add or remove tags\" or null."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-taxonomy.php:161
+#: ../lib/custompress/ui-admin/edit-taxonomy.php:168
+#: ../lib/custompress/ui-admin/wip-update-taxonomy.php:182
+msgid "Separate Items With Commas"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-taxonomy.php:165
+#: ../lib/custompress/ui-admin/edit-taxonomy.php:172
+#: ../lib/custompress/ui-admin/wip-update-taxonomy.php:186
+msgid ""
+"The separate item with commas text used in the taxonomy meta box. This "
+"string isn't used on hierarchical taxonomies. Default is \"Separate tags "
+"with commas\", or null."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-taxonomy.php:170
+#: ../lib/custompress/ui-admin/edit-taxonomy.php:177
+#: ../lib/custompress/ui-admin/wip-update-taxonomy.php:191
+msgid "Choose From Most Used"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-taxonomy.php:174
+#: ../lib/custompress/ui-admin/edit-taxonomy.php:181
+#: ../lib/custompress/ui-admin/wip-update-taxonomy.php:195
+msgid ""
+"The choose from most used text used in the taxonomy meta box. This string "
+"isn't used on hierarchical taxonomies. Default is \"Choose from the most "
+"used tags\" or null."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-taxonomy.php:181
+#: ../lib/custompress/ui-admin/add-taxonomy.php:185
+#: ../lib/custompress/ui-admin/edit-taxonomy.php:189
+#: ../lib/custompress/ui-admin/edit-taxonomy.php:193
+msgid "Show Admin Column"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-taxonomy.php:188
+#: ../lib/custompress/ui-admin/edit-taxonomy.php:196
+msgid ""
+"Whether to allow automatic creation of taxonomy columns on associated post-"
+"types."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-taxonomy.php:218
+#: ../lib/custompress/ui-admin/edit-taxonomy.php:226
+#: ../lib/custompress/ui-admin/wip-update-taxonomy.php:211
+msgid "Should this taxonomy be exposed in the admin UI."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-taxonomy.php:236
+#: ../lib/custompress/ui-admin/edit-taxonomy.php:244
+#: ../lib/custompress/ui-admin/wip-update-taxonomy.php:224
+msgid "ADVANCED"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-taxonomy.php:251
+#: ../lib/custompress/ui-admin/edit-taxonomy.php:259
+#: ../lib/custompress/ui-admin/wip-update-taxonomy.php:238
+msgid "Whether to generate a default UI for managing this taxonomy."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-taxonomy.php:272
+#: ../lib/custompress/ui-admin/add-taxonomy.php:276
+#: ../lib/custompress/ui-admin/edit-taxonomy.php:280
+#: ../lib/custompress/ui-admin/edit-taxonomy.php:284
+#: ../lib/custompress/ui-admin/wip-update-taxonomy.php:255
+#: ../lib/custompress/ui-admin/wip-update-taxonomy.php:259
+msgid "Show Tagcloud"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-taxonomy.php:279
+#: ../lib/custompress/ui-admin/edit-taxonomy.php:287
+#: ../lib/custompress/ui-admin/wip-update-taxonomy.php:262
+msgid "Whether to show a tag cloud in the admin UI for this taxonomy."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-taxonomy.php:308
+#: ../lib/custompress/ui-admin/edit-taxonomy.php:317
+#: ../lib/custompress/ui-admin/wip-update-taxonomy.php:286
+msgid ""
+"Whether to make this taxonomy available for selection in navigation menus."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-taxonomy.php:336
+#: ../lib/custompress/ui-admin/edit-taxonomy.php:345
+msgid ""
+"Is this taxonomy hierarchical (have descendants) like categories or not "
+"hierarchical like tags."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-taxonomy.php:364
+#: ../lib/custompress/ui-admin/edit-taxonomy.php:373
+#: ../lib/custompress/ui-admin/wip-update-taxonomy.php:334
+msgid "Set to false to prevent rewrite, or true to customize."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-taxonomy.php:375
+#: ../lib/custompress/ui-admin/edit-taxonomy.php:384
+#: ../lib/custompress/ui-admin/wip-update-taxonomy.php:343
+msgid "Default will use query var."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-taxonomy.php:401
+#: ../lib/custompress/ui-admin/edit-taxonomy.php:409
+#: ../lib/custompress/ui-admin/wip-update-taxonomy.php:364
+msgid "Hierarchical URLs"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-taxonomy.php:404
+#: ../lib/custompress/ui-admin/edit-taxonomy.php:412
+#: ../lib/custompress/ui-admin/wip-update-taxonomy.php:366
+msgid "Allow hierarchical urls. Applicable for hierarchical taxonomies."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-taxonomy.php:528
+msgid ""
+"Name of the query var to use for this taxonomy. False to prevent queries. "
+"Defaults to the taxonomy name."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/add-taxonomy.php:553
+msgid "Add Taxonomy Type"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/custom-fields.php:29
+msgid "Embedding Custom Fields"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/custom-fields.php:30
+msgid ""
+"<b>Embed codes</b> are used in templates to return the value of the custom "
+"fields of the current post. Codes may be for individual fields using the "
+"Embed code links below for each field <br />or you can display the entire "
+"block of custom fields for a listing using the embed code:"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/custom-fields.php:34
+msgid ""
+"<b>Shortcodes</b> are used in post, pages and widgets to return the value of "
+"the custom fields of the current post. Use inside the loop in Posts and "
+"Widgets"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/custom-fields.php:45
+#: ../lib/custompress/ui-admin/custom-fields.php:56
+msgid "Order"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/custom-fields.php:46
+#: ../lib/custompress/ui-admin/custom-fields.php:57
+msgid "Field Name"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/custom-fields.php:47
+#: ../lib/custompress/ui-admin/custom-fields.php:58
+msgid "Field ID"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/custom-fields.php:48
+#: ../lib/custompress/ui-admin/custom-fields.php:59
+msgid "WP/Plugins"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/custom-fields.php:51
+#: ../lib/custompress/ui-admin/custom-fields.php:62
+#: ../lib/custompress/ui-admin/navigation.php:7
+#: ../lib/custompress/ui-admin/settings.php:70
+#: ../lib/custompress/ui-admin/taxonomies.php:33
+#: ../lib/custompress/ui-admin/taxonomies.php:43
+msgid "Post Types"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/custom-fields.php:86
+msgid "network"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/custom-fields.php:89
+msgid "Move Up"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/custom-fields.php:92
+msgid "Move Down"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/custom-fields.php:109
+msgid "Edit this custom field"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/custom-fields.php:113
+#: ../lib/custompress/ui-admin/taxonomies.php:79
+msgid "Show embed code"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/custom-fields.php:113
+#: ../lib/custompress/ui-admin/taxonomies.php:79
+msgid "Embed Code"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/custom-fields.php:117
+#: ../lib/custompress/ui-admin/post-types.php:80
+#: ../lib/custompress/ui-admin/taxonomies.php:83
+msgid "Edit in Network Admin."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/custom-fields.php:122
+#: ../lib/custompress/ui-admin/post-types.php:86
+#: ../lib/custompress/ui-admin/taxonomies.php:88
+msgid "Delete"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/custom-fields.php:130
+msgid "Field and values"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/custom-fields.php:131
+#: ../lib/custompress/ui-admin/post-types.php:94
+#: ../lib/custompress/ui-admin/taxonomies.php:96
+#: ../ui-front/content-contact-job.php:49
+#: ../ui-front/content-contact-pro.php:51
+#: ../ui-front/content-update-job.php:284
+#: ../ui-front/content-update-job.php:286
+#: ../ui-front/content-update-pro.php:296
+msgid "Cancel"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/custom-fields.php:132
+msgid "Only field"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/custom-fields.php:136
+msgid "Allow"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/custom-fields.php:136
+msgid "Deny"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/custom-fields.php:148
+msgid ""
+"Embed code returns the values of the custom field with the specified key "
+"from the specified post. Property may be one of \"title\", \"description\" "
+"or \"value\". If property is not used \"value\" wil be returned. Use inside "
+"the loop in templates and PHP code "
+msgstr ""
+
+#: ../lib/custompress/ui-admin/custom-fields.php:152
+msgid ""
+"Shortcode returns the values of the custom field with the specified key from "
+"the specified post. Property may be one of \"title\", \"description\" or "
+"\"value\". If property is not used \"value\" wil be returned. Use inside the "
+"loop in Posts and Widgets"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/edit-custom-field.php:15
+msgid "Edit Custom Field"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/edit-custom-field.php:232
+msgid "Update Custom Field"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/edit-post-type.php:14
+msgid "Edit Post Type"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/edit-post-type.php:177
+msgid "Role Capabilities Settings"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/edit-post-type.php:181
+msgid "Assign Capabilities"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/edit-post-type.php:194
+#, php-format
+msgid "Select a role to which you want to assign %s capabilities."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/edit-post-type.php:389
+msgid "Display Custom Fields columns"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/edit-post-type.php:396
+msgid ""
+"These Custom Fields will be display as columns on the custom post type "
+"screen."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/edit-post-type.php:414
+msgid "This custom post type does not use any Custom Fields"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/edit-post-type.php:463
+msgid "You can set each component manually."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/edit-post-type.php:478
+msgid ""
+"Whether to generate a default UI for managing this post type. Note that "
+"built-in post types, such as post and page, are intentionally set to false."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/edit-post-type.php:785
+msgid ""
+"Name of the query var to use for this post type. Defaults to the post type "
+"name."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/edit-taxonomy.php:13
+msgid "Edit Taxonomy"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/edit-taxonomy.php:28
+msgid ""
+"The system name of the taxonomy. Alphanumeric lower case characters and "
+"underscores only. Min 2 letters. Once added the taxonomy system name cannot "
+"be changed."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/edit-taxonomy.php:49
+msgid "Select one or more post types to add this taxonomy to"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/edit-taxonomy.php:537
+msgid ""
+"Name of the query var to use for this post type. False to prevent queries, "
+"or string to customize query var. Defaults to the post type name."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/export.php:30
+msgid "CustomPress Custom Types Export"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/export.php:35
+msgid "Post Types Export"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/export.php:40
+msgid "Check the Post Types you wish to export."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/export.php:59
+msgid "Create Post Type Export"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/export.php:68
+msgid "Taxonomies Export"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/export.php:73
+msgid "Check the Taxonomies you wish to export."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/export.php:92
+msgid "Create Taxonomies Export"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/export.php:101
+msgid "Custom Fields Export"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/export.php:106
+msgid "Check the Custom Fields you wish to export."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/export.php:126
+msgid "Create Custom Fields Export"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/export.php:139
+msgid "Custom Types Import"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/export.php:144
+msgid ""
+"Paste your Export code here and press Import to add the custom type to "
+"CustomPress"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/export.php:151
+msgid ""
+"Import is currently disabled on this site. To enable add the line<br /"
+"><code>define('CT_ALLOW_IMPORT', true);</code><br />to the wp-config.php "
+"file."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/export.php:152
+msgid ""
+"Remove the line when it is no longer needed to prevent possible security "
+"problems."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/export.php:161
+msgid "Import"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/message.php:3
+msgid "Settings Saved."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/navigation.php:8
+msgid "Taxonomies"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/post-types.php:83
+msgid "Edit the post type"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/post-types.php:93
+#: ../lib/custompress/ui-admin/taxonomies.php:95
+msgid "Confirm"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/post-types.php:112
+#: ../lib/custompress/ui-admin/post-types.php:119
+#: ../lib/custompress/ui-admin/post-types.php:126
+#: ../lib/custompress/ui-admin/taxonomies.php:109
+#: ../lib/custompress/ui-admin/taxonomies.php:116
+#: ../lib/custompress/ui-admin/taxonomies.php:123
+msgid "True"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/post-types.php:114
+#: ../lib/custompress/ui-admin/post-types.php:121
+#: ../lib/custompress/ui-admin/post-types.php:128
+#: ../lib/custompress/ui-admin/taxonomies.php:111
+#: ../lib/custompress/ui-admin/taxonomies.php:118
+#: ../lib/custompress/ui-admin/taxonomies.php:125
+msgid "False"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/settings.php:35
+#, php-format
+msgid "CustomPress Settings %s"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/settings.php:42
+msgid "General"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/settings.php:46
+msgid "Enable sub-site content types."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/settings.php:50
+msgid ""
+"If you enable this option, sub-sites on your network will be able to define "
+"their own content types. If this option is not enabled ( default ) all sites "
+"on your network will be forced to use the network-wide content types defined "
+"by you, the Super Admin."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/settings.php:53
+msgid ""
+"If you enable this option, all subsites will use and display the content "
+"types defined at the network level. "
+msgstr ""
+
+#: ../lib/custompress/ui-admin/settings.php:58
+msgid "Display the network-wide content types on sub-sites."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/settings.php:61
+msgid "Do not display the network-wide content types on sub-sites."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/settings.php:74
+msgid "On \"Blog / Home\" page, display these post types: "
+msgstr ""
+
+#: ../lib/custompress/ui-admin/settings.php:103
+msgid ""
+"Check the custom post types you want to display on the \"Blog / Home\" page."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/settings.php:107
+#: ../lib/custompress/ui-admin/settings.php:148
+#: ../lib/custompress/ui-admin/settings.php:189
+#: ../lib/custompress/ui-admin/settings.php:230
+msgid ""
+"If \"default\" is checked the list above will be disabled and only default "
+"post_types will display."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/settings.php:115
+msgid "On \"Front\" page, display these post types: "
+msgstr ""
+
+#: ../lib/custompress/ui-admin/settings.php:144
+msgid ""
+"Check the custom post types you want to display on the \"Front\" static page."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/settings.php:156
+msgid "On \"Archive\" pages, display these post types:  "
+msgstr ""
+
+#: ../lib/custompress/ui-admin/settings.php:185
+msgid ""
+"Check the custom post types you want to display on the \"Archive\" page."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/settings.php:197
+msgid "On \"Search\" pages, display these post types:  "
+msgstr ""
+
+#: ../lib/custompress/ui-admin/settings.php:226
+msgid "Check the custom post types you want to display on the \"Search\" page."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/settings.php:238
+msgid "Date Picker Settings"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/settings.php:264
+msgid "Select Datepicker Theme."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/settings.php:280
+msgid "Template Files"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/settings.php:284
+msgid "Create template file for: "
+msgstr ""
+
+#: ../lib/custompress/ui-admin/settings.php:294
+msgid "No custom post types available"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/settings.php:297
+msgid ""
+"This will create \"single-[post_type].php\" file inside your active theme "
+"directory by copying your current single.php template. This file will be the "
+"custom template for your custom post type. You can then edit and customize "
+"it."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/settings.php:298
+msgid ""
+"In some cases you may not want to do that. For example if you don't have a "
+"template for your custom post type the default \"single.php\" will be used."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/settings.php:299
+msgid ""
+"Your active theme folder permissions have to be set to 777 for this option "
+"to work. After the file is created you can set your active theme directory "
+"permissions back to 755."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/shortcodes.php:7
+#: ../lib/custompress/ui-admin/shortcodes.php:11
+msgid "CustomPress Shortcodes"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/shortcodes.php:16
+msgid "Custom Fields Input"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/shortcodes.php:19
+msgid ""
+"Used to embed the input fields of a set of custom fields for the post \"ID\" "
+"specifed. Must be used inside a &lt;form&gt; and after submit the receiving "
+"form code must call the global:"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/shortcodes.php:21
+msgid "to save the input back to the post."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/shortcodes.php:24
+#: ../lib/custompress/ui-admin/shortcodes.php:70
+msgid "Basic shortcode"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/shortcodes.php:26
+#: ../lib/custompress/ui-admin/shortcodes.php:72
+msgid ""
+"Returns a full set of input fields based on the post type of the post id "
+"provided."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/shortcodes.php:27
+msgid ""
+"if the post_id is left out, it assumes the current global $post as the post "
+"being operated on."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/shortcodes.php:29
+#: ../lib/custompress/ui-admin/shortcodes.php:74
+msgid "or with field list"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/shortcodes.php:31
+#: ../lib/custompress/ui-admin/shortcodes.php:76
+msgid ""
+"Returns a set of input fields as supplied by the field id list in the "
+"shortcode. Any ids not associate with the post type will be ignored."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/shortcodes.php:33
+#: ../lib/custompress/ui-admin/shortcodes.php:78
+msgid "or with field list filtered by category"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/shortcodes.php:35
+#: ../lib/custompress/ui-admin/shortcodes.php:80
+msgid "Multiple filters may be used in one input block."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/shortcodes.php:37
+msgid ""
+"or use [ct_in] for individual input fields to allow better postioning and "
+"styling."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/shortcodes.php:39
+msgid "Leaving off the property attribute defaults to the input field html."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/shortcodes.php:40
+msgid "Assumes the current global $post as the post being operated on."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/shortcodes.php:41
+msgid ""
+"The nomenclature \"title | description | input\" means use one of the "
+"choices. \"title\" or \"description or \"input\"."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/shortcodes.php:47
+msgid "Custom Fields Validate"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/shortcodes.php:51
+msgid ""
+"When using the individual [ct_in] custom fields, this shortcode collects and "
+"adds the necessary script to run validation on the fields. "
+msgstr ""
+
+#: ../lib/custompress/ui-admin/shortcodes.php:52
+msgid ""
+"The [custom_fields_input] shortcode automatically includes this tag with the "
+"group of fields. It is only necessary for [ct_in] fields."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/shortcodes.php:56
+msgid ""
+"Should be placed just before the closing &lt;/form&gt; tag of the form "
+"containg the fields to be validated."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/shortcodes.php:63
+msgid "Custom Fields Block"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/shortcodes.php:67
+msgid ""
+"Used to embed the output of a set of custom fields for the current post. "
+"Must be used inside the loop."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/shortcodes.php:83
+msgid "Attributes for the [custom_fields_block]"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/shortcodes.php:84
+msgid ""
+"wrap        = Wrap the fields in either a \"table\", a \"ul\" or a \"div\" "
+"structure."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/shortcodes.php:85
+msgid ""
+"The default wrap attributes may be overriden using the following individual "
+"attributes:"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/shortcodes.php:86
+msgid "open = HTML to begin the block with"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/shortcodes.php:87
+msgid "close = HTML to end the block with"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/shortcodes.php:88
+msgid "open_line = HTML to begin a line with"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/shortcodes.php:89
+msgid "close_line = HTML to end a line with"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/shortcodes.php:90
+msgid "open_title = HTML to begin the title with"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/shortcodes.php:91
+msgid "close_title = HTML to end the title with"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/shortcodes.php:92
+msgid "open_value = HTML to begin the value with"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/shortcodes.php:93
+msgid "close_value = HTML to end the value with"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/shortcodes.php:100
+msgid "Custom Field Filter"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/shortcodes.php:103
+msgid ""
+"Used to restrict the list of fields returned depending on the categories of "
+"the post. Multiple [ct_filter] shortcodes may be added to a "
+"[custom_field_input] or [custom_field_block] shortcode."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/shortcodes.php:105
+msgid "Attributes for the [custom_field_filter]"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/shortcodes.php:106
+msgid ""
+"terms= Comma separated category list to filter on. Categories not associated "
+"with the post type of the current post will be ignored."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/shortcodes.php:107
+msgid ""
+"not= If true the filter will be inverted returning all the fields that were "
+"Not selected. Defaults to false."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/shortcodes.php:108
+msgid ""
+"The comma separated list of fields between the opening and closing tags will "
+"be returned if the categories match. Fields not associated with the post "
+"type of the current post will be ignored."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/taxonomies.php:74
+msgid "Edit this taxonomy"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/taxonomies.php:132
+msgid ""
+"Embed code returns an HTML string of taxonomy terms associated with a post "
+"and given taxonomy. <br />Terms are linked to their respective term listing "
+"pages. Use it in templates inside the Loop."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/taxonomies.php:136
+msgid ""
+"Shortcode returns an HTML string of taxonomy terms associated with a post "
+"and given taxonomy. <br />Terms are linked to their respective term listing "
+"pages. Use it inside the Loop."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/update-message.php:5
+msgid "Content Type Updated"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/wip-update-taxonomy.php:32
+msgid ""
+"The system name of the taxonomy. Alphanumeric characters and underscores "
+"only. Min 2 letters. Once added the taxonomy system name cannot be changed."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/wip-update-taxonomy.php:356
+msgid "Prepend posts with this slug."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/wip-update-taxonomy.php:359
+msgid "Disallow Front Base"
+msgstr ""
+
+#: ../lib/custompress/ui-admin/wip-update-taxonomy.php:361
+msgid "Disallowing permalinks to be prepended with front base."
+msgstr ""
+
+#: ../lib/custompress/ui-admin/wip-update-taxonomy.php:380
+msgid ""
+"False to prevent queries. Default will use the taxonomy system name as query "
+"var."
+msgstr ""
+
+#: ../ui-admin/job.php:12 ../ui-admin/pro.php:13
+#, php-format
+msgid "Jobs Plus Settings %s"
+msgstr ""
+
+#: ../ui-admin/job.php:18
+msgid "Job Status Options"
+msgstr ""
+
+#: ../ui-admin/job.php:23
+msgid "Show Edit Button on Job Form"
+msgstr ""
+
+#: ../ui-admin/job.php:27 ../ui-admin/pro.php:28
+msgid "Show edit button"
+msgstr ""
+
+#: ../ui-admin/job.php:28
+msgid ""
+"Displays an edit button on the Job form and Archive list. Some themes "
+"already have an edit button."
+msgstr ""
+
+#: ../ui-admin/job.php:34
+msgid "Maximum Job Records per User"
+msgstr ""
+
+#: ../ui-admin/job.php:38
+msgid "Maximum number of job profiles for each user."
+msgstr ""
+
+#: ../ui-admin/job.php:44
+msgid "Job Records per Page"
+msgstr ""
+
+#: ../ui-admin/job.php:48
+msgid "Maximum number of job records per archive page."
+msgstr ""
+
+#: ../ui-admin/job.php:54
+msgid "Newly Created Job Status Options"
+msgstr ""
+
+#: ../ui-admin/job.php:59 ../ui-admin/pro.php:60
+msgid "Published"
+msgstr ""
+
+#: ../ui-admin/job.php:61
+msgid "Allow members to publish Jobs themselves."
+msgstr ""
+
+#: ../ui-admin/job.php:66 ../ui-admin/pro.php:67
+#: ../ui-front/content-update-pro.php:290
+msgid "Pending Review"
+msgstr ""
+
+#: ../ui-admin/job.php:68
+msgid "Job is pending review by an administrator."
+msgstr ""
+
+#: ../ui-admin/job.php:73 ../ui-admin/pro.php:74
+#: ../ui-front/content-single-pro.php:146
+#: ../ui-front/content-update-job.php:279
+#: ../ui-front/content-update-pro.php:293
+msgid "Draft"
+msgstr ""
+
+#: ../ui-admin/job.php:75 ../ui-admin/pro.php:76
+msgid "Allow members to save Drafts."
+msgstr ""
+
+#: ../ui-admin/job.php:84
+msgid "Job Image Storage"
+msgstr ""
+
+#: ../ui-admin/job.php:89
+msgid "Base path for Job image uploads"
+msgstr ""
+
+#: ../ui-admin/job.php:93
+msgid ""
+"Base disk path where any file uploaded with a job entry are stored. The post "
+"id will be added to create individual directories for each user. Default is "
+msgstr ""
+
+#: ../ui-admin/job.php:98 ../ui-admin/pro.php:110
+msgid "Maximum Gallery Images"
+msgstr ""
+
+#: ../ui-admin/job.php:102
+msgid ""
+"Maximum number of images that can be uploaded to the Jobs portfolio gallery. "
+"Default is 4"
+msgstr ""
+
+#: ../ui-admin/job.php:107
+msgid "Job image size"
+msgstr ""
+
+#: ../ui-admin/job.php:110 ../ui-admin/pro.php:122
+msgid "width"
+msgstr ""
+
+#: ../ui-admin/job.php:111 ../ui-admin/pro.php:123
+msgid "height"
+msgstr ""
+
+#: ../ui-admin/job.php:112
+msgid "Size of the job-thumb-image. Defaults to 160x120."
+msgstr ""
+
+#: ../ui-admin/job.php:120 ../ui-admin/pro.php:132
+msgid "Notification Settings"
+msgstr ""
+
+#: ../ui-admin/job.php:124 ../ui-admin/pro.php:136
+msgid "Disable Contact Form:"
+msgstr ""
+
+#: ../ui-admin/job.php:128 ../ui-admin/pro.php:140
+msgid "disable contact form"
+msgstr ""
+
+#: ../ui-admin/job.php:132 ../ui-admin/pro.php:144
+msgid "CC the Administrator:"
+msgstr ""
+
+#: ../ui-admin/job.php:136 ../ui-admin/pro.php:148
+msgid "cc the administrator"
+msgstr ""
+
+#: ../ui-admin/job.php:140 ../ui-admin/pro.php:152
+msgid "CC the Sender:"
+msgstr ""
+
+#: ../ui-admin/job.php:144 ../ui-admin/pro.php:156
+msgid "cc the sender"
+msgstr ""
+
+#: ../ui-admin/job.php:148 ../ui-admin/pro.php:160
+msgid "Email Subject:"
+msgstr ""
+
+#: ../ui-admin/job.php:152 ../ui-admin/job.php:162 ../ui-admin/pro.php:164
+#: ../ui-admin/pro.php:174
+msgid ""
+"Variables: TO_NAME, FROM_NAME, FROM_EMAIL, FROM_MESSAGE, POST_TITLE, "
+"POST_LINK, SITE_NAME"
+msgstr ""
+
+#: ../ui-admin/job.php:156 ../ui-admin/pro.php:168
+msgid "Email Content:"
+msgstr ""
+
+#: ../ui-admin/job.php:171 ../ui-admin/job.php:177 ../ui-admin/pro.php:183
+#: ../ui-admin/pro.php:189
+msgid "Terms of Service Text"
+msgstr ""
+
+#: ../ui-admin/job.php:180 ../ui-admin/pro.php:192
+#: ../ui-front/content-update-job.php:257
+#: ../ui-front/content-update-pro.php:279
+msgid "Terms of Service"
+msgstr ""
+
+#: ../ui-admin/job.php:182 ../ui-admin/pro.php:194
+msgid "Text for \"Terms of Service\""
+msgstr ""
+
+#: ../ui-admin/job.php:192 ../ui-admin/pro.php:204 ../ui-admin/settings.php:48
+msgid "Save Changes"
+msgstr ""
+
+#: ../ui-admin/pro.php:19
+msgid "Pro Status Options"
+msgstr ""
+
+#: ../ui-admin/pro.php:24
+msgid "Show Edit Button on Pro Form"
+msgstr ""
+
+#: ../ui-admin/pro.php:29
+msgid ""
+"Displays an edit button on the Pro form and Archive list. Some themes "
+"already have an edit button."
+msgstr ""
+
+#: ../ui-admin/pro.php:35
+msgid "Maximum Pro Records per User"
+msgstr ""
+
+#: ../ui-admin/pro.php:39
+msgid "Maximum number of pro profiles for each user."
+msgstr ""
+
+#: ../ui-admin/pro.php:45
+msgid "Pro Records per Page"
+msgstr ""
+
+#: ../ui-admin/pro.php:49
+msgid "Maximum number of pro profiles per archive page."
+msgstr ""
+
+#: ../ui-admin/pro.php:55
+msgid "Newly Created Pro Status Options"
+msgstr ""
+
+#: ../ui-admin/pro.php:62
+msgid "Allow members to publish Pros themselves."
+msgstr ""
+
+#: ../ui-admin/pro.php:69
+msgid "Pro is pending review by an administrator."
+msgstr ""
+
+#: ../ui-admin/pro.php:82
+msgid "Show Ratings in Comments"
+msgstr ""
+
+#: ../ui-admin/pro.php:86
+msgid "Show comment authors rating of the pro"
+msgstr ""
+
+#: ../ui-admin/pro.php:87
+msgid "Displays the rating given by the author of the comment for a pro."
+msgstr ""
+
+#: ../ui-admin/pro.php:96
+msgid "Pro Image Storage"
+msgstr ""
+
+#: ../ui-admin/pro.php:101
+msgid "Base path for Pro image uploads"
+msgstr ""
+
+#: ../ui-admin/pro.php:105
+msgid ""
+"Base disk path where any file uploaded with a pro entry are stored. The post "
+"id will be added to create individual directories for each user. Default is "
+msgstr ""
+
+#: ../ui-admin/pro.php:114
+msgid ""
+"Maximum number of images that can be uploaded to the Pros portfolio gallery. "
+"Default is 4"
+msgstr ""
+
+#: ../ui-admin/pro.php:119
+msgid "Pro image size"
+msgstr ""
+
+#: ../ui-admin/pro.php:124
+msgid "Size of the pro-thumb-image. Defaults to 160x120."
+msgstr ""
+
+#: ../ui-admin/settings.php:14
+#, php-format
+msgid "Freelance + Settings %s"
+msgstr ""
+
+#: ../ui-admin/settings.php:20
+msgid "General Options"
+msgstr ""
+
+#: ../ui-admin/settings.php:25
+msgid "Certification Name"
+msgstr ""
+
+#: ../ui-admin/settings.php:28
+msgid "Freelance+ Certification"
+msgstr ""
+
+#: ../ui-admin/settings.php:29
+msgid "Pro Certification Name."
+msgstr ""
+
+#: ../ui-admin/settings.php:34
+msgid "Currency Symbol"
+msgstr ""
+
+#: ../ui-admin/settings.php:37 ../ui-front/content-single-job.php:25
+#: ../ui-front/content-single-job.php:27
+msgid "$"
+msgstr ""
+
+#: ../ui-admin/settings.php:38
+msgid "Currency symbol for this site. Default \"$\""
+msgstr ""
+
+#: ../ui-admin/shortcodes.php:5
+#, php-format
+msgid "Freelance Settings %s"
+msgstr ""
+
+#: ../ui-admin/shortcodes.php:10
+msgid "Freelance Shortcodes"
+msgstr ""
+
+#: ../ui-admin/shortcodes.php:13
+msgid ""
+"Shortcodes allow you to include dynamic store content in posts and pages on "
+"your site. Simply type or paste them into your post or page content where "
+"you would like them to appear. Optional attributes can be added in a format "
+"like <em>[shortcode attr1=\"value\" attr2=\"value\"]</em>."
+msgstr ""
+
+#: ../ui-admin/shortcodes.php:16
+msgid ""
+"Attributes: (\"|\" means use one OR the other. ie style=\"grid\" or style="
+"\"list\" not style=\"grid | list\")"
+msgstr ""
+
+#: ../ui-admin/shortcodes.php:17
+msgid "text = <em>Text to display on a button</em>"
+msgstr ""
+
+#: ../ui-admin/shortcodes.php:18
+msgid ""
+"view = <em>Whether the button is visible when loggedin, loggedout, or both</"
+"em>"
+msgstr ""
+
+#: ../ui-admin/shortcodes.php:19
+msgid "class = <em>define a css class for this button.</em>"
+msgstr ""
+
+#: ../ui-admin/shortcodes.php:23
+msgid "New Job Button:"
+msgstr ""
+
+#: ../ui-admin/shortcodes.php:25 ../ui-admin/shortcodes.php:26
+msgid "New Job"
+msgstr ""
+
+#: ../ui-admin/shortcodes.php:26 ../ui-admin/shortcodes.php:34
+#: ../ui-admin/shortcodes.php:42 ../ui-admin/shortcodes.php:50
+msgid "someimage.jpg"
+msgstr ""
+
+#: ../ui-admin/shortcodes.php:27 ../ui-admin/shortcodes.php:35
+msgid ""
+"Links to the New Job Page. Generates a &lt;button&gt; &lt;/button&gt; with "
+"the HTML contents you define."
+msgstr ""
+
+#: ../ui-admin/shortcodes.php:31
+msgid "New Pro Button:"
+msgstr ""
+
+#: ../ui-admin/shortcodes.php:33 ../ui-admin/shortcodes.php:34
+msgid "New Pro"
+msgstr ""
+
+#: ../ui-admin/shortcodes.php:39
+msgid " Jobs Archive Button:"
+msgstr ""
+
+#: ../ui-admin/shortcodes.php:41 ../ui-admin/shortcodes.php:42
+msgid "Browse Jobs"
+msgstr ""
+
+#: ../ui-admin/shortcodes.php:43
+msgid ""
+"Links to the Job Archive Page. Generates a &lt;button&gt; &lt;/button&gt; "
+"with the HTML contents you define."
+msgstr ""
+
+#: ../ui-admin/shortcodes.php:47
+msgid "Pro Archive Button:"
+msgstr ""
+
+#: ../ui-admin/shortcodes.php:49 ../ui-admin/shortcodes.php:50
+msgid "Browse Pros"
+msgstr ""
+
+#: ../ui-admin/shortcodes.php:51
+msgid ""
+"Links to the Pros Archive Page. Generates a &lt;button&gt; &lt;/button&gt; "
+"with the HTML contents you define."
+msgstr ""
+
+#: ../ui-front/content-archive-pro.php:20
+msgid "No Pros Found"
+msgstr ""
+
+#: ../ui-front/content-contact-job.php:25
+msgid "Contact "
+msgstr ""
+
+#: ../ui-front/content-contact-job.php:33
+#: ../ui-front/content-contact-pro.php:34
+msgid "Your name: "
+msgstr ""
+
+#: ../ui-front/content-contact-job.php:38
+#: ../ui-front/content-contact-pro.php:39
+msgid "Your email: "
+msgstr ""
+
+#: ../ui-front/content-contact-job.php:43
+#: ../ui-front/content-contact-pro.php:44
+msgid "Content: "
+msgstr ""
+
+#: ../ui-front/content-contact-job.php:48
+msgid "Submit"
+msgstr ""
+
+#: ../ui-front/content-contact-pro.php:50
+msgid "Send"
+msgstr ""
+
+#: ../ui-front/content-pagination.php:25
+#, php-format
+msgid "Page %1$d of %2$d"
+msgstr ""
+
+#: ../ui-front/content-pagination.php:28
+msgid "First"
+msgstr ""
+
+#: ../ui-front/content-pagination.php:32
+msgid "Previous"
+msgstr ""
+
+#: ../ui-front/content-pagination.php:42
+msgid "Next"
+msgstr ""
+
+#: ../ui-front/content-pagination.php:46
+msgid "Last"
+msgstr ""
+
+#: ../ui-front/content-single-job.php:17
+#, php-format
+msgid "%d Days %dhrs"
+msgstr ""
+
+#: ../ui-front/content-single-job.php:19
+msgid "Expired"
+msgstr ""
+
+#: ../ui-front/content-single-job.php:35
+msgid "Job Budget"
+msgstr ""
+
+#: ../ui-front/content-single-job.php:36
+msgid "This job open for"
+msgstr ""
+
+#: ../ui-front/content-single-job.php:37
+msgid "Must be complete by"
+msgstr ""
+
+#: ../ui-front/content-single-job.php:60 ../ui-front/sc-job-excerpt.php:38
+msgid "Categories: "
+msgstr ""
+
+#: ../ui-front/content-single-job.php:61
+msgid "Posted: "
+msgstr ""
+
+#: ../ui-front/content-single-job.php:66
+msgid "You will need to have these skills:"
+msgstr ""
+
+#: ../ui-front/content-single-job.php:70
+msgid "Examples:"
+msgstr ""
+
+#: ../ui-front/content-single-pro.php:37
+msgid "Title: "
+msgstr ""
+
+#: ../ui-front/content-single-pro.php:41
+msgid "No Title"
+msgstr ""
+
+#: ../ui-front/content-single-pro.php:43
+msgid "Enter the Title"
+msgstr ""
+
+#: ../ui-front/content-single-pro.php:55
+msgid "Your Name"
+msgstr ""
+
+#: ../ui-front/content-single-pro.php:57
+msgid "Enter Your First and Last Name"
+msgstr ""
+
+#: ../ui-front/content-single-pro.php:62
+msgid "Company: "
+msgstr ""
+
+#: ../ui-front/content-single-pro.php:67
+msgid "Your Company"
+msgstr ""
+
+#: ../ui-front/content-single-pro.php:68
+msgid "Company:"
+msgstr ""
+
+#: ../ui-front/content-single-pro.php:69
+msgid "Company Name"
+msgstr ""
+
+#: ../ui-front/content-single-pro.php:70
+msgid "www.company.com"
+msgstr ""
+
+#: ../ui-front/content-single-pro.php:72
+msgid "Company and URL"
+msgstr ""
+
+#: ../ui-front/content-single-pro.php:76 ../ui-front/content-update-pro.php:82
+msgid "Location: "
+msgstr ""
+
+#: ../ui-front/content-single-pro.php:80 ../ui-front/content-update-pro.php:86
+msgid "Your Location"
+msgstr ""
+
+#: ../ui-front/content-single-pro.php:83 ../ui-front/content-update-pro.php:89
+msgid "Enter Location from dropdown"
+msgstr ""
+
+#: ../ui-front/content-single-pro.php:87
+msgid "Contact Email: "
+msgstr ""
+
+#: ../ui-front/content-single-pro.php:92
+msgid "Your contact email"
+msgstr ""
+
+#: ../ui-front/content-single-pro.php:94
+msgid "Contact email"
+msgstr ""
+
+#: ../ui-front/content-single-pro.php:98
+msgid "Rate me: "
+msgstr ""
+
+#: ../ui-front/content-single-pro.php:111
+msgid "Tell us about yourself"
+msgstr ""
+
+#: ../ui-front/content-single-pro.php:112
+msgid "Biography Description"
+msgstr ""
+
+#: ../ui-front/content-single-pro.php:134
+#: ../ui-front/content-update-job.php:267
+msgid "Go Public"
+msgstr ""
+
+#: ../ui-front/content-single-pro.php:140
+#: ../ui-front/content-update-job.php:273
+msgid "Review"
+msgstr ""
+
+#: ../ui-front/content-single-pro.php:163
+msgid "Creating Your Profile,<br />Please Wait"
+msgstr ""
+
+#: ../ui-front/content-update-job.php:72
+msgid "Create a New Job"
+msgstr ""
+
+#: ../ui-front/content-update-job.php:74
+msgid "Editing Job &raquo;"
+msgstr ""
+
+#: ../ui-front/content-update-job.php:94
+msgid "Chose a Category"
+msgstr ""
+
+#: ../ui-front/content-update-job.php:132
+msgid "Give Your Job a  Title"
+msgstr ""
+
+#: ../ui-front/content-update-job.php:145
+msgid "Describe the Work to be Done"
+msgstr ""
+
+#: ../ui-front/content-update-job.php:166
+msgid "What skills are needed?"
+msgstr ""
+
+#: ../ui-front/content-update-job.php:170
+msgid "Skills Required for this job"
+msgstr ""
+
+#: ../ui-front/content-update-job.php:176
+msgid "Add a tag, use commas to separate"
+msgstr ""
+
+#: ../ui-front/content-update-job.php:188
+msgid "Budget Range"
+msgstr ""
+
+#: ../ui-front/content-update-job.php:198
+msgid "Contact Email"
+msgstr ""
+
+#: ../ui-front/content-update-job.php:207
+msgid "Completion Date"
+msgstr ""
+
+#: ../ui-front/content-update-job.php:217
+msgid "Job Open for"
+msgstr ""
+
+#: ../ui-front/content-update-job.php:227
+msgid "Attach Examples"
+msgstr ""
+
+#: ../ui-front/content-update-pro.php:57
+msgid "Create a New Pro Profile"
+msgstr ""
+
+#: ../ui-front/content-update-pro.php:68
+msgid "Name:"
+msgstr ""
+
+#: ../ui-front/content-update-pro.php:74
+msgid "Company URL:"
+msgstr ""
+
+#: ../ui-front/content-update-pro.php:79
+msgid "Location:"
+msgstr ""
+
+#: ../ui-front/content-update-pro.php:95
+msgid "Contact Email:"
+msgstr ""
+
+#: ../ui-front/content-update-pro.php:101
+msgid "Bio:"
+msgstr ""
+
+#: ../ui-front/content-update-pro.php:108
+msgid "Excerpt:"
+msgstr ""
+
+#: ../ui-front/content-update-pro.php:110
+msgid "A short excerpt of your Bio."
+msgstr ""
+
+#: ../ui-front/content-update-pro.php:115
+msgid "Facebook URL:"
+msgstr ""
+
+#: ../ui-front/content-update-pro.php:120
+msgid "Twitter URL:"
+msgstr ""
+
+#: ../ui-front/content-update-pro.php:125
+msgid "LinkedIn URL:"
+msgstr ""
+
+#: ../ui-front/content-update-pro.php:130
+msgid "Skype URL:"
+msgstr ""
+
+#: ../ui-front/content-update-pro.php:203
+msgid "add a tag"
+msgstr ""
+
+#: ../ui-front/content-update-pro.php:207
+msgid "Skills:"
+msgstr ""
+
+#: ../ui-front/content-update-pro.php:219 ../ui-front/sc-pro-skills.php:31
+#: ../ui-front/sc-pro-skills.php:49
+msgid "What is your skill?"
+msgstr ""
+
+#: ../ui-front/content-update-pro.php:220 ../ui-front/sc-pro-skills.php:33
+#: ../ui-front/sc-pro-skills.php:50
+msgid "Skill"
+msgstr ""
+
+#: ../ui-front/content-update-pro.php:233
+msgid "Portfolio examples:"
+msgstr ""
+
+#: ../ui-front/content-update-pro.php:237
+msgid "+Add"
+msgstr ""
+
+#: ../ui-front/content-update-pro.php:246 ../ui-front/sc-job-portfolio.php:38
+#: ../ui-front/sc-pro-portfolio.php:37
+msgid "No Image Selected"
+msgstr ""
+
+#: ../ui-front/content-update-pro.php:248 ../ui-front/sc-job-portfolio.php:39
+#: ../ui-front/sc-job-portfolio.php:61 ../ui-front/sc-pro-portfolio.php:38
+#: ../ui-front/sc-pro-portfolio.php:59
+msgid "Select an Image"
+msgstr ""
+
+#: ../ui-front/content-update-pro.php:249 ../ui-front/sc-job-portfolio.php:40
+#: ../ui-front/sc-pro-portfolio.php:39
+msgid "Choose an image"
+msgstr ""
+
+#: ../ui-front/content-update-pro.php:287
+msgid "Publish"
+msgstr ""
+
+#: ../ui-front/sc-job-excerpt.php:40
+msgid "Skills: "
+msgstr ""
+
+#: ../ui-front/sc-job-excerpt.php:48
+msgid "Due: "
+msgstr ""
+
+#: ../ui-front/sc-job-excerpt.php:49
+msgid "Budget: $"
+msgstr ""
+
+#: ../ui-front/sc-job-portfolio.php:59
+msgid "_ct_jbp_job_Portfolio[]"
+msgstr ""
+
+#: ../ui-front/sc-pro-archive.php:23
+msgid "Find Out More"
+msgstr ""
+
+#: ../ui-front/sc-pro-portfolio.php:57
+msgid "_ct_jbp_pro_Portfolio[]"
+msgstr ""
+
+#: ../ui-front/sc-pro-skills.php:47
+msgid "_ct_jbp_pro_Skills[]"
+msgstr ""
+
+#: ../ui-front/sc-pro-social.php:30 ../ui-front/sc-pro-social.php:46
+msgid "Enter a Social link"
+msgstr ""
+
+#: ../ui-front/sc-pro-social.php:32 ../ui-front/sc-pro-social.php:48
+msgid "Select a Social Icon and enter your url"
+msgstr ""
+
+#: ../ui-front/search-form-job.php:9
+msgid "Search jobs for"
+msgstr ""
+
+#: ../ui-front/search-form-job.php:16 ../ui-front/search-form-pro.php:16
+msgid "Search"
+msgstr ""
+
+#: ../ui-front/search-form-pro.php:9
+msgid "Search pros for"
+msgstr ""

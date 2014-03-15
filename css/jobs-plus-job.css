@@ -1,0 +1,276 @@
+/**
+* @package Jobs +
+* @author Arnold Bailey
+* @since version 1.0
+* @license GPL2+
+*/
+
+.job-description{
+  font-style: italic;
+}
+
+/*Add item link */
+a.job-add{
+	display: block;
+	font-weight: bold;
+	font-size: large;
+}
+
+.job-content-wrapper{
+	position relative;
+}
+
+.job-form{
+	width: 100%;
+}
+
+.job-form-table{
+	table-layout: fixed;
+	width: 100%;
+}
+
+.job-form-table th{
+	vertical-align: middle;
+	width: 30%;
+	border: 0;
+	padding: 1em;
+}
+
+.job-form-table td{
+	width: 70%;
+	border: 0;
+	padding: 1em;
+}
+
+.job-form-table ul li{
+	background: none;
+}
+
+.job-form-table input[type="text"],
+.job-form-table select,
+.job-form-table textarea{
+	display: block;
+	padding: 6px;
+	width: 100%;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+}
+
+.job-form-table input[type="text"].number{
+	display: inline;
+	width: 30%;
+}
+
+.job-form-table input:focus,
+.job-form-table textarea:focus{
+}
+
+.job-tags{
+	width: 100%;
+}
+
+/* Portfolio layout */
+.job-portfolio ul{
+	width: 100%;       /* 1up=100% - 2up=102% - 3up=103% -4up=102% - 5up=102% - 6up=106%*/
+}
+.job-portfolio ul li{
+	max-width: 100%;   /* 1up=100% - 2up=48% - 3up=31% - 4up=23% - 5up=18% 6up=14% */
+	margin: 0 2% 2% 0;
+	float: left;
+}
+
+.job-portfolio .job-images ul,
+.job-portfolio .job-images ul li{
+	list-style: none outside none;
+	margin-left: 0;
+	padding-left: 0;
+}
+
+.job-go-public{
+	float: left;
+	margin-right: 1em;
+}
+
+.job-contact-btn{
+	float: right;
+	margin: .5em;
+}
+
+.job-meta {
+	margin-bottom: 1em;
+}
+
+.job-single-wrapper .job-meta ul{
+	list-style: none outside none;
+	border: 1px solid #aaa;
+	box-shadow: -2px 2px 8px 0 rgba( 178, 178, 178, .4 );
+	padding: 0;
+	margin: 0;
+}
+
+.job-single-wrapper .job-meta ul li{
+	display: inline-table;
+	padding: 5px 10px;
+	margin: 0;
+	text-align: center;
+	border-right: 1px solid #aaa;
+}
+
+.meta-label{
+	font-size: 75%;
+}
+
+.meta-red{
+	color: #c00;
+}
+
+.meta-green{
+	color: #0c0;
+}
+
+.job-top{
+	width: auto;
+
+}
+
+.job-cat{
+
+}
+
+.job-skill{
+	float: right;
+}
+
+.job-date{
+	float: right;
+}
+
+.job-due{
+	float: left;
+}
+
+.job-budget{
+	float:right;
+}
+
+.job-skills {
+	border-top: 1px solid #aaa;
+	border-bottom: 1px solid #aaa;
+	padding: 1em 0 0 0;
+	margin-bottom: 1em;
+	color: #111;
+}
+
+.job-item-full .job-skills ul{
+	padding: 0;
+}
+
+.job-item-full .job-skills ul li{
+	list-style: none outside none;
+	display: inline-table;
+	padding: 0;
+}
+
+.job-skills ul li a{
+	color: #fff;
+	background-color: #0c0;
+	padding: 2px 1em;
+	border: 1px solid #0c0;
+	margin-right: 1em;
+}
+
+.job-skills ul li a:hover{
+	color: #0c0;
+	background-color: #fff;
+}
+
+.job-right{
+	float: right;
+	width: 28%;
+}
+
+.job-item-full{
+	margin-top: 0em;
+}
+
+/* Archive */
+.job-grid-sizer{
+	width: 25%;
+}
+
+.job-excerpt{
+	position: relative;
+	display: table;
+	height: 240px;
+	font-size: 14px;
+	border: 1px solid #b3b3b3;
+	-moz-box-sizing: border-box;
+}
+
+.job-excerpt.small{
+	width: 240px;
+}
+.job-excerpt.medium{
+	width: 480px;
+}
+.job-excerpt.large{
+	width: 720px;
+}
+
+.job-item{
+	padding: 1em;
+	display: block;
+}
+
+.job-excerpt .job-item h2{
+	margin: 0;
+	font-size: 18px;
+}
+
+.job-terms{
+	position: relative;
+	bottom: -2em;
+}
+
+.job-footer{
+	display: table-row;
+	vertical-align: bottom;
+	height: 1px;
+}
+
+.job-stats{
+	width: auto;
+	padding: .5em 1em;
+	border-top: 1px solid #b3b3b3;
+	text-align: center;
+	font-size: 12px;
+}
+
+.job-stats span{
+	margin-bottom: .5em;
+}
+
+.job-grey{
+	border-top: 4px solid #b3b3b3;
+}
+
+.job-mint{
+	border-top: 4px solid #38ba7a;
+}
+
+.job-rose{
+	border-top: 4px solid #f16869;
+}
+
+.job-amber{
+	border-top: 4px solid #fdb441;
+}
+
+.job-yellow{
+	border-top: 4px solid #ffde1a;
+}
+
+.job-blue{
+	border-top: 4px solid #3ebae8;
+}
+

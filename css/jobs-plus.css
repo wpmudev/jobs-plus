@@ -1,0 +1,68 @@
+/**
+* @package Jobs +
+* @author Arnold Bailey
+* @since version 1.0
+* @license GPL2+
+*/
+
+@import url("jobs-plus-pro.css");
+@import url("jobs-plus-job.css");
+
+/* For modern browsers */
+.jbp-clear:before,
+.jbp-clear:after {
+	content:"";
+	display:table;
+}
+.jbp-clear:after {
+	clear:both;
+}
+/* For IE 6/7 (trigger hasLayout) */
+.jbp-clear {
+	zoom:1;
+}
+
+.show-on-edit{ display: none;}
+
+.error {
+	background-color:#FFEBE8;
+	border:1px solid red!important;
+	margin:.5em 0;
+	padding:1em;
+	border-radius: 4px;
+}
+
+.updated {
+	background-color:#FFFFD5;
+	border:1px solid #E6DB55!important;
+	margin:.5em 0;
+	padding:1em;
+	border-radius: 4px;
+}
+
+.editfield {
+	margin-bottom:1em;
+	padding:0;
+}
+
+.editfield input[type="text"],
+.editfield textarea,
+.editfield select {
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	font-size:1.2em;
+	margin:0;
+	padding:6px;
+	width:100%;
+}
+
+.editable img{
+	max-width: 100%;
+	height: auto;
+	cursor: url("../img/magnify.cur") 0 0, pointer;
+}
+
+.input-large{
+	width: 400px;
+}
+
