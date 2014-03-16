@@ -453,7 +453,7 @@ class Jobs_Plus_Core{
 		?>
 		<script type="text/javascript">
 			//translatable
-			var jobs-plus_plugin_url = '<?php echo $this->plugin_url; ?>';
+			var jobs_plus_plugin_url = '<?php echo $this->plugin_url; ?>';
 			var tooltipvalues = <?php
 			printf("['%s', '%s', '%s', '%s', '%s'];",
 			__('Not so great', $this->text_domain),
