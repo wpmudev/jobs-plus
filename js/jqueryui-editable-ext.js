@@ -1713,32 +1713,5 @@ url: "http://webwrights.com"
 
 }(window.jQuery));
 
-//Site wide defaults and fixup buttons
-jQuery(document).ready( function($){
-
-	$.fn.editable.defaults.mode = 'popup';
-	//$.fn.editable.defaults.mode = 'inline';
-	$.fn.editable.defaults.showbuttons = 'bottom';
-	//$.fn.editable.defaults.disabled = true;
-
-	// Overwrite done and cancel buttons
-	$.fn.editableform.buttons = '<button type="button" class="editable-cancel">Cancel</button> '+
-	'<button type="submit" class="editable-submit">Done</button>';
-
-	$.extend($.fn.editableform.Constructor.prototype, {
-		initButtons: function() {
-			var $btn = this.$form.find('.editable-buttons');
-			$btn.append($.fn.editableform.buttons);
-			//if(this.options.showbuttons === 'bottom') {
-				$btn.addClass('editable-buttons-bottom');
-			//}
-		}
-	});
-
-});
-
-
-
-
 
 

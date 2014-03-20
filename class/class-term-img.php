@@ -99,7 +99,7 @@ class Term_Images{
 		$this->delete_img() );
 
 
-		$o .= sprintf( '<button value="%d" id="ti_%d" name="ti_term_id" data-taxonomy="%s" title="%s" type="button" class="ti-upload-image-button" style="cursor: pointer; display: inline-block; min-width: 40px;  width: %dpx; height: %dpx; background-color: #999; color: #ddd;  font-size: 30px; font-weight: 900; padding: 0;line-height: 30px; text-shadow: 1px 1px 1px #444;" >%s</button>',
+		$o .= sprintf( '<button value="%d" id="ti_%d" name="ti_term_id" data-taxonomy="%s" title="%s" type="button" class="ti-upload-image-button" style="cursor: pointer; display: inline-block; min-width: 40px;  width: %dpx; height: %dpx; background-color: #fff; color: #ddd;  font-size: 30px; font-weight: 900; padding: 0;line-height: 30px; text-shadow: 1px 1px 1px #444;" >%s</button>',
 		$term_id,
 		$term_id,
 		$taxonomy,

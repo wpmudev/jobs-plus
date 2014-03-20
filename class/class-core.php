@@ -28,8 +28,8 @@ class Jobs_Plus_Core{
 	);
 
 	//Virtual pages
-	private $_new_job_page_id = 0;
-	private $_new_pro_page_id = 0;
+	private $_add_job_page_id = 0;
+	private $_add_pro_page_id = 0;
 
 	//job file names for content substitutions
 	public $job_content = array(
@@ -127,25 +127,25 @@ class Jobs_Plus_Core{
 	function __get($name){
 		$result = false;
 		switch($name){
-			case 'new_job_page_id':{
-				if(empty($this->_new_job_page_id) ){
-					$page = $this->get_page_by_meta('jbp_job', 'new_job_page' );
+			case 'add_job_page_id':{
+				if(empty($this->_add_job_page_id) ){
+					$page = $this->get_page_by_meta('jbp_job', 'add_job_page' );
 					$result = ($page && $page->ID > 0) ? $page->ID : 0;
 					if(empty($result) ) $this->create_virtual_pages();
-					$this->_new_job_page_id = $result; //Remember the number
+					$this->_add_job_page_id = $result; //Remember the number
 				}
-				$result = $this->_new_job_page_id;
+				$result = $this->_add_job_page_id;
 				break;
 			}
 
-			case 'new_pro_page_id':{
-				if(empty($this->_new_pro_page_id) ){
-					$page = $this->get_page_by_meta('jbp_pro', 'new_pro_page' );
+			case 'add_pro_page_id':{
+				if(empty($this->_add_pro_page_id) ){
+					$page = $this->get_page_by_meta('jbp_pro', 'add_pro_page' );
 					$result = ($page && $page->ID > 0) ? $page->ID : 0;
 					if(empty($result) ) $this->create_virtual_pages();
-					$this->_new_pro_page_id = $result; //Remember the number
+					$this->_add_pro_page_id = $result; //Remember the number
 				}
-				$result = $this->_new_pro_page_id;
+				$result = $this->_add_pro_page_id;
 				break;
 			}
 		}
@@ -155,13 +155,13 @@ class Jobs_Plus_Core{
 
 	function __set($name, $value){
 		switch($name) {
-			case 'new_job_page_id':{
-				$this->_new_job_page_id = $value;
+			case 'add_job_page_id':{
+				$this->_add_job_page_id = $value;
 				break;
 			}
 
-			case 'new_pro_page_id':{
-				$this->_new_pro_page_id = $value;
+			case 'add_pro_page_id':{
+				$this->_add_pro_page_id = $value;
 				break;
 			}
 		}
@@ -169,13 +169,13 @@ class Jobs_Plus_Core{
 
 	function __isset($name){
 		switch($name) {
-			case 'new_job_page_id': {
-				$result = $this->_new_job_page_id > 0;
+			case 'add_job_page_id': {
+				$result = $this->_add_job_page_id > 0;
 				break;
 			}
 
-			case 'new_pro_page_id': {
-				$result = $this->_new_pro_page_id > 0;
+			case 'add_pro_page_id': {
+				$result = $this->_add_pro_page_id > 0;
 				break;
 			}
 		}
@@ -383,14 +383,15 @@ class Jobs_Plus_Core{
 
 		$current_user = wp_get_current_user();
 
-		//jbp_job New Job
-		$page = $this->get_page_by_meta('jbp_job', 'new_job_page' );
+		//jbp_job Add Job
+		$job_obj = get_post_type_object('jbp_job');
+		$page = $this->get_page_by_meta('jbp_job', 'add_job_page' );
 		$page_id = ($page && $page->ID > 0) ? $page->ID : 0;
 		if ( empty($page_id) ) {
 			/* Construct args for the new post */
 			$args = array(
-			'post_title'     => 'New Job',
-			'post_name'      => 'new-job',
+			'post_title'     => sprintf('Add %s', $job_obj->labels->singular_name),
+			'post_name'      => 'add',
 			'post_status'    => 'virtual',
 			'post_author'    => $current_user->ID,
 			'post_type'      => 'jbp_job',
@@ -400,21 +401,22 @@ class Jobs_Plus_Core{
 			);
 			$page_id = wp_insert_post( $args );
 			$page = get_post($page_id);
-			add_post_meta( $page_id, '_jbp_job', 'new_job_page');
+			add_post_meta( $page_id, '_jbp_job', 'add_job_page');
 		} else {
 			//Make sure it stays Virtual
 			if( !in_array($page->post_status, array('virtual', 'trash') ) ) wp_update_post( array('ID' => $page_id, 'post_status' => 'virtual') );
 		}
-		$this->_new_job_page_id = $page_id; //Remember the number
+		$this->_add_job_page_id = $page_id; //Remember the number
 
-		//jbp_pro New Pro
-		$page = $this->get_page_by_meta('jbp_pro', 'new_pro_page' );
+		//jbp_pro Add Pro
+		$pro_obj = get_post_type_object('jbp_pro');
+		$page = $this->get_page_by_meta('jbp_pro', 'add_pro_page' );
 		$page_id = ($page && $page->ID > 0) ? $page->ID : 0;
 		if ( empty($page_id) ) {
 			/* Construct args for the new post */
 			$args = array(
-			'post_title'     => 'New Pro',
-			'post_name'      => 'new-pro',
+			'post_title'     => sprintf('Add %s', $pro_obj->labels->singular_name),
+			'post_name'      => 'add',
 			'post_status'    => 'virtual',
 			'post_author'    => $current_user->ID,
 			'post_type'      => 'jbp_pro',
@@ -424,12 +426,12 @@ class Jobs_Plus_Core{
 			);
 			$page_id = wp_insert_post( $args );
 			$page = get_post($page_id);
-			add_post_meta( $page_id, '_jbp_pro', 'new_pro_page');
+			add_post_meta( $page_id, '_jbp_pro', 'add_pro_page');
 		} else {
 			//Make sure it stays Virtual
 			if( !in_array($page->post_status, array('virtual', 'trash') ) ) wp_update_post( array('ID' => $page_id, 'post_status' => 'virtual') );
 		}
-		$this->_new_pro_page_id = $page_id; //Remember the number
+		$this->_add_pro_page_id = $page_id; //Remember the number
 	}
 
 	/**
@@ -552,7 +554,7 @@ class Jobs_Plus_Core{
 
 					set_query_var('edit', false);
 
-					if($wp_query->post->ID == $this->new_job_page_id) {
+					if($wp_query->post->ID == $this->add_job_page_id) {
 						wp_redirect(add_query_arg('jbp_error',
 						urlencode(sprintf(__('You must register and login to enter a %s.', $this->text_domain), $this->job_obj->labels->new_item) ),
 						get_post_type_archive_link('jbp_job') ) );
@@ -565,7 +567,7 @@ class Jobs_Plus_Core{
 				if( !current_user_can('edit_pros') ) {
 					set_query_var('edit', false);
 
-					if($wp_query->post->ID == $this->new_pro_page_id) {
+					if($wp_query->post->ID == $this->add_pro_page_id) {
 						wp_redirect(add_query_arg( 'jbp_error',
 						urlencode(sprintf(__('You must register and login to enter a %s.', $this->text_domain), $this->pro_obj->labels->new_item) ),
 						get_post_type_archive_link('jbp_pro') ) );
@@ -643,7 +645,7 @@ class Jobs_Plus_Core{
 
 		//Is this an jbp_job update?
 		if( ( is_singular('jbp_job') && get_query_var('edit') )
-		|| is_single($this->new_job_page_id) ){
+		|| is_single($this->add_job_page_id) ){
 
 				$limit = intval($this->get_setting('job->max_records', 1) );
 				if( !current_user_can('create_jobs') ) {
@@ -679,9 +681,9 @@ class Jobs_Plus_Core{
 
 		//Is this a jbp_pro update?
 		elseif( (is_singular('jbp_pro') && get_query_var('edit') )
-		|| (is_single($this->new_pro_page_id) ) ){
+		|| (is_single($this->add_pro_page_id) ) ){
 
-			if( is_single($this->new_pro_page_id) ){ //How many can they have
+			if( is_single($this->add_pro_page_id) ){ //How many can they have
 				$limit = intval($this->get_setting('pro->max_records', 1) );
 				if( !current_user_can('create_pros') ) {
 					wp_redirect( add_query_arg('jbp_error',
@@ -1411,7 +1413,16 @@ class Jobs_Plus_Core{
 		return set_url_scheme($url);
 	}
 
-
+	function ajax_error( $status_text, $params){
+		$is_iframe = ( !empty($params['X-Requested-With']) && $params['X-Requested-With'] == 'IFrame');
+		header('HTTP/1.0 403 ' . $statusText); //error for standard Ajax
+		if($is_iframe) {
+			exit( sprintf($response_iframe, '403', $statusText, $status_text . ': ' . print_r( $params, true) ) );
+		} else {
+			exit($status_text . ': ' . print_r(($params ), true ) );
+		}
+	}
+	
 	/**
 	* @on_ajax_jbp_pro
 	* Handles update of pros data via ajax and iframe transport
@@ -1433,10 +1444,7 @@ class Jobs_Plus_Core{
 
 		//Good nonce?
 		if( !wp_verify_nonce($params['_wpnonce'], 'jbp_pro') ){
-			$statusText = 'Forbidden No Nonce Sins';
-			header('HTTP/1.0 403 ' . $statusText); //error for standard Ajax
-			if($is_iframe) exit( sprintf($response_iframe, '403', $statusText, $statusText . ': ' . print_r( $params, true) ) );
-			else exit($statusText . ': ' . print_r(($params ), true ) );
+			$this->ajax_error('Forbidden No Nonce Sins', $params);
 		}
 
 		// get the post id for x-editable
@@ -1455,15 +1463,13 @@ class Jobs_Plus_Core{
 		$post_ID = $post_id; //So media will know which post we're working on.
 
 		$post = array('ID' => $post_id);
-
+		
 		switch ($name) {
 			case 'post_title':
-			if( empty($v) ){
-				$statusText = __('This field must have a valid value', JBP_TEXT_DOMAIN);
-				header('HTTP/1.0 403 ' . $statusText); //error for standard Ajax
-				exit(sprintf('%s: %s', $statusText, $v));
+			if( empty( $value ) ){
+				$this->ajax_error( __('This field must have a valid value', JBP_TEXT_DOMAIN), $value);
 			} else {
-				$post['post_title'] = $v;
+				$post['post_title'] = trim( wp_strip_all_tags($value) );
 			}
 			break;
 
@@ -1472,14 +1478,12 @@ class Jobs_Plus_Core{
 			//Custom fields
 			//json multi part fields
 			case '_ct_jbp_pro_First_Last'  :
-			$v = sanitize_text_field(is_array($value) ? implode(' ', $value) : $value );
-			if( empty($v) ){
-				$statusText = __('This field must have a valid value', JBP_TEXT_DOMAIN);
-				header('HTTP/1.0 403 ' . $statusText); //error for standard Ajax
-				exit(sprintf('%s: %s', $statusText, $v));
+			if( empty($value) ){
+				$this->ajax_error(__('This field must have a valid value', JBP_TEXT_DOMAIN), $value);
 			} else {
-				$post['post_title'] = $v;
-				update_post_meta($post_id, $name . '_raw', json_encode($value));
+				$v =  json_encode( array_map('sanitize_text_field', $value) );
+				update_post_meta($post_id, $name, $v );
+				exit(sprintf('{"newValue": %s}', $v ) );
 			}
 			break;
 
@@ -1503,14 +1507,12 @@ class Jobs_Plus_Core{
 				if(is_email( $value )) {
 					update_post_meta($post_id, $name, $value);
 				} else {
-					$statusText = __('Not a valid email address', JBP_TEXT_DOMAIN);
-					header('HTTP/1.0 403 ' . $statusText); //error for standard Ajax
-					exit( sprintf('%s: %s', $statusText, $value) );
+					$this->ajax_error( __('Not a valid email address', JBP_TEXT_DOMAIN), $value);
 				}
 				break;
 			}
-			case '_ct_jbp_pro_Portfolio' : {
 
+			case '_ct_jbp_pro_Portfolio' : {
 				//could be multiple images so add to object
 				$group = get_post_meta($post_id, $name, true );
 				$group = empty($group) ? new stdClass : json_decode($group);
@@ -1612,9 +1614,9 @@ class Jobs_Plus_Core{
 			}
 
 		}
-
 		if(count($post) > 1) {
 			$post['post_status'] = 'draft';
+
 			wp_update_post($post, true); //See if fields added
 		}
 		exit;
@@ -1627,9 +1629,7 @@ class Jobs_Plus_Core{
 
 		//Good nonce?
 		if( !wp_verify_nonce($params['_wpnonce'], 'jbp_pro') ){
-			$statusText = 'Forbidden No Nonce Sins';
-			header('HTTP/1.0 403 ' . $statusText); //error for standard Ajax
-			exit($statusText . ': ' . print_r(($params ), true ) );
+			$this->ajax_error('Forbidden No Nonce Sins', $params);
 		}
 
 		$post_id = (empty($params['post_id']) ) ? 0 : intval($params['post_id']);

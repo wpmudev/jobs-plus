@@ -8,20 +8,19 @@
 
 global $post, $Jobs_Plus_Core;
 
-$new_pro = false;
+$add_pro = false;
 //Are we adding a Listing?
-if ($post->ID == $Jobs_Plus_Core->new_pro_page_id) {
-	$new_pro = true;
+if ($post->ID == $Jobs_Plus_Core->add_pro_page_id) {
+	$add_pro = true;
 	$post = $Jobs_Plus_Core->get_default_custom_post('jbp_pro');
 	setup_postdata($post);
+	$link = add_query_arg('edit', 1, get_permalink($post->ID) );
 	$editing = false;
-} //Or are we editing a listing?
-
-$link = get_permalink($post->ID). 'edit/';
-
-//Split the title for first and last name
-@list($fname, $lname) = explode(' ', get_the_title(),2);
-$flname = sprintf('{"first": "%s", "last": "%s"}', $fname, $lname);
+}
+elseif (get_query_var('edit')) { //Or are we editing a listing?
+	$editing = current_user_can('edit_pro');
+	$link = get_permalink($post->ID);
+}
 
 wp_enqueue_script('jquery-ui-dialog');
 wp_enqueue_style('jqueryui-editable');
@@ -176,49 +175,62 @@ wp_enqueue_script('jqueryui-editable-ext');
 
 <script type="text/javascript">
 	jQuery(document).ready( function($) {
-
+		console.log('here');
 		//Setup Globals
-		jbpNewPro = <?php echo $new_pro ? 'true':'false'; ?>;
-		jbpPopupEnabled = jbpNewPro;
+		jbpAddPro = <?php echo $add_pro ? 'true':'false'; ?>;
+		jbpPopupEnabled = <?php echo ($editing || $add_pro) ? 'true':'false'; ?>;
 		canEditPro = <?php echo current_user_can('edit_pros') ? 'true' : 'false'; ?>;
 
+		jbpEditableDefaults();
 		$.fn.editable.defaults.pk = '<?php the_ID(); ?>';
 		$.fn.editable.defaults.url = '<?php echo admin_url('/admin-ajax.php'); ?>';
 		$.fn.editable.defaults.params = {'action': 'jbp_pro', '_wpnonce': '<?php echo wp_create_nonce('jbp_pro');?>'};
 
 		var $editables = $('.editable'); //Get a list of editable fields
 		$editables.editable();
-		$editables.filter('[data-name="post_title"]').editable('show');
 
 		$editables.on('hidden', function(e, reason){
-			if(reason === 'save' || reason === 'nochange') {
+			console.log('reason: ' + reason);
+			if(reason === 'save' || reason === 'nochange' || reason === 'cancel') {
 				var $next = $editables.eq( ($editables.index(this) + 1) % $editables.length );
 
-				if( jbpNewPro && $(this).attr('data-name') == 'post_title') {
-					window.location = '<?php echo $link ?>';
-					$('#create-dialog').dialog({
-						height: 140,
-						modal: true
-					});
+				if( jbpAddPro && $(this).attr('data-name') == 'post_title') {
+					if( reason === 'cancel') {
+						window.history.go(-1);
+						$('#create-dialog').dialog({
+							height: 140,
+							modal: true
+						});
+					} else {
+						window.location = '<?php echo $link ?>';
+						$('#create-dialog').dialog({
+							height: 140,
+							modal: true
+						});
+					}
+				} else {
+					setTimeout(function() { $next.editable('show'); }, 300);
 				}
-				else setTimeout(function() { $next.editable('show'); }, 300);
-				}
-			});
-
-			//Toggle whether edit or popup
-			$('#toggle-pro-edit').click( function(){ jbpPopup(); });
-
-			$('.toggle-pro-save').click( function(){
-				$.get( '<?php echo admin_url('admin-ajax.php'); ?>', {
-					"action": "jbp_pro_status",
-					"post_id": "<?php the_ID(); ?>",
-					"post_status": $(this).val(),
-					"_wpnonce": "<?php echo wp_create_nonce('jbp_pro');?>"
-				});
-				jbpPopup();
-			});
-
-			jbpPopup();
+			}
 
 		});
-	</script>
+
+		//Toggle whether edit or popup
+		$('#toggle-pro-edit').click( function(){ jbpPopup(); });
+
+		$('.toggle-pro-save').click( function(){
+			$.get( '<?php echo admin_url('admin-ajax.php'); ?>', {
+				"action": "jbp_pro_status",
+				"post_id": "<?php the_ID(); ?>",
+				"post_status": $(this).val(),
+				"_wpnonce": "<?php echo wp_create_nonce('jbp_pro');?>"
+			});
+			jbpPopup();
+		});
+
+		jbpPopup();
+		jbpTitlePopup($editables);
+
+	});
+
+</script>

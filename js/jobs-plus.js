@@ -6,13 +6,11 @@
 */
 
 //Global variables
-window.jbpNewPro = false;
-window.jbpNewJob = false;
+window.jbpAddPro = false;
+window.jbpAddJob = false;
 window.jbpPopupEnabled = false;
 window.canEditPro = false;
 window.canEditJob = false;
-window.magnificPopupAttach
-window.jbpPopup;
 
 jQuery(document).ready( function($) {
 
@@ -76,16 +74,19 @@ jQuery(document).ready( function($) {
 		$social.editable('enable').editable('show');
 	});
 
-	magnificPopupAttach = function ( enable ){
-		$('.portfolio').magnificPopup({
-			delegate: 'a:first-child' // child items selector, by clicking on it popup will open
-			,type: 'image'
-			,gallery: { enabled: true }
-			,disableOn: function(){ return enable;}
-		});
-	}
+});
 
-	jbpPopup = function(){
+(function($) {
+	window.magnificPopupAttach = function( enable ){
+		$('.portfolio').magnificPopup({
+			delegate: 'a:first-child',
+			type: 'image',
+			gallery: { enabled: true },
+			disableOn: function(){ return enable;}
+		});
+	};
+
+	window.jbpPopup = function(){
 		jbpPopupEnabled = !jbpPopupEnabled;
 		if(jbpPopupEnabled){
 			$('.show-on-edit').hide();
@@ -97,6 +98,35 @@ jQuery(document).ready( function($) {
 			$('.editable').editable('enable');
 		}
 		magnificPopupAttach(jbpPopupEnabled);
-	}
+	};
 
-});
+	window.jbpTitlePopup = function( $editables  ){
+		$title = $editables.filter("[data-name='post_title']");
+		$title.editable("option", "savenochange", true);
+		$title.editable('show');
+	};
+
+	//Site wide defaults and fixup buttons
+	window.jbpEditableDefaults = function(){
+
+		$.fn.editable.defaults.mode = 'popup';
+		//$.fn.editable.defaults.mode = 'inline';
+		$.fn.editable.defaults.showbuttons = 'bottom';
+		//$.fn.editable.defaults.disabled = true;
+
+		// Overwrite done and cancel buttons
+		$.fn.editableform.buttons = '<button type="button" class="editable-cancel">Cancel</button> '+
+		'<button type="submit" class="editable-submit">Done</button>';
+
+		$.extend($.fn.editableform.Constructor.prototype, {
+			initButtons: function() {
+				var $btn = this.$form.find('.editable-buttons');
+				$btn.append($.fn.editableform.buttons);
+				//if(this.options.showbuttons === 'bottom') {
+				$btn.addClass('editable-buttons-bottom');
+				//}
+			}
+		});
+	};
+
+}(window.jQuery));

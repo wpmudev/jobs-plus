@@ -258,6 +258,7 @@ class Jobs_Plus_Core_Data{
 			}
 		}
 
+/*
 		if(! taxonomy_exists('jbp_tag') ) {
 			$jbp_tag =
 			array (
@@ -317,6 +318,8 @@ class Jobs_Plus_Core_Data{
 				update_option( 'ct_custom_taxonomies', $ct_custom_taxonomies );
 			}
 		}
+*/
+
 
 		if(! taxonomy_exists('jbp_skills_tag') ) {
 			$jbp_tag =

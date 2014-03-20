@@ -28,7 +28,7 @@ $error = get_query_var('jbp_job_error');
 
 $new_job = false;
 //Are we adding a Listing?
-if ($post->ID == $this->new_job_page_id) {
+if ($post->ID == $this->add_job_page_id) {
 	$post = $this->get_default_custom_post('jbp_job');
 	setup_postdata($post);
 	$editing = false;
