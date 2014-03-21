@@ -66,6 +66,9 @@ class Jobs_Plus_Core{
 	public $job_labels = null;
 	public $pro_labels = null;
 
+	public $job_slug = null;
+	public $pro_slug = null;
+
 	function __construct(){
 		register_activation_hook($this->plugin_dir . 'jobs-plus.php', array(&$this,'on_activate') );
 		register_deactivation_hook($this->plugin_dir . 'jobs-plus.php', array(&$this,'on_deactivate') );
@@ -243,10 +246,12 @@ class Jobs_Plus_Core{
 		//Get custom type label references
 		$jbp_job = get_post_type_object( 'jbp_job');
 		$this->job_labels = $jbp_job->labels;
+		$this->job_slug = $jbp_job->rewrite['slug'];
 
 
 		$jbp_pro = get_post_type_object( 'jbp_pro');
 		$this->pro_labels = $jbp_pro->labels;
+		$this->pro_slug = $jbp_pro->rewrite['slug'];
 
 		// add endpoints for front end special pages
 		add_rewrite_endpoint('edit', EP_PAGES);
@@ -384,14 +389,14 @@ class Jobs_Plus_Core{
 		$current_user = wp_get_current_user();
 
 		//jbp_job Add Job
-		$job_obj = get_post_type_object('jbp_job');
+
 		$page = $this->get_page_by_meta('jbp_job', 'add_job_page' );
 		$page_id = ($page && $page->ID > 0) ? $page->ID : 0;
 		if ( empty($page_id) ) {
 			/* Construct args for the new post */
 			$args = array(
-			'post_title'     => sprintf('Add %s', $job_obj->labels->singular_name),
-			'post_name'      => 'add',
+			'post_title'     => sprintf('Add %s', $this->job_labels->singular_name),
+			'post_name'      => sprintf('add-%s', $this->job_slug ),
 			'post_status'    => 'virtual',
 			'post_author'    => $current_user->ID,
 			'post_type'      => 'jbp_job',
@@ -409,20 +414,19 @@ class Jobs_Plus_Core{
 		$this->_add_job_page_id = $page_id; //Remember the number
 
 		//jbp_pro Add Pro
-		$pro_obj = get_post_type_object('jbp_pro');
 		$page = $this->get_page_by_meta('jbp_pro', 'add_pro_page' );
 		$page_id = ($page && $page->ID > 0) ? $page->ID : 0;
 		if ( empty($page_id) ) {
 			/* Construct args for the new post */
 			$args = array(
-			'post_title'     => sprintf('Add %s', $pro_obj->labels->singular_name),
-			'post_name'      => 'add',
+			'post_title'     => sprintf('Add %s', $pro_labels->singular_name),
+			'post_name'      => sprintf('add-%s', $this->pro_slug),
 			'post_status'    => 'virtual',
 			'post_author'    => $current_user->ID,
 			'post_type'      => 'jbp_pro',
 			'post_content'   => $post_content,
 			'ping_status'    => 'closed',
-			'comment_status' => 'open'
+			'comment_status' => 'closed'
 			);
 			$page_id = wp_insert_post( $args );
 			$page = get_post($page_id);
@@ -647,23 +651,23 @@ class Jobs_Plus_Core{
 		if( ( is_singular('jbp_job') && get_query_var('edit') )
 		|| is_single($this->add_job_page_id) ){
 
-				$limit = intval($this->get_setting('job->max_records', 1) );
-				if( !current_user_can('create_jobs') ) {
-					wp_redirect( add_query_arg('jbp_error',
-					urlencode(sprintf(__('You do not have the permissions to enter a %s.', $this->text_domain), $this->job_obj->labels->new_item) ),
-					get_post_type_archive_link('jbp_job') ) );
-					exit;
-				} elseif( !current_user_can('edit_jobs') ) {
-					wp_redirect(add_query_arg('jbp_error',
-					urlencode(sprintf(__('You do not have permission to edit this %s.', $this->text_domain), $this->job_obj->labels->singular_name) ),
-					get_post_type_archive_link('jbp_job') ) );
-					exit;
-				} elseif( !get_query_var('edit') && $this->count_user_posts_by_type(get_current_user_id(), 'jbp_pro') >= $limit) {
-					wp_redirect(add_query_arg('jbp_error',
-					urlencode(sprintf(__('You have exceeded your quota of %s %s.', $this->text_domain), $limit, $this->job_obj->labels->name) ),
-					get_post_type_archive_link('jbp_job') ) );
-					exit;
-				}
+			$limit = intval($this->get_setting('job->max_records', 1) );
+			if( !current_user_can('create_jobs') ) {
+				wp_redirect( add_query_arg('jbp_error',
+				urlencode(sprintf(__('You do not have the permissions to enter a %s.', $this->text_domain), $this->job_obj->labels->new_item) ),
+				get_post_type_archive_link('jbp_job') ) );
+				exit;
+			} elseif( !current_user_can('edit_jobs') ) {
+				wp_redirect(add_query_arg('jbp_error',
+				urlencode(sprintf(__('You do not have permission to edit this %s.', $this->text_domain), $this->job_obj->labels->singular_name) ),
+				get_post_type_archive_link('jbp_job') ) );
+				exit;
+			} elseif( !get_query_var('edit') && $this->count_user_posts_by_type(get_current_user_id(), 'jbp_pro') >= $limit) {
+				wp_redirect(add_query_arg('jbp_error',
+				urlencode(sprintf(__('You have exceeded your quota of %s %s.', $this->text_domain), $limit, $this->job_obj->labels->name) ),
+				get_post_type_archive_link('jbp_job') ) );
+				exit;
+			}
 			//css for the edit Pages
 			wp_enqueue_style('jobs-plus');
 			//			wp_enqueue_style('jqueryui-editable');
@@ -861,15 +865,16 @@ class Jobs_Plus_Core{
 		require locate_jbp_template( 'search-form-pro.php');
 	}
 
-	function custom_search( $phrase = '', $post_type = array() ) {
+	function custom_search($phrase = '', $post_type = array()) {
 
 		$all_ids = array();
 
+
 		//Parse the search string breaking at commas and with quotes.
-		$phrases = array_map( 'trim', str_getcsv( stripslashes($phrase)	) );
+		$phrases = array_map('trim', str_getcsv(stripslashes($phrase)));
 
 		//Standard String search
-		foreach($phrases as $phrase) {
+		foreach ($phrases as $phrase) {
 
 			$args = array(
 			'jbp_custom' => true,
@@ -884,12 +889,12 @@ class Jobs_Plus_Core{
 
 		//Taxonomy search
 		//Convert phrases to slugs for search
-		$terms = array_map('sanitize_title',$phrases);
+		$terms = array_map('sanitize_title', $phrases);
 
 		//Get taxonomies associated with this post type
-		$taxonomies = get_taxonomies(array('object_type'=> (array)$post_type) );
+		$taxonomies = get_taxonomies(array('object_type' => (array) $post_type));
 
-		if(!empty($taxonomies) ) {
+		if (!empty($taxonomies)) {
 			$args = array(
 			'jbp_custom' => true,
 			'posts_per_page' => -1,
@@ -900,14 +905,15 @@ class Jobs_Plus_Core{
 			),
 			);
 
-			foreach($taxonomies as $taxonomy) {
+			foreach ($taxonomies as $taxonomy) {
 				$args['tax_query'][] = array(
 				'taxonomy' => $taxonomy,
 				'terms' => $terms,
 				'field' => 'slug',
 				'include_children' => true,
 				'operator' => 'IN',
-				);break;
+				);
+				break;
 			}
 
 			$search_ids = get_posts($args);
@@ -921,9 +927,9 @@ class Jobs_Plus_Core{
 		$field_set = $CustomPress_Core->get_custom_fields_set($post_type);
 
 		$custom_fields = array();
-		foreach($field_set as $key => $field) {
-			$prefix = ( empty( $field['field_wp_allow'] ) ) ? '_ct_' : 'ct_';
-			$custom_fields[] = $prefix.$key;
+		foreach ($field_set as $key => $field) {
+			$prefix = ( empty($field['field_wp_allow']) ) ? '_ct_' : 'ct_';
+			$custom_fields[] = $prefix . $key;
 		}
 
 		foreach ($custom_fields as $custom_field) {
@@ -937,7 +943,7 @@ class Jobs_Plus_Core{
 			),
 			);
 
-			foreach($phrases as $phrase) {
+			foreach ($phrases as $phrase) {
 				$args[meta_query][] = array(
 				'key' => $custom_field,
 				'value' => $phrase,
@@ -946,11 +952,11 @@ class Jobs_Plus_Core{
 
 				$search_ids = get_posts($args);
 				$all_ids = array_merge($all_ids, $search_ids);
-
 			}
 		}
-
 		//var_dump($all_ids);
+		//		$search_ids = get_posts($args);
+		//		$all_ids = array_merge($all_ids, $search_ids);
 
 		rsort($all_ids);
 		return array_unique($all_ids);
@@ -1422,7 +1428,7 @@ class Jobs_Plus_Core{
 			exit($status_text . ': ' . print_r(($params ), true ) );
 		}
 	}
-	
+
 	/**
 	* @on_ajax_jbp_pro
 	* Handles update of pros data via ajax and iframe transport
@@ -1463,7 +1469,7 @@ class Jobs_Plus_Core{
 		$post_ID = $post_id; //So media will know which post we're working on.
 
 		$post = array('ID' => $post_id);
-		
+
 		switch ($name) {
 			case 'post_title':
 			if( empty( $value ) ){
@@ -1639,12 +1645,21 @@ class Jobs_Plus_Core{
 		if ($this->get_setting("pro->moderation->{$post_status}" != 1) ) exit;
 		if( get_post_type($post_id) != 'jbp_pro') exit;
 
-		wp_update_post(array(
+		$id = wp_update_post(array(
 		'ID' => $post_id,
 		'post_status' => $post_status,
 		) );
 
-		exit;
+		$this->notice_message( sprintf(__('This %s has been updated', $this->text_domain), $this->pro_labels->singular_name ) );
+
+		$redirect = new stdClass();
+
+		if (!empty($this->jbp_errors)) {
+			$redirect->redirect = add_query_arg('jbp_error', urlencode(implode(', ', $this->jbp_errors)), get_permalink($id));
+		} else {
+			$redirect->redirect = add_query_arg('jbp_notice', urlencode(implode(', ', $this->jbp_notices)), get_permalink($id));
+		}
+		exit(json_encode($redirect));
 	}
 
 
@@ -1940,11 +1955,11 @@ class Jobs_Plus_Core{
 				}
 			}
 
-//			//Save categories
-//			if(is_array($params['post_category'])){
-//				wp_set_post_terms($post_id, $params['post_category'], 'category');
-//			}
-//
+			//			//Save categories
+			//			if(is_array($params['post_category'])){
+			//				wp_set_post_terms($post_id, $params['post_category'], 'category');
+			//			}
+			//
 			//Save custom terms
 			if(is_array($params['tax_input'])){
 				foreach($params['tax_input'] as $key => $term_ids){
@@ -2096,9 +2111,7 @@ class Jobs_Plus_Core{
 
 		//Good nonce?
 		if( !wp_verify_nonce($params['_wpnonce'], 'jbp_job') ){
-			$statusText = 'Forbidden No Nonce Sins';
-			header('HTTP/1.0 403 ' . $statusText); //error for standard Ajax
-			exit($statusText . ': ' . print_r(($params ), true ) );
+			$this->ajax_error('Forbidden No Nonce Sins', $params);
 		}
 
 		$post_id = (empty($params['post_id']) ) ? 0 : intval($params['post_id']);
@@ -2108,12 +2121,21 @@ class Jobs_Plus_Core{
 		if ($this->get_setting("job->moderation->{$post_status}" != 1) ) exit;
 		if( get_post_type($post_id) != 'jbp_job') exit;
 
-		wp_update_post(array(
+		$id = wp_update_post(array(
 		'ID' => $post_id,
 		'post_status' => $post_status,
 		) );
 
-		exit;
+		$this->notice_message( sprintf(__('This %s has been updated', $this->text_domain), $this->job_labels->singular_name ) );
+
+		$redirect = new stdClass();
+
+		if (!empty($this->jbp_errors)) {
+			$redirect->redirect = add_query_arg('jbp_error', urlencode(implode(', ', $this->jbp_errors)), get_permalink($id));
+		} else {
+			$redirect->redirect = add_query_arg('jbp_notice', urlencode(implode(', ', $this->jbp_notices)), get_permalink($id));
+		}
+		exit(json_encode($redirect));
 	}
 
 	/**

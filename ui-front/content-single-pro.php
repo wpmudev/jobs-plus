@@ -36,7 +36,9 @@ wp_enqueue_script('jqueryui-editable-ext');
 	<h3><?php _e('Title: ', JBP_TEXT_DOMAIN); ?>
 		<span class="editable editable-firstlast"
 			data-type="text"
+			data-onblur="submit"
 			data-name="post_title"
+			data-savenochange = "true"
 			data-emptytext="<?php _e('No Title', JBP_TEXT_DOMAIN); ?>"
 			data-value="<?php esc_attr_e( get_the_title() ); ?>"
 			data-original-title="<?php _e('Enter the Title', JBP_TEXT_DOMAIN); ?>">
@@ -141,7 +143,7 @@ wp_enqueue_script('jqueryui-editable-ext');
 		<div class="show-on-edit">
 			<?php if($Jobs_Plus_Core->get_setting('pro->moderation->publish') ): ?>
 			<div class="pro-go-public">
-				<button id="pro-publish" name="post_status" value="publish" class="toggle-pro-save pro-go-public-button" ><?php esc_html_e('Go Public', JBP_TEXT_DOMAIN); ?></button>
+				<button id="pro-publish" name="post_status" value="publish" class="toggle-pro-save pro-go-public-button" ><?php esc_html_e('Save', JBP_TEXT_DOMAIN); ?></button>
 			</div>
 			<?php endif; ?>
 
@@ -172,6 +174,9 @@ wp_enqueue_script('jqueryui-editable-ext');
 <div id="create-dialog" style="display: none; text-align: center;">
 	<?php _e('Creating Your Profile,<br />Please Wait', JBP_TEXT_DOMAIN); ?>
 </div>
+<div id="cancel-dialog" style="display: none; text-align: center;">
+	<?php _e('Canceling Profile,<br />Please Wait', JBP_TEXT_DOMAIN); ?>
+</div>
 
 <script type="text/javascript">
 	jQuery(document).ready( function($) {
@@ -187,7 +192,6 @@ wp_enqueue_script('jqueryui-editable-ext');
 		$.fn.editable.defaults.params = {'action': 'jbp_pro', '_wpnonce': '<?php echo wp_create_nonce('jbp_pro');?>'};
 
 		var $editables = $('.editable'); //Get a list of editable fields
-		$editables.editable();
 
 		$editables.on('hidden', function(e, reason){
 			console.log('reason: ' + reason);
@@ -197,7 +201,7 @@ wp_enqueue_script('jqueryui-editable-ext');
 				if( jbpAddPro && $(this).attr('data-name') == 'post_title') {
 					if( reason === 'cancel') {
 						window.history.go(-1);
-						$('#create-dialog').dialog({
+						$('#cancel-dialog').dialog({
 							height: 140,
 							modal: true
 						});
@@ -224,13 +228,18 @@ wp_enqueue_script('jqueryui-editable-ext');
 				"post_id": "<?php the_ID(); ?>",
 				"post_status": $(this).val(),
 				"_wpnonce": "<?php echo wp_create_nonce('jbp_pro');?>"
-			});
-			jbpPopup();
+			},
+			function(data) {
+				console.log(JSON.stringify(data));
+				window.location = data.redirect;
+			},
+			'json');
+			return false;
 		});
 
-		jbpPopup();
-		jbpTitlePopup($editables);
+	jbpPopup();
+	jbpFirstField($editables);
 
-	});
+});
 
 </script>

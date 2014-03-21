@@ -95,15 +95,18 @@ jQuery(document).ready( function($) {
 		} else {
 			$('.show-on-edit').show();
 			$('.hide-on-edit').hide();
+			if(jbpAddPro) {
+			$(".editable[data-name='post_title']").editable('enable');
+		} else {
 			$('.editable').editable('enable');
+		}
 		}
 		magnificPopupAttach(jbpPopupEnabled);
 	};
 
-	window.jbpTitlePopup = function( $editables  ){
-		$title = $editables.filter("[data-name='post_title']");
-		$title.editable("option", "savenochange", true);
-		$title.editable('show');
+	window.jbpFirstField = function( $editables  ){
+		$field = jbpAddPro ? $editables.filter("[data-name='post_title']") : $editables.filter("[data-name='_ct_jbp_pro_First_Last']");
+		$field.editable('show');
 	};
 
 	//Site wide defaults and fixup buttons

@@ -7,7 +7,7 @@ Version: 1.0 beta
 Author: WPMU DEV
 Author URI: http://premium.wpmudev.org
 Text Domain: jbp
-Domain Path: /languages
+Domain Path: languages
 Network: false
 WDP ID: ***
 License: GPLv2 or later

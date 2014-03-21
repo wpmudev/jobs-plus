@@ -397,18 +397,17 @@ if( !isset( $post_type['rewrite']['ep_mask'] ) ) {
 					<td>
 						<p><span class="description"><?php _e('These Custom Fields will be display as columns on the custom post type screen.', $this->text_domain); ?></span></p>
 						<?php
-//						$custom_fields = get_site_option( 'ct_custom_fields' );
+
 						if ( ! empty( $custom_fields ) ) {
 							foreach ( $custom_fields as $custom_field ) {
-								//print_r($custom_field['object_type']);
 								if ( false !== array_search( $_GET['ct_edit_post_type'], $custom_field['object_type'] ) ) {
 									if ( isset( $post_type['cf_columns'][$custom_field['field_id']] ) && 1 == $post_type['cf_columns'][$custom_field['field_id']] )
 									$checked = 'checked';
 									else
 									$checked = '';
 
-									echo '<label><input type="checkbox" name="cf_columns[' . esc_attr_e($custom_field['field_id']) . ']" value="1" ' . $checked . '  /> ';
-									echo '<span class="description"><strong>' . esc_html_e($custom_field['field_title']) . '</strong></span></label><br />';
+									printf( '<label><input type="checkbox" name="cf_columns[%s]" value="1" %s />', esc_attr($custom_field['field_id']), $checked );
+									printf( '<span class="description"><strong>%s</strong></span></label><br />', esc_html($custom_field['field_title']) );
 								}
 							}
 						}
