@@ -813,7 +813,7 @@ class CustomPress_Content_Types extends CustomPress_Core {
 						wp_enqueue_script('jquery-ui-datepicker');
 						wp_enqueue_script('jquery-ui-datepicker-lang');
 						//						$result = $this->jquery_ui_css() . PHP_EOL;
-						$result = sprintf('<input type="text" class="pickdate ct-field date %s" name="%s" id="%s" value="%s" />', $class, $id, $id, esc_attr( strip_tags(get_post_meta( $post->ID, $id, true ) ) ) ) . PHP_EOL;
+						$result = sprintf('<input type="text" class="pickdate ct-field %s" name="%s" id="%s" value="%s" />', $class, $id, $id, esc_attr( strip_tags(get_post_meta( $post->ID, $id, true ) ) ) ) . PHP_EOL;
 						$result .= sprintf('
 						<script type="text/javascript">
 						jQuery(document).ready(function(){

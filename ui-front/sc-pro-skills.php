@@ -30,12 +30,13 @@
 				data-name="<?php esc_attr_e("_ct_jbp_pro_Skills[$key]"); ?>"
 				data-emptytext="<?php esc_attr_e('What is your skill?', JBP_TEXT_DOMAIN); ?>"
 				data-value="<?php esc_attr_e( json_encode($skill) ); ?>"
-				data-original-title="<?php esc_attr_e(__('Skill', JBP_TEXT_DOMAIN) ); ?>">
+				data-original-title="<?php esc_attr_e(__('Skills', JBP_TEXT_DOMAIN) ); ?>">
 			</div>
 		</li>
 		<?php endforeach; ?>
 	</ul>
-	<a href="#" id="add-skill-link" class="pro-content-command pro-add show-on-edit">+Add</a>
+	<a href="#" id="add-skill-link" class="pro-content-command pro-add show-on-edit"><?php esc_html_e('+Add', JBP_TEXT_DOMAIN); ?></a>
+	<br />
 </div>
 
 <script id="add-skill" type="text/template">

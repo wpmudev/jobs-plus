@@ -45,7 +45,7 @@ jQuery(document).ready( function($) {
 		count = $ul.find('li').size();
 		$portfolio.attr('data-name', '_ct_jbp_job_Portfolio['+count+']');
 		$ul.append($template);
-		$portfolio.editable('enable').editable('show');
+		$portfolio.editable().editable('show');
 	});
 
 	// Add Skills for sc-pro-skills.php
@@ -58,7 +58,7 @@ jQuery(document).ready( function($) {
 		count = $ul.find('li').size();
 		$skill.attr('data-name', '_ct_jbp_pro_Skills['+count+']');
 		$ul.append($template);
-		$skill.editable('enable').editable('show');
+		$skill.editable().editable('show');;
 	});
 
 	// Add Social

@@ -977,7 +977,7 @@ url: "15"
 	Portfolio.defaults = $.extend({}, $.fn.editabletypes.abstractinput.defaults, {
 		tpl:
 		'<div class="editable-portfolio">'+
-		'<span style="position:relative; display: inline-block; overflow: hidden; cursor: pointer; vertical-align: top;">' +
+		'<span style="position:relative; display: overflow: hidden; cursor: pointer; vertical-align: top;">' +
 		'<input type="file" name="file" class="input-medium" size="1" style="opacity: 0;filter: alpha(opacity=0); cursor: pointer; position: absolute; top: 0; right: 0; width: auto; font-size: 400%;" />' +
 		'<button type="button" class="image-label editable-button" style="cursor: pointer; display: inline-block; margin-right: 5px;">Choose file</button> <span class="image-label-selected">No file chosen</span>' +
 		'</span>' +
@@ -1712,6 +1712,3 @@ url: "http://webwrights.com"
 	$.fn.editabletypes.social_single = Social_Single;
 
 }(window.jQuery));
-
-
-

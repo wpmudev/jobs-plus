@@ -4678,7 +4678,6 @@ Editableform based on jQuery UI
                       };
                break;
            }
-
            this.containerOptions.position = pos;
         }
 

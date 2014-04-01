@@ -1413,6 +1413,10 @@ a.editable-click.editable-disabled:hover {
 
 .editable-portfolio{
 	display: block;
+	margin: 5px 0;
 }
 
+.editable-portfolio span{
+	line-height: 140%;
+}
 

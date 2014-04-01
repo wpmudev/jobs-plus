@@ -34,7 +34,8 @@
 		</li>
 		<?php endforeach; ?>
 	</ul>
-	<a href="#" id="add-social-link" class="pro-content-command pro-add show-on-edit">+Add an Icon</a>
+	<a href="#" id="add-social-link" class="pro-content-command pro-add show-on-edit"><?php esc_html_e('+Add an Icon', JBP_TEXT_DOMAIN ); ?></a>
+	<br />
 </div>
 
 <script id="add-social" type="text/template">

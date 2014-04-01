@@ -8,7 +8,7 @@ $job_obj = get_post_type_object('jbp_job');
 <div class="wrap">
 	<?php screen_icon('jobs-plus'); ?>
 	<h2><?php printf( __('Jobs+ Settings %s', JBP_TEXT_DOMAIN), JOBS_PLUS_VERSION );?></h2>
-	<?php $this->render_tabs(); ?>
+	<?php $this->render_tabs('shortcodes'); ?>
 	<br />
 
 	<div class="postbox">

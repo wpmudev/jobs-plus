@@ -130,6 +130,28 @@ wp_enqueue_script('jqueryui-editable-ext');
 				<?php echo do_shortcode('[jbp-pro-portfolio]'); ?>
 			</div>
 
+			<div>
+				<?php
+				//Any custom fields not already handled
+				echo do_shortcode(
+				'[custom_fields_input style="editfield"]
+				[ct_filter not="true"]
+				_ct_jbp_pro_First_Last,
+				_ct_jbp_pro_Company_URL,
+				_ct_jbp_pro_Location,
+				_ct_jbp_pro_Contact_Email,
+				_ct_jbp_pro_Social,
+				_ct_jbp_pro_Facebook_URL,
+				_ct_jbp_pro_LinkedIn_URL,
+				_ct_jbp_pro_Twitter_URL,
+				_ct_jbp_pro_Skype_URL,
+				_ct_jbp_pro_Portfolio,
+				_ct_jbp_pro_Skills,
+				[/ct_filter]
+				[/custom_fields_input]');
+				?>
+			</div>
+
 		</div>
 	</div>
 	<div class="pro-left">
@@ -237,9 +259,9 @@ wp_enqueue_script('jqueryui-editable-ext');
 			return false;
 		});
 
-	jbpPopup();
-	jbpFirstField($editables);
+		jbpPopup();
+		jbpFirstField($editables);
 
-});
+	});
 
 </script>

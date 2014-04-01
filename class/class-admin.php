@@ -19,6 +19,8 @@ class Jobs_Plus_Admin extends Jobs_Plus_Core{
 		add_action('admin_menu', array(&$this, 'on_admin_menu'));
 		//add_action('admin_enqueue_scripts', array(&$this, 'on_enqueue_scripts'), 1000 );
 		add_action('admin_enqueue_scripts', array(&$this, 'on_admin_enqueue_scripts') );
+		add_action('admin_enqueue_scripts', array(&$this,'wp_pointer_load'));
+		
 		add_action( 'personal_options', array( &$this, 'on_personal_options' ) );
 		add_action( 'personal_options_update', array( &$this, 'on_edit_user_profile_update' ) );
 		add_action( 'edit_user_profile_update', array( &$this, 'on_edit_user_profile_update' ) );
@@ -36,22 +38,35 @@ class Jobs_Plus_Admin extends Jobs_Plus_Core{
 		__('Settings', JBP_TEXT_DOMAIN),
 		__('Settings', JBP_TEXT_DOMAIN),
 		'manage_options', 'jobs-plus-menu',
-		array($this, 'admin_menu_page'),
+		array($this, 'admin_menu_page_job'),
 		$this->plugin_url . 'img/jobs-plus-16.png' );
 
 		$this->pros_menu_page = add_submenu_page('edit.php?post_type=jbp_pro',
 		__('Settings', JBP_TEXT_DOMAIN),
 		__('Settings', JBP_TEXT_DOMAIN),
 		'manage_options', 'jobs-plus-menu',
-		array($this, 'admin_menu_page'),
+		array($this, 'admin_menu_page_pro'),
 		$this->plugin_url . 'img/jobs-plus-16.png' );
 
 		add_action('load-' . $this->jobs_menu_page, array(&$this, 'on_load_menu') );
 		add_action('load-' . $this->pros_menu_page, array(&$this, 'on_load_menu') );
 	}
 
-	function admin_menu_page(){
+	function admin_menu_page_job(){
 		$current_tab = (empty($_GET['tab']) )? 'settings' : $_GET['tab'];
+
+		switch ($current_tab) {
+			case 'settings': include $this->plugin_dir . 'ui-admin/settings.php'; break;
+			case 'job': include $this->plugin_dir . 'ui-admin/job.php'; break;
+			case 'pro': include $this->plugin_dir . 'ui-admin/pro.php';	break;
+			case 'shortcodes': include $this->plugin_dir . 'ui-admin/shortcodes.php';	break;
+			case 'convert': include $this->plugin_dir . 'ui-admin/convert.php';	break;
+			default: include $this->plugin_dir . 'ui-admin/job.php'; break;
+		}
+	}
+
+	function admin_menu_page_pro(){
+		$current_tab = (empty($_GET['tab']) )? 'pro' : $_GET['tab'];
 
 		switch ($current_tab) {
 			case 'settings': include $this->plugin_dir . 'ui-admin/settings.php'; break;
@@ -73,14 +88,14 @@ class Jobs_Plus_Admin extends Jobs_Plus_Core{
 
 	function render_tabs( $current_tab = 'settings'){
 		$tabs = array(
-		'settings' => __('Settings', JBP_TEXT_DOMAIN),
+		'settings' => __('General', JBP_TEXT_DOMAIN),
 		'job' => sprintf(__('%s Options', JBP_TEXT_DOMAIN), $this->job_labels->singular_name),
 		'pro' => sprintf(__('%s Options', JBP_TEXT_DOMAIN), $this->pro_labels->singular_name),
 		'shortcodes' => __('Shortcodes', JBP_TEXT_DOMAIN),
 		//'convert' => __('Convert from WPMU Jobs', JBP_TEXT_DOMAIN),
 		);
 
-		$current_tab = (empty($_GET['tab']) )? 'settings' : $_GET['tab'];
+		$current_tab = (empty($_GET['tab']) )? $current_tab : $_GET['tab'];
 
 		?>
 		<h2 class="nav-tab-wrapper">
@@ -137,6 +152,67 @@ class Jobs_Plus_Admin extends Jobs_Plus_Core{
 
 			update_user_meta($user_id, JBP_PRO_CERTIFIED_KEY, $_POST['jbp_certified']);
 		}
+
+	/**
+	* wp_pointer_load - Loads the WordPress tips pointers for Jobs.
+	*
+	*/
+	function wp_pointer_load(){
+
+		//var_dump(get_current_screen()->id);
+
+		$cookie_content = __('<p>WHMCS WordPress Integration can now sync certain cookies between WHMCS and Wordpress so that downloads of protected files from WHMCS can work correctly in WordPress.</p> <p>This requires copying the "wp-integration.php" file in this plugin to the root of the WHMCS System installation.</p>', WHMCS_TEXT_DOMAIN);
+
+		//Setup any new feature notices
+		include $this->plugin_dir . 'class/class-wp-help-pointers.php';
+		
+		$pointers = array(
+		array(
+		'id' => 'wcp_endpoint',   // unique id for this pointer
+		'screen' => 'toplevel_page_wcp-settings', // this is the page hook we want our pointer to show on
+		'target' => '#wcp-endpoint', // the css selector for the pointer to be tied to, best to use ID's
+		'title' => __('NEW - Permalinks Endpoint Slug', WHMCS_TEXT_DOMAIN),
+		'content' => __('<p>This is the slug that signals that the following page is to be pulled from the WHMCS site.</p> <p>You can change it to whatever you like to avoid interfering with other pages but like all slugs it should contain Only lowercase alphanumerics and the hyphen.</p>', WHMCS_TEXT_DOMAIN),
+		'position' => array(
+		'edge' => 'top', //top, bottom, left, right
+		'align' => 'middle' //top, bottom, left, right, middle
+		)
+		),
+
+		array(
+		'id' => 'wcp_cookies',   // unique id for this pointer
+		'screen' => 'plugins', // this is the page hook we want our pointer to show on
+		'target' => '#toplevel_page_wcp-settings', // the css selector for the pointer to be tied to, best to use ID's
+		'title' => __('NEW - WHMCS WordPress Integration Cookie syncing', WHMCS_TEXT_DOMAIN),
+		'content' => $cookie_content,
+		'position' => array(
+		'edge' => 'left', //top, bottom, left, right
+		'align' => 'right' //top, bottom, left, right, middle
+		)
+		),
+
+		array(
+		'id' => 'wcp_cookies',   // unique id for this pointer
+		'screen' => 'toplevel_page_wcp-settings', // this is the page hook we want our pointer to show on
+		'target' => '#toplevel_page_wcp-settings', // the css selector for the pointer to be tied to, best to use ID's
+		'title' => __('NEW - WHMCS WordPress Integration Cookie syncing', WHMCS_TEXT_DOMAIN),
+		'content' => $cookie_content,
+		'position' => array(
+		'edge' => 'left', //top, bottom, left, right
+		'align' => 'right' //top, bottom, left, right, middle
+		)
+		),
+
+		// more as needed
+		);
+
+		new WP_Help_Pointer($pointers);
+	}
+
+
+
+
+
 
 	}
 

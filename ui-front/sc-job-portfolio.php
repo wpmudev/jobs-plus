@@ -25,42 +25,43 @@
 	$count = 0;
 	?>
 	<div class="job-images">
-	<ul class="job-content-editable">
-		<?php
-		foreach ( $portfolios as $key => $portfolio) :
-		//var_dump(json_encode($portfolio));
-		?>
-		<li>
-			<div class="editable portfolio"
-				data-type="portfolio"
-				data-name="<?php esc_attr_e("_ct_jbp_job_Portfolio[$key]"); ?>"
-				data-value="<?php esc_attr_e( json_encode($portfolio) ); ?>"
-				data-emptytext="<?php esc_attr_e('No Image Selected', JBP_TEXT_DOMAIN); ?>"
-				data-original-title="<?php esc_attr_e(__('Select an Image', JBP_TEXT_DOMAIN) ); ?>"
-				data-button-label="<?php _e('Choose an image', JBP_TEXT_DOMAIN); ?>"
-				>
-			</div>
-		</li>
-		<?php
-		$count++;
-		endforeach;
-		?>
-	</ul>
+		<ul class="job-content-editable">
+			<?php
+			foreach ( $portfolios as $key => $portfolio) :
+			//var_dump(json_encode($portfolio));
+			?>
+			<li>
+				<div class="editable portfolio"
+					data-type="portfolio"
+					data-name="<?php esc_attr_e("_ct_jbp_job_Portfolio[$key]"); ?>"
+					data-value="<?php esc_attr_e( json_encode($portfolio) ); ?>"
+					data-emptytext="<?php esc_attr_e('No Image Selected', JBP_TEXT_DOMAIN); ?>"
+					data-original-title="<?php esc_attr_e(__('Select an Image', JBP_TEXT_DOMAIN) ); ?>"
+					data-button-label="<?php _e('Choose an image', JBP_TEXT_DOMAIN); ?>"
+					>
+				</div>
+			</li>
+			<?php
+			$count++;
+			endforeach;
+			?>
+		</ul>
+		<!-- Don't move link. Must be sibling of <ul> -->
+		<a href="#" id="add-job-portfolio-link" class="job-content-command job-add show-on-edit">+Add</a>
+		</div>
 	</div>
-	<a href="#" id="add-job-portfolio-link" class="job-content-command job-add show-on-edit">+Add</a>
-</div>
 
-<script id="add-job-portfolio" type="text/template">
-	<li class="new-portfolio">
-	<div
-	class="editable portfolio"
-	data-type="portfolio"
-	data-mode="popup"
-	data-name="<?php esc_attr_e('_ct_jbp_job_Portfolio[]'); ?>"
-	data-value=""
-	data-original-title="<?php esc_attr_e(__('Select an Image', JBP_TEXT_DOMAIN) ); ?>"
-	data-button-label="Choose an image"
-	>
-	</div>
-	</li>
-</script>
+	<script id="add-job-portfolio" type="text/template">
+		<li class="new-portfolio">
+		<div
+		class="editable portfolio"
+		data-type="portfolio"
+		data-mode="popup"
+		data-name="<?php esc_attr_e('_ct_jbp_job_Portfolio[]'); ?>"
+		data-value=""
+		data-original-title="<?php esc_attr_e(__('Select an Image', JBP_TEXT_DOMAIN) ); ?>"
+		data-button-label="Choose an image"
+		>
+		</div>
+		</li>
+	</script>

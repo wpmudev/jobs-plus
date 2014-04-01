@@ -6,37 +6,28 @@
 * @license GPL2+
 */
 
-//Styles
-wp_enqueue_style('jqueryui-editable');
-
-//Scripts
-wp_enqueue_style('select2');
-wp_enqueue_script('select2');
-
-wp_enqueue_script('jqueryui-editable');
-wp_enqueue_script('jqueryui-editable-ext');
-wp_enqueue_script('jquery-ui-dialog');
-
-
 global $post, $post_ID, $CustomPress_Core, $Jobs_Plus_Core;
 
 $this->no_comments();
 
-$data   = '';
+$data   = array();
 $selected_cats  = array();
 $error = get_query_var('jbp_job_error');
 
-$new_job = false;
+$add_job = false;
 //Are we adding a Listing?
 if ($post->ID == $this->add_job_page_id) {
 	$post = $this->get_default_custom_post('jbp_job');
+	$add_job = true;
 	setup_postdata($post);
+	$link = add_query_arg('edit', 1, get_permalink($post->ID) );
 	$editing = false;
-	$new_job = true;
 } //Or are we editing a listing?
 elseif(get_query_var('edit')){
 	$editing = true;
+	$link = get_permalink($post->ID);
 }
+
 $data = (array)$post;
 $post_ID = $data['ID'];
 
@@ -62,13 +53,25 @@ $editor_settings =   array(
 'tinymce' => true, // load TinyMCE, can be used to pass settings directly to TinyMCE using an array()
 'quicktags' => true // load Quicktags, can be used to pass settings directly to Quicktags using an array()
 );
+
+//Styles
+wp_enqueue_style('jqueryui-editable');
+
+//Scripts
+wp_enqueue_style('select2');
+wp_enqueue_script('select2');
+
+wp_enqueue_script('jqueryui-editable');
+wp_enqueue_script('jqueryui-editable-ext');
+wp_enqueue_script('jquery-ui-dialog');
+
 ?>
 
 <?php echo do_action('jbp_error'); ?>
 <?php echo do_action('jbp_notice'); ?>
 
 <div class="job-profile-wrapper">
-	<?php if($new_job): ?>
+	<?php if($add_job): ?>
 	<h3><?php _e('Create a New Job', JBP_TEXT_DOMAIN); ?></h3>
 	<?php else: ?>
 	<h3><?php printf( '%s %s', __('Editing Job &raquo;', JBP_TEXT_DOMAIN), get_the_title()); ?></h3>
@@ -274,58 +277,43 @@ $editor_settings =   array(
 				<button type="submit" id="job-pending" name="post_status" value="pending" class="toggle-job-save job-button job-go-public-button" ><?php esc_html_e('Review', JBP_TEXT_DOMAIN); ?></button>
 			</div>
 			<?php endif; ?>
+		</div>
 
-			<?php if($Jobs_Plus_Core->get_setting('job->moderation->draft') ): ?>
-			<div class="job-go-public">
-				<button type="submit" id="job-draft" name="post_status" value="draft" class="toggle-job-save job-button job-go-public-button" ><?php esc_html_e('Draft', JBP_TEXT_DOMAIN); ?></button>
-			</div>
-			<?php endif; ?>
-
-			<?php if($editing): ?>
-			<button type="button" class="job-button" onclick="window.location='<?php echo get_permalink( get_the_id() ); ?>';"><?php _e('Cancel', JBP_TEXT_DOMAIN); ?></button>
-			<?php else: ?>
-			<button type="button" class="job-button" onclick="window.location='<?php echo get_post_type_archive_link('jbp_jobs'); ?>';"><?php _e('Cancel', JBP_TEXT_DOMAIN); ?></button>
-			<?php endif; ?>
+		<?php if($Jobs_Plus_Core->get_setting('job->moderation->draft') ): ?>
+		<div class="job-go-public">
+			<button type="submit" id="job-draft" name="post_status" value="draft" class="toggle-job-save job-button job-go-public-button" ><?php esc_html_e('Draft', JBP_TEXT_DOMAIN); ?></button>
 		</div>
 		<?php endif; ?>
 
-	</form>
+		<?php if($editing): ?>
+		<div class="job-go-public">
+			<button type="button" class="job-button" onclick="window.location='<?php echo get_permalink( get_the_id() ); ?>';"><?php _e('Cancel', JBP_TEXT_DOMAIN); ?></button>
+		</div>
+		<?php else: ?>
+		<div class="job-go-public">
+			<button type="button" class="job-button" onclick="window.location='<?php echo get_post_type_archive_link('jbp_jobs'); ?>';"><?php _e('Cancel', JBP_TEXT_DOMAIN); ?></button>
+		</div>
+		<?php endif; ?>
+	</div>
+	<?php endif; ?>
+
+</form>
 </div>
 
 <script type="text/javascript">
 	jQuery(document).ready( function($) {
 
 		//Setup Globals
-		jbpNewJob = <?php echo $new_job ? 'true':'false'; ?>;
-		jbpPopupEnabled = true;//jbpNewJob;
+		jbpAddJob = <?php echo $add_job ? 'true':'false'; ?>;
+		jbpPopupEnabled = <?php echo ($editing || $add_job) ? 'true':'false'; ?>;
 		canEditJob = <?php echo current_user_can('edit_jobs') ? 'true' : 'false'; ?>;
 
+		jbpEditableDefaults();
 		$.fn.editable.defaults.pk = '<?php the_ID(); ?>';
 		$.fn.editable.defaults.url = '<?php echo admin_url('/admin-ajax.php'); ?>';
 		$.fn.editable.defaults.params = {"action": "jbp_job", "_wpnonce": "<?php echo wp_create_nonce('jbp_job');?>"};
 
 		var $editables = $('.editable'); //Get a list of editable fields
-		$editables.editable();
-		//$editables.filter('[data-name="post_title"]').editable('show');
-
-		$editables.on('hidden', function(e, reason){
-			if(reason === 'save' || reason === 'nochange') {
-				var $next = $editables.eq( ($editables.index(this) + 1) % $editables.length );
-
-				if( jbpNewJob && $(this).attr('data-name') == 'post_title') {
-					window.location = '<?php echo $link ?>';
-					$('#create-dialog').dialog({
-						height: 140,
-						modal: true
-					});
-				} else {
-					setTimeout(function() { $next.editable('show'); }, 300);
-				}
-			}
-		});
-
-		//Toggle whether edit or popup
-		$('#toggle-job-edit').click( function(){ jbpPopup(); });
 
 		$('.toggle-job-save').click( function(){
 			$.get( '<?php echo admin_url('admin-ajax.php'); ?>', {
@@ -338,6 +326,7 @@ $editor_settings =   array(
 		});
 
 		jbpPopup();
+		$editables.editable();
 
 	});
 </script>

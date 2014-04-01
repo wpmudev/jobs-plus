@@ -46,6 +46,7 @@
 		?>
 	</ul>
 	<a href="#" id="add-pro-portfolio-link" class="pro-content-command pro-add show-on-edit">+Add</a>
+	<br />
 </div>
 
 <script id="add-pro-portfolio" type="text/template">

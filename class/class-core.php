@@ -353,25 +353,34 @@ class Jobs_Plus_Core{
 	* @return int $page[0] /bool false
 	*/
 	function get_page_by_meta( $post_type, $value ) {
+		global $wpdb;
 
-		$post_statuses = array_reverse(get_post_stati() ); //Virtual is at end so reverse
-
-		$args = array(
-		'meta_query' => array(array('key' => "_{$post_type}", 'value' => $value) ), //_ hides from public
-		'post_type'     => $post_type,
-		'post_status'   => $post_statuses
+		//To avoid "the_posts" filters do a direct call to the database to find the post by meta
+		$ids = array_keys(
+		$wpdb->get_results($wpdb->prepare(
+		"
+		SELECT post_id
+		FROM {$wpdb->postmeta}
+		WHERE meta_key= %s
+		AND meta_value=%s
+		", "_{$post_type}", $value), OBJECT_K )
 		);
 
-		$pages = get_posts( $args );
-
-		if(count($pages) != 1) { //Clean out any duplicates created by user publishng virtual pages or other fiddling.
-			foreach($pages as $page) {
-				wp_delete_post($page->ID, true);
+		if( count($ids) != 1 ) { //There can be only one.
+			foreach( $ids as $id ) { //Delete all and start over.
+				wp_delete_post($id, true);
 			}
-			return false; // There can be only one. Page will be recreated to avoid numbered permalinks
+			return false;
 		}
 
-		if ( isset( $pages[0] ) && 0 < $pages[0]->ID ) return $pages[0];
+		if( get_post_status( $ids[0]) == 'trash' ){ //no trash
+			wp_delete_post($ids[0], true);
+			return false;
+		}
+
+		if ( isset( $ids[0] ) && 0 < $ids[0] ){
+			return get_post($ids[0]);
+		}
 
 		return false;
 	}
