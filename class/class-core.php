@@ -532,10 +532,11 @@ class Jobs_Plus_Core{
 		//Is this a jbp_pro update?
 		if(! empty($_POST['jbp-pro-update'] ) ) {
 			$id = $this->update_pro($_POST);
-			wp_redirect( add_query_arg('jbp_notice', urlencode(sprintf(__('This %s has been updated', $this->text_domain), $this->pro_obj->labels->name ) ),
-
-			trailingslashit(get_permalink($id) ) ) );
-			exit;
+			if( !empty($id) ){
+				wp_redirect( add_query_arg('jbp_notice', urlencode(sprintf(__('This %s has been updated', $this->text_domain), $this->pro_obj->labels->name ) ),
+				trailingslashit(get_permalink($id) ) ) );
+				exit;
+			}
 		}
 
 		//Is this a jbp_job contact?
@@ -1379,21 +1380,36 @@ class Jobs_Plus_Core{
 		global $post;
 
 		$post_id = empty($post_id) ? $post->ID : $post_id;
-		return $before . sprintf('<div class="rateit" data-rateit-readonly="true" data-rateit-ispreset="true" data-rateit-value="%s" ></div>',
+		return $before . sprintf('
+		<span class="rateit" 
+		data-rateit-readonly="true" 
+		data-rateit-ispreset="true" 
+		data-rateit-value="%s" 
+		></span>',
 		get_post_meta($post_id, JBP_PRO_AVERAGE_KEY, true) ) . $after;
 	}
 
-	function get_rate_this( $post_id = 0, $before = '', $after = '', $allow_reset = false ) {
-		global $post;
+	function get_rate_this( $post = 0, $before = '', $after = '', $allow_reset = false ) {
 
+		$post = get_post($post);
 		if( !is_user_logged_in() ) return '';
-		$post_id = empty($post_id) ? $post->ID : $post_id;
+		$rating = get_user_meta( get_current_user_id(), JBP_PRO_VOTED_KEY, true);
+		$rating = empty($rating[$post->ID]) ? 0 : $rating[$post->ID];
 
-		$rating = get_user_meta(get_current_user_id(), JBP_PRO_VOTED_KEY, true);
-		$rating = empty($rating[$post_id]) ? 0 : $rating[$post_id];
-		return $before . sprintf('<div class="rateit" data-post_id="%s" data-rateit-ispreset="true" data-rateit-value="%s" data-rateit-resetable="%s"></div>',
-		$post_id, $rating, $allow_reset) . $after;
+		return $before . sprintf('
+		<span class="rateit"
+		data-post_id="%s"
+		data-rateit-ispreset="true"
+		data-rateit-value="%s"
+		data-rateit-resetable="%s"
+		data-ajax="%s"
+		data-nonce="%s"
+		></span>',
+		$post->ID, $rating, $allow_reset,
+		esc_attr(admin_url('admin-ajax.php') ),
+		wp_create_nonce('rating') ) . $after;
 	}
+
 
 	/**
 	* get_default_custom_post - If post_id empty then create a new Auto draft listing to be edited
@@ -1680,7 +1696,7 @@ class Jobs_Plus_Core{
 		wp_enqueue_script('jquery-rateit');
 		wp_enqueue_style('jquery-rateit');
 
-		return get_rate_this($post, '', '', $resetable);
+		return $this->get_rate_this($post, '', '', $resetable);
 	}
 
 	function rating_sc($atts = null, $content = ''){
@@ -1852,28 +1868,36 @@ class Jobs_Plus_Core{
 	*/
 	function update_pro($params = array()){
 
-		if(! current_user_can( 'edit_pros', $params['post_id']) ) return;
-		//var_dump($params); exit;
+		if(! current_user_can( 'edit_pro', $params['post_id']) ) return;
+		//var_dump($params); //exit;
 		/* Construct args for the new post */
-		$args = array(
-		/* If empty ID insert Ad instead of updating it */
-		'ID'             => ( isset( $params['data']['ID'] ) ) ?  $params['data']['ID'] : '',
-		'post_title'     => wp_strip_all_tags($params['data']['post_title']),
-		'post_name'      => '',
-		'post_content'   => $params['data']['post_content'],
-		'post_excerpt'   => (empty($params['data']['post_excerpt'])) ? '' : $params['data']['post_excerpt'],
-		'post_status'    => $params['data']['post_status'],
-		//'post_author'    => get_current_user_id(),
-		'post_type'      => 'jbp_pro',
-		'ping_status'    => 'closed',
-		//'comment_status' => 'open'
-		);
+		$args = $params['data'];
+
+
+		//		$args = array(
+		//		/* If empty ID insert Ad instead of updating it */
+		//		'ID'             => ( isset( $params['data']['ID'] ) ) ?  $params['data']['ID'] : '',
+		//		'post_title'     => wp_strip_all_tags($params['data']['post_title']),
+		//		'post_name'      => '',
+		//		'post_content'   => $params['data']['post_content'],
+		//		'post_excerpt'   => (empty($params['data']['post_excerpt'])) ? '' : $params['data']['post_excerpt'],
+		//		'post_status'    => $params['data']['post_status'],
+		//		//'post_author'    => get_current_user_id(),
+		//		'post_type'      => 'jbp_pro',
+		//		'ping_status'    => 'closed',
+		//		//'comment_status' => 'open'
+		//		);
 
 		/* Insert page and get the ID */
-		if(empty($args['ID']) )
-		$post_id = wp_insert_post( $args );
-		else
-		$post_id = wp_update_post( $args );
+		if(empty($args['ID']) ){
+			$post_id = wp_insert_post( $args, true );
+
+		} else {
+			$post_id = wp_update_post( $args, true );
+		}
+		//var_dump($args);
+
+		//var_dump($post_id); exit;
 
 		if ( ! empty($post_id) ) {
 			//Save custom tags
@@ -1897,10 +1921,10 @@ class Jobs_Plus_Core{
 				}
 			}
 
-			if ( class_exists( 'CustomPress_Core' ) ) {
-				global $CustomPress_Core;
-				$CustomPress_Core->save_custom_fields( $post_id );
-			}
+			//			if ( class_exists( 'CustomPress_Core' ) ) {
+			//				global $CustomPress_Core;
+			//				$CustomPress_Core->save_custom_fields( $post_id );
+			//			}
 
 			if ( isset($_FILES['jbp_pro_image']) && empty( $_FILES['jbp_pro_image']['error'] )) {
 				/* Require WordPress utility functions for handling media uploads */
@@ -1913,8 +1937,6 @@ class Jobs_Plus_Core{
 				//remove_filter( 'upload_dir', array($this,'custom_upload_directory') );
 			}
 
-			//initialize bb_reputation
-			$post = get_post($post_id);
 
 			return $post_id;
 		}

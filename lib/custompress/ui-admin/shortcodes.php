@@ -35,8 +35,9 @@
 							<br /><span class="description"><?php _e('Multiple filters may be used in one input block.', $this->text_domain); ?></span>
 
 							<br /><br /><?php _e('or use [ct_in] for individual input fields to allow better postioning and styling.', $this->text_domain); ?><br />
-							<code>[ct_in id="_ct_selectbox_4cf582bd61fa4" property="title | description | input"]</code>
+							<code>[ct_in id="_ct_selectbox_4cf582bd61fa4" property="title | description | input" required="true | false" ]</code>
 							<br /><span class="description"><?php _e('Leaving off the property attribute defaults to the input field html.', $this->text_domain); ?></span>
+							<br /><span class="description"><?php _e('Leaving off the required attribute defaults to setting in custom fields settings. Otherwise override it.', $this->text_domain); ?></span>
 							<br /><span class="description"><?php _e('Assumes the current global $post as the post being operated on.', $this->text_domain); ?></span>
 							<br /><span class="description"><?php _e('The nomenclature "title | description | input" means use one of the choices. "title" or "description or "input".', $this->text_domain); ?></span>
 						</div>

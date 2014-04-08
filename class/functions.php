@@ -29,49 +29,22 @@ function is_certified($user_id = 0){
 
 function get_the_rating( $post = 0, $before = '', $after = '' ){
 	global $Jobs_Plus_Core;
-
-	$post = get_post($post);
-	return $before . sprintf('
-	<div class="rateit"
-	data-rateit-readonly="true"
-	data-rateit-ispreset="true"
-	data-rateit-value="%s"
-	data-ajax="%s"
-	data-nonce="%s"
-	></div>',
-	get_post_meta($post->ID, JBP_PRO_AVERAGE_KEY, true),
-	esc_attr(admin_url('admin-ajax.php') ),
-	wp_create_nonce('rating') ) . $after;
+	$Jobs_Plus_Core->get_the_rating($post, $before, $after);
 }
 
 function the_rating( $post = 0, $before = '', $after = '' ){
-	echo get_the_rating($post, $before, $after);
+	global $Jobs_Plus_Core;
+	echo $Jobs_Plus_Core->get_the_rating($post, $before, $after);
 }
 
 function get_rate_this( $post = 0, $before = '', $after = '', $allow_reset = false ) {
 	global $Jobs_Plus_Core;
-
-	$post = get_post($post);
-	if( !is_user_logged_in() ) return '';
-	$rating = get_user_meta(get_current_user_id(), JBP_PRO_VOTED_KEY, true);
-	$rating = empty($rating[$post->ID]) ? 0 : $rating[$post->ID];
-
-	return $before . sprintf('
-	<div class="rateit"
-	data-post_id="%s"
-	data-rateit-ispreset="true"
-	data-rateit-value="%s"
-	data-rateit-resetable="%s"
-	data-ajax="%s"
-	data-nonce="%s"
-	></div>',
-	$post->ID, $rating, $allow_reset,
-	esc_attr(admin_url('admin-ajax.php') ),
-	wp_create_nonce('rating') ) . $after;
+	return $Jobs_Plus_Core->get_rate_this( $post, $before, $after, $allow_reset);
 }
 
 function rate_this( $post = 0, $before = '', $after = '', $allow_reset = false) {
-	echo get_rate_this($post, $before, $after, $allow_reset);
+	global $Jobs_Plus_Core;
+	echo $Jobs_Plus_Core->get_rate_this($post, $before, $after, $allow_reset);
 }
 
 function get_avatar_or_gravatar($id_or_email=0, $email = '', $size=96, $default='', $alt=false){

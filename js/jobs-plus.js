@@ -12,14 +12,23 @@ window.jbpPopupEnabled = false;
 window.canEditPro = false;
 window.canEditJob = false;
 
+
 jQuery(document).ready( function($) {
 
 	//rateit stars
 	$(".rateit").on('over', function (event, value) { $(this).prop('title', tooltipvalues[value-1]); });
 
 	$('.rateit').on('rated reset', function(e){
+		console.log( e );
 		$this = $(this);
-		$.post( $this.data('ajax'), { action: "rate_pro", post_id: $this.data('post_id'), rating: $this.rateit('value'), _wpnonce: $this.data('nonce')}, function(data){}, 'text');
+		$.post( $this.data('ajax'), { 
+			action: "rate_pro", 
+			post_id: $this.data('post_id'), 
+			rating: $this.rateit('value'), 
+			_wpnonce: $this.data('nonce')
+			}, 
+			function(data){}, 
+			'text');
 	});
 
 	// Add Pro Portfolio
@@ -92,14 +101,18 @@ jQuery(document).ready( function($) {
 			$('.show-on-edit').hide();
 			$('.hide-on-edit').show();
 			$('.editable').editable('disable');
+			$('#custom-fields-form .ct-field').prop('readonly', true);
+			$('#custom-fields-form .description').css('visibility', 'hidden');
 		} else {
 			$('.show-on-edit').show();
 			$('.hide-on-edit').hide();
+			$('#custom-fields-form .ct-field').prop('readonly', false);
+			$('#custom-fields-form .description').css('visibility', 'visible');
 			if(jbpAddPro) {
-			$(".editable[data-name='post_title']").editable('enable');
-		} else {
-			$('.editable').editable('enable');
-		}
+				$(".editable[data-name='post_title']").editable('enable');
+			} else {
+				$('.editable').editable('enable');
+			}
 		}
 		magnificPopupAttach(jbpPopupEnabled);
 	};
@@ -131,5 +144,40 @@ jQuery(document).ready( function($) {
 			}
 		});
 	};
+
+	//Create a dialog
+	window.jbp_create_dialog = function(title, text, options) {
+		return $("<div class='dialog' title='" + title + "'>" + text + "</div>").dialog(options);
+	}
+
+	//Check for required fields
+	window.jbp_required_dialog = function( e, title, text) {
+		var $empties = $('.editable-required');
+
+		if( $empties.length > 0) {
+			//Do something.
+			e.preventDefault();
+			e.stopPropagation();
+
+			$empties.each(
+			function(){
+				text += $(this).data('label') + '<br />';
+			});
+			console.log(text);
+			dlg = jbp_create_dialog(title, text,{
+				width: '400',
+				resize: 'auto',
+				modal: true,
+				buttons : { 'OK': function(){ $(this).dialog('close'); } },
+				close: function(){ setTimeout( function(){
+					$empties.first().editable('show');
+					$('html, body').animate({scrollTop: $empties.first().offset().top-50}, 500);
+				}, 300); }
+			}
+			);
+			return false;
+		}
+		return true;
+	}
 
 }(window.jQuery));
