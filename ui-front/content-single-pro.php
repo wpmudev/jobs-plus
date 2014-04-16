@@ -46,7 +46,7 @@ wp_enqueue_script('jqueryui-editable-ext');
 		</span>
 	</h3>
 </label>
-<div class="pro-profile-wrapper jbp-clear">
+<div class="pro-profile-wrapper group">
 	<form action="" method="POST" id="custom-fields-form" >
 		<?php wp_nonce_field('verify'); ?>
 		<input type="hidden" name="post_id" value="<?php echo $post->ID; ?>" />
@@ -54,7 +54,7 @@ wp_enqueue_script('jqueryui-editable-ext');
 		<input type="hidden" name="jbp-pro-update" value="save" />
 
 		<div class="pro-content">
-			<div class="pro-pad jbp-clear">
+			<div class="pro-pad group">
 				<div class="pro-content-wrapper pro-profile">
 					<label class="pro-content-editable pro-name">
 						<span class="editable editable-firstlast"

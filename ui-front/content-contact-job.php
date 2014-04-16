@@ -14,6 +14,7 @@ $post_id = (int) empty($_POST['post_id']) ? $post->ID : $_POST['post_id'];
 $post = get_post($post_id);
 
 $user = wp_get_current_user();
+wp_enqueue_script('jquery-validate');
 
 ?>
 
@@ -47,6 +48,8 @@ $user = wp_get_current_user();
 		<?php wp_nonce_field( 'verify' ); ?>
 		<button class="jbp-button" type="submit" name="jbp-job-contact" value="1"><?php _e( 'Submit', JBP_TEXT_DOMAIN ); ?></button>
 		<button class="jbp-button" type="button" onclick="location.href='<?php echo get_permalink(get_the_ID()); ?>'"><?php _e( 'Cancel', JBP_TEXT_DOMAIN ); ?></button>
-		<script type="text/javascript">jQuery('#jbp-job-contact').validate();</script>
+		<script type="text/javascript">
+			jQuery(document).ready( function($){ $('#jbp-job-contact').validate(); });
+		</script>
 	</form>
 </div>

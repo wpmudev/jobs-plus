@@ -8,36 +8,46 @@
 @import url("jobs-plus-pro.css");
 @import url("jobs-plus-job.css");
 
-/* For modern browsers */
-.jbp-clear:before,
-.jbp-clear:after {
-	content:"";
-	display:table;
+/*group class for enhanced clearfix*/
+.group:before,
+.group:after {
+	content: "";
+	display: table;
 }
-.jbp-clear:after {
-	clear:both;
+.group:after {
+	clear: both;
 }
-/* For IE 6/7 (trigger hasLayout) */
-.jbp-clear {
-	zoom:1;
+.group {
+	zoom: 1; /* For IE 6/7 (trigger hasLayout) */
 }
 
 .show-on-edit{ display: none;}
 
 .error {
-	background-color:#FFEBE8;
-	border:1px solid red!important;
-	margin:.5em 0;
-	padding:1em;
-	border-radius: 4px;
+	background-color:#fff;
+	border: 1px solid #ddd;
+	border-left: 4px solid #c00;
+	box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.2) ;
 }
 
 .updated {
-	background-color:#FFFFD5;
-	border:1px solid #E6DB55!important;
-	margin:.5em 0;
-	padding:1em;
-	border-radius: 4px;
+	background-color:#fff;
+	border-left: 4px solid #7AD03A;
+	box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.2) ;
+}
+
+div.updated, div.error{
+	padding: 2px 12px;
+}
+
+div.updated p, div.error p {
+    margin: 0.5em 0;
+    padding: 2px;
+}
+
+label.error, label.updated{
+    margin: 0.5em 0;
+    padding: 2px 12px;
 }
 
 .editfield {
@@ -69,3 +79,4 @@
 .dialogcenter{
 	text-align: center;
 }
+

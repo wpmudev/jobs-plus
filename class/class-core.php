@@ -75,6 +75,7 @@ class Jobs_Plus_Core{
 
 		add_action('plugins_loaded', array(&$this, 'on_plugins_loaded') );
 		add_action('init', array(&$this, 'on_init') );
+		add_action('widgets_init', array(&$this, 'on_widgets_init') );
 		add_action('wp_loaded', array(&$this, 'create_virtual_pages') );
 		add_action('wp_print_scripts', array(&$this, 'on_print_scripts') );
 
@@ -115,12 +116,19 @@ class Jobs_Plus_Core{
 
 		add_shortcode( 'jbp-pro-archive', array( &$this, 'pro_archive_sc' ) );
 
-		add_shortcode( 'jbp-pro-contact-btn', array( &$this, 'pro_contact_btn_sc' ) );
-		add_shortcode( 'jbp-job-contact-btn', array( &$this, 'job_contact_btn_sc' ) );
-
 		add_shortcode( 'jbp-job-portfolio', array( &$this, 'job_portfolio_sc' ) );
 		add_shortcode( 'jbp-job-excerpt', array( &$this, 'job_excerpt_sc' ) );
 
+		add_shortcode( 'jbp-pro-contact-btn', array( &$this, 'pro_contact_btn_sc' ) );
+		add_shortcode( 'jbp-job-contact-btn', array( &$this, 'job_contact_btn_sc' ) );
+
+		add_shortcode( 'jbp-job-browse-btn', array( &$this, 'job_browse_btn_sc' ) );
+		add_shortcode( 'jbp-pro-browse-btn', array( &$this, 'pro_browse_btn_sc' ) );
+
+		add_shortcode( 'jbp-job-post-btn', array( &$this, 'job_post_btn_sc' ) );
+		add_shortcode( 'jbp-pro-post-btn', array( &$this, 'pro_post_btn_sc' ) );
+
+		add_shortcode( 'jbp-pro-profile-btn', array( &$this, 'pro_profile_btn_sc' ) );
 	}
 
 	/**
@@ -288,19 +296,22 @@ class Jobs_Plus_Core{
 		//Need to register scripts and css early because we enqueue in
 		//template_redirect so we know the page amd can only load what and when needed.
 		$this->register_scripts();
-
-		//		// Declare widget areas
-		//		if(function_exists('register_sidebar') ){
-		//			register_sidebar(array(
-		//			'id' => 'stamp-widget',
-		//			'name' => 'Pro Stamp',
-		//			'description' => sprintf(__('%s widget area', $this->text_domain), $this->pro_obj->labels->name),
-		//			'before_widget' => '<li id="%1$s" class="widget %2$s">' . "\n",
-		//			'after_widget' => "</li>\n",
-		//			'before_title' => '<h2 class="widgettitle">',
-		//			'after_title' => '</h2>'
-		//			));
-		//		}
+	}
+	
+	function on_widgets_init(){
+		// Declare widget areas
+//		if(function_exists('register_sidebar') ){
+//			register_sidebar(array(
+//			'id' => 'job-widget',
+//			'name' => 'Jobs Widget',
+//			'description' => sprintf(__('%s widget area', $this->text_domain), $this->job_obj->labels->name),
+//			'before_widget' => '<div id="%1$s" class="widget %2$s">' . "\n",
+//			'after_widget' => "</div>\n",
+//			'before_title' => '<h2 class="widgettitle">',
+//			'after_title' => '</h2>'
+//			));
+//		}
+		
 	}
 
 	/**
@@ -1155,13 +1166,13 @@ class Jobs_Plus_Core{
 
 	function display_errors(){
 		foreach($this->jbp_errors as $error){
-			echo '<div class="error">' . $error . '</div>';
+			echo '<div class="error"><p>' . $error . '</p></div>';
 		}
 	}
 
 	function display_notices(){
 		foreach($this->jbp_notices as $notice){
-			echo '<br clear="all"/><div class="updated">' . sanitize_text_field($notice) . '</div><br clear="all"/>';
+			echo '<br clear="all"/><div class="updated"><p>' . sanitize_text_field($notice) . '</p></div><br clear="all"/>';
 		}
 	}
 
@@ -1181,13 +1192,18 @@ class Jobs_Plus_Core{
 		return $result;
 	}
 
+	function on_wp_mail($args){
+		var_dump($args);
+		return $args;
+	}
+
+
 	/**
 	* Email to a Job poster
 	*
 	*/
 	function email_contact_job($params = array() ){
 		global $post, $uathordata;
-
 		if( !empty($params['jbp-job-contact']) ){
 			if( ! ($post = get_post($params['post_id']) ) ) return;
 
@@ -1217,7 +1233,7 @@ class Jobs_Plus_Core{
 			}
 
 			if( wp_mail(
-			$contact_email,
+			$to,
 			$subject,
 			$message,
 			$message_headers)
@@ -1282,10 +1298,6 @@ class Jobs_Plus_Core{
 		}
 	}
 
-	function on_wp_mail($args){
-		return $args;
-	}
-
 
 	/**
 	*
@@ -1294,7 +1306,7 @@ class Jobs_Plus_Core{
 	function custom_upload_directory( $args ) {
 		global $post_ID;
 
-		if( !$post = get_post( $post_ID )) return $args;
+		if( empty($post_ID) || !$post = get_post( $post_ID ) ) return $args;
 		$parent_id = $post->post_parent;
 
 		//var_dump($args);
@@ -1381,10 +1393,10 @@ class Jobs_Plus_Core{
 
 		$post_id = empty($post_id) ? $post->ID : $post_id;
 		return $before . sprintf('
-		<span class="rateit" 
-		data-rateit-readonly="true" 
-		data-rateit-ispreset="true" 
-		data-rateit-value="%s" 
+		<span class="rateit"
+		data-rateit-readonly="true"
+		data-rateit-ispreset="true"
+		data-rateit-value="%s"
 		></span>',
 		get_post_meta($post_id, JBP_PRO_AVERAGE_KEY, true) ) . $after;
 	}
@@ -1767,27 +1779,6 @@ class Jobs_Plus_Core{
 		return ob_get_clean();
 	}
 
-	function pro_contact_btn_sc( $atts, $content = null ) {
-		extract( shortcode_atts( array(
-		'text' => __('Contact Me', $this->text_domain),
-		'view' => 'both', //loggedin, loggedout, both
-		'class' => '',
-		'post' => null,
-		), $atts ) );
-
-		$view = strtolower($view);
-		if(is_user_logged_in())	{if($view == 'loggedout') return '';}
-		else if($view == 'loggedin') return '';
-
-		$post = get_post($post);
-
-		$content = (empty($content)) ? $text : $content;
-		$result = sprintf('<button class="jbp-button pro-contact-btn %s" type="button" onclick="window.location.href=\'%s\';" >%s</button>',
-		$class, esc_attr(trailingslashit(get_permalink($post) . 'contact/' ) ), $content);
-
-		return $result;
-	}
-
 	/**
 	* jbp-pro-Archive
 	*/
@@ -1840,6 +1831,17 @@ class Jobs_Plus_Core{
 		return ob_get_clean();
 	}
 
+/**
+* Button shortcodes
+*
+*/
+	function can_view( $view = 'both' ){
+		$view = strtolower($view);
+		if(is_user_logged_in())	{if($view == 'loggedout') return false;}
+		else if($view == 'loggedin') return false;
+		return true;
+	}
+
 	function job_contact_btn_sc( $atts, $content = null ) {
 		extract( shortcode_atts( array(
 		'text' => __('Contact Me', $this->text_domain),
@@ -1848,9 +1850,7 @@ class Jobs_Plus_Core{
 		'post' => null,
 		), $atts ) );
 
-		$view = strtolower($view);
-		if(is_user_logged_in())	{if($view == 'loggedout') return '';}
-		else if($view == 'loggedin') return '';
+		if( !$this->can_view( $view ) ) return '';
 
 		$post = get_post($post);
 
@@ -1859,6 +1859,107 @@ class Jobs_Plus_Core{
 		$class, esc_attr(trailingslashit(get_permalink($post) . 'contact/' ) ), $content);
 
 		return $result;
+	}
+
+	function pro_contact_btn_sc( $atts, $content = null ) {
+		extract( shortcode_atts( array(
+		'text' => __('Contact Me', $this->text_domain),
+		'view' => 'both', //loggedin, loggedout, both
+		'class' => '',
+		'post' => null,
+		), $atts ) );
+
+		if( !$this->can_view( $view ) ) return '';
+
+		$post = get_post($post);
+
+		$content = (empty($content)) ? $text : $content;
+		$result = sprintf('<button class="jbp-button pro-contact-btn %s" type="button" onclick="window.location.href=\'%s\';" >%s</button>',
+		$class, esc_attr(trailingslashit(get_permalink($post) . 'contact/' ) ), $content);
+
+		return $result;
+	}
+
+	function job_browse_btn_sc( $atts, $content = null ) {
+		extract( shortcode_atts( array(
+		'text' => sprintf(__('Browse %s', $this->text_domain),$this->job_obj->labels->name),
+		'view' => 'both', //loggedin, loggedout, both
+		'class' => '',
+		), $atts ) );
+
+		if( !$this->can_view( $view ) ) return '';
+
+		$content = (empty($content)) ? $text : $content;
+		$url = get_post_type_archive_link('jbp_job');
+		ob_start();
+		require locate_jbp_template((array)'sc-job-browse-btn.php');
+		return do_shortcode( ob_get_clean() );
+	}
+
+	function pro_browse_btn_sc( $atts, $content = null ) {
+		extract( shortcode_atts( array(
+		'text' => sprintf(__('Browse %s', $this->text_domain),$this->pro_obj->labels->name),
+		'view' => 'both', //loggedin, loggedout, both
+		'class' => '',
+		), $atts ) );
+
+		if( !$this->can_view( $view ) ) return '';
+
+		$content = (empty($content)) ? $text : $content;
+		$url = get_post_type_archive_link('jbp_pro');
+		ob_start();
+		require locate_jbp_template((array)'sc-pro-browse-btn.php');
+		return do_shortcode( ob_get_clean() );
+	}
+
+	function job_post_btn_sc( $atts, $content = null ) {
+		extract( shortcode_atts( array(
+		'text' => sprintf(__('Post a %s', $this->text_domain),$this->job_obj->labels->singular_name),
+		'view' => 'both', //loggedin, loggedout, both
+		'class' => '',
+		), $atts ) );
+
+		if( !$this->can_view( $view ) ) return '';
+
+		$content = (empty($content)) ? $text : $content;
+		$url = get_permalink($this->add_job_page_id);
+		ob_start();
+		require locate_jbp_template((array)'sc-job-post-btn.php');
+		return do_shortcode( ob_get_clean() );
+	}
+
+	function pro_post_btn_sc( $atts, $content = null ) {
+		extract( shortcode_atts( array(
+		'text' => sprintf(__('Post an %s', $this->text_domain),$this->pro_obj->labels->singular_name),
+		'view' => 'both', //loggedin, loggedout, both
+		'class' => '',
+		), $atts ) );
+
+		if( !$this->can_view( $view ) ) return '';
+
+		$content = (empty($content)) ? $text : $content;
+		$url = get_permalink($this->add_pro_page_id);
+		ob_start();
+		require locate_jbp_template((array)'sc-pro-post-btn.php');
+		return do_shortcode( ob_get_clean() );
+	}
+
+	function pro_profile_btn_sc( $atts, $content = null ) {
+		extract( shortcode_atts( array(
+		'text' => __('My Profile', $this->text_domain),
+		'view' => 'both', //loggedin, loggedout, both
+		'class' => '',
+		), $atts ) );
+
+		if( !$this->can_view( $view ) ) return '';
+
+		$content = (empty($content)) ? $text : $content;
+		$user = wp_get_current_user();
+		$url = add_query_arg(array( 'author' => $user->user_login ),get_post_type_archive_link('jbp_job') );
+
+		ob_start();
+		require locate_jbp_template((array)'sc-pro-profile-btn.php');
+		return do_shortcode( ob_get_clean() );
 	}
 
 
@@ -1957,7 +2058,7 @@ class Jobs_Plus_Core{
 		'ID'             => ( isset( $params['data']['ID'] ) ) ?  $params['data']['ID'] : '',
 		'post_title'     => wp_strip_all_tags($params['data']['post_title']),
 		'post_name'      => '',
-		'post_content'   => $params['data']['post_content'],
+		'post_content'   => wp_strip_all_tags($params['data']['post_content']),
 		'post_excerpt'   => (empty($params['data']['post_excerpt'])) ? '' : $params['data']['post_excerpt'],
 		//'post_author'    => get_current_user_id(),
 		'post_type'      => 'jbp_job',
@@ -2006,10 +2107,6 @@ class Jobs_Plus_Core{
 				update_post_meta($post_id, '_ct_jbp_job_Open_for', '' );
 			}
 
-			//			if ( class_exists( 'CustomPress_Core' ) ) {
-			//				global $CustomPress_Core;
-			//				$CustomPress_Core->save_custom_fields( $post_id );
-			//			}
 
 			return $post_id;
 		}

@@ -5,6 +5,19 @@
 * @license GPL2+
 */
 
+/*group class for enhanced clearfix*/
+.group:before,
+.group:after {
+	content: "";
+	display: table;
+}
+.group:after {
+	clear: both;
+}
+.group {
+	zoom: 1; /* For IE 6/7 (trigger hasLayout) */
+}
+
 #pro-list,#project-list {
 	font-size:75%;
 }

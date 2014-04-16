@@ -11,7 +11,7 @@ $rating = 0;
 ?>
 <div class="pro-gravatar">
 	<div class="jbp-gravatar">
-		<div class="jbp-gravatar-border jbp-clear">
+		<div class="jbp-gravatar-border group">
 			<?php echo get_avatar_or_gravatar($post->post_author, do_shortcode('[ct id="_ct_jbp_pro_Contact_Email"]') ,160); ?>
 		</div>
 	</div>

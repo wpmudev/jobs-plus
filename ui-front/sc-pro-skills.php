@@ -7,7 +7,7 @@
 */
 
 ?>
-<div class="pro-skills jbp-clear">
+<div class="pro-skills group">
 	<?php
 	$skills = do_shortcode('[ct id="_ct_jbp_pro_Skills"]');
 	$skills = empty($skills) ? new stdClass : (object)json_decode($skills);

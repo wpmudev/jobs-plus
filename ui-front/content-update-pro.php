@@ -229,9 +229,9 @@ $editor_settings =   array(
 
 		<span class="pro-edit"><button type="button" id="toggle-edit" class="pro-button pro-edit-button"><?php esc_html_e('Edit', JBP_TEXT_DOMAIN); ?></button></span>
 
-		<div class="editfield jbp-clear">
+		<div class="editfield group">
 			<label><?php _e( 'Portfolio examples:', JBP_TEXT_DOMAIN ); ?></label>
-			<div class="pro-content-wrapper pro-portfolio jbp-clear">
+			<div class="pro-content-wrapper pro-portfolio group">
 				<?php echo do_shortcode('[jbp-pro-portfolio]'); ?>
 				<div class="pro-content-command">
 					<a href="#" id="add-portfolio-link" class="pro-add"><?php _e('+Add', JBP_TEXT_DOAMIN); ?></a>

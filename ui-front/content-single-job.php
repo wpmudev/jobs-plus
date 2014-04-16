@@ -30,27 +30,21 @@ $project_budget = ($project_budget == '' ? 'N/A' : $project_budget);
 
 ?>
 <div class="job-single-wrapper">
-	<div class="job-meta jbp-clear">
+
+	<?php echo do_action('jbp_error'); ?>
+	<?php echo do_action('jbp_notice'); ?>
+	<div class="job-meta group">
 		<ul>
 			<li><span class="meta-label"><?php _e('Job Budget', JBP_TEXT_DOMAIN);?></span><br /><span class="meta-red"><?php echo $project_budget;?></span></li>
-			<li><span class="meta-label"><?php _e('This job open for', JBP_TEXT_DOMAIN);?></span><br /><span class="meta-green"><?php echo days_hours( get_post_meta(get_the_ID(), jbp_JOB_EXPIRES_KEY, true) );?></span></li>
+			<li><span class="meta-label"><?php _e('This job open for', JBP_TEXT_DOMAIN);?></span><br /><span class="meta-green"><?php echo days_hours( get_post_meta(get_the_ID(), JBP_JOB_EXPIRES_KEY, true) );?></span></li>
 			<li><span class="meta-label"><?php _e('Must be complete by', JBP_TEXT_DOMAIN);?></span><br /><span class="meta-red"><?php echo do_shortcode('[ct id="_ct_jbp_job_Due" ]'); ?></span></li>
-			        <?php
-        if( get_post_meta( get_the_ID(), '_job_expires', true) > time()) {
-        	echo do_shortcode('[project_contact_btn text="Contact this Client" class="prj-contact" show_anyway="true"]');
-      	}
-      	?>
-<?php echo do_shortcode('[jbp-job-contact-btn text="Contact" class="job-contact"]'); ?>
+			<?php 
+			if( get_post_meta( get_the_ID(), JBP_JOB_EXPIRES_KEY, true) > time() ):
+				echo do_shortcode('[jbp-job-contact-btn text="Contact" class="job-contact"]');
+			endif; 
+			?>
 		</ul>
 		<div style="clear: both"></div>
-	</div>
-
-	<div class="job-right">
-		<div id="job_widget" class="job_widget">
-			<ul class="widgetbar">
-				<?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('job-widget') ) : endif; ?>
-			</ul>
-		</div>
 	</div>
 
 	<div id="post-full-<?php the_ID(); ?>" <?php post_class(); ?> >
@@ -63,10 +57,10 @@ $project_budget = ($project_budget == '' ? 'N/A' : $project_budget);
 			<?php the_content(); ?>
 
 			<div class="job-skills">
-				<?php echo get_the_term_list(get_the_ID(), 'jbp_skills_tag', __('You will need to have these skills:', JBP_TEXT_DOMAIN) . '<br /><ul><li>', '</li><li>', '</li></ul>')?>
+				<?php echo get_the_term_list(get_the_ID(), 'jbp_skills_tag', __('<p>You will need to have these skills:', JBP_TEXT_DOMAIN) . '</p><ul><li>', '</li><li>', '</li></ul>')?>
 			</div>
 
-			<div class="job-portfolio jbp-clear">
+			<div class="job-portfolio group">
 				<span><?php _e('Examples:', JBP_TEXT_DOMAIN); ?></span>
 				<?php
 				$portfolios = do_shortcode('[ct id="_ct_jbp_job_Portfolio"]');

@@ -148,7 +148,7 @@ wp_enqueue_script('jquery-ui-dialog');
 						<label><?php _e('Describe the Work to be Done',JBP_TEXT_DOMAIN)?></label>
 					</th>
 					<td>
-						<textarea name="data[post_content]" rows="4"><?php esc_textarea(the_content() ); ?></textarea>
+						<textarea name="data[post_content]" rows="4"><?php echo esc_textarea( strip_tags(get_the_content() ) ); ?></textarea>
 					</td>
 				</tr>
 

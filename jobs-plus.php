@@ -77,6 +77,7 @@ require_once JBP_PLUGIN_DIR . 'lib/custompress/loader.php';
 require_once JBP_PLUGIN_DIR . 'class/class-core.php';
 require_once JBP_PLUGIN_DIR . 'class/functions.php';
 require_once JBP_PLUGIN_DIR . 'class/class-term-img.php';
+require_once JBP_PLUGIN_DIR . 'class/class-widgets.php';
 
 @include_once 'class/class-widgets.php';
 

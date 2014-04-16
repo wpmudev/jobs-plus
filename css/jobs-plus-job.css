@@ -6,7 +6,7 @@
 */
 
 .job-description{
-  font-style: italic;
+	font-style: italic;
 }
 
 /*Add item link */
@@ -91,9 +91,11 @@ a.job-add{
 	margin-right: 1em;
 }
 
-.job-contact-btn{
-	float: right;
-	margin: .5em;
+.job-contact-btn{ /* stretchy button */
+	margin: auto;
+	position: absolute;
+	top: .7em; bottom: .7em; right: .7em;
+	padding: 0 0.7em;
 }
 
 .job-meta {
@@ -106,6 +108,7 @@ a.job-add{
 	box-shadow: -2px 2px 8px 0 rgba( 178, 178, 178, .4 );
 	padding: 0;
 	margin: 0;
+	position: relative;
 }
 
 .job-single-wrapper .job-meta ul li{
@@ -174,14 +177,22 @@ a.job-add{
 .job-skills ul li a{
 	color: #fff;
 	background-color: #0c0;
-	padding: 2px 1em;
+	padding: .5em .5em;
 	border: 1px solid #0c0;
 	margin-right: 1em;
+	line-height: 0.8em;
+	text-decoration: none;
+	font-size: 80%;
 }
 
 .job-skills ul li a:hover{
 	color: #0c0;
 	background-color: #fff;
+}
+
+.job-right{
+	float: left;
+	width: 70%;
 }
 
 .job-right{
@@ -250,6 +261,39 @@ a.job-add{
 	margin-bottom: .5em;
 }
 
+.job-widgetbar li{
+	display: block;
+	margin: 0 0 5px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.job-widgetbar li a {
+	display: inline;
+	text-overflow: ellipsis !important;
+}
+
+.job-widgetbar li a {
+	display: block;
+	font-size: 100%;
+	line-height: 1.1em;
+	text-decoration: none;
+}
+
+.job-widget-bullet {
+	border: 1px solid #AAAAAA;
+	float: left;
+	height: 2em;
+	margin: 0 5px;
+	width: 2em;
+	padding: 0;
+}
+
+.job-widgetbar li span.job_category {
+	display: block;
+}
+
 .job-grey{
 	border-top: 4px solid #b3b3b3;
 }
@@ -274,3 +318,14 @@ a.job-add{
 	border-top: 4px solid #3ebae8;
 }
 
+button.job-browse-btn{
+	background: transparent url('../img/menu-icon-find.png') no-repeat center top;
+	color: #111;
+	border: none;
+}
+
+button.job-post-btn{
+	background: transparent url('../img/menu-icon-post.png') no-repeat center top;
+	color: #111;
+	border: none;
+}

@@ -7,7 +7,7 @@
 */
 
 ?>
-<div class="pro-portfolio jbp-clear">
+<div class="pro-portfolio group">
 	<?php
 	$portfolios = do_shortcode('[ct id="_ct_jbp_pro_Portfolio" ]');
 	$portfolios = empty($portfolios) ? new stdClass : (object)json_decode($portfolios);
