@@ -98,6 +98,10 @@ class Jobs_Plus_Core{
 		add_filter('request', array(&$this, 'on_request') );
 		//add_filter('query_vars', array(&$this, 'on_query_vars') );
 		add_filter('parse_query', array(&$this, 'on_parse_query') );
+		add_filter('posts_clauses', array(&$this, 'on_posts_clauses') );
+		add_filter('pre_get_posts', array(&$this, 'on_pre_get_posts') );
+		
+		
 		add_filter('get_edit_post_link', array(&$this, 'on_get_edit_post_link') );
 		add_filter('upload_dir', array(&$this,'custom_upload_directory') );
 
@@ -251,16 +255,6 @@ class Jobs_Plus_Core{
 	function on_init(){
 		global $wp_rewrite, $wp_post_statuses;
 
-		//Get custom type label references
-		$jbp_job = get_post_type_object( 'jbp_job');
-		$this->job_labels = $jbp_job->labels;
-		$this->job_slug = $jbp_job->rewrite['slug'];
-
-
-		$jbp_pro = get_post_type_object( 'jbp_pro');
-		$this->pro_labels = $jbp_pro->labels;
-		$this->pro_slug = $jbp_pro->rewrite['slug'];
-
 		// add endpoints for front end special pages
 		add_rewrite_endpoint('edit', EP_PAGES);
 		add_rewrite_endpoint('contact', EP_PAGES);
@@ -278,7 +272,12 @@ class Jobs_Plus_Core{
 		$this->pro_obj = get_post_type_object('jbp_pro');
 		$this->job_obj = get_post_type_object('jbp_job');
 
+		$this->pro_labels = $this->pro_obj->labels;
+		$this->job_labels = $this->job_obj->labels;
 
+		$this->pro_slug = $this->pro_obj->rewrite['slug'];
+		$this->job_slug = $this->job_obj->rewrite['slug'];
+		
 		//Set the pro-thumbnail size. DEFAULT to 160x120
 		$width = $this->get_setting('pro->thumb_width', 160);
 		$height = $this->get_setting('pro->thumb_height', 120);
@@ -291,7 +290,7 @@ class Jobs_Plus_Core{
 
 		//Show ratings in comments
 		if( $this->get_setting('pro->comment_ratings', false ) ) {
-			add_filter('get_comment_author_link', 'on_comment_author_link');
+			add_filter('get_comment_author_link', array($this,'on_get_comment_author_link') );
 		}
 		//Need to register scripts and css early because we enqueue in
 		//template_redirect so we know the page amd can only load what and when needed.
@@ -304,7 +303,7 @@ class Jobs_Plus_Core{
 //			register_sidebar(array(
 //			'id' => 'job-widget',
 //			'name' => 'Jobs Widget',
-//			'description' => sprintf(__('%s widget area', $this->text_domain), $this->job_obj->labels->name),
+//			'description' => sprintf(__('%s widget area', $this->text_domain), $this->job_labels->name),
 //			'before_widget' => '<div id="%1$s" class="widget %2$s">' . "\n",
 //			'after_widget' => "</div>\n",
 //			'before_title' => '<h2 class="widgettitle">',
@@ -312,6 +311,10 @@ class Jobs_Plus_Core{
 //			));
 //		}
 		
+	}
+	
+	function on_get_comment_author_link( $link ){
+		return $link;
 	}
 
 	/**
@@ -344,12 +347,11 @@ class Jobs_Plus_Core{
 		wp_register_style('magnific-popup', $this->plugin_url . "css/magnific-popup.css", array(), JQUERY_MAGNIFIC_POPUP );
 		wp_register_script('jquery.magnific-popup', $this->plugin_url . "js/jquery.magnific-popup$suffix.js", array('jquery' ), JQUERY_MAGNIFIC_POPUP, true );
 
+		//wp_deregister_script('masonry');
+		//wp_register_script('masonry', $this->plugin_url . "js/masonry.pkgd$suffix.js", array('jquery' ), MASONRY, true );
+
 		wp_register_style('select2', $this->plugin_url . "css/select2.css", array('jobs-plus'), SELECT2 );
 		wp_register_script('select2', $this->plugin_url . "js/select2$suffix.js", array('jquery' ), SELECT2, true);
-
-		//Deregister and register newer Masonry to prevent interference
-		wp_deregister_script('jquery-masonry');
-		wp_register_script('jquery-masonry', $this->plugin_url . "js/masonry$suffix.js", array('jquery' ), MASONRY, true );
 
 		wp_register_script('jquery-cookie', $this->plugin_url . 'js/jquery.cookie.js', array('jquery' ), JQUERY_COOKIE, true );
 		wp_register_script('jquery-ellipsis', $this->plugin_url . 'js/jquery-ellipsis.js', array('jquery' ), JQUERY_ELLIPSIS, true );
@@ -377,15 +379,13 @@ class Jobs_Plus_Core{
 		", "_{$post_type}", $value), OBJECT_K )
 		);
 
-		if( count($ids) != 1 ) { //There can be only one.
+		if( (count($ids) != 1 ) //There can be only one. 
+			|| (get_post_status( $ids[0]) == 'trash' ) //no trash
+			){ 
 			foreach( $ids as $id ) { //Delete all and start over.
+				delete_post_meta($id, "_{$post_type}");
 				wp_delete_post($id, true);
 			}
-			return false;
-		}
-
-		if( get_post_status( $ids[0]) == 'trash' ){ //no trash
-			wp_delete_post($ids[0], true);
 			return false;
 		}
 
@@ -439,8 +439,8 @@ class Jobs_Plus_Core{
 		if ( empty($page_id) ) {
 			/* Construct args for the new post */
 			$args = array(
-			'post_title'     => sprintf('Add %s', $pro_labels->singular_name),
-			'post_name'      => sprintf('add-%s', $this->pro_slug),
+			'post_title'     => sprintf('Add %s', $this->pro_labels->singular_name),
+			'post_name'      => sprintf('add-%s', $this->pro_slug ),
 			'post_status'    => 'virtual',
 			'post_author'    => $current_user->ID,
 			'post_type'      => 'jbp_pro',
@@ -534,7 +534,7 @@ class Jobs_Plus_Core{
 		//Is this a jbp_job update?
 		if(! empty($_POST['jbp-job-update']) ) {
 			$id = $this->update_job($_POST);
-			wp_redirect( add_query_arg('jbp_notice', urlencode(sprintf( __('The %s has been updated', $this->text_domain), $this->job_obj->labels->name ) ),
+			wp_redirect( add_query_arg('jbp_notice', urlencode(sprintf( __('The %s has been updated', $this->text_domain), $this->job_labels->name ) ),
 
 			trailingslashit(get_permalink($id) ) ) );
 			exit;
@@ -544,7 +544,7 @@ class Jobs_Plus_Core{
 		if(! empty($_POST['jbp-pro-update'] ) ) {
 			$id = $this->update_pro($_POST);
 			if( !empty($id) ){
-				wp_redirect( add_query_arg('jbp_notice', urlencode(sprintf(__('This %s has been updated', $this->text_domain), $this->pro_obj->labels->name ) ),
+				wp_redirect( add_query_arg('jbp_notice', urlencode(sprintf(__('This %s has been updated', $this->text_domain), $this->pro_labels->name ) ),
 				trailingslashit(get_permalink($id) ) ) );
 				exit;
 			}
@@ -581,7 +581,7 @@ class Jobs_Plus_Core{
 
 					if($wp_query->post->ID == $this->add_job_page_id) {
 						wp_redirect(add_query_arg('jbp_error',
-						urlencode(sprintf(__('You must register and login to enter a %s.', $this->text_domain), $this->job_obj->labels->new_item) ),
+						urlencode(sprintf(__('You must register and login to enter a %s.', $this->text_domain), $this->job_labels->new_item) ),
 						get_post_type_archive_link('jbp_job') ) );
 						exit;
 					}
@@ -594,7 +594,7 @@ class Jobs_Plus_Core{
 
 					if($wp_query->post->ID == $this->add_pro_page_id) {
 						wp_redirect(add_query_arg( 'jbp_error',
-						urlencode(sprintf(__('You must register and login to enter a %s.', $this->text_domain), $this->pro_obj->labels->new_item) ),
+						urlencode(sprintf(__('You must register and login to enter a %s.', $this->text_domain), $this->pro_labels->new_item) ),
 						get_post_type_archive_link('jbp_pro') ) );
 						exit;
 					}
@@ -675,17 +675,17 @@ class Jobs_Plus_Core{
 			$limit = intval($this->get_setting('job->max_records', 1) );
 			if( !current_user_can('create_jobs') ) {
 				wp_redirect( add_query_arg('jbp_error',
-				urlencode(sprintf(__('You do not have the permissions to enter a %s.', $this->text_domain), $this->job_obj->labels->new_item) ),
+				urlencode(sprintf(__('You do not have the permissions to enter a %s.', $this->text_domain), $this->job_labels->new_item) ),
 				get_post_type_archive_link('jbp_job') ) );
 				exit;
 			} elseif( !current_user_can('edit_jobs') ) {
 				wp_redirect(add_query_arg('jbp_error',
-				urlencode(sprintf(__('You do not have permission to edit this %s.', $this->text_domain), $this->job_obj->labels->singular_name) ),
+				urlencode(sprintf(__('You do not have permission to edit this %s.', $this->text_domain), $this->job_labels->singular_name) ),
 				get_post_type_archive_link('jbp_job') ) );
 				exit;
 			} elseif( !get_query_var('edit') && $this->count_user_posts_by_type(get_current_user_id(), 'jbp_pro') >= $limit) {
 				wp_redirect(add_query_arg('jbp_error',
-				urlencode(sprintf(__('You have exceeded your quota of %s %s.', $this->text_domain), $limit, $this->job_obj->labels->name) ),
+				urlencode(sprintf(__('You have exceeded your quota of %s %s.', $this->text_domain), $limit, $this->job_labels->name) ),
 				get_post_type_archive_link('jbp_job') ) );
 				exit;
 			}
@@ -712,17 +712,17 @@ class Jobs_Plus_Core{
 				$limit = intval($this->get_setting('pro->max_records', 1) );
 				if( !current_user_can('create_pros') ) {
 					wp_redirect( add_query_arg('jbp_error',
-					urlencode(sprintf(__('You do not have the permissions to enter a %s.', $this->text_domain), $this->pro_obj->labels->new_item) ),
+					urlencode(sprintf(__('You do not have the permissions to enter a %s.', $this->text_domain), $this->pro_labels->new_item) ),
 					get_post_type_archive_link('jbp_pro') ) );
 					exit;
 				} elseif( !current_user_can('edit_pros') ) {
 					wp_redirect(add_query_arg('jbp_error',
-					urlencode(sprintf(__('You do not have permission to edit this listing.', $this->text_domain), $this->pro_obj->labels->singular_name) ),
+					urlencode(sprintf(__('You do not have permission to edit this listing.', $this->text_domain), $this->pro_labels->singular_name) ),
 					get_post_type_archive_link('jbp_pro') ) );
 					exit;
 				} elseif( !get_query_var('edit') && $this->count_user_posts_by_type(get_current_user_id(), 'jbp_job') >= $limit) {
 					wp_redirect(add_query_arg('jbp_error',
-					urlencode(sprintf(__('You have exceeded your quota of %s %s.', $this->text_domain), $limit, $this->pro_obj->labels->name) ),
+					urlencode(sprintf(__('You have exceeded your quota of %s %s.', $this->text_domain), $limit, $this->pro_labels->name) ),
 					get_post_type_archive_link('jbp_pro') ) );
 					exit;
 				}
@@ -863,15 +863,15 @@ class Jobs_Plus_Core{
 		$post_type = get_query_var('post_type');
 		if(is_search() && in_array($post_type, array('jbp_job', 'jbp_pro') ) ){
 			switch ($post_type) {
-				case 'jbp_pro': return sprintf('%s &raquo; Search &raquo; %s', $this->pro_obj->labels->name, $_GET['s']); break;
-				case 'jbp_job': return sprintf('%s &raquo; Search &raquo; %s', $this->job_obj->labels->name, $_GET['s']); break;
+				case 'jbp_pro': return sprintf('%s &raquo; Search &raquo; %s', $this->pro_labels->name, $_GET['s']); break;
+				case 'jbp_job': return sprintf('%s &raquo; Search &raquo; %s', $this->job_labels->name, $_GET['s']); break;
 				default: return $title;
 			}
 		}
 
 		//archive titles
 		if ( is_post_type_archive(array('jbp_job', 'jbp_pro') ) ){
-			return post_type_archive_title();
+			return post_type_archive_title(null, false);
 		}
 		return $title;
 	}
@@ -1044,23 +1044,27 @@ class Jobs_Plus_Core{
 		if( !is_main_query() || is_admin() ) return $clauses;
 
 		if(is_post_type_archive('jbp_pro') ) {
-			$clauses['where']  .= $wpdb->prepare(' AND (%1$spp_members.expiration > %2$d)', $wpdb->prefix, time() );
-			$clauses['where']  .= $wpdb->prepare(' AND (%1$spp_members.level = \'gold\')', $wpdb->prefix);
-			$clauses['where']  .= $wpdb->prepare(' AND (%1$susermeta.meta_key = \'bb_reputation\' OR %1$susermeta.meta_key = NULL) ', $wpdb->prefix);
-
-			$clauses['join']    = $wpdb->prepare(' LEFT JOIN %1$susers on (%1$susers.ID = %1$sposts.post_author)', $wpdb->prefix );
-			$clauses['join']   .= $wpdb->prepare(' LEFT JOIN %1$susermeta on (%1$susermeta.user_id = %1$susers.ID)', $wpdb->prefix );
-			$clauses['join']   .= $wpdb->prepare(' LEFT JOIN %1$spp_members on (%1$spp_members.user_id = %1$susers.ID) ', $wpdb->prefix );
-
-			$clauses['orderby'] = $wpdb->prepare(' CAST(%1$susermeta.meta_value AS SIGNED) DESC ', $wpdb->prefix);
-
-			$clauses['limits']  = sprintf(' LIMIT 0,%s ', intval( $this->get_setting( 'job->per_page', 48) ) );
+//			$clauses['where']  .= $wpdb->prepare(' AND (%1$spp_members.expiration > %2$d)', $wpdb->prefix, time() );
+//			$clauses['where']  .= $wpdb->prepare(' AND (%1$spp_members.level = \'gold\')', $wpdb->prefix);
+//			$clauses['where']  .= $wpdb->prepare(' AND (%1$susermeta.meta_key = \'bb_reputation\' OR %1$susermeta.meta_key = NULL) ', $wpdb->prefix);
+//
+//			$clauses['join']    = $wpdb->prepare(' LEFT JOIN %1$susers on (%1$susers.ID = %1$sposts.post_author)', $wpdb->prefix );
+//			$clauses['join']   .= $wpdb->prepare(' LEFT JOIN %1$susermeta on (%1$susermeta.user_id = %1$susers.ID)', $wpdb->prefix );
+//			$clauses['join']   .= $wpdb->prepare(' LEFT JOIN %1$spp_members on (%1$spp_members.user_id = %1$susers.ID) ', $wpdb->prefix );
+//
+//			$clauses['orderby'] = $wpdb->prepare(' CAST(%1$susermeta.meta_value AS SIGNED) DESC ', $wpdb->prefix);
+//
+//			$clauses['limits']  = sprintf(' LIMIT 0,%s ', intval( $this->get_setting( 'job->per_page', 48) ) );
 		}
 		elseif(is_post_type_archive('jbp_job') ) {
 			//Sort order
 			//$sortby = json_decode(stripslashes($_COOKIE['prjSort']) );
 			$sortby = empty($_GET['prj-sort']) ? '' : $_GET['prj-sort'];
-			$clauses['orderby'] = $wpdb->prepare(" %sposts.post_date DESC", $wpdb->prefix);
+
+			$clauses['orderby'] = "{$wpdb->posts}.post_date DESC";
+			//sprintf('%s.post_date DESC', $wpdb->posts);
+
+			//$clauses['orderby'] = $wpdb->prepare(" %sposts.post_date DESC", $wpdb->prefix);
 			if( !empty($sortby) ){
 				if($sortby[0]->value == 'ending'){
 					$clauses['orderby'] = $wpdb->prepare(" STR_TO_DATE(%spostmeta.meta_value, '%%b %%e, %%Y') DESC", $wpdb->prefix);
@@ -1076,7 +1080,7 @@ class Jobs_Plus_Core{
 		if ( !$query->is_main_query() )
 		return $query;
 
-		//printf('<pre>%s</pre>', print_r($query, true) );
+		//printf('<pre>%s</pre>', print_r($query, true) ); 
 		//		return $query;
 		//Check for Custom post_type searches
 
@@ -1106,49 +1110,15 @@ class Jobs_Plus_Core{
 		if(is_post_type_archive('jbp_job')
 		&& !is_admin() ){
 
-			$query->set('meta_key', '_ct_jbp_job_Due');
-			$query->set('orderby', 'meta_value');
-			$query->set( 'posts_per_page', intval( $this->get_setting( 'project->per_page', 20) ) );
-
-			//			//jobs_category
-			//			//$cats = json_decode(stripslashes($_COOKIE['prjSearchCategories']) );
-			//			if(!empty($cats) ){
-			//				$terms = array();
-			//				foreach((array)$cats as $cat){
-			//					$terms[] = $cat->value;
-			//				}
-			//				$tax_query = array(
-			//				'relation' => 'OR',
-			//				array(
-			//				'taxonomy' => 'jbp_category',
-			//				'field' => 'term_id',
-			//				'terms' => $terms,
-			//				)
-			//				);
-			//				$query->set( 'tax_query', $tax_query );
-			//			}
-			//
-			//			//Price Slider
-			//			//$price = json_decode(stripslashes($_COOKIE['prjSearchPrice']) );
-			//			if(!empty($price) ){
-			//				$meta_query = array(
-			//				'relation' => 'OR',
-			//				array(
-			//				'key' => '_ct_jbp_job_Budget_text',
-			//				'value' => array($price->min, $price->max),
-			//				'compare' => 'BETWEEN',
-			//				'type' => 'NUMERIC',
-			//				)
-			//				);
-			//				$query->set( 'meta_query', $meta_query );
-			//			}
-
+//			$query->set('meta_key', '_ct_jbp_job_Due');
+//			$query->set('orderby', 'meta_value');
+			$query->set( 'posts_per_page', intval( $this->get_setting( 'job->per_page', 20) ) );
 		}
 
 		if(is_post_type_archive('jbp_pro')
 		&& is_main_query()
 		&& !is_admin() ){
-			//$query->set('posts_per_page', 1);
+			$query->set( 'posts_per_page', intval( $this->get_setting( 'pro->per_page', 48) ) );
 		}
 		return $query;
 	}
@@ -1882,7 +1852,7 @@ class Jobs_Plus_Core{
 
 	function job_browse_btn_sc( $atts, $content = null ) {
 		extract( shortcode_atts( array(
-		'text' => sprintf(__('Browse %s', $this->text_domain),$this->job_obj->labels->name),
+		'text' => sprintf(__('Browse %s', $this->text_domain),$this->job_labels->name),
 		'view' => 'both', //loggedin, loggedout, both
 		'class' => '',
 		), $atts ) );
@@ -1898,7 +1868,7 @@ class Jobs_Plus_Core{
 
 	function pro_browse_btn_sc( $atts, $content = null ) {
 		extract( shortcode_atts( array(
-		'text' => sprintf(__('Browse %s', $this->text_domain),$this->pro_obj->labels->name),
+		'text' => sprintf(__('Browse %s', $this->text_domain),$this->pro_labels->name),
 		'view' => 'both', //loggedin, loggedout, both
 		'class' => '',
 		), $atts ) );
@@ -1914,7 +1884,7 @@ class Jobs_Plus_Core{
 
 	function job_post_btn_sc( $atts, $content = null ) {
 		extract( shortcode_atts( array(
-		'text' => sprintf(__('Post a %s', $this->text_domain),$this->job_obj->labels->singular_name),
+		'text' => sprintf(__('Post a %s', $this->text_domain),$this->job_labels->singular_name),
 		'view' => 'both', //loggedin, loggedout, both
 		'class' => '',
 		), $atts ) );
@@ -1930,7 +1900,7 @@ class Jobs_Plus_Core{
 
 	function pro_post_btn_sc( $atts, $content = null ) {
 		extract( shortcode_atts( array(
-		'text' => sprintf(__('Post an %s', $this->text_domain),$this->pro_obj->labels->singular_name),
+		'text' => sprintf(__('Post an %s', $this->text_domain),$this->pro_labels->singular_name),
 		'view' => 'both', //loggedin, loggedout, both
 		'class' => '',
 		), $atts ) );

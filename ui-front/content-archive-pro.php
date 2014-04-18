@@ -6,19 +6,17 @@
 * @license GPL2+
 */
 
-wp_enqueue_script('jquery-masonry');
+wp_enqueue_script('masonry');
 wp_enqueue_script('imagesloaded');
 
 ?>
-<?php echo do_action('jbp_error'); ?>
-<?php echo do_action('jbp_notice'); ?>
-
-<?php $this->pro_search_form(); ?>
-
 <div class="pro-archive-wrapper">
-	<?php if( !have_posts()): ?>
-	<h2><?php _e('No Pros Found', JBP_TEXT_DOMAIN); ?></h2>
-	<?php else: ?><!-- have_posts -->
+	<?php echo do_action('jbp_error'); ?>
+	<?php echo do_action('jbp_notice'); ?>
+
+	<?php $this->pro_search_form(); ?>
+
+	<?php if( have_posts()): ?>
 
 	<div id="pro-grid-container">
 		<div class="pro-grid-sizer"></div>
@@ -36,6 +34,8 @@ wp_enqueue_script('imagesloaded');
 		<?php endif; ?>
 
 		<?php endwhile; ?><!-- have_posts -->
+		<?php else: ?><!-- have_posts -->
+		<h2><?php printf( __('No %s Entered Yet', JBP_TEXT_DOMAIN), $this->pro_labels->name ); ?></h2>
 
 		<?php endif; ?><!-- have_posts -->
 	</div>
@@ -69,6 +69,5 @@ wp_enqueue_script('imagesloaded');
 
 
 	});
-
 </script>
 

@@ -205,27 +205,33 @@ a.job-add{
 }
 
 /* Archive */
+.job-grid-container{
+	width: 100%;
+}
+
 .job-grid-sizer{
-	width: 25%;
+	width: 50%;
 }
 
 .job-excerpt{
 	position: relative;
 	display: table;
 	height: 240px;
-	font-size: 14px;
+	font-size: .9em;
 	border: 1px solid #b3b3b3;
+	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 .job-excerpt.small{
-	width: 240px;
+	width: 50%;
 }
 .job-excerpt.medium{
-	width: 480px;
+	width: 100%;
 }
 .job-excerpt.large{
-	width: 720px;
+	width: 100%;
 }
 
 .job-item{
@@ -240,7 +246,6 @@ a.job-add{
 
 .job-terms{
 	position: relative;
-	bottom: -2em;
 }
 
 .job-footer{

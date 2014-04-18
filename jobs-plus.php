@@ -56,15 +56,15 @@ define( 'JQUERY_ELLIPSIS',         'v1.0.8' );
 define( 'JQUERY_IFRAME_TRANSPORT', 'v1.1'   );
 define( 'JQUERY_MAGNIFIC_POPUP',   'v0.9.5' );
 define( 'JQUERY_RATEIT',           'v1.0.9' );
-define( 'MASONRY',                 'v3.1.2' );
 define( 'SELECT2',                 'v3.4.3' );
+define( 'MASONRY',                 'v3.1.5' );
 
 //metadata keys
 define('JBP_POST_VIEWS_KEY',   '_jbp_post_views_count');
 define('JBP_PRO_CERTIFIED_KEY','_jbp_pro_certified');
 define('JBP_JOB_EXPIRES_KEY',  '_jbp_job_expires');
 
-//Rating  metadat keys
+//Rating  metadata keys
 define('JBP_PRO_RATING_KEY',    '_jbp_pro_rating');
 define('JBP_PRO_AVERAGE_KEY',   '_jbp_pro_average');
 define('JBP_PRO_VOTERS_KEY' ,   '_jbp_pro_voters');

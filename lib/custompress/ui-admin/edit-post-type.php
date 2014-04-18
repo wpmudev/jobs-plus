@@ -11,6 +11,7 @@ if(is_network_admin()){
 if( !isset( $post_type['rewrite']['ep_mask'] ) ) {
 	$post_type['rewrite']['ep_mask'] = EP_PERMALINK;
 }
+
 ?>
 
 <h3><?php _e('Edit Post Type', $this->text_domain); ?></h3>

@@ -8,7 +8,7 @@
 
 global $post, $CustomPress_Core, $Jobs_Plus_Core, $wp_query;
 
-wp_enqueue_script('jquery-masonry');
+wp_enqueue_script('masonry');
 wp_enqueue_script('jquery-ellipsis');
 
 //Need to prevent infinite loop since you can't call have_posts in the loop

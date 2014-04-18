@@ -30,7 +30,7 @@ switch($wp_query->current_post % 6){
 <div class="job-excerpt <?php echo $size; ?> group" data-permalink="<?php esc_attr_e(get_permalink(get_the_ID())); ?>" >
 
 	<div class="job-item <?php echo $color; ?>">
-		<h2><a href="<?php esc_attr_e(get_permalink(get_the_ID())); ?>" class="job-show" title="<?php the_title(); ?>" ><?php the_title(); ?></a></h2>
+		<a href="<?php esc_attr_e(get_permalink(get_the_ID())); ?>" class="job-show" title="<?php the_title(); ?>" ><?php the_title(); ?></a>
 		<div class="ellipsis">
 			<?php the_content(); ?>
 		</div>

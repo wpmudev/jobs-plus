@@ -25,35 +25,35 @@ $job_obj = get_post_type_object('jbp_job');
 			</p>
 			<table class="form-table">
 				<tr>
-					<th scope="row"><?php printf( __('Add %s Button', JBP_TEXT_DOMAIN), $job_obj->labels->singular_name);?></th>
+					<th scope="row"><?php printf( __('Add %s Button', JBP_TEXT_DOMAIN), $job_labels->singular_name);?></th>
 					<td>
-						<code><strong>[add_job_btn text="<?php printf( esc_attr__('Add %s', JBP_TEXT_DOMAIN), $job_obj->labels->singular_name);?>" view="loggedin | loggedout | both" class=""]</strong></code> or
-						<br /><code><strong>[add_job_btn view="loggedin | loggedout | both" class=""]&lt;img src="<?php _e('someimage.jpg', JBP_TEXT_DOMAIN); ?>" /&gt;<?php printf( esc_attr__('Add %s', JBP_TEXT_DOMAIN), $job_obj->labels->singular_name);?>[/add_job_btn]</strong></code>
-						<br /><span class="description"><?php printf( __( 'Links to the Add %s Page. Generates a &lt;button&gt; &lt;/button&gt; with the HTML contents you define.', JBP_TEXT_DOMAIN ), $job_obj->labels->singular_name) ?></span>
+						<code><strong>[add_job_btn text="<?php printf( esc_attr__('Add %s', JBP_TEXT_DOMAIN), $job_labels->singular_name);?>" view="loggedin | loggedout | both" class=""]</strong></code> or
+						<br /><code><strong>[add_job_btn view="loggedin | loggedout | both" class=""]&lt;img src="<?php _e('someimage.jpg', JBP_TEXT_DOMAIN); ?>" /&gt;<?php printf( esc_attr__('Add %s', JBP_TEXT_DOMAIN), $job_labels->singular_name);?>[/add_job_btn]</strong></code>
+						<br /><span class="description"><?php printf( __( 'Links to the Add %s Page. Generates a &lt;button&gt; &lt;/button&gt; with the HTML contents you define.', JBP_TEXT_DOMAIN ), $job_labels->singular_name) ?></span>
 					</td>
 				</tr>  
 				<tr>
-					<th scope="row"><?php printf( __('Add %s Button', JBP_TEXT_DOMAIN), $pro_obj->labels->singular_name);?></th>
+					<th scope="row"><?php printf( __('Add %s Button', JBP_TEXT_DOMAIN), $pro_labels->singular_name);?></th>
 					<td>
-						<code><strong>[add_pro_btn text="<?php printf( esc_attr__('Add %s', JBP_TEXT_DOMAIN), $pro_obj->labels->singular_name);?>" view="loggedin | loggedout | both" class=""]</strong></code> or
-						<br /><code><strong>[add_pro_btn view="loggedin | loggedout | both" class=""]&lt;img src="<?php _e('someimage.jpg', JBP_TEXT_DOMAIN); ?>" /&gt;<?php printf( esc_attr__('Add %s', JBP_TEXT_DOMAIN), $pro_obj->labels->singular_name);?>[/add_pro_btn]</strong></code>
-						<br /><span class="description"><?php printf(esc_attr__( 'Links to the Add %s Page. Generates a &lt;button&gt; &lt;/button&gt; with the HTML contents you define.', JBP_TEXT_DOMAIN ), $pro_obj->labels->singular_name); ?></span>
+						<code><strong>[add_pro_btn text="<?php printf( esc_attr__('Add %s', JBP_TEXT_DOMAIN), $pro_labels->singular_name);?>" view="loggedin | loggedout | both" class=""]</strong></code> or
+						<br /><code><strong>[add_pro_btn view="loggedin | loggedout | both" class=""]&lt;img src="<?php _e('someimage.jpg', JBP_TEXT_DOMAIN); ?>" /&gt;<?php printf( esc_attr__('Add %s', JBP_TEXT_DOMAIN), $pro_labels->singular_name);?>[/add_pro_btn]</strong></code>
+						<br /><span class="description"><?php printf(esc_attr__( 'Links to the Add %s Page. Generates a &lt;button&gt; &lt;/button&gt; with the HTML contents you define.', JBP_TEXT_DOMAIN ), $pro_labels->singular_name); ?></span>
 					</td>
 				</tr>
 				<tr>
 					<th scope="row"><?php _e( ' Jobs Archive Button:', JBP_TEXT_DOMAIN ) ?></th>
 					<td>
-						<code><strong>[job_archive_btn text="<?php printf( esc_attr__('Browse %s', JBP_TEXT_DOMAIN), $job_obj->labels->name);?>" view="loggedin | loggedout | both" class=""]</strong></code> or
-						<br /><code><strong>[job_archive_btn view="loggedin | loggedout | both" class=""]&lt;img src="<?php _e('someimage.jpg', JBP_TEXT_DOMAIN); ?>" /&gt;<?php printf( esc_attr__('Browse %s', JBP_TEXT_DOMAIN), $job_obj->labels->name);?>[/job_archive_btn]</strong></code>
-						<br /><span class="description"><?php printf(__( 'Links to the Job Archive Page. Generates a &lt;button&gt; &lt;/button&gt; with the HTML contents you define.', JBP_TEXT_DOMAIN ), $job_obj->labels->singular_name ); ?></span>
+						<code><strong>[job_archive_btn text="<?php printf( esc_attr__('Browse %s', JBP_TEXT_DOMAIN), $job_labels->name);?>" view="loggedin | loggedout | both" class=""]</strong></code> or
+						<br /><code><strong>[job_archive_btn view="loggedin | loggedout | both" class=""]&lt;img src="<?php _e('someimage.jpg', JBP_TEXT_DOMAIN); ?>" /&gt;<?php printf( esc_attr__('Browse %s', JBP_TEXT_DOMAIN), $job_labels->name);?>[/job_archive_btn]</strong></code>
+						<br /><span class="description"><?php printf(__( 'Links to the Job Archive Page. Generates a &lt;button&gt; &lt;/button&gt; with the HTML contents you define.', JBP_TEXT_DOMAIN ), $job_labels->singular_name ); ?></span>
 					</td>
 				</tr>
 				<tr>
 					<th scope="row"><?php _e( 'Pro Archive Button:', JBP_TEXT_DOMAIN ) ?></th>
 					<td>
-						<code><strong>[pro_archive_btn text="<?php printf( esc_attr__('Browse %s', JBP_TEXT_DOMAIN), $pro_obj->labels->name);?>" view="loggedin | loggedout | both" class=""]</strong></code> or
-						<br /><code><strong>[pro_archive_btn view="loggedin | loggedout | both" class=""]&lt;img src="<?php _e('someimage.jpg', JBP_TEXT_DOMAIN); ?>" /&gt;<?php printf( esc_attr__('Browse %s', JBP_TEXT_DOMAIN), $pro_obj->labels->name);?>[/pro_archive_btn]</strong></code>
-						<br /><span class="description"><?php printf( __( 'Links to the %s Archive Page. Generates a &lt;button&gt; &lt;/button&gt; with the HTML contents you define.', JBP_TEXT_DOMAIN ), $pro_obj->labels->singular_name) ?></span>
+						<code><strong>[pro_archive_btn text="<?php printf( esc_attr__('Browse %s', JBP_TEXT_DOMAIN), $pro_labels->name);?>" view="loggedin | loggedout | both" class=""]</strong></code> or
+						<br /><code><strong>[pro_archive_btn view="loggedin | loggedout | both" class=""]&lt;img src="<?php _e('someimage.jpg', JBP_TEXT_DOMAIN); ?>" /&gt;<?php printf( esc_attr__('Browse %s', JBP_TEXT_DOMAIN), $pro_labels->name);?>[/pro_archive_btn]</strong></code>
+						<br /><span class="description"><?php printf( __( 'Links to the %s Archive Page. Generates a &lt;button&gt; &lt;/button&gt; with the HTML contents you define.', JBP_TEXT_DOMAIN ), $pro_labels->singular_name) ?></span>
 					</td>
 				</tr>
 			</table>

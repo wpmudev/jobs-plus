@@ -16,7 +16,7 @@ $range = 4;
 $showitems = ($range * 2) + 1;
 
 ?>
-<div class="jbp-navigation"><!--begin .jbp-navigation-->
+<div class="jbp-navigation group" ><!--begin .jbp-navigation-->
 
 	<?php if ( $pages > 1 ) : ?>
 
@@ -49,5 +49,4 @@ $showitems = ($range * 2) + 1;
 	</div> <!--end .jbp-pagination-->
 
 	<?php endif; ?>
-	<div style="clear: both"></div>
 </div><!--end .jbp-navigation -->

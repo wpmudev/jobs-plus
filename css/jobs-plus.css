@@ -21,6 +21,58 @@
 	zoom: 1; /* For IE 6/7 (trigger hasLayout) */
 }
 
+.active-sort a{
+	color: #41B3DD;
+
+}
+
+.inactive-sort a{
+	color: #ccc;
+}
+
+.job-search-wrap{
+	
+}
+.job-search-wrap .job-meta ul{
+	border: 1px solid #aaa;
+	box-shadow: -2px 2px 8px 0 rgba( 178, 178, 178, .4 );
+	padding: 0;
+	margin: 0;
+	position: relative;
+	text-transform: uppercase;
+}
+
+.job-search-wrap .job-meta ul li{
+	list-style-type: none;
+	margin: 0;
+	padding: 5px 5px;
+	text-align: center;
+	border-right: 1px solid #aaa;
+	float: left;
+}
+
+.job-search-wrap .job-meta ul li:last-child{
+	float: none;
+	overflow: hidden;
+	padding: 0px 5px;
+}
+
+input#searchbox-jobs{
+	width: 100%;
+	margin: 0;
+	border: none;
+}
+
+input[type="submit"].submit-jobs-search{ /* stretchy button */
+	background: #666 url("../img/search-button-icon.png") no-repeat center center;
+	position: absolute;
+	top: 0; bottom: 0; right: 0;
+	padding: 0;
+	width: 40px;
+}
+
+
+
 .show-on-edit{ display: none;}
 
 .error {
@@ -41,13 +93,13 @@ div.updated, div.error{
 }
 
 div.updated p, div.error p {
-    margin: 0.5em 0;
-    padding: 2px;
+	margin: 0.5em 0;
+	padding: 2px;
 }
 
 label.error, label.updated{
-    margin: 0.5em 0;
-    padding: 2px 12px;
+	margin: 0.5em 0;
+	padding: 2px 12px;
 }
 
 .editfield {
@@ -78,5 +130,42 @@ label.error, label.updated{
 
 .dialogcenter{
 	text-align: center;
+}
+
+.jbp-navigation {
+	margin-top:1em;
+}
+
+.jbp-pagination {
+	clear:both;
+	font-size:11px;
+	line-height:13px;
+	padding:0;
+	position:relative;
+	z-index:99;
+	float: right;
+}
+
+.jbp-pagination .current {
+	background:#aaa;
+	color:#fff;
+	padding:6px 9px 5px;
+	border-radius: 12px;
+}
+
+.jbp-pagination a:hover {
+	background:#aaa;
+	color:#fff;
+}
+
+.jbp-pagination span,.jbp-pagination a {
+	background:transparent;
+	color:#444;
+	display:block;
+	float:left;
+	margin:2px 2px 2px 0;
+	padding:6px 9px 5px;
+	text-decoration:none;
+	width:auto;
 }
 

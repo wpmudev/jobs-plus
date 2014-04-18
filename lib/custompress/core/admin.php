@@ -429,6 +429,8 @@ class CustomPress_Core_Admin extends CustomPress_Content_Types {
 				'can_export'          => (bool) $params['can_export'],
 				'cf_columns'          => $params['cf_columns'],
 				);
+				
+				$args['capabilities'] = array('create_posts' => "create_{$args['capability_type']}s" );
 
 				// Remove empty labels so we can use the defaults
 				foreach( $args['labels'] as $key => $value ) {

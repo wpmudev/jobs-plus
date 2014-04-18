@@ -1,5 +1,7 @@
 <?php if (!defined('ABSPATH')) die('No direct access allowed!'); 
 
+//var_dump($this->all_capabilities('jbp_job') );
+
 if ( is_network_admin() )
 $post_types = get_site_option('ct_custom_post_types');
 else
