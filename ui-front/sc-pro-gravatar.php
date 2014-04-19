@@ -9,17 +9,20 @@
 global $post;
 $rating = 0;
 ?>
-<div class="pro-gravatar">
+<section class="pro-gravatar">
+	<div class="pro-title"><?php the_title() ?></div>
 	<div class="jbp-gravatar">
 		<div class="jbp-gravatar-border group">
 			<?php echo get_avatar_or_gravatar($post->post_author, do_shortcode('[ct id="_ct_jbp_pro_Contact_Email"]') ,160); ?>
 		</div>
 	</div>
 	<div class="jbp-stats">
-		<div class="pro-title"><?php the_title() ?></div>
+		<?php if (current_user_can( EDIT_PRO, $post->ID )) { ?>
+		<a href="http://gravatar.com/emails/" target="_blank" class="gravatar_link">Change gravatar</a>
+		<?php } ?>
 		<div class="rating"><?php echo the_rating(); ?><br /><?php echo $rating; ?></div>
 	</div>
 
-	<div class="pro-certify clearfix">
+	<div class="pro-certify group">
 	</div>
-</div>
+</section>

@@ -31,7 +31,7 @@
 }
 
 .job-search-wrap{
-	
+
 }
 .job-search-wrap .job-meta ul{
 	border: 1px solid #aaa;
@@ -71,8 +71,6 @@ input[type="submit"].submit-jobs-search{ /* stretchy button */
 	width: 40px;
 }
 
-
-
 .show-on-edit{ display: none;}
 
 .error {
@@ -89,6 +87,7 @@ input[type="submit"].submit-jobs-search{ /* stretchy button */
 }
 
 div.updated, div.error{
+	margin: 1em 0;
 	padding: 2px 12px;
 }
 
@@ -110,12 +109,13 @@ label.error, label.updated{
 .editfield input[type="text"],
 .editfield textarea,
 .editfield select {
-	box-sizing: border-box;
-	-moz-box-sizing: border-box;
 	font-size:1.2em;
 	margin:0;
 	padding:6px;
 	width:100%;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
 }
 
 .editable img{
@@ -169,3 +169,33 @@ label.error, label.updated{
 	width:auto;
 }
 
+.jbp-certify {
+	background-image: url("../img/jbp-certify.png");
+	background-repeat: no-repeat;
+	font-size: 13px;
+	height: 16px;
+	overflow: hidden;
+	position: absolute;
+	right: 5px;
+	text-indent: 200px;
+	top: 5px;
+	transition: width 0.4s ease 0s;
+	width: 16px;
+	word-wrap: normal;
+}
+
+.pro-archive:hover .jbp-certify{
+	width: 91%;
+	padding-left: 16px;
+	text-indent: 5px;
+	color: #0090ff;
+	background-color: #f3f3f2;
+	padding-top: 2px;
+	padding-bottom: 3px;
+	background-position: 5px center;
+	padding-right: 0px;
+	margin-right: 0px;
+	right: 0px;
+	top: 0px;
+	border-bottom: 1px solid #cccccc;
+}

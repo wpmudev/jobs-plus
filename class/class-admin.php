@@ -130,7 +130,7 @@ class Jobs_Plus_Admin extends Jobs_Plus_Core{
 
 		function on_personal_options($profileuser = 0){
 			if ( !current_user_can( 'promote_users') || !$this->get_setting('general->use_certification') ) return false;
-			$certification = $this->get_setting('general->certification', __('Jobs Plus + Certified', JBP_TEXT_DOMAIN) );
+			$certification = $this->get_setting('general->certification', __('Jobs + Certified', JBP_TEXT_DOMAIN) );
 			?>
 			<tr class="jbp-certified">
 				<th scope="row"><?php echo $certification; ?></th>
@@ -139,7 +139,7 @@ class Jobs_Plus_Admin extends Jobs_Plus_Core{
 						<legend class="screen-reader-text"><span><?php echo $certification; ?></span></legend>
 						<label for="jbp_certified">
 							<input name="jbp_certified" type="checkbox" id="jbp_certified" value="1"<?php checked( is_certified( $profileuser->ID ) ); ?> />
-							<?php printf( __('User is ', JBP_TEXT_DOMAIN ), $certification); ?>
+							<?php printf( __('User is %s', JBP_TEXT_DOMAIN ), $certification); ?>
 						</label><br />
 					</fieldset>
 				</td>

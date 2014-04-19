@@ -6,7 +6,7 @@
 * @license GPL2+
 */
 
-global $CustomPress_Core, $wp_query;
+global $CustomPress_Core, $wp_query, $post;
 
 function days_hours( $expires ){
 	$date = intval($expires);
@@ -86,7 +86,7 @@ $project_budget = ($project_budget == '' ? 'N/A' : $project_budget);
 				</div>
 			</div>
 
-			<?php if( current_user_can('edit_jobs') ): ?>
+			<?php if( current_user_can( EDIT_JOB, $post->ID ) ): ?>
 			<span class="job-edit"><button class="jobs_button job-edit" onclick="window.location='<?php echo trailingslashit( get_permalink() ) . 'edit/'; ?>';">Edit</button></span>
 			<?php endif; ?>
 		</div>

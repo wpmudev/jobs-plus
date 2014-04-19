@@ -54,6 +54,7 @@ a.job-add{
 	width: 100%;
 	box-sizing: border-box;
 	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
 }
 
 .job-form-table input[type="text"].number{
@@ -205,8 +206,8 @@ a.job-add{
 }
 
 /* Archive */
-.job-grid-container{
-	width: 100%;
+#job-grid-container{
+	position: relative;
 }
 
 .job-grid-sizer{
@@ -219,9 +220,9 @@ a.job-add{
 	height: 240px;
 	font-size: .9em;
 	border: 1px solid #b3b3b3;
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
 	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
 }
 
 .job-excerpt.small{

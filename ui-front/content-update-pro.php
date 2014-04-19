@@ -338,10 +338,10 @@ $editor_settings =   array(
 			$portfolio.editable().editable('show');
 		});
 
-		<?php if(current_user_can('edit_pros') ): ?>
+		<?php if(current_user_can( EDIT_PROS ) ): ?>
 
 		var $toggleDisabled = $('#toggle-edit');
-		var can_edit = <?php echo current_user_can('edit_pros') ? 'true' : 'false'; ?>;
+		var can_edit = <?php echo current_user_can( EDIT_PROS ) ? 'true' : 'false'; ?>;
 		popupEnabled = false;
 		//Toggle whether edit or popup
 		$toggleDisabled.click( function(){
@@ -400,10 +400,10 @@ $editor_settings =   array(
 
 		$editables.editable({dataType: 'json'});
 
-		<?php if(current_user_can('edit_jobs') ): ?>
+		<?php if(current_user_can( EDIT_JOBS ) ): ?>
 
 		var $toggleDisabled = $('#toggle-edit');
-		var can_edit = <?php echo current_user_can('edit_pros') ? 'true' : 'false'; ?>;
+		var can_edit = <?php echo current_user_can( EDIT_PROS ) ? 'true' : 'false'; ?>;
 		popupEnabled = false;
 		//Toggle whether edit or popup
 		$toggleDisabled.click( function(){

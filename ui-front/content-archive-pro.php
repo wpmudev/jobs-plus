@@ -11,6 +11,7 @@ wp_enqueue_script('imagesloaded');
 
 ?>
 <div class="pro-archive-wrapper">
+		<?php dynamic_sidebar('pro-archive-widget'); ?>
 	<?php echo do_action('jbp_error'); ?>
 	<?php echo do_action('jbp_notice'); ?>
 
@@ -23,10 +24,10 @@ wp_enqueue_script('imagesloaded');
 
 		<?php while( have_posts() ): the_post(); ?>
 
-		<?php if($wp_query->current_post > 1): ?>
+		<?php if($wp_query->current_post > 4): ?>
 		<?php echo do_shortcode('[jbp-pro-archive size="small"]'); ?>
 
-		<?php elseif($wp_query->current_post > 0): ?>
+		<?php elseif($wp_query->current_post > 2): ?>
 		<?php echo do_shortcode('[jbp-pro-archive size="medium"]'); ?>
 
 		<?php else: ?>
@@ -39,7 +40,6 @@ wp_enqueue_script('imagesloaded');
 
 		<?php endif; ?><!-- have_posts -->
 	</div>
-
 </div>
 
 <script type="text/javascript">
@@ -54,7 +54,7 @@ wp_enqueue_script('imagesloaded');
 				//,stamp: $(".pros-stamp")
 			});
 		});
-
+		
 		$(".pro-archive").click( function(){
 			window.location = $(this).data('permalink');
 		});

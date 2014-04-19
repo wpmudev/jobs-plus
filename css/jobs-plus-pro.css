@@ -189,30 +189,32 @@ ul.pro-content-editable li{
 	border: 1px solid #ddd;
 	text-align: center;
 	margin-bottom: 20px;
-	border-top-left-radius: 6px;
-	border-top-right-radius: 6px;
+	padding: 0;
 }
 
 .pro-gravatar .avatar{
 	width: auto;
 	height: auto;
-	border-radius: 5px;
+	border-radius: 50%;
 	float: none;
-	margin: auto;
 	padding: 0;
-	border: 0;
+	margin: auto;
+	border: 8px solid #fff;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
 }
+
 .jbp-gravatar-border{
-	padding: 10px;
-	background-color: #ddd;
-	border-radius: 6px;
+	padding: 5px;
 }
 
 .pro-archive-wrapper {
 	position: relative;
 }
 
-.pro-grid-container{
+#pro-grid-container{
+	position: relative;
 }
 
 .pro-grid-sizer{ width: 80px; }
@@ -249,7 +251,7 @@ ul.pro-content-editable li{
 
 .pro-archive .pro-archive-rating{
 	border-bottom: 1px solid #ddd;
-	margin: 4px 0;
+	margin: 2px 0 0 0;
 }
 
 .pro-archive .pro-archive-certify{

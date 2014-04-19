@@ -6,9 +6,10 @@
 * @license GPL2+
 */
 
-global $post, $Jobs_Plus_Core;
+global $post, $Jobs_Plus_Core, $wp_roles;
 
 $add_pro = false;
+$editing = false;
 //Are we adding a Listing?
 if ($post->ID == $Jobs_Plus_Core->add_pro_page_id) {
 	$add_pro = true;
@@ -18,15 +19,18 @@ if ($post->ID == $Jobs_Plus_Core->add_pro_page_id) {
 	$editing = false;
 }
 elseif (get_query_var('edit')) { //Or are we editing a listing?
-	$editing = current_user_can('edit_pro');
+	$editing = current_user_can( EDIT_PRO, $post->ID);
 	$link = get_permalink($post->ID);
 }
 
+wp_enqueue_script('jquery-form');
 wp_enqueue_script('jquery-ui-dialog');
 wp_enqueue_style('jqueryui-editable');
 wp_enqueue_script('jqueryui-editable');
 wp_enqueue_script('jqueryui-editable-ext');
 
+//var_dump( $editing );
+//var_dump( current_user_can( EDIT_PRO, $post->ID) );
 ?>
 
 <?php echo do_action('jbp_error'); ?>
@@ -111,7 +115,7 @@ wp_enqueue_script('jqueryui-editable-ext');
 				</div>
 				<div class="pro-content-wrapper pro-biography pro-content-editable">
 					<h3>Biography</h3>
-					<?php if(current_user_can('edit_pros') ): ?>
+					<?php if(current_user_can(EDIT_PRO, $post->ID) ): ?>
 					<span class="pro-edit"><button type="button" id="toggle-pro-edit" class="pro-button pro-edit-button hide-on-edit"><?php esc_html_e('Edit', JBP_TEXT_DOMAIN); ?></button></span>
 					<?php endif; ?>
 					<div class="editable"
@@ -163,13 +167,27 @@ wp_enqueue_script('jqueryui-editable-ext');
 			</div>
 		</div>
 		<div class="pro-left">
+			<div class="pros-certifed">
+				<?php if (current_user_can('promote_user') && current_user_can(EDIT_PROS) ): ?>
+				<div id="jbp_certified_form">
+					<?php wp_nonce_field('set_jbp_certified') ?>
+					<input type="hidden" name="action" value="set_jbp_certified" />
+					<input type="hidden" name="jbp_certified" value="0" />
+					<input type="hidden" name="user_id" value="<?php echo $post->post_author ?>" />
+					<label style="line-height: 1em;" ><input id="jbp_certified" type="checkbox" value="1" name="jbp_certified" <?php checked( $this->is_certified($post->post_author) ); ?> /> <?php _e('IS CERTIFIED?', JBP_TEXT_DOMAIN); ?>
+						<br /><?php echo 'User ID: ' . $post->post_author; ?>
+					</label>
+				</div>
+				<?php endif; ?>
+			</div>
+
 			<?php echo do_shortcode('[jbp-pro-gravatar]'); ?>
 			<div class="hide-on-edit">
 				<?php echo do_shortcode('[jbp-pro-contact-btn class="pro-contact"]'); ?>
 				<?php //echo do_shortcode('[pro_points]'); ?>
 			</div>
 
-			<?php if(current_user_can('edit_pros') ): ?>
+			<?php if(current_user_can(EDIT_PROS) ): ?>
 			<div class="show-on-edit">
 				<?php if($Jobs_Plus_Core->get_setting('pro->moderation->publish') ): ?>
 				<div class="pro-go-public">
@@ -208,7 +226,8 @@ wp_enqueue_script('jqueryui-editable-ext');
 		//Setup Globals
 		jbpAddPro = <?php echo $add_pro ? 'true':'false'; ?>;
 		jbpPopupEnabled = <?php echo ($editing || $add_pro) ? 'true':'false'; ?>;
-		canEditPro = <?php echo current_user_can('edit_pros') ? 'true' : 'false'; ?>;
+		canEditPro = <?php echo current_user_can(EDIT_PRO, $post->ID ) ? 'true' : 'false'; ?>;
+
 
 		jbpEditableDefaults();
 		$.fn.editable.defaults.pk = '<?php the_ID(); ?>';
@@ -217,6 +236,15 @@ wp_enqueue_script('jqueryui-editable-ext');
 
 		var $editables = $('.editable'); //Get a list of editable fields
 
+		$('#jbp_certified').on('change', function( e ) { 
+			e.preventDefault(); 
+			$.ajax( { 
+				url: '<?php echo admin_url('/admin-ajax.php'); ?>', 
+				type: 'post',
+				data: $('#jbp_certified_form input').serialize() 
+			});
+		});
+		
 		$editables.on('hidden', function(e, reason){
 			if(reason === 'save' || reason === 'nochange' || reason === 'cancel') {
 				var $next = $editables.eq( ($editables.index(this) + 1) % $editables.length );

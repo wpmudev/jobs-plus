@@ -29,6 +29,9 @@ $status_div = '';
 
 <div class="pro-archive pro-medium" data-permalink="<?php esc_attr_e(get_permalink(get_the_ID())); ?>" >
 	<div class="pro-archive-image">
+		<?php if( is_certified( $post->post_author ) ): ?>
+		<div class="jbp-certify"><?php echo $this->get_setting('general->certification', ''); ?></div>
+		<?php endif; ?>
 		<?php echo get_avatar_or_gravatar($post->post_author, do_shortcode('[ct id="_ct_jbp_pro_Contact_Email"]'), 160); ?>
 	</div>
 
@@ -69,6 +72,9 @@ $status_div = '';
 
 <div class="pro-archive pro-large" data-permalink="<?php esc_attr_e(get_permalink(get_the_ID())); ?>" >
 	<div class="pro-archive-image">
+		<?php if( is_certified( $post->post_author ) ): ?>
+		<div class="jbp-certify"><?php echo $this->get_setting('general->certification', ''); ?></div>
+		<?php endif; ?>
 		<?php echo get_avatar_or_gravatar($post->post_author, do_shortcode('[ct id="_ct_jbp_pro_Contact_Email"]'), 160); ?>
 	</div>
 
@@ -76,9 +82,6 @@ $status_div = '';
 	<div class="pro-archive-stats">
 		<ul>
 			<li class="pro-archive-rating"><?php the_rating(); ?></li>
-			<?php if($this->is_certified($author) ): ?>
-			<li class="pro-archive-certify"><?php echo $this->get_setting('general->certification'); ?></li>
-			<?php endif; ?>
 		</ul>
 	</div>
 

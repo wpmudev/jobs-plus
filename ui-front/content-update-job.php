@@ -262,7 +262,7 @@ wp_enqueue_script('jquery-ui-dialog');
 		<div class="job-tos"><?php echo nl2br( $tos_txt ); ?></div>
 		<?php endif; ?>
 
-		<?php if( current_user_can('edit_job', $post_ID) ): ?>
+		<?php if( current_user_can( EDIT_JOB, $post_ID) ): ?>
 		<div>
 			<?php wp_nonce_field( 'verify' ); ?>
 
@@ -306,7 +306,7 @@ wp_enqueue_script('jquery-ui-dialog');
 		//Setup Globals
 		jbpAddJob = <?php echo $add_job ? 'true':'false'; ?>;
 		jbpPopupEnabled = <?php echo ($editing || $add_job) ? 'true':'false'; ?>;
-		canEditJob = <?php echo current_user_can('edit_jobs') ? 'true' : 'false'; ?>;
+		canEditJob = <?php echo current_user_can( EDIT_JOBS ) ? 'true' : 'false'; ?>;
 
 		jbpEditableDefaults();
 		$.fn.editable.defaults.pk = '<?php the_ID(); ?>';

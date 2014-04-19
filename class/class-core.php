@@ -75,7 +75,7 @@ class Jobs_Plus_Core{
 
 		add_action('plugins_loaded', array(&$this, 'on_plugins_loaded') );
 		add_action('init', array(&$this, 'on_init') );
-		add_action('widgets_init', array(&$this, 'on_widgets_init') );
+		add_action('widgets_init', array(&$this, 'on_widgets_init'), 11 );
 		add_action('wp_loaded', array(&$this, 'create_virtual_pages') );
 		add_action('wp_print_scripts', array(&$this, 'on_print_scripts') );
 
@@ -85,6 +85,7 @@ class Jobs_Plus_Core{
 
 		//Ajax
 		add_action('wp_ajax_rate_pro', array(&$this, 'on_ajax_rate_pro') );
+		add_action('wp_ajax_set_jbp_certified', array(&$this, 'on_ajax_set_jbp_certified') );
 
 		add_action( 'wp_ajax_jbp_job', array( &$this, 'on_ajax_jbp_job' ) );
 		//add_action( 'wp_ajax_nopriv_jbp_job', array( &$this, 'on_ajax_jbp_job' ) );
@@ -269,15 +270,6 @@ class Jobs_Plus_Core{
 		'label_count'               => _n_noop( 'Virtual <span class="count">(%s)</span>', 'Virtual <span class="count">(%s)</span>' ),
 		) );
 
-		$this->pro_obj = get_post_type_object('jbp_pro');
-		$this->job_obj = get_post_type_object('jbp_job');
-
-		$this->pro_labels = $this->pro_obj->labels;
-		$this->job_labels = $this->job_obj->labels;
-
-		$this->pro_slug = $this->pro_obj->rewrite['slug'];
-		$this->job_slug = $this->job_obj->rewrite['slug'];
-		
 		//Set the pro-thumbnail size. DEFAULT to 160x120
 		$width = $this->get_setting('pro->thumb_width', 160);
 		$height = $this->get_setting('pro->thumb_height', 120);
@@ -295,22 +287,89 @@ class Jobs_Plus_Core{
 		//Need to register scripts and css early because we enqueue in
 		//template_redirect so we know the page amd can only load what and when needed.
 		$this->register_scripts();
+		$this->set_capability_defines();
 	}
 	
 	function on_widgets_init(){
+		$this->pro_obj = get_post_type_object('jbp_pro');
+		$this->job_obj = get_post_type_object('jbp_job');
+
+		$this->pro_labels = $this->pro_obj->labels;
+		$this->job_labels = $this->job_obj->labels;
+
+		$this->pro_slug = $this->pro_obj->rewrite['slug'];
+		$this->job_slug = $this->job_obj->rewrite['slug'];
+
 		// Declare widget areas
-//		if(function_exists('register_sidebar') ){
-//			register_sidebar(array(
-//			'id' => 'job-widget',
-//			'name' => 'Jobs Widget',
-//			'description' => sprintf(__('%s widget area', $this->text_domain), $this->job_labels->name),
-//			'before_widget' => '<div id="%1$s" class="widget %2$s">' . "\n",
-//			'after_widget' => "</div>\n",
-//			'before_title' => '<h2 class="widgettitle">',
-//			'after_title' => '</h2>'
-//			));
-//		}
+		if(function_exists('register_sidebar') ){
+			register_sidebar(array(
+			'id' => 'pro-widget',
+			'name' => sprintf(__('%s Widget', JBP_TEXT_DOMAIN), $this->pro_labels->name),
+			'description' => sprintf(__('Widget area at the top of the %s page.', $this->text_domain), $this->pro_labels->name),
+			'before_widget' => '<div id="%1$s" class="widget %2$s">' . "\n",
+			'after_widget' => "</div>\n",
+			'before_title' => '<h2 class="widgettitle">',
+			'after_title' => '</h2>'
+			));
+		}
+
+		if(function_exists('register_sidebar') ){
+			register_sidebar(array(
+			'id' => 'pro-archive-widget',
+			'name' => sprintf(__('%s Archive Widget', JBP_TEXT_DOMAIN), $this->pro_labels->name),
+			'description' => sprintf(__('Widget area at the top of the %s archive.', $this->text_domain), $this->pro_labels->name),
+			'before_widget' => '<div id="%1$s" class="widget %2$s">' . "\n",
+			'after_widget' => "</div>\n",
+			'before_title' => '<h2 class="widgettitle">',
+			'after_title' => '</h2>'
+			));
+		}
 		
+	}
+	
+	/**
+	* Since the capability type may change based on the naming and rewrite of jbp_pros and jbp_jobs
+	* use htese defines for capabilities testing instead of 'edit_pros' or 'edit jobs' strings
+	*/
+	function set_capability_defines(){
+		
+		//For jbp_pro capabilities
+		$singular_base = $this->pro_obj->capability_type;
+		$plural_base = $singular_base . 's';
+		define('EDIT_PRO',              "edit_{$singular_base}");
+		define('READ_PRO',              "read_{$singular_base}");
+		define('DELETE_PRO',            "delete_{$singular_base}");
+
+		define('CREATE_PROS',           "create_{$plural_base}");
+		define('EDIT_PROS',             "edit_{$plural_base}");
+		define('EDIT_OTHERS_PROS',      "edit_others_{$plural_base}");
+		define('EDIT_PRIVATE_PROS',     "edit_private_{$plural_base}");
+		define('EDIT_PUBLISHED_PROS',   "edit_published_{$plural_base}");
+		define('PUBLISH_PROS',          "publish_{$plural_base}");
+		define('READ_PRIVATE_PROS',     "read_private_{$plural_base}");
+		define('DELETE_PROS',           "delete_{$plural_base}");
+		define('DELETE_PRIVATE_PROS',   "delete_private_{$plural_base}");
+		define('DELETE_PUBLISHED_PROS', "delete_published_{$plural_base}");
+		define('DELETE_OTHERS_PROS',    "delete_other_{$plural_base}");
+		
+		//For jbp_job capabilities
+		$singular_base = $this->job_obj->capability_type;
+		$plural_base = $singular_base . 's';
+		define('EDIT_JOB',              "edit_{$singular_base}");
+		define('READ_JOB',              "read_{$singular_base}");
+		define('DELETE_JOB',            "delete_{$singular_base}");
+
+		define('CREATE_JOBS',           "create_{$plural_base}");
+		define('EDIT_JOBS',             "edit_{$plural_base}");
+		define('EDIT_OTHERS_JOBS',      "edit_others_{$plural_base}");
+		define('EDIT_PRIVATE_JOBS',     "edit_private_{$plural_base}");
+		define('EDIT_PUBLISHED_JOBS',   "edit_published_{$plural_base}");
+		define('PUBLISH_JOBS',          "publish_{$plural_base}");
+		define('READ_PRIVATE_JOBS',     "read_private_{$plural_base}");
+		define('DELETE_JOBS',           "delete_{$plural_base}");
+		define('DELETE_PRIVATE_JOBS',   "delete_private_{$plural_base}");
+		define('DELETE_PUBLISHED_JOBS', "delete_published_{$plural_base}");
+		define('DELETE_OTHERS_JOBS',    "delete_other_{$plural_base}");
 	}
 	
 	function on_get_comment_author_link( $link ){
@@ -575,7 +634,7 @@ class Jobs_Plus_Core{
 		// Check security redirection
 		if ( isset( $wp_query ) ) {
 			if( is_singular('jbp_job') ) 	{
-				if( !current_user_can('edit_jobs') ) {
+				if( !current_user_can( EDIT_JOBS ) ) {
 
 					set_query_var('edit', false);
 
@@ -589,7 +648,7 @@ class Jobs_Plus_Core{
 			}
 
 			if( is_singular('jbp_pro') ) 	{
-				if( !current_user_can('edit_pros') ) {
+				if( !current_user_can( EDIT_PROS ) ) {
 					set_query_var('edit', false);
 
 					if($wp_query->post->ID == $this->add_pro_page_id) {
@@ -673,12 +732,12 @@ class Jobs_Plus_Core{
 		|| is_single($this->add_job_page_id) ){
 
 			$limit = intval($this->get_setting('job->max_records', 1) );
-			if( !current_user_can('create_jobs') ) {
+			if( !current_user_can( CREATE_JOBS ) ) {
 				wp_redirect( add_query_arg('jbp_error',
 				urlencode(sprintf(__('You do not have the permissions to enter a %s.', $this->text_domain), $this->job_labels->new_item) ),
 				get_post_type_archive_link('jbp_job') ) );
 				exit;
-			} elseif( !current_user_can('edit_jobs') ) {
+			} elseif( !current_user_can( EDIT_JOBS ) ) {
 				wp_redirect(add_query_arg('jbp_error',
 				urlencode(sprintf(__('You do not have permission to edit this %s.', $this->text_domain), $this->job_labels->singular_name) ),
 				get_post_type_archive_link('jbp_job') ) );
@@ -710,12 +769,12 @@ class Jobs_Plus_Core{
 
 			if( is_single($this->add_pro_page_id) ){ //How many can they have
 				$limit = intval($this->get_setting('pro->max_records', 1) );
-				if( !current_user_can('create_pros') ) {
+				if( !current_user_can( CREATE_PROS ) ) {
 					wp_redirect( add_query_arg('jbp_error',
 					urlencode(sprintf(__('You do not have the permissions to enter a %s.', $this->text_domain), $this->pro_labels->new_item) ),
 					get_post_type_archive_link('jbp_pro') ) );
 					exit;
-				} elseif( !current_user_can('edit_pros') ) {
+				} elseif( !current_user_can( EDIT_PROS ) ) {
 					wp_redirect(add_query_arg('jbp_error',
 					urlencode(sprintf(__('You do not have permission to edit this listing.', $this->text_domain), $this->pro_labels->singular_name) ),
 					get_post_type_archive_link('jbp_pro') ) );
@@ -1305,9 +1364,20 @@ class Jobs_Plus_Core{
 	}
 
 	function is_certified($user_id = 0){
+		if( empty($this->get_setting('general->use_certification') ) ) return false;
 		$user_id = empty($user_id) ? get_current_user_id() : intval($user_id);
 		$result =  get_user_meta($user_id, JBP_PRO_CERTIFIED_KEY, true);
 		return $result;
+	}
+	
+	function on_ajax_set_jbp_certified(){
+		if (!wp_verify_nonce($_REQUEST['_wpnonce'], 'set_jbp_certified')) exit('bad nonce');
+		$params = stripslashes_deep($_REQUEST);
+		print_r($_REQUEST);
+		$jbp_certified = ( empty($params['jbp_certified']) ) ? 0 : sanitize_text_field($params['jbp_certified']);
+		$user_id = ( empty($params['user_id']) ) ? 0 : intval($params['user_id']);
+		update_user_meta($user_id, JBP_PRO_CERTIFIED_KEY, $jbp_certified);
+		exit;
 	}
 
 	/**
@@ -1448,7 +1518,7 @@ class Jobs_Plus_Core{
 	function on_ajax_jbp_pro(){
 		global $post_ID;
 
-		if( !current_user_can('edit_pros') ) exit;
+		if( !current_user_can( EDIT_PROS ) ) exit;
 
 		$response_iframe = '<textarea date-type="application/json" data-status="%s" data-statusText="%s">%s</textarea>';
 		$params = stripslashes_deep($_REQUEST);
@@ -1637,7 +1707,7 @@ class Jobs_Plus_Core{
 
 	function on_ajax_jbp_pro_status(){
 
-		if( !current_user_can('edit_pros') ) exit;
+		if( !current_user_can( EDIT_PROS ) ) exit;
 		$params = stripslashes_deep($_REQUEST);
 
 		//Good nonce?
@@ -1939,7 +2009,7 @@ class Jobs_Plus_Core{
 	*/
 	function update_pro($params = array()){
 
-		if(! current_user_can( 'edit_pro', $params['post_id']) ) return;
+		if(! current_user_can( EDIT_PRO, $params['post_id']) ) return;
 		//var_dump($params); //exit;
 		/* Construct args for the new post */
 		$args = $params['data'];
@@ -2020,7 +2090,7 @@ class Jobs_Plus_Core{
 	function update_job($params = array()){
 
 		var_dump($params);
-		if(! current_user_can( 'edit_job', $params['data']['ID']) ) return;
+		if(! current_user_can( EDIT_JOB, $params['data']['ID']) ) return;
 
 		/* Construct args for the new post */
 		$args = array(
@@ -2094,7 +2164,7 @@ class Jobs_Plus_Core{
 	function on_ajax_jbp_job(){
 		global $post_ID;
 
-		if( !current_user_can('edit_jobs') ) exit;
+		if( !current_user_can( EDIT_JOBS ) ) exit;
 
 		$response_iframe = '<textarea date-type="application/json" data-status="%s" data-statusText="%s">%s</textarea>';
 		$params = stripslashes_deep($_REQUEST);
@@ -2204,7 +2274,7 @@ class Jobs_Plus_Core{
 
 	function on_ajax_jbp_job_status(){
 
-		if( !current_user_can('edit_jobs') ) exit;
+		if( !current_user_can( EDIT_JOBS ) ) exit;
 		$params = stripslashes_deep($_REQUEST);
 
 		//Good nonce?
