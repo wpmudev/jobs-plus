@@ -28,3 +28,8 @@ input.jbp-full,
 textarea.jbp-full {
 	width: 100%;
 }
+
+code {
+	font-weight: bold;
+	display: block;
+}

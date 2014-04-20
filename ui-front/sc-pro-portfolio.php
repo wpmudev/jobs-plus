@@ -1,4 +1,4 @@
-<?php
+<?php if (!defined('ABSPATH')) die('No direct access allowed!');
 /**
 * @package Job +
 * @author Arnold Bailey

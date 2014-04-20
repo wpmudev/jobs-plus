@@ -335,3 +335,44 @@ button.job-post-btn{
 	color: #111;
 	border: none;
 }
+
+.job-search-wrap{
+
+}
+.job-search-wrap .job-meta ul{
+	border: 1px solid #aaa;
+	box-shadow: -2px 2px 8px 0 rgba( 178, 178, 178, .4 );
+	padding: 0;
+	margin: 0;
+	position: relative;
+	text-transform: uppercase;
+}
+
+.job-search-wrap .job-meta ul li{
+	list-style-type: none;
+	margin: 0;
+	padding: 5px 5px;
+	text-align: center;
+	border-right: 1px solid #aaa;
+	float: left;
+}
+
+.job-search-wrap .job-meta ul li:last-child{
+	float: none;
+	overflow: hidden;
+	padding: 0px 5px;
+}
+
+input#searchbox-jobs{
+	width: 100%;
+	margin: 0;
+	border: none;
+}
+
+input[type="submit"].submit-jobs-search{ /* stretchy button */
+	background: #666 url("../img/search-button-icon.png") no-repeat center center;
+	position: absolute;
+	top: 0; bottom: 0; right: 0;
+	padding: 0;
+	width: 40px;
+}

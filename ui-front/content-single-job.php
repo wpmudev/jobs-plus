@@ -30,9 +30,11 @@ $project_budget = ($project_budget == '' ? 'N/A' : $project_budget);
 
 ?>
 <div class="job-single-wrapper">
-
+	<?php if(dynamic_sidebar('job-widget') ) : else: endif; ?>
 	<?php echo do_action('jbp_error'); ?>
 	<?php echo do_action('jbp_notice'); ?>
+<?php the_author_posts_link(); ?>
+
 	<div class="job-meta group">
 		<ul>
 			<li><span class="meta-label"><?php _e('Job Budget', JBP_TEXT_DOMAIN);?></span><br /><span class="meta-red"><?php echo $project_budget;?></span></li>

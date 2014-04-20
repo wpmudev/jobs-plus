@@ -49,10 +49,10 @@ $editor_settings =   array(
 ?>
 <!-- script type="text/javascript" src="<?php echo $this->plugin_url . 'ui-front/js/media-post.js'; ?>" ></script -->
 
-<?php echo do_action('jbp_error'); ?>
-<?php echo do_action('jbp_notice'); ?>
-
 <div id="post-jbp-pro">
+	<?php if(dynamic_sidebar('pro-widget') ) : else: endif; ?>
+	<?php echo do_action('jbp_error'); ?>
+	<?php echo do_action('jbp_notice'); ?>
 
 	<h3><?php _e('Create a New Pro Profile', JBP_TEXT_DOMAIN); ?></h3>
 
@@ -110,26 +110,6 @@ $editor_settings =   array(
 			<p class="description"><?php _e( 'A short excerpt of your Bio.', JBP_TEXT_DOMAIN ); ?></p>
 		</div>
 		<?php endif; ?>
-
-		<div class="editfield">
-			<label><?php _e( 'Facebook URL:', JBP_TEXT_DOMAIN ); ?></label>
-			<br /><?php echo do_shortcode('[ct_in id="_ct_jbp_pro_Facebook_URL"]'); ?>
-		</div>
-
-		<div class="editfield">
-			<label><?php _e( 'Twitter URL:', JBP_TEXT_DOMAIN ); ?></label>
-			<br /><?php echo do_shortcode('[ct_in id="_ct_jbp_pro_Twitter_URL"]'); ?>
-		</div>
-
-		<div class="editfield">
-			<label><?php _e( 'LinkedIn URL:', JBP_TEXT_DOMAIN ); ?></label>
-			<br /><?php echo do_shortcode('[ct_in id="_ct_jbp_pro_LinkedIn_URL"]'); ?>
-		</div>
-
-		<div class="editfield">
-			<label><?php _e( 'Skype URL:', JBP_TEXT_DOMAIN ); ?></label>
-			<br /><?php echo do_shortcode('[ct_in id="_ct_jbp_pro_Skype_URL"]'); ?>
-		</div>
 
 		<?php
 		//get related hierarchical taxonomies

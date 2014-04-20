@@ -295,7 +295,7 @@
 						<label><?php _e('Menu Position', $this->text_domain) ?></label>
 					</th>
 					<td>
-						<input type="text" name="menu_position" value="<?php if ( isset( $_POST['menu_position'] ) ) esc_attr_e( $_POST['menu_position'] ); elseif ( !isset( $_POST['menu_position'] ) ) echo '50'; ?>" />
+						<input type="text" name="menu_position" value="<?php if ( isset( $_POST['menu_position'] ) ) esc_attr_e( $_POST['menu_position'] ); elseif ( !isset( $_POST['menu_position'] ) ) echo ''; ?>" />
 						<br /><span class="description"><?php _e('5 - below Posts; 10 - below Media; 20 - below Pages; 60 - below first separator; 100 - below second separator', $this->text_domain); ?></span>
 					</td>
 				</tr>

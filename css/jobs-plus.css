@@ -30,47 +30,6 @@
 	color: #ccc;
 }
 
-.job-search-wrap{
-
-}
-.job-search-wrap .job-meta ul{
-	border: 1px solid #aaa;
-	box-shadow: -2px 2px 8px 0 rgba( 178, 178, 178, .4 );
-	padding: 0;
-	margin: 0;
-	position: relative;
-	text-transform: uppercase;
-}
-
-.job-search-wrap .job-meta ul li{
-	list-style-type: none;
-	margin: 0;
-	padding: 5px 5px;
-	text-align: center;
-	border-right: 1px solid #aaa;
-	float: left;
-}
-
-.job-search-wrap .job-meta ul li:last-child{
-	float: none;
-	overflow: hidden;
-	padding: 0px 5px;
-}
-
-input#searchbox-jobs{
-	width: 100%;
-	margin: 0;
-	border: none;
-}
-
-input[type="submit"].submit-jobs-search{ /* stretchy button */
-	background: #666 url("../img/search-button-icon.png") no-repeat center center;
-	position: absolute;
-	top: 0; bottom: 0; right: 0;
-	padding: 0;
-	width: 40px;
-}
-
 .show-on-edit{ display: none;}
 
 .error {
@@ -128,6 +87,18 @@ label.error, label.updated{
 	width: 400px;
 }
 
+.input-medium{
+	min-width: 300px;
+}
+
+.input-small{
+	width: 200px;
+}
+
+input.input-small{
+	margin: 0 0 5px 0;
+}
+
 .dialogcenter{
 	text-align: center;
 }
@@ -170,10 +141,11 @@ label.error, label.updated{
 }
 
 .jbp-certify {
-	background-image: url("../img/jbp-certify.png");
-	background-repeat: no-repeat;
+	
+	background: transparent url("../img/jbp-certify.png") no-repeat 5px center;
 	font-size: 13px;
-	height: 16px;
+	height: 20px;
+	line-height: 20px;
 	overflow: hidden;
 	position: absolute;
 	right: 5px;
@@ -182,19 +154,15 @@ label.error, label.updated{
 	transition: width 0.4s ease 0s;
 	width: 16px;
 	word-wrap: normal;
+	padding: 0;
+	margin: 0;
 }
 
 .pro-archive:hover .jbp-certify{
-	width: 91%;
-	padding-left: 16px;
+	width: 100%;
 	text-indent: 5px;
 	color: #0090ff;
 	background-color: #f3f3f2;
-	padding-top: 2px;
-	padding-bottom: 3px;
-	background-position: 5px center;
-	padding-right: 0px;
-	margin-right: 0px;
 	right: 0px;
 	top: 0px;
 	border-bottom: 1px solid #cccccc;

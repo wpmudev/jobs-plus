@@ -591,7 +591,7 @@ url: "http://webwrights.com"
 		value2html: function(value, element) {
 			$(element).empty();
 			if(!value) return;
-			$(element).append($('<a>').prop('href', value.url).html(value.link));
+			$(element).append($('<a target="_blank">').prop('href', value.url).html(value.link));
 		},
 
 		/**
@@ -1295,18 +1295,21 @@ url: "http://webwrights.com"
 			if(typeof urlLabel === 'string') this.$tpl.find('.url-label').text(urlLabel);
 
 
-			var social = this.$input.filter('[name="social"]');
-			var label = this.$tpl.find('.social-label');
-			var social_id = this.$input.filter('[name="social_id"]');
+			var $social = this.$input.filter('[name="social"]');
+			var $label = this.$tpl.find('.social-label');
+			var $social_id = this.$input.filter('[name="social_id"]');
+			var $social_url = this.$tpl.find('input.social-url');
 
 			$('.social_i').on('click', function(e){
 				var that = $(this);
 				e.preventDefault();
 				$('.social_i').removeClass('active');
 				that.toggleClass('active');
-				$(label).text(that.attr('title'));
-				$(social).val(that.attr('title'));
-				$(social_id).val( that.attr('class').split(' ')[0] ); //First class in class list must be id like 'fb' = Facebook
+				$label.text(that.attr('title'));
+				$social.val(that.attr('title'));
+				$social_id.val( that.attr('class').split(' ')[0] ); //First class in class list must be id like 'fb' = Facebook
+				console.log(that);
+				$social_url.val( that.text() );
 			});
 		},
 
@@ -1471,25 +1474,28 @@ url: "http://webwrights.com"
 		tpl:
 		'<div class="pro-social">' +
 		'<ul>' +
-		'<li><a class="sh social_i" rel="nofollow" title="Share" href="#">Share</a></li>' +
-		'<li><a class="fb social_i" rel="nofollow" title="Facebook" href="#">Facebook</a></li>' +
-		'<li><a class="tw social_i" rel="nofollow" title="Twitter: @username" href="#">Twitter</a></li>' +
-		'<li><a class="gp social_i" rel="nofollow" title="Google+" href="#">Google+</a></li>' +
-		'<li><a class="rs social_i" rel="nofollow" title="RSS Feed" href="#">RSS Feed</a></li>' +
-		'<li><a class="pt social_i" rel="nofollow" title="Pintrest" href="#">Pintrest</a></li>' +
-		'<li><a class="li social_i" rel="nofollow" title="LinkedIn" href="#">LinkedIn</a></li>' +
-		'<li><a class="yt social_i" rel="nofollow" title="YouTube" href="#">YouTube</a></li>' +
-		'<li><a class="em social_i" rel="nofollow" title="Email" href="#">Email</a></li>' +
-		'<li><a class="ad social_i" rel="nofollow" title="Add This" href="#">Add This</a></li>' +
-		'<li><a class="rd social_i" rel="nofollow" title="Reddit" href="#">Reddit</a></li>' +
-		'<li><a class="su social_i" rel="nofollow" title="Stumble Upon" href="#">StumbleUpon</a></li>' +
-		'<li><a class="dl social_i" rel="nofollow" title="Delicious" href="#">Delicious</a></li>' +
-		'<li><a class="dg social_i" rel="nofollow" title="Digg" href="#">Digg</a></li>' +
-		'<li><a class="sk social_i" rel="nofollow" title="Skype" href="#">Skype</a></li>' +
+		'<li><a class="sh social_i" rel="nofollow" title="Share" href="#">http://</a></li>' +
+		'<li><a class="fb social_i" rel="nofollow" title="Facebook" href="#">http://facebook.com/</a></li>' +
+		'<li><a class="tw social_i" rel="nofollow" title="Twitter: @username" href="#">http://twitter.com/</a></li>' +
+		'<li><a class="gp social_i" rel="nofollow" title="Google+" href="#">http://plus.google.com</a></li>' +
+		'<li><a class="rs social_i" rel="nofollow" title="RSS Feed" href="#">http://</a></li>' +
+		'<li><a class="pt social_i" rel="nofollow" title="Pintrest" href="#">http://pintrest.com/</a></li>' +
+		'<li><a class="li social_i" rel="nofollow" title="LinkedIn" href="#">http://linkedin.com</a></li>' +
+		'<li><a class="yt social_i" rel="nofollow" title="YouTube" href="#">http://youtube.com</a></li>' +
+		'<li><a class="em social_i" rel="nofollow" title="Email" href="#">mailto:</a></li>' +
+		'<li><a class="ad social_i" rel="nofollow" title="Add This" href="#">http://addthis.com</a></li>' +
+		'<li><a class="rd social_i" rel="nofollow" title="Reddit" href="#">http://reddit.com</a></li>' +
+		'<li><a class="su social_i" rel="nofollow" title="Stumble Upon" href="#">http://stumbleupon.com/</a></li>' +
+		'<li><a class="dl social_i" rel="nofollow" title="Delicious" href="#">http://delicious.com/</a></li>' +
+		'<li><a class="dg social_i" rel="nofollow" title="Digg" href="#">http://digg.com/</a></li>' +
+		'<li><a class="sk social_i" rel="nofollow" title="Skype (SKYPE:skype id)" href="#">SKYPE:</a></li>' +
+		'<li><a class="ig social_i" rel="nofollow" title="Instagram" href="#">http://instagram.com/</a></li>' +
+		'<li><a class="vi social_i" rel="nofollow" title="Vimeo" href="#">http://vimeo.com/</a></li>' +
+		'<li><a class="tm social_i" rel="nofollow" title="Tumblr" href="#">http://tumblr.com/</a></li>' +
 		'</ul>' +
 		'</div>' +
 		'<div class="editable-social"><label><span class="social-label">Social: </span>'+
-		' <span class="url-label">URL: </span><input type="text" name="url" class="input-small"></label>' +
+		' <span class="url-label">URL: </span><input class="social-url input-medium" type="text" name="url"></label>' +
 		'<input type="hidden" name="social">' +
 		'<input type="hidden" name="social_id">' +
 		'<input type="hidden" name="remove">' +

@@ -67,10 +67,12 @@ wp_enqueue_script('jquery-ui-dialog');
 
 ?>
 
-<?php echo do_action('jbp_error'); ?>
-<?php echo do_action('jbp_notice'); ?>
-
 <div class="job-profile-wrapper">
+
+	<?php if(dynamic_sidebar('job-widget') ) : else: endif; ?>
+	<?php echo do_action('jbp_error'); ?>
+	<?php echo do_action('jbp_notice'); ?>
+
 	<?php if($add_job): ?>
 	<h3><?php _e('Create a New Job', JBP_TEXT_DOMAIN); ?></h3>
 	<?php else: ?>

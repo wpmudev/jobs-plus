@@ -5,7 +5,6 @@
 * @since version 1.0
 * @license GPL2+
 */
-
 ?>
 
 <div class="wrap">

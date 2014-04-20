@@ -21,14 +21,14 @@ jQuery(document).ready( function($) {
 	$('.rateit').on('rated reset', function(e){
 		console.log( e );
 		$this = $(this);
-		$.post( $this.data('ajax'), { 
-			action: "rate_pro", 
-			post_id: $this.data('post_id'), 
-			rating: $this.rateit('value'), 
+		$.post( $this.data('ajax'), {
+			action: "rate_pro",
+			post_id: $this.data('post_id'),
+			rating: $this.rateit('value'),
 			_wpnonce: $this.data('nonce')
-			}, 
-			function(data){}, 
-			'text');
+		},
+		function(data){},
+		'text');
 	});
 
 	// Add Pro Portfolio
@@ -82,6 +82,22 @@ jQuery(document).ready( function($) {
 		$ul.append($template);
 		$social.editable('enable').editable('show');
 	});
+
+	$('.pro-profile-wrapper').on('click', '.pro-content-editable', function(e) {
+		e.stopPropagation();
+
+		//if link clicked
+		if(e.target.href && ! popupEnabled ) {
+			//cludge to force focus on the new tab or window
+			w = window.open( e.target.href, 'company' );
+		}
+		//if label clicked
+		$('.editable').editable('hide');
+		$(this).find('.editable').editable('show');
+		//$('head').append('<style>.pro-content-editable:before{background-position: 0px 25px;}</style>');
+		//$('head').append('<style>.pro-content-editable-open:before{background-position: 0px 25px;}</style>');
+	});
+
 
 });
 

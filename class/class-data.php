@@ -80,7 +80,7 @@ class Jobs_Plus_Core_Data{
 			'capability_type' => 'job',
 			'map_meta_cap' => true,
 			'description' => 'Job offerings',
-			'menu_position' => 50,
+			'menu_position' => '',
 			'public' => true,
 			'hierarchical' => true,
 			'has_archive' => 'jobs',
@@ -151,7 +151,7 @@ class Jobs_Plus_Core_Data{
 			'capability_type' => 'expert',
 			'map_meta_cap' => true,
 			'description' => 'Expert and extended profile',
-			'menu_position' => 50,
+			'menu_position' => '',
 			'public' => true,
 			'hierarchical' => true,
 			'has_archive' => 'experts',
@@ -584,152 +584,152 @@ class Jobs_Plus_Core_Data{
 		}
 
 
-		if ( empty($ct_custom_fields['jbp_pro_Facebook_URL'])
-		&& empty($ct_network_custom_fields['jbp_pro_Facebook_URL'])){
-
-			$jbp_pro_Facebook_URL =
-			array (
-			'field_title' => 'Facebook URL',
-			'field_wp_allow' => 0,
-			'field_type' => 'text',
-			'field_sort_order' => 'default',
-			'field_regex' => '',
-			'field_regex_options' => '',
-			'field_regex_message' => '',
-			'field_message' => '',
-			'field_default_option' => NULL,
-			'field_description' => 'optional',
-			'object_type' =>
-			array (
-			0 => 'jbp_pro',
-			),
-			'hide_type' =>
-			array (
-			0 => 'jbp_pro',
-			),
-			'field_required' => 0,
-			'field_id' => 'jbp_pro_Facebook_URL',
-			'field_order' => 0,
-			);
-			if( is_network_admin() ){
-				$ct_network_custom_fields['jbp_pro_Facebook_URL'] = $jbp_pro_Facebook_URL;
-				update_site_option( 'ct_custom_fields', $ct_network_custom_fields );
-			} else {
-				$ct_custom_fields['jbp_pro_Facebook_URL'] = $jbp_pro_Facebook_URL;
-				update_option( 'ct_custom_fields', $ct_custom_fields );
-			}
-
-		}
-
-		if ( empty($ct_custom_fields['jbp_pro_LinkedIn_URL'])
-		&& empty($ct_network_custom_fields['jbp_pro_LinkedIn_URL'])){
-
-			$jbp_pro_LinkedIn_URL =
-			array (
-			'field_title' => 'LinkedIn URL',
-			'field_wp_allow' => 0,
-			'field_type' => 'text',
-			'field_sort_order' => 'default',
-			'field_regex' => '',
-			'field_regex_options' => '',
-			'field_regex_message' => '',
-			'field_message' => '',
-			'field_default_option' => NULL,
-			'field_description' => 'optional',
-			'object_type' =>
-			array (
-			0 => 'jbp_pro',
-			),
-			'hide_type' =>
-			array (
-			0 => 'jbp_pro',
-			),
-			'field_required' => 0,
-			'field_id' => 'jbp_pro_LinkedIn_URL',
-			'field_order' => 0,
-			);
-			if( is_network_admin() ){
-				$ct_network_custom_fields['jbp_pro_LinkedIn_URL'] = $jbp_pro_LinkedIn_URL;
-				update_site_option( 'ct_custom_fields', $ct_network_custom_fields );
-			} else {
-				$ct_custom_fields['jbp_pro_LinkedIn_URL'] = $jbp_pro_LinkedIn_URL;
-				update_option( 'ct_custom_fields', $ct_custom_fields );
-			}
-
-		}
-
-		if ( empty($ct_custom_fields['jbp_pro_Twitter_URL'])
-		&& empty($ct_network_custom_fields['jbp_pro_Twitter_URL'])){
-
-			$jbp_pro_Twitter_URL =
-			array (
-			'field_title' => 'Twitter URL',
-			'field_wp_allow' => 0,
-			'field_type' => 'text',
-			'field_sort_order' => 'default',
-			'field_regex' => '',
-			'field_regex_options' => '',
-			'field_regex_message' => '',
-			'field_message' => '',
-			'field_default_option' => NULL,
-			'field_description' => 'optional',
-			'object_type' =>
-			array (
-			0 => 'jbp_pro',
-			),
-			'hide_type' =>
-			array (
-			0 => 'jbp_pro',
-			),
-			'field_required' => 0,
-			'field_id' => 'jbp_pro_Twitter_URL',
-			'field_order' => 0,
-			);
-			if( is_network_admin() ){
-				$ct_network_custom_fields['jbp_pro_Twitter_URL'] = $jbp_pro_Twitter_URL;
-				update_site_option( 'ct_custom_fields', $ct_network_custom_fields );
-			} else {
-				$ct_custom_fields['jbp_pro_Twitter_URL'] = $jbp_pro_Twitter_URL;
-				update_option( 'ct_custom_fields', $ct_custom_fields );
-			}
-
-		}
-
-		if ( empty($ct_custom_fields['jbp_pro_Skype_URL'])
-		&& empty($ct_network_custom_fields['jbp_pro_Skype_URL'])){
-
-			$jbp_pro_Skype_URL =
-			array (
-			'field_title' => 'Skype URL',
-			'field_wp_allow' => 0,
-			'field_type' => 'text',
-			'field_sort_order' => 'default',
-			'field_regex' => '',
-			'field_regex_options' => '',
-			'field_regex_message' => '',
-			'field_message' => '',
-			'field_default_option' => NULL,
-			'field_description' => 'optional',
-			'object_type' =>
-			array (
-			0 => 'jbp_pro',
-			),
-			'hide_type' =>
-			array (
-			0 => 'jbp_pro',
-			),
-			'field_required' => 0,
-			'field_id' => 'jbp_pro_Skype_URL',
-			'field_order' => 0,
-			);
-			if( is_network_admin() ){
-				$ct_network_custom_fields['jbp_pro_Skype_URL'] = $jbp_pro_Skype_URL;
-				update_site_option( 'ct_custom_fields', $ct_network_custom_fields );
-			} else {
-				$ct_custom_fields['jbp_pro_Skype_URL'] = $jbp_pro_Skype_URL;
-				update_option( 'ct_custom_fields', $ct_custom_fields );
-			}
-		}
+//		if ( empty($ct_custom_fields['jbp_pro_Facebook_URL'])
+//		&& empty($ct_network_custom_fields['jbp_pro_Facebook_URL'])){
+//
+//			$jbp_pro_Facebook_URL =
+//			array (
+//			'field_title' => 'Facebook URL',
+//			'field_wp_allow' => 0,
+//			'field_type' => 'text',
+//			'field_sort_order' => 'default',
+//			'field_regex' => '',
+//			'field_regex_options' => '',
+//			'field_regex_message' => '',
+//			'field_message' => '',
+//			'field_default_option' => NULL,
+//			'field_description' => 'optional',
+//			'object_type' =>
+//			array (
+//			0 => 'jbp_pro',
+//			),
+//			'hide_type' =>
+//			array (
+//			0 => 'jbp_pro',
+//			),
+//			'field_required' => 0,
+//			'field_id' => 'jbp_pro_Facebook_URL',
+//			'field_order' => 0,
+//			);
+//			if( is_network_admin() ){
+//				$ct_network_custom_fields['jbp_pro_Facebook_URL'] = $jbp_pro_Facebook_URL;
+//				update_site_option( 'ct_custom_fields', $ct_network_custom_fields );
+//			} else {
+//				$ct_custom_fields['jbp_pro_Facebook_URL'] = $jbp_pro_Facebook_URL;
+//				update_option( 'ct_custom_fields', $ct_custom_fields );
+//			}
+//
+//		}
+//
+//		if ( empty($ct_custom_fields['jbp_pro_LinkedIn_URL'])
+//		&& empty($ct_network_custom_fields['jbp_pro_LinkedIn_URL'])){
+//
+//			$jbp_pro_LinkedIn_URL =
+//			array (
+//			'field_title' => 'LinkedIn URL',
+//			'field_wp_allow' => 0,
+//			'field_type' => 'text',
+//			'field_sort_order' => 'default',
+//			'field_regex' => '',
+//			'field_regex_options' => '',
+//			'field_regex_message' => '',
+//			'field_message' => '',
+//			'field_default_option' => NULL,
+//			'field_description' => 'optional',
+//			'object_type' =>
+//			array (
+//			0 => 'jbp_pro',
+//			),
+//			'hide_type' =>
+//			array (
+//			0 => 'jbp_pro',
+//			),
+//			'field_required' => 0,
+//			'field_id' => 'jbp_pro_LinkedIn_URL',
+//			'field_order' => 0,
+//			);
+//			if( is_network_admin() ){
+//				$ct_network_custom_fields['jbp_pro_LinkedIn_URL'] = $jbp_pro_LinkedIn_URL;
+//				update_site_option( 'ct_custom_fields', $ct_network_custom_fields );
+//			} else {
+//				$ct_custom_fields['jbp_pro_LinkedIn_URL'] = $jbp_pro_LinkedIn_URL;
+//				update_option( 'ct_custom_fields', $ct_custom_fields );
+//			}
+//
+//		}
+//
+//		if ( empty($ct_custom_fields['jbp_pro_Twitter_URL'])
+//		&& empty($ct_network_custom_fields['jbp_pro_Twitter_URL'])){
+//
+//			$jbp_pro_Twitter_URL =
+//			array (
+//			'field_title' => 'Twitter URL',
+//			'field_wp_allow' => 0,
+//			'field_type' => 'text',
+//			'field_sort_order' => 'default',
+//			'field_regex' => '',
+//			'field_regex_options' => '',
+//			'field_regex_message' => '',
+//			'field_message' => '',
+//			'field_default_option' => NULL,
+//			'field_description' => 'optional',
+//			'object_type' =>
+//			array (
+//			0 => 'jbp_pro',
+//			),
+//			'hide_type' =>
+//			array (
+//			0 => 'jbp_pro',
+//			),
+//			'field_required' => 0,
+//			'field_id' => 'jbp_pro_Twitter_URL',
+//			'field_order' => 0,
+//			);
+//			if( is_network_admin() ){
+//				$ct_network_custom_fields['jbp_pro_Twitter_URL'] = $jbp_pro_Twitter_URL;
+//				update_site_option( 'ct_custom_fields', $ct_network_custom_fields );
+//			} else {
+//				$ct_custom_fields['jbp_pro_Twitter_URL'] = $jbp_pro_Twitter_URL;
+//				update_option( 'ct_custom_fields', $ct_custom_fields );
+//			}
+//
+//		}
+//
+//		if ( empty($ct_custom_fields['jbp_pro_Skype_URL'])
+//		&& empty($ct_network_custom_fields['jbp_pro_Skype_URL'])){
+//
+//			$jbp_pro_Skype_URL =
+//			array (
+//			'field_title' => 'Skype URL',
+//			'field_wp_allow' => 0,
+//			'field_type' => 'text',
+//			'field_sort_order' => 'default',
+//			'field_regex' => '',
+//			'field_regex_options' => '',
+//			'field_regex_message' => '',
+//			'field_message' => '',
+//			'field_default_option' => NULL,
+//			'field_description' => 'optional',
+//			'object_type' =>
+//			array (
+//			0 => 'jbp_pro',
+//			),
+//			'hide_type' =>
+//			array (
+//			0 => 'jbp_pro',
+//			),
+//			'field_required' => 0,
+//			'field_id' => 'jbp_pro_Skype_URL',
+//			'field_order' => 0,
+//			);
+//			if( is_network_admin() ){
+//				$ct_network_custom_fields['jbp_pro_Skype_URL'] = $jbp_pro_Skype_URL;
+//				update_site_option( 'ct_custom_fields', $ct_network_custom_fields );
+//			} else {
+//				$ct_custom_fields['jbp_pro_Skype_URL'] = $jbp_pro_Skype_URL;
+//				update_option( 'ct_custom_fields', $ct_custom_fields );
+//			}
+//		}
 
 		if ( empty($ct_custom_fields['jbp_pro_Portfolio'])
 		&& empty($ct_network_custom_fields['jbp_pro_Portfolio'])){

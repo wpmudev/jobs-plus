@@ -164,10 +164,10 @@ ul.pro-content-editable li{
 }
 
 /* Social links */
-.pro-social{margin:0;text-align:left; } 
+.pro-social{margin:0;text-align:left; max-width: 420px} 
 .pro-social li{	background-image: none;	padding: 0;}
 .pro-social .social_t{display:block;font-variant:small-caps;margin-bottom:5px;}
-.pro-social ul{display:inline;list-style-type:none;margin:0 auto;padding:0; max-width: 300px; }
+.pro-social ul{display:inline;list-style-type:none;margin:0 auto;padding:0;}
 .pro-social ul li{display:inline-block; margin:0 5px 5px 5px;padding:0;} .pro-social .social_i{display:block;width:36px;height:36px;overflow:hidden;margin-right:0px;color:transparent;text-indent:-9999px;background:url('../img/social_sprite.png') no-repeat;}
 .pro-social .social_i{background-position: 0 0; margin: 0;} .social_i.active,.social_i:hover{background-position:0 -36px;}.pro-social ul>li:last-child .social_i{margin-right:0;}
 .pro-social .fb{background-position:-36px 0;}  .pro-social .fb.active,.pro-social .fb:hover{background-position:-36px -36px;} /* Facebook */
@@ -184,6 +184,9 @@ ul.pro-content-editable li{
 .pro-social .dl{background-position:-432px 0;} .pro-social .dl.active,.pro-social .dl:hover{background-position:-432px -36px;}/* Delicious */
 .pro-social .dg{background-position:-468px 0;} .pro-social .dg.active,.pro-social .dg:hover{background-position:-468px -36px;}/* Digg */
 .pro-social .sk{background-position:-504px 0;} .pro-social .sk.active,.pro-social .sk:hover{background-position:-504px -36px;}/* Skype */
+.pro-social .ig{background-position:-540px 0;} .pro-social .ig.active,.pro-social .ig:hover{background-position:-540px -36px;}/* Instagram */
+.pro-social .vi{background-position:-576px 0;} .pro-social .vi.active,.pro-social .vi:hover{background-position:-576px -36px;}/* Vimeo */
+.pro-social .tm{background-position:-612px 0;} .pro-social .tm.active,.pro-social .tm:hover{background-position:-612px -36px;}/* Tumblr */
 
 .pro-gravatar{
 	border: 1px solid #ddd;
@@ -325,3 +328,44 @@ button.pro-profile-btn{
 	border: none;
 }
 
+.pro-search-wrap{
+	margin: 1em 0;
+
+}
+.pro-search-wrap .pro-meta ul{
+	border: 1px solid #aaa;
+	box-shadow: -2px 2px 8px 0 rgba( 178, 178, 178, .4 );
+	padding: 0;
+	margin: 0;
+	position: relative;
+	text-transform: uppercase;
+}
+
+.pro-search-wrap .pro-meta ul li{
+	list-style-type: none;
+	margin: 0;
+	padding: 5px 5px;
+	text-align: center;
+	border-right: 1px solid #aaa;
+	float: left;
+}
+
+.pro-search-wrap .pro-meta ul li:last-child{
+	float: none;
+	overflow: hidden;
+	padding: 0px 5px;
+}
+
+input#searchbox-pros{
+	width: 100%;
+	margin: 0;
+	border: none;
+}
+
+input[type="submit"].submit-pros-search{ /* stretchy button */
+	background: #666 url("../img/search-button-icon.png") no-repeat center center;
+	position: absolute;
+	top: 0; bottom: 0; right: 0;
+	padding: 0;
+	width: 40px;
+}

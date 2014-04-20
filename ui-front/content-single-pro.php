@@ -23,7 +23,6 @@ elseif (get_query_var('edit')) { //Or are we editing a listing?
 	$link = get_permalink($post->ID);
 }
 
-wp_enqueue_script('jquery-form');
 wp_enqueue_script('jquery-ui-dialog');
 wp_enqueue_style('jqueryui-editable');
 wp_enqueue_script('jqueryui-editable');
@@ -33,30 +32,34 @@ wp_enqueue_script('jqueryui-editable-ext');
 //var_dump( current_user_can( EDIT_PRO, $post->ID) );
 ?>
 
-<?php echo do_action('jbp_error'); ?>
-<?php echo do_action('jbp_notice'); ?>
 
-<label class="pro-content-editable pro-name show-on-edit">
-	<h3><?php _e('Title: ', JBP_TEXT_DOMAIN); ?>
-		<span class="editable editable-firstlast"
-			data-type="text"
-			data-onblur="submit"
-			data-name="post_title"
-			data-savenochange = "true"
-			data-emptytext="<?php _e('No Title', JBP_TEXT_DOMAIN); ?>"
-			data-value="<?php esc_attr_e( get_the_title() ); ?>"
-			data-emptyclass="editable-required"
-			data-original-title="<?php _e('Enter the Title', JBP_TEXT_DOMAIN); ?>">
-		</span>
-	</h3>
-</label>
 <div class="pro-profile-wrapper group">
+	<?php echo do_action('jbp_error'); ?>
+	<?php echo do_action('jbp_notice'); ?>
+
 	<form action="" method="POST" id="custom-fields-form" >
 		<?php wp_nonce_field('verify'); ?>
 		<input type="hidden" name="post_id" value="<?php echo $post->ID; ?>" />
 		<input type="hidden" name="data[ID]" value="<?php echo $post->ID; ?>" />
 		<input type="hidden" name="jbp-pro-update" value="save" />
 
+
+		<?php if(post_type_supports('jbp_pro','title') ): ?>
+		<label class="pro-content-editable pro-name show-on-edit">
+			<h3><?php _e('Title: ', JBP_TEXT_DOMAIN); ?>
+				<span class="editable editable-firstlast"
+					data-type="text"
+					data-onblur="submit"
+					data-name="post_title"
+					data-savenochange = "true"
+					data-emptytext="<?php _e('No Title', JBP_TEXT_DOMAIN); ?>"
+					data-value="<?php esc_attr_e( get_the_title() ); ?>"
+					data-emptyclass="editable-required"
+					data-original-title="<?php _e('Enter the Title', JBP_TEXT_DOMAIN); ?>">
+				</span>
+			</h3>
+		</label>
+		<?php endif; ?>
 		<div class="pro-content">
 			<div class="pro-pad group">
 				<div class="pro-content-wrapper pro-profile">
@@ -113,6 +116,8 @@ wp_enqueue_script('jqueryui-editable-ext');
 						<?php echo do_shortcode('[jbp-rate-this]'); ?>
 					</label>
 				</div>
+
+				<?php if(post_type_supports('jbp_pro','editor') ): ?>
 				<div class="pro-content-wrapper pro-biography pro-content-editable">
 					<h3>Biography</h3>
 					<?php if(current_user_can(EDIT_PRO, $post->ID) ): ?>
@@ -121,28 +126,32 @@ wp_enqueue_script('jqueryui-editable-ext');
 					<div class="editable"
 						data-type="textarea"
 						data-name="post_content"
-						data-mode="inline"
+						data-mode="popup"
 						data-emptytext="<?php esc_attr_e('Tell us about yourself', JBP_TEXT_DOMAIN); ?>"
 						data-original-title="<?php _e('Biography Description', JBP_TEXT_DOMAIN); ?>"
 					><?php echo $this->make_clickable(strip_tags(get_the_content() ) ); ?></div>
 				</div>
+				<?php endif; ?>
 
+				<?php if(post_type_supports('jbp_pro','excerpt') ): ?>
 				<div class="pro-content-wrapper pro-excerpt pro-content-editable">
 					<h3>Excerpt</h3>
 					<div class="editable"
 						data-type="textarea"
 						data-name="post_excerpt"
-						data-mode="inline"
+						data-mode="popup"
 						data-emptytext="<?php esc_attr_e('Tell us about yourself', JBP_TEXT_DOMAIN); ?>"
 						data-original-title="<?php _e('Short Excerpt', JBP_TEXT_DOMAIN); ?>"
 					><?php echo $this->make_clickable(strip_tags(get_the_excerpt() ) ); ?></div>
 				</div>
+				<?php endif; ?>
 
 				<div class="pro-content-wrapper pro-portfolio">
 					<h3><?php _e('Portfolio', JBP_TEXT_DOMAIN); ?></h3>
 					<?php echo do_shortcode('[jbp-pro-portfolio]'); ?>
 				</div>
 
+				<?php if(post_type_supports('jbp_pro','custom-fields') ): ?>
 				<div>
 					<?php
 					//Any custom fields not already handled
@@ -154,23 +163,19 @@ wp_enqueue_script('jqueryui-editable-ext');
 					_ct_jbp_pro_Location,
 					_ct_jbp_pro_Contact_Email,
 					_ct_jbp_pro_Social,
-					_ct_jbp_pro_Facebook_URL,
-					_ct_jbp_pro_LinkedIn_URL,
-					_ct_jbp_pro_Twitter_URL,
-					_ct_jbp_pro_Skype_URL,
 					_ct_jbp_pro_Portfolio,
 					_ct_jbp_pro_Skills,
 					[/ct_filter]
 					[/custom_fields_input]');
 					?>
 				</div>
+				<?php endif; ?>
 			</div>
 		</div>
 		<div class="pro-left">
 			<div class="pros-certifed">
 				<?php if (current_user_can('promote_user') && current_user_can(EDIT_PROS) ): ?>
 				<div id="jbp_certified_form">
-					<?php wp_nonce_field('set_jbp_certified') ?>
 					<input type="hidden" name="action" value="set_jbp_certified" />
 					<input type="hidden" name="jbp_certified" value="0" />
 					<input type="hidden" name="user_id" value="<?php echo $post->post_author ?>" />
@@ -236,15 +241,15 @@ wp_enqueue_script('jqueryui-editable-ext');
 
 		var $editables = $('.editable'); //Get a list of editable fields
 
-		$('#jbp_certified').on('change', function( e ) { 
-			e.preventDefault(); 
-			$.ajax( { 
-				url: '<?php echo admin_url('/admin-ajax.php'); ?>', 
+		$('#jbp_certified').on('change', function( e ) {
+			e.preventDefault();
+			$.ajax( {
+				url: '<?php echo admin_url('/admin-ajax.php'); ?>',
 				type: 'post',
-				data: $('#jbp_certified_form input').serialize() 
+				data: $('#jbp_certified_form input').serialize()
 			});
 		});
-		
+
 		$editables.on('hidden', function(e, reason){
 			if(reason === 'save' || reason === 'nochange' || reason === 'cancel') {
 				var $next = $editables.eq( ($editables.index(this) + 1) % $editables.length );

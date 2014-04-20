@@ -1,4 +1,4 @@
-<?php
+<?php if (!defined('ABSPATH')) die('No direct access allowed!');
 /**
 * @package Jobs +
 * @author Arnold Bailey
@@ -15,5 +15,5 @@ wp_enqueue_style('jobs-plus');
 ?>
 
 <button type="button" class="jbp-button job-post-btn <?php echo $class; ?>" onclick="window.location.assign('<? echo $url; ?>')">
-	<br><?php echo $content; ?>
+	<br><br><?php echo $content; ?>
 </button>

@@ -20,11 +20,11 @@ function job_have_posts(){
 ?>
 
 <div class="job-archive-wrapper">
-
+	<?php if(dynamic_sidebar('job-archive-widget') ) : else: endif; ?>
 	<?php echo do_action('jbp_error'); ?>
 	<?php echo do_action('jbp_notice'); ?>
 
-<?php $this->job_search_form(); ?>
+<?php echo do_shortcode('[jbp-job-search]'); ?>
 
 	<?php if(have_posts()): ?>
 	<div id="job-grid-container">
@@ -34,7 +34,7 @@ function job_have_posts(){
 		<?php endwhile; ?>
 	</div>
 	<?php else: ?>
-	<h2>No Jobs Entered Yet</h2>
+	<h2><?php printf(__('No %s Found', JBP_TEXT_DOMAIN), $this->job_labels->name ); ?></h2>
 	<?php endif; ?>
 	<?php echo $Jobs_Plus_Core->pagination(); ?>
 
@@ -43,15 +43,17 @@ function job_have_posts(){
 <?php if($wp_query->post_count > 0 ): ?>
 <script type="text/javascript">
 	jQuery(document).ready( function($){
+
+		$(".job-show").ellipsis({row: 3 });
+		$(".ellipsis").ellipsis({row: 4, char: '<a> . . .Read more</a>' });
+
 		var $container = $("#job-grid-container");
 		$container.masonry({
 			itemSelector: ".job-excerpt",
 			columnWidth: ".job-grid-sizer",
 			gutter: 0
 		});
-
-		$(".job-show").ellipsis({row: 3 });
-		$(".ellipsis").ellipsis({row: 4, char: '<a> . . .Read more</a>' });
+		$container.masonry('layout');
 
 		$(".job-excerpt").click( function(){
 			var $this = $(this);
@@ -59,6 +61,7 @@ function job_have_posts(){
 			window.location = permalink;
 		});
 
+		
 	});
 </script>
 <?php endif; ?>
