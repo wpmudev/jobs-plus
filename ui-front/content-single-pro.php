@@ -34,6 +34,7 @@ wp_enqueue_script('jqueryui-editable-ext');
 
 
 <div class="pro-profile-wrapper group">
+	<?php if(dynamic_sidebar('pro-widget') ) : else: endif; ?>
 	<?php echo do_action('jbp_error'); ?>
 	<?php echo do_action('jbp_notice'); ?>
 

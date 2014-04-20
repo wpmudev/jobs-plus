@@ -636,7 +636,7 @@ class Jobs_Plus_Core{
 		//Is this a jbp_job update?
 		if(! empty($_POST['jbp-job-update']) ) {
 			$id = $this->update_job($_POST);
-			wp_redirect( add_query_arg('jbp_notice', urlencode(sprintf( __('The %s has been updated', $this->text_domain), $this->job_labels->name ) ),
+			wp_redirect( add_query_arg('jbp_notice', urlencode(sprintf( __('The %s has been updated', $this->text_domain), $this->job_labels->singular_name ) ),
 
 			trailingslashit(get_permalink($id) ) ) );
 			exit;
@@ -646,7 +646,7 @@ class Jobs_Plus_Core{
 		if(! empty($_POST['jbp-pro-update'] ) ) {
 			$id = $this->update_pro($_POST);
 			if( !empty($id) ){
-				wp_redirect( add_query_arg('jbp_notice', urlencode(sprintf(__('This %s has been updated', $this->text_domain), $this->pro_labels->name ) ),
+				wp_redirect( add_query_arg('jbp_notice', urlencode(sprintf(__('This %s has been updated', $this->text_domain), $this->pro_labels->singular_name ) ),
 				trailingslashit(get_permalink($id) ) ) );
 				exit;
 			}
@@ -1262,7 +1262,7 @@ class Jobs_Plus_Core{
 	}
 
 	function on_wp_mail($args){
-		var_dump($args);
+		//var_dump($args);
 		return $args;
 	}
 
@@ -2134,7 +2134,7 @@ class Jobs_Plus_Core{
 	*/
 	function update_pro($params = array()){
 
-		var_dump($params); exit;
+		//var_dump($params); exit;
 		if(! current_user_can( EDIT_PRO, $params['post_id']) ) return;
 		/* Construct args for the new post */
 		$args = $params['data'];
@@ -2214,7 +2214,7 @@ class Jobs_Plus_Core{
 	*/
 	function update_job($params = array()){
 
-		var_dump($params);
+		//var_dump($params);
 		if(! current_user_can( EDIT_JOB, $params['data']['ID']) ) return;
 
 		/* Construct args for the new post */

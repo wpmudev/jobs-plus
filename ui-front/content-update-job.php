@@ -68,7 +68,6 @@ wp_enqueue_script('jquery-ui-dialog');
 ?>
 
 <div class="job-profile-wrapper">
-
 	<?php if(dynamic_sidebar('job-widget') ) : else: endif; ?>
 	<?php echo do_action('jbp_error'); ?>
 	<?php echo do_action('jbp_notice'); ?>
