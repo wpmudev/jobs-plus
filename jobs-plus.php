@@ -3,7 +3,7 @@
 Plugin Name: Jobs +
 Plugin URI: http://premium.wpmudev.org/jobs-plus/
 Description:
-Version: 1.0 beta
+Version: 1.0 beta 1
 Author: WPMU DEV
 Author URI: http://premium.wpmudev.org
 Text Domain: jbp
@@ -16,7 +16,7 @@ License: GPLv2 or later
 
 Copyright 2013 Incsub, (http://incsub.com)
 
-Author - Arnold Bailey
+Author - Arnold Bailey - http://webwrights.com
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -73,7 +73,6 @@ define('JBP_PRO_REPUTATION_KEY','_jbp_pro_reputation');
 
 //Load everything
 require_once JBP_PLUGIN_DIR . 'lib/custompress/loader.php';
-//require_once JBP_PLUGIN_DIR . 'class/class-search.php';
 require_once JBP_PLUGIN_DIR . 'class/class-core.php';
 require_once JBP_PLUGIN_DIR . 'class/functions.php';
 require_once JBP_PLUGIN_DIR . 'class/class-term-img.php';

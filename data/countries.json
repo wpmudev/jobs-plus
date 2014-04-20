@@ -1,4 +1,5 @@
 [
+{"value": "United States", "text": "United States"},
 {"value": "Afghanistan", "text": "Afghanistan"},
 {"value": "Albania", "text": "Albania"},
 {"value": "Algeria", "text": "Algeria"},
@@ -223,7 +224,6 @@
 {"value": "Ukraine", "text": "Ukraine"},
 {"value": "United Arab Emirates", "text": "United Arab Emirates"},
 {"value": "United Kingdom", "text": "United Kingdom"},
-{"value": "United States", "text": "United States"},
 {"value": "United States Minor Outlying Islands", "text": "United States Minor Outlying Islands"},
 {"value": "Uruguay", "text": "Uruguay"},
 {"value": "Uzbekistan", "text": "Uzbekistan"},

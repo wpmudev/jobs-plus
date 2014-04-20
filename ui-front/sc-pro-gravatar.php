@@ -20,7 +20,7 @@ $rating = 0;
 		<?php if (current_user_can( EDIT_PRO, $post->ID )) { ?>
 		<a href="http://gravatar.com/emails/" target="_blank" class="gravatar_link">Change gravatar</a>
 		<?php } ?>
-		<div class="rating"><?php echo the_rating(); ?><br /><?php echo $rating; ?></div>
+		<div class="rating"><?php echo the_rating(); ?></div>
 	</div>
 
 	<div class="pro-certify group">

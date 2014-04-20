@@ -1468,20 +1468,23 @@ class Jobs_Plus_Core{
 		return $result;
 	}
 
-	function get_the_rating( $post_id = 0, $before = '', $after = '' ){
+	function get_the_rating( $post_id = null, $before = '', $after = '', $class = '' ){
 		global $post;
 
 		$post_id = empty($post_id) ? $post->ID : $post_id;
+
 		return $before . sprintf('
-		<span class="rateit"
+		<span class="rateit %s"
 		data-rateit-readonly="true"
 		data-rateit-ispreset="true"
 		data-rateit-value="%s"
 		></span>',
+		$class,
 		get_post_meta($post_id, JBP_PRO_AVERAGE_KEY, true) ) . $after;
+
 	}
 
-	function get_rate_this( $post = 0, $before = '', $after = '', $allow_reset = false ) {
+	function get_rate_this( $post = 0, $before = '', $after = '', $allow_reset = false, $class='' ) {
 
 		$post = get_post($post);
 		if( !is_user_logged_in() ) return '';
@@ -1489,7 +1492,7 @@ class Jobs_Plus_Core{
 		$rating = empty($rating[$post->ID]) ? 0 : $rating[$post->ID];
 
 		return $before . sprintf('
-		<span class="rateit"
+		<span class="rateit %s"
 		data-post_id="%s"
 		data-rateit-ispreset="true"
 		data-rateit-value="%s"
@@ -1497,6 +1500,7 @@ class Jobs_Plus_Core{
 		data-ajax="%s"
 		data-nonce="%s"
 		></span>',
+		$class,
 		$post->ID, $rating, $allow_reset,
 		esc_attr(admin_url('admin-ajax.php') ),
 		wp_create_nonce('rating') ) . $after;
@@ -1623,10 +1627,10 @@ class Jobs_Plus_Core{
 			exit(sprintf('{"newValue": %s}', $v ) );
 			break;
 
-//			case '_ct_jbp_pro_Facebook_URL': update_post_meta($post_id, $name, json_encode($value) ); break;
-//			case '_ct_jbp_pro_LinkedIn_URL': update_post_meta($post_id, $name, json_encode($value) ); break;
-//			case '_ct_jbp_pro_Twitter_URL' : update_post_meta($post_id, $name, json_encode($value) ); break;
-//			case '_ct_jbp_pro_Skype_URL'   : update_post_meta($post_id, $name, json_encode($value) ); break;
+			//			case '_ct_jbp_pro_Facebook_URL': update_post_meta($post_id, $name, json_encode($value) ); break;
+			//			case '_ct_jbp_pro_LinkedIn_URL': update_post_meta($post_id, $name, json_encode($value) ); break;
+			//			case '_ct_jbp_pro_Twitter_URL' : update_post_meta($post_id, $name, json_encode($value) ); break;
+			//			case '_ct_jbp_pro_Skype_URL'   : update_post_meta($post_id, $name, json_encode($value) ); break;
 
 			case '_ct_jbp_pro_Location'    : update_post_meta($post_id, $name, sanitize_text_field($value) ); break;
 
@@ -1784,24 +1788,44 @@ class Jobs_Plus_Core{
 		exit(json_encode($redirect));
 	}
 
+	function can_view( $view = 'both' ){
+		$view = strtolower($view);
+		if(is_user_logged_in())	{if($view == 'loggedout') return false;}
+		else if($view == 'loggedin') return false;
+		return true;
+	}
 
 	function rate_this_sc($atts = null, $content = ''){
 		extract( shortcode_atts( array(
+		'view' => 'both', //loggedin, loggedout, both
 		'post' => null,
+		'class' => '',
 		'resetable' => false,
 		), $atts ) );
+
+		if( !$this->can_view( $view ) ) return '';
+
+		$resetable = (strtolower($resetable) == 'true');
+
 		wp_enqueue_script('jquery-rateit');
 		wp_enqueue_style('jquery-rateit');
 
-		return $this->get_rate_this($post, '', '', $resetable);
+		return $this->get_rate_this($post, '', '', $resetable, $class);
 	}
 
 	function rating_sc($atts = null, $content = ''){
 		extract( shortcode_atts( array(
+		'view' => 'both', //loggedin, loggedout, both
 		'post' => null,
+		'class' => '',
 		), $atts ) );
 
-		return $this->get_the_rating($post,'','');
+		if( !$this->can_view( $view ) ) return '';
+
+		wp_enqueue_script('jquery-rateit');
+		wp_enqueue_style('jquery-rateit');
+
+		return $this->get_the_rating($post,'','', $class);
 	}
 
 	/**
@@ -1813,6 +1837,8 @@ class Jobs_Plus_Core{
 		'view' => 'both', //loggedin, loggedout, both
 		'class' => '',
 		), $atts ) );
+
+		if( !$this->can_view( $view ) ) return '';
 
 		ob_start();
 		require locate_jbp_template((array)'sc-pro-gravatar.php');
@@ -1829,6 +1855,8 @@ class Jobs_Plus_Core{
 		'class' => '',
 		), $atts ) );
 
+		if( !$this->can_view( $view ) ) return '';
+
 		ob_start();
 		require locate_jbp_template((array)'sc-pro-portfolio.php');
 		return ob_get_clean();
@@ -1843,6 +1871,8 @@ class Jobs_Plus_Core{
 		'view' => 'both', //loggedin, loggedout, both
 		'class' => '',
 		), $atts ) );
+
+		if( !$this->can_view( $view ) ) return '';
 
 		ob_start();
 		require locate_jbp_template((array)'sc-pro-skills.php');
@@ -1859,6 +1889,8 @@ class Jobs_Plus_Core{
 		'class' => '',
 		), $atts ) );
 
+		if( !$this->can_view( $view ) ) return '';
+
 		ob_start();
 		require locate_jbp_template((array)'sc-pro-social.php');
 		return ob_get_clean();
@@ -1874,9 +1906,7 @@ class Jobs_Plus_Core{
 		'class' => '',
 		), $atts ) );
 
-		$view = strtolower($view);
-		if(is_user_logged_in())	{if($view == 'loggedout') return '';}
-		else if($view == 'loggedin') return '';
+		if( !$this->can_view( $view ) ) return '';
 
 		global $post;
 		$post = get_post($post);
@@ -1896,6 +1926,8 @@ class Jobs_Plus_Core{
 		'class' => '',
 		), $atts ) );
 
+		if( !$this->can_view( $view ) ) return '';
+
 		ob_start();
 		require locate_jbp_template((array)'sc-job-portfolio.php');
 		return ob_get_clean();
@@ -1911,6 +1943,8 @@ class Jobs_Plus_Core{
 		'class' => '',
 		), $atts ) );
 
+		if( !$this->can_view( $view ) ) return '';
+
 		ob_start();
 		require locate_jbp_template((array)'sc-job-excerpt.php');
 		return ob_get_clean();
@@ -1920,13 +1954,6 @@ class Jobs_Plus_Core{
 	* Button shortcodes
 	*
 	*/
-	function can_view( $view = 'both' ){
-		$view = strtolower($view);
-		if(is_user_logged_in())	{if($view == 'loggedout') return false;}
-		else if($view == 'loggedin') return false;
-		return true;
-	}
-
 	function job_contact_btn_sc( $atts, $content = null ) {
 		extract( shortcode_atts( array(
 		'text' => __('Contact Me', $this->text_domain),
@@ -1936,6 +1963,8 @@ class Jobs_Plus_Core{
 		), $atts ) );
 
 		if( !$this->can_view( $view ) ) return '';
+		if( $this->get_setting('job->disable_contact_email', false) ) return '';
+
 
 		$post = get_post($post);
 
@@ -1955,6 +1984,7 @@ class Jobs_Plus_Core{
 		), $atts ) );
 
 		if( !$this->can_view( $view ) ) return '';
+		if( $this->get_setting('pro->disable_contact_email', false) ) return '';
 
 		$post = get_post($post);
 

@@ -191,12 +191,22 @@ wp_enqueue_script('jquery-ui-dialog');
 
 				<tr>
 					<th>
+						<?php if($this->get_setting('job->use_budget_range', false) ): ?>
 						<label><?php _e('Budget Range',JBP_TEXT_DOMAIN)?></label>
+						<?php else: ?>
+						<label><?php _e('Budget',JBP_TEXT_DOMAIN)?></label>
+						<?php endif; ?>
 					</th>
 					<td>
+						<?php if($this->get_setting('job->use_budget_range', false) ): ?>
 						<?php echo do_shortcode('[ct_in id="_ct_jbp_job_Min_Budget" class="number"]'); ?> &mdash;
+						<?php endif; ?>
 						<?php echo do_shortcode('[ct_in id="_ct_jbp_job_Budget" class="number"]'); ?>
-						<br /><span class="job-description"><?php echo do_shortcode('[ct_in id="_ct_jbp_job_Min_Budget" property="description"]'); ?></span>
+						<?php if($this->get_setting('job->use_budget_range', false) ): ?>
+						<br /><span class="job-description"><?php echo do_shortcode('[ct_in id="_ct_jbp_job_Min_Budget" property="description"]') . $this->get_setting('general->currency', '$'); ?></span>
+						<?php else: ?>
+						<br /><span class="job-description"><?php echo do_shortcode('[ct_in id="_ct_jbp_job_Budget" property="description"]') . $this->get_setting('general->currency', '$'); ?></span>
+						<?php endif; ?>
 					</td>
 				</tr>
 				<tr>
@@ -270,7 +280,7 @@ wp_enqueue_script('jquery-ui-dialog');
 
 			<?php if($Jobs_Plus_Core->get_setting('job->moderation->publish') ): ?>
 			<div class="job-go-public">
-				<button type="submit" id="job-publish" name="post_status" value="publish" class="toggle-job-save job-button job-go-public-button" ><?php esc_html_e('Go Public', JBP_TEXT_DOMAIN); ?></button>
+				<button type="submit" id="job-publish" name="post_status" value="publish" class="toggle-job-save job-button job-go-public-button" ><?php esc_html_e('Save', JBP_TEXT_DOMAIN); ?></button>
 			</div>
 			<?php endif; ?>
 
