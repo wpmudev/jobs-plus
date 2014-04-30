@@ -29,9 +29,6 @@ class CustomPress_Core {
 		add_filter( 'pre_get_posts', array( &$this, 'display_custom_post_types' ) );
 		add_action( 'wp_ajax_cp_get_post_types', array( &$this, 'ajax_action_callback' ) );
 
-
-		add_action('init', array($this, 'on_init'));
-
 		add_action('wp_enqueue_scripts', array($this, 'on_wp_enqueue_scripts'));
 
 		register_activation_hook( $this->plugin_dir . 'loader.php', array( &$this, 'plugin_activate' ) );
@@ -51,9 +48,6 @@ class CustomPress_Core {
 	*/
 	function on_plugins_loaded() {
 		load_plugin_textdomain( $this->text_domain, false, plugin_basename($this->plugin_dir . 'languages' ) );
-	}
-
-	function on_init(){
 
 		// People use both "_" and "-" versions for locale IDs en_GB en-GB
 		//Translate it all to dashes because that's the way the standard translation files for datepicker are named.

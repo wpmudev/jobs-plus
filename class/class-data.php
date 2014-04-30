@@ -31,10 +31,10 @@ class Jobs_Plus_Core_Data{
 
 
 	function __construct(){
-		add_action('init', array(&$this, 'load_custom_post_types') );
-		add_action('init', array(&$this, 'load_custom_taxonomies') );
-		add_action('init', array(&$this, 'load_custom_fields') );
-		add_action('init', array(&$this, 'load_default_settings') );
+		add_action('init', array(&$this, 'load_custom_post_types'), 0); //zero priority because need data before setting it.
+		add_action('init', array(&$this, 'load_custom_taxonomies'), 0);
+		add_action('init', array(&$this, 'load_custom_fields'), 0);
+		add_action('init', array(&$this, 'load_default_settings'), 0);
 	}
 
 	/**

@@ -70,7 +70,7 @@
 						<td>
 							<label>
 								<input type="hidden" name="jbp[job][moderation][publish]" value="0" />
-								<input type="checkbox" name="jbp[job][moderation][publish]" value="1" <?php checked( $this->get_setting('job->moderation->publish') ) ?> /> <?php _e('Published', JBP_TEXT_DOMAIN); ?>
+								<input type="checkbox" name="jbp[job][moderation][publish]" value="1" <?php checked( $this->get_setting('job->moderation->publish'), true ) ?> /> <?php _e('Published', JBP_TEXT_DOMAIN); ?>
 							</label>
 							<br /><span class="description"><?php printf(esc_html__('Allow members to publish %s themselves.', JBP_TEXT_DOMAIN), $this->job_labels->name); ?></span>
 							<br />
@@ -84,7 +84,7 @@
 
 							<label>
 								<input type="hidden" name="jbp[job][moderation][draft]" value="0" />
-								<input type="checkbox" name="jbp[job][moderation][draft]" value="1" <?php checked( $this->get_setting('job->moderation->draft') ) ?> /> <?php _e('Draft', JBP_TEXT_DOMAIN); ?>
+								<input type="checkbox" name="jbp[job][moderation][draft]" value="1" <?php checked( $this->get_setting('job->moderation->draft'), true ) ?> /> <?php _e('Draft', JBP_TEXT_DOMAIN); ?>
 							</label>
 							<br /><span class="description"><?php esc_html_e('Allow members to save Drafts.', JBP_TEXT_DOMAIN); ?></span>
 						</td>
@@ -137,7 +137,7 @@
 					<tr>
 						<th><label for="disable_contact_form"><?php _e( 'Disable Contact Form:', JBP_TEXT_DOMAIN ); ?></label></th>
 						<td>
-							<input type="hidden" name="jbp[jobs][disable_contact_form]" value="0" />
+							<input type="hidden" name="jbp[job][disable_contact_form]" value="0" />
 							<input type="checkbox" id="disable_contact_form" name="jbp[job][disable_contact_form]" value="1" <?php checked( $this->get_setting('job->disable_contact_form') ); ?> />
 							<span class="description"><?php esc_html_e( 'disable contact form', JBP_TEXT_DOMAIN ); ?></span>
 						</td>

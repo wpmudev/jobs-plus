@@ -34,7 +34,7 @@ $sort_ending = (!empty($_GET['prj-sort']) && $_GET['prj-sort'] == 'ending' ? 'ac
 						<span>
 							<input type="text" class="" id="searchbox-jobs" name="s" value="<?php echo $phrase; ?>" autocomplete="off" placeholder="<?php echo $text; ?>" />
 						</span>
-						<input type="submit" class="submit-jobs-search" />
+						<input type="submit" class="submit-jobs-search" value="" />
 					</li>
 				</ul>
 			</div>

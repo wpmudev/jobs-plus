@@ -19,7 +19,7 @@ $phrase = (empty($_GET['s']) ) ? '' : $_GET['s'];
 						<span>
 							<input type="text" class="" id="searchbox-pros" name="s" value="<?php echo $phrase; ?>" autocomplete="off" placeholder="<?php echo $text; ?>" />
 						</span>
-					<input type="submit" class="submit-pros-search" />
+					<input type="submit" class="submit-pros-search" value="" />
 					</li>
 				</ul>
 			</div>

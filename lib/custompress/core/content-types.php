@@ -106,8 +106,8 @@ class CustomPress_Content_Types extends CustomPress_Core {
 
 		parent::__construct();
 
-		add_action( 'set_current_user', array( &$this, 'register_taxonomies' ), 1 );
-		add_action( 'set_current_user', array( &$this, 'register_post_types' ), 2 );
+		add_action( 'init', array( &$this, 'register_taxonomies' ), 1 );
+		add_action( 'init', array( &$this, 'register_post_types' ), 2 );
 		add_action( 'init', array( &$this, 'flush_rewrite_rules' ), 99 ); //Give everyone else a chance to set rules, endpoints etc.
 
 		//Add custom terms and fields on media page
@@ -181,7 +181,6 @@ class CustomPress_Content_Types extends CustomPress_Core {
 	*/
 	function register_post_types() {
 		global $wp_post_types;
-
 		$post_types = array();
 		if(is_multisite() ) {
 			if($this->display_network_content){
@@ -225,7 +224,6 @@ class CustomPress_Content_Types extends CustomPress_Core {
 	* @return void
 	*/
 	function register_taxonomies() {
-
 		$taxonomies = array();
 		if(is_multisite() ) {
 			if($this->display_network_content){
@@ -384,8 +382,8 @@ class CustomPress_Content_Types extends CustomPress_Core {
 		if ( $this->flush_rewrite_rules || !empty( $_GET['frr'] ) ) {
 			flush_rewrite_rules($hard);
 			$this->flush_rewrite_rules = false;
-			$this->add_admin_capabilities();
 		}
+		$this->add_admin_capabilities();
 	}
 
 	/**

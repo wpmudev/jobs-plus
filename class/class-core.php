@@ -73,8 +73,7 @@ class Jobs_Plus_Core{
 		register_deactivation_hook($this->plugin_dir . 'jobs-plus.php', array(&$this,'on_deactivate') );
 
 		add_action('plugins_loaded', array(&$this, 'on_plugins_loaded') );
-		add_action('init', array(&$this, 'on_init') );
-		add_action('widgets_init', array(&$this, 'on_widgets_init'), 11 );
+		add_action('init', array(&$this, 'on_init'), 10);
 		add_action('wp_loaded', array(&$this, 'create_virtual_pages') );
 		add_action('wp_print_scripts', array(&$this, 'on_print_scripts') );
 
@@ -150,7 +149,7 @@ class Jobs_Plus_Core{
 					$page = $this->get_page_by_meta('jbp_job', 'add_job_page' );
 					$result = ($page && $page->ID > 0) ? $page->ID : 0;
 					if(empty($result) ) $this->create_virtual_pages();
-					$this->_add_job_page_id = $result; //Remember the number
+					else $this->_add_job_page_id = $result; //Remember the number
 				}
 				$result = $this->_add_job_page_id;
 				break;
@@ -161,7 +160,7 @@ class Jobs_Plus_Core{
 					$page = $this->get_page_by_meta('jbp_pro', 'add_pro_page' );
 					$result = ($page && $page->ID > 0) ? $page->ID : 0;
 					if(empty($result) ) $this->create_virtual_pages();
-					$this->_add_pro_page_id = $result; //Remember the number
+					else $this->_add_pro_page_id = $result; //Remember the number
 				}
 				$result = $this->_add_pro_page_id;
 				break;
@@ -258,7 +257,9 @@ class Jobs_Plus_Core{
 	function on_init(){
 		global $wp_post_statuses;
 
-		$this->rewrite_rules();
+		$this->widgets_init();
+		$this->set_capability_defines();
+		$this->set_rewrite_rules();
 
 		// post_status "virtual" for pages not to be displayed in the menus but that users should not be editing.
 		register_post_status( 'virtual', array(
@@ -287,10 +288,9 @@ class Jobs_Plus_Core{
 		//Need to register scripts and css early because we enqueue in
 		//template_redirect so we know the page amd can only load what and when needed.
 		$this->register_scripts();
-		$this->set_capability_defines();
 	}
 
-	function on_widgets_init(){
+	function widgets_init(){
 		$this->pro_obj = get_post_type_object('jbp_pro');
 		$this->job_obj = get_post_type_object('jbp_job');
 
@@ -311,7 +311,6 @@ class Jobs_Plus_Core{
 			'before_title' => '<h2 class="widgettitle">',
 			'after_title' => '</h2>'
 			));
-
 
 			register_sidebar(array(
 			'id' => 'pro-archive-widget',
@@ -347,7 +346,7 @@ class Jobs_Plus_Core{
 
 	}
 
-	function rewrite_rules(){
+	function set_rewrite_rules(){
 		// add endpoints for front end special pages
 		add_rewrite_endpoint('edit', EP_PAGES);
 		add_rewrite_endpoint('contact', EP_PAGES);
@@ -1056,17 +1055,17 @@ class Jobs_Plus_Core{
 		}
 
 		foreach ($custom_fields as $custom_field) {
-			$args = array(
-			'jbp_custom' => true,
-			'posts_per_page' => -1,
-			'post_type' => $post_type,
-			'fields' => 'ids',
-			'meta_query' => array(
-			'relation' => 'OR',
-			),
-			);
-
 			foreach ($phrases as $phrase) {
+				$args = array(
+				'jbp_custom' => true,
+				'posts_per_page' => -1,
+				'post_type' => $post_type,
+				'fields' => 'ids',
+				'meta_query' => array(
+				'relation' => 'OR',
+				),
+				);
+
 				$args[meta_query][] = array(
 				'key' => $custom_field,
 				'value' => $phrase,
@@ -1143,20 +1142,9 @@ class Jobs_Plus_Core{
 		global $wp_query, $wpdb;
 		//printf('<pre>%s</pre>', print_r($clauses, true) );
 		//printf('<pre>%s</pre>', print_r($wp_query, true) );
-		if( !is_main_query() || is_admin() ) return $clauses;
+		if( ! is_main_query() || is_admin() ) return $clauses;
 
 		if(is_post_type_archive('jbp_pro') ) {
-			//			$clauses['where']  .= $wpdb->prepare(' AND (%1$spp_members.expiration > %2$d)', $wpdb->prefix, time() );
-			//			$clauses['where']  .= $wpdb->prepare(' AND (%1$spp_members.level = \'gold\')', $wpdb->prefix);
-			//			$clauses['where']  .= $wpdb->prepare(' AND (%1$susermeta.meta_key = \'bb_reputation\' OR %1$susermeta.meta_key = NULL) ', $wpdb->prefix);
-			//
-			//			$clauses['join']    = $wpdb->prepare(' LEFT JOIN %1$susers on (%1$susers.ID = %1$sposts.post_author)', $wpdb->prefix );
-			//			$clauses['join']   .= $wpdb->prepare(' LEFT JOIN %1$susermeta on (%1$susermeta.user_id = %1$susers.ID)', $wpdb->prefix );
-			//			$clauses['join']   .= $wpdb->prepare(' LEFT JOIN %1$spp_members on (%1$spp_members.user_id = %1$susers.ID) ', $wpdb->prefix );
-			//
-			//			$clauses['orderby'] = $wpdb->prepare(' CAST(%1$susermeta.meta_value AS SIGNED) DESC ', $wpdb->prefix);
-			//
-			//			$clauses['limits']  = sprintf(' LIMIT 0,%s ', intval( $this->get_setting( 'job->per_page', 48) ) );
 		}
 		elseif(is_post_type_archive('jbp_job') ) {
 			//Sort order
@@ -1215,7 +1203,6 @@ class Jobs_Plus_Core{
 		}
 
 		if(is_post_type_archive('jbp_pro')
-		&& is_main_query()
 		&& !is_admin() ){
 			$query->set( 'posts_per_page', intval( $this->get_setting( 'pro->per_page', 48) ) );
 		}
@@ -1272,7 +1259,7 @@ class Jobs_Plus_Core{
 	*
 	*/
 	function email_contact_job($params = array() ){
-		global $post, $uathordata;
+		global $post, $authordata;
 		if( !empty($params['jbp-job-contact']) ){
 			if( ! ($post = get_post($params['post_id']) ) ) return;
 
@@ -1341,7 +1328,7 @@ class Jobs_Plus_Core{
 			$message_headers = array();
 			$message_headers[] = "MIME-Version: 1.0";
 			$message_headers[] = "From: $from";
-			$message_headers[] = "Replt-To: $from";
+			$message_headers[] = "Reply-To: $from";
 			$message_headers[] = sprintf("Content-Type: text/html; charset=\"%s\"", get_option('blog_charset') );
 
 			if( $this->get_setting('pro->cc_admin') ) {
@@ -1404,7 +1391,7 @@ class Jobs_Plus_Core{
 	}
 
 	function is_certified($user_id = 0){
-		if( empty($this->get_setting('general->use_certification') ) ) return false;
+		if( $this->get_setting('general->use_certification', false) ) return false;
 		$user_id = empty($user_id) ? get_current_user_id() : intval($user_id);
 		$result =  get_user_meta($user_id, JBP_PRO_CERTIFIED_KEY, true);
 		return $result;
