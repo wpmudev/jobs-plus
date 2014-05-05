@@ -50,7 +50,7 @@ a.job-add{
 .job-form-table select,
 .job-form-table textarea{
 	display: block;
-	padding: 6px;
+	padding: 0.5em;
 	width: 100%;
 	box-sizing: border-box;
 	-moz-box-sizing: border-box;
@@ -114,7 +114,7 @@ a.job-add{
 
 .job-single-wrapper .job-meta ul li{
 	display: inline-table;
-	padding: 5px 10px;
+	padding: 0.5em 1em;
 	margin: 0;
 	text-align: center;
 	border-right: 1px solid #aaa;
@@ -217,8 +217,8 @@ a.job-add{
 .job-excerpt{
 	position: relative;
 	display: table;
-	height: 240px;
-	font-size: .9em;
+	height: 16em;
+	font-size: 90%;
 	border: 1px solid #b3b3b3;
 	box-sizing: border-box;
 	-moz-box-sizing: border-box;
@@ -228,9 +228,11 @@ a.job-add{
 .job-excerpt.small{
 	width: 50%;
 }
+
 .job-excerpt.medium{
 	width: 100%;
 }
+
 .job-excerpt.large{
 	width: 100%;
 }
@@ -375,4 +377,14 @@ input[type="submit"].submit-jobs-search{ /* stretchy button */
 	top: 0; bottom: 0; right: 0;
 	padding: 0;
 	width: 40px;
+}
+
+/* MEDIA QUERIES */
+
+@media screen and (max-width:959px) {
+	.job-excerpt.large,
+	.job-excerpt.medium,
+	.job-excerpt.small{
+		width: 100%;
+	}
 }

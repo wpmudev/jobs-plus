@@ -53,7 +53,8 @@ function job_have_posts(){
 			columnWidth: ".job-grid-sizer",
 			gutter: 0
 		});
-		$container.masonry('layout');
+
+		$(window).resize( function(){ $container.masonry('layout'); } );
 
 		$(".job-excerpt").click( function(){
 			var $this = $(this);

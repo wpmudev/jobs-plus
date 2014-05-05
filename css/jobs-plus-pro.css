@@ -37,7 +37,7 @@ a.pro-add{
 
 .pro-edit {
 	float: right;
-	margin-top: -60px;
+	margin-top: -4em;
 	position: relative;
 	z-index: 10;
 }
@@ -73,7 +73,7 @@ a.pro-add{
 .editable-skill
 .ui-slider-range-min,
 .skill-percent{
-	height: 13px;
+	height: 0.8em;
 	background-color: #e23de9;
 	-moz-box-shadow: inset 0 4px 4px rgba(0,0,0,.1), inset 0 0 4px rgba(0,0,0,.21);
 	-webkit-box-shadow: inset 0 4px 4px rgba(0,0,0,.1), inset 0 0 4px rgba(0,0,0,.21);
@@ -86,14 +86,14 @@ a.pro-add{
 }
 
 .pro-skills p{
-	margin: 0 0 1em 2px;
+	margin: 0 0 1em 0.1em;
 }
 
 
 .pro-skills .editable-container.editable-inline {
 	display: block;
 	border: 1px dashed #797b79;
-	padding: 10px 0 10px 20px;
+	padding: 0.5em 0 0.5em 1em;
 }
 
 
@@ -152,13 +152,13 @@ ul.pro-content-editable li{
 }
 
 .control-group button{
-	height:32px;
-	padding: 4px 7px;
+	height:2em;
+	padding: 0.3em 0.5em;
 }
 
 .pro-contact,
 .pro-go-public-button{
-	margin:0 auto 20px auto;
+	margin:0 auto 1.2em auto;
 	display: block;
 	width: 70%;
 }
@@ -191,7 +191,7 @@ ul.pro-content-editable li{
 .pro-gravatar{
 	border: 1px solid #ddd;
 	text-align: center;
-	margin-bottom: 20px;
+	margin-bottom: 1.2em;
 	padding: 0;
 }
 
@@ -202,14 +202,14 @@ ul.pro-content-editable li{
 	float: none;
 	padding: 0;
 	margin: auto;
-	border: 8px solid #fff;
+	border: 0.5em solid #fff;
 	box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	-webkit-box-sizing: border-box;
 }
 
 .jbp-gravatar-border{
-	padding: 5px;
+	padding: 0.5em;
 }
 
 .pro-archive-wrapper {
@@ -228,7 +228,7 @@ ul.pro-content-editable li{
 .pro-archive{
 	position: relative;
 	text-align: center;
-	margin-bottom: 5px;
+	margin-bottom: 0.5em;
 	border: 1px solid #ddd;
 }
 
@@ -249,18 +249,18 @@ ul.pro-content-editable li{
 	text-align: center;
 	border-top: 1px solid #ddd;
 	border-bottom: 1px solid #ddd;
-	padding: 4px;
+	padding: 0.3em;
 }
 
 .pro-archive .pro-archive-rating{
 	border-bottom: 1px solid #ddd;
-	margin: 2px 0 0 0;
+	margin: 0.1em 0 0 0;
 }
 
 .pro-archive .pro-archive-certify{
 	font-size: 90%;
 	border-bottom: 1px solid #ddd;
-	padding-bottom: 4px;
+	padding-bottom: 0.2em;
 }
 
 .pro-archive-skills{
@@ -269,17 +269,17 @@ ul.pro-content-editable li{
 }
 
 .pro-archive-skills ul li{
-	margin: 4px 4%;
+	margin: 0.2em 4%;
 }
 
 .pro-large .pro-archive-skills ul li{
 	width: 45%;
 	float: left;
-	margin: 4px 2%;
+	margin: 0.2em 2%;
 }
 
 .pro-archive-skills .skill-percent{
-	height: 3px;
+	height: 0.15em;
 }
 
 .pro-archive-image img.avatar{
@@ -301,7 +301,7 @@ ul.pro-content-editable li{
 	color: #ddd;
 	background-color: black;
 	display: none;
-	font-size: .9em;
+	font-size: 90%;
 	font-weight: bold;
 	line-height: normal;
 }
@@ -344,7 +344,7 @@ button.pro-profile-btn{
 .pro-search-wrap .pro-meta ul li{
 	list-style-type: none;
 	margin: 0;
-	padding: 5px 5px;
+	padding: 0.5em 0.5em;
 	text-align: center;
 	border-right: 1px solid #aaa;
 	float: left;
@@ -353,7 +353,7 @@ button.pro-profile-btn{
 .pro-search-wrap .pro-meta ul li:last-child{
 	float: none;
 	overflow: hidden;
-	padding: 0px 5px;
+	padding: 0 0.5em;
 }
 
 input#searchbox-pros{
@@ -367,5 +367,5 @@ input[type="submit"].submit-pros-search{ /* stretchy button */
 	position: absolute;
 	top: 0; bottom: 0; right: 0;
 	padding: 0;
-	width: 40px;
+	width: 2.5em;
 }

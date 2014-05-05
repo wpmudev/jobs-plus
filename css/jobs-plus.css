@@ -47,17 +47,17 @@
 
 div.updated, div.error{
 	margin: 1em 0;
-	padding: 2px 12px;
+	padding: 0.1em 1em;
 }
 
 div.updated p, div.error p {
 	margin: 0.5em 0;
-	padding: 2px;
+	padding: 0.1em;
 }
 
 label.error, label.updated{
 	margin: 0.5em 0;
-	padding: 2px 12px;
+	padding: 0.1em 1em;
 }
 
 .editfield {
@@ -70,7 +70,7 @@ label.error, label.updated{
 .editfield select {
 	font-size:1.2em;
 	margin:0;
-	padding:6px;
+	padding:0.5em;
 	width:100%;
 	box-sizing: border-box;
 	-moz-box-sizing: border-box;
@@ -84,19 +84,19 @@ label.error, label.updated{
 }
 
 .input-large{
-	width: 400px;
+	width: 25em;
 }
 
 .input-medium{
-	min-width: 300px;
+	min-width: 18em;
 }
 
 .input-small{
-	width: 200px;
+	width: 12em;
 }
 
 input.input-small{
-	margin: 0 0 5px 0;
+	margin: 0 0 0.5em 0;
 }
 
 .dialogcenter{
@@ -109,8 +109,8 @@ input.input-small{
 
 .jbp-pagination {
 	clear:both;
-	font-size:11px;
-	line-height:13px;
+	font-size:90%;
+	line-height: 0.9em;
 	padding:0;
 	position:relative;
 	z-index:99;
@@ -120,8 +120,8 @@ input.input-small{
 .jbp-pagination .current {
 	background:#aaa;
 	color:#fff;
-	padding:6px 9px 5px;
-	border-radius: 12px;
+	padding:0.3em 0.5em 0.3em;
+	border-radius: 50%;
 }
 
 .jbp-pagination a:hover {
@@ -134,25 +134,25 @@ input.input-small{
 	color:#444;
 	display:block;
 	float:left;
-	margin:2px 2px 2px 0;
-	padding:6px 9px 5px;
+	margin:0.1em 0.1em 0.1em 0;
+	padding: 0.3em 0.5em 0.3em;
 	text-decoration:none;
 	width:auto;
 }
 
 .jbp-certify {
 	
-	background: transparent url("../img/jbp-certify.png") no-repeat 5px center;
-	font-size: 13px;
-	height: 20px;
-	line-height: 20px;
+	background: transparent url("../img/jbp-certify.png") no-repeat 0.5em center;
+	font-size: 90%;
+	height: 1.2em;
+	line-height: 1.2em;
 	overflow: hidden;
 	position: absolute;
-	right: 5px;
-	text-indent: 200px;
-	top: 5px;
+	right: 0.5em;
+	text-indent: 12em;
+	top: 0.5.em;
 	transition: width 0.4s ease 0s;
-	width: 16px;
+	width: 1em;
 	word-wrap: normal;
 	padding: 0;
 	margin: 0;
@@ -160,10 +160,10 @@ input.input-small{
 
 .pro-archive:hover .jbp-certify{
 	width: 100%;
-	text-indent: 5px;
+	text-indent: 0.5em;
 	color: #0090ff;
 	background-color: #f3f3f2;
-	right: 0px;
-	top: 0px;
+	right: 0;
+	top: 0;
 	border-bottom: 1px solid #cccccc;
 }
