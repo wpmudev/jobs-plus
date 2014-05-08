@@ -994,6 +994,7 @@ class Jobs_Plus_Core{
 
 		//Parse the search string breaking at commas and with quotes.
 		$phrases = array_map('trim', str_getcsv(stripslashes($phrase)));
+		$phrases = array_slice($phrases, 0, 3);
 
 		//Standard String search
 		foreach ($phrases as $phrase) {
@@ -1054,28 +1055,20 @@ class Jobs_Plus_Core{
 			$custom_fields[] = $prefix . $key;
 		}
 
-		foreach ($custom_fields as $custom_field) {
-			foreach ($phrases as $phrase) {
-				$args = array(
-				'jbp_custom' => true,
-				'posts_per_page' => -1,
-				'post_type' => $post_type,
-				'fields' => 'ids',
-				'meta_query' => array(
-				'relation' => 'OR',
-				),
-				);
+		$custom_fields = array_map('esc_sql', $custom_fields);
+		$keys = "'".implode("','",$custom_fields)."'";
 
-				$args[meta_query][] = array(
-				'key' => $custom_field,
-				'value' => $phrase,
-				'compare' => 'LIKE',
-				);
+		foreach ($phrases as $phrase) {
+			global $wpdb;
 
-				$search_ids = get_posts($args);
-				$all_ids = array_merge($all_ids, $search_ids);
-			}
+			$search_ids = array_keys(
+			$wpdb->get_results($wpdb->prepare(
+			"SELECT post_id FROM {$wpdb->postmeta} WHERE meta_key IN ($keys) AND meta_value LIKE %s", '%'.$phrase.'%'), OBJECT_K )
+			);
+
+			$all_ids = array_merge($all_ids, $search_ids);
 		}
+
 		//var_dump($all_ids);
 		//		$search_ids = get_posts($args);
 		//		$all_ids = array_merge($all_ids, $search_ids);

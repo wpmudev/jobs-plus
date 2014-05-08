@@ -8,13 +8,6 @@
 
 
 /**
-* is_certified - Is the $user_id marked as certified in his profile
-* if $user_id is empty the the current_user will be used
-* @user_id int
-* return bool
-*/
-
-/**
 * Prevent comments display
 *
 */
@@ -22,27 +15,33 @@ function no_comments(){
 	add_filter('comments_open', create_function('', 'return false;') );
 }
 
-function is_certified($user_id = 0){
+/**
+* is_jbp_certified - Is the $user_id marked as certified in his profile
+* if $user_id is empty the the current_user will be used
+* @user_id int
+* return bool
+*/
+function is_jbp_certified($user_id = 0){
 	global $Jobs_Plus_Core;
 	return $Jobs_Plus_Core->is_certified($user_id);
 }
 
-function get_the_rating( $post = 0, $before = '', $after = '' ){
+function get_the_jbp_rating( $post = 0, $before = '', $after = '' ){
 	global $Jobs_Plus_Core;
 	$Jobs_Plus_Core->get_the_rating($post, $before, $after);
 }
 
-function the_rating( $post = 0, $before = '', $after = '' ){
+function the_jbp_rating( $post = 0, $before = '', $after = '' ){
 	global $Jobs_Plus_Core;
 	echo $Jobs_Plus_Core->get_the_rating($post, $before, $after);
 }
 
-function get_rate_this( $post = 0, $before = '', $after = '', $allow_reset = false ) {
+function get_jbp_rate_this( $post = 0, $before = '', $after = '', $allow_reset = false ) {
 	global $Jobs_Plus_Core;
 	return $Jobs_Plus_Core->get_rate_this( $post, $before, $after, $allow_reset);
 }
 
-function rate_this( $post = 0, $before = '', $after = '', $allow_reset = false) {
+function jbp_rate_this( $post = 0, $before = '', $after = '', $allow_reset = false) {
 	global $Jobs_Plus_Core;
 	echo $Jobs_Plus_Core->get_rate_this($post, $before, $after, $allow_reset);
 }

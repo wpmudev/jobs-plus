@@ -3,7 +3,7 @@
 Plugin Name: Jobs +
 Plugin URI: http://premium.wpmudev.org/jobs-plus/
 Description:
-Version: 1.0 beta 1
+Version: 1.0 beta 3
 Author: WPMU DEV
 Author URI: http://premium.wpmudev.org
 Text Domain: jbp

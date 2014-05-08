@@ -138,7 +138,7 @@ class Jobs_Plus_Admin extends Jobs_Plus_Core{
 					<fieldset>
 						<legend class="screen-reader-text"><span><?php echo $certification; ?></span></legend>
 						<label for="jbp_certified">
-							<input name="jbp_certified" type="checkbox" id="jbp_certified" value="1"<?php checked( is_certified( $profileuser->ID ) ); ?> />
+							<input name="jbp_certified" type="checkbox" id="jbp_certified" value="1"<?php checked( is_jbp_certified( $profileuser->ID ) ); ?> />
 							<?php printf( __('User is %s', JBP_TEXT_DOMAIN ), $certification); ?>
 						</label><br />
 					</fieldset>
