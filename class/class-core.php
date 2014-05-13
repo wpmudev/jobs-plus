@@ -2110,9 +2110,9 @@ class Jobs_Plus_Core{
 
 	/**
 	* Update a jbp_pro
-	*
+	* Passed by reference so any changes made to $params ar epassed through to cutom fields handler.
 	*/
-	function update_pro($params = array()){
+	function update_pro( &$params ){
 
 		//var_dump($params); exit;
 		if(! current_user_can( EDIT_PRO, $params['post_id']) ) return;
@@ -2190,16 +2190,16 @@ class Jobs_Plus_Core{
 
 	/**
 	* Update a jbp_job
-	*
+	* Passed by reference so any changes made to $params ar epassed through to cutom fields handler.
 	*/
-	function update_job($params = array()){
+	function update_job( &$params ){
 
-		//var_dump($params);
+		//var_dump($params); exit;
 		if(! current_user_can( EDIT_JOB, $params['data']['ID']) ) return;
 
 		/* Construct args for the new post */
 		$args = array(
-		/* If empty ID insert Ad instead of updating it */
+		/* If empty ID insert post instead of updating it */
 		'ID'             => ( isset( $params['data']['ID'] ) ) ?  $params['data']['ID'] : '',
 		'post_title'     => wp_strip_all_tags($params['data']['post_title']),
 		'post_name'      => '',
@@ -2214,6 +2214,15 @@ class Jobs_Plus_Core{
 		if( !empty($params['data']['post_status']) ){
 			if( get_setting("job->moderation->{$params['data']['post_status']}") ){
 				$args['post_status'] = $params['data']['post_status'];
+			}
+		}
+
+		// swap values so min is min on budget range
+		if ( $this->get_setting( 'job->use_budget_range', false ) ) {
+			if($params['_ct_jbp_job_Min_Budget'] > $params['_ct_jbp_job_Budget'] ){
+				$temp = $params['_ct_jbp_job_Min_Budget'];
+				$params['_ct_jbp_job_Min_Budget'] = $params['_ct_jbp_job_Budget'];
+				$params['_ct_jbp_job_Budget'] = $temp;
 			}
 		}
 

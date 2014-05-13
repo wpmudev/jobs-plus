@@ -33,7 +33,7 @@ $project_budget = ($project_budget == '' ? 'N/A' : $project_budget);
 	<?php if(dynamic_sidebar('job-widget') ) : else: endif; ?>
 	<?php echo do_action('jbp_error'); ?>
 	<?php echo do_action('jbp_notice'); ?>
-<?php the_author_posts_link(); ?>
+
 
 	<div class="job-meta group">
 		<ul>
@@ -46,6 +46,7 @@ $project_budget = ($project_budget == '' ? 'N/A' : $project_budget);
 			endif; 
 			?>
 		</ul>
+<?php //the_author_posts_link(); ?>
 		<div style="clear: both"></div>
 	</div>
 
