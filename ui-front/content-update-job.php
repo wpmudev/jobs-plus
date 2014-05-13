@@ -341,5 +341,17 @@ wp_enqueue_script('jquery-ui-dialog');
 
 	});
 </script>
-
+<?php if ( $this->get_setting( 'job->use_budget_range', false ) ): ?>
+	<script type="text/javascript">
+		jQuery(document).ready(function () {
+			jQuery('#_ct_jbp_job_Min_Budget').keyup(function () {
+				var value = jQuery('#_ct_jbp_job_Min_Budget').val();
+				jQuery('[name="_ct_jbp_job_Budget"]').rules('remove', 'min');
+				jQuery('[name="_ct_jbp_job_Budget"]').rules('add',{
+					min:value
+				})
+			});
+		})
+	</script>
+<?php endif; ?>
 
