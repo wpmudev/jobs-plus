@@ -1743,12 +1743,12 @@ class Jobs_Plus_Core{
 		if( !wp_verify_nonce($params['_wpnonce'], 'jbp_pro') ){
 			$this->ajax_error('Forbidden No Nonce Sins', $params);
 		}
-
+		
+		if( empty( $params['post_status'] ) ) exit;
+		if( !$this->is_valid_pro_status( $params['post_status'] ) ) exit;
+		
 		$post_id = (empty($params['post_id']) ) ? 0 : intval($params['post_id']);
-		$post_status = (empty($params['post_status']) ? 0 : $params['post_status']);
-
 		if( empty($post_id) ) exit;
-		if ($this->get_setting("pro->moderation->{$post_status}" != 1) ) exit;
 		if( get_post_type($post_id) != 'jbp_pro') exit;
 
 		$id = wp_update_post(array(
@@ -2133,6 +2133,16 @@ class Jobs_Plus_Core{
 		//		'ping_status'    => 'closed',
 		//		//'comment_status' => 'open'
 		//		);
+		
+		
+		if( !empty($params['data']['post_status']) ){
+			if( $this->is_valid_pro_status( $params['data']['post_status'] ) ){
+				$args['post_status'] = $params['data']['post_status'];
+			} else {
+				unset( $args['post_status'] );
+			}
+		}
+		
 
 		/* Insert page and get the ID */
 		if(empty($args['ID']) ){
@@ -2190,7 +2200,7 @@ class Jobs_Plus_Core{
 
 	/**
 	* Update a jbp_job
-	* Passed by reference so any changes made to $params ar epassed through to cutom fields handler.
+	* Passed by reference so any changes made to $params are passed through to cutom fields handler.
 	*/
 	function update_job( &$params ){
 
@@ -2212,8 +2222,10 @@ class Jobs_Plus_Core{
 		);
 
 		if( !empty($params['data']['post_status']) ){
-			if( get_setting("job->moderation->{$params['data']['post_status']}") ){
+			if( $this->is_valid_job_status( $params['data']['post_status'] ) ){
 				$args['post_status'] = $params['data']['post_status'];
+			} else {
+				unset( $args['post_status'] );
 			}
 		}
 
@@ -2385,6 +2397,46 @@ class Jobs_Plus_Core{
 		}
 		exit;
 	}
+	
+	function is_valid_job_status( $status = '') {
+
+		switch( $status ) {
+			case 'publish': {
+				return ($this->get_setting("job->moderation->publish", 1) == 1 );
+				break;
+			}
+			case 'pending': {
+				return ($this->get_setting("job->moderation->publish", 1) != 1);
+				break;
+			}
+			case 'draft': {
+				return ($this->get_setting("job->moderation->draft", 1) == 1);
+				break;
+			}
+			default: return false; break;
+		}
+
+	}
+
+	function is_valid_pro_status( $status = '') {
+
+		switch( $status ) {
+			case 'publish': {
+				return ($this->get_setting("pro->moderation->publish", 1) == 1 );
+				break;
+			}
+			case 'pending': {
+				return ($this->get_setting("pro->moderation->publish", 1) != 1);
+				break;
+			}
+			case 'draft': {
+				return ($this->get_setting("pro->moderation->draft", 1) == 1);
+				break;
+			}
+			default: return false; break;
+		}
+  
+	}
 
 	function on_ajax_jbp_job_status(){
 
@@ -2396,11 +2448,11 @@ class Jobs_Plus_Core{
 			$this->ajax_error('Forbidden No Nonce Sins', $params);
 		}
 
-		$post_id = (empty($params['post_id']) ) ? 0 : intval($params['post_id']);
-		$post_status = (empty($params['post_status']) ? 0 : $params['post_status']);
+		if( empty( $params['post_status'] ) ) exit;
+		if( !$this->is_valid_job_status( $params['post_status'] ) ) exit;
 
+		$post_id = (empty($params['post_id']) ) ? 0 : intval($params['post_id']);
 		if( empty($post_id) ) exit;
-		if ($this->get_setting("job->moderation->{$post_status}" != 1) ) exit;
 		if( get_post_type($post_id) != 'jbp_job') exit;
 
 		$id = wp_update_post(array(

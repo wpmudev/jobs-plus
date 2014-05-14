@@ -200,12 +200,15 @@ wp_enqueue_script('jquery-ui-dialog');
 						<?php if($this->get_setting('job->use_budget_range', false) ): ?>
 						<?php echo do_shortcode('[ct_in id="_ct_jbp_job_Min_Budget" class="number"]'); ?> &mdash;
 						<?php endif; ?>
+						
 						<?php echo do_shortcode('[ct_in id="_ct_jbp_job_Budget" class="number"]'); ?>
+						
 						<?php if($this->get_setting('job->use_budget_range', false) ): ?>
 						<br /><span class="job-description"><?php echo do_shortcode('[ct_in id="_ct_jbp_job_Min_Budget" property="description"]') . $this->get_setting('general->currency', '$'); ?></span>
 						<?php else: ?>
 						<br /><span class="job-description"><?php echo do_shortcode('[ct_in id="_ct_jbp_job_Budget" property="description"]') . $this->get_setting('general->currency', '$'); ?></span>
 						<?php endif; ?>
+					
 					</td>
 				</tr>
 				<tr>
@@ -279,20 +282,20 @@ wp_enqueue_script('jquery-ui-dialog');
 
 			<?php if($Jobs_Plus_Core->get_setting('job->moderation->publish') ): ?>
 			<div class="job-go-public">
-				<button type="submit" id="job-publish" name="post_status" value="publish" class="toggle-job-save job-button job-go-public-button" ><?php esc_html_e('Save', JBP_TEXT_DOMAIN); ?></button>
+				<button type="submit" id="job-publish" name="data[post_status]" value="publish" class="toggle-job-save job-button job-go-public-button" ><?php esc_html_e('Save', JBP_TEXT_DOMAIN); ?></button>
 			</div>
 			<?php endif; ?>
 
-			<?php if($Jobs_Plus_Core->get_setting('job->moderation->pending') ): ?>
+			<?php if( !$Jobs_Plus_Core->get_setting('job->moderation->publish') ): ?>
 			<div class="job-go-public">
-				<button type="submit" id="job-pending" name="post_status" value="pending" class="toggle-job-save job-button job-go-public-button" ><?php esc_html_e('Review', JBP_TEXT_DOMAIN); ?></button>
+				<button type="submit" id="job-pending" name="data[post_status]" value="pending" class="toggle-job-save job-button job-go-public-button" ><?php esc_html_e('Review', JBP_TEXT_DOMAIN); ?></button>
 			</div>
 			<?php endif; ?>
 		</div>
 
 		<?php if($Jobs_Plus_Core->get_setting('job->moderation->draft') ): ?>
 		<div class="job-go-public">
-			<button type="submit" id="job-draft" name="post_status" value="draft" class="toggle-job-save job-button job-go-public-button" ><?php esc_html_e('Draft', JBP_TEXT_DOMAIN); ?></button>
+			<button type="submit" id="job-draft" name="data[post_status]" value="draft" class="toggle-job-save job-button job-go-public-button" ><?php esc_html_e('Draft', JBP_TEXT_DOMAIN); ?></button>
 		</div>
 		<?php endif; ?>
 
@@ -326,32 +329,26 @@ wp_enqueue_script('jquery-ui-dialog');
 
 		var $editables = $('.editable'); //Get a list of editable fields
 
-		$('.toggle-job-save').click( function(){
-			$.get( '<?php echo admin_url('admin-ajax.php'); ?>', {
-				"action": "jbp_job_status",
-				"post_id": "<?php the_ID(); ?>",
-				"post_status": $(this).val(),
-				"_wpnonce": "<?php echo wp_create_nonce('jbp_job');?>"
-			});
-			jbpPopup();
-		});
+//		$('.toggle-job-save').click( function(){
+//			$.get( '<?php echo admin_url('admin-ajax.php'); ?>', {
+//				"action": "jbp_job_status",
+//				"post_id": "<?php the_ID(); ?>",
+//				"post_status": $(this).val(),
+//				"_wpnonce": "<?php echo wp_create_nonce('jbp_job');?>"
+//			});
+//			jbpPopup();
+//		});
 
 		jbpPopup();
 		$editables.editable();
 
+		$('#_ct_jbp_job_Min_Budget').keyup(function () {
+			var value = $('#_ct_jbp_job_Min_Budget').val();
+			$('[name="_ct_jbp_job_Budget"]').rules('remove', 'min');
+			$('[name="_ct_jbp_job_Budget"]').rules('add',{
+				min:value
+			})
+		});
 	});
-</script>
-<?php if ( $this->get_setting( 'job->use_budget_range', false ) ): ?>
-	<script type="text/javascript">
-		jQuery(document).ready(function () {
-			jQuery('#_ct_jbp_job_Min_Budget').keyup(function () {
-				var value = jQuery('#_ct_jbp_job_Min_Budget').val();
-				jQuery('[name="_ct_jbp_job_Budget"]').rules('remove', 'min');
-				jQuery('[name="_ct_jbp_job_Budget"]').rules('add',{
-					min:value
-				})
-			});
-		})
-	</script>
-<?php endif; ?>
 
+</script>

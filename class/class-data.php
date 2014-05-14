@@ -1050,6 +1050,9 @@ class Jobs_Plus_Core_Data{
 		if( !isset($settings['pro']['moderation']['publish']) ) $settings['pro']['moderation']['publish'] = 1;
 		if( !isset($settings['job']['moderation']['publish']) ) $settings['pro']['moderation']['publish'] = 1;
 
+		if( !isset($settings['pro']['moderation']['publish']) ) $settings['pro']['moderation']['draft'] = 1;
+		if( !isset($settings['job']['moderation']['publish']) ) $settings['pro']['moderation']['draft'] = 1;
+
 		update_option($sname, $settings);
 	}
 

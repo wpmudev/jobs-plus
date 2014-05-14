@@ -33,7 +33,7 @@
 
 					<tr>
 						<th>
-							<label for="moderation"><?php esc_html_e('Certification Label', JBP_TEXT_DOMAIN ) ?></label>
+							<label for="jbp[general][certification]"><?php esc_html_e('Certification Label', JBP_TEXT_DOMAIN ) ?></label>
 						</th>
 						<td>
 							<input type="text" name="jbp[general][certification]" value="<?php esc_attr_e($this->get_setting('general->certification', __('Jobs+ Certified', JBP_TEXT_DOMAIN) ) );?>" size="60"/>
@@ -42,7 +42,7 @@
 					</tr>
 					<tr>
 						<th>
-							<label for="moderation"><?php esc_html_e('Currency Symbol', JBP_TEXT_DOMAIN ) ?></label>
+							<label for="jbp[general][currency]"><?php esc_html_e('Currency Symbol', JBP_TEXT_DOMAIN ) ?></label>
 						</th>
 						<td>
 							<input type="text" name="jbp[general][currency]" value="<?php esc_attr_e( $this->get_setting('general->currency', __('$', JBP_TEXT_DOMAIN) ) );?>" size="10"/>

@@ -58,6 +58,7 @@ div.updated p, div.error p {
 label.error, label.updated{
 	margin: 0.5em 0;
 	padding: 0.1em 1em;
+	display: block;
 }
 
 .editfield {

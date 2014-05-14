@@ -201,7 +201,7 @@ wp_enqueue_script('jqueryui-editable-ext');
 				</div>
 				<?php endif; ?>
 
-				<?php if($Jobs_Plus_Core->get_setting('pro->moderation->pending') ): ?>
+				<?php if( !$Jobs_Plus_Core->get_setting('pro->moderation->publish') ): ?>
 				<div class="pro-go-public">
 					<button type="submit" id="pro-pending" name="data[post_status]" value="pending" class="toggle-pro-save pro-go-public-button" ><?php esc_html_e('Review', JBP_TEXT_DOMAIN); ?></button>
 				</div>

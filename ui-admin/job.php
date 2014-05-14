@@ -69,17 +69,17 @@
 						</th>
 						<td>
 							<label>
-								<input type="hidden" name="jbp[job][moderation][publish]" value="0" />
-								<input type="checkbox" name="jbp[job][moderation][publish]" value="1" <?php checked( $this->get_setting('job->moderation->publish', 1) ) ?> /> <?php _e('Published', JBP_TEXT_DOMAIN); ?>
+								<input type="radio" name="jbp[job][moderation][publish]" value="1" <?php checked( $this->get_setting('job->moderation->publish', 1) ) ?> /> <?php _e('Published', JBP_TEXT_DOMAIN); ?>
 							</label>
 							<br /><span class="description"><?php printf(esc_html__('Allow members to publish %s themselves.', JBP_TEXT_DOMAIN), $this->job_labels->name); ?></span>
 							<br />
+							<br />
 
 							<label>
-								<input type="hidden" name="jbp[job][moderation][pending]" value="0" />
-								<input type="checkbox" name="jbp[job][moderation][pending]" value="1" <?php checked( $this->get_setting('job->moderation->pending', 0) ) ?> /> <?php _e('Pending Review', JBP_TEXT_DOMAIN); ?>
+								<input type="radio" name="jbp[job][moderation][publish]" value="0" <?php checked( !$this->get_setting('job->moderation->publish', 1) ) ?> /> <?php _e('Pending Review', JBP_TEXT_DOMAIN); ?>
 							</label>
 							<br /><span class="description"><?php printf(esc_html__('%s is pending review by an administrator.', JBP_TEXT_DOMAIN ), $this->job_labels->singular_name); ?></span>
+							<br />
 							<br />
 
 							<label>
