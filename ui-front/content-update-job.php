@@ -241,7 +241,7 @@ wp_enqueue_script('jquery-ui-dialog');
 				</tr>
 
 				<tr>
-					<th>
+					<th style="vertical-align: top">
 						<label><?php _e('Attach Examples',JBP_TEXT_DOMAIN)?></label>
 					</th>
 					<td>
