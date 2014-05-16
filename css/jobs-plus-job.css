@@ -379,6 +379,10 @@ input[type="submit"].submit-jobs-search{ /* stretchy button */
 	width: 40px;
 }
 
+.job-button-group{
+	float: right;
+}
+
 /* MEDIA QUERIES */
 
 @media screen and (max-width:959px) {

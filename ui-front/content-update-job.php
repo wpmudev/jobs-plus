@@ -200,15 +200,15 @@ wp_enqueue_script('jquery-ui-dialog');
 						<?php if($this->get_setting('job->use_budget_range', false) ): ?>
 						<?php echo do_shortcode('[ct_in id="_ct_jbp_job_Min_Budget" class="number"]'); ?> &mdash;
 						<?php endif; ?>
-						
+
 						<?php echo do_shortcode('[ct_in id="_ct_jbp_job_Budget" class="number"]'); ?>
-						
+
 						<?php if($this->get_setting('job->use_budget_range', false) ): ?>
 						<br /><span class="job-description"><?php echo do_shortcode('[ct_in id="_ct_jbp_job_Min_Budget" property="description"]') . $this->get_setting('general->currency', '$'); ?></span>
 						<?php else: ?>
 						<br /><span class="job-description"><?php echo do_shortcode('[ct_in id="_ct_jbp_job_Budget" property="description"]') . $this->get_setting('general->currency', '$'); ?></span>
 						<?php endif; ?>
-					
+
 					</td>
 				</tr>
 				<tr>
@@ -277,40 +277,40 @@ wp_enqueue_script('jquery-ui-dialog');
 		<?php endif; ?>
 
 		<?php if( current_user_can( EDIT_JOB, $post_ID) ): ?>
-		<div>
-			<?php wp_nonce_field( 'verify' ); ?>
+		<div class="job-button-wrap group">
+			<div class="job-button-group ">
+				<?php wp_nonce_field( 'verify' ); ?>
 
-			<?php if($Jobs_Plus_Core->get_setting('job->moderation->publish') ): ?>
-			<div class="job-go-public">
-				<button type="submit" id="job-publish" name="data[post_status]" value="publish" class="toggle-job-save job-button job-go-public-button" ><?php esc_html_e('Save', JBP_TEXT_DOMAIN); ?></button>
+				<?php if($Jobs_Plus_Core->get_setting('job->moderation->publish') ): ?>
+				<div class="job-go-public">
+					<button type="submit" id="job-publish" name="data[post_status]" value="publish" class="toggle-job-save job-button job-go-public-button" ><?php esc_html_e('Save', JBP_TEXT_DOMAIN); ?></button>
+				</div>
+				<?php endif; ?>
+
+				<?php if( !$Jobs_Plus_Core->get_setting('job->moderation->publish') ): ?>
+				<div class="job-go-public">
+					<button type="submit" id="job-pending" name="data[post_status]" value="pending" class="toggle-job-save job-button job-go-public-button" ><?php esc_html_e('Review', JBP_TEXT_DOMAIN); ?></button>
+				</div>
+				<?php endif; ?>
+
+				<?php if($Jobs_Plus_Core->get_setting('job->moderation->draft') ): ?>
+				<div class="job-go-public">
+					<button type="submit" id="job-draft" name="data[post_status]" value="draft" class="toggle-job-save job-button job-go-public-button" ><?php esc_html_e('Draft', JBP_TEXT_DOMAIN); ?></button>
+				</div>
+				<?php endif; ?>
+
+				<?php if($editing): ?>
+				<div class="job-go-public">
+					<button type="button" class="job-button" onclick="window.location='<?php echo get_permalink( get_the_id() ); ?>';"><?php _e('Cancel', JBP_TEXT_DOMAIN); ?></button>
+				</div>
+				<?php else: ?>
+				<div class="job-go-public">
+					<button type="button" class="job-button" onclick="window.location='<?php echo get_post_type_archive_link('jbp_jobs'); ?>';"><?php _e('Cancel', JBP_TEXT_DOMAIN); ?></button>
+				</div>
+				<?php endif; ?>
 			</div>
-			<?php endif; ?>
-
-			<?php if( !$Jobs_Plus_Core->get_setting('job->moderation->publish') ): ?>
-			<div class="job-go-public">
-				<button type="submit" id="job-pending" name="data[post_status]" value="pending" class="toggle-job-save job-button job-go-public-button" ><?php esc_html_e('Review', JBP_TEXT_DOMAIN); ?></button>
-			</div>
-			<?php endif; ?>
 		</div>
-
-		<?php if($Jobs_Plus_Core->get_setting('job->moderation->draft') ): ?>
-		<div class="job-go-public">
-			<button type="submit" id="job-draft" name="data[post_status]" value="draft" class="toggle-job-save job-button job-go-public-button" ><?php esc_html_e('Draft', JBP_TEXT_DOMAIN); ?></button>
-		</div>
-		<?php endif; ?>
-
-		<?php if($editing): ?>
-		<div class="job-go-public">
-			<button type="button" class="job-button" onclick="window.location='<?php echo get_permalink( get_the_id() ); ?>';"><?php _e('Cancel', JBP_TEXT_DOMAIN); ?></button>
-		</div>
-		<?php else: ?>
-		<div class="job-go-public">
-			<button type="button" class="job-button" onclick="window.location='<?php echo get_post_type_archive_link('jbp_jobs'); ?>';"><?php _e('Cancel', JBP_TEXT_DOMAIN); ?></button>
-		</div>
-		<?php endif; ?>
-	</div>
 	<?php endif; ?>
-
 </form>
 </div>
 
@@ -329,26 +329,26 @@ wp_enqueue_script('jquery-ui-dialog');
 
 		var $editables = $('.editable'); //Get a list of editable fields
 
-//		$('.toggle-job-save').click( function(){
-//			$.get( '<?php echo admin_url('admin-ajax.php'); ?>', {
-//				"action": "jbp_job_status",
-//				"post_id": "<?php the_ID(); ?>",
-//				"post_status": $(this).val(),
-//				"_wpnonce": "<?php echo wp_create_nonce('jbp_job');?>"
-//			});
-//			jbpPopup();
-//		});
+		//		$('.toggle-job-save').click( function(){
+		//			$.get( '<?php echo admin_url('admin-ajax.php'); ?>', {
+		//				"action": "jbp_job_status",
+		//				"post_id": "<?php the_ID(); ?>",
+		//				"post_status": $(this).val(),
+		//				"_wpnonce": "<?php echo wp_create_nonce('jbp_job');?>"
+		//			});
+		//			jbpPopup();
+		//		});
 
 		jbpPopup();
 		$editables.editable();
 
 		$('#_ct_jbp_job_Min_Budget').keyup(function () {
-			var value = $('#_ct_jbp_job_Min_Budget').val();
-			$('[name="_ct_jbp_job_Budget"]').rules('remove', 'min');
-			$('[name="_ct_jbp_job_Budget"]').rules('add',{
-				min:value
-			})
+		var value = $('#_ct_jbp_job_Min_Budget').val();
+		$('[name="_ct_jbp_job_Budget"]').rules('remove', 'min');
+		$('[name="_ct_jbp_job_Budget"]').rules('add',{
+		min:value
+		})
 		});
-	});
+		});
 
-</script>
+	</script>
