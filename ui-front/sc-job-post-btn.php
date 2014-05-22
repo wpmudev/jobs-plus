@@ -15,5 +15,5 @@ wp_enqueue_style('jobs-plus');
 ?>
 
 <button type="button" class="jbp-button job-post-btn <?php echo $class; ?>" onclick="window.location.assign('<? echo $url; ?>')">
-	<br><br><?php echo $content; ?>
+	<?php echo $content; ?>
 </button>

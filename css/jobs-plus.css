@@ -168,3 +168,23 @@ input.input-small{
 	top: 0;
 	border-bottom: 1px solid #cccccc;
 }
+
+.jbp-button{
+	padding-top: 45px;
+	cursor: pointer;
+}
+@media screen and (max-width:959px) {
+
+	.jbp-button{
+		float: none;
+		display: block;
+		width: 100%;
+		font-size: 200%;
+		border: 1px solid #aaa !important;
+		background: none !important;
+		padding: .5em 0;
+		text-transform: uppercase;
+		margin-bottom: .5em;
+	}
+
+}

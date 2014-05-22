@@ -1977,7 +1977,7 @@ class Jobs_Plus_Core{
 
 	function job_browse_btn_sc( $atts, $content = null ) {
 		extract( shortcode_atts( array(
-		'text' => sprintf(__('Browse<br/>%s', $this->text_domain),$this->job_labels->name),
+		'text' => sprintf(__('Browse %s', $this->text_domain),$this->job_labels->name),
 		'view' => 'both', //loggedin, loggedout, both
 		'class' => '',
 		), $atts ) );
@@ -1993,7 +1993,7 @@ class Jobs_Plus_Core{
 
 	function pro_browse_btn_sc( $atts, $content = null ) {
 		extract( shortcode_atts( array(
-		'text' => sprintf(__('Browse<br/>%s', $this->text_domain),$this->pro_labels->name),
+		'text' => sprintf(__('Browse %s', $this->text_domain),$this->pro_labels->name),
 		'view' => 'both', //loggedin, loggedout, both
 		'class' => '',
 		), $atts ) );
@@ -2009,7 +2009,7 @@ class Jobs_Plus_Core{
 
 	function job_post_btn_sc( $atts, $content = null ) {
 		extract( shortcode_atts( array(
-		'text' => sprintf(__('Post<br/>a %s', $this->text_domain),$this->job_labels->singular_name),
+		'text' => sprintf(__('Post a %s', $this->text_domain),$this->job_labels->singular_name),
 		'view' => 'both', //loggedin, loggedout, both
 		'class' => '',
 		), $atts ) );
@@ -2030,7 +2030,7 @@ class Jobs_Plus_Core{
 
 	function pro_post_btn_sc( $atts, $content = null ) {
 		extract( shortcode_atts( array(
-		'text' => sprintf(__('Post<br/>an %s', $this->text_domain),$this->pro_labels->singular_name),
+		'text' => sprintf(__('Post an %s', $this->text_domain),$this->pro_labels->singular_name),
 		'view' => 'both', //loggedin, loggedout, both
 		'class' => '',
 		), $atts ) );
@@ -2050,7 +2050,7 @@ class Jobs_Plus_Core{
 
 	function pro_profile_btn_sc( $atts, $content = null ) {
 		extract( shortcode_atts( array(
-		'text' => __('My<br/>Profile', $this->text_domain),
+		'text' => __('My Profile', $this->text_domain),
 		'view' => 'both', //loggedin, loggedout, both
 		'class' => '',
 		), $atts ) );
