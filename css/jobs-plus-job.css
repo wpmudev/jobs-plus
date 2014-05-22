@@ -92,29 +92,68 @@ a.job-add{
 	margin-right: 1em;
 }
 
-.job-contact-btn{ /* stretchy button */
-	margin: auto;
-	position: absolute;
-	top: .7em; bottom: .7em; right: .7em;
-	padding: 0 0.7em;
+.job-contact-btn{ 
+	float: right;
+}
+
+.job-single-wrapper div.job-meta{
+	text-align: center;	
+	width: 100%;
+	margin-bottom: 1em;
 }
 
 .job-single-wrapper .job-meta ul{
-	list-style: none outside none;
-	border: 1px solid #aaa;
-	box-shadow: -2px 2px 8px 0 rgba( 178, 178, 178, .4 );
 	padding: 0;
-	margin: 0;
-	position: relative;
+	margin: auto;
+	
 }
 
 .job-single-wrapper .job-meta ul li{
-	display: inline-table;
+	display: table-cell;
+	list-style: none outside none;
 	padding: 0.5em 1em;
 	margin: 0;
 	text-align: center;
+	border-top: 1px solid #aaa;
+	border-bottom: 1px solid #aaa;
+	border-left: 1px solid #aaa;
+	white-space: nowrap;
+	vertical-align: middle;
+}
+
+.job-single-wrapper .job-meta ul li:last-child{
+	width: 100%;
 	border-right: 1px solid #aaa;
 }
+
+
+@media screen and (max-width:500px) {
+	.job-single-wrapper .job-meta div span.meta-label{
+		display: none;
+	}
+
+	.job-single-wrapper .job-meta ul{
+		display: inline-block;
+	}
+	.job-single-wrapper .job-meta ul li.border{
+		border-right: 1px solid #aaa;
+	}
+
+	.job-single-wrapper .job-meta ul li:last-child{
+		display: inline-block;
+		border: none;
+		padding: 1em 0;
+		width: 100%;
+		clear: left;
+	}
+
+	.job-contact-btn{
+		float: none;
+	}
+
+
+}
+
 
 .meta-label{
 	font-size: 75%;
@@ -360,7 +399,6 @@ button.job-post-btn{
 	padding: 0;
 	display: block;
 	border: 1px solid #aaa;
-	box-shadow: -2px 2px 8px 0 rgba( 178, 178, 178, .4 );
 }
 
 .job-search-wrap ul.job-search > li{
@@ -382,6 +420,7 @@ button.job-post-btn{
 	position: relative;
 	text-transform: uppercase;
 	float: left;
+	background-color: #fff;
 }
 
 .job-search ul.job-meta.last {
@@ -448,6 +487,16 @@ input[type="submit"].submit-jobs-search{ /* stretchy button */
 	.job-search-wrap ul.job-search > li:last-child{
 		clear: left;
 		border-top: 1px solid #aaa;
+	}
+
+	.job-search-wrap{
+		background-color: #ddd;
+		width: 100%;
+		padding: 1em;
+		box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		-webkit-box-sizing: border-box;
+		font-size: 90%;
 	}
 }
 

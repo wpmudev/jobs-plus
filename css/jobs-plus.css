@@ -169,13 +169,13 @@ input.input-small{
 	border-bottom: 1px solid #cccccc;
 }
 
-.jbp-button{
+.jbp-widget .jbp-button{
 	padding-top: 45px;
 	cursor: pointer;
 }
 @media screen and (max-width:959px) {
 
-	.jbp-button{
+	.jbp-widget .jbp-button{
 		float: none;
 		display: block;
 		width: 100%;

@@ -306,7 +306,7 @@ class Jobs_Plus_Core{
 			'id' => 'pro-widget',
 			'name' => sprintf(__('%s Widget', JBP_TEXT_DOMAIN), $this->pro_labels->name),
 			'description' => sprintf(__('Widget area at the top of the %s page.', $this->text_domain), $this->pro_labels->name),
-			'before_widget' => '<div id="%1$s" class="widget %2$s">' . "\n",
+			'before_widget' => '<div id="%1$s" class="jbp-widget widget %2$s">' . "\n",
 			'after_widget' => "</div>\n",
 			'before_title' => '<h2 class="widgettitle">',
 			'after_title' => '</h2>'
@@ -316,7 +316,7 @@ class Jobs_Plus_Core{
 			'id' => 'pro-archive-widget',
 			'name' => sprintf(__('%s Archive Widget', JBP_TEXT_DOMAIN), $this->pro_labels->name),
 			'description' => sprintf(__('Widget area at the top of the %s archive.', $this->text_domain), $this->pro_labels->name),
-			'before_widget' => '<div id="%1$s" class="widget %2$s">' . "\n",
+			'before_widget' => '<div id="%1$s" class="jbp-widget widget %2$s">' . "\n",
 			'after_widget' => "</div>\n",
 			'before_title' => '<h2 class="widgettitle">',
 			'after_title' => '</h2>'
@@ -326,7 +326,7 @@ class Jobs_Plus_Core{
 			'id' => 'job-widget',
 			'name' => sprintf(__('%s Widget', JBP_TEXT_DOMAIN), $this->job_labels->name),
 			'description' => sprintf(__('Widget area at the top of the %s page.', $this->text_domain), $this->job_labels->name),
-			'before_widget' => '<div id="%1$s" class="widget %2$s">' . "\n",
+			'before_widget' => '<div id="%1$s" class="jbp-widget widget %2$s">' . "\n",
 			'after_widget' => "</div>\n",
 			'before_title' => '<h2 class="widgettitle">',
 			'after_title' => '</h2>'
@@ -337,7 +337,7 @@ class Jobs_Plus_Core{
 			'id' => 'job-archive-widget',
 			'name' => sprintf(__('%s Archive Widget', JBP_TEXT_DOMAIN), $this->job_labels->name),
 			'description' => sprintf(__('Widget area at the top of the %s archive.', $this->text_domain), $this->job_labels->name),
-			'before_widget' => '<div id="%1$s" class="widget %2$s">' . "\n",
+			'before_widget' => '<div id="%1$s" class="jbp-widget widget %2$s">' . "\n",
 			'after_widget' => "</div>\n",
 			'before_title' => '<h2 class="widgettitle">',
 			'after_title' => '</h2>'
@@ -1353,20 +1353,20 @@ class Jobs_Plus_Core{
 	*
 	*/
 	function custom_upload_directory( $args ) {
-		global $post_ID;
+		global $attachment_id;
 
-		if( empty($post_ID) || !$post = get_post( $post_ID ) ) return $args;
+		//var_dump($attachment_id);
+		if( empty($attachment_id) || !$post = get_post( $attachment_id ) ) return $args;
 		$parent_id = $post->post_parent;
 
-		//var_dump($args);
 
 		// Check the post-type of the current post
-		if( "jbp_pro" == get_post_type( $post_ID ) || "jbp_pro" == get_post_type( $parent_id ) ) {
+		if( "jbp_pro" == get_post_type( $attachment_id ) || "jbp_pro" == get_post_type( $parent_id ) ) {
 			$path = $this->get_setting('pro->upload_path');
-			$path = empty($path) ? '/uploads/pro' : untrailingslashit($path);
-		} elseif( "jbp_job" == get_post_type( $post_ID ) || "jbp_job" == get_post_type( $parent_id ) ) {
+			$path = empty($path) ? 'uploads/pro' : untrailingslashit($path);
+		} elseif( "jbp_job" == get_post_type( $attachment_id ) || "jbp_job" == get_post_type( $parent_id ) ) {
 			$path = $this->get_setting('job->upload_path');
-			$path = empty($path) ? '/uploads/job' : untrailingslashit($path);
+			$path = empty($path) ? 'uploads/job' : untrailingslashit($path);
 		} else {
 			return $args;
 		}
@@ -1379,7 +1379,7 @@ class Jobs_Plus_Core{
 		$args['basedir'] = WP_CONTENT_DIR; // Anywhere under wp-content
 		$args['baseurl'] = content_url(); // Anywhere under wp-content
 
-		//var_dump($args); exit;
+		//var_dump($args);
 		return $args;
 	}
 

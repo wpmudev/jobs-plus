@@ -36,15 +36,18 @@ $project_budget = ($project_budget == '' ? 'N/A' : $project_budget);
 
 
 	<div class="job-meta group">
+		
 		<ul>
-			<li><span class="meta-label"><?php _e('Job Budget', JBP_TEXT_DOMAIN);?></span><br /><span class="meta-red"><?php echo $project_budget;?></span></li>
-			<li><span class="meta-label"><?php _e('This job open for', JBP_TEXT_DOMAIN);?></span><br /><span class="meta-green"><?php echo days_hours( get_post_meta(get_the_ID(), JBP_JOB_EXPIRES_KEY, true) );?></span></li>
-			<li><span class="meta-label"><?php _e('Must be complete by', JBP_TEXT_DOMAIN);?></span><br /><span class="meta-red"><?php echo do_shortcode('[ct id="_ct_jbp_job_Due" ]'); ?></span></li>
-			<?php 
+			<li><span class="meta-label"><?php _e('Job Budget', JBP_TEXT_DOMAIN);?><br /></span><span class="meta-red"><?php echo $project_budget;?></span></li>
+			<li><span class="meta-label"><?php _e('This job open for', JBP_TEXT_DOMAIN);?><br /></span><span class="meta-green"><?php echo days_hours( get_post_meta(get_the_ID(), JBP_JOB_EXPIRES_KEY, true) );?></span></li>
+			<li class="border"><span class="meta-label"><?php _e('Must be complete by', JBP_TEXT_DOMAIN);?><br /></span><span class="meta-red"><?php echo do_shortcode('[ct id="_ct_jbp_job_Due" ]'); ?></span></li>
+			<li>
+				<?php 
 			if( get_post_meta( get_the_ID(), JBP_JOB_EXPIRES_KEY, true) > time() ):
 				echo do_shortcode('[jbp-job-contact-btn text="Contact" class="job-contact"]');
 			endif; 
 			?>
+			</li>
 		</ul>
 <?php //the_author_posts_link(); ?>
 		<div style="clear: both"></div>
@@ -76,9 +79,12 @@ $project_budget = ($project_budget == '' ? 'N/A' : $project_budget);
 						?>
 						<li class="portfolio">
 							<?php
+							global $attachment_id;
+							//Set global so custom upload directory is found
+							$attachment_id = $portfolio->attachment_id;
+							
 							$thumb_img = wp_get_attachment_image_src($portfolio->attachment_id, 'job-thumbnail');
 							$full_img = wp_get_attachment_image_src($portfolio->attachment_id, 'full');
-							//var_dump($img);
 							printf('<a href="%s" title="%s" ><img src="%s" style="width:%dpx;height=%dpx;" /></a>', $full_img[0], $portfolio->caption, $thumb_img[0], 160, 120);
 							?>
 						</li>
