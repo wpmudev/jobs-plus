@@ -103,6 +103,7 @@ class Jobs_Plus_Core{
 
 		add_filter('get_edit_post_link', array(&$this, 'on_get_edit_post_link') );
 		add_filter('upload_dir', array(&$this,'custom_upload_directory') );
+		add_filter('image_downsize', array(&$this,'on_image_downsize'), 10, 2 );
 
 		add_filter('wp_mail', array(&$this,'on_wp_mail') );
 
@@ -1347,6 +1348,15 @@ class Jobs_Plus_Core{
 		}
 	}
 
+	/**
+	*Remembers the image attachment_id for the custom_upload_directory.
+	*
+	*/
+		function on_image_downsize( $downsize, $id){
+		global $attachment_id;
+		$attachment_id = $id;
+		return $downsize;
+	}
 
 	/**
 	*
@@ -1356,6 +1366,8 @@ class Jobs_Plus_Core{
 		global $attachment_id;
 
 		//var_dump($attachment_id);
+		
+		
 		if( empty($attachment_id) || !$post = get_post( $attachment_id ) ) return $args;
 		$parent_id = $post->post_parent;
 

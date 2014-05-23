@@ -311,19 +311,16 @@ ul.pro-content-editable li{
 }
 
 button.pro-browse-btn{
-	background: transparent url('../img/menu-icon-browse.png') no-repeat center  .5em;
 	color: #111;
 	border: none;
 }
 
 button.pro-post-btn{
-	background: transparent url('../img/menu-icon-post.png') no-repeat center  .5em;
 	color: #111;
 	border: none;
 }
 
 button.pro-profile-btn{
-	background: transparent url('../img/menu-icon-profile.png') no-repeat center  .5em;
 	color: #111;
 	border: none;
 }

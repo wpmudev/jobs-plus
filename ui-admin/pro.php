@@ -179,7 +179,7 @@
 				</table>
 			</div>
 		</div>
-
+<!--
 		<div class="postbox">
 			<div class="handlediv"><br /></div>
 			<h3 class='hndle'><span><?php esc_html_e( 'Terms of Service Text', JBP_TEXT_DOMAIN ) ?></span></h3>
@@ -199,7 +199,7 @@
 				</table>
 			</div>
 		</div>
-
+-->
 		<p class="submit">
 			<?php wp_nonce_field('jobs-plus-settings'); ?>
 			<input type="hidden" name="jobs-plus-settings" value="1" />

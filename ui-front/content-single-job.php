@@ -80,9 +80,7 @@ $project_budget = ($project_budget == '' ? 'N/A' : $project_budget);
 						<li class="portfolio">
 							<?php
 							global $attachment_id;
-							//Set global so custom upload directory is found
-							$attachment_id = $portfolio->attachment_id;
-							
+						
 							$thumb_img = wp_get_attachment_image_src($portfolio->attachment_id, 'job-thumbnail');
 							$full_img = wp_get_attachment_image_src($portfolio->attachment_id, 'full');
 							printf('<a href="%s" title="%s" ><img src="%s" style="width:%dpx;height=%dpx;" /></a>', $full_img[0], $portfolio->caption, $thumb_img[0], 160, 120);
