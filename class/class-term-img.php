@@ -1,11 +1,15 @@
 <?php
+/**
+* @package Jobs +
+* @author Arnold Bailey
+* @since version 1.0
+* @license GPL2+
+*/
 
 if( ! class_exists('Term_Images') ):
 
 define('TERM_IMAGES_VERSION', '1.0');
 define('TERM_IMAGES_SETTINGS', 'term_images_settings');
-
-
 
 class Term_Images{
 
@@ -287,9 +291,9 @@ class Term_Images{
 						$taxonomy->label
 						);
 						?>
-									<br /><code style="font-size: x-small;">[ti size="<?php echo"{$taxonomy->name}-thumb"?>"] </code>
-									<br /><code style="font-size: x-small;">[ti size="<?php echo"{$taxonomy->name}-medium"?>"]</code>
-									<br /><code style="font-size: x-small;">[ti size="<?php echo"{$taxonomy->name}-large"?>"] </code>
+						<br /><code style="font-size: x-small;">[ti size="<?php echo"{$taxonomy->name}-thumb"?>"] </code>
+						<br /><code style="font-size: x-small;">[ti size="<?php echo"{$taxonomy->name}-medium"?>"]</code>
+						<br /><code style="font-size: x-small;">[ti size="<?php echo"{$taxonomy->name}-large"?>"] </code>
 					</th>
 					<td>
 						<table>
@@ -459,6 +463,7 @@ class Term_Images{
 				var wp_media_post_id = wp.media.model.settings.post.id; // Store the old id
 				var set_to_term_id = 0; // Set this
 				var taxonomy = 0;
+				var $button;
 
 				$('.ti-remove-button').on('click', function( event ){
 					event.preventDefault();
@@ -476,7 +481,7 @@ class Term_Images{
 
 				$('.ti-upload-image-button').on('click', function( event ){
 					event.preventDefault();
-					var $button = $(this);
+					$button = $(this);
 					set_to_term_id = $button.val();
 					taxonomy = $button.data('taxonomy');
 
@@ -507,7 +512,17 @@ class Term_Images{
 						attachment = ti_file_frame.state().get('selection').first().toJSON();
 
 						// Do something with attachment.id and/or attachment.url here
-						$button.html('<img src="' + attachment.url + '" style="width: 100%; height: 100%;"/>');
+						$button.empty();
+						$('<img />',{
+							src : attachment.url,
+							alt : attachment.name
+						}).css( {
+							"width":"100%",
+							"height": "100%",
+							"margin": "0"
+						})
+						.appendTo( $button );
+
 
 						$.get( '<?php echo admin_url('admin-ajax.php'); ?>', {
 							"action": "ti-term-image",
@@ -596,7 +611,6 @@ class Term_Images{
 		QLw0woyqNw3iL5kTDTh1x6h6hJUrTrzZkhDed8H77hlYvGlZueIQmtcsphshAKi1eqo7SZhaq5/MHc1r
 		liJH5MebV6+BCJnb904aM21E1Fodwbu3ABRcvP/o4Zy1tjWzoZ39GvnfxfZ3AAG9IKfF3BhfAAAAAElF
 		TkSuQmCC" />';
-
 	}
 
 }
@@ -605,21 +619,20 @@ global $Term_Images;
 
 $Term_Images  = new Term_Images;
 
-	function get_term_image_url( $term_id, $size='thumbnail' ){
-		global $Term_Images, $post_ID;
-		
-		if(!is_int( intval( $term_id) ) ) return false;
-		
-		if( !term_exists($term_id) ) return false;
-	
-		$attachments = $Term_Images->get_by_meta($term_id);
-		//Turn off global post ID so upload filter disabled.
-		$id = $post_ID;
-		$post_ID = 0;
-		$url = wp_get_attachment_url($attachments[0]->ID);
-		$post_ID = $id;
-		return $url;
-	}
+function get_term_image_url( $term_id, $size='thumbnail' ){
+	global $Term_Images, $post_ID;
 
+	if(!is_int( intval( $term_id) ) ) return false;
+
+	if( !term_exists($term_id) ) return false;
+
+	$attachments = $Term_Images->get_by_meta($term_id);
+	//Turn off global post ID so upload filter disabled.
+	$id = $post_ID;
+	$post_ID = 0;
+	$url = wp_get_attachment_url($attachments[0]->ID);
+	$post_ID = $id;
+	return $url;
+}
 
 endif;

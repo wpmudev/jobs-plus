@@ -134,8 +134,8 @@ jQuery(document).ready( function($) {
 	};
 
 	window.jbpFirstField = function( $editables  ){
-		$field = jbpAddPro ? $editables.filter("[data-name='post_title']") : $editables.filter("[data-name='_ct_jbp_pro_First_Last']");
-		$field.editable('show');
+		$field = jbpAddPro ? $editables.filter("[data-name='post_title']") : $editables.filter("[data-name='_ct_jbp_pro_Tagline']");
+		setTimeout(function() { $field.editable('show'); }, 300);
 	};
 
 	//Site wide defaults and fixup buttons

@@ -13,16 +13,16 @@ $phrase = (empty($_GET['s']) ) ? '' : $_GET['s'];
 <section id="pros-search" class="<?php echo $class; ?>">
 	<form class="search-form" method="GET" action="<?php echo get_post_type_archive_link('jbp_pro'); ?>" >
 		<div class="pro-search-wrap">
-			<div class="pro-meta group">
-				<ul class="group">
-					<li class="filler">
+				<ul class="pro-search group">
+					<li>
 						<span>
-							<input type="text" class="" id="searchbox-pros" name="s" value="<?php echo $phrase; ?>" autocomplete="off" placeholder="<?php echo $text; ?>" />
+							<input type="text" class="pro-search-input" name="s" value="<?php echo $phrase; ?>" autocomplete="off" placeholder="<?php echo $text; ?>" />
 						</span>
-					<input type="submit" class="submit-pros-search" value="" />
+						<button type="submit" class="pro-submit-search" value="" >
+							<img src="<?php echo $this->plugin_url . 'img/search.png'; ?>" alt="alt" title="title" />
+						</button>
 					</li>
 				</ul>
-			</div>
 		</div>
 	</form>
 </section>

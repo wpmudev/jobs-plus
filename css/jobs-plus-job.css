@@ -9,6 +9,10 @@
 	font-style: italic;
 }
 
+.job-button-group{
+	float: right;
+}
+
 /*Add item link */
 a.job-add{
 	display: block;
@@ -92,12 +96,12 @@ a.job-add{
 	margin-right: 1em;
 }
 
-.job-contact-btn{ 
+.job-contact-btn{
 	float: right;
 }
 
 .job-single-wrapper div.job-meta{
-	text-align: center;	
+	text-align: center;
 	width: 100%;
 	margin-bottom: 1em;
 }
@@ -105,7 +109,7 @@ a.job-add{
 .job-single-wrapper .job-meta ul{
 	padding: 0;
 	margin: auto;
-	
+
 }
 
 .job-single-wrapper .job-meta ul li{
@@ -382,89 +386,6 @@ button.job-post-btn{
 	border: none;
 }
 
-#jobs-search{
-	margin: 1em 0;
-}
-
-.job-search-wrap{
-	padding:0;
-	margin:0;
-	width: 100%;
-	text-align: center;
-}
-
-.job-search-wrap ul.job-search{
-	margin: 0 ;
-	padding: 0;
-	display: block;
-	border: 1px solid #aaa;
-}
-
-.job-search-wrap ul.job-search > li{
-	list-style-type: none;
-	float: left;
-	margin: 0;
-	padding: 0;
-}
-
-.job-search-wrap ul.job-search > li:last-child{
-	float: none;
-	overflow: hidden;
-	position: relative;
-}
-
-.job-search ul.job-meta {
-	padding: 0;
-	margin: 0;
-	position: relative;
-	text-transform: uppercase;
-	float: left;
-	background-color: #fff;
-}
-
-.job-search ul.job-meta.last {
-	width: 100%;
-	float: left;
-}
-
-
-.job-search ul.job-meta > li{
-	list-style-type: none;
-	text-align: center;
-	margin: 0;
-	padding: 0 0.5em;
-	border-right: 1px solid #aaa;
-	float: left;
-	line-height: 2em;
-}
-
-.job-search ul.job-meta > li.filler{
-	border: none;
-	width: 100%;
-}
-
-
-input#searchbox-jobs{
-	width: 100%;
-	margin: 0;
-	padding: 0;
-	border: none;
-	height: 2em;
-}
-
-input[type="submit"].submit-jobs-search{ /* stretchy button */
-	background: #666 url("../img/search-button-icon.png") no-repeat center center;
-	position: absolute;
-	top: 0; bottom: 0; right: 0;
-	padding: 0;
-	margin: 0;
-	width: 3em;
-}
-
-.job-button-group{
-	float: right;
-}
-
 /* MEDIA QUERIES */
 
 @media screen and (max-width:959px) {
@@ -476,26 +397,139 @@ input[type="submit"].submit-jobs-search{ /* stretchy button */
 	}
 }
 
-@media screen and (max-width:959px) {
-
-	.job-search-wrap ul.job-search{
-		display: inline-block;
-		font-size: 100%;
-	}
-
-	.job-search-wrap ul.job-search > li:last-child{
-		clear: left;
-		border-top: 1px solid #aaa;
-	}
-
-	.job-search-wrap{
-		background-color: #ddd;
-		width: 100%;
-		padding: 1em;
-		box-sizing: border-box;
-		-moz-box-sizing: border-box;
-		-webkit-box-sizing: border-box;
-		font-size: 90%;
-	}
+.job-poster{
+	width: 100%;
 }
+
+.job-poster .poster{
+	margin: 0 0 .5em 0;
+
+}
+.poster .job-excerpt{
+	height: 100px;
+	font-size: 80%;
+	width: 420px;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	margin: 0;
+}
+
+.poster .job-excerpt h4{
+	margin: .5em 0;
+}
+
+.poster .job-poster-img {
+	float: left;
+	border: 1px solid #ddd;
+	margin-right: 15px;
+	width: 100px;
+	height: 100px;
+}
+
+/* EQ.JS */
+
+.job-poster[data-eq-state="medium"]{
+}
+
+/** job-search **/
+
+#jobs-search{
+	margin: 1em 0;
+}
+
+.jobs-search-form{
+
+}
+
+.job-search-wrap{
+	padding:0;
+	margin:0 0 1em 0;
+	width: 100%;
+	text-align: center;
+}
+
+.job-search-wrap ul.job-search{
+	display: inline-block;
+	padding: 0;
+	margin: 0;
+	position: relative;
+}
+
+.job-search-wrap ul.job-search li{
+	display: table-cell;
+	list-style: none outside none;
+	padding: 0em 0.5em;
+	margin: 0;
+	text-align: center;
+	border-top: 1px solid #aaa;
+	border-bottom: 1px solid #aaa;
+	border-right: 1px solid #aaa;
+	white-space: nowrap;
+	vertical-align: middle;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	height: 40px;
+}
+
+.job-search-wrap ul.job-search li:first-child{
+	border-left: 1px solid #aaa;
+}
+
+.job-search-wrap ul.job-search li:last-child{
+	display: inline-block;
+	border: 1px solid #aaa;
+	width: 100%;
+	margin-top: .5em;
+	padding: 0;
+}
+
+.job-search-button-group{
+	margin: 0 0 0 1em;
+	padding: 0;
+	position: relative;
+	height: 2em;
+	border: none;
+}
+
+input.job-search-input{
+	margin: 0;
+	padding: 0;
+	border: none;
+	box-shadow: none;
+	width: 100%;
+	height: 100%;
+	padding-left: 0.5em;
+}
+
+button.job-submit-search{
+	width: 40px;
+	height: 40px;
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	padding: 5px;
+	margin: 0;
+	
+}
+
+button.job-submit-search >img{
+	width: auto%;
+	border: none;
+	box-shadow: none;
+	
+}
+
+.job-search-wrap[data-eq-state="break"] ul.job-search{
+	display: table;
+	width: 100%;
+}
+
+.job-search-wrap[data-eq-state="break"] ul.job-search li:last-child{
+	display: table-cell;
+	border-left: none;
+	vertical-align: middle;
+}
+
 

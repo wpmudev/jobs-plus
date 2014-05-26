@@ -113,29 +113,34 @@ class Jobs_Plus_Core{
 		add_shortcode( 'jbp-rating', array( &$this, 'rating_sc' ) );
 		add_shortcode( 'jbp-rate-this', array( &$this, 'rate_this_sc' ) );
 
-		add_shortcode( 'jbp-pro-gravatar', array( &$this, 'pro_gravatar_sc' ) );
-		add_shortcode( 'jbp-pro-portfolio', array( &$this, 'pro_portfolio_sc' ) );
-		add_shortcode( 'jbp-pro-skills', array( &$this, 'pro_skills_sc' ) );
-		add_shortcode( 'jbp-pro-social', array( &$this, 'pro_social_sc' ) );
+		add_shortcode( 'jbp-expert-gravatar', array( &$this, 'expert_gravatar_sc' ) );
+		add_shortcode( 'jbp-expert-portfolio', array( &$this, 'expert_portfolio_sc' ) );
+		add_shortcode( 'jbp-expert-skills', array( &$this, 'expert_skills_sc' ) );
+		add_shortcode( 'jbp-expert-social', array( &$this, 'expert_social_sc' ) );
 
-		add_shortcode( 'jbp-pro-archive', array( &$this, 'pro_archive_sc' ) );
+		add_shortcode( 'jbp-expert-archive', array( &$this, 'expert_archive_sc' ) );
 
 		add_shortcode( 'jbp-job-portfolio', array( &$this, 'job_portfolio_sc' ) );
 		add_shortcode( 'jbp-job-excerpt', array( &$this, 'job_excerpt_sc' ) );
 
-		add_shortcode( 'jbp-pro-contact-btn', array( &$this, 'pro_contact_btn_sc' ) );
+		add_shortcode( 'jbp-expert-contact-btn', array( &$this, 'expert_contact_btn_sc' ) );
 		add_shortcode( 'jbp-job-contact-btn', array( &$this, 'job_contact_btn_sc' ) );
 
 		add_shortcode( 'jbp-job-browse-btn', array( &$this, 'job_browse_btn_sc' ) );
-		add_shortcode( 'jbp-pro-browse-btn', array( &$this, 'pro_browse_btn_sc' ) );
+		add_shortcode( 'jbp-expert-browse-btn', array( &$this, 'expert_browse_btn_sc' ) );
 
 		add_shortcode( 'jbp-job-post-btn', array( &$this, 'job_post_btn_sc' ) );
-		add_shortcode( 'jbp-pro-post-btn', array( &$this, 'pro_post_btn_sc' ) );
+		add_shortcode( 'jbp-expert-post-btn', array( &$this, 'expert_post_btn_sc' ) );
 
-		add_shortcode( 'jbp-pro-profile-btn', array( &$this, 'pro_profile_btn_sc' ) );
+		add_shortcode( 'jbp-expert-profile-btn', array( &$this, 'expert_profile_btn_sc' ) );
 
 		add_shortcode( 'jbp-job-search', array( &$this, 'job_search_sc' ) );
-		add_shortcode( 'jbp-pro-search', array( &$this, 'pro_search_sc' ) );
+		add_shortcode( 'jbp-expert-search', array( &$this, 'expert_search_sc' ) );
+
+		add_shortcode( 'jbp-job-poster-excerpt', array( &$this, 'job_poster_excerpt_sc' ) );
+		add_shortcode( 'jbp-job-poster', array( &$this, 'job_poster_sc' ) );
+
+
 	}
 
 	/**
@@ -434,10 +439,13 @@ class Jobs_Plus_Core{
 		$custom_css_url = file_exists( $this->plugin_dir . 'css/' . $custom_css) ? $this->plugin_url . 'css/' . $custom_css : $custom_css_url;
 		$custom_css_url = file_exists( trailingslashit(get_template_directory()) . $custom_css) ? trailingslashit(get_template_directory_uri()) . $custom_css : $custom_css_url;
 		$custom_css_url = file_exists( trailingslashit(get_stylesheet_directory()) . $custom_css) ? trailingslashit(get_stylesheet_directory_uri()) . $custom_css : $custom_css_url;
-		if($custom_css_url) wp_register_style('jobs-plus-custom', $custom_css_url, array(), JOBS_PLUS_VERSION);
+		if($custom_css_url) wp_register_style('jobs-plus-custom', $custom_css_url, array('jobs-plus'), JOBS_PLUS_VERSION);
 
 		//Register styles and script
 		wp_register_script('jquery-iframe-transport', $this->plugin_url . "js/jquery-iframe-transport.js", array('jquery'), JQUERY_IFRAME_TRANSPORT, true );
+
+		wp_register_style('element-query', $this->plugin_url . "css/eq.css", array(), JOBS_PLUS_VERSION );
+		wp_register_script('element-query', $this->plugin_url . "js/eq.js", array('jquery'), JOBS_PLUS_VERSION, true );
 
 		wp_register_style('jquery-rateit', $this->plugin_url . "css/rateit.css", array(), JQUERY_RATEIT );
 		wp_register_script('jquery-rateit', $this->plugin_url . "js/jquery.rateit$suffix.js", array('jquery'), JQUERY_RATEIT, true );
@@ -749,6 +757,8 @@ class Jobs_Plus_Core{
 		if(in_array(get_query_var('post_type'), array('jbp_job', 'jbp_pro'))
 		|| in_array(get_query_var('taxonomy'), array('jbp_category', 'jbp_tag', 'jbp_skills_tag')) ){
 
+			wp_enqueue_style('element-query');
+			wp_enqueue_script('element-query');
 			wp_enqueue_style('jquery-rateit');
 			wp_enqueue_style('jobs-plus');
 			//wp_enqueue_style('jobs-plus-custom');
@@ -1619,6 +1629,9 @@ class Jobs_Plus_Core{
 			exit(sprintf('{"newValue": %s}', $v ) );
 			break;
 
+			case '_ct_jbp_pro_Tagline': update_post_meta($post_id, $name, json_encode(sanitize_text_field($value) ) ); break;
+
+
 			//			case '_ct_jbp_pro_Facebook_URL': update_post_meta($post_id, $name, json_encode($value) ); break;
 			//			case '_ct_jbp_pro_LinkedIn_URL': update_post_meta($post_id, $name, json_encode($value) ); break;
 			//			case '_ct_jbp_pro_Twitter_URL' : update_post_meta($post_id, $name, json_encode($value) ); break;
@@ -1821,9 +1834,9 @@ class Jobs_Plus_Core{
 	}
 
 	/**
-	* Shortcode jbp-pro-gravatar
+	* Shortcode jbp-expert-gravatar
 	*/
-	function pro_gravatar_sc( $atts, $content = null ) {
+	function expert_gravatar_sc( $atts, $content = null ) {
 		extract( shortcode_atts( array(
 		'text' => __('Gravatar', $this->text_domain),
 		'view' => 'both', //loggedin, loggedout, both
@@ -1838,9 +1851,9 @@ class Jobs_Plus_Core{
 	}
 
 	/**
-	* jbp-pro-portfolio
+	* jbp-expert-portfolio
 	*/
-	function pro_portfolio_sc( $atts, $content = null ) {
+	function expert_portfolio_sc( $atts, $content = null ) {
 		extract( shortcode_atts( array(
 		'text' => __('Portfolio', $this->text_domain),
 		'view' => 'both', //loggedin, loggedout, both
@@ -1855,9 +1868,9 @@ class Jobs_Plus_Core{
 	}
 
 	/**
-	* jbp-pro-skills
+	* jbp-expert-skills
 	*/
-	function pro_skills_sc( $atts, $content = null ) {
+	function expert_skills_sc( $atts, $content = null ) {
 		extract( shortcode_atts( array(
 		'text' => __('Skills', $this->text_domain),
 		'view' => 'both', //loggedin, loggedout, both
@@ -1872,9 +1885,9 @@ class Jobs_Plus_Core{
 	}
 
 	/**
-	* jbp-pro-social_id
+	* jbp-expert-social_id
 	*/
-	function pro_social_sc( $atts, $content = null ) {
+	function expert_social_sc( $atts, $content = null ) {
 		extract( shortcode_atts( array(
 		'text' => __('Social', $this->text_domain),
 		'view' => 'both', //loggedin, loggedout, both
@@ -1889,9 +1902,9 @@ class Jobs_Plus_Core{
 	}
 
 	/**
-	* jbp-pro-Archive
+	* jbp-expert-Archive
 	*/
-	function pro_archive_sc( $atts, $content = null ){
+	function expert_archive_sc( $atts, $content = null ){
 		extract( shortcode_atts( array(
 		'size' => 'small',
 		'view' => 'both', //loggedin, loggedout, both
@@ -1939,7 +1952,7 @@ class Jobs_Plus_Core{
 
 		ob_start();
 		require locate_jbp_template((array)'sc-job-excerpt.php');
-		return ob_get_clean();
+		return do_shortcode( ob_get_clean() );
 	}
 
 	/**
@@ -1967,7 +1980,7 @@ class Jobs_Plus_Core{
 		return $result;
 	}
 
-	function pro_contact_btn_sc( $atts, $content = null ) {
+	function expert_contact_btn_sc( $atts, $content = null ) {
 		extract( shortcode_atts( array(
 		'text' => __('Contact Me', $this->text_domain),
 		'view' => 'both', //loggedin, loggedout, both
@@ -2003,7 +2016,7 @@ class Jobs_Plus_Core{
 		return do_shortcode( ob_get_clean() );
 	}
 
-	function pro_browse_btn_sc( $atts, $content = null ) {
+	function expert_browse_btn_sc( $atts, $content = null ) {
 		extract( shortcode_atts( array(
 		'text' => sprintf(__('Browse %s', $this->text_domain),$this->pro_labels->name),
 		'view' => 'both', //loggedin, loggedout, both
@@ -2040,7 +2053,7 @@ class Jobs_Plus_Core{
 		return do_shortcode( ob_get_clean() );
 	}
 
-	function pro_post_btn_sc( $atts, $content = null ) {
+	function expert_post_btn_sc( $atts, $content = null ) {
 		extract( shortcode_atts( array(
 		'text' => sprintf(__('Post an %s', $this->text_domain),$this->pro_labels->singular_name),
 		'view' => 'both', //loggedin, loggedout, both
@@ -2060,7 +2073,7 @@ class Jobs_Plus_Core{
 		return do_shortcode( ob_get_clean() );
 	}
 
-	function pro_profile_btn_sc( $atts, $content = null ) {
+	function expert_profile_btn_sc( $atts, $content = null ) {
 		extract( shortcode_atts( array(
 		'text' => __('My Profile', $this->text_domain),
 		'view' => 'both', //loggedin, loggedout, both
@@ -2101,10 +2114,9 @@ class Jobs_Plus_Core{
 		return do_shortcode( ob_get_clean() );
 	}
 
-	function pro_search_sc( $atts, $content = null ) {
+	function expert_search_sc( $atts, $content = null ) {
 		extract( shortcode_atts( array(
 		'text' => sprintf(__('Search %s for ', $this->text_domain),$this->pro_labels->name),
-		'text' => __('Search Jobs', $this->text_domain),
 		'view' => 'both', //loggedin, loggedout, both
 		'class' => '',
 		), $atts ) );
@@ -2117,6 +2129,42 @@ class Jobs_Plus_Core{
 
 		ob_start();
 		require locate_jbp_template((array)'sc-pro-search.php');
+		return do_shortcode( ob_get_clean() );
+	}
+	
+	/**
+	* jbp-job-poster-excerpt shortcode_atts
+	*/
+	function job_poster_excerpt_sc( $atts, $content = null ) {
+		extract( shortcode_atts( array(
+		'text' => __('Job Excerpt', $this->text_domain),
+		'view' => 'both', //loggedin, loggedout, both
+		'class' => '',
+		), $atts ) );
+
+		if( !$this->can_view( $view ) ) return '';
+
+		ob_start();
+		require locate_jbp_template((array)'sc-job-poster-excerpt.php');
+		return do_shortcode( ob_get_clean() );
+	}
+	
+
+	function job_poster_sc( $atts, $content = null ) {
+		extract( shortcode_atts( array(
+		'text' => sprintf(__('Search %s for ', $this->text_domain),$this->job_labels->name),
+		'view' => 'both', //loggedin, loggedout, both
+		'class' => '',
+		), $atts ) );
+
+		if( !$this->can_view( $view ) ) return '';
+
+		$content = (empty($content)) ? $text : $content;
+		$user = wp_get_current_user();
+		$url = sprintf('%s/author/%s/', untrailingslashit(get_post_type_archive_link('jbp_pro') ), $user->user_login) ;
+
+		ob_start();
+		require locate_jbp_template((array)'sc-job-poster.php');
 		return do_shortcode( ob_get_clean() );
 	}
 

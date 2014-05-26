@@ -31,5 +31,6 @@ textarea.jbp-full {
 
 code {
 	font-weight: bold;
-	display: block;
+	display: inline-block;
+
 }

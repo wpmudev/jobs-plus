@@ -327,42 +327,49 @@ button.pro-profile-btn{
 
 .pro-search-wrap{
 	margin: 1em 0;
-
+	width: 100%;
 }
-.pro-search-wrap .pro-meta ul{
-	border: 1px solid #aaa;
-	box-shadow: -2px 2px 8px 0 rgba( 178, 178, 178, .4 );
+.pro-search-wrap ul.pro-search{
 	padding: 0;
 	margin: 0;
 	position: relative;
 	text-transform: uppercase;
 }
 
-.pro-search-wrap .pro-meta ul li{
+.pro-search-wrap ul.pro-search > li{
+	display: block;
 	list-style-type: none;
+	border: 1px solid #aaa;
 	margin: 0;
-	padding: 0.5em 0.5em;
 	text-align: center;
-	border-right: 1px solid #aaa;
-	float: left;
-}
-
-.pro-search-wrap .pro-meta ul li:last-child{
-	float: none;
-	overflow: hidden;
-	padding: 0 0.5em;
-}
-
-input#searchbox-pros{
+	vertical-align: middle;
 	width: 100%;
-	margin: 0;
-	border: none;
+	height: 40px;
+	overflow: hidden;
 }
 
-input[type="submit"].submit-pros-search{ /* stretchy button */
-	background: #666 url("../img/search-button-icon.png") no-repeat center center;
-	position: absolute;
-	top: 0; bottom: 0; right: 0;
+input.pro-search-input{
+	margin: 0;
 	padding: 0;
-	width: 2.5em;
+	border: none;
+	box-shadow: none;
+	width: 100%;
+	height: 100%;
+	padding-left: 0.5em;
+}
+
+button.pro-submit-search{
+	width: 40px;
+	height: 40px;
+	position: absolute;
+	top: 1px;
+	right: 0;
+	padding: 5px;
+	margin: 0;
+}
+
+button.pro-submit-search >img{
+	width: auto%;
+	border: none;
+	box-shadow: none;
 }

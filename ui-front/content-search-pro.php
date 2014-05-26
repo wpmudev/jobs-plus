@@ -14,7 +14,7 @@ wp_enqueue_script('imagesloaded');
 	<?php if(dynamic_sidebar('pro-archive-widget') ) : else: endif; ?>
 	<?php echo do_action('jbp_error'); ?>
 	<?php echo do_action('jbp_notice'); ?>
-	<?php echo do_shortcode('[jbp-pro-search]'); ?>
+	<?php echo do_shortcode('[jbp-expert-search]'); ?>
 
 	<?php if( have_posts()): ?>
 
@@ -24,13 +24,13 @@ wp_enqueue_script('imagesloaded');
 		<?php while( have_posts() ): the_post(); ?>
 
 		<?php if($wp_query->current_post > 4): ?>
-		<?php echo do_shortcode('[jbp-pro-archive size="small"]'); ?>
+		<?php echo do_shortcode('[jbp-expert-archive size="small"]'); ?>
 
 		<?php elseif($wp_query->current_post > 2): ?>
-		<?php echo do_shortcode('[jbp-pro-archive size="medium"]'); ?>
+		<?php echo do_shortcode('[jbp-expert-archive size="medium"]'); ?>
 
 		<?php else: ?>
-		<?php echo do_shortcode('[jbp-pro-archive size="large"]'); ?>
+		<?php echo do_shortcode('[jbp-expert-archive size="large"]'); ?>
 		<?php endif; ?>
 
 		<?php endwhile; ?><!-- have_posts -->

@@ -48,7 +48,7 @@ wp_enqueue_script('jqueryui-editable-ext');
 		<?php if(post_type_supports('jbp_pro','title') ): ?>
 		<label class="pro-content-editable pro-name show-on-edit">
 			<h3><?php _e('Title: ', JBP_TEXT_DOMAIN); ?>
-				<span class="editable editable-firstlast"
+				<span class="editable editable-title"
 					data-type="text"
 					data-onblur="submit"
 					data-name="post_title"
@@ -61,8 +61,26 @@ wp_enqueue_script('jqueryui-editable-ext');
 			</h3>
 		</label>
 		<?php endif; ?>
+		
 		<div class="pro-content">
 			<div class="pro-pad group">
+
+				<div class="pro-content-wrapper pro-tagline pro-content-editable">
+					<label class="pro-content-editable pro-tagline">
+					<h2>
+					<span class="editable pro-tagline"
+						data-type="text"
+						data-name="_ct_jbp_pro_Tagline"
+						data-mode="popup"
+						data-emptytext="<?php esc_attr_e('Your Tagline', JBP_TEXT_DOMAIN); ?>"
+						data-original-title="<?php _e('Tagline', JBP_TEXT_DOMAIN); ?>"
+						data-value="<?php esc_attr_e(do_shortcode('[ct id="_ct_jbp_pro_Tagline"]') ); ?>"
+						>
+						</span>
+					</h2>
+				</label>
+				</div>
+				
 				<div class="pro-content-wrapper pro-profile">
 					<label class="pro-content-editable pro-name">
 						<span class="editable editable-firstlast"
@@ -116,14 +134,14 @@ wp_enqueue_script('jqueryui-editable-ext');
 						<strong><?php _e('Rate me: ', JBP_TEXT_DOMAIN); ?></strong>
 						<?php echo do_shortcode('[jbp-rate-this]'); ?>
 					</label>
+					<?php if(current_user_can(EDIT_PRO, $post->ID) ): ?>
+					<span class="pro-edit"><button type="button" id="toggle-pro-edit" class="pro-button pro-edit-button hide-on-edit"><?php esc_html_e('Edit', JBP_TEXT_DOMAIN); ?></button></span>
+					<?php endif; ?>
 				</div>
 
 				<?php if(post_type_supports('jbp_pro','editor') ): ?>
 				<div class="pro-content-wrapper pro-biography pro-content-editable">
 					<h3>Biography</h3>
-					<?php if(current_user_can(EDIT_PRO, $post->ID) ): ?>
-					<span class="pro-edit"><button type="button" id="toggle-pro-edit" class="pro-button pro-edit-button hide-on-edit"><?php esc_html_e('Edit', JBP_TEXT_DOMAIN); ?></button></span>
-					<?php endif; ?>
 					<div class="editable"
 						data-type="textarea"
 						data-name="post_content"
@@ -149,7 +167,7 @@ wp_enqueue_script('jqueryui-editable-ext');
 
 				<div class="pro-content-wrapper pro-portfolio">
 					<h3><?php _e('Portfolio', JBP_TEXT_DOMAIN); ?></h3>
-					<?php echo do_shortcode('[jbp-pro-portfolio]'); ?>
+					<?php echo do_shortcode('[jbp-expert-portfolio]'); ?>
 				</div>
 
 				<?php if(post_type_supports('jbp_pro','custom-fields') ): ?>
@@ -159,6 +177,7 @@ wp_enqueue_script('jqueryui-editable-ext');
 					echo do_shortcode(
 					'[custom_fields_input style="editfield"]
 					[ct_filter not="true"]
+					_ct_jbp_pro_Tagline,
 					_ct_jbp_pro_First_Last,
 					_ct_jbp_pro_Company_URL,
 					_ct_jbp_pro_Location,
@@ -173,6 +192,7 @@ wp_enqueue_script('jqueryui-editable-ext');
 				<?php endif; ?>
 			</div>
 		</div>
+
 		<div class="pro-left">
 			<div class="pros-certifed">
 				<?php if (current_user_can('promote_user') && current_user_can(EDIT_PROS) ): ?>
@@ -187,9 +207,9 @@ wp_enqueue_script('jqueryui-editable-ext');
 				<?php endif; ?>
 			</div>
 
-			<?php echo do_shortcode('[jbp-pro-gravatar]'); ?>
+			<?php echo do_shortcode('[jbp-expert-gravatar]'); ?>
 			<div class="hide-on-edit">
-				<?php echo do_shortcode('[jbp-pro-contact-btn class="pro-contact"]'); ?>
+				<?php echo do_shortcode('[jbp-expert-contact-btn class="pro-contact"]'); ?>
 				<?php //echo do_shortcode('[pro_points]'); ?>
 			</div>
 
@@ -217,11 +237,11 @@ wp_enqueue_script('jqueryui-editable-ext');
 
 			<div class="pro-content-wrapper pro-social">
 				<h3><?php _e('Social', JBP_TEXT_DOMAIN); ?></h3>
-				<?php echo do_shortcode('[jbp-pro-social]'); ?>
+				<?php echo do_shortcode('[jbp-expert-social]'); ?>
 			</div>
 			<div class="pro-content-wrapper pro-skills">
 				<h3><?php _e('Skills', JBP_TEXT_DOMAIN); ?></h3>
-				<?php echo do_shortcode('[jbp-pro-skills]'); ?>
+				<?php echo do_shortcode('[jbp-expert-skills]'); ?>
 			</div>
 		</div>
 	</form>
@@ -278,7 +298,9 @@ wp_enqueue_script('jqueryui-editable-ext');
 						});
 					}
 				} else {
-					setTimeout(function() { $next.editable('show'); }, 300);
+					if( jbpAddPro ) {
+						setTimeout(function() { $next.editable('show'); }, 300);
+					}
 				}
 			}
 		});
