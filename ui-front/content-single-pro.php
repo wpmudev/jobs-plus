@@ -46,92 +46,88 @@ wp_enqueue_script('jqueryui-editable-ext');
 
 
 		<?php if(post_type_supports('jbp_pro','title') ): ?>
-		<label class="pro-content-editable pro-name show-on-edit">
-			<h3><?php _e('Title: ', JBP_TEXT_DOMAIN); ?>
-				<span class="editable editable-title"
-					data-type="text"
-					data-onblur="submit"
-					data-name="post_title"
-					data-savenochange = "true"
-					data-emptytext="<?php _e('No Title', JBP_TEXT_DOMAIN); ?>"
-					data-value="<?php esc_attr_e( get_the_title() ); ?>"
-					data-emptyclass="editable-required"
-					data-original-title="<?php _e('Enter the Title', JBP_TEXT_DOMAIN); ?>">
-				</span>
-			</h3>
-		</label>
 		<?php endif; ?>
-		
+
 		<div class="pro-content">
 			<div class="pro-pad group">
 
-				<div class="pro-content-wrapper pro-tagline pro-content-editable">
-					<label class="pro-content-editable pro-tagline">
-					<h2>
-					<span class="editable pro-tagline"
-						data-type="text"
-						data-name="_ct_jbp_pro_Tagline"
-						data-mode="popup"
-						data-emptytext="<?php esc_attr_e('Your Tagline', JBP_TEXT_DOMAIN); ?>"
-						data-original-title="<?php _e('Tagline', JBP_TEXT_DOMAIN); ?>"
-						data-value="<?php esc_attr_e(do_shortcode('[ct id="_ct_jbp_pro_Tagline"]') ); ?>"
-						>
+				<div class="pro-content-wrapper pro-tagline show-on-edit">
+					<h2 class="pro-content-editable pro-title"><?php esc_html_e('Title: ', JBP_TEXT_DOMAIN); ?>
+						<span class="editable editable-title"
+							data-type="text"
+							data-onblur="submit"
+							data-name="post_title"
+							data-savenochange = "true"
+							data-emptytext="<?php esc_attr_e('No Title', JBP_TEXT_DOMAIN); ?>"
+							data-value="<?php esc_attr_e( get_the_title() ); ?>"
+							data-emptyclass="editable-required"
+							data-original-title="<?php esc_attr_e('Enter the Title', JBP_TEXT_DOMAIN); ?>">
 						</span>
 					</h2>
-				</label>
 				</div>
-				
+
 				<div class="pro-content-wrapper pro-profile">
+					<h2 class="pro-content-editable pro-tagline">
+						<span class="editable pro-tagline"
+							data-type="text"
+							data-name="_ct_jbp_pro_Tagline"
+							data-mode="popup"
+							data-emptytext="<?php esc_attr_e('Your Tagline', JBP_TEXT_DOMAIN); ?>"
+							data-original-title="<?php esc_attr_e('Tagline', JBP_TEXT_DOMAIN); ?>"
+							data-value="<?php esc_attr_e(do_shortcode('[ct id="_ct_jbp_pro_Tagline"]') ); ?>"
+							>
+						</span>
+					</h2>
 					<label class="pro-content-editable pro-name">
 						<span class="editable editable-firstlast"
 							data-type="firstlast"
 							data-name="_ct_jbp_pro_First_Last"
-							data-emptytext="<?php _e('Your Name', JBP_TEXT_DOMAIN); ?>"
+							data-emptytext="<?php esc_attr_e('Your Name', JBP_TEXT_DOMAIN); ?>"
 							data-value="<?php esc_attr_e(do_shortcode('[ct id="_ct_jbp_pro_First_Last"]') ); ?>"
-							data-original-title="<?php _e('Enter Your First and Last Name', JBP_TEXT_DOMAIN); ?>">
+							data-original-title="<?php esc_attr_e('Enter Your First and Last Name', JBP_TEXT_DOMAIN); ?>">
 						</span>
 						<?php printf(' is a member since %s', date("M Y", strtotime(get_the_author_meta('user_registered') ) ) ); ?>
 					</label>
 					<label for="company" class="pro-content-editable pro-company">
-						<strong><?php _e('Company: ', JBP_TEXT_DOMAIN); ?></strong>
+						<strong><?php esc_html_e('Company: ', JBP_TEXT_DOMAIN); ?></strong>
 						<span class="editable"
 							id="company"
 							data-type="link"
 							data-name="_ct_jbp_pro_Company_URL"
-							data-emptytext="<?php _e('Your Company', JBP_TEXT_DOMAIN); ?>"
-							data-link-label="<?php _e('Company:', JBP_TEXT_DOMAIN); ?>"
-							data-link-placeholder="<?php _e('Company Name', JBP_TEXT_DOMAIN); ?>"
-							data-url-placeholder="<?php _e('www.company.com', JBP_TEXT_DOMAIN); ?>"
+							data-emptytext="<?php esc_attr_e('Your Company', JBP_TEXT_DOMAIN); ?>"
+							data-link-label="<?php esc_attr_e('Company:', JBP_TEXT_DOMAIN); ?>"
+							data-link-placeholder="<?php esc_attr_e('Company Name', JBP_TEXT_DOMAIN); ?>"
+							data-url-placeholder="<?php esc_attr_e('www.company.com', JBP_TEXT_DOMAIN); ?>"
 							data-value="<?php esc_attr_e(do_shortcode('[ct id="_ct_jbp_pro_Company_URL"]') ); ?>"
-							data-original-title="<?php _e('Company and URL', JBP_TEXT_DOMAIN); ?>">
+							data-original-title="<?php esc_attr_e('Company and URL', JBP_TEXT_DOMAIN); ?>">
 						</span>
 					</label>
 					<label class="pro-content-editable pro-location">
-						<strong><?php _e('Location: ', JBP_TEXT_DOMAIN); ?></strong>
+						<strong><?php esc_html_e('Location: ', JBP_TEXT_DOMAIN); ?></strong>
 						<span class="editable"
 							data-type="select"
 							data-name="_ct_jbp_pro_Location"
-							data-emptytext="<?php _e('Your Location', JBP_TEXT_DOMAIN); ?>"
+							data-emptytext="<?php esc_attr_e('Your Location', JBP_TEXT_DOMAIN); ?>"
 							data-value="<?php esc_attr_e(do_shortcode('[ct id="_ct_jbp_pro_Location"]') ); ?>"
-							data-source="<?php echo JBP_PLUGIN_URL . 'data/countries.json';?>"
-							data-original-title="<?php _e('Enter Location from dropdown', JBP_TEXT_DOMAIN); ?>"
+							data-source="<?php esc_attr_e(JBP_PLUGIN_URL . 'data/countries.json');?>"
+							data-original-title="<?php esc_attr_e('Enter Location from dropdown', JBP_TEXT_DOMAIN); ?>"
 						><?php esc_html_e(do_shortcode('[ct id="_ct_jbp_pro_Location"]') ); ?></span>
 					</label>
 					<label class="pro-content-editable pro-contact-email">
-						<strong><?php _e('Contact Email: ', JBP_TEXT_DOMAIN); ?></strong>
+						<strong><?php esc_html_e('Contact Email: ', JBP_TEXT_DOMAIN); ?></strong>
 						<span class="editable"
 							data-type="text"
 							data-mode="popup"
 							data-name="_ct_jbp_pro_Contact_Email"
-							data-emptytext="<?php _e('Your contact email', JBP_TEXT_DOMAIN); ?>"
+							data-emptytext="<?php esc_attr_e('Your contact email', JBP_TEXT_DOMAIN); ?>"
 							data-value="<?php esc_attr_e(do_shortcode('[ct id="_ct_jbp_pro_Contact_Email"]')); ?>"
 							data-label="<?php esc_attr_e('Contact Email', JBP_TEXT_DOMAIN ); ?>"
 							data-emptyclass="editable-required"
-							data-original-title="<?php _e('Contact email', JBP_TEXT_DOMAIN); ?>">
+							data-original-title="<?php esc_attr_e('Contact email', JBP_TEXT_DOMAIN); ?>">
 						</span>
 					</label>
 					<label class="pro-rate-me">
-						<strong><?php _e('Rate me: ', JBP_TEXT_DOMAIN); ?></strong>
+						<strong><?php esc_html_e('Rate me: ', JBP_TEXT_DOMAIN); ?></strong>
 						<?php echo do_shortcode('[jbp-rate-this]'); ?>
 					</label>
 					<?php if(current_user_can(EDIT_PRO, $post->ID) ): ?>
@@ -140,8 +136,9 @@ wp_enqueue_script('jqueryui-editable-ext');
 				</div>
 
 				<?php if(post_type_supports('jbp_pro','editor') ): ?>
-				<div class="pro-content-wrapper pro-biography pro-content-editable">
-					<h3>Biography</h3>
+				<div class="pro-content-wrapper">
+					<h2 class="pro-content-editable pro-biography"><?php esc_html_e('Biography', JBP_TEXT_DOMAIN); ?></h2>
+					<hr />
 					<div class="editable"
 						data-type="textarea"
 						data-name="post_content"
@@ -153,20 +150,21 @@ wp_enqueue_script('jqueryui-editable-ext');
 				<?php endif; ?>
 
 				<?php if(post_type_supports('jbp_pro','excerpt') ): ?>
-				<div class="pro-content-wrapper pro-excerpt pro-content-editable">
-					<h3>Excerpt</h3>
+				<div class="pro-content-wrapper">
+					<h2 class="pro-content-editable pro-excerpt "><?php esc_html_e('Excerpt', JBP_TEXT_DOMAIN); ?></h2>
 					<div class="editable"
 						data-type="textarea"
 						data-name="post_excerpt"
 						data-mode="popup"
 						data-emptytext="<?php esc_attr_e('Tell us about yourself', JBP_TEXT_DOMAIN); ?>"
-						data-original-title="<?php _e('Short Excerpt', JBP_TEXT_DOMAIN); ?>"
+						data-original-title="<?php esc_attr_e('Short Excerpt', JBP_TEXT_DOMAIN); ?>"
 					><?php echo $this->make_clickable(strip_tags(get_the_excerpt() ) ); ?></div>
 				</div>
 				<?php endif; ?>
 
 				<div class="pro-content-wrapper pro-portfolio">
-					<h3><?php _e('Portfolio', JBP_TEXT_DOMAIN); ?></h3>
+					<h2 class="pro-content-editable"><?php esc_html_e('Portfolio', JBP_TEXT_DOMAIN); ?></h2>
+					<hr />
 					<?php echo do_shortcode('[jbp-expert-portfolio]'); ?>
 				</div>
 
@@ -194,8 +192,8 @@ wp_enqueue_script('jqueryui-editable-ext');
 		</div>
 
 		<div class="pro-left">
-			<div class="pros-certifed">
-				<?php if (current_user_can('promote_user') && current_user_can(EDIT_PROS) ): ?>
+			<?php if (current_user_can('promote_user') && current_user_can(EDIT_PROS) ): ?>
+			<div class="pros-certifed show-on-edit">
 				<div id="jbp_certified_form">
 					<input type="hidden" name="action" value="set_jbp_certified" />
 					<input type="hidden" name="jbp_certified" value="0" />
@@ -204,8 +202,8 @@ wp_enqueue_script('jqueryui-editable-ext');
 						<br /><?php echo 'User ID: ' . $post->post_author; ?>
 					</label>
 				</div>
-				<?php endif; ?>
 			</div>
+			<?php endif; ?>
 
 			<?php echo do_shortcode('[jbp-expert-gravatar]'); ?>
 			<div class="hide-on-edit">
@@ -235,12 +233,12 @@ wp_enqueue_script('jqueryui-editable-ext');
 			</div>
 			<?php endif; ?>
 
-			<div class="pro-content-wrapper pro-social">
-				<h3><?php _e('Social', JBP_TEXT_DOMAIN); ?></h3>
+			<div class="pro-content-wrapper">
+				<h2 class="pro-content-editable pro-social"><?php esc_html_e('Social', JBP_TEXT_DOMAIN); ?></h2>
 				<?php echo do_shortcode('[jbp-expert-social]'); ?>
 			</div>
-			<div class="pro-content-wrapper pro-skills">
-				<h3><?php _e('Skills', JBP_TEXT_DOMAIN); ?></h3>
+			<div class="pro-content-wrapper">
+				<h2 class="pro-content-editable pro-social"><?php esc_html_e('Skills', JBP_TEXT_DOMAIN); ?></h2>
 				<?php echo do_shortcode('[jbp-expert-skills]'); ?>
 			</div>
 		</div>
@@ -279,8 +277,8 @@ wp_enqueue_script('jqueryui-editable-ext');
 					if( reason === 'cancel') {
 						window.history.go(-1);
 						jbp_create_dialog(
-						"<?php _e('Canceling Profile', JBP_TEXT_DOMAIN); ?>",
-						"<?php _e('Canceling Profile,<br />Please Wait', JBP_TEXT_DOMAIN); ?>",
+						"<?php esc_html_e('Canceling Profile', JBP_TEXT_DOMAIN); ?>",
+						"<?php esc_html_e('Canceling Profile,<br />Please Wait', JBP_TEXT_DOMAIN); ?>",
 						{
 							dialogClass: 'dialogcenter',
 							height: 150,
@@ -289,8 +287,8 @@ wp_enqueue_script('jqueryui-editable-ext');
 					} else {
 						window.location = '<?php echo $link ?>';
 						jbp_create_dialog(
-						"<?php _e('Creating Profile', JBP_TEXT_DOMAIN); ?>",
-						"<?php _e('Creating Your Profile,<br />Please Wait', JBP_TEXT_DOMAIN); ?>",
+						"<?php esc_html_e('Creating Profile', JBP_TEXT_DOMAIN); ?>",
+						"<?php esc_html_e('Creating Your Profile,<br />Please Wait', JBP_TEXT_DOMAIN); ?>",
 						{
 							dialogClass: 'dialogcenter',
 							height: 150,
@@ -310,8 +308,8 @@ wp_enqueue_script('jqueryui-editable-ext');
 
 		$('#custom-fields-form').submit( function( e ){
 			var result = jbp_required_dialog( e,
-			"<?php _e('Required Fields', JBP_TEXT_DOMAIN); ?>",
-			"<?php _e('<p>Please complete the required fields</p>', JBP_TEXT_DOMAIN); ?>"
+			"<?php esc_html_e('Required Fields', JBP_TEXT_DOMAIN); ?>",
+			"<?php esc_html_e('<p>Please complete the required fields</p>', JBP_TEXT_DOMAIN); ?>"
 			);
 			return result;
 		});

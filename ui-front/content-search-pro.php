@@ -20,6 +20,7 @@ wp_enqueue_script('imagesloaded');
 
 	<div id="pro-grid-container">
 		<div class="pro-grid-sizer"></div>
+		<div class="pro-gutter-sizer"></div>
 
 		<?php while( have_posts() ): the_post(); ?>
 
@@ -48,7 +49,7 @@ wp_enqueue_script('imagesloaded');
 			$container.masonry({
 				itemSelector: ".pro-archive"
 				,columnWidth: ".pro-grid-sizer"
-				,gutter:3
+				,gutter: ".pro-gutter-sizer"
 				,containerStyle: null
 				//,stamp: $(".pros-stamp")
 			});

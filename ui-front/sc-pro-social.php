@@ -20,7 +20,7 @@
 
 	$count = 0;
 	?>
-	<ul class="pro-content-editable" >
+	<ul class="group">
 		<?php foreach ( $socials as $key => $social) : ?>
 		<li>
 			<div

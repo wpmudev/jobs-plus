@@ -29,6 +29,7 @@ function job_have_posts(){
 	<?php if(have_posts()): ?>
 	<div id="job-grid-container">
 		<div class="job-grid-sizer"></div>
+		<div class="job-gutter-sizer"></div>
 		<?php while( have_posts() ): the_post(); ?>
 		<?php echo do_shortcode('[jbp-job-excerpt]'); ?>
 		<?php endwhile; ?>
@@ -51,9 +52,10 @@ function job_have_posts(){
 		$container.masonry({
 			itemSelector: ".job-excerpt",
 			columnWidth: ".job-grid-sizer",
-			gutter: 0
+			gutter: ".job-gutter-sizer"
 		});
-		$container.masonry('layout');
+
+		$(window).resize( function(){ $container.masonry('layout'); } );
 
 		$(".job-excerpt").click( function(){
 			var $this = $(this);

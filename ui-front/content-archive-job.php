@@ -46,7 +46,7 @@ function job_have_posts(){
 	jQuery(document).ready( function($){
 
 		$(".job-show").ellipsis({row: 3 });
-		$(".ellipsis").ellipsis({row: 4, char: '<a> . . .Read more</a>' });
+		$(".ellipsis").ellipsis({row: 3, char: '<a> . . .Read more</a>' });
 
 		var $container = $("#job-grid-container");
 		$container.masonry({

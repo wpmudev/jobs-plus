@@ -5,20 +5,6 @@
 * @license GPL2+
 */
 
-#icon-jobs-plus{
-	background: transparent url( '../img/jobs-plus-32.png' ) no-repeat;
-}
-
-#icon-jbp-job,
-#icon-edit.icon32-posts-jbp_job{
-	background: transparent url( '../img/job32.png' ) no-repeat;
-}
-
-#icon-jbp-pro,
-#icon-edit.icon32-posts-jbp_pro{
-	background: transparent url( '../img/pro32.png' ) no-repeat;
-}
-
 .postbox h3{
 	line-height: 2em;
 	padding-left:1em;

@@ -10,23 +10,41 @@
 }
 
 .pro-content-wrapper ul{
-	margin: 0;;
+	margin: 0;
 }
 
-.pro-content-wrapper:before {
+.pro-content-editable{
+	position: relative;
+}
+
+.pro-content-editable:before {
+	background: url("../img/sprite-jobs.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
 	content: " ";
-	position: absolute;
-	top: 0;
-	left: -20px;
-	width: 13px;
 	height: 24px;
-	background: url('../img/sprite-jobs.png') no-repeat 0 0;
-	display: none;
+	left: -20px;
+	position: absolute;
+	bottom: 0;
+	width: 13px;
+	display: none !important;
 }
 
-.pro-content-wrapper:before{
-	display: block;
+.pro-content-editable.pro-content-edit:before {
+	display: block !important;
 }
+
+.pro-content-editable:hover:before {
+	background-position: 0 -24px;
+}
+
+.pro-portfolio ul.pro-content-editable,
+.pro-skills ul.pro-content-editable,
+.pro-social ul.pro-content-editable,
+ul.pro-content-editable li{
+	list-style: none outside none !important;
+	margin-left: 0;
+	padding-left: 0;
+}
+
 
 /*Add item link */
 a.pro-add{
@@ -37,7 +55,6 @@ a.pro-add{
 
 .pro-edit {
 	float: right;
-	margin-top: -4em;
 	position: relative;
 	z-index: 10;
 }
@@ -113,7 +130,7 @@ a.pro-add{
 @media screen and (min-width: 800px) {
 
 	.pro-pad{
-		margin: 0 0 0 1em;
+		margin: 0 0 0 2em;
 	}
 
 	.pro-left{
@@ -142,14 +159,10 @@ a.pro-add{
 	font-weight: bold;
 }
 
-.pro-portfolio ul.pro-content-editable,
-.pro-skills ul.pro-content-editable,
-.pro-social ul.pro-content-editable,
-ul.pro-content-editable li{
-	list-style: none outside none !important;
-	margin-left: 0;
-	padding-left: 0;
+label.pro-rate-me{
+	margin-bottom: 2em;
 }
+
 
 .control-group button{
 	height:2em;
@@ -164,7 +177,7 @@ ul.pro-content-editable li{
 }
 
 /* Social links */
-.pro-social{margin:0;text-align:left; max-width: 420px} 
+.pro-social{margin:0;text-align:left; max-width: 420px}
 .pro-social li{	background-image: none;	padding: 0;}
 .pro-social .social_t{display:block;font-variant:small-caps;margin-bottom:5px;}
 .pro-social ul{display:inline;list-style-type:none;margin:0 auto;padding:0;}
@@ -218,6 +231,10 @@ ul.pro-content-editable li{
 
 #pro-grid-container{
 	position: relative;
+}
+
+.pro-gutter-sizer{
+	width: 3px;
 }
 
 .pro-grid-sizer{ width: 80px; }
@@ -373,3 +390,4 @@ button.pro-submit-search >img{
 	border: none;
 	box-shadow: none;
 }
+

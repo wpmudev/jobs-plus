@@ -119,11 +119,13 @@ jQuery(document).ready( function($) {
 			$('.editable').editable('disable');
 			$('#custom-fields-form .ct-field').prop('readonly', true);
 			$('#custom-fields-form .description').css('visibility', 'hidden');
+			$('.pro-content-editable').removeClass('pro-content-edit');
 		} else {
 			$('.show-on-edit').show();
 			$('.hide-on-edit').hide();
 			$('#custom-fields-form .ct-field').prop('readonly', false);
 			$('#custom-fields-form .description').css('visibility', 'visible');
+			$('.pro-content-editable').addClass('pro-content-edit');
 			if(jbpAddPro) {
 				$(".editable[data-name='post_title']").editable('enable');
 			} else {

@@ -24,7 +24,7 @@
 	*/
 	$count = 0;
 	?>
-	<ul class="pro-content-editable group">
+	<ul class="group">
 		<?php
 		foreach ( $portfolios as $key => $portfolio) :
 		//var_dump(json_encode($portfolio));
