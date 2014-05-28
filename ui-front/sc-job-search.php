@@ -17,10 +17,10 @@ $sort_ending = (!empty($_GET['prj-sort']) && $_GET['prj-sort'] == 'ending' ? 'ac
 		<div class="job-search-wrap group"  data-eq-pts=" break: 560" >
 			<ul class="job-search group">
 				<li>
-					<span>Sort by</span>
+					<span class="divider">Sort by</span>
 				</li>
 				<li>
-					<span class="sort-by-latest <?php echo $sort_latest; ?>">
+					<span class="sort-by-latest <?php echo $sort_latest; ?> divider">
 						<a href="<?php echo add_query_arg( array('prj_sort' => 'latest', ), get_post_type_archive_link('jbp_job') );?>" ><?php _e('Latest', JPB_TEXT_DOMAIN ); ?></a>
 					</span>
 				</li>

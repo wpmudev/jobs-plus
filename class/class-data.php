@@ -1113,7 +1113,7 @@ Message:
 FROM_MESSAGE
 
 
-Pro link: POST_LINK
+Expert link: POST_LINK
 ', $this->text_domain);
 
 
@@ -1128,7 +1128,7 @@ Message:
 FROM_MESSAGE
 
 
-Pro link: POST_LINK
+Job link: POST_LINK
 ', $this->text_domain);
 
 

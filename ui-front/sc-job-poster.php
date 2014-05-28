@@ -16,20 +16,22 @@ wp_enqueue_style('jobs-plus');
 wp_enqueue_script('element-query');
 
 ?>
-<div class="job-poster" data-eq-pts=" small:320, medium: 480, large: 960">
-	<h2>Recently</h2>
+<div class="job-poster" data-eq-pts=" break: 540">
+	<h2 style="text-align: center"><?php echo $text; ?></h2>
+	<hr />
 	<?php while( $jbp_query->have_posts() ): ?>
 	<div class="poster" >
 		<?php
 		$jbp_query->the_post();
-		$terms = wp_get_post_terms( get_the_ID(), 'jbp_category', array('fields' => 'ids') );
+		
+		echo do_shortcode('[jbp-job-poster-excerpt]'); 
+		
 		?>
-		<div class="job-poster-img">
-			<?php echo do_shortcode(	sprintf('[ti term="%s"]', $terms[0]) ); ?>
-		</div>
-
-		<?php echo do_shortcode('[jbp-job-poster-excerpt]'); ?>
 	</div>
 	<?php endwhile; ?>
+	<div class="jobs-link">
+	<span><a href="<?php echo get_post_type_archive_link('jbp_job'); ?>"><?php esc_html_e( sprintf(__('Browse More %s ...', JBP_TEXT_DOMAIN), $this->job_labels->name) ); ?></a></span>
+	</div>
+	[jbp-job-post-btn img="false"]
 	<?php wp_reset_postdata(); ?>
 </div>

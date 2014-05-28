@@ -444,7 +444,6 @@ class Jobs_Plus_Core{
 		//Register styles and script
 		wp_register_script('jquery-iframe-transport', $this->plugin_url . "js/jquery-iframe-transport.js", array('jquery'), JQUERY_IFRAME_TRANSPORT, true );
 
-		wp_register_style('element-query', $this->plugin_url . "css/eq.css", array(), JOBS_PLUS_VERSION );
 		wp_register_script('element-query', $this->plugin_url . "js/eq.js", array('jquery'), JOBS_PLUS_VERSION, true );
 
 		wp_register_style('jquery-rateit', $this->plugin_url . "css/rateit.css", array(), JQUERY_RATEIT );
@@ -757,7 +756,6 @@ class Jobs_Plus_Core{
 		if(in_array(get_query_var('post_type'), array('jbp_job', 'jbp_pro'))
 		|| in_array(get_query_var('taxonomy'), array('jbp_category', 'jbp_tag', 'jbp_skills_tag')) ){
 
-			wp_enqueue_style('element-query');
 			wp_enqueue_script('element-query');
 			wp_enqueue_style('jquery-rateit');
 			wp_enqueue_style('jobs-plus');
@@ -1253,7 +1251,7 @@ class Jobs_Plus_Core{
 	}
 
 	function on_wp_mail($args){
-		//var_dump($args);
+		//var_dump($args); exit;
 		return $args;
 	}
 
@@ -2005,9 +2003,11 @@ class Jobs_Plus_Core{
 		'text' => sprintf(__('Browse %s', $this->text_domain),$this->job_labels->name),
 		'view' => 'both', //loggedin, loggedout, both
 		'class' => '',
+		'img' => 'true',
 		), $atts ) );
 
 		if( !$this->can_view( $view ) ) return '';
+		$img = strtolower( $img ) =='true' ? true : false; 
 
 		$content = (empty($content)) ? $text : $content;
 		$url = get_post_type_archive_link('jbp_job');
@@ -2021,9 +2021,11 @@ class Jobs_Plus_Core{
 		'text' => sprintf(__('Browse %s', $this->text_domain),$this->pro_labels->name),
 		'view' => 'both', //loggedin, loggedout, both
 		'class' => '',
+		'img' => 'true',
 		), $atts ) );
 
 		if( !$this->can_view( $view ) ) return '';
+		$img = strtolower( $img ) =='true' ? true : false; 
 
 		$content = (empty($content)) ? $text : $content;
 		$url = get_post_type_archive_link('jbp_pro');
@@ -2037,9 +2039,11 @@ class Jobs_Plus_Core{
 		'text' => sprintf(__('Post a %s', $this->text_domain),$this->job_labels->singular_name),
 		'view' => 'both', //loggedin, loggedout, both
 		'class' => '',
+		'img' => 'true',
 		), $atts ) );
 
 		if( !$this->can_view( $view ) ) return '';
+		$img = strtolower( $img ) =='true' ? true : false; 
 
 		if( $this->count_user_posts_by_type(get_current_user_id(), 'jbp_job') >= $this->get_setting('job->max_records', 1) ) {
 			return '';
@@ -2058,9 +2062,11 @@ class Jobs_Plus_Core{
 		'text' => sprintf(__('Post an %s', $this->text_domain),$this->pro_labels->singular_name),
 		'view' => 'both', //loggedin, loggedout, both
 		'class' => '',
+		'img' => 'true',
 		), $atts ) );
 
 		if( !$this->can_view( $view ) ) return '';
+		$img = strtolower( $img ) =='true' ? true : false; 
 
 		if( $this->count_user_posts_by_type(get_current_user_id(), 'jbp_pro') >= $this->get_setting('pro->max_records', 1) ) {
 			return '';
@@ -2078,9 +2084,11 @@ class Jobs_Plus_Core{
 		'text' => __('My Profile', $this->text_domain),
 		'view' => 'both', //loggedin, loggedout, both
 		'class' => '',
+		'img' => 'true',
 		), $atts ) );
 
 		if( !$this->can_view( $view ) ) return '';
+		$img = strtolower( $img ) =='true' ? true : false; 
 
 		//Don't display unless they have a profile.
 		if( $this->count_user_posts_by_type(get_current_user_id(), 'jbp_pro') <  1 ) {
@@ -2152,7 +2160,7 @@ class Jobs_Plus_Core{
 
 	function job_poster_sc( $atts, $content = null ) {
 		extract( shortcode_atts( array(
-		'text' => sprintf(__('Search %s for ', $this->text_domain),$this->job_labels->name),
+		'text' => sprintf(__('Recently Posted %s', $this->text_domain),$this->job_labels->name),
 		'view' => 'both', //loggedin, loggedout, both
 		'class' => '',
 		), $atts ) );
