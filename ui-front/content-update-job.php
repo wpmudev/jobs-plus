@@ -68,14 +68,18 @@ wp_enqueue_script('jquery-ui-dialog');
 ?>
 
 <div class="job-profile-wrapper">
-	<?php if(dynamic_sidebar('job-widget') ) : else: endif; ?>
+
+	<div class="group">
+		<?php if(dynamic_sidebar('job-widget') ) : else: endif; ?>
+	</div>
+	
 	<?php echo do_action('jbp_error'); ?>
 	<?php echo do_action('jbp_notice'); ?>
 
 	<?php if($add_job): ?>
-	<h3><?php _e('Create a New Job', JBP_TEXT_DOMAIN); ?></h3>
+	<h2><?php esc_html_e('Create a New Job', JBP_TEXT_DOMAIN); ?></h2>
 	<?php else: ?>
-	<h3><?php printf( '%s %s', __('Editing Job &raquo;', JBP_TEXT_DOMAIN), get_the_title()); ?></h3>
+	<h2><?php printf( '%s %s', __('Editing Job &raquo;', JBP_TEXT_DOMAIN), get_the_title()); ?></h2>
 	<?php endif; ?>
 	<form id="job-form" action="#" method="POST">
 
@@ -95,7 +99,7 @@ wp_enqueue_script('jquery-ui-dialog');
 				?>
 				<tr>
 					<th>
-						<label><?php _e('Chose a Category',JBP_TEXT_DOMAIN)?></label>
+						<label><?php esc_html_e('Chose a Category',JBP_TEXT_DOMAIN)?></label>
 					</th>
 					<td>
 						<div class="job-field">
@@ -133,7 +137,7 @@ wp_enqueue_script('jquery-ui-dialog');
 				<?php if(post_type_supports('jbp_job','title') ): ?>
 				<tr>
 					<th>
-						<label><?php _e('Give Your Job a  Title',JBP_TEXT_DOMAIN)?></label>
+						<label><?php esc_html_e('Give Your Job a  Title',JBP_TEXT_DOMAIN)?></label>
 					</th>
 					<td>
 						<div class="job-field">
@@ -146,7 +150,7 @@ wp_enqueue_script('jquery-ui-dialog');
 				<?php endif; ?>
 				<tr>
 					<th>
-						<label><?php _e('Describe the Work to be Done',JBP_TEXT_DOMAIN)?></label>
+						<label><?php esc_html_e('Describe the Work to be Done',JBP_TEXT_DOMAIN)?></label>
 					</th>
 					<td>
 						<textarea name="data[post_content]" rows="4"><?php echo esc_textarea( strip_tags(get_the_content() ) ); ?></textarea>
@@ -172,13 +176,13 @@ wp_enqueue_script('jquery-ui-dialog');
 					</th>
 					<td>
 						<input class="job-tags" style="100%" id="tag_<?php echo $tag_name; ?>" name="tag_input[<?php echo $tag_name; ?>]" type="hidden" value="<?php echo $tag_list?>" />
-						<span class="job-description"><?php _e('Skills Required for this job', JBP_TEXT_DOMAIN); ?></span>
+						<span class="job-description"><?php esc_html_e('Skills Required for this job', JBP_TEXT_DOMAIN); ?></span>
 
 						<script type="text/javascript">
 							jQuery(document).ready( function($){
 								$('#tag_<?php echo $tag_name; ?>').select2({
 									tags: <?php echo json_encode(get_terms($tag_name, array('fields'=>'names', 'get' => 'all' ) ) ); ?>,
-									placeholder: "<?php _e('Add a tag, use commas to separate'); ?>",
+									placeholder: "<?php esc_attr_e('Add a tag, use commas to separate'); ?>",
 									tokenSeparators: [","]
 								});
 							});
@@ -191,9 +195,9 @@ wp_enqueue_script('jquery-ui-dialog');
 				<tr>
 					<th>
 						<?php if($this->get_setting('job->use_budget_range', false) ): ?>
-						<label><?php _e('Budget Range',JBP_TEXT_DOMAIN)?></label>
+						<label><?php esc_html_e('Budget Range',JBP_TEXT_DOMAIN)?></label>
 						<?php else: ?>
-						<label><?php _e('Budget',JBP_TEXT_DOMAIN)?></label>
+						<label><?php esc_html_e('Budget',JBP_TEXT_DOMAIN)?></label>
 						<?php endif; ?>
 					</th>
 					<td>
@@ -213,7 +217,7 @@ wp_enqueue_script('jquery-ui-dialog');
 				</tr>
 				<tr>
 					<th>
-						<label><?php _e('Contact Email',JBP_TEXT_DOMAIN)?></label>
+						<label><?php esc_html_e('Contact Email',JBP_TEXT_DOMAIN)?></label>
 					</th>
 					<td>
 						<?php echo do_shortcode('[ct_in id="_ct_jbp_job_Contact_Email"]'); ?>
@@ -222,7 +226,7 @@ wp_enqueue_script('jquery-ui-dialog');
 				</tr>
 				<tr>
 					<th>
-						<label><?php _e('Completion Date',JBP_TEXT_DOMAIN)?></label>
+						<label><?php esc_html_e('Completion Date',JBP_TEXT_DOMAIN)?></label>
 					</th>
 					<td>
 						<?php echo do_shortcode('[ct_in id="_ct_jbp_job_Due"]'); ?>
@@ -232,7 +236,7 @@ wp_enqueue_script('jquery-ui-dialog');
 
 				<tr>
 					<th>
-						<label><?php _e('Job Open for',JBP_TEXT_DOMAIN)?></label>
+						<label><?php esc_html_e('Job Open for',JBP_TEXT_DOMAIN)?></label>
 					</th>
 					<td>
 						<?php echo do_shortcode('[ct_in id="_ct_jbp_job_Open_for"]'); ?>
@@ -242,11 +246,11 @@ wp_enqueue_script('jquery-ui-dialog');
 
 				<tr>
 					<th style="vertical-align: top">
-						<label><?php _e('Attach Examples',JBP_TEXT_DOMAIN)?></label>
+						<label><?php esc_html_e('Attach Examples',JBP_TEXT_DOMAIN)?></label>
 					</th>
 					<td>
 						<div class="job-content-wrapper job-portfolio">
-							<h3><?php _e('Portfolio', JBP_TEXT_DOMAIN); ?></h3>
+							<h2><?php esc_html_e('Portfolio', JBP_TEXT_DOMAIN); ?></h2>
 							<?php echo do_shortcode('[jbp-job-portfolio]'); ?>
 						</div>
 					</td>
@@ -272,7 +276,7 @@ wp_enqueue_script('jquery-ui-dialog');
 		$tos_txt = $this->get_setting('job->tos_txt', '');
 		if( !empty($tos_text) ): ?>
 
-		<strong><?php _e( 'Terms of Service', JBP_TEXT_DOMAIN ); ?></strong>
+		<strong><?php esc_html_e( 'Terms of Service', JBP_TEXT_DOMAIN ); ?></strong>
 		<div class="job-tos"><?php echo nl2br( $tos_txt ); ?></div>
 		<?php endif; ?>
 
@@ -301,17 +305,17 @@ wp_enqueue_script('jquery-ui-dialog');
 
 				<?php if($editing): ?>
 				<div class="job-go-public">
-					<button type="button" class="job-button" onclick="window.location='<?php echo get_permalink( get_the_id() ); ?>';"><?php _e('Cancel', JBP_TEXT_DOMAIN); ?></button>
+					<button type="button" class="job-button" onclick="window.location='<?php echo get_permalink( get_the_id() ); ?>';"><?php esc_html_e('Cancel', JBP_TEXT_DOMAIN); ?></button>
 				</div>
 				<?php else: ?>
 				<div class="job-go-public">
-					<button type="button" class="job-button" onclick="window.location='<?php echo get_post_type_archive_link('jbp_jobs'); ?>';"><?php _e('Cancel', JBP_TEXT_DOMAIN); ?></button>
+					<button type="button" class="job-button" onclick="window.location='<?php echo get_post_type_archive_link('jbp_jobs'); ?>';"><?php esc_html_e('Cancel', JBP_TEXT_DOMAIN); ?></button>
 				</div>
 				<?php endif; ?>
 			</div>
 		</div>
-	<?php endif; ?>
-</form>
+		<?php endif; ?>
+	</form>
 </div>
 
 <script type="text/javascript">

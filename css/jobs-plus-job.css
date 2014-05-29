@@ -5,6 +5,82 @@
 * @license GPL2+
 */
 
+/** Header size override **/
+.job-single-wrapper h1{
+	font-size: 32px;	
+}
+
+.job-single-wrapper h2{
+	font-size: 20px;
+	display: inline-block;	
+}
+
+.job-single-wrapper h3{
+	font-size: 18px;	
+}
+
+.job-single-wrapper h4{
+	font-size: 16px;	
+}
+
+.job-single-wrapper p.subheader1{
+	font-size: 16px;
+}
+
+.job-single-wrapper p.subheader2{
+	font-size: 14px;
+}
+
+.job-profile-wrapper h1{
+	font-size: 32px;	
+}
+
+.job-profile-wrapper h2{
+	font-size: 20px;
+	display: inline-block;	
+}
+
+.job-profile-wrapper h3{
+	font-size: 18px;	
+}
+
+.job-profile-wrapper h4{
+	font-size: 16px;	
+}
+
+.job-profile-wrapper p.subheader1{
+	font-size: 16px;
+}
+
+.job-profile-wrapper p.subheader2{
+	font-size: 14px;
+}
+
+.job-archive-wrapper h1{
+	font-size: 32px;	
+}
+
+.job-archive-wrapper h2{
+	font-size: 20px;
+	display: inline-block;	
+}
+
+.job-archive-wrapper h3{
+	font-size: 18px;	
+}
+
+.job-archive-wrapper h4{
+	font-size: 16px;	
+}
+
+.job-archive-wrapper p.subheader1{
+	font-size: 16px;
+}
+
+.job-archive-wrapper p.subheader2{
+	font-size: 14px;
+}
+
 .job-description{
 	font-style: italic;
 }
@@ -13,7 +89,7 @@
 	float: right;
 }
 
-/*Add item link */
+/** Add item link **/
 a.job-add{
 	display: block;
 	font-weight: bold;
@@ -23,6 +99,8 @@ a.job-add{
 .job-content-wrapper{
 	position relative;
 }
+
+
 
 .job-form{
 	width: 100%;
@@ -84,6 +162,10 @@ a.job-add{
 	float: left;
 }
 
+.job-images{
+	margin: 10px 0;
+}
+
 .job-portfolio .job-images ul,
 .job-portfolio .job-images ul li{
 	list-style: none outside none;
@@ -107,6 +189,8 @@ a.job-add{
 }
 
 .job-single-wrapper .job-meta ul{
+	display: block;
+	width: 100%;
 	padding: 0;
 	margin: auto;
 
@@ -129,6 +213,9 @@ a.job-add{
 	width: 100%;
 	border-right: 1px solid #aaa;
 }
+
+
+
 
 
 @media screen and (max-width:500px) {
@@ -188,6 +275,7 @@ a.job-add{
 
 
 .job-date{
+	display: block;
 	text-align: left;
 	margin-bottom: 10px;
 }

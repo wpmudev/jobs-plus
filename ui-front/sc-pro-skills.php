@@ -27,9 +27,9 @@
 				class="editable skill"
 				data-type="skill"
 				data-mode="popup"
-				data-name="<?php esc_attr_e("_ct_jbp_pro_Skills[$key]"); ?>"
+				data-name="<?php echo esc_attr("_ct_jbp_pro_Skills[$key]"); ?>"
 				data-emptytext="<?php esc_attr_e('What is your skill?', JBP_TEXT_DOMAIN); ?>"
-				data-value="<?php esc_attr_e( json_encode($skill) ); ?>"
+				data-value="<?php echo esc_attr( json_encode($skill) ); ?>"
 				data-original-title="<?php esc_attr_e(__('Skills', JBP_TEXT_DOMAIN) ); ?>">
 			</div>
 		</li>
@@ -45,7 +45,7 @@
 	class="editable skill"
 	data-type="skill"
 	data-mode="popup"
-	data-name="<?php esc_attr_e('_ct_jbp_pro_Skills[]'); ?>"
+	data-name="<?php echo esc_attr('_ct_jbp_pro_Skills[]'); ?>"
 	data-value=""
 	data-emptytext="<?php esc_attr_e('What is your skill?', JBP_TEXT_DOMAIN); ?>"
 	data-original-title="<?php esc_attr_e(__('Skill', JBP_TEXT_DOMAIN) ); ?>">

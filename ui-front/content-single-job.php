@@ -31,17 +31,19 @@ $project_budget = ($project_budget == '' ? 'N/A' : $project_budget);
 
 ?>
 <div class="job-single-wrapper">
-	<?php if(dynamic_sidebar('job-widget') ) : else: endif; ?>
+
+	<div class="group">
+		<?php if(dynamic_sidebar('job-widget') ) : else: endif; ?>
+	</div>
 	<?php echo do_action('jbp_error'); ?>
 	<?php echo do_action('jbp_notice'); ?>
 
-
 	<div class="job-meta group">
-		<div class="job-date"><?php  esc_html_e( sprintf(__('Posted by: %s on %s', JBP_TEXT_DOMAIN ), get_the_author(), get_the_date() ) ); ?></div>
+		<div class="job-date"><p class="subheader1"><?php  echo esc_html( sprintf(__('Posted by: %s on %s', JBP_TEXT_DOMAIN ), get_the_author(), get_the_date() ) ); ?></p></div>
 		<ul class="group">
-			<li><span class="meta-label"><?php _e('Job Budget', JBP_TEXT_DOMAIN);?><br /></span><span class="meta-red"><?php echo $project_budget;?></span></li>
-			<li><span class="meta-label"><?php _e('This job open for', JBP_TEXT_DOMAIN);?><br /></span><span class="meta-green"><?php echo days_hours( get_post_meta(get_the_ID(), JBP_JOB_EXPIRES_KEY, true) );?></span></li>
-			<li class="border"><span class="meta-label"><?php _e('Must be complete by', JBP_TEXT_DOMAIN);?><br /></span><span class="meta-red"><?php echo do_shortcode('[ct id="_ct_jbp_job_Due" ]'); ?></span></li>
+			<li><span class="meta-label"><?php esc_html_e('Job Budget', JBP_TEXT_DOMAIN);?><br /></span><span class="meta-red"><?php echo $project_budget;?></span></li>
+			<li><span class="meta-label"><?php esc_html_e('This job open for', JBP_TEXT_DOMAIN);?><br /></span><span class="meta-green"><?php echo days_hours( get_post_meta(get_the_ID(), JBP_JOB_EXPIRES_KEY, true) );?></span></li>
+			<li class="border"><span class="meta-label"><?php esc_html_e('Must be complete by', JBP_TEXT_DOMAIN);?><br /></span><span class="meta-red"><?php echo do_shortcode('[ct id="_ct_jbp_job_Due" ]'); ?></span></li>
 			<li>
 				<?php
 				if( get_post_meta( get_the_ID(), JBP_JOB_EXPIRES_KEY, true) > time() ):
@@ -56,7 +58,7 @@ $project_budget = ($project_budget == '' ? 'N/A' : $project_budget);
 
 		<div class="job-item-full">
 			<div class="job-top">
-				<h2 class="job-cat"><?php the_terms(get_the_id(), 'jbp_category', __('Categories: ', JBP_TEXT_DOMAIN), ', ', ''); ?>&nbsp;</h2>
+				<?php the_terms(get_the_id(), 'jbp_category', __('<h2 class="job-cat">Categories:</h2> ', JBP_TEXT_DOMAIN), ', ', ''); ?>
 			</div>
 			<?php the_content(); ?>
 
@@ -65,13 +67,13 @@ $project_budget = ($project_budget == '' ? 'N/A' : $project_budget);
 			</div>
 
 			<div class="job-portfolio group">
-				<h3><?php _e('Examples:', JBP_TEXT_DOMAIN); ?></h3>
+				<h3><?php esc_html_e('Examples:', JBP_TEXT_DOMAIN); ?></h3>
 				<?php
 				$portfolios = do_shortcode('[ct id="_ct_jbp_job_Portfolio"]');
 				$portfolios = empty($portfolios) ? new stdClass : (object)json_decode($portfolios);
 				?>
-				<div class="job-images">
-					<ul>
+				<div class="job-images group">
+					<ul class="group">
 						<?php
 						foreach ( $portfolios as $key => $portfolio) :
 						?>
@@ -92,7 +94,7 @@ $project_budget = ($project_budget == '' ? 'N/A' : $project_budget);
 			</div>
 
 			<?php if( current_user_can( EDIT_JOB, $post->ID ) ): ?>
-			<span class="job-edit"><button class="jobs_button job-edit" onclick="window.location='<?php echo trailingslashit( get_permalink() ) . 'edit/'; ?>';">Edit</button></span>
+			<span class="job-edit"><button class="jbp-button job-edit" onclick="window.location='<?php echo trailingslashit( get_permalink() ) . 'edit/'; ?>';">Edit</button></span>
 			<?php endif; ?>
 		</div>
 	</div>

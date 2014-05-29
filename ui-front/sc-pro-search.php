@@ -11,15 +11,15 @@ $phrase = (empty($_GET['s']) ) ? '' : $_GET['s'];
 ?>
 
 <section id="pros-search" class="<?php echo $class; ?>">
-	<form class="search-form" method="GET" action="<?php echo get_post_type_archive_link('jbp_pro'); ?>" >
+	<form class="search-form" method="GET" action="<?php echo esc_attr(get_post_type_archive_link('jbp_pro') ); ?>" >
 		<div class="pro-search-wrap">
 				<ul class="pro-search group">
 					<li>
 						<span>
-							<input type="text" class="pro-search-input" name="s" value="<?php echo esc_attr($phrase); ?>" autocomplete="off" placeholder="<?php echo esc_attr($text); ?>" />
+							<input type="text" class="pro-search-input" name="s" value="<?php echo esc_attr($phrase); ?>" autocomplete="off" placeholder="<?php echo esc_attr( $text ); ?>" />
 						</span>
 						<button type="submit" class="pro-submit-search" value="" >
-							<img src="<?php echo $this->plugin_url . 'img/search.png'; ?>" alt="alt" title="title" />
+							<img src="<?php echo esc_attr($this->plugin_url . 'img/search.png' ); ?>" alt="alt" title="title" />
 						</button>
 					</li>
 				</ul>

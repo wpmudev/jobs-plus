@@ -469,6 +469,8 @@ class Jobs_Plus_Core{
 		wp_register_script('jqueryui-editable-ext', $this->plugin_url . 'js/jqueryui-editable-ext.js', array('jqueryui-editable', 'jquery-iframe-transport' ), JOBS_PLUS_VERSION, true );
 		wp_register_script('imagesloaded', $this->plugin_url . "js/imagesloaded$suffix.js", array('jquery' ), IMAGESLOADED, true );
 		wp_register_script('jobs-plus', $this->plugin_url . 'js/jobs-plus.js', array('jquery', 'jquery-rateit' ), JOBS_PLUS_VERSION );
+
+		wp_register_script('jobs-plus-admin', $this->plugin_url . 'js/jobs-plus-admin.js', array('jquery' ), JOBS_PLUS_VERSION );
 	}
 
 	/**
@@ -760,7 +762,7 @@ class Jobs_Plus_Core{
 
 			wp_enqueue_script('element-query');
 			wp_enqueue_style('jquery-rateit');
-			wp_enqueue_style('jobs-plus');
+			//wp_enqueue_style('jobs-plus');
 			//wp_enqueue_style('jobs-plus-custom');
 			wp_enqueue_style('magnific-popup');
 
@@ -975,8 +977,8 @@ class Jobs_Plus_Core{
 		$post_type = get_query_var('post_type');
 		if(is_search() && in_array($post_type, array('jbp_job', 'jbp_pro') ) ){
 			switch ($post_type) {
-				case 'jbp_pro': return sprintf('%s &raquo; Search &raquo; %s', $this->pro_labels->name, esc_html($_GET['s'])); break;
-				case 'jbp_job': return sprintf('%s &raquo; Search &raquo; %s', $this->job_labels->name, esc_html($_GET['s'])); break;
+				case 'jbp_pro': return esc_html(sprintf('%s &raquo; Search &raquo; %s', $this->pro_labels->name, $_GET['s']) ); break;
+				case 'jbp_job': return esc_html(sprintf('%s &raquo; Search &raquo; %s', $this->job_labels->name, $_GET['s']) ); break;
 				default: return $title;
 			}
 		}

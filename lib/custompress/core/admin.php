@@ -331,10 +331,7 @@ class CustomPress_Core_Admin extends CustomPress_Content_Types {
 		$response = array_intersect( array_keys( $role_obj->capabilities ), $all_caps );
 		$response = array_flip( $response );
 
-		// response output
-		header( "Content-Type: application/json" );
-		echo json_encode( $response );
-		die();
+		wp_send_json( $response);
 	}
 
 	/**

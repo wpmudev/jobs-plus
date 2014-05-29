@@ -11,7 +11,11 @@ wp_enqueue_script('imagesloaded');
 
 ?>
 <div class="pro-archive-wrapper">
-	<?php if(dynamic_sidebar('pro-archive-widget') ) : else: endif; ?>
+
+	<div class="group">
+		<?php if(dynamic_sidebar('pro-archive-widget') ) : else: endif; ?>
+	</div>
+	
 	<?php echo do_action('jbp_error'); ?>
 	<?php echo do_action('jbp_notice'); ?>
 	<?php echo do_shortcode('[jbp-expert-search]'); ?>

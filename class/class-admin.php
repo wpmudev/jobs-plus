@@ -20,10 +20,13 @@ class Jobs_Plus_Admin extends Jobs_Plus_Core{
 		//add_action('admin_enqueue_scripts', array(&$this, 'on_enqueue_scripts'), 1000 );
 		add_action('admin_enqueue_scripts', array(&$this, 'on_admin_enqueue_scripts') );
 		add_action('admin_enqueue_scripts', array(&$this,'wp_pointer_load'));
-		
+
 		add_action( 'personal_options', array( &$this, 'on_personal_options' ) );
 		add_action( 'personal_options_update', array( &$this, 'on_edit_user_profile_update' ) );
 		add_action( 'edit_user_profile_update', array( &$this, 'on_edit_user_profile_update' ) );
+
+			add_action( 'wp_ajax_jbp_get_caps', array( &$this, 'on_ajax_get_caps' ) );
+			add_action( 'wp_ajax_jbp_save_caps', array( &$this, 'on_ajax_save_caps' ) );
 
 	}
 
@@ -80,6 +83,7 @@ class Jobs_Plus_Admin extends Jobs_Plus_Core{
 
 	function on_admin_enqueue_scripts	(){
 		wp_enqueue_style('jobs-plus-admin-css', $this->plugin_url . 'css/jobs-plus-admin.css');
+		wp_enqueue_script('jobs-plus-admin');
 	}
 
 	function on_load_menu(){
@@ -102,7 +106,7 @@ class Jobs_Plus_Admin extends Jobs_Plus_Core{
 			<?php foreach( $tabs as $tab => $title):
 			$class = ($tab === $current_tab) ? 'nav-tab-active' : '';
 			?>
-			<a class="nav-tab <?php echo $class ?>" href="<?php esc_attr_e("?post_type=jbp_job&page=jobs-plus-menu&tab=$tab"); ?>" ><img src="<?php echo $this->plugin_url . "img/{$tab}.svg";?>" /> <?php echo $title; ?></a>
+			<a class="nav-tab <?php echo $class ?>" href="<?php echo esc_attr("?post_type=jbp_job&page=jobs-plus-menu&tab=$tab"); ?>" ><img src="<?php echo $this->plugin_url . "img/{$tab}.svg";?>" /> <?php echo $title; ?></a>
 				<?php endforeach; ?>
 			</h2>
 
@@ -130,7 +134,7 @@ class Jobs_Plus_Admin extends Jobs_Plus_Core{
 
 		function on_personal_options($profileuser = 0){
 			if ( !current_user_can( 'promote_users') || !$this->get_setting('general->use_certification') ) return false;
-			$certification = esc_html( $this->get_setting('general->certification', __('Jobs + Certified', JBP_TEXT_DOMAIN) ) );
+			$certification = esc_html($this->get_setting('general->certification', __('Jobs + Certified', JBP_TEXT_DOMAIN) ) );
 			?>
 			<tr class="jbp-certified">
 				<th scope="row"><?php echo $certification; ?></th>
@@ -153,62 +157,125 @@ class Jobs_Plus_Admin extends Jobs_Plus_Core{
 			update_user_meta($user_id, JBP_PRO_CERTIFIED_KEY, $_POST['jbp_certified']);
 		}
 
+		/**
+		* wp_pointer_load - Loads the WordPress tips pointers for Jobs.
+		*
+		*/
+		function wp_pointer_load(){
+
+			//var_dump(get_current_screen()->id);
+
+			$cookie_content = __('<p>WHMCS WordPress Integration can now sync certain cookies between WHMCS and Wordpress so that downloads of protected files from WHMCS can work correctly in WordPress.</p> <p>This requires copying the "wp-integration.php" file in this plugin to the root of the WHMCS System installation.</p>', JBP_TEXT_DOMAIN);
+
+			//Setup any new feature notices
+			include $this->plugin_dir . 'class/class-wp-help-pointers.php';
+
+			$pointers = array(
+			array(
+			'id' => 'wcp_endpoint',   // unique id for this pointer
+			'screen' => 'toplevel_page_wcp-settings', // this is the page hook we want our pointer to show on
+			'target' => '#wcp-endpoint', // the css selector for the pointer to be tied to, best to use ID's
+			'title' => __('NEW - Permalinks Endpoint Slug', JBP_TEXT_DOMAIN),
+			'content' => __('<p>This is the slug that signals that the following page is to be pulled from the WHMCS site.</p> <p>You can change it to whatever you like to avoid interfering with other pages but like all slugs it should contain Only lowercase alphanumerics and the hyphen.</p>', JBP_TEXT_DOMAIN),
+			'position' => array(
+			'edge' => 'top', //top, bottom, left, right
+			'align' => 'middle' //top, bottom, left, right, middle
+			)
+			),
+
+			array(
+			'id' => 'wcp_cookies',   // unique id for this pointer
+			'screen' => 'plugins', // this is the page hook we want our pointer to show on
+			'target' => '#toplevel_page_wcp-settings', // the css selector for the pointer to be tied to, best to use ID's
+			'title' => __('NEW - WHMCS WordPress Integration Cookie syncing', JBP_TEXT_DOMAIN),
+			'content' => $cookie_content,
+			'position' => array(
+			'edge' => 'left', //top, bottom, left, right
+			'align' => 'right' //top, bottom, left, right, middle
+			)
+			),
+
+			array(
+			'id' => 'wcp_cookies',   // unique id for this pointer
+			'screen' => 'toplevel_page_wcp-settings', // this is the page hook we want our pointer to show on
+			'target' => '#toplevel_page_wcp-settings', // the css selector for the pointer to be tied to, best to use ID's
+			'title' => __('NEW - WHMCS WordPress Integration Cookie syncing', JBP_TEXT_DOMAIN),
+			'content' => $cookie_content,
+			'position' => array(
+			'edge' => 'left', //top, bottom, left, right
+			'align' => 'right' //top, bottom, left, right, middle
+			)
+			),
+
+			// more as needed
+			);
+
+			//new WP_Help_Pointer($pointers);
+		}
+
 	/**
-	* wp_pointer_load - Loads the WordPress tips pointers for Jobs.
+	* Ajax callback which gets the post types associated with each page.
 	*
+	* @return JSON Encoded string
 	*/
-	function wp_pointer_load(){
+	function on_ajax_get_caps() {
+		if ( !current_user_can( 'manage_options' ) ) die(-1);
+		if(empty($_REQUEST['role'])) die(-1);
 
-		//var_dump(get_current_screen()->id);
+		global $wp_roles, $CustomPress_Core;
 
-		$cookie_content = __('<p>WHMCS WordPress Integration can now sync certain cookies between WHMCS and Wordpress so that downloads of protected files from WHMCS can work correctly in WordPress.</p> <p>This requires copying the "wp-integration.php" file in this plugin to the root of the WHMCS System installation.</p>', JBP_TEXT_DOMAIN);
+		$role = $_REQUEST['role'];
+		$post_type = $_REQUEST['post_type'];
 
-		//Setup any new feature notices
-		include $this->plugin_dir . 'class/class-wp-help-pointers.php';
-		
-		$pointers = array(
-		array(
-		'id' => 'wcp_endpoint',   // unique id for this pointer
-		'screen' => 'toplevel_page_wcp-settings', // this is the page hook we want our pointer to show on
-		'target' => '#wcp-endpoint', // the css selector for the pointer to be tied to, best to use ID's
-		'title' => __('NEW - Permalinks Endpoint Slug', JBP_TEXT_DOMAIN),
-		'content' => __('<p>This is the slug that signals that the following page is to be pulled from the WHMCS site.</p> <p>You can change it to whatever you like to avoid interfering with other pages but like all slugs it should contain Only lowercase alphanumerics and the hyphen.</p>', JBP_TEXT_DOMAIN),
-		'position' => array(
-		'edge' => 'top', //top, bottom, left, right
-		'align' => 'middle' //top, bottom, left, right, middle
-		)
-		),
+		if ( !$wp_roles->is_role( $role ) )
+		die(-1);
 
-		array(
-		'id' => 'wcp_cookies',   // unique id for this pointer
-		'screen' => 'plugins', // this is the page hook we want our pointer to show on
-		'target' => '#toplevel_page_wcp-settings', // the css selector for the pointer to be tied to, best to use ID's
-		'title' => __('NEW - WHMCS WordPress Integration Cookie syncing', JBP_TEXT_DOMAIN),
-		'content' => $cookie_content,
-		'position' => array(
-		'edge' => 'left', //top, bottom, left, right
-		'align' => 'right' //top, bottom, left, right, middle
-		)
-		),
+		$role_obj = $wp_roles->get_role( $role );
+		$all_caps = $CustomPress_Core->all_capabilities($post_type);
 
-		array(
-		'id' => 'wcp_cookies',   // unique id for this pointer
-		'screen' => 'toplevel_page_wcp-settings', // this is the page hook we want our pointer to show on
-		'target' => '#toplevel_page_wcp-settings', // the css selector for the pointer to be tied to, best to use ID's
-		'title' => __('NEW - WHMCS WordPress Integration Cookie syncing', JBP_TEXT_DOMAIN),
-		'content' => $cookie_content,
-		'position' => array(
-		'edge' => 'left', //top, bottom, left, right
-		'align' => 'right' //top, bottom, left, right, middle
-		)
-		),
+		$response = array_intersect( array_keys( $role_obj->capabilities ), $all_caps );
+		$response = array_flip( $response );
 
-		// more as needed
-		);
-
-		//new WP_Help_Pointer($pointers);
+		wp_send_json( $response);
 	}
 
+	/**
+	* Save admin options.
+	*
+	* @return void die() if _wpnonce is not verified
+	*/
+	function on_ajax_save_caps() {
+
+		check_admin_referer( 'jobs-plus-settings' );
+
+		if ( !current_user_can( 'manage_options' ) )
+		die(-1);
+
+		// add/remove capabilities
+		global $wp_roles, $CustomPress_Core;
+
+		$role = $_POST['roles'];
+		$post_type = $_REQUEST['post_type'];
+
+		$all_caps = $CustomPress_Core->all_capabilities($post_type);
+
+		$to_add = array_keys( (array)$_REQUEST['capabilities'] );
+		$to_remove = array_diff( $all_caps, $to_add );
+print_r($all_caps);
+
+print_r($to_add);
+print_r($to_remove);
+
+		foreach ( $to_remove as $capability ) {
+			$wp_roles->remove_cap( $role, $capability );
+		}
+
+		foreach ( $to_add as $capability ) {
+			$wp_roles->add_cap( $role, $capability );
+		}
+
+		die(1);
+	}
 
 
 

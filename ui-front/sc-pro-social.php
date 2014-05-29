@@ -27,8 +27,8 @@
 				data-type="social"
 				data-name="<?php echo "_ct_jbp_pro_Social[$key]"; ?>"
 				data-emptytext="<?php _e('Enter a Social link', JBP_TEXT_DOMAIN); ?>"
-				data-value="<?php esc_attr_e( json_encode($social) ); ?>"
-				data-original-title="<?php esc_attr_e(__('Select a Social Icon and enter your url', JBP_TEXT_DOMAIN) ); ?>">
+				data-value="<?php echo esc_attr( json_encode($social) ); ?>"
+				data-original-title="<?php esc_attr_e('Select a Social Icon and enter your url', JBP_TEXT_DOMAIN); ?>">
 			</div>
 		</li><?php endforeach; ?></ul>
 	<a href="#" id="add-social-link" class="pro-content-command pro-add show-on-edit"><?php esc_html_e('+Add an Icon', JBP_TEXT_DOMAIN ); ?></a>
@@ -42,7 +42,7 @@
 	data-name="_ct_jbp_pro_Social[]"
 	data-emptytext="<?php _e('Enter a Social link', JBP_TEXT_DOMAIN); ?>"
 	data-value=""
-	data-original-title="<?php esc_attr_e(__('Select a Social Icon and enter your url', JBP_TEXT_DOMAIN) ); ?>">
+	data-original-title="<?php esc_attr_e('Select a Social Icon and enter your url', JBP_TEXT_DOMAIN); ?>">
 </div>
 </li>
 </script>

@@ -36,7 +36,7 @@
 							<label for="jbp[general][certification]"><?php esc_html_e('Certification Label', JBP_TEXT_DOMAIN ) ?></label>
 						</th>
 						<td>
-							<input type="text" name="jbp[general][certification]" value="<?php esc_attr_e($this->get_setting('general->certification', __('Jobs+ Certified', JBP_TEXT_DOMAIN) ) );?>" size="60"/>
+							<input type="text" name="jbp[general][certification]" value="<?php echo esc_attr($this->get_setting('general->certification', __('Jobs+ Certified', JBP_TEXT_DOMAIN) ) );?>" size="60"/>
 							<br /><span class="description"><?php printf(esc_html__('%s Certification Label.', JBP_TEXT_DOMAIN), $this->pro_labels->singular_name); ?></span>
 						</td>
 					</tr>
@@ -45,7 +45,7 @@
 							<label for="jbp[general][currency]"><?php esc_html_e('Currency Symbol', JBP_TEXT_DOMAIN ) ?></label>
 						</th>
 						<td>
-							<input type="text" name="jbp[general][currency]" value="<?php esc_attr_e( $this->get_setting('general->currency', __('$', JBP_TEXT_DOMAIN) ) );?>" size="10"/>
+							<input type="text" name="jbp[general][currency]" value="<?php echo esc_attr( $this->get_setting('general->currency', __('$', JBP_TEXT_DOMAIN) ) );?>" size="10"/>
 							<br /><span class="description"><?php esc_html_e('Currency symbol for this site. Default "$"', JBP_TEXT_DOMAIN); ?></span>
 						</td>
 					</tr>
@@ -56,7 +56,7 @@
 		<p class="submit">
 			<?php wp_nonce_field('jobs-plus-settings'); ?>
 			<input type="hidden" name="jobs-plus-settings" value="1" />
-			<input type="submit" class="button-primary" name="general-settings" value="<?php esc_attr_e('Save Changes', JBP_TEXT_DOMAIN);?>">
+			<input type="submit" class="button-primary" name="general-settings" value="<?php echo esc_attr('Save Changes', JBP_TEXT_DOMAIN);?>">
 		</p>
 	</form>
 </div>

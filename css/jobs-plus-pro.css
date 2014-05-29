@@ -5,8 +5,60 @@
 * @license GPL2+
 */
 
+.pro-archive-wrapper h1{
+	font-size: 32px;	
+}
+
+.pro-archive-wrapper h2{
+	font-size: 20px;
+}
+
+.pro-archive-wrapper h3{
+	font-size: 18px;	
+}
+
+.pro-archive-wrapper h4{
+	font-size: 16px;	
+}
+
+.pro-archive-wrapper p.subheader1{
+	font-size: 16px;
+	font-weight: bold;
+}
+
+.pro-archive-wrapper p.subheader2{
+	font-size: 14px;
+}
+
+
+.pro-profile-wrapper h1{
+	font-size: 32px;	
+}
+
+.pro-profile-wrapper h2{
+	font-size: 20px;
+}
+
+.pro-profile-wrapper h3{
+	font-size: 18px;	
+}
+
+.pro-profile-wrapper h4{
+	font-size: 16px;	
+}
+
+.pro-profile-wrapper p.subheader1{
+	font-size: 16px;
+	font-weight: bold;
+}
+
+.pro-profile-wrapper p.subheader2{
+	font-size: 14px;
+}
+
 .pro-content-wrapper{
 	position relative;
+	box-sizing: border-box;
 }
 
 .pro-content-wrapper ul{
@@ -63,11 +115,12 @@ a.pro-add{
 /* Portfolio layout */
 .pro-portfolio ul{
 	width: 100%;       /* 1up=100% - 2up=102% - 3up=103% -4up=102% - 5up=102% - 6up=106%*/
+	padding: 0;
 }
 .pro-portfolio ul li{
-	max-width: 238px;   /* 1up=100% - 2up=48% - 3up=31% - 4up=23% - 5up=18% 6up=14% */
+	width: 238px;   /* 1up=100% - 2up=48% - 3up=31% - 4up=23% - 5up=18% 6up=14% */
 	float: left;
-	margin: 0 20px 2% 0;
+	margin: 0 19px 20px 0;
 	list-style: none outside none;
 }
 
@@ -85,7 +138,7 @@ a.pro-add{
 	width: 100%;    /* 1up=100% - 2up=102% - 3up=103% -4up=102% - 5up=102% - 6up=106%*/
 }
 
-.pro-skills li {
+.pro-skills ul li {
 	width: 100%;    /* 1up=100% - 2up=48% - 3up=31% - 4up=23% - 5up=18% 6up=14% */
 	float: left;
 	margin: 0 0 0 0;
@@ -138,13 +191,14 @@ a.pro-add{
 }
 
 h2.pro-title{
-	margin: 10px 0 0 0;
+	margin: 0 0 20px 0;
+	font-size: 22px;
+	line-height: 1em;
+	
 }
 
-@media screen and (min-width: 800px) {
-
 	.pro-pad{
-		margin: 0 0 0 2em;
+		margin: 0 50px;
 	}
 
 	.pro-left{
@@ -153,9 +207,7 @@ h2.pro-title{
 		box-sizing: border-box;
 	}
 
-	.pro-pad{
-		margin: 0 50px 0 2em;
-	}
+@media screen and (min-width: 800px) {
 
 	.pro-content{
 		width: 595px;
@@ -188,10 +240,16 @@ label.pro-rate-me{
 	padding: 0.3em 0.5em;
 }
 
-.pro-contact,
-.pro-go-public-button{
-	margin:0 auto 1.2em auto;
-	display: block;
+div.pro-contact{
+	text-align: center;
+	margin: 0;
+	padding: 0;
+}
+
+button.pro-contact,
+button.pro-go-public-button{
+	margin:10px auto;
+	display: inline-block;
 	width: 150px;
 }
 
@@ -217,11 +275,11 @@ h2.pro-skills{
 .pro-social li{	background-image: none;	padding: 0; box-sizing: border-box;}
 .pro-social .social_t{display:block;font-variant:small-caps;margin-bottom:5px;}
 .pro-social ul{display:block;list-style-type:none;margin:0 auto;padding:0;}
-.pro-social ul li{display:block; float: left; margin:0 28px 20px 0; padding:0;}
+.pro-social ul li{display:block; float: left; margin:0 28px 20px 0 !important; padding:0;}
 
 .editable-input .pro-social ul li{margin:0 10px 10px 0;}
 
-.pro-content-wrapper .pro-social ul li:nth-child(4n){margin-right :0}
+.pro-content-wrapper .pro-social ul li:nth-child(4n){margin-right :0 !important}
 
 .pro-social .social_i{display:block;width:36px;height:36px;overflow:hidden;margin-right:0px;color:transparent;text-indent:-9999px;background:url('../img/social_sprite.png') no-repeat;}
 .pro-social .social_i{background-position: 0 0; margin: 0;} .social_i.active,.social_i:hover{background-position:0 -36px;}.pro-social ul>li:last-child .social_i{margin-right:0;}
@@ -246,8 +304,8 @@ h2.pro-skills{
 .pro-gravatar{
 	border: 1px solid #ddd;
 	text-align: center;
-	margin-bottom: 40px;
-	padding: 0;
+	margin-bottom: 30px;
+	padding: 20px 0;
 	height: 320px;
 }
 
@@ -267,6 +325,14 @@ h2.pro-skills{
 .jbp-gravatar-border{
 	padding: 0.5em;
 }
+
+.jbp-stats a{
+	display: block;
+	font-size: 16px;
+	line-height: 1em;
+	padding: 10px 0;
+}
+
 
 .pro-archive-wrapper {
 	position: relative;
@@ -386,7 +452,7 @@ button.pro-profile-btn{
 }
 
 .pro-search-wrap{
-	margin: 1em 0;
+	margin: 15px 0;
 	width: 100%;
 }
 .pro-search-wrap ul.pro-search{
@@ -409,9 +475,8 @@ button.pro-profile-btn{
 }
 
 input.pro-search-input{
-	margin: 0;
-	padding: 0;
-	border: none;
+	margin: 0 15px;
+	border: 0 !important;
 	box-shadow: none;
 	width: 100%;
 	height: 100%;

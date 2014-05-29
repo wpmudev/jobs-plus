@@ -174,9 +174,19 @@ input.input-small{
 	box-shadow: none;
 }
 
+.jbp-widget{
+	margin-bottom: 20px;
+}
+
 .jbp-widget .jbp-button{
+	display: inline-block;
 	background-color: #fff;
 	cursor: pointer;
+}
+
+
+.jbp-button{
+	display: inline-block;
 }
 
 @media screen and (max-width:959px) {

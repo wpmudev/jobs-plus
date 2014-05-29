@@ -908,8 +908,10 @@ url: "15"
 			this.$input.filter('[name="file"]').on('change focus click', function() {
 				var $this = $(this),
 				newVal = $this.val().split('\\').pop(),
-				$selected = $this.siblings('.image-label-selected');
+				$selected = $this.parent().siblings('.image-label-selected');
+				
 				if(newVal !== '') {
+				console.log($selected.text() );
 					$selected.text(newVal);
 				}
 			});

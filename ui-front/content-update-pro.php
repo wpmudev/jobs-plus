@@ -54,7 +54,7 @@ $editor_settings =   array(
 	<?php echo do_action('jbp_error'); ?>
 	<?php echo do_action('jbp_notice'); ?>
 
-	<h3><?php _e('Create a New Pro Profile', JBP_TEXT_DOMAIN); ?></h3>
+	<h3><?php esc_html_e('Create a New Pro Profile', JBP_TEXT_DOMAIN); ?></h3>
 
 	<form action="#" method="post" enctype="multipart/form-data">
 
@@ -63,49 +63,49 @@ $editor_settings =   array(
 
 		<?php if(post_type_supports('jbp_pro','title') ): ?>
 		<div class="editfield">
-			<label for="title"><?php _e( 'Name:', JBP_TEXT_DOMAIN ); ?></label>
+			<label for="title"><?php esc_html_e( 'Name:', JBP_TEXT_DOMAIN ); ?></label>
 			<br /><input class="required" type="text" id="title" name="data[post_title]" value="<?php echo ( isset( $data['post_title'] ) ) ? esc_attr($data['post_title']) : ''; ?>" />
 		</div>
 		<?php endif; ?>
 
 		<div class="editfield">
-			<label><?php _e( 'Company URL:', JBP_TEXT_DOMAIN ); ?></label>
+			<label><?php esc_html_e( 'Company URL:', JBP_TEXT_DOMAIN ); ?></label>
 			<br /><?php echo do_shortcode('[ct_in id="_ct_jbp_pro_Company_URL"]'); ?>
 		</div>
 
 		<div class="editfield">
-			<label><?php _e( 'Location:', JBP_TEXT_DOMAIN ); ?></label>
+			<label><?php esc_html_e( 'Location:', JBP_TEXT_DOMAIN ); ?></label>
 			<br /><?php echo do_shortcode('[ct_in id="_ct_jbp_pro_Location"]'); ?>
 			<label class="pro-content-editable pro-location">
-				<strong><?php _e('Location: ', JBP_TEXT_DOMAIN); ?></strong>
+				<strong><?php esc_html_e('Location: ', JBP_TEXT_DOMAIN); ?></strong>
 				<span class="editable"
 					data-type="select"
 					data-name="_ct_jbp_pro_Location"
-					data-emptytext="<?php _e('Your Location', JBP_TEXT_DOMAIN); ?>"
-					data-value="<?php esc_attr_e(do_shortcode('[ct id="_ct_jbp_pro_Location"]') ); ?>"
+					data-emptytext="<?php esc_attr_e('Your Location', JBP_TEXT_DOMAIN); ?>"
+					data-value="<?php echo esc_attr(do_shortcode('[ct id="_ct_jbp_pro_Location"]') ); ?>"
 					data-source="<?php echo JBP_PLUGIN_URL . 'data/countries.json';?>"
-					data-original-title="<?php _e('Enter Location from dropdown', JBP_TEXT_DOMAIN); ?>">
+					data-original-title="<?php esc_attr_e('Enter Location from dropdown', JBP_TEXT_DOMAIN); ?>">
 				</span>
 			</label>
 		</div>
 
 		<div class="editfield">
-			<label><?php _e( 'Contact Email:', JBP_TEXT_DOMAIN ); ?></label>
+			<label><?php esc_html_e( 'Contact Email:', JBP_TEXT_DOMAIN ); ?></label>
 			<br /><?php echo do_shortcode('[ct_in id="_ct_jbp_pro_Contact_Email"]'); ?>
 		</div>
 
 		<?php if(post_type_supports('jbp_pro','editor') ): ?>
 		<div class="editfield">
-			<label><?php _e( 'Bio:', JBP_TEXT_DOMAIN ); ?></label><br />
+			<label><?php esc_html_e( 'Bio:', JBP_TEXT_DOMAIN ); ?></label><br />
 			<?php wp_editor( $data['post_content'], 'prodescription', $editor_settings); ?>
 		</div>
 		<?php endif; ?>
 
 		<?php if(post_type_supports('jbp_pro','excerpt') ): ?>
 		<div class="editfield">
-			<label for="excerpt"><?php _e( 'Excerpt:', JBP_TEXT_DOMAIN ); ?></label>
+			<label for="excerpt"><?php esc_html_e( 'Excerpt:', JBP_TEXT_DOMAIN ); ?></label>
 			<textarea id="excerpt" name="data[post_excerpt]" rows="2" ><?php echo (isset( $data['post_excerpt'] ) ) ? esc_textarea($data['post_excerpt']) : ''; ?></textarea>
-			<p class="description"><?php _e( 'A short excerpt of your Bio.', JBP_TEXT_DOMAIN ); ?></p>
+			<p class="description"><?php esc_html_e( 'A short excerpt of your Bio.', JBP_TEXT_DOMAIN ); ?></p>
 		</div>
 		<?php endif; ?>
 
@@ -178,11 +178,11 @@ $editor_settings =   array(
 			</div>
 		</div>
 
-		<script type="text/javascript" > jQuery('#tag_<?php echo $tag_name; ?>').tagsInput({width:'auto',height: '30px', defaultText: '<?php _e("add a tag", JBP_TEXT_DOMAIN); ?>'}); </script>
+		<script type="text/javascript" > jQuery('#tag_<?php echo $tag_name; ?>').tagsInput({width:'auto',height: '30px', defaultText: '<?php esc_attr_e("add a tag", JBP_TEXT_DOMAIN); ?>'}); </script>
 		<?php endforeach; ?>
 
 		<div class="editfield clearfix">
-			<label><?php _e( 'Skills:', JBP_TEXT_DOMAIN ); ?></label>
+			<label><?php esc_html_e( 'Skills:', JBP_TEXT_DOMAIN ); ?></label>
 			<div class="pro-content-wrapper pro-skills show-on-edit">
 				<div class="pro-skills-edit"></div>
 				<?php echo do_shortcode('[jbp-pro-skills]'); ?>
@@ -208,11 +208,11 @@ $editor_settings =   array(
 		<span class="pro-edit"><button type="button" id="toggle-edit" class="pro-button pro-edit-button"><?php esc_html_e('Edit', JBP_TEXT_DOMAIN); ?></button></span>
 
 		<div class="editfield group">
-			<label><?php _e( 'Portfolio examples:', JBP_TEXT_DOMAIN ); ?></label>
+			<label><?php esc_html_e( 'Portfolio examples:', JBP_TEXT_DOMAIN ); ?></label>
 			<div class="pro-content-wrapper pro-portfolio group">
 				<?php echo do_shortcode('[jbp-pro-portfolio]'); ?>
 				<div class="pro-content-command">
-					<a href="#" id="add-portfolio-link" class="pro-add"><?php _e('+Add', JBP_TEXT_DOAMIN); ?></a>
+					<a href="#" id="add-portfolio-link" class="pro-add"><?php esc_html_e('+Add', JBP_TEXT_DOAMIN); ?></a>
 				</div>
 				<script id="add-portfolio" type="text/template">
 					<li class="new-portfolio">
@@ -224,7 +224,7 @@ $editor_settings =   array(
 					data-emptytext="<?php esc_attr_e('No Image Selected', JBP_TEXT_DOMAIN); ?>"
 					data-image-label="Chose Image File"
 					data-original-title="<?php esc_attr_e(__('Select an Image', JBP_TEXT_DOMAIN) ); ?>"
-					data-button-label="<?php _e('Choose an image', JBP_TEXT_DOMAIN); ?>"
+					data-button-label="<?php esc_html_e('Choose an image', JBP_TEXT_DOMAIN); ?>"
 					>
 					</div>
 					</li>
@@ -254,7 +254,7 @@ $editor_settings =   array(
 		$tos_txt = $this->get_setting('pro->tos_txt', '');
 		if(! empty( $tos_txt ) ):
 		?>
-		<strong><?php _e( 'Terms of Service', JBP_TEXT_DOMAIN ); ?></strong>
+		<strong><?php esc_html_e( 'Terms of Service', JBP_TEXT_DOMAIN ); ?></strong>
 		<div class="pro-tos"><?php echo nl2br( $tos_txt ); ?></div>
 		<?php endif; ?>
 
@@ -262,16 +262,16 @@ $editor_settings =   array(
 			<?php wp_nonce_field( 'verify' ); ?>
 			<input type="hidden" name="jbp-pro-update" />
 			<?php if( $Jobs_Plus_Core->get_setting('pro->moderation->publish') ): ?>
-			<input type="submit" value="<?php _e( 'Publish', JBP_TEXT_DOMAIN ); ?>" name="data[post_status]" value="publish"/>
+			<input type="submit" value="<?php esc_attr_e( 'Publish', JBP_TEXT_DOMAIN ); ?>" name="data[post_status]" value="publish"/>
 			<?php endif; ?>
 			<?php if( !$Jobs_Plus_Core->get_setting('pro->moderation->publish') ): ?>
-			<input type="submit" value="<?php _e( 'Pending Review', JBP_TEXT_DOMAIN ); ?>" name="data[post_status]" value="pending" />
+			<input type="submit" value="<?php esc_attr_e( 'Pending Review', JBP_TEXT_DOMAIN ); ?>" name="data[post_status]" value="pending" />
 			<?php endif; ?>
 			<?php if($Jobs_Plus_Core->get_setting('pro->moderation->draft') ): ?>
-			<input type="submit" value="<?php _e( 'Draft', JBP_TEXT_DOMAIN ); ?>" name="data[post_status]" value="draft" />
+			<input type="submit" value="<?php esc_attr_e( 'Draft', JBP_TEXT_DOMAIN ); ?>" name="data[post_status]" value="draft" />
 			<?php endif; ?>
 
-			<input type="button" value="<?php _e( 'Cancel', JBP_TEXT_DOMAIN ); ?>" onclick="location.href='<?php esc_attr_e(get_permalink($post->ID) ); ?>'">
+			<input type="button" value="<?php esc_attr_e( 'Cancel', JBP_TEXT_DOMAIN ); ?>" onclick="location.href='<?php echo esc_attr(get_permalink($post->ID) ); ?>'">
 		</div>
 
 	</form>

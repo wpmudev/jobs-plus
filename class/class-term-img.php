@@ -58,7 +58,7 @@ class Term_Images{
 		$settings = get_option($this->settings_name);
 		if($settings) {
 			foreach($settings as $key => $taxonomy) {
-				if($taxonomy['use']) {
+				if( $this->get_setting( "$key->use", 0) == '1') {
 					add_filter( 'manage_' . $key . '_custom_column', array(&$this, 'taxonomy_rows'), 10, 3 );
 					add_filter( 'manage_edit-' . $key . '_columns',  array(&$this, 'taxonomy_columns') );
 
@@ -123,7 +123,7 @@ class Term_Images{
 		?>
 
 		<tr class="form-field">
-			<th scope="row" valign="top"><label for="description"><?php _e('Tag Image', $this->text_domain); ?></label></th>
+			<th scope="row" valign="top"><label for="description"><?php esc_attr_e('Tag Image', $this->text_domain); ?></label></th>
 			<td>
 
 				<?php echo $this->image_widget( $tag->term_id,
@@ -132,7 +132,7 @@ class Term_Images{
 				); ?><br />
 
 				<br />
-				<span class="description"><?php _e('Click the image to edit or change it for this tag.'); ?></span>
+				<span class="description"><?php esc_html_e('Click the image to edit or change it for this tag.'); ?></span>
 				<?php $this->upload_js(); ?>
 			</td>
 		</tr>
@@ -265,10 +265,10 @@ class Term_Images{
 			<thead>
 				<tr>
 					<th>
-						<?php _e('Enable Images for', $this->text_domain); ?>
+						<?php esc_html_e('Enable Images for', $this->text_domain); ?>
 					</th>
 					<th colspan="2">
-						<?php _e('Image Sizes', $this->text_domain); ?>
+						<?php esc_html_e('Image Sizes', $this->text_domain); ?>
 					</th>
 				</tr>
 			</thead>
@@ -380,7 +380,7 @@ class Term_Images{
 
 				<?php do_settings_sections('term-images'); ?>
 
-				<input class="button-primary" name="Submit" type="submit" value="<?php esc_attr_e('Save Settings'); ?>" />
+				<input class="button-primary" name="Submit" type="submit" value="<?php echo esc_attr('Save Settings'); ?>" />
 			</form>
 
 		</div>

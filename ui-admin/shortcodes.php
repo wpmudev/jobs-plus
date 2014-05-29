@@ -13,21 +13,21 @@
 	<br />
 
 	<div class="postbox">
-		<h3 class='hndle'><span><?php _e( 'Jobs+ Shortcodes', JBP_TEXT_DOMAIN ) ?></span></h3>
+		<h3 class='hndle'><span><?php esc_html_e( 'Jobs+ Shortcodes', JBP_TEXT_DOMAIN ) ?></span></h3>
 		<div class="inside">
 			<p>
-				<?php _e( 'Shortcodes allow you to include dynamic store content in posts and pages on your site. Simply type or paste them into your post or page content where you would like them to appear. Optional attributes can be added in a format like <em>[shortcode attr1="value" attr2="value"]</em>.', JBP_TEXT_DOMAIN ) ?>
+				<?php esc_html_e( 'Shortcodes allow you to include dynamic store content in posts and pages on your site. Simply type or paste them into your post or page content where you would like them to appear. Optional attributes can be added in a format like <em>[shortcode attr1="value" attr2="value"]</em>.', JBP_TEXT_DOMAIN ) ?>
 			</p>
 			<p><strong>
-				<?php _e( 'Attributes: ("|" means use one OR the other. ie view="loggedin" or style="loggedout" NOT style="loggedin|loggedout")', JBP_TEXT_DOMAIN); ?>
-				<br /><?php _e( 'text = <em>Text to display on a button</em>', JBP_TEXT_DOMAIN ) ?>
-				<br /><?php _e( 'view = <em>Whether the button is visible when loggedin, loggedout, or both</em>', JBP_TEXT_DOMAIN ) ?>
-				<br /><?php _e( 'class = <em>define a css class for this button.</em>', JBP_TEXT_DOMAIN ) ?>
+				<?php esc_html_e( 'Attributes: ("|" means use one OR the other. ie view="loggedin" or style="loggedout" NOT style="loggedin|loggedout")', JBP_TEXT_DOMAIN); ?>
+				<br /><?php esc_html_e( 'text = <em>Text to display on a button</em>', JBP_TEXT_DOMAIN ) ?>
+				<br /><?php esc_html_e( 'view = <em>Whether the button is visible when loggedin, loggedout, or both</em>', JBP_TEXT_DOMAIN ) ?>
+				<br /><?php esc_html_e( 'class = <em>define a css class for this button.</em>', JBP_TEXT_DOMAIN ) ?>
 			</strong>
 		</p>
 		<table class="form-table">
 			<tr>
-				<th colspan=2"><h2 style="text-align: center;"><?php esc_html_e( sprintf(__('%s Shortcodes', JBP_TEXT_DOMAIN), $this->pro_labels->singular_name) ); ?></h2></th>
+				<th colspan=2"><h2 style="text-align: center;"><?php echo esc_html( sprintf(__('%s Shortcodes', JBP_TEXT_DOMAIN), $this->pro_labels->singular_name) ); ?></h2></th>
 			</tr>
 
 			<tr>
@@ -39,7 +39,7 @@
 					<br/>or<br/>
 					<code>
 						[jbp-expert-profile-btn view="loggedin|loggedout|both" class="some class" img="true|false"]
-						<br/>&lt;img src="<?php _e('someimage.jpg', JBP_TEXT_DOMAIN); ?>" /&gt;<?php esc_html_e('My Profile', JBP_TEXT_DOMAIN );?>
+						<br/>&lt;img src="<?php esc_attr_e('someimage.jpg', JBP_TEXT_DOMAIN); ?>" /&gt;<?php esc_html_e('My Profile', JBP_TEXT_DOMAIN );?>
 						<br/>[/jbp-expert-profile-btn]
 					</code>
 					<br/><span class="description"><?php esc_html_e('Links to the current user\'s profiles. Generates a &lt;button&gt; &lt;/button&gt; with the HTML contents you define.', JBP_TEXT_DOMAIN ) ?></span>
@@ -55,7 +55,7 @@
 					<br/>or<br/>
 					<code>
 						[jbp-expert-post-btn view="loggedin|loggedout|both" class="some class" img="true|false"]
-						<br/>&lt;img src="<?php _e('someimage.jpg', JBP_TEXT_DOMAIN); ?>" /&gt;<?php printf( esc_html__('Post an %s', JBP_TEXT_DOMAIN), $this->pro_labels->singular_name);?>
+						<br/>&lt;img src="<?php esc_attr_e('someimage.jpg', JBP_TEXT_DOMAIN); ?>" /&gt;<?php printf( esc_html__('Post an %s', JBP_TEXT_DOMAIN), $this->pro_labels->singular_name);?>
 						<br/>[/jbp-expert-post-btn]
 					</code>
 					<br/><span class="description"><?php printf(esc_html__( 'Links to the Post %s Page. Generates a &lt;button&gt; &lt;/button&gt; with the HTML contents you define.', JBP_TEXT_DOMAIN ), $this->pro_labels->singular_name); ?></span>
@@ -71,7 +71,7 @@
 					<br/>or<br/>
 					<code>
 						[jbp-expert-browse-btn view="loggedin|loggedout|both" class="some class" img="true|false"]
-						<br/>&lt;img src="<?php _e('someimage.jpg', JBP_TEXT_DOMAIN); ?>" /&gt;<?php printf( esc_html__('Browse %s', JBP_TEXT_DOMAIN), $this->pro_labels->name);?>
+						<br/>&lt;img src="<?php esc_attr_e('someimage.jpg', JBP_TEXT_DOMAIN); ?>" /&gt;<?php printf( esc_html__('Browse %s', JBP_TEXT_DOMAIN), $this->pro_labels->name);?>
 						<br/>[/jbp-expert-browse-btn]
 					</code>
 					<br/><span class="description"><?php printf( esc_html__( 'Links to the %s Archive Page. Generates a &lt;button&gt; &lt;/button&gt; with the HTML contents you define.', JBP_TEXT_DOMAIN ), $this->pro_labels->singular_name) ?></span>
@@ -87,7 +87,7 @@
 					<br/>or<br/>
 					<code>
 						[jbp-expert-contact-btn  post="post_id" view="loggedin|loggedout|both" class="some class"]
-						<br/>&lt;img src="<?php _e('someimage.jpg', JBP_TEXT_DOMAIN); ?>" /&gt;<?php esc_html_e('Contact', JBP_TEXT_DOMAIN);?>
+						<br/>&lt;img src="<?php esc_attr_e('someimage.jpg', JBP_TEXT_DOMAIN); ?>" /&gt;<?php esc_html_e('Contact', JBP_TEXT_DOMAIN);?>
 						<br/>[/jbp-expert-contact-btn]
 					</code>
 					<br/><span class="description"><?php printf(esc_html__( 'Links to the %s email contact Page. If "post" is not used it defaults to the current global $post object. Generates a &lt;button&gt; &lt;/button&gt; with the HTML contents you define.', JBP_TEXT_DOMAIN ), $this->pro_labels->singular_name ); ?></span>
@@ -125,7 +125,7 @@
 			</tr>
 			<!--JOBS SHORTCODES-->
 			<tr>
-				<th colspan=2"><h2 style="text-align: center;"><?php esc_html_e( sprintf(__('%s Shortcodes', JBP_TEXT_DOMAIN), $this->job_labels->singular_name) ); ?></h2></th>
+				<th colspan=2"><h2 style="text-align: center;"><?php echo esc_html( sprintf(__('%s Shortcodes', JBP_TEXT_DOMAIN), $this->job_labels->singular_name) ); ?></h2></th>
 			</tr>
 
 			<tr>
@@ -137,7 +137,7 @@
 					<br/>or<br/>
 					<code>
 						[jbp-job-post-btn view="loggedin|loggedout|both" class="some class" img="true|false"]
-						<br/>&lt;img src="<?php _e('someimage.jpg', JBP_TEXT_DOMAIN); ?>" /&gt;<?php printf( esc_html__('Post a %s', JBP_TEXT_DOMAIN), $this->job_labels->singular_name);?>
+						<br/>&lt;img src="<?php esc_attr_e('someimage.jpg', JBP_TEXT_DOMAIN); ?>" /&gt;<?php printf( esc_html__('Post a %s', JBP_TEXT_DOMAIN), $this->job_labels->singular_name);?>
 						<br/>[/jbp-job-post-btn]
 					</code>
 					<br/><span class="description"><?php printf( esc_html__( 'Links to the Post %s Page. Generates a &lt;button&gt; &lt;/button&gt; with the HTML contents you define.', JBP_TEXT_DOMAIN ), $this->job_labels->singular_name) ?></span>
@@ -153,7 +153,7 @@
 					<br/>or<br/>
 					<code>
 						[jbp-job-browse-btn view="loggedin|loggedout|both" class="some class" img="true|false"]
-						<br/>&lt;img src="<?php _e('someimage.jpg', JBP_TEXT_DOMAIN); ?>" /&gt;<?php printf( esc_html__('Browse %s', JBP_TEXT_DOMAIN), $this->job_labels->name);?>
+						<br/>&lt;img src="<?php esc_html_e('someimage.jpg', JBP_TEXT_DOMAIN); ?>" /&gt;<?php printf( esc_html__('Browse %s', JBP_TEXT_DOMAIN), $this->job_labels->name);?>
 						<br/>[/jbp-job-browse-btn]
 					</code>
 					<br/><span class="description"><?php printf(esc_html__( 'Links to the %s Archive Page. Generates a &lt;button&gt; &lt;/button&gt; with the HTML contents you define.', JBP_TEXT_DOMAIN ), $this->job_labels->singular_name ); ?></span>
@@ -169,7 +169,7 @@
 					<br/>or<br/>
 					<code>
 						[jbp-job-contact-btn  post="post_id" view="loggedin|loggedout|both" class="some class"]
-						<br/>&lt;img src="<?php _e('someimage.jpg', JBP_TEXT_DOMAIN); ?>" /&gt;<?php esc_html_e('Contact', JBP_TEXT_DOMAIN);?>
+						<br/>&lt;img src="<?php esc_html_e('someimage.jpg', JBP_TEXT_DOMAIN); ?>" /&gt;<?php esc_html_e('Contact', JBP_TEXT_DOMAIN);?>
 						<br/>[/jbp-job-contact-btn]
 					</code>
 					<br/><span class="description"><?php printf(esc_html__( 'Links to the %s Email Contact Page. If "post" is not used it defaults to the current global $post object. Generates a &lt;button&gt; &lt;/button&gt; with the HTML contents you define.', JBP_TEXT_DOMAIN ), $this->job_labels->singular_name ); ?></span>

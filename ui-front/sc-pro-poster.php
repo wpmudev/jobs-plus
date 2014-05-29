@@ -17,7 +17,7 @@ wp_enqueue_script('element-query');
 
 ?>
 <div class="pro-poster">
-	<h2 class="h2_title"><?php esc_html_e( $text ); ?></h2>
+	<h2 class="h2_title"><?php echo esc_html( $text ); ?></h2>
 
 
 </div>

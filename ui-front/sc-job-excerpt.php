@@ -27,12 +27,12 @@ switch($wp_query->current_post % 6){
 
 ?>
 
-<div class="job-excerpt <?php echo $size; ?> <?php echo $color; ?> group" data-permalink="<?php esc_attr_e(get_permalink(get_the_ID())); ?>" >
+<div class="job-excerpt <?php echo $size; ?> <?php echo $color; ?> group" data-permalink="<?php echo esc_attr(get_permalink(get_the_ID())); ?>" >
 
 	<div class="job-item">
 		<div class="job-item-content">
 			<h4>
-				<a href="<?php esc_attr_e(get_permalink(get_the_ID())); ?>" class="job-show" title="<?php the_title(); ?>" ><?php the_title(); ?></a>
+				<a href="<?php echo esc_attr(get_permalink(get_the_ID())); ?>" class="job-show" title="<?php the_title(); ?>" ><?php the_title(); ?></a>
 				</h4>
 			<div class="ellipsis">
 				<?php the_content(); ?>
@@ -50,8 +50,8 @@ switch($wp_query->current_post % 6){
 	<div class="job-footer <?php echo $class; ?>">
 		<div class="job-stats">
 			<?php if(get_post_status() != 'publish') echo ucfirst($post->post_status); ?>
-			<span class="job-due"><?php _e('Due: ', JBP_TEXT_DOMAIN); ?><?php echo do_shortcode('[ct id="_ct_jbp_job_Due"]'); ?></span>
-			<span class="job-budget"><?php _e('Budget: $', JBP_TEXT_DOMAIN); ?><?php echo do_shortcode('[ct id="_ct_jbp_job_Budget"]'); ?></span>
+			<span class="job-due"><?php esc_html_e('Due: ', JBP_TEXT_DOMAIN); ?><?php echo do_shortcode('[ct id="_ct_jbp_job_Due"]'); ?></span>
+			<span class="job-budget"><?php esc_html_e('Budget: $', JBP_TEXT_DOMAIN); ?><?php echo do_shortcode('[ct id="_ct_jbp_job_Budget"]'); ?></span>
 		</div>
 	</div>
 
