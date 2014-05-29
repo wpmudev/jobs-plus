@@ -56,6 +56,7 @@ a.pro-add{
 .pro-edit {
 	float: right;
 	position: relative;
+	top: -20px;
 	z-index: 10;
 }
 
@@ -64,9 +65,18 @@ a.pro-add{
 	width: 100%;       /* 1up=100% - 2up=102% - 3up=103% -4up=102% - 5up=102% - 6up=106%*/
 }
 .pro-portfolio ul li{
-	max-width: 100%;   /* 1up=100% - 2up=48% - 3up=31% - 4up=23% - 5up=18% 6up=14% */
+	max-width: 238px;   /* 1up=100% - 2up=48% - 3up=31% - 4up=23% - 5up=18% 6up=14% */
 	float: left;
-	margin: 0 2% 2% 0;
+	margin: 0 20px 2% 0;
+	list-style: none outside none;
+}
+
+.pro-portfolio ul li:nth-child(2n){
+	margin: 0 0 20px 0;
+}
+
+.portfolio a img{
+	box-shadow: none;
 }
 
 /* Skills gauge */
@@ -78,8 +88,10 @@ a.pro-add{
 .pro-skills li {
 	width: 100%;    /* 1up=100% - 2up=48% - 3up=31% - 4up=23% - 5up=18% 6up=14% */
 	float: left;
-	margin: 0 2% 2% 0;
+	margin: 0 0 0 0;
 	background-image: none;
+	list-style: none outside none;
+	height: 70px;
 }
 
 .skill-bar{
@@ -106,13 +118,11 @@ a.pro-add{
 	margin: 0 0 1em 0.1em;
 }
 
-
 .pro-skills .editable-container.editable-inline {
 	display: block;
 	border: 1px dashed #797b79;
 	padding: 0.5em 0 0.5em 1em;
 }
-
 
 .ui-slider .ui-slider-handle {
 	-webkit-transition: none;
@@ -123,9 +133,13 @@ a.pro-add{
 }
 
 .pro-profile-wrapper{
-	width: 100%;
+	width: 825px;
+	box-sizing: border-box;
 }
 
+h2.pro-title{
+	margin: 10px 0 0 0;
+}
 
 @media screen and (min-width: 800px) {
 
@@ -135,18 +149,24 @@ a.pro-add{
 
 	.pro-left{
 		float: left;
-		width: 30%;
+		width: 230px;
+		box-sizing: border-box;
+	}
+
+	.pro-pad{
+		margin: 0 50px 0 2em;
 	}
 
 	.pro-content{
-		width: 70%;
+		width: 595px;
 		float: right;
+		margin: 0;
 	}
 }
 
 .pro-content label{
 	display: block;
-	margin: 0;
+	margin: auto;
 }
 
 .pro-content label span{
@@ -163,7 +183,6 @@ label.pro-rate-me{
 	margin-bottom: 2em;
 }
 
-
 .control-group button{
 	height:2em;
 	padding: 0.3em 0.5em;
@@ -173,15 +192,38 @@ label.pro-rate-me{
 .pro-go-public-button{
 	margin:0 auto 1.2em auto;
 	display: block;
-	width: 70%;
+	width: 150px;
 }
 
+
+h2.pro-biography,
+h2.pro-excerpt,
+h2.pro-portfolio,
+h2.pro-skills,
+h2.pro-social{
+	border-top: solid 1px #f9f9f9;
+	box-shadow: 0 -1px 0 #d8d8d8;
+	line-height: 60px;
+	margin: 20px 0 0 0;
+}
+
+h2.pro-skills{
+	margin: 0 0 0 0;
+}
+
+
 /* Social links */
-.pro-social{margin:0;text-align:left; max-width: 420px}
-.pro-social li{	background-image: none;	padding: 0;}
+.pro-social{margin:0;text-align:left; border: 0;}
+.pro-social li{	background-image: none;	padding: 0; box-sizing: border-box;}
 .pro-social .social_t{display:block;font-variant:small-caps;margin-bottom:5px;}
-.pro-social ul{display:inline;list-style-type:none;margin:0 auto;padding:0;}
-.pro-social ul li{display:inline-block; margin:0 5px 5px 5px;padding:0;} .pro-social .social_i{display:block;width:36px;height:36px;overflow:hidden;margin-right:0px;color:transparent;text-indent:-9999px;background:url('../img/social_sprite.png') no-repeat;}
+.pro-social ul{display:block;list-style-type:none;margin:0 auto;padding:0;}
+.pro-social ul li{display:block; float: left; margin:0 28px 20px 0; padding:0;}
+
+.editable-input .pro-social ul li{margin:0 10px 10px 0;}
+
+.pro-content-wrapper .pro-social ul li:nth-child(4n){margin-right :0}
+
+.pro-social .social_i{display:block;width:36px;height:36px;overflow:hidden;margin-right:0px;color:transparent;text-indent:-9999px;background:url('../img/social_sprite.png') no-repeat;}
 .pro-social .social_i{background-position: 0 0; margin: 0;} .social_i.active,.social_i:hover{background-position:0 -36px;}.pro-social ul>li:last-child .social_i{margin-right:0;}
 .pro-social .fb{background-position:-36px 0;}  .pro-social .fb.active,.pro-social .fb:hover{background-position:-36px -36px;} /* Facebook */
 .pro-social .tw{background-position:-72px 0;}  .pro-social .tw.active,.pro-social .tw:hover{background-position:-72px -36px;} /* Twitter */
@@ -204,8 +246,9 @@ label.pro-rate-me{
 .pro-gravatar{
 	border: 1px solid #ddd;
 	text-align: center;
-	margin-bottom: 1.2em;
+	margin-bottom: 40px;
 	padding: 0;
+	height: 320px;
 }
 
 .pro-gravatar .avatar{
@@ -215,7 +258,7 @@ label.pro-rate-me{
 	float: none;
 	padding: 0;
 	margin: auto;
-	border: 0.5em solid #fff;
+	border: 1px solid #d6d6d6;
 	box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	-webkit-box-sizing: border-box;
@@ -361,7 +404,7 @@ button.pro-profile-btn{
 	text-align: center;
 	vertical-align: middle;
 	width: 100%;
-	height: 40px;
+	height: 60px;
 	overflow: hidden;
 }
 
@@ -372,12 +415,13 @@ input.pro-search-input{
 	box-shadow: none;
 	width: 100%;
 	height: 100%;
-	padding-left: 0.5em;
+	padding-left: 15px;
+	text-transform: uppercase;
 }
 
 button.pro-submit-search{
-	width: 40px;
-	height: 40px;
+	width: 60px;
+	height: 60px;
 	position: absolute;
 	top: 1px;
 	right: 0;

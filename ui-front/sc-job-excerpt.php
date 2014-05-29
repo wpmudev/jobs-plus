@@ -17,12 +17,12 @@ switch($wp_query->current_post){
 }
 
 switch($wp_query->current_post % 6){
-	case 0: $color = 'job-grey'; break;
-	case 1: $color = 'job-yellow'; break;
-	case 2: $color = 'job-mint'; break;
-	case 3: $color = 'job-rose'; break;
-	case 4: $color = 'job-blue'; break;
-	case 5: $color = 'job-amber'; break;
+	case 0: $color = 'job-yellow'; break;
+	case 1: $color = 'job-mint'; break;
+	case 2: $color = 'job-rose'; break;
+	case 3: $color = 'job-blue'; break;
+	case 4: $color = 'job-amber'; break;
+	case 5: $color = 'job-grey'; break;
 }
 
 ?>

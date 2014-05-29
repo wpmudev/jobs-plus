@@ -103,7 +103,7 @@ a.job-add{
 .job-single-wrapper div.job-meta{
 	text-align: center;
 	width: 100%;
-	margin-bottom: 1em;
+	margin-bottom: 10px;
 }
 
 .job-single-wrapper .job-meta ul{
@@ -185,8 +185,11 @@ a.job-add{
 	float: right;
 }
 
+
+
 .job-date{
-	float: right;
+	text-align: left;
+	margin-bottom: 10px;
 }
 
 .job-due{
@@ -207,6 +210,7 @@ a.job-add{
 
 .job-item-full .job-skills ul{
 	padding: 0;
+	margin: 0 0 20px 0;
 }
 
 .job-item-full .job-skills ul li{
@@ -262,7 +266,7 @@ a.job-add{
 .job-excerpt{
 	position: relative;
 	display: table;
-	height: 16em;
+	height: 240px;
 	font-size: 100%;
 	border: 1px solid #b3b3b3;
 	box-sizing: border-box;
@@ -357,7 +361,7 @@ button.job-browse-btn{
 	border: none;
 }
 
-button.jobs-post-btn{
+button.job-post-btn{
 	color: #111;
 	border: none;
 }

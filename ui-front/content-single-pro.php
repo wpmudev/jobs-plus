@@ -136,9 +136,9 @@ wp_enqueue_script('jqueryui-editable-ext');
 				</div>
 
 				<?php if(post_type_supports('jbp_pro','editor') ): ?>
-				<div class="pro-content-wrapper">
+				<div class="pro-content-wrapper pro-biography">
+					
 					<h2 class="pro-content-editable pro-biography"><?php esc_html_e('Biography', JBP_TEXT_DOMAIN); ?></h2>
-					<hr />
 					<div class="editable"
 						data-type="textarea"
 						data-name="post_content"
@@ -150,7 +150,7 @@ wp_enqueue_script('jqueryui-editable-ext');
 				<?php endif; ?>
 
 				<?php if(post_type_supports('jbp_pro','excerpt') ): ?>
-				<div class="pro-content-wrapper">
+				<div class="pro-content-wrapper pro-excerpt">
 					<h2 class="pro-content-editable pro-excerpt "><?php esc_html_e('Excerpt', JBP_TEXT_DOMAIN); ?></h2>
 					<div class="editable"
 						data-type="textarea"
@@ -163,8 +163,7 @@ wp_enqueue_script('jqueryui-editable-ext');
 				<?php endif; ?>
 
 				<div class="pro-content-wrapper pro-portfolio">
-					<h2 class="pro-content-editable"><?php esc_html_e('Portfolio', JBP_TEXT_DOMAIN); ?></h2>
-					<hr />
+					<h2 class="pro-content-editable  pro-portfolio"><?php esc_html_e('Portfolio', JBP_TEXT_DOMAIN); ?></h2>
 					<?php echo do_shortcode('[jbp-expert-portfolio]'); ?>
 				</div>
 
@@ -238,7 +237,7 @@ wp_enqueue_script('jqueryui-editable-ext');
 				<?php echo do_shortcode('[jbp-expert-social]'); ?>
 			</div>
 			<div class="pro-content-wrapper">
-				<h2 class="pro-content-editable pro-social"><?php esc_html_e('Skills', JBP_TEXT_DOMAIN); ?></h2>
+				<h2 class="pro-content-editable pro-skills"><?php esc_html_e('Skills', JBP_TEXT_DOMAIN); ?></h2>
 				<?php echo do_shortcode('[jbp-expert-skills]'); ?>
 			</div>
 		</div>

@@ -140,6 +140,8 @@ class Jobs_Plus_Core{
 		add_shortcode( 'jbp-job-poster-excerpt', array( &$this, 'job_poster_excerpt_sc' ) );
 		add_shortcode( 'jbp-job-poster', array( &$this, 'job_poster_sc' ) );
 
+		add_shortcode( 'jbp-expert-poster-excerpt', array( &$this, 'expert_poster_excerpt_sc' ) );
+		add_shortcode( 'jbp-expert-poster', array( &$this, 'expert_poster_sc' ) );
 
 	}
 
@@ -1366,30 +1368,32 @@ class Jobs_Plus_Core{
 		return $downsize;
 	}
 
-	/**
-	*
-	*
-	*/
 	function custom_upload_directory( $args ) {
-		global $attachment_id;
+		global $post_ID, $attachment_id;
 
-		//var_dump($attachment_id);
+
+//		var_dump($args);
+//		var_dump($post_ID);
+//		var_dump($attachment_id);
+
+		if( empty($post_ID) && !$post = get_post( $attachment_id ) ) return $args;
 		
-		
-		if( empty($attachment_id) || !$post = get_post( $attachment_id ) ) return $args;
 		$parent_id = $post->post_parent;
 
+		//var_dump($args); exit;
 
 		// Check the post-type of the current post
-		if( "jbp_pro" == get_post_type( $attachment_id ) || "jbp_pro" == get_post_type( $parent_id ) ) {
+		if( "jbp_pro" == get_post_type( $post_ID ) || "jbp_pro" == get_post_type( $parent_id ) ) {
 			$path = $this->get_setting('pro->upload_path');
-			$path = empty($path) ? 'uploads/pro' : untrailingslashit($path);
-		} elseif( "jbp_job" == get_post_type( $attachment_id ) || "jbp_job" == get_post_type( $parent_id ) ) {
+			$path = empty($path) ? '/uploads/pro' : untrailingslashit($path);
+		} elseif( "jbp_job" == get_post_type( $post_ID ) || "jbp_job" == get_post_type( $parent_id ) ) {
 			$path = $this->get_setting('job->upload_path');
-			$path = empty($path) ? 'uploads/job' : untrailingslashit($path);
+			$path = empty($path) ? '/uploads/job' : untrailingslashit($path);
 		} else {
 			return $args;
 		}
+
+		//var_dump($path); exit;
 
 		// Setup modified locations
 		$url = content_url($path);
@@ -1399,9 +1403,47 @@ class Jobs_Plus_Core{
 		$args['basedir'] = WP_CONTENT_DIR; // Anywhere under wp-content
 		$args['baseurl'] = content_url(); // Anywhere under wp-content
 
-		//var_dump($args);
+		//var_dump($args); exit;
 		return $args;
 	}
+
+
+	/**
+	*
+	*
+	*/
+//	function custom_upload_directory( $args ) {
+//		global $post, $post_ID, $attachment_id;
+//
+//		//var_dump($attachment_id);
+//		//var_dump($post); exit;
+//		
+//		if( empty($post_ID) || !$post = get_post( $post_ID ) ) return $args;
+//		$parent_id = $post->post_parent;
+//
+//
+//		// Check the post-type of the current post
+//		if( "jbp_pro" == get_post_type( $post_ID ) || "jbp_pro" == get_post_type( $parent_id ) ) {
+//			$path = $this->get_setting('pro->upload_path');
+//			$path = empty($path) ? 'uploads/pro' : untrailingslashit($path);
+//		} elseif( "jbp_job" == get_post_type( $post_ID ) || "jbp_job" == get_post_type( $parent_id ) ) {
+//			$path = $this->get_setting('job->upload_path');
+//			$path = empty($path) ? 'uploads/job' : untrailingslashit($path);
+//		} else {
+//			return $args;
+//		}
+//
+//		// Setup modified locations
+//		$url = content_url($path);
+//		$args['path'] = untrailingslashit(WP_CONTENT_DIR) . "$path/{$post_ID}";
+//		$args['url'] = "$url/{$post_ID}";
+//		$args['subdir'] = "$path/{$post_ID}"; // No date directories use post id
+//		$args['basedir'] = WP_CONTENT_DIR; // Anywhere under wp-content
+//		$args['baseurl'] = content_url(); // Anywhere under wp-content
+//
+//		//var_dump($args);
+//		return $args;
+//	}
 
 	function is_certified($user_id = 0){
 		if( $this->get_setting('general->use_certification', false) ) return false;
@@ -2049,9 +2091,9 @@ class Jobs_Plus_Core{
 			return '';
 		}
 
-
 		$content = (empty($content)) ? $text : $content;
 		$url = get_permalink($this->add_job_page_id);
+		
 		ob_start();
 		require locate_jbp_template((array)'sc-job-post-btn.php');
 		return do_shortcode( ob_get_clean() );
@@ -2068,12 +2110,14 @@ class Jobs_Plus_Core{
 		if( !$this->can_view( $view ) ) return '';
 		$img = strtolower( $img ) =='true' ? true : false; 
 
+
 		if( $this->count_user_posts_by_type(get_current_user_id(), 'jbp_pro') >= $this->get_setting('pro->max_records', 1) ) {
 			return '';
 		}
 
 		$content = (empty($content)) ? $text : $content;
 		$url = get_permalink($this->add_pro_page_id);
+
 		ob_start();
 		require locate_jbp_template((array)'sc-pro-post-btn.php');
 		return do_shortcode( ob_get_clean() );
@@ -2173,6 +2217,42 @@ class Jobs_Plus_Core{
 
 		ob_start();
 		require locate_jbp_template((array)'sc-job-poster.php');
+		return do_shortcode( ob_get_clean() );
+	}
+
+	/**
+	* jbp-expert-poster-excerpt shortcode_atts
+	*/
+	function expert_poster_excerpt_sc( $atts, $content = null ) {
+		extract( shortcode_atts( array(
+		'text' => sprintf(__('%s Excerpt', $this->text_domain), $this->pro_labels->singular_name),
+		'view' => 'both', //loggedin, loggedout, both
+		'class' => '',
+		), $atts ) );
+
+		if( !$this->can_view( $view ) ) return '';
+
+		ob_start();
+		require locate_jbp_template((array)'sc-pro-poster-excerpt.php');
+		return do_shortcode( ob_get_clean() );
+	}
+	
+
+	function expert_poster_sc( $atts, $content = null ) {
+		extract( shortcode_atts( array(
+		'text' => sprintf(__('Recently Posted %s', $this->text_domain),$this->job_labels->name),
+		'view' => 'both', //loggedin, loggedout, both
+		'class' => '',
+		), $atts ) );
+
+		if( !$this->can_view( $view ) ) return '';
+
+		$content = (empty($content)) ? $text : $content;
+		$user = wp_get_current_user();
+		$url = sprintf('%s/author/%s/', untrailingslashit(get_post_type_archive_link('jbp_pro') ), $user->user_login) ;
+
+		ob_start();
+		require locate_jbp_template((array)'sc-pro-poster.php');
 		return do_shortcode( ob_get_clean() );
 	}
 

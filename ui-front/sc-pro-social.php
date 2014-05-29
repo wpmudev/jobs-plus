@@ -19,10 +19,9 @@
 	//	}
 
 	$count = 0;
+	
 	?>
-	<ul class="group">
-		<?php foreach ( $socials as $key => $social) : ?>
-		<li>
+	<ul class="group"><?php foreach ( $socials as $key => $social) : ?><li>
 			<div
 				class="editable"
 				data-type="social"
@@ -31,11 +30,8 @@
 				data-value="<?php esc_attr_e( json_encode($social) ); ?>"
 				data-original-title="<?php esc_attr_e(__('Select a Social Icon and enter your url', JBP_TEXT_DOMAIN) ); ?>">
 			</div>
-		</li>
-		<?php endforeach; ?>
-	</ul>
+		</li><?php endforeach; ?></ul>
 	<a href="#" id="add-social-link" class="pro-content-command pro-add show-on-edit"><?php esc_html_e('+Add an Icon', JBP_TEXT_DOMAIN ); ?></a>
-	<br />
 </div>
 
 <script id="add-social" type="text/template">

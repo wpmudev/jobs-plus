@@ -10,7 +10,7 @@ global $post;
 $rating = 0;
 ?>
 <section class="pro-gravatar">
-	<div class="pro-title"><?php the_title() ?></div>
+	<h2 class="pro-title"><?php the_title() ?></h2>
 	<div class="jbp-gravatar">
 		<div class="jbp-gravatar-border group">
 			<?php echo get_avatar_or_gravatar($post->post_author, do_shortcode('[ct id="_ct_jbp_pro_Contact_Email"]') ,160); ?>
