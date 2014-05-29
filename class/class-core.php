@@ -975,8 +975,8 @@ class Jobs_Plus_Core{
 		$post_type = get_query_var('post_type');
 		if(is_search() && in_array($post_type, array('jbp_job', 'jbp_pro') ) ){
 			switch ($post_type) {
-				case 'jbp_pro': return sprintf('%s &raquo; Search &raquo; %s', $this->pro_labels->name, $_GET['s']); break;
-				case 'jbp_job': return sprintf('%s &raquo; Search &raquo; %s', $this->job_labels->name, $_GET['s']); break;
+				case 'jbp_pro': return sprintf('%s &raquo; Search &raquo; %s', $this->pro_labels->name, esc_html($_GET['s'])); break;
+				case 'jbp_job': return sprintf('%s &raquo; Search &raquo; %s', $this->job_labels->name, esc_html($_GET['s'])); break;
 				default: return $title;
 			}
 		}

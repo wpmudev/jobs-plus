@@ -82,7 +82,7 @@ $this->render_admin('update-message');
 					<span class="description"><?php _e('Edit in Network Admin.', $this->text_domain); ?></span>
 					<?php else: ?>
 					<span class="edit">
-						<a title="<?php _e('Edit the post type', $this->text_domain); ?>" href="<?php echo self_admin_url( 'admin.php?page=' . $_GET['page'] . '&amp;ct_content_type=post_type&amp;ct_edit_post_type=' . $name ); ?>"><?php _e('Edit', $this->text_domain); ?></a> |
+						<a title="<?php _e('Edit the post type', $this->text_domain); ?>" href="<?php echo esc_url(self_admin_url( 'admin.php?page=' . $_GET['page'] . '&amp;ct_content_type=post_type&amp;ct_edit_post_type=' . $name )); ?>"><?php _e('Edit', $this->text_domain); ?></a> |
 					</span>
 					<span class="trash">
 						<a class="submitdelete" href="#" onclick="javascript:content_types.toggle_delete('<?php echo( $name ); ?>'); return false;"><?php _e('Delete', $this->text_domain); ?></a>

@@ -11,7 +11,7 @@
 ?>
 
 <?php
-$tab_url = 'edit.php?post_type=' . $_GET['post_type'] . '&page=' . $_GET['page'] . '&tab=' . $_GET['tab'];
+$tab_url = esc_url('edit.php?post_type=' . $_GET['post_type'] . '&page=' . $_GET['page'] . '&tab=' . $_GET['tab']);
 ?>
 <div class="wrap">
 	<?php screen_icon( 'jobs-plus' ); ?>

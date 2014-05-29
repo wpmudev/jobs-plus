@@ -812,7 +812,7 @@ class CustomPress_Core_Admin extends CustomPress_Content_Types {
 				$prefix = '_ct_';
 
 				global $wpdb;
-				$wpdb->query( $wpdb->prepare( "DELETE FROM {$wpdb->postmeta} WHERE meta_key = '%s'", $prefix . $params['custom_field_id'] ) );
+				$wpdb->query( $wpdb->prepare( "DELETE FROM {$wpdb->postmeta} WHERE meta_key = %s", $prefix . $params['custom_field_id'] ) );
 			}
 
 			//update custom fields columns for custom post type

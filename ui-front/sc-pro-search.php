@@ -16,7 +16,7 @@ $phrase = (empty($_GET['s']) ) ? '' : $_GET['s'];
 				<ul class="pro-search group">
 					<li>
 						<span>
-							<input type="text" class="pro-search-input" name="s" value="<?php echo $phrase; ?>" autocomplete="off" placeholder="<?php echo $text; ?>" />
+							<input type="text" class="pro-search-input" name="s" value="<?php echo esc_attr($phrase); ?>" autocomplete="off" placeholder="<?php echo esc_attr($text); ?>" />
 						</span>
 						<button type="submit" class="pro-submit-search" value="" >
 							<img src="<?php echo $this->plugin_url . 'img/search.png'; ?>" alt="alt" title="title" />

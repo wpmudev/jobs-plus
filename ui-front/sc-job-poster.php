@@ -17,7 +17,7 @@ wp_enqueue_script('element-query');
 
 ?>
 <div class="job-poster" data-eq-pts=" break: 540">
-	<h2 style="text-align: center"><?php echo $text; ?></h2>
+	<h2 style="text-align: center"><?php echo esc_html($text); ?></h2>
 	<hr />
 	<?php while( $jbp_query->have_posts() ): ?>
 	<div class="poster" >
