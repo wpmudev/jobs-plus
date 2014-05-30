@@ -71,7 +71,7 @@ class Term_Images{
 		$settings = get_option($this->settings_name);
 		if($settings) {
 			foreach($settings as $key => $taxonomy) {
-				if( $this->get_setting( "$key->use", 0) == '1') {
+				if( $taxonomy['use']) {
 					add_filter( 'manage_' . $key . '_custom_column', array(&$this, 'taxonomy_rows'), 10, 3 );
 					add_filter( 'manage_edit-' . $key . '_columns',  array(&$this, 'taxonomy_columns') );
 
@@ -640,11 +640,13 @@ function get_term_image_url( $term_id, $size='thumbnail' ){
 	if( !term_exists($term_id) ) return false;
 
 	$attachments = $Term_Images->get_by_meta($term_id);
+
 	//Turn off global post ID so upload filter disabled.
 	$id = $post_ID;
 	$post_ID = 0;
 	$url = wp_get_attachment_url($attachments[0]->ID);
 	$post_ID = $id;
+	
 	return $url;
 }
 

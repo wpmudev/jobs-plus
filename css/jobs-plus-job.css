@@ -80,11 +80,11 @@
 }
 
 .job-archive-wrapper form{
-	font-size: 32px;	
+	font-size: 15px;	
 }
 
 .job-archive-wrapper label{
-	font-size: 32px;	
+	font-size: 15px;	
 }
 
 .job-archive-wrapper h1{
@@ -102,6 +102,8 @@
 
 .job-archive-wrapper h4{
 	font-size: 16px;	
+	line-height: 1.2;
+	margin: .5em 0;
 }
 
 .job-archive-wrapper p.subheader1{
@@ -277,7 +279,7 @@ a.job-add{
 
 
 .meta-label{
-	font-size: 75%;
+	font-size: 80%;
 }
 
 .meta-red{
@@ -480,7 +482,6 @@ button.job-browse-btn{
 }
 
 button.job-post-btn{
-	color: #111;
 	border: none;
 }
 
@@ -496,7 +497,7 @@ button.job-post-btn{
 }
 
 .job-poster{
-	width: 60%;
+	width: 50%;
 	text-align: center;
 	overflow: hidden;
 }
@@ -588,6 +589,7 @@ button.job-post-btn{
 	text-align: left;
 	text-transform: uppercase;
 	font-size: 14px;
+	margin: 20px 0;
 }
 
 
@@ -619,6 +621,10 @@ button.job-post-btn{
 	margin:0 0 1em 0;
 	width: 100%;
 	text-align: center;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	font-size: 16px;
 }
 
 .job-search-wrap ul.job-search{
@@ -641,8 +647,11 @@ button.job-post-btn{
 	box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	-webkit-box-sizing: border-box;
-	height: 60px;
 	text-transform: uppercase;
+	border-collapse: collapse;
+	height: 60px;
+	line-height: 1;
+	font-size: 15px;
 }
 
 .job-search-wrap ul.job-search li a{
@@ -705,7 +714,7 @@ button.job-submit-search{
 }
 
 button.job-submit-search >img{
-	width: auto%;
+	width: auto;
 	border: none;
 	box-shadow: none;
 	

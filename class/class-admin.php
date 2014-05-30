@@ -163,7 +163,7 @@ class Jobs_Plus_Admin extends Jobs_Plus_Core{
 		*/
 		function wp_pointer_load(){
 
-			var_dump(get_current_screen()->id);
+			//var_dump(get_current_screen()->id);
 
 			$term_images_content =  __('<p>Jobs + works best when you use images for Job Categories, please enable them here and configure the image size that best fits your website</p>', JBP_TEXT_DOMAIN);
 
@@ -274,10 +274,6 @@ class Jobs_Plus_Admin extends Jobs_Plus_Core{
 
 		$to_add = array_keys( (array)$_REQUEST['capabilities'] );
 		$to_remove = array_diff( $all_caps, $to_add );
-print_r($all_caps);
-
-print_r($to_add);
-print_r($to_remove);
 
 		foreach ( $to_remove as $capability ) {
 			$wp_roles->remove_cap( $role, $capability );

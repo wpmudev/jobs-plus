@@ -765,6 +765,8 @@ class Jobs_Plus_Core{
 			wp_enqueue_script('jquery.magnific-popup');
 			wp_enqueue_script('jquery-cookie');
 			wp_enqueue_script('jobs-plus');
+			wp_enqueue_script('jquery-rateit');
+			wp_enqueue_style('jquery-rateit');
 		}
 
 		/**
@@ -1351,21 +1353,26 @@ class Jobs_Plus_Core{
 		global $post_ID, $attachment_id;
 
 
-//		var_dump($args);
+////		var_dump($args);
 //		var_dump($post_ID);
 //		var_dump($attachment_id);
+//		$post_ID = 0;
+		$post_type = empty($post_ID) ? '' : get_post_type( $post_ID );
 
-		if( empty($post_ID) && !$post = get_post( $attachment_id ) ) return $args;
+		if( empty($post_type) && !$post = get_post( $attachment_id ) ) return $args;
 		
 		$parent_id = $post->post_parent;
+		
+//		var_dump(get_post_type( $parent_id ) );
+//		var_dump(get_post_type( $post_ID) );
 
 		//var_dump($args); exit;
 
 		// Check the post-type of the current post
-		if( "jbp_pro" == get_post_type( $post_ID ) || "jbp_pro" == get_post_type( $parent_id ) ) {
+		if( "jbp_pro" == $post_type || "jbp_pro" == get_post_type( $parent_id ) ) {
 			$path = $this->get_setting('pro->upload_path');
 			$path = empty($path) ? '/uploads/pro' : untrailingslashit($path);
-		} elseif( "jbp_job" == get_post_type( $post_ID ) || "jbp_job" == get_post_type( $parent_id ) ) {
+		} elseif( "jbp_job" == $post_type || "jbp_job" == get_post_type( $parent_id ) ) {
 			$path = $this->get_setting('job->upload_path');
 			$path = empty($path) ? '/uploads/job' : untrailingslashit($path);
 		} else {
@@ -1434,7 +1441,6 @@ class Jobs_Plus_Core{
 	function on_ajax_set_jbp_certified(){
 		if (!wp_verify_nonce($_REQUEST['_wpnonce'], 'jbp-pro-update')) exit('No Nonce Sins');
 		$params = stripslashes_deep($_REQUEST);
-		print_r($_REQUEST);
 		$jbp_certified = ( empty($params['jbp_certified']) ) ? 0 : sanitize_text_field($params['jbp_certified']);
 		$user_id = ( empty($params['user_id']) ) ? 0 : intval($params['user_id']);
 		update_user_meta($user_id, JBP_PRO_CERTIFIED_KEY, $jbp_certified);
@@ -1864,6 +1870,8 @@ class Jobs_Plus_Core{
 
 		if( !$this->can_view( $view ) ) return '';
 
+		wp_enqueue_style('jobs-plus-custom');
+
 		ob_start();
 		require locate_jbp_template((array)'sc-pro-gravatar.php');
 		return ob_get_clean();
@@ -1880,6 +1888,8 @@ class Jobs_Plus_Core{
 		), $atts ) );
 
 		if( !$this->can_view( $view ) ) return '';
+
+		wp_enqueue_style('jobs-plus-custom');
 
 		ob_start();
 		require locate_jbp_template((array)'sc-pro-portfolio.php');
@@ -1898,6 +1908,8 @@ class Jobs_Plus_Core{
 
 		if( !$this->can_view( $view ) ) return '';
 
+		wp_enqueue_style('jobs-plus-custom');
+
 		ob_start();
 		require locate_jbp_template((array)'sc-pro-skills.php');
 		return ob_get_clean();
@@ -1915,6 +1927,8 @@ class Jobs_Plus_Core{
 
 		if( !$this->can_view( $view ) ) return '';
 
+		wp_enqueue_style('jobs-plus-custom');
+
 		ob_start();
 		require locate_jbp_template((array)'sc-pro-social.php');
 		return ob_get_clean();
@@ -1931,6 +1945,8 @@ class Jobs_Plus_Core{
 		), $atts ) );
 
 		if( !$this->can_view( $view ) ) return '';
+
+		wp_enqueue_style('jobs-plus-custom');
 
 		global $post;
 		$post = get_post($post);
@@ -1952,6 +1968,8 @@ class Jobs_Plus_Core{
 
 		if( !$this->can_view( $view ) ) return '';
 
+		wp_enqueue_style('jobs-plus-custom');
+
 		ob_start();
 		require locate_jbp_template((array)'sc-job-portfolio.php');
 		return ob_get_clean();
@@ -1968,6 +1986,8 @@ class Jobs_Plus_Core{
 		), $atts ) );
 
 		if( !$this->can_view( $view ) ) return '';
+
+		wp_enqueue_style('jobs-plus-custom');
 
 		ob_start();
 		require locate_jbp_template((array)'sc-job-excerpt.php');
@@ -1989,6 +2009,7 @@ class Jobs_Plus_Core{
 		if( !$this->can_view( $view ) ) return '';
 		if( $this->get_setting('job->disable_contact_email', false) ) return '';
 
+		wp_enqueue_style('jobs-plus-custom');
 
 		$post = get_post($post);
 
@@ -2012,6 +2033,8 @@ class Jobs_Plus_Core{
 
 		$post = get_post($post);
 
+		wp_enqueue_style('jobs-plus-custom');
+
 		$content = (empty($content)) ? $text : $content;
 		$result = sprintf('<button class="jbp-button pro-contact-btn %s" type="button" onclick="window.location.href=\'%s\';" >%s</button>',
 		$class, esc_attr(trailingslashit(get_permalink($post) . 'contact/' ) ), $content);
@@ -2030,6 +2053,8 @@ class Jobs_Plus_Core{
 		if( !$this->can_view( $view ) ) return '';
 		$img = strtolower( $img ) =='true' ? true : false; 
 
+		wp_enqueue_style('jobs-plus-custom');
+
 		$content = (empty($content)) ? $text : $content;
 		$url = get_post_type_archive_link('jbp_job');
 		ob_start();
@@ -2047,6 +2072,8 @@ class Jobs_Plus_Core{
 
 		if( !$this->can_view( $view ) ) return '';
 		$img = strtolower( $img ) =='true' ? true : false; 
+
+		wp_enqueue_style('jobs-plus-custom');
 
 		$content = (empty($content)) ? $text : $content;
 		$url = get_post_type_archive_link('jbp_pro');
@@ -2069,6 +2096,8 @@ class Jobs_Plus_Core{
 		if( $this->count_user_posts_by_type(get_current_user_id(), 'jbp_job') >= $this->get_setting('job->max_records', 1) ) {
 			return '';
 		}
+
+		wp_enqueue_style('jobs-plus-custom');
 
 		$content = (empty($content)) ? $text : $content;
 		$url = get_permalink($this->add_job_page_id);
@@ -2094,6 +2123,8 @@ class Jobs_Plus_Core{
 			return '';
 		}
 
+		wp_enqueue_style('jobs-plus-custom');
+
 		$content = (empty($content)) ? $text : $content;
 		$url = get_permalink($this->add_pro_page_id);
 
@@ -2118,6 +2149,8 @@ class Jobs_Plus_Core{
 			return '';
 		}
 
+		wp_enqueue_style('jobs-plus-custom');
+
 		$content = (empty($content)) ? $text : $content;
 		$user = wp_get_current_user();
 		$url = sprintf('%s/author/%s/', untrailingslashit(get_post_type_archive_link('jbp_pro') ), $user->user_login) ;
@@ -2129,12 +2162,15 @@ class Jobs_Plus_Core{
 
 	function job_search_sc( $atts, $content = null ) {
 		extract( shortcode_atts( array(
-		'text' => sprintf(__('Search %s for ', $this->text_domain),$this->job_labels->name),
+		'text' => strtoUpper( sprintf(__('Search %s for ', $this->text_domain),$this->job_labels->name) ),
 		'view' => 'both', //loggedin, loggedout, both
 		'class' => '',
 		), $atts ) );
+		
 
 		if( !$this->can_view( $view ) ) return '';
+
+		wp_enqueue_style('jobs-plus-custom');
 
 		$content = (empty($content)) ? $text : $content;
 		$user = wp_get_current_user();
@@ -2153,6 +2189,8 @@ class Jobs_Plus_Core{
 		), $atts ) );
 
 		if( !$this->can_view( $view ) ) return '';
+
+		wp_enqueue_style('jobs-plus-custom');
 
 		$content = (empty($content)) ? $text : $content;
 		$user = wp_get_current_user();
@@ -2175,6 +2213,8 @@ class Jobs_Plus_Core{
 
 		if( !$this->can_view( $view ) ) return '';
 
+		wp_enqueue_style('jobs-plus-custom');
+
 		ob_start();
 		require locate_jbp_template((array)'sc-job-poster-excerpt.php');
 		return do_shortcode( ob_get_clean() );
@@ -2189,6 +2229,8 @@ class Jobs_Plus_Core{
 		), $atts ) );
 
 		if( !$this->can_view( $view ) ) return '';
+
+		wp_enqueue_style('jobs-plus-custom');
 
 		$content = (empty($content)) ? $text : $content;
 		$user = wp_get_current_user();
@@ -2210,6 +2252,8 @@ class Jobs_Plus_Core{
 		), $atts ) );
 
 		if( !$this->can_view( $view ) ) return '';
+
+		wp_enqueue_style('jobs-plus-custom');
 
 		ob_start();
 		require locate_jbp_template((array)'sc-pro-poster-excerpt.php');

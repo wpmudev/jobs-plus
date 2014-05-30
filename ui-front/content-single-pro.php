@@ -146,41 +146,47 @@ $this->no_thumbnail();
 					</label>
 					<?php if(current_user_can(EDIT_PRO, $post->ID) ): ?>
 					<div class="pro-edit">
-					<span><button type="button" id="toggle-pro-edit" class="pro-button jbp-button pro-edit-button hide-on-edit"><?php esc_html_e('Edit', JBP_TEXT_DOMAIN); ?></button></span>
+						<span><button type="button" id="toggle-pro-edit" class="pro-button jbp-button pro-edit-button hide-on-edit"><?php esc_html_e('Edit', JBP_TEXT_DOMAIN); ?></button></span>
 					</div>
 					<?php endif; ?>
 				</div>
 
 				<?php if(post_type_supports('jbp_pro','editor') ): ?>
 				<div class="pro-content-wrapper pro-biography">
-
-					<h2 class="pro-content-editable pro-biography"><?php esc_html_e('Biography', JBP_TEXT_DOMAIN); ?></h2>
-					<div class="editable"
-						data-type="textarea"
-						data-name="post_content"
-						data-mode="popup"
-						data-emptytext="<?php esc_attr_e('Tell us about yourself', JBP_TEXT_DOMAIN); ?>"
-						data-original-title="<?php esc_attr_e('Biography Description', JBP_TEXT_DOMAIN); ?>"
-					><?php echo $this->make_clickable(strip_tags(get_the_content() ) ); ?></div>
+					<h2 class="pro-biography"><?php esc_html_e('Biography', JBP_TEXT_DOMAIN); ?></h2>
+					<div class="pro-content-editable">
+						<div class="editable"
+							data-type="textarea"
+							data-name="post_content"
+							data-mode="popup"
+							data-emptytext="<?php esc_attr_e('Tell us about yourself', JBP_TEXT_DOMAIN); ?>"
+							data-original-title="<?php esc_attr_e('Biography Description', JBP_TEXT_DOMAIN); ?>"
+						><?php echo $this->make_clickable(strip_tags(get_the_content() ) ); ?></div>
+					</div>
 				</div>
 				<?php endif; ?>
 
 				<?php if(post_type_supports('jbp_pro','excerpt') ): ?>
 				<div class="pro-content-wrapper pro-excerpt">
-					<h2 class="pro-content-editable pro-excerpt "><?php esc_html_e('Excerpt', JBP_TEXT_DOMAIN); ?></h2>
-					<div class="editable"
-						data-type="textarea"
-						data-name="post_excerpt"
-						data-mode="popup"
-						data-emptytext="<?php esc_attr_e('Tell us about yourself', JBP_TEXT_DOMAIN); ?>"
-						data-original-title="<?php esc_attr_e('Short Excerpt', JBP_TEXT_DOMAIN); ?>"
-					><?php echo $this->make_clickable(strip_tags(get_the_excerpt() ) ); ?></div>
+					<h2 class="pro-excerpt "><?php esc_html_e('Excerpt', JBP_TEXT_DOMAIN); ?></h2>
+					<div class="pro-content-editable">
+						<div class="editable"
+							data-type="textarea"
+							data-name="post_excerpt"
+							data-mode="popup"
+							data-emptytext="<?php esc_attr_e('Tell us about yourself', JBP_TEXT_DOMAIN); ?>"
+							data-original-title="<?php esc_attr_e('Short Excerpt', JBP_TEXT_DOMAIN); ?>"
+						><?php echo $this->make_clickable(strip_tags(get_the_excerpt() ) ); ?></div>
+					</div>
 				</div>
 				<?php endif; ?>
 
 				<div class="pro-content-wrapper pro-portfolio">
-					<h2 class="pro-content-editable  pro-portfolio"><?php esc_html_e('Portfolio', JBP_TEXT_DOMAIN); ?></h2>
-					<?php echo do_shortcode('[jbp-expert-portfolio]'); ?>
+					<h2 class="pro-portfolio"><?php esc_html_e('Portfolio', JBP_TEXT_DOMAIN); ?></h2>
+					<div class="pro-content-editable">
+						<?php echo do_shortcode('[jbp-expert-portfolio]'); ?>
+					</div>
+
 				</div>
 
 				<?php if(post_type_supports('jbp_pro','custom-fields') ): ?>
@@ -226,28 +232,32 @@ $this->no_thumbnail();
 			</div>
 
 			<?php if(current_user_can(EDIT_PROS) ): ?>
-			<div class="show-on-edit">
+			<div class="pro-button-group show-on-edit">
 				<?php if($Jobs_Plus_Core->get_setting('pro->moderation->publish') ): ?>
-					<button type="submit" id="pro-publish" name="data[post_status]" value="publish" class="toggle-pro-save jbp-button pro-go-public-button" ><?php esc_html_e('Save', JBP_TEXT_DOMAIN); ?></button>
+				<button type="submit" id="pro-publish" name="data[post_status]" value="publish" class="toggle-pro-save jbp-button pro-go-public-button" ><?php esc_html_e('Save', JBP_TEXT_DOMAIN); ?></button>
 				<?php endif; ?>
 
 				<?php if( !$Jobs_Plus_Core->get_setting('pro->moderation->publish') ): ?>
-					<button type="submit" id="pro-pending" name="data[post_status]" value="pending" class="toggle-pro-save pro-jbp-button go-public-button" ><?php esc_html_e('Review', JBP_TEXT_DOMAIN); ?></button>
+				<button type="submit" id="pro-pending" name="data[post_status]" value="pending" class="toggle-pro-save pro-jbp-button go-public-button" ><?php esc_html_e('Review', JBP_TEXT_DOMAIN); ?></button>
 				<?php endif; ?>
 
 				<?php if($Jobs_Plus_Core->get_setting('pro->moderation->draft') ): ?>
-					<button type="submit" id="pro-draft" name="data[post_status]" value="draft" class="toggle-pro-save jbp-button pro-go-public-button" ><?php esc_html_e('Draft', JBP_TEXT_DOMAIN); ?></button>
+				<button type="submit" id="pro-draft" name="data[post_status]" value="draft" class="toggle-pro-save jbp-button pro-go-public-button" ><?php esc_html_e('Draft', JBP_TEXT_DOMAIN); ?></button>
 				<?php endif; ?>
 			</div>
 			<?php endif; ?>
 
-			<div class="pro-content-wrapper">
-				<h2 class="pro-content-editable pro-social"><?php esc_html_e('Social', JBP_TEXT_DOMAIN); ?></h2>
-				<?php echo do_shortcode('[jbp-expert-social]'); ?>
-			</div>
-			<div class="pro-content-wrapper">
-				<h2 class="pro-content-editable pro-skills"><?php esc_html_e('Skills', JBP_TEXT_DOMAIN); ?></h2>
-				<?php echo do_shortcode('[jbp-expert-skills]'); ?>
+			<divclass="pro-content-wrapper">
+				<h2 class="pro-social"><?php esc_html_e('Social', JBP_TEXT_DOMAIN); ?></h2>
+				<div class="pro-content-editable">
+					<?php echo do_shortcode('[jbp-expert-social]'); ?>
+				</div>
+			</divclass="pro-content-wrapper">
+			<div>
+				<h2 class="pro-skills"><?php esc_html_e('Skills', JBP_TEXT_DOMAIN); ?></h2>
+				<div class="pro-content-editable">
+					<?php echo do_shortcode('[jbp-expert-skills]'); ?>
+				</div>
 			</div>
 		</div>
 	</form>

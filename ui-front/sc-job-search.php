@@ -30,9 +30,7 @@ $sort_ending = (!empty($_GET['prj-sort']) && $_GET['prj-sort'] == 'ending' ? 'ac
 					</span>
 				</li>
 				<li>
-					<span>
 						<input type="text" class="job-search-input" name="s" value="<?php echo esc_attr($phrase); ?>" autocomplete="off" placeholder="<?php echo $text; ?>" />
-					</span>
 					<button type="submit" class="job-submit-search" value="">
 						<img src="<?php echo $this->plugin_url . 'img/search.png'; ?>" alt="" title="title" />
 						</button>

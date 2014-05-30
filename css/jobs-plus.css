@@ -172,13 +172,13 @@ input.input-small{
 	border-bottom: 1px solid #cccccc;
 }
 
-.jbp-button{
+button.jbp-button{
 	display: inline-block;
 	font-size: 16px;
 	padding: 0.5em 1em;
 	font-weight: bold;
 	margin: 0 5px;
-
+	cursor: pointer;
 }
 
 .jbp-widget  .jbp-button img{
@@ -212,3 +212,4 @@ input.input-small{
 	}
 
 }
+
