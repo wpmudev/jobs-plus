@@ -86,14 +86,17 @@ label.error, label.updated{
 
 .input-large{
 	width: 25em;
+	margin: 0;
 }
 
 .input-medium{
 	min-width: 18em;
+	margin: 0;
 }
 
 .input-small{
 	width: 12em;
+	margin: 0;
 }
 
 input.input-small{
@@ -169,6 +172,15 @@ input.input-small{
 	border-bottom: 1px solid #cccccc;
 }
 
+.jbp-button{
+	display: inline-block;
+	font-size: 16px;
+	padding: 0.5em 1em;
+	font-weight: bold;
+	margin: 0 5px;
+
+}
+
 .jbp-widget  .jbp-button img{
 	border: none;
 	box-shadow: none;
@@ -179,15 +191,11 @@ input.input-small{
 }
 
 .jbp-widget .jbp-button{
-	display: inline-block;
+	display: inline;
 	background-color: #fff;
 	cursor: pointer;
 }
 
-
-.jbp-button{
-	display: inline-block;
-}
 
 @media screen and (max-width:959px) {
 

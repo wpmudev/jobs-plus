@@ -979,13 +979,13 @@ url: "15"
 	Portfolio.defaults = $.extend({}, $.fn.editabletypes.abstractinput.defaults, {
 		tpl:
 		'<div class="editable-portfolio" >'+
-		'<div style="position: relative; display: inline-block; overflow: hidden; cursor: pointer; vertical-align: top;">' +
-		'<input type="file" name="file" class="input-medium" size="1" style="position:absolute; top: 0; right:0; opacity: 0; filter: alpha(opacity=0); border: none; padding: 0; margin: 0;cursor: pointer; width: auto; font-size: 400%;" />' +
-		'<button type="button" class="image-label editable-button" style="cursor: pointer; display: inline-block; margin-right: 1em;">Choose file</button>' + 
+		'<div style="position: relative; display: inline-block; overflow: hidden; cursor: pointer; vertical-align: middle;">' +
+		'<input type="file" class="editable-portfolio" name="file" size="1" />' +
+		'<button type="button" class="image-label editable-button" style="cursor: pointer; display: inline-block; margin: 0; ">Choose file</button>' + 
 		'</div>' +
-		'<span class="image-label-selected">No file chosen</span>' +
+		'&nbsp;<span class="image-label-selected">No file chosen</span>' +
 		'</div>'+
-		'<div class="editable-portfolio"><label><span class="link-label">Add a Link</span><br /><input type="text" name="url" class="input-small"></label></div>'+
+		'<div class="editable-portfolio"><label><span class="link-label">Add a Link</span><br /><input type="text" name="url" class="input-large"></label></div>'+
 		'<div class="editable-portfolio"><label><span class="caption-label">Description</span><br /><textarea name="caption" class="input-large" rows="4"></textarea></label>' +
 		'<div class="editable-portfolio"><label class="labelright"><span class="char-count"></span> <span class="count-label">characters left</span></label></div>' +
 		'<input type="hidden" name="attachment_id" />' +

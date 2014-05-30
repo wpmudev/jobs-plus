@@ -294,7 +294,7 @@ class Jobs_Plus_Core{
 			add_filter('get_comment_author_link', array($this,'on_get_comment_author_link') );
 		}
 		//Need to register scripts and css early because we enqueue in
-		//template_redirect so we know the page amd can only load what and when needed.
+		//template_redirect so we know the page and can only load what and when needed.
 		$this->register_scripts();
 	}
 
@@ -468,7 +468,7 @@ class Jobs_Plus_Core{
 		wp_register_script('jquery-ellipsis', $this->plugin_url . 'js/jquery-ellipsis.js', array('jquery' ), JQUERY_ELLIPSIS, true );
 		wp_register_script('jqueryui-editable-ext', $this->plugin_url . 'js/jqueryui-editable-ext.js', array('jqueryui-editable', 'jquery-iframe-transport' ), JOBS_PLUS_VERSION, true );
 		wp_register_script('imagesloaded', $this->plugin_url . "js/imagesloaded$suffix.js", array('jquery' ), IMAGESLOADED, true );
-		wp_register_script('jobs-plus', $this->plugin_url . 'js/jobs-plus.js', array('jquery', 'jquery-rateit' ), JOBS_PLUS_VERSION );
+		wp_register_script('jobs-plus', $this->plugin_url . 'js/jobs-plus.js', array('jquery', 'jquery-rateit' ), JOBS_PLUS_VERSION, true );
 
 		wp_register_script('jobs-plus-admin', $this->plugin_url . 'js/jobs-plus-admin.js', array('jquery' ), JOBS_PLUS_VERSION );
 	}
@@ -761,20 +761,9 @@ class Jobs_Plus_Core{
 		|| in_array(get_query_var('taxonomy'), array('jbp_category', 'jbp_tag', 'jbp_skills_tag')) ){
 
 			wp_enqueue_script('element-query');
-			wp_enqueue_style('jquery-rateit');
-			wp_enqueue_style('jobs-plus');
-			//wp_enqueue_style('jobs-plus-custom');
 			wp_enqueue_style('magnific-popup');
-
-			wp_enqueue_script('jquery-rateit');
-			//			wp_enqueue_script('jqueryui-editable');
-			//			wp_enqueue_script('jqueryui-editable-ext');
-			//			wp_enqueue_style('jqueryui-editable');
-			wp_enqueue_script('jquery-ui-slider');
 			wp_enqueue_script('jquery.magnific-popup');
 			wp_enqueue_script('jquery-cookie');
-			//			wp_enqueue_style('select2');
-			//			wp_enqueue_script('select2');
 			wp_enqueue_script('jobs-plus');
 		}
 
@@ -803,15 +792,6 @@ class Jobs_Plus_Core{
 				get_post_type_archive_link('jbp_job') ) );
 				exit;
 			}
-			//css for the edit Pages
-			wp_enqueue_style('jobs-plus');
-			//			wp_enqueue_style('jqueryui-editable');
-			wp_enqueue_style('magnific-popup');
-			wp_enqueue_script('jquery-ui-slider');
-			//wp_enqueue_script('jqueryui-editable');
-			//wp_enqueue_script('jqueryui-editable-ext');
-			wp_enqueue_script('jquery-ui-dialog');
-			wp_enqueue_script('jquery.magnific-popup');
 
 			$this->content = $this->job_content['update'];
 			$this->custom_type = 'jbp_job';
@@ -841,17 +821,6 @@ class Jobs_Plus_Core{
 					exit;
 				}
 			}
-
-			//css for the edit Pages
-			wp_enqueue_style('jobs-plus');
-			//			wp_enqueue_style('jqueryui-editable');
-			wp_enqueue_style('magnific-popup');
-
-			wp_enqueue_script('jquery-ui-slider');
-			//			wp_enqueue_script('jqueryui-editable');
-			//			wp_enqueue_script('jqueryui-editable-ext');
-			wp_enqueue_script('jquery-ui-dialog');
-			wp_enqueue_script('jquery.magnific-popup');
 
 			$this->title = 'custom_titles';
 			$this->content = $this->pro_content['update'];
@@ -1109,7 +1078,15 @@ class Jobs_Plus_Core{
 	*
 	*/
 	function no_comments(){
-		add_filter('comments_open', create_function('', 'return false;') );
+		add_filter('comments_open', '__return_false' );
+	}
+
+	/**
+	* Prevent comments display
+	*
+	*/
+	function no_thumbnail(){
+		add_filter('post_thumbnail_html', '__return_empty_string' );
 	}
 
 	/**

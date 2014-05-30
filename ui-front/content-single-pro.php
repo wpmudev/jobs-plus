@@ -23,14 +23,24 @@ elseif (get_query_var('edit')) { //Or are we editing a listing?
 	$link = get_permalink($post->ID);
 }
 
+//Styles
+wp_enqueue_style('jobs-plus-custom');
+wp_enqueue_style('jqueryui-editable');
+wp_enqueue_style('magnific-popup');
+
+//Scripts
 wp_enqueue_script('jobs-plus');
 wp_enqueue_script('jquery-ui-dialog');
-wp_enqueue_style('jqueryui-editable');
 wp_enqueue_script('jqueryui-editable');
 wp_enqueue_script('jqueryui-editable-ext');
+wp_enqueue_script('jquery-ui-dialog');
+wp_enqueue_script('jquery.magnific-popup');
+
 
 //var_dump( $editing );
 //var_dump( current_user_can( EDIT_PRO, $post->ID) );
+$this->no_thumbnail();
+
 ?>
 
 
@@ -135,7 +145,9 @@ wp_enqueue_script('jqueryui-editable-ext');
 						<?php echo do_shortcode('[jbp-rate-this]'); ?>
 					</label>
 					<?php if(current_user_can(EDIT_PRO, $post->ID) ): ?>
-					<span class="pro-edit"><button type="button" id="toggle-pro-edit" class="pro-button pro-edit-button hide-on-edit"><?php esc_html_e('Edit', JBP_TEXT_DOMAIN); ?></button></span>
+					<div class="pro-edit">
+					<span><button type="button" id="toggle-pro-edit" class="pro-button jbp-button pro-edit-button hide-on-edit"><?php esc_html_e('Edit', JBP_TEXT_DOMAIN); ?></button></span>
+					</div>
 					<?php endif; ?>
 				</div>
 
@@ -216,21 +228,15 @@ wp_enqueue_script('jqueryui-editable-ext');
 			<?php if(current_user_can(EDIT_PROS) ): ?>
 			<div class="show-on-edit">
 				<?php if($Jobs_Plus_Core->get_setting('pro->moderation->publish') ): ?>
-				<div class="pro-go-public">
-					<button type="submit" id="pro-publish" name="data[post_status]" value="publish" class="toggle-pro-save pro-go-public-button" ><?php esc_html_e('Save', JBP_TEXT_DOMAIN); ?></button>
-				</div>
+					<button type="submit" id="pro-publish" name="data[post_status]" value="publish" class="toggle-pro-save jbp-button pro-go-public-button" ><?php esc_html_e('Save', JBP_TEXT_DOMAIN); ?></button>
 				<?php endif; ?>
 
 				<?php if( !$Jobs_Plus_Core->get_setting('pro->moderation->publish') ): ?>
-				<div class="pro-go-public">
-					<button type="submit" id="pro-pending" name="data[post_status]" value="pending" class="toggle-pro-save pro-go-public-button" ><?php esc_html_e('Review', JBP_TEXT_DOMAIN); ?></button>
-				</div>
+					<button type="submit" id="pro-pending" name="data[post_status]" value="pending" class="toggle-pro-save pro-jbp-button go-public-button" ><?php esc_html_e('Review', JBP_TEXT_DOMAIN); ?></button>
 				<?php endif; ?>
 
 				<?php if($Jobs_Plus_Core->get_setting('pro->moderation->draft') ): ?>
-				<div class="pro-go-public">
-					<button type="submit" id="pro-draft" name="data[post_status]" value="draft" class="toggle-pro-save pro-go-public-button" ><?php esc_html_e('Draft', JBP_TEXT_DOMAIN); ?></button>
-				</div>
+					<button type="submit" id="pro-draft" name="data[post_status]" value="draft" class="toggle-pro-save jbp-button pro-go-public-button" ><?php esc_html_e('Draft', JBP_TEXT_DOMAIN); ?></button>
 				<?php endif; ?>
 			</div>
 			<?php endif; ?>

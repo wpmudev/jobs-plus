@@ -19,7 +19,7 @@ class WP_Widget_Recent_Job_Posts extends WP_Widget {
 	}
 
 	function widget($args, $instance) {
-		wp_enqueue_style('jobs-plus');
+		//wp_enqueue_style('jobs-plus');
 		$cache = wp_cache_get('widget_recent_job_posts', 'widget');
 
 		if (!is_array($cache))

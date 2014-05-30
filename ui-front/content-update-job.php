@@ -55,15 +55,18 @@ $editor_settings =   array(
 );
 
 //Styles
+wp_enqueue_style('jobs-plus-custom');
 wp_enqueue_style('jqueryui-editable');
+wp_enqueue_style('select2');
+wp_enqueue_style('magnific-popup');
 
 //Scripts
-wp_enqueue_style('select2');
 wp_enqueue_script('select2');
-
 wp_enqueue_script('jqueryui-editable');
 wp_enqueue_script('jqueryui-editable-ext');
 wp_enqueue_script('jquery-ui-dialog');
+wp_enqueue_script('jquery-ui-dialog');
+wp_enqueue_script('jquery.magnific-popup');
 
 ?>
 
@@ -72,7 +75,7 @@ wp_enqueue_script('jquery-ui-dialog');
 	<div class="group">
 		<?php if(dynamic_sidebar('job-widget') ) : else: endif; ?>
 	</div>
-	
+
 	<?php echo do_action('jbp_error'); ?>
 	<?php echo do_action('jbp_notice'); ?>
 
@@ -281,37 +284,28 @@ wp_enqueue_script('jquery-ui-dialog');
 		<?php endif; ?>
 
 		<?php if( current_user_can( EDIT_JOB, $post_ID) ): ?>
-		<div class="job-button-wrap group">
-			<div class="job-button-group ">
+		<div class="jbp-button-wrap group">
+			<div class="jbp-button-group ">
 				<?php wp_nonce_field( 'verify' ); ?>
 
 				<?php if($Jobs_Plus_Core->get_setting('job->moderation->publish') ): ?>
-				<div class="job-go-public">
-					<button type="submit" id="job-publish" name="data[post_status]" value="publish" class="toggle-job-save job-button job-go-public-button" ><?php esc_html_e('Save', JBP_TEXT_DOMAIN); ?></button>
-				</div>
+					<button type="submit" id="job-publish" name="data[post_status]" value="publish" class="toggle-job-save jbp-button job-go-public-button" ><?php esc_html_e('Save', JBP_TEXT_DOMAIN); ?></button>
 				<?php endif; ?>
 
 				<?php if( !$Jobs_Plus_Core->get_setting('job->moderation->publish') ): ?>
-				<div class="job-go-public">
-					<button type="submit" id="job-pending" name="data[post_status]" value="pending" class="toggle-job-save job-button job-go-public-button" ><?php esc_html_e('Review', JBP_TEXT_DOMAIN); ?></button>
-				</div>
+					<button type="submit" id="job-pending" name="data[post_status]" value="pending" class="toggle-job-save jbp-button job-go-public-button" ><?php esc_html_e('Review', JBP_TEXT_DOMAIN); ?></button>
 				<?php endif; ?>
 
 				<?php if($Jobs_Plus_Core->get_setting('job->moderation->draft') ): ?>
-				<div class="job-go-public">
-					<button type="submit" id="job-draft" name="data[post_status]" value="draft" class="toggle-job-save job-button job-go-public-button" ><?php esc_html_e('Draft', JBP_TEXT_DOMAIN); ?></button>
-				</div>
+					<button type="submit" id="job-draft" name="data[post_status]" value="draft" class="toggle-job-save jbp-button job-go-public-button" ><?php esc_html_e('Draft', JBP_TEXT_DOMAIN); ?></button>
 				<?php endif; ?>
 
 				<?php if($editing): ?>
-				<div class="job-go-public">
-					<button type="button" class="job-button" onclick="window.location='<?php echo get_permalink( get_the_id() ); ?>';"><?php esc_html_e('Cancel', JBP_TEXT_DOMAIN); ?></button>
-				</div>
+					<button type="button" class="jbp-button" onclick="window.location='<?php echo get_permalink( get_the_id() ); ?>';"><?php esc_html_e('Cancel', JBP_TEXT_DOMAIN); ?></button>
 				<?php else: ?>
-				<div class="job-go-public">
-					<button type="button" class="job-button" onclick="window.location='<?php echo get_post_type_archive_link('jbp_jobs'); ?>';"><?php esc_html_e('Cancel', JBP_TEXT_DOMAIN); ?></button>
-				</div>
+					<button type="button" class="jbp-button" onclick="window.location='<?php echo get_post_type_archive_link('jbp_jobs'); ?>';"><?php esc_html_e('Cancel', JBP_TEXT_DOMAIN); ?></button>
 				<?php endif; ?>
+
 			</div>
 		</div>
 		<?php endif; ?>

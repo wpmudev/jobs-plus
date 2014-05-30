@@ -5,8 +5,23 @@
 * @license GPL2+
 */
 
+.pro-archive-wrapper input[type="text"],
+.pro-archive-wrapper select,
+.pro-archive-wrapper textarea {
+	height: auto;
+	font-size: 14px;
+}
+
+.pro-archive-wrapper form{
+	font-size: 15px;
+}
+
+.pro-archive-wrapper label{
+	font-size: 15px;
+}
+
 .pro-archive-wrapper h1{
-	font-size: 32px;	
+	font-size: 32px;
 }
 
 .pro-archive-wrapper h2{
@@ -14,11 +29,11 @@
 }
 
 .pro-archive-wrapper h3{
-	font-size: 18px;	
+	font-size: 18px;
 }
 
 .pro-archive-wrapper h4{
-	font-size: 16px;	
+	font-size: 16px;
 }
 
 .pro-archive-wrapper p.subheader1{
@@ -31,8 +46,23 @@
 }
 
 
+.pro-profile-wrapper input[type="text"],
+.pro-profile-wrapper select,
+.pro-profile-wrapper textarea {
+	height: auto;
+	font-size: 14px;
+}
+
+.pro-profile-wrapper form{
+	font-size: 15px;
+}
+
+.pro-profile-wrapper label{
+	font-size: 15px;
+}
+
 .pro-profile-wrapper h1{
-	font-size: 32px;	
+	font-size: 32px;
 }
 
 .pro-profile-wrapper h2{
@@ -40,11 +70,11 @@
 }
 
 .pro-profile-wrapper h3{
-	font-size: 18px;	
+	font-size: 18px;
 }
 
 .pro-profile-wrapper h4{
-	font-size: 16px;	
+	font-size: 16px;
 }
 
 .pro-profile-wrapper p.subheader1{
@@ -59,6 +89,8 @@
 .pro-content-wrapper{
 	position relative;
 	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
 }
 
 .pro-content-wrapper ul{
@@ -106,10 +138,7 @@ a.pro-add{
 }
 
 .pro-edit {
-	float: right;
-	position: relative;
-	top: -20px;
-	z-index: 10;
+	text-align: right;
 }
 
 /* Portfolio layout */
@@ -188,24 +217,28 @@ a.pro-add{
 .pro-profile-wrapper{
 	width: 825px;
 	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
 }
 
 h2.pro-title{
 	margin: 0 0 20px 0;
 	font-size: 22px;
 	line-height: 1em;
-	
+
 }
 
-	.pro-pad{
-		margin: 0 50px;
-	}
+.pro-pad{
+	margin: 0 50px;
+}
 
-	.pro-left{
-		float: left;
-		width: 230px;
-		box-sizing: border-box;
-	}
+.pro-left{
+	float: left;
+	width: 230px;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+}
 
 @media screen and (min-width: 800px) {
 
@@ -229,10 +262,6 @@ h2.pro-title{
 	display: inline-block;
 	vertical-align: top;
 	font-weight: bold;
-}
-
-label.pro-rate-me{
-	margin-bottom: 2em;
 }
 
 .control-group button{
@@ -272,7 +301,13 @@ h2.pro-skills{
 
 /* Social links */
 .pro-social{margin:0;text-align:left; border: 0;}
-.pro-social li{	background-image: none;	padding: 0; box-sizing: border-box;}
+.pro-social li{
+	background-image: none;
+	padding: 0;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+}
 .pro-social .social_t{display:block;font-variant:small-caps;margin-bottom:5px;}
 .pro-social ul{display:block;list-style-type:none;margin:0 auto;padding:0;}
 .pro-social ul li{display:block; float: left; margin:0 28px 20px 0 !important; padding:0;}
@@ -307,6 +342,9 @@ h2.pro-skills{
 	margin-bottom: 30px;
 	padding: 20px 0;
 	height: 320px;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
 }
 
 .pro-gravatar .avatar{

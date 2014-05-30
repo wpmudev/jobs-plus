@@ -1420,3 +1420,24 @@ a.editable-click.editable-disabled:hover {
 	line-height: 140%;
 }
 
+.ui-tooltip-content{
+	font-size: 14px;
+	font-weight: normal;
+}
+
+button.image-label{
+	border: 1px solid;
+}
+
+input.editable-portfolio[type="file"]{
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	z-index: 99;
+	cursor: pointer; 
+	margin: 0;
+	padding: 0;
+	opacity: 0;
+}
