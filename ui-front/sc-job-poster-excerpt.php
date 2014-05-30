@@ -33,7 +33,7 @@ $terms = wp_get_post_terms( $post->ID, 'jbp_category', array('fields' => 'ids') 
 		<h2><a href="<?php echo esc_attr(get_permalink(get_the_ID())); ?>" class="job-show" title="<?php the_title(); ?>" ><?php the_title(); ?></a></h2>
 		<span class="job-read-more"><a href="<?php the_permalink(); ?>" ><?php esc_html_e('Read more...', JBP_TEXT_DOMAIN ); ?></a></span>
 		<span class="job-cat"><?php the_terms(get_the_id(), 'jbp_category', '', ', ', ''); ?>&nbsp;</span>
-		<span class="job-budget"><?php _e('Budget: $', JBP_TEXT_DOMAIN); ?><?php echo do_shortcode('[ct id="_ct_jbp_job_Budget"]'); ?></span>
+		<span class="job-budget"><?php esc_html_e('Budget: $', JBP_TEXT_DOMAIN); ?><?php echo do_shortcode('[ct id="_ct_jbp_job_Budget"]' ); ?></span>
 	</div>
-	
+
 </div>

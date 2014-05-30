@@ -163,30 +163,43 @@ class Jobs_Plus_Admin extends Jobs_Plus_Core{
 		*/
 		function wp_pointer_load(){
 
-			//var_dump(get_current_screen()->id);
+			var_dump(get_current_screen()->id);
 
-			$cookie_content = __('<p>WHMCS WordPress Integration can now sync certain cookies between WHMCS and Wordpress so that downloads of protected files from WHMCS can work correctly in WordPress.</p> <p>This requires copying the "wp-integration.php" file in this plugin to the root of the WHMCS System installation.</p>', JBP_TEXT_DOMAIN);
+			$term_images_content =  __('<p>Jobs + works best when you use images for Job Categories, please enable them here and configure the image size that best fits your website</p>', JBP_TEXT_DOMAIN);
 
 			//Setup any new feature notices
-			include $this->plugin_dir . 'class/class-wp-help-pointers.php';
+			include_once $this->plugin_dir . 'class/class-wp-help-pointers.php';
 
 			$pointers = array(
+
 			array(
-			'id' => 'wcp_endpoint',   // unique id for this pointer
-			'screen' => 'toplevel_page_wcp-settings', // this is the page hook we want our pointer to show on
-			'target' => '#wcp-endpoint', // the css selector for the pointer to be tied to, best to use ID's
-			'title' => __('NEW - Permalinks Endpoint Slug', JBP_TEXT_DOMAIN),
-			'content' => __('<p>This is the slug that signals that the following page is to be pulled from the WHMCS site.</p> <p>You can change it to whatever you like to avoid interfering with other pages but like all slugs it should contain Only lowercase alphanumerics and the hyphen.</p>', JBP_TEXT_DOMAIN),
+			'id' => 'jbp_term_images',       // unique id for this pointer
+			'screen' => 'edit-jbp_category', // this is the page hook we want our pointer to show on
+			'target' => '#jbp-term-images',  // the css selector for the pointer to be tied to, best to use ID's
+			'title' => __('Term Images Setup', JBP_TEXT_DOMAIN),
+			'content' => $term_images_content,
 			'position' => array(
-			'edge' => 'top', //top, bottom, left, right
+			'edge' => 'left', //top, bottom, left, right
 			'align' => 'middle' //top, bottom, left, right, middle
 			)
 			),
 
 			array(
-			'id' => 'wcp_cookies',   // unique id for this pointer
+			'id' => 'jbp_term_images',         // unique id for this pointer
+			'screen' => 'edit-jbp_skills_tag', // this is the page hook we want our pointer to show on
+			'target' => '#jbp-term-images',    // the css selector for the pointer to be tied to, best to use ID's
+			'title' => __('Term Images Setup', JBP_TEXT_DOMAIN),
+			'content' => $term_images_content,
+			'position' => array(
+			'edge' => 'left', //top, bottom, left, right
+			'align' => 'middle' //top, bottom, left, right, middle
+			)
+			),
+
+			array(
+			'id' => 'jbp_cookies',   // unique id for this pointer
 			'screen' => 'plugins', // this is the page hook we want our pointer to show on
-			'target' => '#toplevel_page_wcp-settings', // the css selector for the pointer to be tied to, best to use ID's
+			'target' => '#toplevel_page_jbp-settings', // the css selector for the pointer to be tied to, best to use ID's
 			'title' => __('NEW - WHMCS WordPress Integration Cookie syncing', JBP_TEXT_DOMAIN),
 			'content' => $cookie_content,
 			'position' => array(
@@ -196,9 +209,9 @@ class Jobs_Plus_Admin extends Jobs_Plus_Core{
 			),
 
 			array(
-			'id' => 'wcp_cookies',   // unique id for this pointer
-			'screen' => 'toplevel_page_wcp-settings', // this is the page hook we want our pointer to show on
-			'target' => '#toplevel_page_wcp-settings', // the css selector for the pointer to be tied to, best to use ID's
+			'id' => 'jbp_cookies',   // unique id for this pointer
+			'screen' => 'toplevel_page_jbp-settings', // this is the page hook we want our pointer to show on
+			'target' => '#toplevel_page_jbp-settings', // the css selector for the pointer to be tied to, best to use ID's
 			'title' => __('NEW - WHMCS WordPress Integration Cookie syncing', JBP_TEXT_DOMAIN),
 			'content' => $cookie_content,
 			'position' => array(
@@ -210,7 +223,7 @@ class Jobs_Plus_Admin extends Jobs_Plus_Core{
 			// more as needed
 			);
 
-			//new WP_Help_Pointer($pointers);
+			new WP_Help_Pointer($pointers);
 		}
 
 	/**

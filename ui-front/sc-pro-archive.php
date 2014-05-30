@@ -20,7 +20,7 @@ $status_div = '';
 		<?php echo get_avatar_or_gravatar($post->post_author, do_shortcode('[ct id="_ct_jbp_pro_Contact_Email"]'), 80); ?>
 	</div>
 	<div class="pro-more">
-		<div><?php _e('Find Out More', JBP_TEXT_DOMAIN); ?></div>
+		<div><?php esc_html_e('Find Out More', JBP_TEXT_DOMAIN); ?></div>
 	</div>
 </div>
 

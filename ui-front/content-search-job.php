@@ -20,11 +20,15 @@ function job_have_posts(){
 ?>
 
 <div class="job-archive-wrapper">
-	<?php if(dynamic_sidebar('job-archive-widget') ) : else: endif; ?>
+
+	<div class="group">
+		<?php if(dynamic_sidebar('job-archive-widget') ) : else: endif; ?>
+	</div>
+	
 	<?php echo do_action('jbp_error'); ?>
 	<?php echo do_action('jbp_notice'); ?>
 
-<?php echo do_shortcode('[jbp-job-search]'); ?>
+	<?php echo do_shortcode('[jbp-job-search]'); ?>
 
 	<?php if(have_posts()): ?>
 	<div id="job-grid-container">
@@ -46,7 +50,7 @@ function job_have_posts(){
 	jQuery(document).ready( function($){
 
 		$(".job-show").ellipsis({row: 3 });
-		$(".ellipsis").ellipsis({row: 4, char: '<a> . . .Read more</a>' });
+		$(".ellipsis").ellipsis({row: 3, char: '<a> . . .Read more</a>' });
 
 		var $container = $("#job-grid-container");
 		$container.masonry({
@@ -63,7 +67,7 @@ function job_have_posts(){
 			window.location = permalink;
 		});
 
-		
+
 	});
 </script>
 <?php endif; ?>

@@ -21,12 +21,12 @@ $sort_ending = (!empty($_GET['prj-sort']) && $_GET['prj-sort'] == 'ending' ? 'ac
 				</li>
 				<li>
 					<span class="sort-by-latest <?php echo $sort_latest; ?> divider">
-						<a href="<?php echo add_query_arg( array('prj_sort' => 'latest', ), get_post_type_archive_link('jbp_job') );?>" ><?php _e('Latest', JPB_TEXT_DOMAIN ); ?></a>
+						<a href="<?php echo add_query_arg( array('prj_sort' => 'latest', ), get_post_type_archive_link('jbp_job') );?>" ><?php esc_html_e('Latest', JPB_TEXT_DOMAIN ); ?></a>
 					</span>
 				</li>
 				<li class="right-border">
 					<span class="sort-by-end <?php echo $sort_ending; ?>">
-						<a href="<?php echo add_query_arg( array('prj_sort' => 'ending', ), get_post_type_archive_link('jbp_job') );?>" ><?php _e('About to End', JPB_TEXT_DOMAIN ); ?></a>
+						<a href="<?php echo add_query_arg( array('prj_sort' => 'ending', ), get_post_type_archive_link('jbp_job') );?>" ><?php esc_html_e('About to End', JPB_TEXT_DOMAIN ); ?></a>
 					</span>
 				</li>
 				<li>

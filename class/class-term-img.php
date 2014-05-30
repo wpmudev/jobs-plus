@@ -45,6 +45,19 @@ class Term_Images{
 
 	function on_admin_menu(){
 		add_options_page(__('Terms Images', $this->text_domain), __('Terms Images', $this->text_domain), 'manage_categories', 'term-images', array(&$this, 'admin_menu_page') );
+		
+		$this->jobs_menu_page = add_submenu_page('edit.php?post_type=jbp_job',
+		__('Term Images', JBP_TEXT_DOMAIN),
+		__('<span id="jbp-term-images">Term Images</span>', JBP_TEXT_DOMAIN),
+		'manage_categories', 'term-images',
+		array($this, 'admin_menu_page') );
+		
+		$this->jobs_menu_page = add_submenu_page('edit.php?post_type=jbp_pro',
+		__('Term Images', JBP_TEXT_DOMAIN),
+		__('Term Images', JBP_TEXT_DOMAIN),
+		'manage_categories', 'term-images',
+		array($this, 'admin_menu_page') );
+
 	}
 
 	private function _key( $term_id, $taxonomy='') {
