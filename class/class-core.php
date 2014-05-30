@@ -762,7 +762,7 @@ class Jobs_Plus_Core{
 
 			wp_enqueue_script('element-query');
 			wp_enqueue_style('jquery-rateit');
-			//wp_enqueue_style('jobs-plus');
+			wp_enqueue_style('jobs-plus');
 			//wp_enqueue_style('jobs-plus-custom');
 			wp_enqueue_style('magnific-popup');
 
