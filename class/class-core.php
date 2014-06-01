@@ -571,6 +571,8 @@ class Jobs_Plus_Core{
 		$page_id = ($page && $page->ID > 0) ? $page->ID : 0;
 		if ( empty($page_id) ) {
 			/* Construct args for the new post */
+			if( empty($this->job_slug) ) $this->job_slug = 'job';
+			if( empty($this->job_labels->singular_name) ) $this->job_labels->singular_name = 'Job';
 			$args = array(
 			'post_title'     => sprintf('Add %s', $this->job_labels->singular_name),
 			'post_name'      => sprintf('add-%s', $this->job_slug ),
@@ -595,6 +597,8 @@ class Jobs_Plus_Core{
 		$page_id = ($page && $page->ID > 0) ? $page->ID : 0;
 		if ( empty($page_id) ) {
 			/* Construct args for the new post */
+			if( empty($this->pro_slug) ) $this->pro_slug = 'expert';
+			if( empty($this->pro_labels->singular_name) ) $this->pro_labels->singular_name = 'Expert';
 			$args = array(
 			'post_title'     => sprintf('Add %s', $this->pro_labels->singular_name),
 			'post_name'      => sprintf('add-%s', $this->pro_slug ),
