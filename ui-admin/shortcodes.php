@@ -105,12 +105,22 @@
 			</tr>
 
 			<tr>
+				<th scope="row"><?php printf( esc_html__('%s Poster:', JBP_TEXT_DOMAIN ), $this->pro_labels->name); ?></th>
+				<td>
+					<code>
+						[jbp-expert-poster title="<?php printf(__('Our %s', $this->text_domain),$this->pro_labels->name);?>" legend="<?php printf(__('Become an %s', $this->text_domain),$this->pro_labels->singular_name);?>" link="<?php printf(__('Browse %s...', $this->text_domain),$this->pro_labels->name);?>" view="loggedin|loggedout|both" class="some class"]
+					</code>
+					<br/><span class="description"><?php printf( esc_html__( 'Displays a group of random %s.', JBP_TEXT_DOMAIN ), $this->pro_labels->name) ?></span>
+				</td>
+			</tr>
+
+			<tr>
 				<th scope="row"><?php esc_html_e('Rating stars:', JBP_TEXT_DOMAIN ); ?></th>
 				<td>
 					<code>
-						[jbp-ratings post="post_id"  view="loggedin|loggedout|both" class="some class"]
+						[jbp-rating post="post_id"  view="loggedin|loggedout|both" class="some class"]
 					</code>
-					<br/><span class="description"><?php esc_html_e( 'Displays ratings stars for the owner of "post". If "post" is not used it assumes the current global $post object.', JBP_TEXT_DOMAIN ); ?></span>
+					<br/><span class="description"><?php esc_html_e( 'Displays rating stars for the owner of "post". If "post" is not used it assumes the current global $post object.', JBP_TEXT_DOMAIN ); ?></span>
 				</td>
 			</tr>
 
@@ -190,9 +200,19 @@
 				<th scope="row"><?php printf( esc_html__('%s Poster:', JBP_TEXT_DOMAIN ), $this->job_labels->name); ?></th>
 				<td>
 					<code>
-						[jbp-job-poster text="<?php printf( esc_html__('Recently Posted %s', JBP_TEXT_DOMAIN), $this->job_labels->name);?>" view="loggedin|loggedout|both" class="some class"]
+						[jbp-job-poster title="<?php printf( esc_html__('Recently Posted %s', JBP_TEXT_DOMAIN), $this->job_labels->name);?>" legend="<?php printf(__('Post a %s', $this->text_domain),$this->job_labels->singular_name);?>" link="<?php printf(__('Browse More %s...', $this->text_domain),$this->job_labels->name);?>" view="loggedin|loggedout|both" class="some class"]
 					</code>
-					<br/><span class="description"><?php printf( esc_html__( 'Displays search form for %s search.', JBP_TEXT_DOMAIN ), $this->job_labels->name) ?></span>
+					<br/><span class="description"><?php printf( esc_html__( 'Displays a group of recent %s.', JBP_TEXT_DOMAIN ), $this->job_labels->name) ?></span>
+				</td>
+			</tr>
+
+			<tr>
+				<th scope="row"><?php esc_html_e('Landing Page:', JBP_TEXT_DOMAIN ); ?></th>
+				<td>
+					<code>
+						[jbp-landing-page view="loggedin|loggedout|both" class="some class"]
+					</code>
+					<br/><span class="description"><?php printf( esc_html__( 'Displays a combination of %s and %s posters above.', JBP_TEXT_DOMAIN ), $this->job_labels->name, $this->pro_labels->name) ?></span>
 				</td>
 			</tr>
 

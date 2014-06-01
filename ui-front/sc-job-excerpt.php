@@ -17,13 +17,16 @@ switch($wp_query->current_post){
 }
 
 switch($wp_query->current_post % 6){
-	case 0: $color = 'job-yellow'; break;
-	case 1: $color = 'job-mint'; break;
-	case 2: $color = 'job-rose'; break;
-	case 3: $color = 'job-blue'; break;
-	case 4: $color = 'job-amber'; break;
-	case 5: $color = 'job-grey'; break;
+	case 0: $color = 'jbp-yellow'; break;
+	case 1: $color = 'jbp-mint'; break;
+	case 2: $color = 'jbp-rose'; break;
+	case 3: $color = 'jbp-blue'; break;
+	case 4: $color = 'jbp-amber'; break;
+	case 5: $color = 'jbp-grey'; break;
 }
+
+wp_enqueue_style('jobs-plus-custom');
+wp_enqueue_script('jquery-format-currency-i18n');
 
 ?>
 
@@ -51,7 +54,7 @@ switch($wp_query->current_post % 6){
 		<div class="job-stats">
 			<?php if(get_post_status() != 'publish') echo ucfirst($post->post_status); ?>
 			<span class="job-due"><?php esc_html_e('Due: ', JBP_TEXT_DOMAIN); ?><?php echo do_shortcode('[ct id="_ct_jbp_job_Due"]'); ?></span>
-			<span class="job-budget"><?php esc_html_e('Budget: $', JBP_TEXT_DOMAIN); ?><?php echo do_shortcode('[ct id="_ct_jbp_job_Budget"]'); ?></span>
+			<span class="job-budget"><?php esc_html_e('Budget: ', JBP_TEXT_DOMAIN); ?><span class="currency_symbol">$</span><?php echo do_shortcode('[ct id="_ct_jbp_job_Budget"]'); ?></span>
 		</div>
 	</div>
 

@@ -22,12 +22,14 @@ function days_hours( $expires ){
 
 $project_min = sanitize_text_field(trim( do_shortcode('[ct id="_ct_jbp_job_Min_Budget" ]') ) );
 $project_max = sanitize_text_field(trim( do_shortcode('[ct id="_ct_jbp_job_Budget" ]') ) );
-$project_budget = empty( $project_min) ? '' : $this->get_setting('general->currency', __('$', JBP_TEXT_DOMAIN) ) . $project_min;
-$project_budget .= !empty( $project_min ) && !empty( $project_max ) ? ' - ' : '';
-$project_budget .= empty( $project_max) ? '' : $this->get_setting('general->currency', __('$', JBP_TEXT_DOMAIN) ) . $project_max;
-$project_budget = ($project_budget == '' ? 'N/A' : $project_budget);
+$project_min = empty( $project_min) ? '' : $project_min;
+$project_dash = !empty( $project_min ) && !empty( $project_max ) ? ' - ' : '';
+$project_max = empty( $project_max) ? '' : $project_max;
+$project_max = ($project_min . $project_max == '') ? 'N/A' : $project_max;
 
 //$post_ID = $post->ID;
+wp_enqueue_style('jobs-plus-custom');
+wp_enqueue_script('jquery-format-currency-i18n');
 
 ?>
 <div class="job-single-wrapper">
@@ -41,7 +43,7 @@ $project_budget = ($project_budget == '' ? 'N/A' : $project_budget);
 	<div class="job-meta group">
 		<div class="job-date"><p class="subheader1"><?php  echo esc_html( sprintf(__('Posted by: %s on %s', JBP_TEXT_DOMAIN ), get_the_author(), get_the_date() ) ); ?></p></div>
 		<ul class="group">
-			<li><span class="meta-label"><?php esc_html_e('Job Budget', JBP_TEXT_DOMAIN);?><br /></span><span class="meta-red"><?php echo $project_budget;?></span></li>
+			<li><span class="meta-label"><?php esc_html_e('Job Budget', JBP_TEXT_DOMAIN);?><br /></span><span id="project-min" class="meta-red "></span><span id="project-dash" class="meta-red "></span><span id="project-max" class="meta-red "></span></li>
 			<li><span class="meta-label"><?php esc_html_e('This job open for', JBP_TEXT_DOMAIN);?><br /></span><span class="meta-green"><?php echo days_hours( get_post_meta(get_the_ID(), JBP_JOB_EXPIRES_KEY, true) );?></span></li>
 			<li class="border"><span class="meta-label"><?php esc_html_e('Must be complete by', JBP_TEXT_DOMAIN);?><br /></span><span class="meta-red"><?php echo do_shortcode('[ct id="_ct_jbp_job_Due" ]'); ?></span></li>
 			<li>
@@ -103,5 +105,10 @@ $project_budget = ($project_budget == '' ? 'N/A' : $project_budget);
 <script type="text/javascript">
 	jQuery(document).ready( function($) {
 		magnificPopupAttach(true);
+		
+		$('#project-min').text('<?php echo $project_min; ?>').formatCurrency({ region: '<?php echo $this->js_locale; ?>', roundToDecimalPlace: 0});
+		$('#project-max').text('<?php echo $project_max; ?>').formatCurrency({ region: '<?php echo $this->js_locale; ?>', roundToDecimalPlace: 0});
+		$('#project-dash').text('<?php echo $project_dash; ?>').formatCurrency({ region: '<?php echo $this->js_locale; ?>'});
+	
 	});
 </script>

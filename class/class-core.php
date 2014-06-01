@@ -68,6 +68,8 @@ class Jobs_Plus_Core{
 	public $job_slug = null;
 	public $pro_slug = null;
 
+	public $js_locale = 'en-US'; //Default language for currency internationaization
+
 	function __construct(){
 		register_activation_hook($this->plugin_dir . 'jobs-plus.php', array(&$this,'on_activate') );
 		register_deactivation_hook($this->plugin_dir . 'jobs-plus.php', array(&$this,'on_deactivate') );
@@ -142,6 +144,9 @@ class Jobs_Plus_Core{
 
 		add_shortcode( 'jbp-expert-poster-excerpt', array( &$this, 'expert_poster_excerpt_sc' ) );
 		add_shortcode( 'jbp-expert-poster', array( &$this, 'expert_poster_sc' ) );
+		add_shortcode( 'jbp-landing-page', array( &$this, 'landing_page_sc' ) );
+
+		add_shortcode( 'jbp-job-price-search', array( &$this, 'job_price_search_sc' ) );
 
 	}
 
@@ -434,7 +439,13 @@ class Jobs_Plus_Core{
 
 		$suffix = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ? '' : '.min';
 
-		wp_register_style('jobs-plus', $this->plugin_url . 'css/jobs-plus.css', array(), JOBS_PLUS_VERSION );
+		wp_register_style('jquery-rateit', $this->plugin_url . "css/rateit.css", array(), JQUERY_RATEIT );
+		wp_register_style('jqueryui-editable', $this->plugin_url . "css/jqueryui-editable.css", array(), JQUERYUI_EDITABLE );
+		wp_register_style('magnific-popup', $this->plugin_url . "css/magnific-popup.css", array(), JQUERY_MAGNIFIC_POPUP );
+		wp_register_style('select2', $this->plugin_url . "css/select2.css", array('jobs-plus'), SELECT2 );
+
+		wp_register_style('jobs-plus', $this->plugin_url . 'css/jobs-plus.css', array('jqueryui-editable'), JOBS_PLUS_VERSION );
+
 		//Look for and load any custom css defined, Priority, Child, Parent, Plugin css
 		$custom_css = 'jobs-plus-custom.css';
 		$custom_css_url = false;
@@ -448,20 +459,13 @@ class Jobs_Plus_Core{
 
 		wp_register_script('element-query', $this->plugin_url . "js/eq.js", array('jquery'), JOBS_PLUS_VERSION, true );
 
-		wp_register_style('jquery-rateit', $this->plugin_url . "css/rateit.css", array(), JQUERY_RATEIT );
 		wp_register_script('jquery-rateit', $this->plugin_url . "js/jquery.rateit$suffix.js", array('jquery'), JQUERY_RATEIT, true );
 
-		wp_register_style('jqueryui-editable', $this->plugin_url . "css/jqueryui-editable.css", array(), JQUERYUI_EDITABLE );
-		//		wp_register_script('jqueryui-editable', $this->plugin_url . "js/jqueryui-editable$suffix.js", array('jquery', 'jquery-ui-tooltip', 'jquery-ui-button'), JQUERYUI_EDITABLE, true );
-		wp_register_script('jqueryui-editable', $this->plugin_url . "js/jqueryui-editable.js", array('jquery', 'jquery-ui-tooltip', 'jquery-ui-button'), JQUERYUI_EDITABLE, true );
+		wp_register_script('jqueryui-editable', $this->plugin_url . "js/jqueryui-editable$suffix.js", array('jquery', 'jquery-ui-tooltip', 'jquery-ui-button'), JQUERYUI_EDITABLE, true );
+		//wp_register_script('jqueryui-editable', $this->plugin_url . "js/jqueryui-editable.js", array('jquery', 'jquery-ui-tooltip', 'jquery-ui-button'), JQUERYUI_EDITABLE, true );
 
-		wp_register_style('magnific-popup', $this->plugin_url . "css/magnific-popup.css", array(), JQUERY_MAGNIFIC_POPUP );
 		wp_register_script('jquery.magnific-popup', $this->plugin_url . "js/jquery.magnific-popup$suffix.js", array('jquery' ), JQUERY_MAGNIFIC_POPUP, true );
 
-		//wp_deregister_script('masonry');
-		//wp_register_script('masonry', $this->plugin_url . "js/masonry.pkgd$suffix.js", array('jquery' ), MASONRY, true );
-
-		wp_register_style('select2', $this->plugin_url . "css/select2.css", array('jobs-plus'), SELECT2 );
 		wp_register_script('select2', $this->plugin_url . "js/select2$suffix.js", array('jquery' ), SELECT2, true);
 
 		wp_register_script('jquery-cookie', $this->plugin_url . 'js/jquery.cookie.js', array('jquery' ), JQUERY_COOKIE, true );
@@ -471,6 +475,46 @@ class Jobs_Plus_Core{
 		wp_register_script('jobs-plus', $this->plugin_url . 'js/jobs-plus.js', array('jquery', 'jquery-rateit' ), JOBS_PLUS_VERSION, true );
 
 		wp_register_script('jobs-plus-admin', $this->plugin_url . 'js/jobs-plus-admin.js', array('jquery' ), JOBS_PLUS_VERSION );
+
+		//Format currency internationalization
+		// People use both "_" and "-" versions for locale IDs en_GB en-GB
+		//Translate it all to dashes because that's the way the standard translation files for formatCurrency are named.
+
+		$wplocale = str_replace('_', '-', get_locale() );
+		$this->js_locale = ($wplocale == '') ? '' : substr($wplocale, 0, 2); // Non specific locale
+
+		// Specific locale exceptions
+		$this->js_locale = (in_array($wplocale, array(
+		'af-ZA', 'am-ET', 'ar-AE', 'ar-BH', 'ar-DZ', 'ar-EG', 'ar-IQ', 'ar-JO', 'ar-KW',
+		'ar-LB', 'ar-LY', 'ar-MA', 'ar-OM', 'ar-QA', 'ar-SA', 'ar-SY', 'ar-TN', 'ar-YE',
+		'arn-CL', 'as-IN', 'az-Cyrl-AZ', 'az-Latn-AZ', 'ba-RU', 'be-BY', 'bg-BG', 'bn-BD',
+		'bn-IN', 'bo-CN', 'br-FR', 'bs-Cyrl-BA', 'bs-Latn-BA', 'ca-ES', 'co-FR', 'cs-CZ',
+		'cy-GB', 'da-DK', 'de-AT', 'de-CH', 'de-DE', 'de-LI', 'de-LU', 'dsb-DE', 'dv-MV',
+		'el-GR', 'en-029', 'en-AU', 'en-BZ', 'en-CA', 'en-GB', 'en-IE', 'en-IN', 'en-JM',
+		'en-MY', 'en-NZ', 'en-PH', 'en-SG', 'en-TT', 'en-US', 'en-ZA', 'en-ZW', 'es-AR',
+		'es-BO', 'es-CL', 'es-CO', 'es-CR', 'es-DO', 'es-EC', 'es-ES', 'es-GT', 'es-HN',
+		'es-MX', 'es-NI', 'es-PA', 'es-PE', 'es-PR', 'es-PY', 'es-SV', 'es-US', 'es-UY',
+		'es-VE', 'et-EE', 'eu-ES', 'fa-IR', 'fi-FI', 'fil-PH', 'fo-FO', 'fr-BE', 'fr-CA',
+		'fr-CH', 'fr-FR', 'fr-LU', 'fr-MC', 'fy-NL', 'ga-IE', 'gl-ES', 'gsw-FR', 'gu-IN',
+		'ha-Latn-NG', 'he-IL', 'hi-IN', 'hr-BA', 'hr-HR', 'hsb-DE', 'hu-HU', 'hy-AM', 'id-ID',
+		'ig-NG', 'ii-CN', 'is-IS', 'it-CH', 'it-IT', 'iu-Cans-CA', 'iu-Latn-CA', 'ja-JP', 'ka-GE',
+		'kk-KZ', 'kl-GL', 'km-KH', 'kn-IN', 'ko-KR', 'kok-IN', 'ky-KG', 'lb-LU', 'lo-LA', 'lt-LT',
+		'lv-LV', 'mi-NZ', 'mk-MK', 'ml-IN', 'mn-MN', 'mn-Mong-CN', 'moh-CA', 'mr-IN', 'ms-BN',
+		'ms-MY', 'mt-MT', 'nb-NO', 'ne-NP', 'nl-BE', 'nl-NL', 'nn-NO', 'nso-ZA', 'oc-FR', 'or-IN',
+		'pa-IN', 'pl-PL', 'prs-AF', 'ps-AF', 'pt-BR', 'pt-PT', 'qut-GT', 'quz-BO', 'quz-EC', 'quz-PE',
+		'rm-CH', 'ro-RO', 'ru-RU', 'rw-RW', 'sa-IN', 'sah-RU', 'se-FI', 'se-NO', 'se-SE', 'si-LK',
+		'sk-SK', 'sl-SI', 'sma-NO', 'sma-SE', 'smj-NO', 'smj-SE', 'smn-FI', 'sms-FI', 'sq-AL', 'sr-Cyrl-BA',
+		'sr-Cyrl-CS', 'sr-Latn-BA', 'sr-Latn-CS', 'sv-FI', 'sv-SE', 'sw-KE', 'syr-SY', 'ta-IN', 'te-IN',
+		'tg-Cyrl-TJ', 'th-TH', 'tk-TM', 'tn-ZA', 'tr-TR', 'tt-RU', 'tzm-Latn-DZ', 'ug-CN', 'uk-UA', 'ur-PK',
+		'uz-Cyrl-UZ', 'uz-Latn-UZ', 'vi-VN', 'wo-SN', 'xh-ZA', 'yo-NG', 'zh-CN', 'zh-HK', 'zh-MO', 'zh-SG', 'zh-TW', 'zu-ZA'
+		) ) )  ?  $wplocale : $this->js_locale;
+
+		if( empty($this->js_locale) ) $this->js_locale = 'en-US';
+		
+		wp_register_script('jquery-format-currency-i18n', $this->plugin_url . "js/i18n/jquery.formatCurrency.{$this->js_locale}.js", array('jquery', 'jquery-format-currency' ), JQUERY_FORMAT_CURRENCY, true );
+		wp_register_script('jquery-format-currency', $this->plugin_url . "js/jquery.formatCurrency$suffix.js", array( 'jquery' ), JQUERY_FORMAT_CURRENCY, true );
+
+
 	}
 
 	/**
@@ -1123,6 +1167,21 @@ class Jobs_Plus_Core{
 		return $query;
 	}
 
+	function get_max_budget(){
+		global $wpdb;
+
+		$result = (int) $wpdb->get_var(
+		"
+		SELECT max(cast(meta_value as unsigned))
+		FROM {$wpdb->postmeta} pm, {$wpdb->posts} p
+		WHERE pm.meta_key='_ct_jbp_job_Budget'
+		AND p.post_status = 'publish'
+		AND (pm.post_id = p.ID)
+		"
+		);
+		return $result;
+	}
+
 	function on_posts_clauses($clauses){
 		global $wp_query, $wpdb;
 		//printf('<pre>%s</pre>', print_r($clauses, true) );
@@ -1134,12 +1193,24 @@ class Jobs_Plus_Core{
 		elseif(is_post_type_archive('jbp_job') ) {
 			//Sort order
 			$sortby = empty($_GET['prj-sort']) ? '' : $_GET['prj-sort'];
+			//Price range
+			$job_min_price = empty($_GET['job_min_price']) ? 0 : $_GET['job_min_price'];
+			$job_max_price = empty($_GET['job_max_price']) ? $this->get_max_budget() : $_GET['job_max_price'];
+
+			$clauses['join'] .= $wpdb->prepare(
+			"
+			INNER JOIN {$wpdb->postmeta} as pm on (pm.post_id = {$wpdb->posts}.ID
+			AND pm.meta_key = '_ct_jbp_job_Budget')
+			AND pm.meta_value BETWEEN %d AND %d
+			"
+			,intval($job_min_price)
+			,intval($job_max_price)
+			);
 
 			$clauses['orderby'] = "{$wpdb->posts}.post_date DESC";
-
 			if( !empty($sortby) ){
 				if($sortby[0]->value == 'ending'){
-					$clauses['orderby'] = $wpdb->prepare(" STR_TO_DATE(%spostmeta.meta_value, '%%b %%e, %%Y') DESC", $wpdb->prefix);
+					$clauses['orderby'] = $wpdb->prepare(" STR_TO_DATE( {$wpdb->postmeta}.meta_value, '%%b %%e, %%Y') DESC", $wpdb->prefix);
 				}
 			}
 		}
@@ -1181,7 +1252,6 @@ class Jobs_Plus_Core{
 
 		if(is_post_type_archive('jbp_job')
 		&& !is_admin() ){
-
 			$query->set('meta_key', '_ct_jbp_job_Due');
 			$query->set('orderby', 'meta_value');
 			$query->set( 'posts_per_page', intval( $this->get_setting( 'job->per_page', 20) ) );
@@ -1191,6 +1261,7 @@ class Jobs_Plus_Core{
 		&& !is_admin() ){
 			$query->set( 'posts_per_page', intval( $this->get_setting( 'pro->per_page', 48) ) );
 		}
+
 		return $query;
 	}
 
@@ -1343,7 +1414,7 @@ class Jobs_Plus_Core{
 	*Remembers the image attachment_id for the custom_upload_directory.
 	*
 	*/
-		function on_image_downsize( $downsize, $id){
+	function on_image_downsize( $downsize, $id){
 		global $attachment_id;
 		$attachment_id = $id;
 		return $downsize;
@@ -1353,18 +1424,18 @@ class Jobs_Plus_Core{
 		global $post_ID, $attachment_id;
 
 
-////		var_dump($args);
-//		var_dump($post_ID);
-//		var_dump($attachment_id);
-//		$post_ID = 0;
+		////		var_dump($args);
+		//		var_dump($post_ID);
+		//		var_dump($attachment_id);
+		//		$post_ID = 0;
 		$post_type = empty($post_ID) ? '' : get_post_type( $post_ID );
 
 		if( empty($post_type) && !$post = get_post( $attachment_id ) ) return $args;
-		
+
 		$parent_id = $post->post_parent;
-		
-//		var_dump(get_post_type( $parent_id ) );
-//		var_dump(get_post_type( $post_ID) );
+
+		//		var_dump(get_post_type( $parent_id ) );
+		//		var_dump(get_post_type( $post_ID) );
 
 		//var_dump($args); exit;
 
@@ -1398,38 +1469,38 @@ class Jobs_Plus_Core{
 	*
 	*
 	*/
-//	function custom_upload_directory( $args ) {
-//		global $post, $post_ID, $attachment_id;
-//
-//		//var_dump($attachment_id);
-//		//var_dump($post); exit;
-//		
-//		if( empty($post_ID) || !$post = get_post( $post_ID ) ) return $args;
-//		$parent_id = $post->post_parent;
-//
-//
-//		// Check the post-type of the current post
-//		if( "jbp_pro" == get_post_type( $post_ID ) || "jbp_pro" == get_post_type( $parent_id ) ) {
-//			$path = $this->get_setting('pro->upload_path');
-//			$path = empty($path) ? 'uploads/pro' : untrailingslashit($path);
-//		} elseif( "jbp_job" == get_post_type( $post_ID ) || "jbp_job" == get_post_type( $parent_id ) ) {
-//			$path = $this->get_setting('job->upload_path');
-//			$path = empty($path) ? 'uploads/job' : untrailingslashit($path);
-//		} else {
-//			return $args;
-//		}
-//
-//		// Setup modified locations
-//		$url = content_url($path);
-//		$args['path'] = untrailingslashit(WP_CONTENT_DIR) . "$path/{$post_ID}";
-//		$args['url'] = "$url/{$post_ID}";
-//		$args['subdir'] = "$path/{$post_ID}"; // No date directories use post id
-//		$args['basedir'] = WP_CONTENT_DIR; // Anywhere under wp-content
-//		$args['baseurl'] = content_url(); // Anywhere under wp-content
-//
-//		//var_dump($args);
-//		return $args;
-//	}
+	//	function custom_upload_directory( $args ) {
+	//		global $post, $post_ID, $attachment_id;
+	//
+	//		//var_dump($attachment_id);
+	//		//var_dump($post); exit;
+	//
+	//		if( empty($post_ID) || !$post = get_post( $post_ID ) ) return $args;
+	//		$parent_id = $post->post_parent;
+	//
+	//
+	//		// Check the post-type of the current post
+	//		if( "jbp_pro" == get_post_type( $post_ID ) || "jbp_pro" == get_post_type( $parent_id ) ) {
+	//			$path = $this->get_setting('pro->upload_path');
+	//			$path = empty($path) ? 'uploads/pro' : untrailingslashit($path);
+	//		} elseif( "jbp_job" == get_post_type( $post_ID ) || "jbp_job" == get_post_type( $parent_id ) ) {
+	//			$path = $this->get_setting('job->upload_path');
+	//			$path = empty($path) ? 'uploads/job' : untrailingslashit($path);
+	//		} else {
+	//			return $args;
+	//		}
+	//
+	//		// Setup modified locations
+	//		$url = content_url($path);
+	//		$args['path'] = untrailingslashit(WP_CONTENT_DIR) . "$path/{$post_ID}";
+	//		$args['url'] = "$url/{$post_ID}";
+	//		$args['subdir'] = "$path/{$post_ID}"; // No date directories use post id
+	//		$args['basedir'] = WP_CONTENT_DIR; // Anywhere under wp-content
+	//		$args['baseurl'] = content_url(); // Anywhere under wp-content
+	//
+	//		//var_dump($args);
+	//		return $args;
+	//	}
 
 	function is_certified($user_id = 0){
 		if( $this->get_setting('general->use_certification', false) ) return false;
@@ -1793,10 +1864,10 @@ class Jobs_Plus_Core{
 		if( !wp_verify_nonce($params['_wpnonce'], 'jbp_pro') ){
 			$this->ajax_error('Forbidden No Nonce Sins', $params);
 		}
-		
+
 		if( empty( $params['post_status'] ) ) exit;
 		if( !$this->is_valid_pro_status( $params['post_status'] ) ) exit;
-		
+
 		$post_id = (empty($params['post_id']) ) ? 0 : intval($params['post_id']);
 		if( empty($post_id) ) exit;
 		if( get_post_type($post_id) != 'jbp_pro') exit;
@@ -2051,7 +2122,7 @@ class Jobs_Plus_Core{
 		), $atts ) );
 
 		if( !$this->can_view( $view ) ) return '';
-		$img = strtolower( $img ) =='true' ? true : false; 
+		$img = strtolower( $img ) =='true' ? true : false;
 
 		wp_enqueue_style('jobs-plus-custom');
 
@@ -2071,7 +2142,7 @@ class Jobs_Plus_Core{
 		), $atts ) );
 
 		if( !$this->can_view( $view ) ) return '';
-		$img = strtolower( $img ) =='true' ? true : false; 
+		$img = strtolower( $img ) =='true' ? true : false;
 
 		wp_enqueue_style('jobs-plus-custom');
 
@@ -2091,7 +2162,7 @@ class Jobs_Plus_Core{
 		), $atts ) );
 
 		if( !$this->can_view( $view ) ) return '';
-		$img = strtolower( $img ) =='true' ? true : false; 
+		$img = strtolower( $img ) =='true' ? true : false;
 
 		if( $this->count_user_posts_by_type(get_current_user_id(), 'jbp_job') >= $this->get_setting('job->max_records', 1) ) {
 			return '';
@@ -2101,7 +2172,7 @@ class Jobs_Plus_Core{
 
 		$content = (empty($content)) ? $text : $content;
 		$url = get_permalink($this->add_job_page_id);
-		
+
 		ob_start();
 		require locate_jbp_template((array)'sc-job-post-btn.php');
 		return do_shortcode( ob_get_clean() );
@@ -2116,7 +2187,7 @@ class Jobs_Plus_Core{
 		), $atts ) );
 
 		if( !$this->can_view( $view ) ) return '';
-		$img = strtolower( $img ) =='true' ? true : false; 
+		$img = strtolower( $img ) =='true' ? true : false;
 
 
 		if( $this->count_user_posts_by_type(get_current_user_id(), 'jbp_pro') >= $this->get_setting('pro->max_records', 1) ) {
@@ -2142,7 +2213,7 @@ class Jobs_Plus_Core{
 		), $atts ) );
 
 		if( !$this->can_view( $view ) ) return '';
-		$img = strtolower( $img ) =='true' ? true : false; 
+		$img = strtolower( $img ) =='true' ? true : false;
 
 		//Don't display unless they have a profile.
 		if( $this->count_user_posts_by_type(get_current_user_id(), 'jbp_pro') <  1 ) {
@@ -2166,7 +2237,7 @@ class Jobs_Plus_Core{
 		'view' => 'both', //loggedin, loggedout, both
 		'class' => '',
 		), $atts ) );
-		
+
 
 		if( !$this->can_view( $view ) ) return '';
 
@@ -2200,7 +2271,7 @@ class Jobs_Plus_Core{
 		require locate_jbp_template((array)'sc-pro-search.php');
 		return do_shortcode( ob_get_clean() );
 	}
-	
+
 	/**
 	* jbp-job-poster-excerpt shortcode_atts
 	*/
@@ -2219,11 +2290,13 @@ class Jobs_Plus_Core{
 		require locate_jbp_template((array)'sc-job-poster-excerpt.php');
 		return do_shortcode( ob_get_clean() );
 	}
-	
+
 
 	function job_poster_sc( $atts, $content = null ) {
 		extract( shortcode_atts( array(
-		'text' => sprintf(__('Recently Posted %s', $this->text_domain),$this->job_labels->name),
+		'title' => sprintf(__('Recently Posted %s', $this->text_domain),$this->job_labels->name),
+		'legend' => sprintf(__('Post a %s', $this->text_domain),$this->job_labels->singular_name),
+		'link' => sprintf(__('Browse More %s...', $this->text_domain),$this->job_labels->name),
 		'view' => 'both', //loggedin, loggedout, both
 		'class' => '',
 		), $atts ) );
@@ -2232,7 +2305,7 @@ class Jobs_Plus_Core{
 
 		wp_enqueue_style('jobs-plus-custom');
 
-		$content = (empty($content)) ? $text : $content;
+		$content = (empty($content)) ? $title : $content;
 		$user = wp_get_current_user();
 		$url = sprintf('%s/author/%s/', untrailingslashit(get_post_type_archive_link('jbp_pro') ), $user->user_login) ;
 
@@ -2259,25 +2332,60 @@ class Jobs_Plus_Core{
 		require locate_jbp_template((array)'sc-pro-poster-excerpt.php');
 		return do_shortcode( ob_get_clean() );
 	}
-	
+
 
 	function expert_poster_sc( $atts, $content = null ) {
 		extract( shortcode_atts( array(
-		'text' => sprintf(__('Recently Posted %s', $this->text_domain),$this->job_labels->name),
+		'title' => sprintf(__('Our %s', $this->text_domain),$this->pro_labels->name),
+		'legend' => sprintf(__('Become an %s', $this->text_domain),$this->pro_labels->singular_name),
+		'link' => sprintf(__('Browse %s...', $this->text_domain),$this->pro_labels->name),
 		'view' => 'both', //loggedin, loggedout, both
 		'class' => '',
 		), $atts ) );
 
 		if( !$this->can_view( $view ) ) return '';
 
-		$content = (empty($content)) ? $text : $content;
+		$content = (empty($content)) ? $title : $content;
 		$user = wp_get_current_user();
 		$url = sprintf('%s/author/%s/', untrailingslashit(get_post_type_archive_link('jbp_pro') ), $user->user_login) ;
 
 		ob_start();
-		require locate_jbp_template((array)'sc-pro-poster.php');
+		require locate_jbp_template( (array)'sc-pro-poster.php');
 		return do_shortcode( ob_get_clean() );
 	}
+
+	function landing_page_sc( $atts, $content = null ) {
+		extract( shortcode_atts( array(
+		'title' => sprintf(__('Recently Posted %s', $this->text_domain),$this->pro_labels->name),
+		'legend' => sprintf(__('Become an %s', $this->text_domain),$this->pro_labels->singular_name),
+		'link' => sprintf(__('Browse %s...', $this->text_domain),$this->pro_labels->name),
+		'view' => 'both', //loggedin, loggedout, both
+		'class' => '',
+		), $atts ) );
+
+		if( !$this->can_view( $view ) ) return '';
+
+		$content = (empty($content)) ? $title : $content;
+		$user = wp_get_current_user();
+		$url = sprintf('%s/author/%s/', untrailingslashit(get_post_type_archive_link('jbp_pro') ), $user->user_login) ;
+
+		ob_start();
+		require locate_jbp_template( (array)'sc-landing-page.php');
+		return do_shortcode( ob_get_clean() );
+	}
+
+	function job_price_search_sc( $atts, $content = null ) {
+		extract( shortcode_atts( array(
+		'text' => __('Price Range', $this->text_domain),
+		'view' => 'both', //loggedin, loggedout, both
+		'class' => '',
+		), $atts ) );
+
+		ob_start();
+		require locate_jbp_template( (array)'sc-job-price-search.php');
+		return do_shortcode( ob_get_clean() );
+	}
+
 
 	/**
 	* Update a jbp_pro
@@ -2304,8 +2412,8 @@ class Jobs_Plus_Core{
 		//		'ping_status'    => 'closed',
 		//		//'comment_status' => 'open'
 		//		);
-		
-		
+
+
 		if( !empty($params['data']['post_status']) ){
 			if( $this->is_valid_pro_status( $params['data']['post_status'] ) ){
 				$args['post_status'] = $params['data']['post_status'];
@@ -2313,7 +2421,7 @@ class Jobs_Plus_Core{
 				unset( $args['post_status'] );
 			}
 		}
-		
+
 
 		/* Insert page and get the ID */
 		if(empty($args['ID']) ){
@@ -2568,7 +2676,7 @@ class Jobs_Plus_Core{
 		}
 		exit;
 	}
-	
+
 	function is_valid_job_status( $status = '') {
 
 		switch( $status ) {
@@ -2606,7 +2714,7 @@ class Jobs_Plus_Core{
 			}
 			default: return false; break;
 		}
-  
+
 	}
 
 	function on_ajax_jbp_job_status(){

@@ -8,8 +8,14 @@
 
 $phrase = (empty($_GET['s']) ) ? '' : $_GET['s'];
 
+
 $sort_latest = (empty($_GET['prj-sort']) || $_GET['prj-sort'] == 'latest' ? 'active-sort' : 'inactive-sort');
 $sort_ending = (!empty($_GET['prj-sort']) && $_GET['prj-sort'] == 'ending' ? 'active-sort' : 'inactive-sort');
+
+$job_min_price = intval(empty($_GET['job_min_price']) ? 0 : $_GET['job_min_price'] );
+$job_max_price = intval( empty($_GET['job_max_price']) ? $this->get_max_budget() : $_GET['job_max_price'] );
+
+wp_enqueue_style('jobs-plus-custom');
 ?>
 
 <section class="jobs-search-form <?php echo $class; ?> group">
@@ -30,7 +36,9 @@ $sort_ending = (!empty($_GET['prj-sort']) && $_GET['prj-sort'] == 'ending' ? 'ac
 					</span>
 				</li>
 				<li>
-						<input type="text" class="job-search-input" name="s" value="<?php echo esc_attr($phrase); ?>" autocomplete="off" placeholder="<?php echo $text; ?>" />
+					<input type="hidden" class="job_min_price" name="job_min_price" value="<?php echo $job_min_price; ?>" />
+					<input type="hidden" class="job_max_price" name="job_max_price" value="<?php echo $job_max_price; ?>" />
+					<input type="text" class="job-search-input" name="s" value="<?php echo esc_attr($phrase); ?>" autocomplete="off" placeholder="<?php echo $text; ?>" />
 					<button type="submit" class="job-submit-search" value="">
 						<img src="<?php echo $this->plugin_url . 'img/search.png'; ?>" alt="" title="title" />
 						</button>

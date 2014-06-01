@@ -40,6 +40,8 @@
 							<br /><span class="description"><?php printf(esc_html__('%s Certification Label.', JBP_TEXT_DOMAIN), $this->pro_labels->singular_name); ?></span>
 						</td>
 					</tr>
+				
+<!--					
 					<tr>
 						<th>
 							<label for="jbp[general][currency]"><?php esc_html_e('Currency Symbol', JBP_TEXT_DOMAIN ) ?></label>
@@ -49,6 +51,7 @@
 							<br /><span class="description"><?php esc_html_e('Currency symbol for this site. Default "$"', JBP_TEXT_DOMAIN); ?></span>
 						</td>
 					</tr>
+-->
 				</table>
 			</div>
 		</div>

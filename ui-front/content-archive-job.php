@@ -8,6 +8,7 @@
 
 global $post, $CustomPress_Core, $Jobs_Plus_Core, $wp_query;
 
+
 wp_enqueue_script('masonry');
 wp_enqueue_script('jquery-ellipsis');
 
@@ -24,11 +25,12 @@ function job_have_posts(){
 	<div class="group">
 		<?php if(dynamic_sidebar('job-archive-widget') ) : else: endif; ?>
 	</div>
-	
+
 	<?php echo do_action('jbp_error'); ?>
 	<?php echo do_action('jbp_notice'); ?>
 
 	<?php echo do_shortcode('[jbp-job-search]'); ?>
+	<?php echo do_shortcode('[jbp-job-price-search]'); ?>
 
 	<?php if(have_posts()): ?>
 	<div id="job-grid-container">
@@ -49,6 +51,9 @@ function job_have_posts(){
 <script type="text/javascript">
 	jQuery(document).ready( function($){
 
+		var currency_symbol = $.formatCurrency.regions['<?php echo $this->js_locale; ?>'].symbol;
+		$('.currency_symbol').text(currency_symbol);
+
 		$(".job-show").ellipsis({row: 3 });
 		$(".ellipsis").ellipsis({row: 3, char: '<a> . . .Read more</a>' });
 
@@ -66,8 +71,6 @@ function job_have_posts(){
 			var permalink = $this.data('permalink');
 			window.location = permalink;
 		});
-
-
 	});
 </script>
 <?php endif; ?>

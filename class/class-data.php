@@ -890,7 +890,7 @@ class Jobs_Plus_Core_Data{
 			'field_regex_message' => '',
 			'field_message' => '',
 			'field_default_option' => NULL,
-			'field_description' => 'Please enter the maximum budget in ',
+			'field_description' => 'Please enter the maximum budget',
 			'object_type' =>
 			array (
 			0 => 'jbp_job',
@@ -927,7 +927,7 @@ class Jobs_Plus_Core_Data{
 			'field_regex_message' => '',
 			'field_message' => '',
 			'field_default_option' => NULL,
-			'field_description' => 'Please enter the range of your budget in ',
+			'field_description' => 'Please enter the range of your budget',
 			'object_type' =>
 			array (
 			0 => 'jbp_job',

@@ -23,7 +23,6 @@
 
 .active-sort a{
 	color: #41B3DD;
-
 }
 
 .inactive-sort a{
@@ -37,6 +36,42 @@
 	border: 1px solid #ddd;
 	border-left: 4px solid #c00;
 	box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.2) ;
+}
+
+.jbp-grey{
+	border-top: 4px solid #b3b3b3;
+}
+
+.jbp-mint{
+	border-top: 4px solid #38ba7a;
+}
+
+.jbp-rose{
+	border-top: 4px solid #f16869;
+}
+
+.jbp-amber{
+	border-top: 4px solid #fdb441;
+}
+
+.jbp-yellow{
+	border-top: 4px solid #ffde1a;
+}
+
+.jbp-blue{
+	border-top: 4px solid #3ebae8;
+}
+
+.meta-red{
+	color: #c00;
+}
+
+.meta-green{
+	color: #0c0;
+}
+
+.light-color {
+	color: #fff;
 }
 
 .updated {
@@ -145,7 +180,7 @@ input.input-small{
 }
 
 .jbp-certify {
-	
+
 	background: transparent url("../img/jbp-certify.png") no-repeat 0.5em center;
 	font-size: 90%;
 	height: 1.2em;
@@ -172,6 +207,20 @@ input.input-small{
 	border-bottom: 1px solid #cccccc;
 }
 
+jbp-landing-page{
+	max-width: 100%;
+}
+
+.poster-left{
+	width: 48%;
+	float: left;
+}
+
+.poster-right{
+	width: 48%;
+	float: right;
+}
+
 button.jbp-button{
 	display: inline-block;
 	font-size: 16px;
@@ -182,8 +231,10 @@ button.jbp-button{
 }
 
 .jbp-widget  .jbp-button img{
+	display: block;
 	border: none;
 	box-shadow: none;
+	margin: auto;
 }
 
 .jbp-widget{
@@ -194,8 +245,8 @@ button.jbp-button{
 	display: inline;
 	background-color: #fff;
 	cursor: pointer;
+	color: #111;
 }
-
 
 @media screen and (max-width:959px) {
 
@@ -203,12 +254,15 @@ button.jbp-button{
 		float: none;
 		display: block;
 		width: 100%;
-		font-size: 200%;
 		border: 1px solid #aaa !important;
 		background: none !important;
 		padding: .5em 0;
 		text-transform: uppercase;
 		margin-bottom: .5em;
+	}
+
+	.jbp-widget .jbp-button img{
+		display: none;
 	}
 
 }

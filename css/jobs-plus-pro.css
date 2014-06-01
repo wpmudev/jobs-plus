@@ -283,7 +283,7 @@ div.pro-contact{
 
 div.pro-button-group{
 	text-align: center;
-}	
+}
 
 
 button.jbp-button.pro-contact,
@@ -486,17 +486,14 @@ h2.pro-skills{
 }
 
 button.pro-browse-btn{
-	color: #111;
 	border: none;
 }
 
 button.pro-post-btn{
-	color: #111;
 	border: none;
 }
 
 button.pro-profile-btn{
-	color: #111;
 	border: none;
 }
 
@@ -549,3 +546,157 @@ button.pro-submit-search >img{
 	box-shadow: none;
 }
 
+.pro-poster{
+	min-width: 300px;
+	text-align: center;
+	overflow: hidden;
+}
+
+.pro-poster ul.pro-gallery{
+	margin: 0;
+	padding: 0;
+
+}
+
+.pro-poster ul.pro-gallery li{
+	background-color: #F9F9F9;
+	list-style: none outside none;
+	float: right;
+	margin: 0 4px 4px 0;
+	width: 32%;
+}
+
+.pros-link{
+	text-align: left;
+	text-transform: uppercase;
+	font-size: 14px;
+	margin: 20px 0;
+}
+
+
+.view {
+    box-shadow: 1px 1px 2px #E6E6E6;
+    cursor: default;
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+    width: 100%;
+}
+.view .mask, .view .content {
+    left: 0;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    font-size: 14px;
+}
+.view img {
+    display: block;
+    position: relative;
+    min-width: 100%;
+}
+.view h2 {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0.8);
+    color: #FFFFFF;
+    font-size: 14px;
+    letter-spacing: 0;
+    margin: 0;
+    overflow: hidden;
+    padding: 10px;
+    position: relative;
+    text-align: center;
+    text-overflow: ellipsis;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+.view p {
+    color: #FFFFFF;
+    font-size: 12px;
+    font-style: italic;
+    padding: 10px 5px 5px;
+    position: relative;
+    text-align: center;
+}
+.view a.info {
+    background: none repeat scroll 0 0 #000000;
+    box-shadow: 0 0 1px #000000;
+    color: #FFFFFF;
+    display: inline-block;
+    padding: 7px 14px;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+.view a.info:hover {
+    box-shadow: 0 0 5px #000000;
+}
+.view-first img {
+    transition: all 0.2s linear 0s;
+}
+.job-poster .poster ul li .view-first img {
+    padding-bottom: 8px;
+    padding-left: 8px;
+    padding-top: 6px;
+    width: 86%;
+}
+.view-first .mask {
+    background-color: #031F34;
+    opacity: 0;
+    transition: all 0.4s ease-in-out 0s;
+}
+.view-first a {
+    color: #FFFFFF;
+}
+.view-first h2 {
+    opacity: 0;
+    transform: translateY(-100px);
+    transition: all 0.2s ease-in-out 0s;
+}
+.view-first p {
+    opacity: 0;
+    transform: translateY(100px);
+    transition: all 0.2s linear 0s;
+}
+.pro-poster .view-first:hover img {
+    transform: scale(1.5, 1.5);
+}
+.view-first a.info {
+    opacity: 0;
+    transition: all 0.2s ease-in-out 0s;
+}
+.view-first:hover .mask {
+    opacity: 0.96;
+}
+.view-first:hover h2, .view-first:hover p, .view-first:hover a.info {
+    opacity: 0.96;
+    transform: translateY(0px);
+}
+.view-first p {
+    min-height: 300px;
+    padding-top: 30px;
+}
+.view-first:hover p {
+    min-height: 300px;
+    padding-top: 15px;
+    transition-delay: 0.1s;
+}
+.view-first:hover a.info {
+    transition-delay: 0.2s;
+}
+.poster img.avatar, .poster img.avatar {
+    opacity: 1;
+    height: 100px;
+}
+.view-first .mask.second-mask {
+    background-color: #38BA7A;
+}
+.view .second-mask p {
+    color: #FFFFFF;
+    font-size: 12px;
+    font-style: italic;
+    padding: 0 2px 2px;
+    position: relative;
+    text-align: center;
+}
+.view-first:hover .second-mask p {
+    padding-top: 8px;
+}

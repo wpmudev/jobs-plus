@@ -3,7 +3,7 @@
 Plugin Name: Jobs +
 Plugin URI: http://premium.wpmudev.org/jobs-plus/
 Description:
-Version: 1.0 beta 11
+Version: 1.0 beta 12
 Author: WPMU DEV
 Author URI: http://premium.wpmudev.org
 Text Domain: jbp
@@ -53,6 +53,7 @@ define( 'IMAGESLOADED',            'v3.0.4' );
 define( 'JQUERYUI_EDITABLE',       'v1.4.6' );
 define( 'JQUERY_COOKIE',           'v1.3.1' );
 define( 'JQUERY_ELLIPSIS',         'v1.0.8' );
+define( 'JQUERY_FORMAT_CURRENCY',  'v1.4.0' );
 define( 'JQUERY_IFRAME_TRANSPORT', 'v1.1'   );
 define( 'JQUERY_MAGNIFIC_POPUP',   'v0.9.5' );
 define( 'JQUERY_RATEIT',           'v1.0.9' );

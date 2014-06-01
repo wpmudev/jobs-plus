@@ -211,9 +211,9 @@ wp_enqueue_script('jquery.magnific-popup');
 						<?php echo do_shortcode('[ct_in id="_ct_jbp_job_Budget" class="number"]'); ?>
 
 						<?php if($this->get_setting('job->use_budget_range', false) ): ?>
-						<br /><span class="job-description"><?php echo do_shortcode('[ct_in id="_ct_jbp_job_Min_Budget" property="description"]') . $this->get_setting('general->currency', '$'); ?></span>
+						<br /><span class="job-description"><?php echo do_shortcode('[ct_in id="_ct_jbp_job_Min_Budget" property="description"]'); ?></span>
 						<?php else: ?>
-						<br /><span class="job-description"><?php echo do_shortcode('[ct_in id="_ct_jbp_job_Budget" property="description"]') . $this->get_setting('general->currency', '$'); ?></span>
+						<br /><span class="job-description"><?php echo do_shortcode('[ct_in id="_ct_jbp_job_Budget" property="description"]'); ?></span>
 						<?php endif; ?>
 
 					</td>

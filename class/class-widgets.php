@@ -62,17 +62,17 @@ class WP_Widget_Recent_Job_Posts extends WP_Widget {
 			<li>
 				<?php
 				switch ($key % 6) {
-					case 0: $color = 'job-grey';
+					case 0: $color = 'jbp-grey';
 					break;
-					case 1: $color = 'job-yellow';
+					case 1: $color = 'jbp-yellow';
 					break;
-					case 2: $color = 'job-mint';
+					case 2: $color = 'jbp-mint';
 					break;
-					case 3: $color = 'job-rose';
+					case 3: $color = 'jbp-rose';
 					break;
-					case 4: $color = 'job-blue';
+					case 4: $color = 'jbp-blue';
 					break;
-					case 5: $color = 'job-amber';
+					case 5: $color = 'jbp-amber';
 					break;
 				}
 				?>
