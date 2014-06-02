@@ -25,8 +25,8 @@ class Jobs_Plus_Admin extends Jobs_Plus_Core{
 		add_action( 'personal_options_update', array( &$this, 'on_edit_user_profile_update' ) );
 		add_action( 'edit_user_profile_update', array( &$this, 'on_edit_user_profile_update' ) );
 
-			add_action( 'wp_ajax_jbp_get_caps', array( &$this, 'on_ajax_get_caps' ) );
-			add_action( 'wp_ajax_jbp_save_caps', array( &$this, 'on_ajax_save_caps' ) );
+		add_action( 'wp_ajax_jbp_get_caps', array( &$this, 'on_ajax_get_caps' ) );
+		add_action( 'wp_ajax_jbp_save_caps', array( &$this, 'on_ajax_save_caps' ) );
 
 	}
 
@@ -42,28 +42,28 @@ class Jobs_Plus_Admin extends Jobs_Plus_Core{
 		__('Settings', JBP_TEXT_DOMAIN),
 		'manage_options', 'jobs-plus-menu',
 		array($this, 'admin_menu_page_job'),
-		$this->plugin_url . 'img/job.svg' );
+		$this->plugin_url . 'img/job.png' );
 
 		$this->pros_menu_page = add_submenu_page('edit.php?post_type=jbp_pro',
 		__('Settings', JBP_TEXT_DOMAIN),
 		__('Settings', JBP_TEXT_DOMAIN),
 		'manage_options', 'jobs-plus-menu',
 		array($this, 'admin_menu_page_pro'),
-		$this->plugin_url . 'img/job.svg' );
+		$this->plugin_url . 'img/job.png' );
 
 		add_action('load-' . $this->jobs_menu_page, array(&$this, 'on_load_menu') );
 		add_action('load-' . $this->pros_menu_page, array(&$this, 'on_load_menu') );
 	}
 
 	function admin_menu_page_job(){
-		$current_tab = (empty($_GET['tab']) )? 'settings' : $_GET['tab'];
+		$current_tab = (empty($_GET['tab']) )? 'job' : $_GET['tab'];
 
 		switch ($current_tab) {
 			case 'settings': include $this->plugin_dir . 'ui-admin/settings.php'; break;
 			case 'job': include $this->plugin_dir . 'ui-admin/job.php'; break;
 			case 'pro': include $this->plugin_dir . 'ui-admin/pro.php';	break;
 			case 'shortcodes': include $this->plugin_dir . 'ui-admin/shortcodes.php';	break;
-			case 'convert': include $this->plugin_dir . 'ui-admin/convert.php';	break;
+			case 'about': include $this->plugin_dir . 'ui-admin/about.php';	break;
 			default: include $this->plugin_dir . 'ui-admin/job.php'; break;
 		}
 	}
@@ -76,7 +76,7 @@ class Jobs_Plus_Admin extends Jobs_Plus_Core{
 			case 'job': include $this->plugin_dir . 'ui-admin/job.php'; break;
 			case 'pro': include $this->plugin_dir . 'ui-admin/pro.php';	break;
 			case 'shortcodes': include $this->plugin_dir . 'ui-admin/shortcodes.php';	break;
-			case 'convert': include $this->plugin_dir . 'ui-admin/convert.php';	break;
+			case 'about': include $this->plugin_dir . 'ui-admin/about.php';	break;
 			default: include $this->plugin_dir . 'ui-admin/job.php'; break;
 		}
 	}
@@ -92,11 +92,11 @@ class Jobs_Plus_Admin extends Jobs_Plus_Core{
 
 	function render_tabs( $current_tab = 'settings'){
 		$tabs = array(
-		'settings' => __('General', JBP_TEXT_DOMAIN),
-		'job' => sprintf(__('%s Options', JBP_TEXT_DOMAIN), $this->job_labels->singular_name),
-		'pro' => sprintf(__('%s Options', JBP_TEXT_DOMAIN), $this->pro_labels->singular_name),
-		'shortcodes' => __('Shortcodes', JBP_TEXT_DOMAIN),
-		//'convert' => __('Convert from WPMU Jobs', JBP_TEXT_DOMAIN),
+		'settings' => esc_html__('General', JBP_TEXT_DOMAIN),
+		'job' => esc_html( sprintf(__('%s Options', JBP_TEXT_DOMAIN), $this->job_labels->singular_name) ),
+		'pro' => esc_html( sprintf(__('%s Options', JBP_TEXT_DOMAIN), $this->pro_labels->singular_name) ),
+		'shortcodes' => esc_html__('Shortcodes', JBP_TEXT_DOMAIN),
+		'about' => esc_html__('Getting Started with Jobs+', JBP_TEXT_DOMAIN),
 		);
 
 		$current_tab = (empty($_GET['tab']) )? $current_tab : $_GET['tab'];
@@ -106,7 +106,7 @@ class Jobs_Plus_Admin extends Jobs_Plus_Core{
 			<?php foreach( $tabs as $tab => $title):
 			$class = ($tab === $current_tab) ? 'nav-tab-active' : '';
 			?>
-			<a class="nav-tab <?php echo $class ?>" href="<?php echo esc_attr("?post_type=jbp_job&page=jobs-plus-menu&tab=$tab"); ?>" ><img src="<?php echo $this->plugin_url . "img/{$tab}.svg";?>" /> <?php echo $title; ?></a>
+			<a class="nav-tab <?php echo $class ?>" href="<?php echo esc_attr("?post_type=jbp_job&page=jobs-plus-menu&tab=$tab"); ?>" ><img src="<?php echo $this->plugin_url . "img/{$tab}.png";?>" /> <?php echo $title; ?></a>
 				<?php endforeach; ?>
 			</h2>
 
@@ -226,65 +226,65 @@ class Jobs_Plus_Admin extends Jobs_Plus_Core{
 			new WP_Help_Pointer($pointers);
 		}
 
-	/**
-	* Ajax callback which gets the post types associated with each page.
-	*
-	* @return JSON Encoded string
-	*/
-	function on_ajax_get_caps() {
-		if ( !current_user_can( 'manage_options' ) ) die(-1);
-		if(empty($_REQUEST['role'])) die(-1);
+		/**
+		* Ajax callback which gets the post types associated with each page.
+		*
+		* @return JSON Encoded string
+		*/
+		function on_ajax_get_caps() {
+			if ( !current_user_can( 'manage_options' ) ) die(-1);
+			if(empty($_REQUEST['role'])) die(-1);
 
-		global $wp_roles, $CustomPress_Core;
+			global $wp_roles, $CustomPress_Core;
 
-		$role = $_REQUEST['role'];
-		$post_type = $_REQUEST['post_type'];
+			$role = $_REQUEST['role'];
+			$post_type = $_REQUEST['post_type'];
 
-		if ( !$wp_roles->is_role( $role ) )
-		die(-1);
+			if ( !$wp_roles->is_role( $role ) )
+			die(-1);
 
-		$role_obj = $wp_roles->get_role( $role );
-		$all_caps = $CustomPress_Core->all_capabilities($post_type);
+			$role_obj = $wp_roles->get_role( $role );
+			$all_caps = $CustomPress_Core->all_capabilities($post_type);
 
-		$response = array_intersect( array_keys( $role_obj->capabilities ), $all_caps );
-		$response = array_flip( $response );
+			$response = array_intersect( array_keys( $role_obj->capabilities ), $all_caps );
+			$response = array_flip( $response );
 
-		wp_send_json( $response);
-	}
-
-	/**
-	* Save admin options.
-	*
-	* @return void die() if _wpnonce is not verified
-	*/
-	function on_ajax_save_caps() {
-
-		check_admin_referer( 'jobs-plus-settings' );
-
-		if ( !current_user_can( 'manage_options' ) )
-		die(-1);
-
-		// add/remove capabilities
-		global $wp_roles, $CustomPress_Core;
-
-		$role = $_POST['roles'];
-		$post_type = $_REQUEST['post_type'];
-
-		$all_caps = $CustomPress_Core->all_capabilities($post_type);
-
-		$to_add = array_keys( (array)$_REQUEST['capabilities'] );
-		$to_remove = array_diff( $all_caps, $to_add );
-
-		foreach ( $to_remove as $capability ) {
-			$wp_roles->remove_cap( $role, $capability );
+			wp_send_json( $response);
 		}
 
-		foreach ( $to_add as $capability ) {
-			$wp_roles->add_cap( $role, $capability );
-		}
+		/**
+		* Save admin options.
+		*
+		* @return void die() if _wpnonce is not verified
+		*/
+		function on_ajax_save_caps() {
 
-		die(1);
-	}
+			check_admin_referer( 'jobs-plus-settings' );
+
+			if ( !current_user_can( 'manage_options' ) )
+			die(-1);
+
+			// add/remove capabilities
+			global $wp_roles, $CustomPress_Core;
+
+			$role = $_POST['roles'];
+			$post_type = $_REQUEST['post_type'];
+
+			$all_caps = $CustomPress_Core->all_capabilities($post_type);
+
+			$to_add = array_keys( (array)$_REQUEST['capabilities'] );
+			$to_remove = array_diff( $all_caps, $to_add );
+
+			foreach ( $to_remove as $capability ) {
+				$wp_roles->remove_cap( $role, $capability );
+			}
+
+			foreach ( $to_add as $capability ) {
+				$wp_roles->add_cap( $role, $capability );
+			}
+
+			die(1);
+		}
 
 
 

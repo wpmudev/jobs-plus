@@ -95,6 +95,9 @@ class Jobs_Plus_Core{
 		//add_action( 'wp_ajax_nopriv_jbp_pro', array( &$this, 'on_ajax_jbp_pro' ) );
 		add_action( 'wp_ajax_jbp_pro_status', array( &$this, 'on_ajax_jbp_pro_status' ) );
 
+		add_filter('wp_ajax_jbp-captcha', array(&$this,'on_captcha') );
+		add_filter('wp_ajax_nopriv_jbp-captcha', array(&$this,'on_captcha') );
+
 		//Filters
 		add_filter('request', array(&$this, 'on_request') );
 		//add_filter('query_vars', array(&$this, 'on_query_vars') );
@@ -125,6 +128,7 @@ class Jobs_Plus_Core{
 		add_shortcode( 'jbp-job-portfolio', array( &$this, 'job_portfolio_sc' ) );
 		add_shortcode( 'jbp-job-excerpt', array( &$this, 'job_excerpt_sc' ) );
 
+		// Buttons
 		add_shortcode( 'jbp-expert-contact-btn', array( &$this, 'expert_contact_btn_sc' ) );
 		add_shortcode( 'jbp-job-contact-btn', array( &$this, 'job_contact_btn_sc' ) );
 
@@ -213,6 +217,50 @@ class Jobs_Plus_Core{
 		return $result;
 	}
 
+	/**
+	* function get_key
+	* @param string $key A setting key, or -> separated list of keys to go multiple levels into an array
+	* @param mixed $default Returns when setting is not set
+	*
+	* an easy way to get to our settings array without undefined indexes
+	*/
+	function get_key($key, $default = null, $settings=array() ) {
+
+		$keys = explode('->', $key);
+		$keys = array_map('trim', $keys);
+		if (count($keys) == 1)
+		$setting = isset($settings[$keys[0]]) ? $settings[$keys[0]] : $default;
+		else if (count($keys) == 2)
+		$setting = isset($settings[$keys[0]][$keys[1]]) ? $settings[$keys[0]][$keys[1]] : $default;
+		else if (count($keys) == 3)
+		$setting = isset($settings[$keys[0]][$keys[1]][$keys[2]]) ? $settings[$keys[0]][$keys[1]][$keys[2]] : $default;
+		else if (count($keys) == 4)
+		$setting = isset($settings[$keys[0]][$keys[1]][$keys[2]][$keys[3]]) ? $settings[$keys[0]][$keys[1]][$keys[2]][$keys[3]] : $default;
+
+		return $setting;
+	}
+
+	/**
+	* function set_key
+	* @param string $key A setting key, or -> separated list of keys to go multiple levels into an array
+	* @param mixed $default Returns when setting is not set
+	*
+	* an easy way to get to our settings array without undefined indexes
+	*/
+	function set_key($key, $value = null, $settings=array() ) {
+
+		$keys = explode('->', $key);
+		$keys = array_map('trim', $keys);
+		if (count($keys) == 1)
+		$settings[$keys[0]] = $value;
+		else if (count($keys) == 2)
+		$settings[$keys[0]][$keys[1]] = $value;
+		else if (count($keys) == 3)
+		$settings[$keys[0]][$keys[1]][$keys[2]] = $value;
+		else if (count($keys) == 4)
+		$settings[$keys[0]][$keys[1]][$keys[2]][$keys[3]] = $value;
+	}
+
 
 	/**
 	* function get_setting
@@ -223,18 +271,9 @@ class Jobs_Plus_Core{
 	*/
 	function get_setting($key, $default = null) {
 		$settings = get_option( $this->settings_name );
-		$keys = explode('->', $key);
-		array_map('trim', $keys);
-		if (count($keys) == 1)
-		$setting = isset($settings[$keys[0]]) ? $settings[$keys[0]] : $default;
-		else if (count($keys) == 2)
-		$setting = isset($settings[$keys[0]][$keys[1]]) ? $settings[$keys[0]][$keys[1]] : $default;
-		else if (count($keys) == 3)
-		$setting = isset($settings[$keys[0]][$keys[1]][$keys[2]]) ? $settings[$keys[0]][$keys[1]][$keys[2]] : $default;
-		else if (count($keys) == 4)
-		$setting = isset($settings[$keys[0]][$keys[1]][$keys[2]][$keys[3]]) ? $settings[$keys[0]][$keys[1]][$keys[2]][$keys[3]] : $default;
-
-		return apply_filters( "jobs-plus-setting".implode('', $keys), $setting, $default );
+		$setting = $this->get_key( $key, $default, $settings );
+		//return apply_filters( "jobs-plus-setting".implode('', $keys), $setting, $default );
+		return $setting;
 	}
 
 	function make_clickable($ret) {
@@ -257,17 +296,10 @@ class Jobs_Plus_Core{
 	function on_plugins_loaded(){
 		//Translations
 		load_plugin_textdomain($this->text_domain, false, plugin_basename( $this->plugin_dir . 'languages/' ) );
-
-		//If the activate flag is set then try to initalize the defaults
-		if( get_site_option('jbp_activate') > 1)	{
-			global $CustomPress_Core;
-			require_once($this->plugin_dir . 'class/class-data.php');
-			$CustomPress_Core->add_admin_capabilities();
-			//delete_site_option('jbp_activate');
-		}
 	}
 
 	function on_wp_loaded(){
+		//If the activate flag is set then try to initalize the defaults
 		if( get_site_option('jbp_activate', false))	{
 			//For some reason the rewrite rules need to flushed twice
 			flush_rewrite_rules();
@@ -276,10 +308,16 @@ class Jobs_Plus_Core{
 				delete_site_option('jbp_activate');
 			} else {
 				update_site_option('jbp_activate', $flag);
+				do_action('activated_plugin','custompress/loader.php');
+				global $CustomPress_Core;
+				require_once($this->plugin_dir . 'class/class-data.php');
+				$CustomPress_Core->add_admin_capabilities();
+				wp_redirect( admin_url('/edit.php?post_type=jbp_job&page=jobs-plus-menu&tab=about') );
+				exit;
 			}
 		}
 	}
-	
+
 	function on_init(){
 		global $wp_post_statuses;
 
@@ -524,7 +562,7 @@ class Jobs_Plus_Core{
 		) ) )  ?  $wplocale : $this->js_locale;
 
 		if( empty($this->js_locale) ) $this->js_locale = 'en-US';
-		
+
 		wp_register_script('jquery-format-currency-i18n', $this->plugin_url . "js/i18n/jquery.formatCurrency.{$this->js_locale}.js", array('jquery', 'jquery-format-currency' ), JQUERY_FORMAT_CURRENCY, true );
 		wp_register_script('jquery-format-currency', $this->plugin_url . "js/jquery.formatCurrency$suffix.js", array( 'jquery' ), JQUERY_FORMAT_CURRENCY, true );
 
@@ -637,6 +675,7 @@ class Jobs_Plus_Core{
 	*/
 	function count_user_posts_by_type($user_id = 0, $post_type='post') {
 		global $wpdb;
+
 		$where = get_posts_by_author_sql($post_type, TRUE, $user_id);
 		$count = $wpdb->get_var( "SELECT COUNT(*) FROM $wpdb->posts $where" );
 		return apply_filters('get_usernumposts', $count, $user_id);
@@ -840,14 +879,16 @@ class Jobs_Plus_Core{
 				urlencode(sprintf(__('You do not have the permissions to enter a %s.', $this->text_domain), $this->job_labels->new_item) ),
 				get_post_type_archive_link('jbp_job') ) );
 				exit;
+			} elseif( !current_user_can('administrator') ) {
+				if( !get_query_var('edit') && $this->count_user_posts_by_type(get_current_user_id(), 'jbp_pro') >= $limit) {
+					wp_redirect(add_query_arg('jbp_error',
+					urlencode(sprintf(__('You have exceeded your quota of %s %s.', $this->text_domain), $limit, $this->job_labels->name) ),
+					get_post_type_archive_link('jbp_job') ) );
+					exit;
+				}
 			} elseif( !current_user_can( EDIT_JOBS ) ) {
 				wp_redirect(add_query_arg('jbp_error',
 				urlencode(sprintf(__('You do not have permission to edit this %s.', $this->text_domain), $this->job_labels->singular_name) ),
-				get_post_type_archive_link('jbp_job') ) );
-				exit;
-			} elseif( !get_query_var('edit') && $this->count_user_posts_by_type(get_current_user_id(), 'jbp_pro') >= $limit) {
-				wp_redirect(add_query_arg('jbp_error',
-				urlencode(sprintf(__('You have exceeded your quota of %s %s.', $this->text_domain), $limit, $this->job_labels->name) ),
 				get_post_type_archive_link('jbp_job') ) );
 				exit;
 			}
@@ -868,14 +909,16 @@ class Jobs_Plus_Core{
 					urlencode(sprintf(__('You do not have the permissions to enter a %s.', $this->text_domain), $this->pro_labels->new_item) ),
 					get_post_type_archive_link('jbp_pro') ) );
 					exit;
+				} elseif( !current_user_can('administrator') ) {
+					if( !get_query_var('edit') && $this->count_user_posts_by_type(get_current_user_id(), 'jbp_job') >= $limit) {
+						wp_redirect(add_query_arg('jbp_error',
+						urlencode(sprintf(__('You have exceeded your quota of %s %s.', $this->text_domain), $limit, $this->pro_labels->name) ),
+						get_post_type_archive_link('jbp_pro') ) );
+						exit;
+					}
 				} elseif( !current_user_can( EDIT_PROS ) ) {
 					wp_redirect(add_query_arg('jbp_error',
 					urlencode(sprintf(__('You do not have permission to edit this listing.', $this->text_domain), $this->pro_labels->singular_name) ),
-					get_post_type_archive_link('jbp_pro') ) );
-					exit;
-				} elseif( !get_query_var('edit') && $this->count_user_posts_by_type(get_current_user_id(), 'jbp_job') >= $limit) {
-					wp_redirect(add_query_arg('jbp_error',
-					urlencode(sprintf(__('You have exceeded your quota of %s %s.', $this->text_domain), $limit, $this->pro_labels->name) ),
 					get_post_type_archive_link('jbp_pro') ) );
 					exit;
 				}
@@ -1291,7 +1334,7 @@ class Jobs_Plus_Core{
 
 	function display_errors(){
 		foreach($this->jbp_errors as $error){
-			echo '<div class="error"><p>' . $error . '</p></div>';
+			echo '<br clear="all"/><div class="error"><p>' . $error . '</p></div>';
 		}
 	}
 
@@ -1322,7 +1365,6 @@ class Jobs_Plus_Core{
 		return $args;
 	}
 
-
 	/**
 	* Email to a Job poster
 	*
@@ -1331,6 +1373,16 @@ class Jobs_Plus_Core{
 		global $post, $authordata;
 		if( !empty($params['jbp-job-contact']) ){
 			if( ! ($post = get_post($params['post_id']) ) ) return;
+
+			if( $this->get_setting( 'job->use_captcha', 0) ) {
+				$captcha = get_transient( $this->captcha_id() );
+				$rand = empty( $params['jbp_random_value'] ) ? '' : strtoupper($params['jbp_random_value']);
+
+				if ($captcha !== md5( $rand ) ) {
+					$this->error_message( esc_html(__('Invalid CAPTCH entered. Please enter the characters in the image.', JBP_TEXT_DOMAIN) ) );
+					return;
+				}
+			}
 
 			setup_postdata($post);
 
@@ -1367,7 +1419,7 @@ class Jobs_Plus_Core{
 				wp_redirect(add_query_arg('jbp_notice', $message, get_permalink($params['post_id']) ) );
 				exit;
 			} else {
-				$this->error_message(__('Email is not Responding', $this->text_domain) );
+				$this->error_message( esc_html__('Email is not Responding', $this->text_domain) ) ;
 			}
 
 		}
@@ -1382,6 +1434,16 @@ class Jobs_Plus_Core{
 
 		if( !empty($params['jbp-pro-contact']) ){
 			if( ! ($post = get_post($params['post_id']) ) ) return;
+
+			if( $this->get_setting( 'pro->use_captcha', 0) ) {
+				$captcha = get_transient( $this->captcha_id() );
+				$rand = empty( $params['jbp_random_value'] ) ? '' : strtoupper($params['jbp_random_value']);
+
+				if ($captcha !== md5( $rand ) ) {
+					$this->error_message( esc_html(__('Invalid CAPTCH entered. Please enter the characters in the image.', JBP_TEXT_DOMAIN) ) );
+					return;
+				}
+			}
 
 			setup_postdata($post);
 
@@ -2177,10 +2239,11 @@ class Jobs_Plus_Core{
 		if( !$this->can_view( $view ) ) return '';
 		$img = strtolower( $img ) =='true' ? true : false;
 
-		if( $this->count_user_posts_by_type(get_current_user_id(), 'jbp_job') >= $this->get_setting('job->max_records', 1) ) {
-			return '';
+		if( !current_user_can('administrator') ) {
+			if( $this->count_user_posts_by_type(get_current_user_id(), 'jbp_job') >= $this->get_setting('job->max_records', 1) ) {
+				return '';
+			}
 		}
-
 		wp_enqueue_style('jobs-plus-custom');
 
 		$content = (empty($content)) ? $text : $content;
@@ -2203,8 +2266,10 @@ class Jobs_Plus_Core{
 		$img = strtolower( $img ) =='true' ? true : false;
 
 
-		if( $this->count_user_posts_by_type(get_current_user_id(), 'jbp_pro') >= $this->get_setting('pro->max_records', 1) ) {
-			return '';
+		if( !current_user_can('administrator') ) {
+			if ( $this->count_user_posts_by_type(get_current_user_id(), 'jbp_pro') >= $this->get_setting('pro->max_records', 1) ) {
+				return '';
+			}
 		}
 
 		wp_enqueue_style('jobs-plus-custom');
@@ -2797,6 +2862,64 @@ class Jobs_Plus_Core{
 		return $result;
 	}
 
+	function imagettftext_cr(&$im, $size, $angle, $x, $y, $color, $fontfile, $text)
+	{
+		// retrieve boundingbox
+		$bbox = imagettfbbox($size, $angle, $fontfile, $text);
+		// calculate deviation
+		$dx = ($bbox[2]-$bbox[0])/2.0 - ($bbox[2]-$bbox[4])/2.0;         // deviation left-right
+		$dy = ($bbox[3]-$bbox[1])/2.0 + ($bbox[7]-$bbox[1])/2.0;        // deviation top-bottom
+		// new pivotpoint
+		$px = $x-$dx;
+		$py = $y-$dy;
+		return imagettftext($im, $size, $angle, $px, $y, $color, $fontfile, $text);
+	}
+
+
+	function captcha_id(){
+		$user_id = get_current_user_id();
+		return JBP_CAPTCHA . "-{$user_id}-{$_SERVER['REMOTE_ADDR']}";
+	}
+
+	function on_captcha(){
+
+		//exit('captcha');
+
+		$alphanum = "ABCDEFGHIJKLMNPQRSTUVWXYZ123456789";
+		$rand = substr( str_shuffle( $alphanum ), 0, 5 );
+
+		$image = imagecreate(120,40);
+		$black = imagecolorallocate($image,0,0,0);
+		$grey_shade = imagecolorallocate($image,128,128,128);
+		$white = imagecolorallocate($image,255,255,255);
+
+		$otherFont = $this->plugin_dir . 'ui-front/fonts/StardosStencil-Regular.ttf';
+		$font = $this->plugin_dir . 'ui-front/fonts/StardosStencil-Bold.ttf';
+
+		//imagestring( $image, 5, 28, 4, $rand, $white );
+		//BG text for Name
+		$i =1;
+		while($i<10){
+			$this->imagettftext_cr($image,rand(2,20),rand(-50,50),rand(10,120),rand(0,40),$grey_shade,$font,$rand);
+			$i++;
+		}
+
+		$this->imagettftext_cr($image,16,0,60,26,$white,$font, $rand );
+
+		//Use transient
+		set_transient( $this->captcha_id(), md5($rand), 600 );
+
+		header( "Expires: Mon, 26 Jul 1997 05:00:00 GMT" );
+		header( "Last-Modified: ".gmdate( "D, d M Y H:i:s" )." GMT" );
+		header( "Cache-Control: no-store, no-cache, must-revalidate" );
+		header( "Cache-Control: post-check=0, pre-check=0", false );
+		header( "Pragma: no-cache" );
+		header( "Content-type: image/png");
+
+		imagepng($image);
+		imagedestroy( $image );
+		exit;
+	}
 
 }
 

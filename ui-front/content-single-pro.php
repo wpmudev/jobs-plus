@@ -35,6 +35,7 @@ wp_enqueue_script('jqueryui-editable');
 wp_enqueue_script('jqueryui-editable-ext');
 wp_enqueue_script('jquery-ui-dialog');
 wp_enqueue_script('jquery.magnific-popup');
+wp_enqueue_script('jquery-ui-slider');
 
 
 //var_dump( $editing );
@@ -296,7 +297,7 @@ $this->no_thumbnail();
 						window.history.go(-1);
 						jbp_create_dialog(
 						"<?php esc_html_e('Canceling Profile', JBP_TEXT_DOMAIN); ?>",
-						"<?php esc_html_e('Canceling Profile,<br />Please Wait', JBP_TEXT_DOMAIN); ?>",
+						"<?php esc_html_e('Canceling Profile, Please Wait', JBP_TEXT_DOMAIN); ?>",
 						{
 							dialogClass: 'dialogcenter',
 							height: 150,
@@ -305,8 +306,8 @@ $this->no_thumbnail();
 					} else {
 						window.location = '<?php echo $link ?>';
 						jbp_create_dialog(
-						"<?php esc_html_e('Creating Profile', JBP_TEXT_DOMAIN); ?>",
-						"<?php esc_html_e('Creating Your Profile, Please Wait', JBP_TEXT_DOMAIN); ?>",
+						"<?php _e('Creating Profile', JBP_TEXT_DOMAIN); ?>",
+						"<?php _e('Creating Your Profile, Please Wait', JBP_TEXT_DOMAIN); ?>",
 						{
 							dialogClass: 'dialogcenter',
 							height: 150,
@@ -327,7 +328,7 @@ $this->no_thumbnail();
 		$('#custom-fields-form').submit( function( e ){
 			var result = jbp_required_dialog( e,
 			"<?php esc_html_e('Required Fields', JBP_TEXT_DOMAIN); ?>",
-			"<?php esc_html_e('<p>Please complete the required fields</p>', JBP_TEXT_DOMAIN); ?>"
+			"<p><?php esc_html_e('Please complete the required fields', JBP_TEXT_DOMAIN); ?></p>"
 			);
 			return result;
 		});

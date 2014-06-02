@@ -1223,8 +1223,14 @@ percent: "Bailey"
 	});
 
 	Skill.defaults = $.extend({}, $.fn.editabletypes.abstractinput.defaults, {
-		tpl: '<div class="editable-skill"><label><span class="skill-label">Skill: </span><br /><input type="text" name="skill" class="input-medium"></label></div>'+
-		'<div class="editable-skill"><span class="percent-label">How good you are 1-100%</span><div class="percent"></div><span class="number"></span>' +
+		tpl: 
+		'<div class="editable-skill">'+
+		//'<label><span class="skill-label">Skill: </span><br />'+
+		'<input type="text" name="skill" class="input-medium"></label></div>'+
+		'<div class="editable-skill">'+
+		'<span class="percent-label">How good you are 1-100%</span>'+
+		'<div class="percent"></div>'+
+		'<span class="number">0%</span>' +
 		'<input type="hidden" name="skill_id" />' +
 		'<input type="hidden" name="remove" />' +
 		'</div>' ,

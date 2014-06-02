@@ -186,6 +186,10 @@ a.pro-add{
 	background-color: #f3f3f3;
 }
 
+.editable-skill .percent { margin: 5px 0; }
+
+.editable-skill .number { margin: 5px 0; }
+
 .editable-skill
 .ui-slider-range-min,
 .skill-percent{
@@ -323,9 +327,10 @@ h2.pro-skills{
 .pro-social ul{display:block;list-style-type:none;margin:0 auto;padding:0;}
 .pro-social ul li{display:block; float: left; margin:0 28px 20px 0; padding:0;}
 
-.editable-input .pro-social ul li{margin:0 10px 10px 0;}
 
-.pro-social ul li:nth-child(4n){margin-right :0 !important}
+.pro-social ul li:nth-child(4n){margin-right :0 }
+
+.editable-input .pro-social ul li{margin:0 10px 10px 0;}
 
 .pro-social .social_i{display:block;width:36px;height:36px;overflow:hidden;margin-right:0px;color:transparent;text-indent:-9999px;background:url('../img/social_sprite.png') no-repeat;}
 .pro-social .social_i{background-position: 0 0; margin: 0;} .social_i.active,.social_i:hover{background-position:0 -36px;}.pro-social ul>li:last-child .social_i{margin-right:0;}

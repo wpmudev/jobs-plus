@@ -3,7 +3,7 @@
 Plugin Name: Jobs +
 Plugin URI: http://premium.wpmudev.org/jobs-plus/
 Description:
-Version: 1.0 beta 14
+Version: 1.0 beta 15
 Author: WPMU DEV
 Author URI: http://premium.wpmudev.org
 Text Domain: jbp
@@ -47,6 +47,8 @@ define( 'JBP_PLUGIN_DIR', plugin_dir_path(__FILE__) );
 define( 'JBP_TEXT_DOMAIN', 'jbp' );
 // The key for the options array
 define( 'JBP_SETTINGS_NAME', 'jobs_plus_settings' );
+// The key for the options array
+define( 'JBP_CAPTCHA', 'jbp_captcha' );
 
 //Script Versions
 define( 'IMAGESLOADED',            'v3.0.4' );

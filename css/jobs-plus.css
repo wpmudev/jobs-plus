@@ -74,6 +74,11 @@
 	color: #fff;
 }
 
+/* CAPTCHA fields */
+.captcha{ display: inline-block; vertical-align: middle; line-height: 1}
+.captcha img{border: 0; box-shadow: 0;}
+#jbp_random_value{ width: 120px; height: 40px; display: inline-block; vertical-align: middle; margin: 0 0 0 15px;}
+
 .updated {
 	background-color:#fff;
 	border-left: 4px solid #7AD03A;

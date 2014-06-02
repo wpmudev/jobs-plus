@@ -196,15 +196,25 @@ global $CustomPress_Core;
 						<th><label for="disable_contact_form"><?php esc_html_e( 'Disable Contact Form:', JBP_TEXT_DOMAIN ); ?></label></th>
 						<td>
 							<input type="hidden" name="jbp[pro][disable_contact_form]" value="0" />
-							<input type="checkbox" id="disable_contact_form" name="jbp[pro][disable_contact_form]" value="1" <?php checked( $this->get_setting('pro->disable_contact_form') ); ?> />
+							<input type="checkbox" id="disable_contact_form" name="jbp[pro][disable_contact_form]" value="1" <?php checked( $this->get_setting('pro->disable_contact_form', '0'), '1' ); ?> />
 							<span class="description"><?php esc_html_e( 'disable contact form', JBP_TEXT_DOMAIN ); ?></span>
 						</td>
 					</tr>
+
+					<tr>
+						<th><label for="use_captcha"><?php esc_html_e( 'Use CAPTCHA:', JBP_TEXT_DOMAIN ); ?></label></th>
+						<td>
+							<input type="hidden" name="jbp[pro][use_captcha]" value="0" />
+							<input type="checkbox" id="use_captcha" name="jbp[pro][use_captcha]" value="1" <?php checked( $this->get_setting('pro->use_captcha', '0'), '1'); ?> />
+							<span class="description"><?php esc_html_e( 'use the captcha image on the email form', JBP_TEXT_DOMAIN ); ?></span>
+						</td>
+					</tr>
+
 					<tr>
 						<th><label for="cc_admin"><?php esc_html_e( 'CC the Administrator:', JBP_TEXT_DOMAIN ); ?></label></th>
 						<td>
 							<input type="hidden" name="jbp[pro][cc_admin]" value="0" />
-							<input type="checkbox" id="cc_admin" name="jbp[pro][cc_admin]" value="1" <?php checked( $this->get_setting('pro->cc_admin') ); ?> />
+							<input type="checkbox" id="cc_admin" name="jbp[pro][cc_admin]" value="1" <?php checked( $this->get_setting('pro->cc_admin', '0'), '1' ); ?> />
 							<span class="description"><?php esc_html_e( 'cc the administrator', JBP_TEXT_DOMAIN ); ?></span>
 						</td>
 					</tr>
@@ -212,7 +222,7 @@ global $CustomPress_Core;
 						<th><label for="cc_sender"><?php esc_html_e( 'CC the Sender:', JBP_TEXT_DOMAIN ); ?></label></th>
 						<td>
 							<input type="hidden" name="jbp[pro][cc_sender]" value="0" />
-							<input type="checkbox" id="cc_sender" name="jbp[pro][cc_sender]" value="1" <?php checked( $this->get_setting('pro->cc_sender') ); ?> />
+							<input type="checkbox" id="cc_sender" name="jbp[pro][cc_sender]" value="1" <?php checked( $this->get_setting('pro->cc_sender', '0'), '1') ; ?> />
 							<span class="description"><?php esc_html_e( 'cc the sender', JBP_TEXT_DOMAIN ); ?></span>
 						</td>
 					</tr>
