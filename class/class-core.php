@@ -76,7 +76,7 @@ class Jobs_Plus_Core{
 
 		add_action('plugins_loaded', array(&$this, 'on_plugins_loaded') );
 		add_action('init', array(&$this, 'on_init'), 10);
-		add_action('wp_loaded', array(&$this, 'create_virtual_pages') );
+		add_action('wp_loaded', array(&$this, 'on_wp_loaded'), 10);
 		add_action('wp_print_scripts', array(&$this, 'on_print_scripts') );
 
 		add_action('template_redirect', array(&$this, 'process_requests') );
@@ -259,14 +259,27 @@ class Jobs_Plus_Core{
 		load_plugin_textdomain($this->text_domain, false, plugin_basename( $this->plugin_dir . 'languages/' ) );
 
 		//If the activate flag is set then try to initalize the defaults
-		if( get_site_option('jbp_activate', false))	{
+		if( get_site_option('jbp_activate') > 1)	{
 			global $CustomPress_Core;
 			require_once($this->plugin_dir . 'class/class-data.php');
 			$CustomPress_Core->add_admin_capabilities();
-			delete_site_option('jbp_activate');
+			//delete_site_option('jbp_activate');
 		}
 	}
 
+	function on_wp_loaded(){
+		if( get_site_option('jbp_activate', false))	{
+			//For some reason the rewrite rules need to flushed twice
+			flush_rewrite_rules();
+			$flag = get_option('jbp_activate') - 1;
+			if( empty( $flag ) ) {
+				delete_site_option('jbp_activate');
+			} else {
+				update_site_option('jbp_activate', $flag);
+			}
+		}
+	}
+	
 	function on_init(){
 		global $wp_post_statuses;
 
@@ -301,6 +314,7 @@ class Jobs_Plus_Core{
 		//Need to register scripts and css early because we enqueue in
 		//template_redirect so we know the page and can only load what and when needed.
 		$this->register_scripts();
+
 	}
 
 	function widgets_init(){
@@ -559,7 +573,6 @@ class Jobs_Plus_Core{
 	*/
 	function create_virtual_pages() {
 		/* Create neccessary pages */
-
 		$post_content  = __("<p>Virtual page. Editing this page won\'t change anything.<br />", $this->text_domain);
 		$post_content .= __("You may edit the Title and/or the slug only.</p>", $this->text_domain);
 
@@ -571,8 +584,6 @@ class Jobs_Plus_Core{
 		$page_id = ($page && $page->ID > 0) ? $page->ID : 0;
 		if ( empty($page_id) ) {
 			/* Construct args for the new post */
-			if( empty($this->job_slug) ) $this->job_slug = 'job';
-			if( empty($this->job_labels->singular_name) ) $this->job_labels->singular_name = 'Job';
 			$args = array(
 			'post_title'     => sprintf('Add %s', $this->job_labels->singular_name),
 			'post_name'      => sprintf('add-%s', $this->job_slug ),
@@ -597,8 +608,6 @@ class Jobs_Plus_Core{
 		$page_id = ($page && $page->ID > 0) ? $page->ID : 0;
 		if ( empty($page_id) ) {
 			/* Construct args for the new post */
-			if( empty($this->pro_slug) ) $this->pro_slug = 'expert';
-			if( empty($this->pro_labels->singular_name) ) $this->pro_labels->singular_name = 'Expert';
 			$args = array(
 			'post_title'     => sprintf('Add %s', $this->pro_labels->singular_name),
 			'post_name'      => sprintf('add-%s', $this->pro_slug ),
@@ -2789,14 +2798,14 @@ class Jobs_Plus_Core{
 
 
 }
-endif;
 
 // Set flag on activation to trigger initial data
 add_action('activated_plugin', 'jbp_flag_activation', 1);
-function jbp_flag_activation($plugin=''){
-	//Flag we're activating
-	if($plugin == JBP_PLUGIN) add_site_option('jbp_activate', true);
+function jbp_flag_activation( $plugin='' ){
+	//Flag we're activating Do it twice
+	if($plugin == JBP_PLUGIN) update_site_option('jbp_activate', 2);
 }
+
 
 global $Jobs_Plus_Core;
 
@@ -2806,3 +2815,5 @@ if (is_admin()) {
 } else {
 	$Jobs_Plus_Core = new Jobs_Plus_Core;
 }
+
+endif;

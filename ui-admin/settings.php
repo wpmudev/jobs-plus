@@ -7,7 +7,6 @@
 */
 
 ?>
-
 <div class="wrap">
 	<?php screen_icon('jobs-plus'); ?>
 	<h2><?php printf( esc_html__('Jobs+ Settings %s', JBP_TEXT_DOMAIN), JOBS_PLUS_VERSION );?></h2>
