@@ -7,17 +7,37 @@
 */
 
 /**
-* Do not use raw shortcodes( [xxx] ) inside the loop. Use echo do_shortcode('[xxx]');
+Variables passed by  shortcode
+		$title
+		$legend
+		$link
+		$view
+		$class
+		$count
 */
-global $post, $jbp_query;
-$jbp_query = new WP_Query(array('post_type' => 'jbp_job', 'posts_per_page' => 3, 'post_status' => 'publish') );
+global $post, $jbp_query, $Term_Images;
+
+$jbp_query = new WP_Query(array(
+'post_type' => 
+'jbp_job', 
+'posts_per_page' => $count, 
+'post_status' => 'publish',
+) 
+);
 
 wp_enqueue_style('jobs-plus-custom');
 wp_enqueue_script('element-query');
 wp_enqueue_script('jquery-format-currency-i18n');
 
+$use_cat_img = empty($Term_Images) ? false : $Term_Images->get_setting('jbp_category->use', false);
+if( $use_cat_img ) {
+	$break = 'data-eq-pts=" break: 420"';
+} else {
+	$break = 'data-eq-pts=" break: 1024"';
+}
+
 ?>
-<div class="job-poster" data-eq-pts=" break: 420">
+<div class="job-poster" <?php echo $break; ?> >
 	<h2 style="text-align: center"><?php echo esc_html($title); ?></h2>
 	<hr />
 	<?php while( $jbp_query->have_posts() ): ?>

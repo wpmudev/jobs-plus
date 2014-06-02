@@ -108,7 +108,7 @@ wp_enqueue_script('jquery-format-currency-i18n');
 		
 		$('#project-min').text('<?php echo $project_min; ?>').formatCurrency({ region: '<?php echo $this->js_locale; ?>', roundToDecimalPlace: 0});
 		$('#project-max').text('<?php echo $project_max; ?>').formatCurrency({ region: '<?php echo $this->js_locale; ?>', roundToDecimalPlace: 0});
-		$('#project-dash').text('<?php echo $project_dash; ?>').formatCurrency({ region: '<?php echo $this->js_locale; ?>'});
+		$('#project-dash').text('<?php echo $project_dash; ?>');
 	
 	});
 </script>

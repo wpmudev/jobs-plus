@@ -207,19 +207,34 @@ input.input-small{
 	border-bottom: 1px solid #cccccc;
 }
 
-jbp-landing-page{
+.jbp-landing-page{
 	max-width: 100%;
+	text-align: center;
 }
 
 .poster-left{
-	width: 48%;
-	float: left;
+	display: inline-block;
+	width: 100%;
 }
 
 .poster-right{
+	display: inline-block;
+}
+
+/* EQ.JS */
+.jbp-landing-page[data-eq-state="break"] .poster-left{
+	width: 48%;
+	float: left;
+	display: block;
+}
+
+.jbp-landing-page[data-eq-state="break"] .poster-right{
 	width: 48%;
 	float: right;
+	display: block;
 }
+
+
 
 button.jbp-button{
 	display: inline-block;

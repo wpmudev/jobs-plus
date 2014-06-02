@@ -200,7 +200,7 @@
 				<th scope="row"><?php printf( esc_html__('%s Poster:', JBP_TEXT_DOMAIN ), $this->job_labels->name); ?></th>
 				<td>
 					<code>
-						[jbp-job-poster title="<?php printf( esc_html__('Recently Posted %s', JBP_TEXT_DOMAIN), $this->job_labels->name);?>" legend="<?php printf(__('Post a %s', $this->text_domain),$this->job_labels->singular_name);?>" link="<?php printf(__('Browse More %s...', $this->text_domain),$this->job_labels->name);?>" view="loggedin|loggedout|both" class="some class"]
+						[jbp-job-poster title="<?php printf( esc_html__('Recently Posted %s', JBP_TEXT_DOMAIN), $this->job_labels->name);?>" legend="<?php printf(__('Post a %s', $this->text_domain),$this->job_labels->singular_name);?>" link="<?php printf(__('Browse More %s...', $this->text_domain),$this->job_labels->name);?>" count="3" view="loggedin|loggedout|both" class="some class"]
 					</code>
 					<br/><span class="description"><?php printf( esc_html__( 'Displays a group of recent %s.', JBP_TEXT_DOMAIN ), $this->job_labels->name) ?></span>
 				</td>

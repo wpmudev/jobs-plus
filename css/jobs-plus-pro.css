@@ -547,7 +547,7 @@ button.pro-submit-search >img{
 }
 
 .pro-poster{
-	min-width: 300px;
+	width: 320px;
 	text-align: center;
 	overflow: hidden;
 }

@@ -2312,6 +2312,7 @@ class Jobs_Plus_Core{
 		'link' => sprintf(__('Browse More %s...', $this->text_domain),$this->job_labels->name),
 		'view' => 'both', //loggedin, loggedout, both
 		'class' => '',
+		'count' => 3,
 		), $atts ) );
 
 		if( !$this->can_view( $view ) ) return '';

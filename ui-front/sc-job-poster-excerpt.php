@@ -22,6 +22,8 @@ switch($jbp_query->current_post % 6){
 $size = 'medium';
 $terms = wp_get_post_terms( $post->ID, 'jbp_category', array('fields' => 'ids') );
 
+$term_image = do_shortcode(	sprintf('[ti term="%s" width="120" height="120" class="job-image" ]', $terms[0]) );
+
 ?>
 
 <div class="job-custom group" data-permalink="<?php echo esc_attr(get_permalink(get_the_ID())); ?>" >
