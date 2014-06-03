@@ -38,7 +38,7 @@ class WP_Widget_Recent_Experts extends WP_Widget {
 		ob_start();
 		extract( $args );
 
-		$title = apply_filters( 'widget_title', empty( $instance['title'] ) ? __( 'Recent Job Posts' ) : $instance['title'], $instance, $this->id_base );
+		$title = apply_filters( 'widget_title', empty( $instance['title'] ) ? __( 'Recent Experts' ) : $instance['title'], $instance, $this->id_base );
 
 		if ( empty( $instance['number'] ) || ! $number = absint( $instance['number'] ) ) {
 			$number = 10;
