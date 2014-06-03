@@ -4,7 +4,6 @@
 * @since version 1.0
 * @license GPL2+
 */
-
 @import url("jobs-plus-pro.css");
 @import url("jobs-plus-job.css");
 
@@ -14,59 +13,63 @@
 	content: "";
 	display: table;
 }
+
 .group:after {
 	clear: both;
 }
+
 .group {
 	zoom: 1; /* For IE 6/7 (trigger hasLayout) */
 }
 
-.active-sort a{
+.active-sort a {
 	color: #41B3DD;
 }
 
-.inactive-sort a{
+.inactive-sort a {
 	color: #ccc;
 }
 
-.show-on-edit{ display: none;}
-
-.error {
-	background-color:#fff;
-	border: 1px solid #ddd;
-	border-left: 4px solid #c00;
-	box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.2) ;
+.show-on-edit {
+	display: none;
 }
 
-.jbp-grey{
+.error {
+	background-color: #fff;
+	border:           1px solid #ddd;
+	border-left:      4px solid #c00;
+	box-shadow:       1px 1px 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+.jbp-grey {
 	border-top: 4px solid #b3b3b3;
 }
 
-.jbp-mint{
+.jbp-mint {
 	border-top: 4px solid #38ba7a;
 }
 
-.jbp-rose{
+.jbp-rose {
 	border-top: 4px solid #f16869;
 }
 
-.jbp-amber{
+.jbp-amber {
 	border-top: 4px solid #fdb441;
 }
 
-.jbp-yellow{
+.jbp-yellow {
 	border-top: 4px solid #ffde1a;
 }
 
-.jbp-blue{
+.jbp-blue {
 	border-top: 4px solid #3ebae8;
 }
 
-.meta-red{
+.meta-red {
 	color: #c00;
 }
 
-.meta-green{
+.meta-green {
 	color: #0c0;
 }
 
@@ -80,208 +83,245 @@
 #jbp_random_value{ width: 120px; height: 40px; display: inline-block; vertical-align: middle; margin: 0 0 0 15px;}
 
 .updated {
-	background-color:#fff;
-	border-left: 4px solid #7AD03A;
-	box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.2) ;
+	background-color: #fff;
+	border-left:      4px solid #7AD03A;
+	box-shadow:       1px 1px 2px 1px rgba(0, 0, 0, 0.2);
 }
 
-div.updated, div.error{
-	margin: 1em 0;
+div.updated, div.error {
+	margin:  1em 0;
 	padding: 0.1em 1em;
 }
 
 div.updated p, div.error p {
-	margin: 0.5em 0;
+	margin:  0.5em 0;
 	padding: 0.1em;
 }
 
-label.error, label.updated{
-	margin: 0.5em 0;
+label.error, label.updated {
+	margin:  0.5em 0;
 	padding: 0.1em 1em;
 	display: block;
 }
 
 .editfield {
-	margin-bottom:1em;
-	padding:0;
+	margin-bottom: 1em;
+	padding:       0;
 }
 
 .editfield input[type="text"],
 .editfield textarea,
 .editfield select {
-	font-size:1.2em;
-	margin:0;
-	padding:0.5em;
-	width:100%;
-	box-sizing: border-box;
-	-moz-box-sizing: border-box;
+	font-size:          1.2em;
+	margin:             0;
+	padding:            0.5em;
+	width:              100%;
+	box-sizing:         border-box;
+	-moz-box-sizing:    border-box;
 	-webkit-box-sizing: border-box;
 }
 
-.editable img{
+.editable img {
 	max-width: 100%;
-	height: auto;
-	cursor: url("../img/magnify.cur") 0 0, pointer;
+	height:    auto;
+	cursor:    url("../img/magnify.cur") 0 0, pointer;
 }
 
-.input-large{
-	width: 25em;
+.input-large {
+	width:  25em;
 	margin: 0;
 }
 
-.input-medium{
+.input-medium {
 	min-width: 18em;
+	margin:    0;
+}
+
+.input-small {
+	width:  12em;
 	margin: 0;
 }
 
-.input-small{
-	width: 12em;
-	margin: 0;
-}
-
-input.input-small{
+input.input-small {
 	margin: 0 0 0.5em 0;
 }
 
-.dialogcenter{
+.dialogcenter {
 	text-align: center;
 }
 
 .jbp-navigation {
-	margin-top:1em;
+	margin-top: 1em;
 }
 
 .jbp-pagination {
-	clear:both;
-	font-size:90%;
+	clear:       both;
+	font-size:   90%;
 	line-height: 0.9em;
-	padding:0;
-	position:relative;
-	z-index:99;
-	float: right;
+	padding:     0;
+	position:    relative;
+	z-index:     99;
+	float:       right;
 }
 
 .jbp-pagination .current {
-	background:#aaa;
-	color:#fff;
-	padding:0.3em 0.5em 0.3em;
+	background:    #aaa;
+	color:         #fff;
+	padding:       0.3em 0.5em 0.3em;
 	border-radius: 50%;
 }
 
 .jbp-pagination a:hover {
-	background:#aaa;
-	color:#fff;
+	background: #aaa;
+	color:      #fff;
 }
 
-.jbp-pagination span,.jbp-pagination a {
-	background:transparent;
-	color:#444;
-	display:block;
-	float:left;
-	margin:0.1em 0.1em 0.1em 0;
-	padding: 0.3em 0.5em 0.3em;
-	text-decoration:none;
-	width:auto;
+.jbp-pagination span, .jbp-pagination a {
+	background:      transparent;
+	color:           #444;
+	display:         block;
+	float:           left;
+	margin:          0.1em 0.1em 0.1em 0;
+	padding:         0.3em 0.5em 0.3em;
+	text-decoration: none;
+	width:           auto;
 }
 
 .jbp-certify {
 
-	background: transparent url("../img/jbp-certify.png") no-repeat 0.5em center;
-	font-size: 90%;
-	height: 1.2em;
+	background:  transparent url("../img/jbp-certify.png") no-repeat 0.5em center;
+	font-size:   90%;
+	height:      1.2em;
 	line-height: 1.2em;
-	overflow: hidden;
-	position: absolute;
-	right: 0.5em;
+	overflow:    hidden;
+	position:    absolute;
+	right:       0.5em;
 	text-indent: 12em;
-	top: 0.5.em;
-	transition: width 0.4s ease 0s;
-	width: 1em;
-	word-wrap: normal;
-	padding: 0;
-	margin: 0;
+	top: 0.5 . em;
+	transition:  width 0.4s ease 0s;
+	width:       1em;
+	word-wrap:   normal;
+	padding:     0;
+	margin:      0;
 }
 
-.pro-archive:hover .jbp-certify{
-	width: 100%;
-	text-indent: 0.5em;
-	color: #0090ff;
+.pro-archive:hover .jbp-certify {
+	width:            100%;
+	text-indent:      0.5em;
+	color:            #0090ff;
 	background-color: #f3f3f2;
-	right: 0;
-	top: 0;
-	border-bottom: 1px solid #cccccc;
+	right:            0;
+	top:              0;
+	border-bottom:    1px solid #cccccc;
 }
 
-.jbp-landing-page{
-	max-width: 100%;
+.jbp-landing-page {
+	max-width:  100%;
 	text-align: center;
 }
 
-.poster-left{
+.poster-left {
 	display: inline-block;
-	width: 100%;
+	width:   100%;
 }
 
-.poster-right{
+.poster-right {
 	display: inline-block;
 }
 
 /* EQ.JS */
-.jbp-landing-page[data-eq-state="break"] .poster-left{
-	width: 48%;
-	float: left;
+.jbp-landing-page[data-eq-state="break"] .poster-left {
+	width:   48%;
+	float:   left;
 	display: block;
 }
 
-.jbp-landing-page[data-eq-state="break"] .poster-right{
-	width: 48%;
-	float: right;
+.jbp-landing-page[data-eq-state="break"] .poster-right {
+	width:   48%;
+	float:   right;
 	display: block;
 }
 
-
-
-button.jbp-button{
-	display: inline-block;
-	font-size: 16px;
-	padding: 0.5em 1em;
+button.jbp-button {
+	display:     inline-block;
+	font-size:   16px;
+	padding:     0.5em 1em;
 	font-weight: bold;
-	margin: 0 5px;
-	cursor: pointer;
+	margin:      0 5px;
+	cursor:      pointer;
 }
 
-.jbp-widget  .jbp-button img{
-	display: block;
-	border: none;
+.jbp-widget .jbp-button img {
+	display:    block;
+	border:     none;
 	box-shadow: none;
-	margin: auto;
+	margin:     auto;
 }
 
-.jbp-widget{
+.jbp-widget {
 	margin-bottom: 20px;
 }
 
-.jbp-widget .jbp-button{
-	display: inline;
+.jbp-widget .jbp-button {
+	display:          inline;
 	background-color: #fff;
-	cursor: pointer;
-	color: #111;
+	cursor:           pointer;
+	color:            #111;
 }
 
-@media screen and (max-width:959px) {
+.expert-widgetbar {
+	list-style-type: none !important;
+	overflow:        hidden;
+}
 
-	.jbp-widget .jbp-button{
-		float: none;
-		display: block;
-		width: 100%;
-		border: 1px solid #aaa !important;
-		background: none !important;
-		padding: .5em 0;
+.expert-widgetbar li {
+	position: relative;
+	margin:   0 0 5px 0;
+	float:    left;
+}
+.expert-widgetbar li img{
+	width: 100%;
+	height: auto;
+}
+
+.expert-widgetbar li .jbp-expert-wg-mask {
+	position:   absolute;
+	top:        0;
+	width:      100%;
+	text-align: center;
+}
+
+.expert-widgetbar li .jbp-expert-wg-mask a {
+	text-decoration: none;
+}
+
+.expert-widgetbar li .jbp-expert-wg-mask a:hover {
+	text-decoration: underline;
+}
+
+.expert-widgetbar li .jbp-expert-wg-mask h3 {
+	font-weight: normal;
+	font-size:   9pt;
+	color:       white;
+	background:  rgba(0, 0, 0, 0.5);
+	padding:     0;
+	margin:      0;
+}
+
+@media screen and (max-width: 959px) {
+
+	.jbp-widget .jbp-button {
+		float:          none;
+		display:        block;
+		width:          100%;
+		border:         1px solid #aaa !important;
+		background:     none !important;
+		padding:        .5em 0;
 		text-transform: uppercase;
-		margin-bottom: .5em;
+		margin-bottom:  .5em;
 	}
 
-	.jbp-widget .jbp-button img{
+	.jbp-widget .jbp-button img {
 		display: none;
 	}
 
