@@ -566,7 +566,7 @@ class Jobs_Plus_Core{
 		wp_register_script('jquery-format-currency-i18n', $this->plugin_url . "js/i18n/jquery.formatCurrency.{$this->js_locale}.js", array('jquery', 'jquery-format-currency' ), JQUERY_FORMAT_CURRENCY, true );
 		wp_register_script('jquery-format-currency', $this->plugin_url . "js/jquery.formatCurrency$suffix.js", array( 'jquery' ), JQUERY_FORMAT_CURRENCY, true );
 
-
+		wp_enqueue_style('jbp-widgets-style',$this->plugin_url.'css/job-plus-widgets.css');
 	}
 
 	/**
