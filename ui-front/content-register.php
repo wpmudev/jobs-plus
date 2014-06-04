@@ -14,17 +14,17 @@
 		<h2><?php esc_html_e('Login with your Username and Password', JBP_TEXT_DOMAIN); ?></h2>
 		<div class="editfield">
 			<label for="lr[user_login]"><?php esc_html_e('Username', JBP_TEXT_DOMAIN); ?></label>
-			<input type="text" name="lr[user_login]" id="jbp_username" value="" class="required" placeholder="<?php esc_attr_e('Username', JBP_TEXT_DOMAIN); ?>" />
+			<input type="text" name="lr[user_login]" id="lr[user_login]" value="" class="required" placeholder="<?php esc_attr_e('Username', JBP_TEXT_DOMAIN); ?>" />
 		</div>
 
 		<div class="editfield">
 			<label for="lr[user_password]"><?php esc_html_e('Password', JBP_TEXT_DOMAIN); ?></label>
-			<input type="password" name="lr[user_password]" id="jbp_pass" value="" class="required" placeholder="<?php esc_attr_e('Password', JBP_TEXT_DOMAIN); ?>" />
+			<input type="password" name="lr[user_password]" id="lr[user_password]" value="" class="required" placeholder="<?php esc_attr_e('Password', JBP_TEXT_DOMAIN); ?>" />
 		</div>
 
 		<div class="editfield">
 			<label for="lr[remember]">
-			<input type="checkbox" name="lr[remember]" id="jbp_remember" value="1" placeholder="<?php esc_attr_e('Password', JBP_TEXT_DOMAIN); ?>" />
+				<input type="checkbox" name="lr[remember]" id="lr[remember]" value="1" placeholder="<?php esc_attr_e('Remember Me', JBP_TEXT_DOMAIN); ?>" />
 			<?php esc_html_e('remember me', JBP_TEXT_DOMAIN); ?></label>
 		</div>
 
@@ -32,18 +32,51 @@
 
 		<div class="editfield">
 			<label for="lr[user_email]"><?php esc_html_e('Email', JBP_TEXT_DOMAIN); ?></label>
-			<input type="text" name="lr[user_email]" id="jbp_email" value="" class="email if-reg" placeholder="<?php esc_attr_e('Your Email', JBP_TEXT_DOMAIN); ?>" />
+			<input type="text" name="lr[user_email]" id="lr[user_email]" value="" class="email if-reg" placeholder="<?php esc_attr_e('Your Email', JBP_TEXT_DOMAIN); ?>" />
 		</div>
 
+		<?php if( $this->get_setting('general->first_name', 0) ): ?>
 		<div class="editfield">
-			<label for="lr[display_name]"><?php esc_html_e('Name', JBP_TEXT_DOMAIN); ?></label>
-			<input type="text" name="lr[display_name]" id="jbp_name" value="" class="if-reg " placeholder="<?php esc_attr_e('Your Name', JBP_TEXT_DOMAIN); ?>" />
+			<label for="lr[first_name]"><?php esc_html_e('First Name', JBP_TEXT_DOMAIN); ?></label>
+			<input type="text" name="lr[first_name]" id="lr[first_name]" value="" class="if-reg " placeholder="<?php esc_attr_e('Your First Name', JBP_TEXT_DOMAIN); ?>" />
 		</div>
+		<?php endif; ?>
+		
+		
+		<?php if( $this->get_setting('general->last_name', 0) ): ?>
+		<div class="editfield">
+			<label for="lr[last_name]"><?php esc_html_e('Last Name', JBP_TEXT_DOMAIN); ?></label>
+			<input type="text" name="lr[last_name]" id="lr[last_name]" value="" class="if-reg " placeholder="<?php esc_attr_e('Your Last Name', JBP_TEXT_DOMAIN); ?>" />
+		</div>
+		<?php endif; ?>
 
+		<?php if( $this->get_setting('general->display_name', 0) ): ?>
+		<div class="editfield">
+			<label for="lr[display_name]"><?php esc_html_e('Display Name', JBP_TEXT_DOMAIN); ?></label>
+			<input type="text" name="lr[display_name]" id="jbp_name" value="" class="if-reg " placeholder="<?php esc_attr_e('Your Display Name', JBP_TEXT_DOMAIN); ?>" />
+		</div>
+		<?php endif; ?>
+
+		<?php if( $this->get_setting('general->user_url', 0) ): ?>
+		<div class="editfield">
+			<label for="lr[user_url]"><?php esc_html_e('Website', JBP_TEXT_DOMAIN); ?></label>
+			<input type="text" name="lr[user_url]" id="lr[display_name]" value="" class="url if-reg" placeholder="<?php esc_attr_e('Your Website', JBP_TEXT_DOMAIN); ?>" />
+		</div>
+		<?php endif; ?>
+
+		<?php if( $this->get_setting('general->nickname', 0) ): ?>
 		<div class="editfield">
 			<label for="lr[nickname]"><?php esc_html_e('Nickname', JBP_TEXT_DOMAIN); ?></label>
-			<input type="text" name="lr[nickname]" id="jbp_nick" value="" class="if-reg " placeholder="<?php esc_attr_e('Your Nickname', JBP_TEXT_DOMAIN); ?>" />
+			<input type="text" name="lr[nickname]" id="lr[nickname]" value="" class="if-reg " placeholder="<?php esc_attr_e('Your Nickname', JBP_TEXT_DOMAIN); ?>" />
 		</div>
+		<?php endif; ?>
+
+		<?php if( $this->get_setting('general->description', 0) ): ?>
+		<div class="editfield">
+			<label for="lr[description]"><?php esc_html_e('Biography', JBP_TEXT_DOMAIN); ?></label>
+			<textarea name="lr[description]" id="lr[description]" class="if-reg " placeholder="<?php esc_attr_e('Something about You', JBP_TEXT_DOMAIN); ?>" ></textarea>
+		</div>
+		<?php endif; ?>
 
 		<?php if( $this->get_setting('general->use_register_captcha', 0) ): ?>
 		<div class="editfield">

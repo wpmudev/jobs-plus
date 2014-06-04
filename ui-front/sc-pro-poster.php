@@ -59,8 +59,7 @@ wp_enqueue_script('element-query');
 				<div class="mask">
 					<a href="<?php echo get_permalink(get_the_ID()); ?>" title="<?php the_title; ?>" alt="<?php the_title; ?>" >
 						<h2><?php the_title(); ?></h2>
-						<p><?php echo do_shortcode('[ct id="_ct_jbp_pro_Tagline" ]'); ?>
-							<br/><br/>[jbp-rating post="<?php the_ID(); ?>"]</p>
+						<p>[jbp-rating post="<?php the_ID(); ?>"]</p>
 					</a>
 				</div>
 				</div>

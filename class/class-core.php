@@ -2156,15 +2156,16 @@ class Jobs_Plus_Core{
 		wp_enqueue_style('jobs-plus-custom');
 		//if not logged in setup necessaries for registration popup
 		if( !is_user_logged_in() ) {
-			//styles
-			wp_enqueue_style('magnific-popup');
+			if( $this->get_setting('general->use_fast_register', 0) ) {
+				//styles
+				wp_enqueue_style('magnific-popup');
 
-			//scripts
-			wp_enqueue_script('jquery-form');
-			wp_enqueue_script('magnific-popup');
-			wp_enqueue_script('jquery-validate'); //From CustomPress
-
-			return admin_url('admin-ajax.php?action=jbp-register');
+				//scripts
+				wp_enqueue_script('jquery-form');
+				wp_enqueue_script('magnific-popup');
+				wp_enqueue_script('jquery-validate'); //From CustomPress
+				return admin_url('admin-ajax.php?action=jbp-register');
+			}
 		}
 		return  false;
 	}
@@ -2991,8 +2992,13 @@ class Jobs_Plus_Core{
 			} else {
 				$response['status'] = 'success';
 				$response['message'] = sprintf('<div class="updated">%s</div>', __('Thank you for Registering', $this->text_domain) );
+
 				//Just made it so only need the cookies
 				wp_set_auth_cookie( $user_id, $params['lr']['remember'] );
+				//Send notifiaction email?
+				if( $this->get_setting('general->use_register_email') ) {
+					wp_new_user_notification( $user_id, $params['lr']['user_password']);
+				}
 			}
 			wp_send_json( $response);
 		}

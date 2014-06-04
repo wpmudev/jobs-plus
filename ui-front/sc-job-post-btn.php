@@ -28,5 +28,5 @@ if($register_url) {
 </button>
 
 <?php if($register_url): ?>
-<script type="text/javascript">jQuery(document).ready( function($){ $('.jbp-register-popup').magnificPopup(); } );</script>
+<script type="text/javascript">jQuery(document).ready( function($){ $('.jbp-register-popup').magnificPopup({closeBtnInside:true}); } );</script>
 <?php endif; ?>

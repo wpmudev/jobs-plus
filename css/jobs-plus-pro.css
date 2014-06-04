@@ -603,7 +603,7 @@ button.pro-submit-search >img{
 .view h2 {
     background: none repeat scroll 0 0 rgba(0, 0, 0, 0.8);
     color: #FFFFFF;
-    font-size: 14px;
+    font-size: 12px;
     letter-spacing: 0;
     margin: 0;
     overflow: hidden;
@@ -677,11 +677,11 @@ button.pro-submit-search >img{
 }
 .view-first p {
     min-height: 300px;
-    padding-top: 30px;
+    padding-top: 0;
 }
 .view-first:hover p {
     min-height: 300px;
-    padding-top: 15px;
+    padding-top: 0;
     transition-delay: 0.1s;
 }
 .view-first:hover a.info {

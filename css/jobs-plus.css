@@ -304,13 +304,16 @@ button.jbp-button {
 
 }
 
-/** Register popup **/
+/** Ajax Register popup **/
+
 .jbp-register{
-	width: 300px;
+	position: relative;
+	max-width: 300px;
 	background-color: #f3f3f3;
 	margin: auto;
-	padding: 32px;
+	padding: 20px;
 	border-radius: 10px;
+	box-sizing: border-box;
 }
 
 .jbp-register h1{
@@ -325,6 +328,10 @@ button.jbp-button {
 	font-weight: bold;
 	line-height: 1.6;
 	text-align: center;
+}
+
+.jbp-register-buttons{
+	white-space: nowrap;
 }
 
 button.jbp-register-btn {

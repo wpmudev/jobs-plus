@@ -66,9 +66,69 @@
 						<td>
 							<input type="hidden" name="jbp[general][use_register_captcha]" value="0" />
 							<label><input type="checkbox" name="jbp[general][use_register_captcha]" value="1" <?php checked( $this->get_setting('general->use_register_captcha', '0') ) ?> /> <?php esc_html_e('Enable CAPTCHA in Registration', JBP_TEXT_DOMAIN ); ?></label>
-							<br /><span class="description"><?php esc_html_e('Enable a CAPTCHA image on the Fast Registration form.', JBP_TEXT_DOMAIN); ?></span>
+							<br /><span class="description"><?php esc_html_e('Enable a CAPTCHA image on the Fast Registration form. Send username and password to the registered email address', JBP_TEXT_DOMAIN); ?></span>
 						</td>
 					</tr>
+
+					<tr>
+						<th>
+							<label><?php esc_html_e('Email notification', JBP_TEXT_DOMAIN ); ?></label>
+						</th>
+						<td>
+							<input type="hidden" name="jbp[general][use_register_email]" value="0" />
+							<label><input type="checkbox" name="jbp[general][use_register_email]" value="1" <?php checked( $this->get_setting('general->use_register_email', '0') ) ?>use_register_email /> <?php esc_html_e('Enable Email notification', JBP_TEXT_DOMAIN ); ?></label>
+							<br /><span class="description"><?php esc_html_e('Enable Email notification for Fast Registration.', JBP_TEXT_DOMAIN); ?></span>
+						</td>
+					</tr>
+
+					<tr>
+						<th>
+							<label for="jbp[general][register_top]"><?php esc_html_e('Top Registration Label', JBP_TEXT_DOMAIN ) ?></label>
+						</th>
+						<td>
+							<input type="text" name="jbp[general][register_top]" value="<?php echo esc_attr($this->get_setting('general->register_top', __('Login with your Username and Password', JBP_TEXT_DOMAIN) ) );?>" size="60"/>
+							<br /><span class="description"><?php esc_html_e('Text for the top of the Registration form.', JBP_TEXT_DOMAIN); ?></span>
+						</td>
+					</tr>
+
+					<tr>
+						<th>
+							<label for="jbp[general][register_middle]"><?php esc_html_e('MIddle Registration Label', JBP_TEXT_DOMAIN ) ?></label>
+						</th>
+						<td>
+							<input type="text" name="jbp[general][register_middle]" value="<?php echo esc_attr($this->get_setting('general->register_middle', __('or if Registering, please enter all fields.', JBP_TEXT_DOMAIN) ) );?>" size="60"/>
+							<br /><span class="description"><?php esc_html_e('Text for the middle of the Registration form.', JBP_TEXT_DOMAIN); ?></span>
+						</td>
+					</tr>
+
+					<tr>
+						<th>
+							<label><?php esc_html_e('Registration Fields', JBP_TEXT_DOMAIN ); ?></label>
+						</th>
+						<td>
+							<p>
+								<input type="hidden" name="jbp[general][first_name]" value="0" />
+								<label><input type="checkbox" name="jbp[general][first_name]" value="1" <?php checked( $this->get_setting('general->first_name', '0') ) ?> /> <?php esc_html_e('First Name', JBP_TEXT_DOMAIN ); ?></label><br />
+
+								<input type="hidden" name="jbp[general][last_name]" value="0" />
+								<label><input type="checkbox" name="jbp[general][last_name]" value="1" <?php checked( $this->get_setting('general->last_name', '0') ) ?> /> <?php esc_html_e('Last Name', JBP_TEXT_DOMAIN ); ?></label><br />
+
+								<input type="hidden" name="jbp[general][display_name]" value="0" />
+								<label><input type="checkbox" name="jbp[general][display_name]" value="1" <?php checked( $this->get_setting('general->display_name', '0') ) ?> /> <?php esc_html_e('Display Name', JBP_TEXT_DOMAIN ); ?></label><br />
+
+								<input type="hidden" name="jbp[general][user_url]" value="0" />
+								<label><input type="checkbox" name="jbp[general][user_url]" value="1" <?php checked( $this->get_setting('general->user_url', '0') ) ?> /> <?php esc_html_e('Website', JBP_TEXT_DOMAIN ); ?></label><br />
+
+								<input type="hidden" name="jbp[general][nickname]" value="0" />
+								<label><input type="checkbox" name="jbp[general][nickname]" value="1" <?php checked( $this->get_setting('general->nickname', '0') ) ?> /> <?php esc_html_e('Nickname', JBP_TEXT_DOMAIN ); ?></label><br />
+
+								<input type="hidden" name="jbp[general][description]" value="0" />
+								<label><input type="checkbox" name="jbp[general][description]" value="1" <?php checked( $this->get_setting('general->description', '0') ) ?> /> <?php esc_html_e('Biography', JBP_TEXT_DOMAIN ); ?></label><br />
+							</p>
+							<p><span class="description"><?php esc_html_e('User fields to be required when registering.', JBP_TEXT_DOMAIN); ?></span></p>
+						</td>
+					</tr>
+
 
 				</table>
 			</div>
