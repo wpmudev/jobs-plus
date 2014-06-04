@@ -4,7 +4,9 @@ $jbp_widgets = array(
 	'class-widget-recent-experts'   => 'WP_Widget_Recent_Experts',
 	'class-widget-search-jobs'      => 'WP_Widget_Search_Jobs',
 	'class-widget-search-experts'   => 'WP_Widget_Search_Experts',
-	'class-widget-landing-page'     => 'WP_Widget_Landing_Page'
+	'class-widget-landing-page'     => 'WP_Widget_Landing_Page',
+	'class-widget-post-job'         => 'WP_Widget_Add_Job',
+	'class-widget-add-expert'       => 'WP_Widget_Add_Expert'
 );
 
 foreach ( $jbp_widgets as $file => $widget ) {

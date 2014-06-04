@@ -46,6 +46,7 @@ $editor_settings =   array(
 'tinymce' => true, // load TinyMCE, can be used to pass settings directly to TinyMCE using an array()
 'quicktags' => true // load Quicktags, can be used to pass settings directly to Quicktags using an array()
 );
+
 ?>
 <!-- script type="text/javascript" src="<?php echo $this->plugin_url . 'ui-front/js/media-post.js'; ?>" ></script -->
 

@@ -92,6 +92,14 @@
 	right:    0;
 	top:      0;
 }
+.jobsearch-widgetbar.postjob .jbp_search_box_container button {
+	width:    auto;
+	height:   70%;
+	position: relative;
+	display: block;
+	margin-top: 5px;
+	float:right
+}
 
 .jobsearch-widgetbar .jbp_search_box_container input[type="text"] {
 	width:         96%;
@@ -105,4 +113,9 @@
 	border:          none;
 	box-shadow:      none;
 	-moz-box-shadow: none;
+}
+
+.jbp_landing_page_widget .widgettitle{
+	display: block;
+	margin-bottom: 15px;
 }

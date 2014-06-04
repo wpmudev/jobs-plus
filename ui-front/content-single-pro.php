@@ -17,6 +17,11 @@ if ($post->ID == $Jobs_Plus_Core->add_pro_page_id) {
 	setup_postdata($post);
 	$link = add_query_arg('edit', 1, get_permalink($post->ID) );
 	$editing = false;
+
+	//for become expert widget
+	if(isset($_GET['expert_title']) && !empty($_GET['expert_title'])){
+		$post->post_title=$_GET['expert_title'];
+	}
 }
 elseif (get_query_var('edit')) { //Or are we editing a listing?
 	$editing = current_user_can( EDIT_PRO, $post->ID);
@@ -41,7 +46,6 @@ wp_enqueue_script('jquery-ui-slider');
 //var_dump( $editing );
 //var_dump( current_user_can( EDIT_PRO, $post->ID) );
 $this->no_thumbnail();
-
 ?>
 
 

@@ -5,12 +5,12 @@
  *
  * @since 1.0
  */
-class WP_Widget_Search_Experts extends WP_Widget {
+class WP_Widget_Add_Expert extends WP_Widget {
 
 	function __construct() {
-		$widget_ops = array( 'classname' => 'widget_search_experts', 'description' => __( "Search Experts on your site" ) );
-		parent::__construct( 'search-experts', __( 'Search Experts' ), $widget_ops );
-		$this->alt_option_name = 'widget_search_experts';
+		$widget_ops = array( 'classname' => 'widget_add_expert', 'description' => __( "Let user become expert" ) );
+		parent::__construct( 'add-expert', __( 'Become Expert' ), $widget_ops );
+		$this->alt_option_name = 'widget_add_expert';
 
 		add_action( 'save_post', array( $this, 'flush_widget_cache' ) );
 		add_action( 'deleted_post', array( $this, 'flush_widget_cache' ) );
@@ -19,7 +19,7 @@ class WP_Widget_Search_Experts extends WP_Widget {
 
 	function widget( $args, $instance ) {
 		//wp_enqueue_style('experts-plus');
-		$cache = wp_cache_get( 'widget_search_experts', 'widget' );
+		$cache = wp_cache_get( 'widget_add_expert', 'widget' );
 
 		if ( ! is_array( $cache ) ) {
 			$cache = array();
@@ -45,20 +45,19 @@ class WP_Widget_Search_Experts extends WP_Widget {
 		ob_start();
 		extract( $args );
 
-		$title = apply_filters( 'widget_title', empty( $instance['title'] ) ? __( 'Search Experts' ) : $instance['title'], $instance, $this->id_base );
+		$title = apply_filters( 'widget_title', empty( $instance['title'] ) ? __( 'Become Expert' ) : $instance['title'], $instance, $this->id_base );
 		echo $before_widget;
 		if ( $title ) {
 			echo $before_title . $title . $after_title;
 		}
 
-		$phrase = ( empty( $_GET['s'] ) ) ? '' : $_GET['s'];
 		?>
-		<section class="jobsearch-widgetbar">
-			<form method="GET" action="<?php echo esc_attr( get_post_type_archive_link( 'jbp_pro' ) ); ?>">
+		<section class="jobsearch-widgetbar postjob">
+			<form method="GET" action="<?php echo site_url('/expert/add'); ?>">
 				<div class="jbp_search_box_container">
-					<input type="text" name="s" value="<?php echo esc_attr( $phrase ); ?>" autocomplete="off" placeholder="<?php echo esc_attr( $text ); ?>" />
+					<input type="text" name="expert_title" value="" autocomplete="off" placeholder="<?php _e('Your title') ?>" />
 					<button type="submit" value="">
-						<img src="<?php echo $Jobs_Plus_Core->plugin_url . 'img/search.png'; ?>" alt="" title="title" />
+						<?php _e('Submit') ?>
 					</button>
 				</div>
 			</form>
@@ -67,7 +66,7 @@ class WP_Widget_Search_Experts extends WP_Widget {
 		echo $after_widget;
 
 		$cache[$args['widget_id']] = ob_get_flush();
-		wp_cache_set( 'widget_recent_experts', $cache, 'widget' );
+		wp_cache_set( 'widget_add_expert', $cache, 'widget' );
 	}
 
 	function update( $new_instance, $old_instance ) {
@@ -77,15 +76,15 @@ class WP_Widget_Search_Experts extends WP_Widget {
 		$this->flush_widget_cache();
 
 		$alloptions = wp_cache_get( 'alloptions', 'options' );
-		if ( isset( $alloptions['widget_search_experts'] ) ) {
-			delete_option( 'widget_search_experts' );
+		if ( isset( $alloptions['widget_add_expert'] ) ) {
+			delete_option( 'widget_add_expert' );
 		}
 
 		return $instance;
 	}
 
 	function flush_widget_cache() {
-		wp_cache_delete( 'widget_search_experts', 'widget' );
+		wp_cache_delete( 'widget_add_expert', 'widget' );
 	}
 
 	function form( $instance ) {

@@ -38,7 +38,7 @@ class WP_Widget_Recent_Experts extends WP_Widget {
 		ob_start();
 		extract( $args );
 
-		$title = apply_filters( 'widget_title', empty( $instance['title'] ) ? __( 'Recent Experts' ) : $instance['title'], $instance, $this->id_base );
+		$title = apply_filters( 'widget_title', empty( $instance['title'] ) ? __( 'Our Experts' ) : $instance['title'], $instance, $this->id_base );
 
 		if ( empty( $instance['number'] ) || ! $number = absint( $instance['number'] ) ) {
 			$number = 10;
@@ -94,6 +94,9 @@ class WP_Widget_Recent_Experts extends WP_Widget {
 					</li>
 				<?php endforeach; ?>
 			</ul>
+			<?php if ( isset( $instance['show_browse_link'] ) && $instance['show_browse_link'] == 1 ): ?>
+			<a href="<?php echo site_url( '/experts' ) ?>"><?php _e( 'Browse experts...' ) ?></a>
+		<?php endif; ?>
 
 			<?php echo $after_widget; ?>
 <?php

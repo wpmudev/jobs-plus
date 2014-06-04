@@ -68,6 +68,12 @@ wp_enqueue_script('jquery-ui-dialog');
 wp_enqueue_script('jquery-ui-dialog');
 wp_enqueue_script('magnific-popup');
 
+//for job post widget
+if(empty($data['post_title']) && isset($_GET['job_title']) && !empty($_GET['job_title'])){
+	$data['post_title']=$_GET['job_title'];
+}
+
+
 ?>
 
 <div class="job-profile-wrapper">

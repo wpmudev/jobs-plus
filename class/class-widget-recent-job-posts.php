@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Recent Job_Posts widget class
  *
@@ -17,7 +18,7 @@ class WP_Widget_Recent_Job_Posts extends WP_Widget {
 	}
 
 	function widget( $args, $instance ) {
-		//wp_enqueue_style('jobs-plus');
+		wp_enqueue_style( 'jobs-plus' );
 		$cache = wp_cache_get( 'widget_recent_job_posts', 'widget' );
 
 		if ( ! is_array( $cache ) ) {
@@ -77,11 +78,10 @@ class WP_Widget_Recent_Job_Posts extends WP_Widget {
 		}
 
 		$posts = get_posts( $post_args );
-
 		if ( count( $posts ) > 0 ) :
 			?>
 			<?php echo $before_widget; ?>
-			<?php if ( $title ) {
+			<?php if ( ! isset( $instance['no_title'] ) && $title ) {
 			echo $before_title . $title . $after_title;
 		} ?>
 			<ul class="job-widgetbar">
@@ -154,7 +154,9 @@ class WP_Widget_Recent_Job_Posts extends WP_Widget {
 					</li>
 				<?php endforeach; ?>
 			</ul>
-
+			<?php if ( isset( $instance['show_browse_link'] ) && $instance['show_browse_link'] == 1 ): ?>
+			<a href="<?php echo site_url( '/jobs' ) ?>"><?php _e( 'Browse more jobs...' ) ?></a>
+		<?php endif; ?>
 			<?php echo $after_widget; ?>
 			<?php
 			// Reset the global $the_post as this query will have stomped on it
@@ -193,6 +195,7 @@ class WP_Widget_Recent_Job_Posts extends WP_Widget {
 		$show_cat     = isset( $instance['show_cat'] ) ? (bool) $instance['show_cat'] : false;
 		$order_by     = isset( $instance['order_by'] ) ? $instance['order_by'] : 'latest';
 		$category_val = isset( $instance['category_val'] ) ? $instance['category_val'] : array();
+
 		?>
 
 		<p>
