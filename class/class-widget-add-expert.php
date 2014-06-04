@@ -37,6 +37,11 @@ class WP_Widget_Add_Expert extends WP_Widget {
 
 		global $Jobs_Plus_Core;
 
+		$limit = intval($Jobs_Plus_Core->get_setting('pro->max_records', 1) );
+		if($Jobs_Plus_Core->count_user_posts_by_type(get_current_user_id(), 'jbp_pro') >= $limit){
+			return '';
+		}
+
 		$view = apply_filters( 'widget_search_expert_can_view', empty( $instance['view'] ) ? 'both' : $instance['view'], $instance, $this->id_base );
 		if ( ! $Jobs_Plus_Core->can_view( $view ) ) {
 			return '';
