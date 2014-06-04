@@ -125,6 +125,7 @@ label.error, label.updated {
 }
 
 .editfield input[type="text"],
+.editfield input[type="password"],
 .editfield textarea,
 .editfield select {
 	font-size:          1.2em;
@@ -303,3 +304,38 @@ button.jbp-button {
 
 }
 
+/** Register popup **/
+.jbp-register{
+	width: 300px;
+	background-color: #f3f3f3;
+	margin: auto;
+	padding: 32px;
+	border-radius: 10px;
+}
+
+.jbp-register h1{
+	font-size: 18px;
+	font-weight: bold;
+	line-height: 1.8;
+	text-align: center;
+}
+
+.jbp-register h2{
+	font-size: 14px;
+	font-weight: bold;
+	line-height: 1.6;
+	text-align: center;
+}
+
+button.jbp-register-btn {
+	float: right;
+	width: 100px;
+}
+
+button.jbp-login-btn {
+	width: 100px;
+}
+
+.jbp-register .alert .error{
+	padding: 15px 0;
+}

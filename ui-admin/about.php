@@ -6,11 +6,13 @@
 * @license GPL2+
 */
 
+wp_enqueue_style('magnific-popup');
+wp_enqueue_style('jobs-plus-custom');
+
 ?>
 <div class="wrap">
-	<?php screen_icon('jobs-plus'); ?>
-	<h2><?php echo esc_html__('Getting Started with Jobs+', JBP_TEXT_DOMAIN);?></h2>
 	<?php $this->render_tabs('job'); ?>
+	<h2><?php echo esc_html__('Getting Started with Jobs+', JBP_TEXT_DOMAIN);?></h2>
+
+
 </div>
-
-

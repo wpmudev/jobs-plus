@@ -8,7 +8,6 @@
 
 global $post, $CustomPress_Core, $Jobs_Plus_Core, $wp_query;
 
-
 wp_enqueue_script('masonry');
 wp_enqueue_script('jquery-ellipsis');
 
@@ -74,7 +73,3 @@ function job_have_posts(){
 	});
 </script>
 <?php endif; ?>
-
-
-
-

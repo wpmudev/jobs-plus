@@ -10,9 +10,8 @@ global $CustomPress_Core;
 
 ?>
 <div class="wrap">
-	<?php screen_icon('jobs-plus'); ?>
-	<h2><?php printf( esc_html__('Jobs+ Settings %s', JBP_TEXT_DOMAIN), JOBS_PLUS_VERSION );?></h2>
 	<?php $this->render_tabs('job'); ?>
+	<h2><?php printf( esc_html__('Jobs+ %s Settings', JBP_TEXT_DOMAIN), $this->job_labels->singular_name );?></h2>
 	<form action="#" method="post">
 		<br />
 		<div class="postbox">

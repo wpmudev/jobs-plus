@@ -66,7 +66,7 @@ wp_enqueue_script('jqueryui-editable');
 wp_enqueue_script('jqueryui-editable-ext');
 wp_enqueue_script('jquery-ui-dialog');
 wp_enqueue_script('jquery-ui-dialog');
-wp_enqueue_script('jquery.magnific-popup');
+wp_enqueue_script('magnific-popup');
 
 ?>
 

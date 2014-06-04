@@ -95,8 +95,14 @@ class Jobs_Plus_Core{
 		//add_action( 'wp_ajax_nopriv_jbp_pro', array( &$this, 'on_ajax_jbp_pro' ) );
 		add_action( 'wp_ajax_jbp_pro_status', array( &$this, 'on_ajax_jbp_pro_status' ) );
 
+		add_filter('wp_ajax_jbp-register', array(&$this,'on_ajax_register') );
+		add_filter('wp_ajax_nopriv_jbp-register', array(&$this,'on_ajax_register') );
+
 		add_filter('wp_ajax_jbp-captcha', array(&$this,'on_captcha') );
 		add_filter('wp_ajax_nopriv_jbp-captcha', array(&$this,'on_captcha') );
+
+		add_filter('wp_ajax_jbp-login', array(&$this,'on_ajax_login') );
+		add_filter('wp_ajax_nopriv_jbp-login', array(&$this,'on_ajax_login') );
 
 		//Filters
 		add_filter('request', array(&$this, 'on_request') );
@@ -516,7 +522,7 @@ class Jobs_Plus_Core{
 		wp_register_script('jqueryui-editable', $this->plugin_url . "js/jqueryui-editable$suffix.js", array('jquery', 'jquery-ui-tooltip', 'jquery-ui-button'), JQUERYUI_EDITABLE, true );
 		//wp_register_script('jqueryui-editable', $this->plugin_url . "js/jqueryui-editable.js", array('jquery', 'jquery-ui-tooltip', 'jquery-ui-button'), JQUERYUI_EDITABLE, true );
 
-		wp_register_script('jquery.magnific-popup', $this->plugin_url . "js/jquery.magnific-popup$suffix.js", array('jquery' ), JQUERY_MAGNIFIC_POPUP, true );
+		wp_register_script('magnific-popup', $this->plugin_url . "js/jquery.magnific-popup$suffix.js", array('jquery' ), JQUERY_MAGNIFIC_POPUP, true );
 
 		wp_register_script('select2', $this->plugin_url . "js/select2$suffix.js", array('jquery' ), SELECT2, true);
 
@@ -858,7 +864,7 @@ class Jobs_Plus_Core{
 
 			wp_enqueue_script('element-query');
 			wp_enqueue_style('magnific-popup');
-			wp_enqueue_script('jquery.magnific-popup');
+			wp_enqueue_script('magnific-popup');
 			wp_enqueue_script('jquery-cookie');
 			wp_enqueue_script('jobs-plus');
 			wp_enqueue_script('jquery-rateit');
@@ -2144,6 +2150,25 @@ class Jobs_Plus_Core{
 	* Button shortcodes
 	*
 	*/
+
+	function button_register_url(){
+
+		wp_enqueue_style('jobs-plus-custom');
+		//if not logged in setup necessaries for registration popup
+		if( !is_user_logged_in() ) {
+			//styles
+			wp_enqueue_style('magnific-popup');
+
+			//scripts
+			wp_enqueue_script('jquery-form');
+			wp_enqueue_script('magnific-popup');
+			wp_enqueue_script('jquery-validate'); //From CustomPress
+
+			return admin_url('admin-ajax.php?action=jbp-register');
+		}
+		return  false;
+	}
+
 	function job_contact_btn_sc( $atts, $content = null ) {
 		extract( shortcode_atts( array(
 		'text' => __('Contact Me', $this->text_domain),
@@ -2155,7 +2180,7 @@ class Jobs_Plus_Core{
 		if( !$this->can_view( $view ) ) return '';
 		if( $this->get_setting('job->disable_contact_email', false) ) return '';
 
-		wp_enqueue_style('jobs-plus-custom');
+		$this->button_register_url();
 
 		$post = get_post($post);
 
@@ -2177,9 +2202,9 @@ class Jobs_Plus_Core{
 		if( !$this->can_view( $view ) ) return '';
 		if( $this->get_setting('pro->disable_contact_email', false) ) return '';
 
-		$post = get_post($post);
+		$this->button_register_url();
 
-		wp_enqueue_style('jobs-plus-custom');
+		$post = get_post($post);
 
 		$content = (empty($content)) ? $text : $content;
 		$result = sprintf('<button class="jbp-button pro-contact-btn %s" type="button" onclick="window.location.href=\'%s\';" >%s</button>',
@@ -2199,7 +2224,7 @@ class Jobs_Plus_Core{
 		if( !$this->can_view( $view ) ) return '';
 		$img = strtolower( $img ) =='true' ? true : false;
 
-		wp_enqueue_style('jobs-plus-custom');
+		$this->button_register_url();
 
 		$content = (empty($content)) ? $text : $content;
 		$url = get_post_type_archive_link('jbp_job');
@@ -2219,7 +2244,7 @@ class Jobs_Plus_Core{
 		if( !$this->can_view( $view ) ) return '';
 		$img = strtolower( $img ) =='true' ? true : false;
 
-		wp_enqueue_style('jobs-plus-custom');
+		$this->button_register_url();
 
 		$content = (empty($content)) ? $text : $content;
 		$url = get_post_type_archive_link('jbp_pro');
@@ -2244,9 +2269,10 @@ class Jobs_Plus_Core{
 				return '';
 			}
 		}
-		wp_enqueue_style('jobs-plus-custom');
 
 		$content = (empty($content)) ? $text : $content;
+
+		$register_url = $this->button_register_url();
 		$url = get_permalink($this->add_job_page_id);
 
 		ob_start();
@@ -2272,10 +2298,9 @@ class Jobs_Plus_Core{
 			}
 		}
 
-		wp_enqueue_style('jobs-plus-custom');
-
 		$content = (empty($content)) ? $text : $content;
 		$url = get_permalink($this->add_pro_page_id);
+		$register_url = $this->button_register_url();
 
 		ob_start();
 		require locate_jbp_template((array)'sc-pro-post-btn.php');
@@ -2298,11 +2323,9 @@ class Jobs_Plus_Core{
 			return '';
 		}
 
-		wp_enqueue_style('jobs-plus-custom');
-
 		$content = (empty($content)) ? $text : $content;
 		$user = wp_get_current_user();
-		$url = sprintf('%s/author/%s/', untrailingslashit(get_post_type_archive_link('jbp_pro') ), $user->user_login) ;
+		if( ! $url = $this->button_register_url() )	$url = sprintf('%s/author/%s/', untrailingslashit(get_post_type_archive_link('jbp_pro') ), $user->user_login) ;
 
 		ob_start();
 		require locate_jbp_template((array)'sc-pro-profile-btn.php');
@@ -2319,7 +2342,7 @@ class Jobs_Plus_Core{
 
 		if( !$this->can_view( $view ) ) return '';
 
-		wp_enqueue_style('jobs-plus-custom');
+		$this->button_register_url();
 
 		$content = (empty($content)) ? $text : $content;
 		$user = wp_get_current_user();
@@ -2339,7 +2362,7 @@ class Jobs_Plus_Core{
 
 		if( !$this->can_view( $view ) ) return '';
 
-		wp_enqueue_style('jobs-plus-custom');
+		$this->button_register_url();
 
 		$content = (empty($content)) ? $text : $content;
 		$user = wp_get_current_user();
@@ -2464,7 +2487,6 @@ class Jobs_Plus_Core{
 		require locate_jbp_template( (array)'sc-job-price-search.php');
 		return do_shortcode( ob_get_clean() );
 	}
-
 
 	/**
 	* Update a jbp_pro
@@ -2921,6 +2943,62 @@ class Jobs_Plus_Core{
 		exit;
 	}
 
+	function on_ajax_register(){
+
+		$params = stripslashes_deep($_POST);
+
+		if( ! check_ajax_referer('jbp-register', '_wpnonce', false) ) {
+			//not a submit so send the form
+			ob_start();
+			require locate_jbp_template( (array)'content-register.php');
+			exit( do_shortcode( ob_get_clean() ) );
+		}
+
+		$response = array();
+
+		if( $this->get_setting( 'general->use_register_captcha', 0) ) {
+			$captcha = get_transient( $this->captcha_id() );
+			$rand = empty( $params['jbp_random_value'] ) ? '' : strtoupper($params['jbp_random_value']);
+
+			if ($captcha !== md5( $rand ) ) {
+				$response['status'] = 'error';
+				$response['message'] = __('Invalid CAPTCH entered. Please enter the characters in the image.', JBP_TEXT_DOMAIN);
+				wp_send_json( $response );
+			}
+		}
+
+		if( isset( $params['jbp-login-btn'] ) && isset( $params['lr'] ) ){
+
+			$user = wp_signon( $params['lr'] );
+
+			if( is_wp_error($user) ) {
+				$response['status'] = 'error';
+				$response['message'] = sprintf('<div class="error">%s</div>', $user->get_error_message() );
+			} else {
+				$response['status'] = 'success';
+				$response['message'] = sprintf('<div class="updated">%s</div>', __('Successful Login', $this->text_domain) );
+			}
+			wp_send_json( $response);
+		}
+
+		if( isset( $params['jbp-register-btn'] ) && isset( $params['lr'] ) ){
+
+			$user_id = wp_insert_user( $params['lr'] );
+
+			if( is_wp_error($user) ) {
+				$response['status'] = 'error';
+				$response['message'] = sprintf('<div class="error">%s</div>', $user->get_error_message() );
+			} else {
+				$response['status'] = 'success';
+				$response['message'] = sprintf('<div class="updated">%s</div>', __('Thank you for Registering', $this->text_domain) );
+				//Just made it so only need the cookies
+				wp_set_auth_cookie( $user_id, $params['lr']['remember'] );
+			}
+			wp_send_json( $response);
+		}
+
+		exit;
+	}
 }
 
 // Set flag on activation to trigger initial data

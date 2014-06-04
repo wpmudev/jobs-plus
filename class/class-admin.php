@@ -42,14 +42,14 @@ class Jobs_Plus_Admin extends Jobs_Plus_Core{
 		__('Settings', JBP_TEXT_DOMAIN),
 		'manage_options', 'jobs-plus-menu',
 		array($this, 'admin_menu_page_job'),
-		$this->plugin_url . 'img/job.png' );
+		$this->plugin_url . 'img/job.svg' );
 
 		$this->pros_menu_page = add_submenu_page('edit.php?post_type=jbp_pro',
 		__('Settings', JBP_TEXT_DOMAIN),
 		__('Settings', JBP_TEXT_DOMAIN),
 		'manage_options', 'jobs-plus-menu',
 		array($this, 'admin_menu_page_pro'),
-		$this->plugin_url . 'img/job.png' );
+		$this->plugin_url . 'img/job.svg' );
 
 		add_action('load-' . $this->jobs_menu_page, array(&$this, 'on_load_menu') );
 		add_action('load-' . $this->pros_menu_page, array(&$this, 'on_load_menu') );
@@ -106,7 +106,7 @@ class Jobs_Plus_Admin extends Jobs_Plus_Core{
 			<?php foreach( $tabs as $tab => $title):
 			$class = ($tab === $current_tab) ? 'nav-tab-active' : '';
 			?>
-			<a class="nav-tab <?php echo $class ?>" href="<?php echo esc_attr("?post_type=jbp_job&page=jobs-plus-menu&tab=$tab"); ?>" ><img src="<?php echo $this->plugin_url . "img/{$tab}.png";?>" /> <?php echo $title; ?></a>
+			<a class="nav-tab <?php echo $class ?>" href="<?php echo esc_attr("?post_type=jbp_job&page=jobs-plus-menu&tab=$tab"); ?>" ><img style=" vertical-align: middle; width: 20px;" src="<?php echo $this->plugin_url . "img/{$tab}.svg";?>" /> <?php echo $title; ?></a>
 				<?php endforeach; ?>
 			</h2>
 

@@ -7,9 +7,8 @@
 */
 ?>
 <div class="wrap">
-	<?php screen_icon('jobs-plus'); ?>
-	<h2><?php printf( __('Jobs+ Settings %s', JBP_TEXT_DOMAIN), JOBS_PLUS_VERSION );?></h2>
 	<?php $this->render_tabs('shortcodes'); ?>
+	<h2><?php esc_html_e('Jobs+ Shortcode', JBP_TEXT_DOMAIN);?></h2>
 	<br />
 
 	<div class="postbox">
