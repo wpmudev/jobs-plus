@@ -533,7 +533,7 @@ class Jobs_Plus_Core{
 		wp_register_script('jobs-plus', $this->plugin_url . 'js/jobs-plus.js', array('jquery', 'jquery-rateit' ), JOBS_PLUS_VERSION, true );
 
 		wp_register_script('jobs-plus-admin', $this->plugin_url . 'js/jobs-plus-admin.js', array('jquery' ), JOBS_PLUS_VERSION );
-
+		wp_register_script('jobs-plus-shortcode', $this->plugin_url . 'js/jobs-plus-shortcode.js', array('jquery' ), JOBS_PLUS_VERSION );
 		//Format currency internationalization
 		// People use both "_" and "-" versions for locale IDs en_GB en-GB
 		//Translate it all to dashes because that's the way the standard translation files for formatCurrency are named.
