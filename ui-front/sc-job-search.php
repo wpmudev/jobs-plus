@@ -9,8 +9,8 @@
 $phrase = (empty($_GET['s']) ) ? '' : $_GET['s'];
 
 
-$sort_latest = (empty($_GET['prj-sort']) || $_GET['prj-sort'] == 'latest' ? 'active-sort' : 'inactive-sort');
-$sort_ending = (!empty($_GET['prj-sort']) && $_GET['prj-sort'] == 'ending' ? 'active-sort' : 'inactive-sort');
+$sort_latest = (empty($_GET['prj_sort']) || $_GET['prj_sort'] == 'latest' ? 'active-sort' : 'inactive-sort');
+$sort_ending = (!empty($_GET['prj_sort']) && $_GET['prj_sort'] == 'ending' ? 'active-sort' : 'inactive-sort');
 
 $job_min_price = intval(empty($_GET['job_min_price']) ? 0 : $_GET['job_min_price'] );
 $job_max_price = intval( empty($_GET['job_max_price']) ? $this->get_max_budget() : $_GET['job_max_price'] );

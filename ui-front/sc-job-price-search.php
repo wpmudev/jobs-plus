@@ -26,7 +26,7 @@ wp_enqueue_script('jquery-format-currency-i18n');
 			</div>
 			<input type="hidden" class="job_min_price" name="job_min_price" value="<?php echo $job_min_price; ?>" />
 			<input type="hidden" class="job_max_price" name="job_max_price" value="<?php echo $job_max_price; ?>" />
-			<input type="hidden" name="prj-sort" value="<?php echo (isset($_GET['prj-sort']) ? $_GET['prj-sort'] : 'latest'); ?>" />
+			<input type="hidden" name="prj_sort" value="<?php echo (isset($_GET['prj_sort']) ? $_GET['prj_sort'] : 'latest'); ?>" />
 			<input type="submit" name="filter" id="filter-by-price" value="Filter" />
 			<br />
 		</div>

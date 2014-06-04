@@ -145,6 +145,7 @@ class Jobs_Plus_Core{
 		add_shortcode( 'jbp-expert-post-btn', array( &$this, 'expert_post_btn_sc' ) );
 
 		add_shortcode( 'jbp-expert-profile-btn', array( &$this, 'expert_profile_btn_sc' ) );
+		add_shortcode( 'jbp-jobs-list-btn', array( &$this, 'jobs_list_btn_sc' ) );
 
 		add_shortcode( 'jbp-job-search', array( &$this, 'job_search_sc' ) );
 		add_shortcode( 'jbp-expert-search', array( &$this, 'expert_search_sc' ) );
@@ -683,6 +684,11 @@ class Jobs_Plus_Core{
 		global $wpdb;
 
 		$where = get_posts_by_author_sql($post_type, TRUE, $user_id);
+
+		if ( in_array( $post_type, array( 'jbp_pro', 'jbp_job') ) ) {
+			$where = str_replace("post_status = 'publish'", "post_status = 'publish' OR post_status = 'draft'", $where);
+		}
+
 		$count = $wpdb->get_var( "SELECT COUNT(*) FROM $wpdb->posts $where" );
 		return apply_filters('get_usernumposts', $count, $user_id);
 	}
@@ -1254,7 +1260,7 @@ class Jobs_Plus_Core{
 		}
 		elseif(is_post_type_archive('jbp_job') ) {
 			//Sort order
-			$sortby = empty($_GET['prj-sort']) ? '' : $_GET['prj-sort'];
+			$sortby = empty($_GET['prj_sort']) ? '' : $_GET['prj_sort'];
 			//Price range
 			$job_min_price = empty($_GET['job_min_price']) ? 0 : $_GET['job_min_price'];
 			$job_max_price = empty($_GET['job_max_price']) ? $this->get_max_budget() : $_GET['job_max_price'];
@@ -1268,11 +1274,22 @@ class Jobs_Plus_Core{
 			,intval($job_min_price)
 			,intval($job_max_price)
 			);
-
 			$clauses['orderby'] = "{$wpdb->posts}.post_date DESC";
-			if( !empty($sortby) ){
-				if($sortby[0]->value == 'ending'){
-					$clauses['orderby'] = $wpdb->prepare(" STR_TO_DATE( {$wpdb->postmeta}.meta_value, '%%b %%e, %%Y') DESC", $wpdb->prefix);
+
+			if( ! empty($sortby) ){
+				if($sortby == 'ending'){
+
+					//Only non-expired
+					$clauses['join'] .= $wpdb->prepare(
+					"
+					INNER JOIN {$wpdb->postmeta} as pm1 on (pm1.post_id = {$wpdb->posts}.ID
+					AND pm1.meta_key = %s
+					AND pm1.meta_value > UNIX_TIMESTAMP() )
+					", JBP_JOB_EXPIRES_KEY );
+
+					$clauses['orderby'] = sprintf(" pm1.meta_value ASC ", $wpdb->postmeta);
+
+					//$clauses['orderby'] = $wpdb->prepare(" STR_TO_DATE( {$wpdb->postmeta}.meta_value, '%%b %%e, %%Y') DESC", $wpdb->prefix);
 				}
 			}
 		}
@@ -2305,6 +2322,31 @@ class Jobs_Plus_Core{
 
 		ob_start();
 		require locate_jbp_template((array)'sc-pro-post-btn.php');
+		return do_shortcode( ob_get_clean() );
+	}
+
+	function jobs_list_btn_sc( $atts, $content = null ) {
+		extract( shortcode_atts( array(
+		'text' => __('My Jobs', $this->text_domain),
+		'view' => 'both', //loggedin, loggedout, both
+		'class' => '',
+		'img' => 'true',
+		), $atts ) );
+
+		if( !$this->can_view( $view ) ) return '';
+		$img = strtolower( $img ) =='true' ? true : false;
+
+		//Don't display unless they have a job.
+		if( $this->count_user_posts_by_type(get_current_user_id(), 'jbp_job') <  1 ) {
+			return '';
+		}
+
+		$content = (empty($content)) ? $text : $content;
+		$user = wp_get_current_user();
+		if( ! $url = $this->button_register_url() )	$url = sprintf('%s/author/%s/', untrailingslashit(get_post_type_archive_link('jbp_job') ), $user->user_login) ;
+
+		ob_start();
+		require locate_jbp_template((array)'sc-job-list-btn.php');
 		return do_shortcode( ob_get_clean() );
 	}
 
