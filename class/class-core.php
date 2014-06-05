@@ -612,6 +612,18 @@ class Jobs_Plus_Core{
 		return false;
 	}
 
+	public function find_page_by_meta($post_type,$key,$value){
+		global $wpdb;
+		$sql= '
+		SELECT post_id FROM
+			'.$wpdb->posts.',
+			'.$wpdb->postmeta.'
+			WHERE meta_key = %s AND meta_value =%s AND ID = post_id AND post_type=%s
+		';
+		$ids = array_keys($wpdb->get_results($wpdb->prepare($sql,$key,$value,$post_type),OBJECT_K));
+		return $ids;
+	}
+
 	/**
 	* Create the default virtual pages.
 	* @return void
