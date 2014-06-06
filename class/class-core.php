@@ -173,7 +173,8 @@ class Jobs_Plus_Core{
 					$page = $this->get_page_by_meta('jbp_job', 'add_job_page' );
 					$result = ($page && $page->ID > 0) ? $page->ID : 0;
 					if(empty($result) ) $this->create_virtual_pages();
-					else $this->_add_job_page_id = $result; //Remember the number
+					else 
+					$this->_add_job_page_id = $result; //Remember the number
 				}
 				$result = $this->_add_job_page_id;
 				break;
@@ -184,7 +185,8 @@ class Jobs_Plus_Core{
 					$page = $this->get_page_by_meta('jbp_pro', 'add_pro_page' );
 					$result = ($page && $page->ID > 0) ? $page->ID : 0;
 					if(empty($result) ) $this->create_virtual_pages();
-					else $this->_add_pro_page_id = $result; //Remember the number
+					else 
+					$this->_add_pro_page_id = $result; //Remember the number
 				}
 				$result = $this->_add_pro_page_id;
 				break;

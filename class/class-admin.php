@@ -79,7 +79,7 @@ if ( ! class_exists( 'Jobs_Plus_Admin' ) ):
 					include $this->plugin_dir . 'ui-admin/about.php';
 					break;
 				case 'page_creation':
-					include $this->plugin_dir . 'ui-admin/page_creation.php';
+					include $this->plugin_dir . 'ui-admin/page-creation.php';
 					break;
 				default:
 					include $this->plugin_dir . 'ui-admin/job.php';
