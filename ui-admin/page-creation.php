@@ -29,7 +29,7 @@ $tab_url = 'edit.php?post_type=' . $_GET['post_type'] . '&page=' . $_GET['page']
 
 					<tr>
 						<th>
-							<label><?php echo esc_html__( 'Add Job', JBP_TEXT_DOMAIN ) ?></label>
+							<label><?php esc_html_e( 'Add Job', JBP_TEXT_DOMAIN ) ?></label>
 						</th>
 						<td>
 							<?php
@@ -51,7 +51,7 @@ $tab_url = 'edit.php?post_type=' . $_GET['post_type'] . '&page=' . $_GET['page']
 					</tr>
 					<tr>
 						<th>
-							<label><?php echo esc_html__( 'Add Expert', JBP_TEXT_DOMAIN ) ?></label>
+							<label><?php esc_html_e( 'Add Expert', JBP_TEXT_DOMAIN ) ?></label>
 						</th>
 						<td>
 							<?php $pro_page_id = isset( $_GET['jbp_add_pro_page_id'] ) ? $_GET['jbp_add_pro_page_id'] : $this->get_setting( 'pages_define->add_pro' ) ?>
@@ -71,7 +71,7 @@ $tab_url = 'edit.php?post_type=' . $_GET['post_type'] . '&page=' . $_GET['page']
 					</tr>
 					<tr>
 						<th>
-							<label><?php echo esc_html__( 'Create Job Board page', JBP_TEXT_DOMAIN ) ?></label>
+							<label><?php esc_html_e( 'Create Job Board page', JBP_TEXT_DOMAIN ) ?></label>
 						</th>
 						<td>
 							<?php if ( $this->get_setting( 'pages_define->job_board', false ) != false && get_post( $this->get_setting( 'pages_define->job_board' ), OBJECT) instanceof WP_Post ): ?>

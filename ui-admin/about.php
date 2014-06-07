@@ -12,7 +12,7 @@ wp_enqueue_style('jobs-plus-custom');
 ?>
 <div class="wrap">
 	<?php $this->render_tabs('job'); ?>
-	<h2><?php echo esc_html__('Getting Started with Jobs+', JBP_TEXT_DOMAIN);?></h2>
+	<h2><?php esc_html_e('Getting Started with Jobs+', JBP_TEXT_DOMAIN);?></h2>
 
 
 </div>
