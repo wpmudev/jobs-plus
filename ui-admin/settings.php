@@ -6,15 +6,21 @@
 * @license GPL2+
 */
 
+global $Term_Images;
+
 ?>
 <div class="wrap">
 	<?php $this->render_tabs(); ?>
 	<h2><?php esc_html_e('Jobs+ General Settings', JBP_TEXT_DOMAIN);?></h2>
 	<form action="#" method="post">
 		<br />
+
+		<a name="certification"></a>
+
 		<div class="postbox">
 			<div class="handlediv"><br /></div>
 			<h3 class="hndle"><span><?php esc_html_e( 'General Options', JBP_TEXT_DOMAIN ) ?></span></h3>
+	
 			<div class="inside">
 				<table class="form-table">
 
@@ -41,6 +47,9 @@
 				</table>
 			</div>
 		</div>
+
+		<a name="register"></a>
+
 
 		<div class="postbox">
 			<div class="handlediv"><br /></div>
@@ -134,11 +143,24 @@
 			</div>
 		</div>
 
+		<a name="term-images"></a>
+
+		<div class="postbox">
+			<div class="handlediv"><br /></div>
+			<h3 class="hndle"><span><?php esc_html_e( 'Term Image Sizes', JBP_TEXT_DOMAIN ) ?></span></h3>
+			<div class="inside">
+				<?php $Term_Images->term_images_main_html(); ?>
+			</div>
+		</div>
+
+
+
 		<p class="submit">
 			<?php wp_nonce_field('jobs-plus-settings'); ?>
 			<input type="hidden" name="jobs-plus-settings" value="1" />
 			<input type="submit" class="button-primary" name="general-settings" value="<?php echo esc_attr('Save Changes', JBP_TEXT_DOMAIN);?>">
 		</p>
 	</form>
+
 </div>
 

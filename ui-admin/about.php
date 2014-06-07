@@ -9,6 +9,7 @@
 wp_enqueue_style('magnific-popup');
 wp_enqueue_style('jobs-plus-custom');
 
+
 ?>
 <div class="wrap">
 	<?php $this->render_tabs('job'); ?>

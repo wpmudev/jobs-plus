@@ -317,6 +317,7 @@ class Jobs_Plus_Core{
 				delete_site_option('jbp_activate');
 			} else {
 				update_site_option('jbp_activate', $flag);
+				
 				do_action('activated_plugin','custompress/loader.php');
 				global $CustomPress_Core;
 				require_once($this->plugin_dir . 'class/class-data.php');
@@ -537,10 +538,10 @@ class Jobs_Plus_Core{
 
 		wp_register_script('jobs-plus-admin', $this->plugin_url . 'js/jobs-plus-admin.js', array('jquery' ), JOBS_PLUS_VERSION );
 		wp_register_script('jobs-plus-shortcode', $this->plugin_url . 'js/jobs-plus-shortcode.js', array('jquery' ), JOBS_PLUS_VERSION );
+
 		//Format currency internationalization
 		// People use both "_" and "-" versions for locale IDs en_GB en-GB
 		//Translate it all to dashes because that's the way the standard translation files for formatCurrency are named.
-
 		$wplocale = str_replace('_', '-', get_locale() );
 		$this->js_locale = ($wplocale == '') ? '' : substr($wplocale, 0, 2); // Non specific locale
 
@@ -572,7 +573,7 @@ class Jobs_Plus_Core{
 
 		if( empty($this->js_locale) ) $this->js_locale = 'en-US';
 
-		wp_register_script('jquery-format-currency-i18n', $this->plugin_url . "js/i18n/jquery.formatCurrency.{$this->js_locale}.js", array('jquery', 'jquery-format-currency' ), JQUERY_FORMAT_CURRENCY, true );
+		wp_register_script('jquery-format-currency-i18n', $this->plugin_url . "js/i18n/jquery.formatCurrency.all.js", array('jquery', 'jquery-format-currency' ), JQUERY_FORMAT_CURRENCY, true );
 		wp_register_script('jquery-format-currency', $this->plugin_url . "js/jquery.formatCurrency$suffix.js", array( 'jquery' ), JQUERY_FORMAT_CURRENCY, true );
 
 		wp_enqueue_style('jbp-widgets-style',$this->plugin_url.'css/job-plus-widgets.css');
@@ -1750,9 +1751,10 @@ class Jobs_Plus_Core{
 		return set_url_scheme($url);
 	}
 
-	function ajax_error( $status_text, $params){
+	function ajax_error( $status_text='', $params){
+		
 		$is_iframe = ( !empty($params['X-Requested-With']) && $params['X-Requested-With'] == 'IFrame');
-		header('HTTP/1.0 403 ' . $statusText); //error for standard Ajax
+		header('HTTP/1.0 403 ' . $status_text); //error for standard Ajax
 		if($is_iframe) {
 			exit( sprintf($response_iframe, '403', $statusText, $status_text . ': ' . print_r( $params, true) ) );
 		} else {

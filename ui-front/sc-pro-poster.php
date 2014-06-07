@@ -52,12 +52,11 @@ wp_enqueue_script('element-query');
 			$email = do_shortcode('[ct id="_ct_jbp_pro_Contact_Email"]');
 			//if (jb_is_valid_gravatar($email)) {
 			?>
-			<li class="v_<?php //echo $color_variations[rand(0, 5)];   ?>
-				<?php echo ($key == $ndx) ? 'selected' : ''; ?>">
+			<li>
 				<div class="view view-first">
 					<?php echo get_avatar_or_gravatar($post->post_author, $email, 120); ?>
 				<div class="mask">
-					<a href="<?php echo get_permalink(get_the_ID()); ?>" title="<?php the_title; ?>" alt="<?php the_title; ?>" >
+					<a href="<?php echo get_permalink(get_the_ID()); ?>" title="<?php the_title(); ?>" alt="<?php the_title(); ?>" >
 						<h2><?php the_title(); ?></h2>
 						<p>[jbp-rating post="<?php the_ID(); ?>"]</p>
 					</a>

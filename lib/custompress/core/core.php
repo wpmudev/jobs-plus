@@ -48,7 +48,9 @@ class CustomPress_Core {
 	*/
 	function on_plugins_loaded() {
 		load_plugin_textdomain( $this->text_domain, false, plugin_basename($this->plugin_dir . 'languages' ) );
-
+	}
+	
+	function on_wp_enqueue_scripts(){
 		// People use both "_" and "-" versions for locale IDs en_GB en-GB
 		//Translate it all to dashes because that's the way the standard translation files for datepicker are named.
 		$wplang = str_replace('_', '-', WPLANG);
@@ -74,12 +76,6 @@ class CustomPress_Core {
 		$theme = $this->get_options('datepicker_theme');
 		$theme = (empty($theme) ) ? 'excite-bike' : $theme;
 		wp_register_style('jquery-ui-datepicker', $this->plugin_url . "datepicker/css/{$theme}/datepicker.css", array(), '0.5');
-	}
-
-	function on_wp_enqueue_scripts(){
-
-		//$this->enqueue_datepicker();
-
 	}
 
 	/**

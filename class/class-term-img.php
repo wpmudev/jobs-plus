@@ -44,19 +44,19 @@ class Term_Images{
 	}
 
 	function on_admin_menu(){
-		add_options_page(__('Terms Images', $this->text_domain), __('Terms Images', $this->text_domain), 'manage_categories', 'term-images', array(&$this, 'admin_menu_page') );
+//		add_options_page(__('Terms Images', $this->text_domain), __('Terms Images', $this->text_domain), 'manage_categories', 'term-images', array(&$this, 'admin_menu_page') );
 		
-		$this->jobs_menu_page = add_submenu_page('edit.php?post_type=jbp_job',
-		__('Term Images', JBP_TEXT_DOMAIN),
-		__('<span id="jbp-term-images">Term Images</span>', JBP_TEXT_DOMAIN),
-		'manage_categories', 'term-images',
-		array($this, 'admin_menu_page') );
-		
-		$this->jobs_menu_page = add_submenu_page('edit.php?post_type=jbp_pro',
-		__('Term Images', JBP_TEXT_DOMAIN),
-		__('Term Images', JBP_TEXT_DOMAIN),
-		'manage_categories', 'term-images',
-		array($this, 'admin_menu_page') );
+//		$this->jobs_menu_page = add_submenu_page('edit.php?post_type=jbp_job',
+//		__('Term Images', JBP_TEXT_DOMAIN),
+//		__('<span id="jbp-term-images">Term Images</span>', JBP_TEXT_DOMAIN),
+//		'manage_categories', 'term-images',
+//		array($this, 'admin_menu_page') );
+//		
+//		$this->jobs_menu_page = add_submenu_page('edit.php?post_type=jbp_pro',
+//		__('Term Images', JBP_TEXT_DOMAIN),
+//		__('Term Images', JBP_TEXT_DOMAIN),
+//		'manage_categories', 'term-images',
+//		array($this, 'admin_menu_page') );
 
 	}
 
@@ -71,7 +71,7 @@ class Term_Images{
 		$settings = get_option($this->settings_name);
 		if($settings) {
 			foreach($settings as $key => $taxonomy) {
-				if( $taxonomy['use']) {
+				if( $this->get_setting( "{$key}->use", 0) ) {
 					add_filter( 'manage_' . $key . '_custom_column', array(&$this, 'taxonomy_rows'), 10, 3 );
 					add_filter( 'manage_edit-' . $key . '_columns',  array(&$this, 'taxonomy_columns') );
 
@@ -241,6 +241,29 @@ class Term_Images{
 	}
 
 	/**
+	* function get_key
+	* @param string $key A setting key, or -> separated list of keys to go multiple levels into an array
+	* @param mixed $default Returns when setting is not set
+	*
+	* an easy way to get to our settings array without undefined indexes
+	*/
+	function get_key($key, $default = null, $settings=array() ) {
+
+		$keys = explode('->', $key);
+		$keys = array_map('trim', $keys);
+		if (count($keys) == 1)
+		$setting = isset($settings[$keys[0]]) ? $settings[$keys[0]] : $default;
+		else if (count($keys) == 2)
+		$setting = isset($settings[$keys[0]][$keys[1]]) ? $settings[$keys[0]][$keys[1]] : $default;
+		else if (count($keys) == 3)
+		$setting = isset($settings[$keys[0]][$keys[1]][$keys[2]]) ? $settings[$keys[0]][$keys[1]][$keys[2]] : $default;
+		else if (count($keys) == 4)
+		$setting = isset($settings[$keys[0]][$keys[1]][$keys[2]][$keys[3]]) ? $settings[$keys[0]][$keys[1]][$keys[2]][$keys[3]] : $default;
+
+		return $setting;
+	}
+
+	/**
 	* function get_setting
 	* @param string $key A setting key, or -> separated list of keys to go multiple levels into an array
 	* @param mixed $default Returns when setting is not set
@@ -406,7 +429,7 @@ class Term_Images{
 		if( !$settings = get_option($this->settings_name) ) return;
 
 		foreach($settings as $key => $taxonomy){
-			if($taxonomy['use']) {
+			if( $this->get_setting("{$key}->use", 0) ) {
 				add_image_size("{$key}-thumb", intval($taxonomy['thumb_width']), intval($taxonomy['thumb_height']) );
 				add_image_size("{$key}-medium", intval($taxonomy['medium_width']), intval($taxonomy['medium_height']) );
 				add_image_size("{$key}-large", intval($taxonomy['large_width']), intval($taxonomy['large_height']) );
