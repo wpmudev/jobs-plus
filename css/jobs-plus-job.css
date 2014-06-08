@@ -766,6 +766,7 @@ button.job-submit-search >img{
 	bottom: 10px;
 }
 
+
 #slider-range input[type="submit"], #filter-by-price {
 	background-color: #41CAC0;
 	background-image : none;
@@ -786,14 +787,14 @@ button.job-submit-search >img{
 .ui-slider-horizontal {
 	height: 4px !important;
 }
-
+/*
 .ui-widget-content {
 	background: none repeat scroll 0 0 #41CAC0 !important;
 	/*background: none repeat scroll 0 0 #F0F2F7 !important;*/
 	border: medium none !important;
 	border-radius: 15px !important;
 }
-
+*/
 .ui-slider-horizontal .ui-slider-range {
 	height: 100%;
 	top: 0;
@@ -818,25 +819,8 @@ button.job-submit-search >img{
 	top: -7px !important;
 }
 
-
-.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
-	background: none repeat scroll 0 0 #FFFFFF !important;
-	border: 3px solid #41CAC0 !important;
-	border-radius: 0 !important;
-	color: #1C94C4 !important;
-	font-weight: bold;
-	outline: medium none;
-}
-
-.ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight {
-    border: 1px solid #FFFFFF !important;
-    color: #333333 !important;
-}
-
-.ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus {
-    border: 1px solid #2293F7;
-    color: #333333 !important;
-    font-weight: bold;
+.ui-slider-handle.ui-state-default{
+	background: #d8d8d8;
 }
 
 .slider-info {

@@ -455,49 +455,49 @@ class Jobs_Plus_Core{
 		$this->pro_slug = $this->pro_obj->rewrite['slug'];
 		$this->job_slug = $this->job_obj->rewrite['slug'];
 
-//		// Declare widget areas
-//		if(function_exists('register_sidebar') ){
-//			register_sidebar(array(
-//			'id' => 'pro-widget',
-//			'name' => sprintf(__('%s Widget', JBP_TEXT_DOMAIN), $this->pro_labels->name),
-//			'description' => sprintf(__('Widget area at the top of the %s page.', $this->text_domain), $this->pro_labels->name),
-//			'before_widget' => '<div id="%1$s" class="jbp-widget widget %2$s">' . "\n",
-//			'after_widget' => "</div>\n",
-//			'before_title' => '<h2 class="widgettitle">',
-//			'after_title' => '</h2>'
-//			));
-//
-//			register_sidebar(array(
-//			'id' => 'pro-archive-widget',
-//			'name' => sprintf(__('%s Archive Widget', JBP_TEXT_DOMAIN), $this->pro_labels->name),
-//			'description' => sprintf(__('Widget area at the top of the %s archive.', $this->text_domain), $this->pro_labels->name),
-//			'before_widget' => '<div id="%1$s" class="jbp-widget widget %2$s">' . "\n",
-//			'after_widget' => "</div>\n",
-//			'before_title' => '<h2 class="widgettitle">',
-//			'after_title' => '</h2>'
-//			));
-//
-//			register_sidebar(array(
-//			'id' => 'job-widget',
-//			'name' => sprintf(__('%s Widget', JBP_TEXT_DOMAIN), $this->job_labels->name),
-//			'description' => sprintf(__('Widget area at the top of the %s page.', $this->text_domain), $this->job_labels->name),
-//			'before_widget' => '<div id="%1$s" class="jbp-widget widget %2$s">' . "\n",
-//			'after_widget' => "</div>\n",
-//			'before_title' => '<h2 class="widgettitle">',
-//			'after_title' => '</h2>'
-//			));
-//
-//
-//			register_sidebar(array(
-//			'id' => 'job-archive-widget',
-//			'name' => sprintf(__('%s Archive Widget', JBP_TEXT_DOMAIN), $this->job_labels->name),
-//			'description' => sprintf(__('Widget area at the top of the %s archive.', $this->text_domain), $this->job_labels->name),
-//			'before_widget' => '<div id="%1$s" class="jbp-widget widget %2$s">' . "\n",
-//			'after_widget' => "</div>\n",
-//			'before_title' => '<h2 class="widgettitle">',
-//			'after_title' => '</h2>'
-//			));
-//		}
+		//		// Declare widget areas
+		//		if(function_exists('register_sidebar') ){
+		//			register_sidebar(array(
+		//			'id' => 'pro-widget',
+		//			'name' => sprintf(__('%s Widget', JBP_TEXT_DOMAIN), $this->pro_labels->name),
+		//			'description' => sprintf(__('Widget area at the top of the %s page.', $this->text_domain), $this->pro_labels->name),
+		//			'before_widget' => '<div id="%1$s" class="jbp-widget widget %2$s">' . "\n",
+		//			'after_widget' => "</div>\n",
+		//			'before_title' => '<h2 class="widgettitle">',
+		//			'after_title' => '</h2>'
+		//			));
+		//
+		//			register_sidebar(array(
+		//			'id' => 'pro-archive-widget',
+		//			'name' => sprintf(__('%s Archive Widget', JBP_TEXT_DOMAIN), $this->pro_labels->name),
+		//			'description' => sprintf(__('Widget area at the top of the %s archive.', $this->text_domain), $this->pro_labels->name),
+		//			'before_widget' => '<div id="%1$s" class="jbp-widget widget %2$s">' . "\n",
+		//			'after_widget' => "</div>\n",
+		//			'before_title' => '<h2 class="widgettitle">',
+		//			'after_title' => '</h2>'
+		//			));
+		//
+		//			register_sidebar(array(
+		//			'id' => 'job-widget',
+		//			'name' => sprintf(__('%s Widget', JBP_TEXT_DOMAIN), $this->job_labels->name),
+		//			'description' => sprintf(__('Widget area at the top of the %s page.', $this->text_domain), $this->job_labels->name),
+		//			'before_widget' => '<div id="%1$s" class="jbp-widget widget %2$s">' . "\n",
+		//			'after_widget' => "</div>\n",
+		//			'before_title' => '<h2 class="widgettitle">',
+		//			'after_title' => '</h2>'
+		//			));
+		//
+		//
+		//			register_sidebar(array(
+		//			'id' => 'job-archive-widget',
+		//			'name' => sprintf(__('%s Archive Widget', JBP_TEXT_DOMAIN), $this->job_labels->name),
+		//			'description' => sprintf(__('Widget area at the top of the %s archive.', $this->text_domain), $this->job_labels->name),
+		//			'before_widget' => '<div id="%1$s" class="jbp-widget widget %2$s">' . "\n",
+		//			'after_widget' => "</div>\n",
+		//			'before_title' => '<h2 class="widgettitle">',
+		//			'after_title' => '</h2>'
+		//			));
+		//		}
 
 	}
 
@@ -581,8 +581,11 @@ class Jobs_Plus_Core{
 
 		$suffix = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ? '' : '.min';
 
+		wp_deregister_style('jquery-ui-datepicker');
+
+
 		wp_register_style('jquery-rateit', $this->plugin_url . "css/rateit.css", array(), JQUERY_RATEIT );
-		wp_register_style('jqueryui-editable', $this->plugin_url . "css/jqueryui-editable.css", array(), JQUERYUI_EDITABLE );
+		wp_register_style('jqueryui-editable', $this->plugin_url . "css/jqueryui-editable.css", array('jquery-ui-datepicker'), JQUERYUI_EDITABLE );
 		wp_register_style('magnific-popup', $this->plugin_url . "css/magnific-popup.css", array(), JQUERY_MAGNIFIC_POPUP );
 		wp_register_style('select2', $this->plugin_url . "css/select2.css", array('jobs-plus'), SELECT2 );
 

@@ -909,13 +909,14 @@ url: "15"
 				var $this = $(this),
 				newVal = $this.val().split('\\').pop(),
 				$selected = $this.parent().siblings('.image-label-selected');
-				
+
 				if(newVal !== '') {
-				console.log($selected.text() );
+					console.log($selected.text() );
 					$selected.text(newVal);
 				}
 			});
 
+			$('button.image-label').button();
 			//			var $remove = this.$input.filter('[name="remove"]');
 			//			this.$buttons.find('.editable-remove').on('click', function() {
 			//				$remove.val('remove');
@@ -981,7 +982,7 @@ url: "15"
 		'<div class="editable-portfolio" >'+
 		'<div style="position: relative; display: inline-block; overflow: hidden; cursor: pointer; vertical-align: middle;">' +
 		'<input type="file" class="editable-portfolio" name="file" size="1" />' +
-		'<button type="button" class="image-label editable-button" style="cursor: pointer; display: inline-block; margin: 0; ">Choose file</button>' + 
+		'<button type="button" class="image-label editable-button" style="cursor: pointer; display: inline-block; margin: 0; ">Choose file</button>' +
 		'</div>' +
 		'&nbsp;<span class="image-label-selected">No file chosen</span>' +
 		'</div>'+
@@ -1223,7 +1224,7 @@ percent: "Bailey"
 	});
 
 	Skill.defaults = $.extend({}, $.fn.editabletypes.abstractinput.defaults, {
-		tpl: 
+		tpl:
 		'<div class="editable-skill">'+
 		//'<label><span class="skill-label">Skill: </span><br />'+
 		'<input type="text" name="skill" class="input-medium"></label></div>'+
@@ -1289,12 +1290,12 @@ url: "http://webwrights.com"
 			this.$input = this.$tpl.find('input');
 			this.$form = this.$input.closest('form');
 
-//			//add remove button
-//			this.$buttons = this.$input.closest('form').find('.editable-buttons');
-//			this.$buttons.append( $('<button class="editable-remove">remove</button>').button({
-//				icons: { primary: "ui-icon-trash" },
-//				text: false
-//			}).attr('title', 'Remove') );
+			//			//add remove button
+			//			this.$buttons = this.$input.closest('form').find('.editable-buttons');
+			//			this.$buttons.append( $('<button class="editable-remove">remove</button>').button({
+			//				icons: { primary: "ui-icon-trash" },
+			//				text: false
+			//			}).attr('title', 'Remove') );
 
 			//alert(this.$buttons[0].outerHTML);
 
@@ -1457,10 +1458,10 @@ url: "http://webwrights.com"
 			//Server should return error string or newValue
 			$(this.options.scope).editable('option', 'success', function(response, newValue){ return response; });
 
-//			var $remove = this.$input.filter('[name="remove"]');
-//			this.$buttons.find('.editable-remove').on('click', function() {
-//				$remove.val('remove');
-//			});
+			//			var $remove = this.$input.filter('[name="remove"]');
+			//			this.$buttons.find('.editable-remove').on('click', function() {
+			//				$remove.val('remove');
+			//			});
 
 			this.$input.filter('[name="social"]').focus();
 		},

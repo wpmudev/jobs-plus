@@ -158,6 +158,8 @@ jQuery(document).ready( function($) {
 				$btn.append($.fn.editableform.buttons);
 				//if(this.options.showbuttons === 'bottom') {
 				$btn.addClass('editable-buttons-bottom');
+        this.$form.find('.editable-submit').button();
+        this.$form.find('.editable-cancel').button();
 				//}
 			}
 		});

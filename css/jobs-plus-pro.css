@@ -186,6 +186,7 @@ a.pro-add{
 	background-color: #f3f3f3;
 }
 
+
 .editable-skill .percent { margin: 5px 0; }
 
 .editable-skill .number { margin: 5px 0; }
@@ -274,11 +275,6 @@ h2.pro-title{
 	font-weight: bold;
 }
 
-.control-group button{
-	height:2em;
-	padding: 0.3em 0.5em;
-}
-
 div.pro-contact{
 	margin: 0;
 	padding: 0;
@@ -315,7 +311,12 @@ h2.pro-skills{
 
 
 /* Social links */
-.pro-social{margin:0;text-align:left; border: 0;}
+
+.editable-social{
+	clear: both;
+}
+
+.pro-social{margin:0;text-align:left; border: 0; max-width: 370px;}
 .pro-social li{
 	background-image: none;
 	padding: 0;
@@ -581,128 +582,128 @@ button.pro-submit-search >img{
 
 
 .view {
-    box-shadow: 1px 1px 2px #E6E6E6;
-    cursor: default;
-    overflow: hidden;
-    position: relative;
-    text-align: center;
-    width: 100%;
+	box-shadow: 1px 1px 2px #E6E6E6;
+	cursor: default;
+	overflow: hidden;
+	position: relative;
+	text-align: center;
+	width: 100%;
 }
 .view .mask, .view .content {
-    left: 0;
-    overflow: hidden;
-    position: absolute;
-    top: 0;
-    width: 100%;
-    font-size: 14px;
+	left: 0;
+	overflow: hidden;
+	position: absolute;
+	top: 0;
+	width: 100%;
+	font-size: 14px;
 }
 .view img {
-    display: block;
-    position: relative;
-    min-width: 100%;
+	display: block;
+	position: relative;
+	min-width: 100%;
 }
 .view h2 {
-    background: none repeat scroll 0 0 rgba(0, 0, 0, 0.8);
-    color: #FFFFFF;
-    font-size: 12px;
-    letter-spacing: 0;
-    margin: 0;
-    overflow: hidden;
-    padding: 10px;
-    position: relative;
-    text-align: center;
-    text-overflow: ellipsis;
-    text-transform: uppercase;
-    white-space: nowrap;
+	background: none repeat scroll 0 0 rgba(0, 0, 0, 0.8);
+	color: #FFFFFF;
+	font-size: 12px;
+	letter-spacing: 0;
+	margin: 0;
+	overflow: hidden;
+	padding: 10px;
+	position: relative;
+	text-align: center;
+	text-overflow: ellipsis;
+	text-transform: uppercase;
+	white-space: nowrap;
 }
 .view p {
-    color: #FFFFFF;
-    font-size: 12px;
-    font-style: italic;
-    padding: 10px 5px 5px;
-    position: relative;
-    text-align: center;
+	color: #FFFFFF;
+	font-size: 12px;
+	font-style: italic;
+	padding: 10px 5px 5px;
+	position: relative;
+	text-align: center;
 }
 .view a.info {
-    background: none repeat scroll 0 0 #000000;
-    box-shadow: 0 0 1px #000000;
-    color: #FFFFFF;
-    display: inline-block;
-    padding: 7px 14px;
-    text-decoration: none;
-    text-transform: uppercase;
+	background: none repeat scroll 0 0 #000000;
+	box-shadow: 0 0 1px #000000;
+	color: #FFFFFF;
+	display: inline-block;
+	padding: 7px 14px;
+	text-decoration: none;
+	text-transform: uppercase;
 }
 .view a.info:hover {
-    box-shadow: 0 0 5px #000000;
+	box-shadow: 0 0 5px #000000;
 }
 .view-first img {
-    transition: all 0.2s linear 0s;
+	transition: all 0.2s linear 0s;
 }
 .job-poster .poster ul li .view-first img {
-    padding-bottom: 8px;
-    padding-left: 8px;
-    padding-top: 6px;
-    width: 86%;
+	padding-bottom: 8px;
+	padding-left: 8px;
+	padding-top: 6px;
+	width: 86%;
 }
 .view-first .mask {
-    background-color: #031F34;
-    opacity: 0;
-    transition: all 0.4s ease-in-out 0s;
+	background-color: #031F34;
+	opacity: 0;
+	transition: all 0.4s ease-in-out 0s;
 }
 .view-first a {
-    color: #FFFFFF;
+	color: #FFFFFF;
 }
 .view-first h2 {
-    opacity: 0;
-    transform: translateY(-100px);
-    transition: all 0.2s ease-in-out 0s;
+	opacity: 0;
+	transform: translateY(-100px);
+	transition: all 0.2s ease-in-out 0s;
 }
 .view-first p {
-    opacity: 0;
-    transform: translateY(100px);
-    transition: all 0.2s linear 0s;
+	opacity: 0;
+	transform: translateY(100px);
+	transition: all 0.2s linear 0s;
 }
 .pro-poster .view-first:hover img {
-    transform: scale(1.5, 1.5);
+	transform: scale(1.5, 1.5);
 }
 .view-first a.info {
-    opacity: 0;
-    transition: all 0.2s ease-in-out 0s;
+	opacity: 0;
+	transition: all 0.2s ease-in-out 0s;
 }
 .view-first:hover .mask {
-    opacity: 0.96;
+	opacity: 0.96;
 }
 .view-first:hover h2, .view-first:hover p, .view-first:hover a.info {
-    opacity: 0.96;
-    transform: translateY(0px);
+	opacity: 0.96;
+	transform: translateY(0px);
 }
 .view-first p {
-    min-height: 300px;
-    padding-top: 0;
+	min-height: 300px;
+	padding-top: 0;
 }
 .view-first:hover p {
-    min-height: 300px;
-    padding-top: 0;
-    transition-delay: 0.1s;
+	min-height: 300px;
+	padding-top: 0;
+	transition-delay: 0.1s;
 }
 .view-first:hover a.info {
-    transition-delay: 0.2s;
+	transition-delay: 0.2s;
 }
 .poster img.avatar, .poster img.avatar {
-    opacity: 1;
-    height: 100px;
+	opacity: 1;
+	height: 100px;
 }
 .view-first .mask.second-mask {
-    background-color: #38BA7A;
+	background-color: #38BA7A;
 }
 .view .second-mask p {
-    color: #FFFFFF;
-    font-size: 12px;
-    font-style: italic;
-    padding: 0 2px 2px;
-    position: relative;
-    text-align: center;
+	color: #FFFFFF;
+	font-size: 12px;
+	font-style: italic;
+	padding: 0 2px 2px;
+	position: relative;
+	text-align: center;
 }
 .view-first:hover .second-mask p {
-    padding-top: 8px;
+	padding-top: 8px;
 }

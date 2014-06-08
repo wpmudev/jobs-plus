@@ -17,8 +17,8 @@ class Jobs_Plus_Pattern{
 		$current_user = wp_get_current_user();
 
 		//Default button set
+		$warning = html__("<!-- You may edit this page, the title and the slug, but it requires a minimum of the correct page shortcode to function. You can recreate the original default page by deleting this one by moving it to trash and calling the page in the front end.-->\n", $core->text_domain);
 		$buttons = '<p style="text-align: center;">[jbp-expert-post-btn][jbp-job-post-btn][jbp-expert-browse-btn][jbp-job-browse-btn][jbp-expert-profile-btn][jbp-job-list-btn]</p>';
-
 
 		/**
 		* JOB PATTERNS
@@ -32,12 +32,12 @@ class Jobs_Plus_Pattern{
 		if ( empty($page_id) ) {
 			/* Construct args for the new post */
 			$args = array(
-			'post_title'     => sprintf('%s Archive Pattern', $core->job_labels->singular_name),
-			'post_name'      => sprintf('%s-archive-pattern', $core->job_slug ),
+			'post_title'     => sprintf( __('%s Archive Pattern', JBP_TEXT_DOMAIN), $core->job_labels->singular_name),
+			'post_name'      => sprintf( __('%s-archive-pattern', JBP_TEXT_DOMAIN), $core->job_slug ),
 			'post_status'    => 'pattern',
 			'post_author'    => $current_user->ID,
 			'post_type'      => 'jbp_job',
-			'post_content'   => $buttons . '[jbp-job-archive-page]',
+			'post_content'   => $warning . $buttons . '[jbp-job-archive-page]',
 			'ping_status'    => 'closed',
 			'comment_status' => 'closed'
 			);
@@ -59,12 +59,12 @@ class Jobs_Plus_Pattern{
 		if ( empty($page_id) ) {
 			/* Construct args for the new post */
 			$args = array(
-			'post_title'     => sprintf('%s Taxonomy Pattern', $core->job_labels->singular_name),
-			'post_name'      => sprintf('%s-taxonomy-pattern', $core->job_slug ),
+			'post_title'     => sprintf( __('%s Taxonomy Pattern', JBP_TEXT_DOMAIN), $core->job_labels->singular_name),
+			'post_name'      => sprintf( __('%s-taxonomy-pattern', JBP_TEXT_DOMAIN), $core->job_slug ),
 			'post_status'    => 'pattern',
 			'post_author'    => $current_user->ID,
 			'post_type'      => 'jbp_job',
-			'post_content'   => $buttons . '[jbp-job-taxonomy-page]',
+			'post_content'   => $warning . $buttons . '[jbp-job-taxonomy-page]',
 			'ping_status'    => 'closed',
 			'comment_status' => 'closed'
 			);
@@ -86,12 +86,12 @@ class Jobs_Plus_Pattern{
 		if ( empty($page_id) ) {
 			/* Construct args for the new post */
 			$args = array(
-			'post_title'     => sprintf('%s Contact Pattern', $core->job_labels->singular_name),
-			'post_name'      => sprintf('%s-contact-pattern', $core->job_slug ),
+			'post_title'     => sprintf( __('%s Contact Pattern', JBP_TEXT_DOMAIN), $core->job_labels->singular_name),
+			'post_name'      => sprintf( __('%s-contact-pattern', JBP_TEXT_DOMAIN), $core->job_slug ),
 			'post_status'    => 'pattern',
 			'post_author'    => $current_user->ID,
 			'post_type'      => 'jbp_job',
-			'post_content'   => $buttons . '[jbp-job-contact-page]',
+			'post_content'   => $warning . $buttons . '[jbp-job-contact-page]',
 			'ping_status'    => 'closed',
 			'comment_status' => 'closed'
 			);
@@ -113,12 +113,12 @@ class Jobs_Plus_Pattern{
 		if ( empty($page_id) ) {
 			/* Construct args for the new post */
 			$args = array(
-			'post_title'     => sprintf('%s Search Pattern', $core->job_labels->singular_name),
-			'post_name'      => sprintf('%s-search-pattern', $core->job_slug ),
+			'post_title'     => sprintf( __('%s Search Pattern', JBP_TEXT_DOMAIN), $core->job_labels->singular_name),
+			'post_name'      => sprintf( __('%s-search-pattern', JBP_TEXT_DOMAIN), $core->job_slug ),
 			'post_status'    => 'pattern',
 			'post_author'    => $current_user->ID,
 			'post_type'      => 'jbp_job',
-			'post_content'   => $buttons . '[jbp-job-search-page]',
+			'post_content'   => $warning . $buttons . '[jbp-job-search-page]',
 			'ping_status'    => 'closed',
 			'comment_status' => 'closed'
 			);
@@ -140,12 +140,12 @@ class Jobs_Plus_Pattern{
 		if ( empty($page_id) ) {
 			/* Construct args for the new post */
 			$args = array(
-			'post_title'     => sprintf('%s Single Pattern', $core->job_labels->singular_name),
-			'post_name'      => sprintf('%s-single-pattern', $core->job_slug ),
+			'post_title'     => sprintf( __('%s Single Pattern', JBP_TEXT_DOMAIN), $core->job_labels->singular_name),
+			'post_name'      => sprintf( __('%s-single-pattern', JBP_TEXT_DOMAIN), $core->job_slug ),
 			'post_status'    => 'pattern',
 			'post_author'    => $current_user->ID,
 			'post_type'      => 'jbp_job',
-			'post_content'   => $buttons . '[jbp-job-single-page]',
+			'post_content'   => $warning . $buttons . '[jbp-job-single-page]',
 			'ping_status'    => 'closed',
 			'comment_status' => 'closed'
 			);
@@ -167,12 +167,12 @@ class Jobs_Plus_Pattern{
 		if ( empty($page_id) ) {
 			/* Construct args for the new post */
 			$args = array(
-			'post_title'     => sprintf('Add %s', $core->job_labels->singular_name),
-			'post_name'      => sprintf('add-%s', $core->job_slug ),
+			'post_title'     => sprintf( __('Add %s', JBP_TEXT_DOMAIN), $core->job_labels->singular_name),
+			'post_name'      => sprintf( __('add-%s', JBP_TEXT_DOMAIN), $core->job_slug ),
 			'post_status'    => 'pattern',
 			'post_author'    => $current_user->ID,
 			'post_type'      => 'jbp_job',
-			'post_content'   => $buttons . '[jbp-job-update-page]',
+			'post_content'   => $warning . $buttons . '[jbp-job-update-page]',
 			'ping_status'    => 'closed',
 			'comment_status' => 'closed'
 			);
@@ -199,12 +199,12 @@ class Jobs_Plus_Pattern{
 		if ( empty($page_id) ) {
 			/* Construct args for the new post */
 			$args = array(
-			'post_title'     => sprintf('%s Archive Pattern', $core->pro_labels->singular_name),
-			'post_name'      => sprintf('%s-archive-pattern', $core->pro_slug ),
+			'post_title'     => sprintf( __('%s Archive Pattern', JBP_TEXT_DOMAIN), $core->pro_labels->singular_name),
+			'post_name'      => sprintf( __('%s-archive-pattern', JBP_TEXT_DOMAIN), $core->pro_slug ),
 			'post_status'    => 'pattern',
 			'post_author'    => $current_user->ID,
 			'post_type'      => 'jbp_pro',
-			'post_content'   => $buttons . '[jbp-expert-archive-page]',
+			'post_content'   => $warning . $buttons . '[jbp-expert-archive-page]',
 			'ping_status'    => 'closed',
 			'comment_status' => 'closed'
 			);
@@ -226,12 +226,12 @@ class Jobs_Plus_Pattern{
 		if ( empty($page_id) ) {
 			/* Construct args for the new post */
 			$args = array(
-			'post_title'     => sprintf('%s Taxonomy Pattern', $core->pro_labels->singular_name),
-			'post_name'      => sprintf('%s-taxonomy-pattern', $core->pro_slug ),
+			'post_title'     => sprintf( __('%s Taxonomy Pattern', JBP_TEXT_DOMAIN), $core->pro_labels->singular_name),
+			'post_name'      => sprintf( __('%s-taxonomy-pattern', JBP_TEXT_DOMAIN), $core->pro_slug ),
 			'post_status'    => 'pattern',
 			'post_author'    => $current_user->ID,
 			'post_type'      => 'jbp_pro',
-			'post_content'   => $buttons . '[jbp-expert-taxonomy-page]',
+			'post_content'   => $warning . $buttons . '[jbp-expert-taxonomy-page]',
 			'ping_status'    => 'closed',
 			'comment_status' => 'closed'
 			);
@@ -253,12 +253,12 @@ class Jobs_Plus_Pattern{
 		if ( empty($page_id) ) {
 			/* Construct args for the new post */
 			$args = array(
-			'post_title'     => sprintf('%s Contact Pattern', $core->pro_labels->singular_name),
-			'post_name'      => sprintf('%s-contact-pattern', $core->pro_slug ),
+			'post_title'     => sprintf( __('%s Contact Pattern', JBP_TEXT_DOMAIN), $core->pro_labels->singular_name),
+			'post_name'      => sprintf( __('%s-contact-pattern', JBP_TEXT_DOMAIN), $core->pro_slug ),
 			'post_status'    => 'pattern',
 			'post_author'    => $current_user->ID,
 			'post_type'      => 'jbp_pro',
-			'post_content'   => $buttons . '[jbp-expert-contact-page]',
+			'post_content'   => $warning . $buttons . '[jbp-expert-contact-page]',
 			'ping_status'    => 'closed',
 			'comment_status' => 'closed'
 			);
@@ -280,12 +280,12 @@ class Jobs_Plus_Pattern{
 		if ( empty($page_id) ) {
 			/* Construct args for the new post */
 			$args = array(
-			'post_title'     => sprintf('%s Search Pattern', $core->pro_labels->singular_name),
-			'post_name'      => sprintf('%s-search-pattern', $core->pro_slug ),
+			'post_title'     => sprintf( __('%s Search Pattern', JBP_TEXT_DOMAIN), $core->pro_labels->singular_name),
+			'post_name'      => sprintf( __('%s-search-pattern', JBP_TEXT_DOMAIN), $core->pro_slug ),
 			'post_status'    => 'pattern',
 			'post_author'    => $current_user->ID,
 			'post_type'      => 'jbp_pro',
-			'post_content'   => $buttons . '[jbp-expert-search-page]',
+			'post_content'   => $warning . $buttons . '[jbp-expert-search-page]',
 			'ping_status'    => 'closed',
 			'comment_status' => 'closed'
 			);
@@ -307,12 +307,12 @@ class Jobs_Plus_Pattern{
 		if ( empty($page_id) ) {
 			/* Construct args for the new post */
 			$args = array(
-			'post_title'     => sprintf('%s Single Pattern', $core->pro_labels->singular_name),
-			'post_name'      => sprintf('%s-single-pattern', $core->pro_slug ),
+			'post_title'     => sprintf( __('%s Single Pattern', JBP_TEXT_DOMAIN), $core->pro_labels->singular_name),
+			'post_name'      => sprintf( __('%s-single-pattern', JBP_TEXT_DOMAIN), $core->pro_slug ),
 			'post_status'    => 'pattern',
 			'post_author'    => $current_user->ID,
 			'post_type'      => 'jbp_pro',
-			'post_content'   => $buttons . '[jbp-expert-single-page]',
+			'post_content'   => $warning . $buttons . '[jbp-expert-single-page]',
 			'ping_status'    => 'closed',
 			'comment_status' => 'closed'
 			);
@@ -334,12 +334,12 @@ class Jobs_Plus_Pattern{
 		if ( empty($page_id) ) {
 			/* Construct args for the new post */
 			$args = array(
-			'post_title'     => sprintf('Add %s', $core->pro_labels->singular_name),
-			'post_name'      => sprintf('add-%s', $core->pro_slug ),
+			'post_title'     => sprintf( __('Add %s', JBP_TEXT_DOMAIN), $core->pro_labels->singular_name),
+			'post_name'      => sprintf( __('add-%s', JBP_TEXT_DOMAIN), $core->pro_slug ),
 			'post_status'    => 'pattern',
 			'post_author'    => $current_user->ID,
 			'post_type'      => 'jbp_pro',
-			'post_content'   => $buttons . '[jbp-expert-update-page]',
+			'post_content'   => $warning . $buttons . '[jbp-expert-update-page]',
 			'ping_status'    => 'closed',
 			'comment_status' => 'closed'
 			);

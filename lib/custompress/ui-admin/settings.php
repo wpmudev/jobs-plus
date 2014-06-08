@@ -246,9 +246,9 @@ array(
 					$date_format = (is_array($date_format)) ? 'mm/dd/yy' : $date_format;
 
 					$datepicker_theme = $this->get_options('datepicker_theme');
-					$datepicker_theme = (is_array($datepicker_theme)) ? 'excite-bike' : $datepicker_theme;
+					$datepicker_theme = (is_array($datepicker_theme)) ? 'flick' : $datepicker_theme;
 
-//					$this->jquery_ui_css($datepicker_theme); //Load the current ui theme css
+					//					$this->jquery_ui_css($datepicker_theme); //Load the current ui theme css
 
 					$themes = glob($this->plugin_dir . 'datepicker/css/*', GLOB_ONLYDIR);
 					?>

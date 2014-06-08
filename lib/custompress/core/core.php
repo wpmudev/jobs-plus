@@ -77,7 +77,7 @@ class CustomPress_Core {
 		wp_register_style('jquery-combobox', $this->plugin_url . "datepicker/js/jquery.combobox/style.css", array(), '0.5');
 
 		$theme = $this->get_options('datepicker_theme');
-		$theme = (empty($theme) ) ? 'excite-bike' : $theme;
+		$theme = (empty($theme) ) ? 'flick' : $theme;
 		wp_register_style('jquery-ui-datepicker', $this->plugin_url . "datepicker/css/{$theme}/datepicker.css", array(), '0.5');
 	}
 
@@ -333,7 +333,7 @@ class CustomPress_Core {
 	*/
 	function jquery_ui_css($theme = ''){
 		$theme = (empty($theme)) ? $this->get_options('datepicker_theme') : $theme;
-		$theme = (empty($theme)) ? 'excite-bike' : $theme;
+		$theme = (empty($theme)) ? 'flick' : $theme;
 		?>
 		<script>jQuery(document).ready( function(){jQuery("#jquery-ui-datepicker-css").prop("href", "<?php echo $this->plugin_url . "datepicker/css/{$theme}/datepicker.css"; ?>");});</script>
 		<?php
