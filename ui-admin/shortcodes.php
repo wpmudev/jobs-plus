@@ -132,6 +132,8 @@
 					<br/><span class="description"><?php esc_html_e( 'Allows input of stars rating for the owner of "post". If "post" is not used it assumes the current global $post object. "resetable" adds a button that allows clearing all stars.', JBP_TEXT_DOMAIN ); ?></span>
 				</td>
 			</tr>
+
+
 			<!--JOBS SHORTCODES-->
 			<tr>
 				<th colspan=2"><h2 style="text-align: center;"><?php echo esc_html( sprintf(__('%s Shortcodes', JBP_TEXT_DOMAIN), $this->job_labels->singular_name) ); ?></h2></th>
@@ -214,6 +216,132 @@
 					<br/><span class="description"><?php printf( esc_html__( 'Displays a combination of %s and %s posters above.', JBP_TEXT_DOMAIN ), $this->job_labels->name, $this->pro_labels->name) ?></span>
 				</td>
 			</tr>
+			
+			<tr>
+				<th colspan=2"><h2 style="text-align: center;"><?php echo esc_html( sprintf(__('Pattern Page Shortcodes', JBP_TEXT_DOMAIN), $this->job_labels->singular_name) ); ?></h2></th>
+			</tr>
+			
+			<tr>
+				<th scope="row"><?php printf( esc_html__('%s Archive Page:', JBP_TEXT_DOMAIN ), $this->job_labels->name); ?></th>
+				<td>
+					<code>
+						[jbp-job-archive-page]
+					</code>
+					<br/><span class="description"><?php printf( esc_html__( 'Displays the %s archive list. Only works in the %s Archive pattern page. ', JBP_TEXT_DOMAIN ), $this->job_labels->name, $this->job_labels->name) ?></span>
+				</td>
+			</tr>
+
+			<tr>
+				<th scope="row"><?php printf( esc_html__('%s Taxonomy Page:', JBP_TEXT_DOMAIN ), $this->job_labels->name); ?></th>
+				<td>
+					<code>
+						[jbp-job-taxonomy-page]
+					</code>
+					<br/><span class="description"><?php printf( esc_html__( 'Displays the %s jbp_category and jbp_tags lists. Only works in the %s Taxononomy pattern page. ', JBP_TEXT_DOMAIN ), $this->job_labels->name, $this->job_labels->name) ?></span>
+				</td>
+			</tr>
+
+			<tr>
+				<th scope="row"><?php printf( esc_html__('%s Contact Page:', JBP_TEXT_DOMAIN ), $this->job_labels->name); ?></th>
+				<td>
+					<code>
+						[jbp-job-contact-page]
+					</code>
+					<br/><span class="description"><?php printf( esc_html__( 'Displays the %s Contact page. Only works in the %s Contact pattern page. ', JBP_TEXT_DOMAIN ), $this->job_labels->name, $this->job_labels->name) ?></span>
+				</td>
+			</tr>
+
+			<tr>
+				<th scope="row"><?php printf( esc_html__('%s Search Page:', JBP_TEXT_DOMAIN ), $this->job_labels->name); ?></th>
+				<td>
+					<code>
+						[jbp-job-search-page]
+					</code>
+					<br/><span class="description"><?php printf( esc_html__( 'Displays the %s Search results page. Only works in the %s Search pattern page. ', JBP_TEXT_DOMAIN ), $this->job_labels->name, $this->job_labels->name) ?></span>
+				</td>
+			</tr>
+
+			<tr>
+				<th scope="row"><?php printf( esc_html__('%s Single Page:', JBP_TEXT_DOMAIN ), $this->job_labels->name); ?></th>
+				<td>
+					<code>
+						[jbp-job-single-page]
+					</code>
+					<br/><span class="description"><?php printf( esc_html__( 'Displays a single %s listing page. Only works in the %s Single pattern page. ', JBP_TEXT_DOMAIN ), $this->job_labels->name, $this->job_labels->name) ?></span>
+				</td>
+			</tr>
+
+			<tr>
+				<th scope="row"><?php printf( esc_html__('%s Update Page:', JBP_TEXT_DOMAIN ), $this->job_labels->name); ?></th>
+				<td>
+					<code>
+						[jbp-job-update-page]
+					</code>
+					<br/><span class="description"><?php printf( esc_html__( 'Displays the %s Add and Update page. Only works in the %s Update pattern page. ', JBP_TEXT_DOMAIN ), $this->job_labels->name, $this->job_labels->name) ?></span>
+				</td>
+			</tr>
+
+
+			<tr>
+				<th scope="row"><?php printf( esc_html__('%s Archive Page:', JBP_TEXT_DOMAIN ), $this->pro_labels->name); ?></th>
+				<td>
+					<code>
+						[jbp-expert-archive-page]
+					</code>
+					<br/><span class="description"><?php printf( esc_html__( 'Displays the %s archive list. Only works in the %s Archive pattern page. ', JBP_TEXT_DOMAIN ), $this->pro_labels->name, $this->pro_labels->name) ?></span>
+				</td>
+			</tr>
+
+			<tr>
+				<th scope="row"><?php printf( esc_html__('%s Taxonomy Page:', JBP_TEXT_DOMAIN ), $this->pro_labels->name); ?></th>
+				<td>
+					<code>
+						[jbp-expert-taxonomy-page]
+					</code>
+					<br/><span class="description"><?php printf( esc_html__( 'Displays the %s jbp_category and jbp_tags lists. Only works in the %s Taxononomy pattern page. ', JBP_TEXT_DOMAIN ), $this->pro_labels->name, $this->pro_labels->name) ?></span>
+				</td>
+			</tr>
+
+			<tr>
+				<th scope="row"><?php printf( esc_html__('%s Contact Page:', JBP_TEXT_DOMAIN ), $this->pro_labels->name); ?></th>
+				<td>
+					<code>
+						[jbp-expert-contact-page]
+					</code>
+					<br/><span class="description"><?php printf( esc_html__( 'Displays the %s Contact page. Only works in the %s Contact pattern page. ', JBP_TEXT_DOMAIN ), $this->pro_labels->name, $this->pro_labels->name) ?></span>
+				</td>
+			</tr>
+
+			<tr>
+				<th scope="row"><?php printf( esc_html__('%s Search Page:', JBP_TEXT_DOMAIN ), $this->pro_labels->name); ?></th>
+				<td>
+					<code>
+						[jbp-expert-search-page]
+					</code>
+					<br/><span class="description"><?php printf( esc_html__( 'Displays the %s Search results page. Only works in the %s Search pattern page. ', JBP_TEXT_DOMAIN ), $this->pro_labels->name, $this->pro_labels->name) ?></span>
+				</td>
+			</tr>
+
+			<tr>
+				<th scope="row"><?php printf( esc_html__('%s Single Page:', JBP_TEXT_DOMAIN ), $this->pro_labels->name); ?></th>
+				<td>
+					<code>
+						[jbp-expert-single-page]
+					</code>
+					<br/><span class="description"><?php printf( esc_html__( 'Displays a single %s listing page. Only works in the %s Single pattern page. ', JBP_TEXT_DOMAIN ), $this->pro_labels->name, $this->pro_labels->name) ?></span>
+				</td>
+			</tr>
+
+			<tr>
+				<th scope="row"><?php printf( esc_html__('%s Update Page:', JBP_TEXT_DOMAIN ), $this->pro_labels->name); ?></th>
+				<td>
+					<code>
+						[jbp-expert-update-page]
+					</code>
+					<br/><span class="description"><?php printf( esc_html__( 'Displays the %s Add and Update page. Only works in the %s Update pattern page. ', JBP_TEXT_DOMAIN ), $this->pro_labels->name, $this->pro_labels->name) ?></span>
+				</td>
+			</tr>
+
 
 		</table>
 	</div>

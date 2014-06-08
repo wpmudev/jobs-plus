@@ -676,67 +676,6 @@ class Jobs_Plus_Core{
 	}
 
 	/**
-	* Create the default pattern pages.
-	* @return void
-	*/
-	function create_pattern_pages() {
-		/* Create neccessary pages */
-		$current_user = wp_get_current_user();
-
-		//jbp_job Add Job
-		$buttons = '<p style="text-align: center;">[jbp-expert-post-btn][jbp-job-post-btn][jbp-expert-browse-btn][jbp-job-browse-btn][jbp-expert-profile-btn][jbp-job-list-btn]</p>';
-
-		$page = $this->get_page_by_meta(JBP_JOB_PATTERN_KEY, JBP_JOB_UPDATE_FLAG );
-		$page_id = ($page && $page->ID > 0) ? $page->ID : 0;
-		if ( empty($page_id) ) {
-			/* Construct args for the new post */
-			$args = array(
-			'post_title'     => sprintf('Add %s', $this->job_labels->singular_name),
-			'post_name'      => sprintf('add-%s', $this->job_slug ),
-			'post_status'    => 'pattern',
-			'post_author'    => $current_user->ID,
-			'post_type'      => 'jbp_job',
-			'post_content'   => $buttons . '[jbp-update-job]',
-			'ping_status'    => 'closed',
-			'comment_status' => 'closed'
-			);
-			$page_id = wp_insert_post( $args );
-			$page = get_post($page_id);
-			add_post_meta( $page_id, JBP_JOB_PATTERN_KEY, JBP_JOB_UPDATE_FLAG);
-		} else {
-			//Make sure it stays pattern
-			if( !in_array($page->post_status, array('pattern', 'trash') ) )
-			wp_update_post( array('ID' => $page_id, 'post_status' => 'pattern') );
-		}
-		$this->_job_update_page_id = $page_id; //Remember the number
-
-		//jbp_pro Add Pro
-		$page = $this->get_page_by_meta(JBP_PRO_PATTERN_KEY, JBP_PRO_UPDATE_FLAG );
-		$page_id = ($page && $page->ID > 0) ? $page->ID : 0;
-		if ( empty($page_id) ) {
-			/* Construct args for the new post */
-			$args = array(
-			'post_title'     => sprintf('Add %s', $this->pro_labels->singular_name),
-			'post_name'      => sprintf('add-%s', $this->pro_slug ),
-			'post_status'    => 'pattern',
-			'post_author'    => $current_user->ID,
-			'post_type'      => 'jbp_pro',
-			'post_content'   => $buttons . '[jbp-update-expert]',
-			'ping_status'    => 'closed',
-			'comment_status' => 'closed'
-			);
-			$page_id = wp_insert_post( $args );
-			$page = get_post($page_id);
-			add_post_meta( $page_id, JBP_PRO_PATTERN_KEY, JBP_PRO_UPDATE_FLAG);
-		} else {
-			//Make sure it stays pattern
-			if( !in_array($page->post_status, array('pattern', 'trash') ) )
-			wp_update_post( array('ID' => $page_id, 'post_status' => 'pattern') );
-		}
-		$this->_pro_update_page_id = $page_id; //Remember the number
-	}
-
-	/**
 	* count_user_posts_by_type
 	* @$user_id int ID of the user to count
 	* @$post_type string post_type to count
