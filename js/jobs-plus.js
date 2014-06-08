@@ -97,7 +97,7 @@ jQuery(document).ready( function($) {
 		//$('head').append('<style>.pro-content-editable:before{background-position: 0px 25px;}</style>');
 		//$('head').append('<style>.pro-content-editable-open:before{background-position: 0px 25px;}</style>');
 	});
-	
+
 	$('.jbp-button').contrastColor();
 });
 
@@ -158,8 +158,8 @@ jQuery(document).ready( function($) {
 				$btn.append($.fn.editableform.buttons);
 				//if(this.options.showbuttons === 'bottom') {
 				$btn.addClass('editable-buttons-bottom');
-        this.$form.find('.editable-submit').button();
-        this.$form.find('.editable-cancel').button();
+				this.$form.find('.editable-submit').button();
+				this.$form.find('.editable-cancel').button();
 				//}
 			}
 		});
