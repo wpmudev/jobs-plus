@@ -15,8 +15,9 @@ $selected_cats  = array();
 $error = get_query_var('jbp_job_error');
 
 $add_job = false;
+$editing = false;
 //Are we adding a Listing?
-if ($post->ID == $this->add_job_page_id) {
+if ($post->ID == $this->job_update_page_id) {
 	$post = $this->get_default_custom_post('jbp_job');
 	$add_job = true;
 	setup_postdata($post);
@@ -27,6 +28,7 @@ elseif(get_query_var('edit')){
 	$editing = true;
 	$link = get_permalink($post->ID);
 }
+
 
 $data = (array)$post;
 $post_ID = $data['ID'];
@@ -295,21 +297,21 @@ if(empty($data['post_title']) && isset($_GET['job_title']) && !empty($_GET['job_
 				<?php wp_nonce_field( 'verify' ); ?>
 
 				<?php if($Jobs_Plus_Core->get_setting('job->moderation->publish') ): ?>
-					<button type="submit" id="job-publish" name="data[post_status]" value="publish" class="toggle-job-save jbp-button job-go-public-button" ><?php esc_html_e('Save', JBP_TEXT_DOMAIN); ?></button>
+				<button type="submit" id="job-publish" name="data[post_status]" value="publish" class="toggle-job-save jbp-button job-go-public-button" ><?php esc_html_e('Save', JBP_TEXT_DOMAIN); ?></button>
 				<?php endif; ?>
 
 				<?php if( !$Jobs_Plus_Core->get_setting('job->moderation->publish') ): ?>
-					<button type="submit" id="job-pending" name="data[post_status]" value="pending" class="toggle-job-save jbp-button job-go-public-button" ><?php esc_html_e('Review', JBP_TEXT_DOMAIN); ?></button>
+				<button type="submit" id="job-pending" name="data[post_status]" value="pending" class="toggle-job-save jbp-button job-go-public-button" ><?php esc_html_e('Review', JBP_TEXT_DOMAIN); ?></button>
 				<?php endif; ?>
 
 				<?php if($Jobs_Plus_Core->get_setting('job->moderation->draft') ): ?>
-					<button type="submit" id="job-draft" name="data[post_status]" value="draft" class="toggle-job-save jbp-button job-go-public-button" ><?php esc_html_e('Draft', JBP_TEXT_DOMAIN); ?></button>
+				<button type="submit" id="job-draft" name="data[post_status]" value="draft" class="toggle-job-save jbp-button job-go-public-button" ><?php esc_html_e('Draft', JBP_TEXT_DOMAIN); ?></button>
 				<?php endif; ?>
 
 				<?php if($editing): ?>
-					<button type="button" class="jbp-button" onclick="window.location='<?php echo get_permalink( get_the_id() ); ?>';"><?php esc_html_e('Cancel', JBP_TEXT_DOMAIN); ?></button>
+				<button type="button" class="jbp-button" onclick="window.location='<?php echo get_permalink( get_the_id() ); ?>';"><?php esc_html_e('Cancel', JBP_TEXT_DOMAIN); ?></button>
 				<?php else: ?>
-					<button type="button" class="jbp-button" onclick="window.location='<?php echo get_post_type_archive_link('jbp_jobs'); ?>';"><?php esc_html_e('Cancel', JBP_TEXT_DOMAIN); ?></button>
+				<button type="button" class="jbp-button" onclick="window.location='<?php echo get_post_type_archive_link('jbp_jobs'); ?>';"><?php esc_html_e('Cancel', JBP_TEXT_DOMAIN); ?></button>
 				<?php endif; ?>
 
 			</div>

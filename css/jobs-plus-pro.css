@@ -523,6 +523,7 @@ button.pro-profile-btn{
 	width: 100%;
 	height: 60px;
 	overflow: hidden;
+	line-height: 60px;
 }
 
 input.pro-search-input{

@@ -16,7 +16,7 @@ $selected_cats  = array();
 $error = get_query_var('jbp_pro_error');
 
 //Are we adding a Listing?
-if ($post->ID == $this->add_pro_page_id) {
+if ($post->ID == $this->pro_update_page_id) {
 	$post = $this->get_default_custom_post('jbp_pro');
 	$editing = false;
 } //Or are we editing a listing?

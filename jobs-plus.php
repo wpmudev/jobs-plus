@@ -63,9 +63,29 @@ define( 'SELECT2',                 'v3.4.3' );
 define( 'MASONRY',                 'v3.1.5' );
 
 //metadata keys
-define('JBP_POST_VIEWS_KEY',   '_jbp_post_views_count');
-define('JBP_PRO_CERTIFIED_KEY','_jbp_pro_certified');
-define('JBP_JOB_EXPIRES_KEY',  '_jbp_job_expires');
+define('JBP_POST_VIEWS_KEY',    '_jbp_post_views_count');
+define('JBP_PRO_CERTIFIED_KEY', '_jbp_pro_certified');
+define('JBP_JOB_EXPIRES_KEY',   '_jbp_job_expires');
+
+define('JBP_PRO_PATTERN_KEY',   '_jbp_pro');
+
+define('JBP_PRO_ARCHIVE_FLAG',  'pro-archive-page');
+define('JBP_PRO_TAXONOMY_FLAG', 'pro-taxonomy-page');
+define('JBP_PRO_CONTACT_FLAG',  'pro-contact-page');
+define('JBP_PRO_SEARCH_FLAG',   'pro-search-page');
+define('JBP_PRO_SINGLE_FLAG',   'pro-single-page');
+define('JBP_PRO_UPDATE_FLAG',   'pro-update-page');
+
+
+define('JBP_JOB_PATTERN_KEY',   '_jbp_job');
+
+define('JBP_JOB_ARCHIVE_FLAG',  'job-archive-page');
+define('JBP_JOB_TAXONOMY_FLAG', 'job-taxonomy-page');
+define('JBP_JOB_CONTACT_FLAG',  'job-contact-page');
+define('JBP_JOB_SEARCH_FLAG',   'job-search-page');
+define('JBP_JOB_SINGLE_FLAG',   'job-single-page');
+define('JBP_JOB_UPDATE_FLAG',   'job-update-page');
+
 
 //Rating  metadata keys
 define('JBP_PRO_RATING_KEY',    '_jbp_pro_rating');

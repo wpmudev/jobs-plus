@@ -27,12 +27,12 @@ wp_enqueue_style('jobs-plus-custom');
 				</li>
 				<li>
 					<span class="sort-by-latest <?php echo $sort_latest; ?> divider">
-						<a href="<?php echo add_query_arg( array('prj_sort' => 'latest', ), get_post_type_archive_link('jbp_job') );?>" ><?php esc_html_e('Latest', JPB_TEXT_DOMAIN ); ?></a>
+						<a href="<?php echo add_query_arg( array('prj_sort' => 'latest', ), get_post_type_archive_link('jbp_job') );?>" ><?php esc_html_e('Latest', $this->text_domain ); ?></a>
 					</span>
 				</li>
 				<li class="right-border">
 					<span class="sort-by-end <?php echo $sort_ending; ?>">
-						<a href="<?php echo add_query_arg( array('prj_sort' => 'ending', ), get_post_type_archive_link('jbp_job') );?>" ><?php esc_html_e('About to End', JPB_TEXT_DOMAIN ); ?></a>
+						<a href="<?php echo add_query_arg( array('prj_sort' => 'ending', ), get_post_type_archive_link('jbp_job') );?>" ><?php esc_html_e('About to End', $this->text_domain ); ?></a>
 					</span>
 				</li>
 				<li>

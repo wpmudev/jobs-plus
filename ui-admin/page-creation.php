@@ -33,7 +33,7 @@ $tab_url = 'edit.php?post_type=' . $_GET['post_type'] . '&page=' . $_GET['page']
 						</th>
 						<td>
 							<?php
-							$job_page_id = isset( $_GET['add_job_page_id'] ) ? $_GET['add_job_page_id'] : $this->get_setting( 'pages_define->add_job' ) ?>
+							$job_page_id = isset( $_GET['job_update_page_id'] ) ? $_GET['job_update_page_id'] : $this->get_setting( 'pages_define->add_job' ) ?>
 							<?php wp_dropdown_pages( array(
 								'name'             => 'jbp[pages_define][add_job]',
 								'post_type'        => 'page',
@@ -54,7 +54,7 @@ $tab_url = 'edit.php?post_type=' . $_GET['post_type'] . '&page=' . $_GET['page']
 							<label><?php esc_html_e( 'Add Expert', JBP_TEXT_DOMAIN ) ?></label>
 						</th>
 						<td>
-							<?php $pro_page_id = isset( $_GET['jbp_add_pro_page_id'] ) ? $_GET['jbp_add_pro_page_id'] : $this->get_setting( 'pages_define->add_pro' ) ?>
+							<?php $pro_page_id = isset( $_GET['pro_update_page_id'] ) ? $_GET['pro_update_page_id'] : $this->get_setting( 'pages_define->add_pro' ) ?>
 							<?php wp_dropdown_pages( array(
 								'name'             => 'jbp[pages_define][add_pro]',
 								'post_type'        => 'page',

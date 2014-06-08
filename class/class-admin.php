@@ -137,7 +137,7 @@ class Jobs_Plus_Admin extends Jobs_Plus_Core {
 
 		//Intercept redirects to the Front end
 		if( !empty( $_GET['redirect'] ) && ( $_GET['redirect'] == 'add-job' )  ) {
-			wp_redirect( get_permalink( $this->add_job_page_id ) );
+			wp_redirect( get_permalink( $this->job_update_page_id ) );
 			exit;
 		}
 
@@ -172,7 +172,7 @@ class Jobs_Plus_Admin extends Jobs_Plus_Core {
 
 		//Intercept redirects to the Front end
 		if( !empty( $_GET['redirect'] ) && ( $_GET['redirect'] == 'add-pro' )  ) {
-			wp_redirect( get_permalink( $this->add_pro_page_id ) );
+			wp_redirect( get_permalink( $this->pro_update_page_id ) );
 			exit;
 		}
 
@@ -219,7 +219,7 @@ class Jobs_Plus_Admin extends Jobs_Plus_Core {
 		'pro'           => esc_html( sprintf( __( '%s Options', JBP_TEXT_DOMAIN ), $this->pro_labels->singular_name ) ),
 		'shortcodes'    => esc_html__( 'Shortcodes', JBP_TEXT_DOMAIN ),
 		'about'         => esc_html__( 'Getting Started with Jobs+', JBP_TEXT_DOMAIN ),
-		'page_creation' => __( 'Page Creation', JBP_TEXT_DOMAIN ),
+		//'page_creation' => __( 'Page Creation', JBP_TEXT_DOMAIN ),
 		);
 
 		$current_tab = ( empty( $_GET['tab'] ) ) ? $current_tab : $_GET['tab'];
@@ -419,7 +419,7 @@ class Jobs_Plus_Admin extends Jobs_Plus_Core {
 
 			$tab_url = 'edit.php?post_type=' . $this->get_key( 'post_type', '', $_GET ) . '&page=' . $this->get_key( 'page', '', $_GET ) . '&tab=' . $this->get_key( 'tab', '', $_GET );
 
-			$post_content = __( "<p>Virtual page. Editing this page won\'t change anything.<br />", JBP_TEXT_DOMAIN );
+			$post_content = __( "<p>Pattern page. Editing this page won\'t change anything.<br />", JBP_TEXT_DOMAIN );
 			$post_content .= __( "You may edit the Title and/or the slug only.</p>", JBP_TEXT_DOMAIN );
 
 			global $Jobs_Plus_Core;
@@ -441,7 +441,7 @@ class Jobs_Plus_Admin extends Jobs_Plus_Core {
 				'comment_status' => 'closed'
 				);
 				$id   = wp_insert_post( $args );
-				wp_safe_redirect( admin_url( $tab_url . '&add_job_page_id=' . $id ) );
+				wp_safe_redirect( admin_url( $tab_url . '&job_update_page_id=' . $id ) );
 				break;
 				case 'jbp_create_add_pro_page':
 				check_admin_referer( 'jbp_create_add_pro_page' );
@@ -457,7 +457,7 @@ class Jobs_Plus_Admin extends Jobs_Plus_Core {
 				'comment_status' => 'closed'
 				);
 				$id        = wp_insert_post( $args );
-				wp_safe_redirect( admin_url( $tab_url . '&jbp_add_pro_page_id=' . $id ) );
+				wp_safe_redirect( admin_url( $tab_url . '&pro_update_page_id=' . $id ) );
 				break;
 			}
 		}

@@ -138,7 +138,6 @@ class Jobs_Plus_Core_Data{
 			'author' => 'author',
 			'thumbnail' => 'thumbnail',
 			'excerpt' => 'excerpt',
-			'comments' => 'comments',
 			'revisions' => 'revisions',
 			),
 			'supports_reg_tax' =>

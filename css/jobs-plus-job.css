@@ -817,14 +817,28 @@ button.job-submit-search >img{
 .ui-slider-horizontal .ui-slider-handle {
 	top: -7px !important;
 }
+
+
 .ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
 	background: none repeat scroll 0 0 #FFFFFF !important;
 	border: 3px solid #41CAC0 !important;
 	border-radius: 0 !important;
-	color: #1C94C4;
+	color: #1C94C4 !important;
 	font-weight: bold;
 	outline: medium none;
 }
+
+.ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight {
+    border: 1px solid #FFFFFF !important;
+    color: #333333 !important;
+}
+
+.ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus {
+    border: 1px solid #2293F7;
+    color: #333333 !important;
+    font-weight: bold;
+}
+
 .slider-info {
 	padding-top: 0;
 }

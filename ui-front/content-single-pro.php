@@ -10,8 +10,9 @@ global $post, $Jobs_Plus_Core, $wp_roles;
 
 $add_pro = false;
 $editing = false;
+$link= '' ;
 //Are we adding a Listing?
-if ($post->ID == $Jobs_Plus_Core->add_pro_page_id) {
+if ($post->ID == $Jobs_Plus_Core->pro_update_page_id) {
 	$add_pro = true;
 	$post = $Jobs_Plus_Core->get_default_custom_post('jbp_pro');
 	setup_postdata($post);

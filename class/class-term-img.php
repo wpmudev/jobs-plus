@@ -209,7 +209,7 @@ class Term_Images{
 	}
 
 	/**
-	* Get a virtual page by meta value
+	* Get a  page by meta value
 	*
 	* @return int $page[0] / bool false
 	*/
@@ -304,7 +304,7 @@ class Term_Images{
 						<?php esc_html_e('Enable Images for', $this->text_domain); ?>
 					</th>
 					<th colspan="2">
-						<?php esc_html_e('Image Sizes', $this->text_domain); ?>
+						<span style="padding-left: 20px"><?php esc_html_e('Image Sizes', $this->text_domain); ?></span>
 					</th>
 				</tr>
 			</thead>

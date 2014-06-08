@@ -258,6 +258,9 @@ input.input-small {
 	display: block;
 }
 
+
+
+/*
 button.jbp-button {
 	display:     inline-block;
 	font-size:   16px;
@@ -266,23 +269,29 @@ button.jbp-button {
 	margin:      0 5px;
 	cursor:      pointer;
 }
+*/
 
-.jbp-widget .jbp-button img {
+.jbp-button img {
 	display:    block;
 	border:     none;
 	box-shadow: none;
-	margin:     auto;
+	margin: auto;
 }
 
 .jbp-widget {
 	margin-bottom: 20px;
 }
 
-.jbp-widget .jbp-button {
-	display:          inline;
+.jbp-button {
+	display:          inline-block;
 	background-color: #fff;
 	cursor:           pointer;
 	color:            #111;
+	font-size:   16px;
+	padding:     0.5em 1em;
+	font-weight: bold;
+	margin:      10px 5px;
+	text-align: center;
 }
 
 @media screen and (max-width: 959px) {

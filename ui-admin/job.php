@@ -153,7 +153,7 @@ global $CustomPress_Core;
 							<option value="<?php echo $role; ?>"><?php echo $name; ?></option>
 							<?php endforeach; ?>
 						</select>
-						<br /><span class="description"><?php echo sprintf(__('Select a role to which you want to assign %s capabilities.', $this->text_domain), $capability_type ); ?></span>
+						<br /><span class="description"><?php echo sprintf(__('Select a role to which you want to assign %s capabilities.', $this->text_domain), $this->job_obj->capability_type ); ?></span>
 						<br /><br />
 						<div id="capabilities">
 							<?php

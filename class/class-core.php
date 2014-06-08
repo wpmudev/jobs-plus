@@ -27,11 +27,26 @@ class Jobs_Plus_Core{
 	'reputation'  => JBP_PRO_REPUTATION_KEY,
 	);
 
-	//Virtual pages
-	private $_add_job_page_id = 0;
-	private $_add_pro_page_id = 0;
+	/**
+	* Pattern page ids. NOT normally referenced directly. See __get below
+	*/
+	public $_job_archive_page_id = 0;
+	public $_job_taxonomy_page_id = 0;
+	public $_job_contact_page_id = 0;
+	public $_job_search_page_id = 0;
+	public $_job_single_page_id = 0;
+	public $_job_update_page_id = 0;
 
-	//job file names for content substitutions
+	public $_pro_archive_page_id = 0;
+	public $_pro_taxonomy_page_id = 0;
+	public $_pro_contact_page_id = 0;
+	public $_pro_search_page_id = 0;
+	public $_pro_single_page_id = 0;
+	public $_pro_update_page_id = 0;
+
+	/**
+	* job file names for content substitutions
+	*/
 	public $job_content = array(
 	'archive' => 'content-archive-job.php',
 	'taxonomy' => 'content-taxonomy-job.php',
@@ -55,9 +70,7 @@ class Jobs_Plus_Core{
 	public $job_obj = null;
 
 	public $title = '';
-	public $content = '';
-	public $custom_type = '';
-
+	public $pattern = '';
 
 	public $jbp_errors = array();
 	public $jbp_notices = array();
@@ -145,7 +158,7 @@ class Jobs_Plus_Core{
 		add_shortcode( 'jbp-expert-post-btn', array( &$this, 'expert_post_btn_sc' ) );
 
 		add_shortcode( 'jbp-expert-profile-btn', array( &$this, 'expert_profile_btn_sc' ) );
-		add_shortcode( 'jbp-jobs-list-btn', array( &$this, 'jobs_list_btn_sc' ) );
+		add_shortcode( 'jbp-job-list-btn', array( &$this, 'job_list_btn_sc' ) );
 
 		add_shortcode( 'jbp-job-search', array( &$this, 'job_search_sc' ) );
 		add_shortcode( 'jbp-expert-search', array( &$this, 'expert_search_sc' ) );
@@ -159,38 +172,96 @@ class Jobs_Plus_Core{
 
 		add_shortcode( 'jbp-job-price-search', array( &$this, 'job_price_search_sc' ) );
 
+		//Page Pattern shortcodes
+		add_shortcode( 'jbp-job-archive-page',  array( &$this, 'job_archive_page_sc' ) );
+		add_shortcode( 'jbp-job-taxonomy-page', array( &$this, 'job_taxonomy_page_sc' ) );
+		add_shortcode( 'jbp-job-contact-page',  array( &$this, 'job_contact_page_sc' ) );
+		add_shortcode( 'jbp-job-search-page',   array( &$this, 'job_search_page_sc' ) );
+		add_shortcode( 'jbp-job-single-page',   array( &$this, 'job_single_page_sc' ) );
+		add_shortcode( 'jbp-job-update-page',   array( &$this, 'job_update_page_sc' ) );
+
+		add_shortcode( 'jbp-expert-archive-page',  array( &$this, 'pro_archive_page_sc' ) );
+		add_shortcode( 'jbp-expert-taxonomy-page', array( &$this, 'pro_taxonomy_page_sc' ) );
+		add_shortcode( 'jbp-expert-contact-page',  array( &$this, 'pro_contact_page_sc' ) );
+		add_shortcode( 'jbp-expert-search-page',   array( &$this, 'pro_search_page_sc' ) );
+		add_shortcode( 'jbp-expert-single-page',   array( &$this, 'pro_single_page_sc' ) );
+		add_shortcode( 'jbp-expert-update-page',   array( &$this, 'pro_update_page_sc' ) );
 	}
 
 	/**
-	* __get , __set and __isset to abstract the virtual pageids so they are only called if actually used.
+	* Get a pattern page by meta value
+	*
+	* @return int $page[0] /bool false
+	*/
+	function get_page_by_meta( $key, $value ) {
+		global $wpdb;
+
+		//To avoid "the_posts" filters do a direct call to the database to find the post by meta
+		$ids = array_keys(
+		$wpdb->get_results($wpdb->prepare(
+		"
+		SELECT post_id
+		FROM {$wpdb->postmeta}
+		WHERE meta_key= %s
+		AND meta_value=%s
+		", $key, $value), OBJECT_K )
+		);
+
+		if( (count($ids) != 1 ) //There can be only one.
+		|| (get_post_status( $ids[0]) == 'trash' ) //no trash
+		){
+			foreach( $ids as $id ) { //Delete all and start over.
+				delete_post_meta($id, $key);
+				wp_delete_post($id, true);
+			}
+			return false;
+		}
+
+		if ( isset( $ids[0] ) && 0 < $ids[0] ){
+			return get_post($ids[0]);
+		}
+
+		return false;
+	}
+
+	function find_page_id( &$object_id, $key, $flag ) {
+		$page_id = false;
+
+		if(empty($object_id) ){
+			$page = $this->get_page_by_meta($key, $flag );
+			$page_id = ($page && $page->ID > 0) ? $page->ID : 0;
+			if(empty($page_id) ) {
+				require_once $this->plugin_dir . 'class/class-pattern.php';
+				$page_id = $object_id;
+			}
+
+			//Make sure it stays pattern
+			if( !in_array(get_post_status( $page_id ), array('pattern', 'trash') ) )
+			wp_update_post( array('ID' => $page_id, 'post_status' => 'pattern') );
+		}
+		return 	$page_id;
+	}
+
+	/**
+	* __get , __set and __isset to abstract the pattern pageids so they are only called if actually used.
 	*
 	*/
 	function __get($name){
 		$result = false;
 		switch($name){
-			case 'add_job_page_id':{
-				if(empty($this->_add_job_page_id) ){
-					$page = $this->get_page_by_meta('jbp_job', 'add_job_page' );
-					$result = ($page && $page->ID > 0) ? $page->ID : 0;
-					if(empty($result) ) $this->create_virtual_pages();
-					else 
-					$this->_add_job_page_id = $result; //Remember the number
-				}
-				$result = $this->_add_job_page_id;
-				break;
-			}
+			case 'job_archive_page_id':  $result = $this->find_page_id( $this->_job_archive_page_id, JBP_JOB_PATTERN_KEY, JBP_JOB_ARCHIVE_FLAG); break;
+			case 'job_taxonomy_page_id': $result = $this->find_page_id( $this->_job_taxonomy_page_id, JBP_JOB_PATTERN_KEY, JBP_JOB_TAXONOMY_FLAG); break;
+			case 'job_contact_page_id':  $result = $this->find_page_id( $this->_job_contact_page_id, JBP_JOB_PATTERN_KEY, JBP_JOB_CONTACT_FLAG); break;
+			case 'job_search_page_id':   $result = $this->find_page_id( $this->_job_search_page_id, JBP_JOB_PATTERN_KEY, JBP_JOB_SEARCH_FLAG); break;
+			case 'job_single_page_id':   $result = $this->find_page_id( $this->_job_single_page_id, JBP_JOB_PATTERN_KEY, JBP_JOB_SINGLE_FLAG); break;
+			case 'job_update_page_id':   $result = $this->find_page_id( $this->_job_update_page_id, JBP_JOB_PATTERN_KEY, JBP_JOB_UPDATE_FLAG); break;
 
-			case 'add_pro_page_id':{
-				if(empty($this->_add_pro_page_id) ){
-					$page = $this->get_page_by_meta('jbp_pro', 'add_pro_page' );
-					$result = ($page && $page->ID > 0) ? $page->ID : 0;
-					if(empty($result) ) $this->create_virtual_pages();
-					else 
-					$this->_add_pro_page_id = $result; //Remember the number
-				}
-				$result = $this->_add_pro_page_id;
-				break;
-			}
+			case 'pro_archive_page_id':  $result = $this->find_page_id( $this->_pro_archive_page_id, JBP_PRO_PATTERN_KEY, JBP_PRO_ARCHIVE_FLAG ); break;
+			case 'pro_taxonomy_page_id': $result = $this->find_page_id( $this->_pro_taxonomy_page_id, JBP_PRO_PATTERN_KEY, JBP_PRO_TAXONOMY_FLAG ); break;
+			case 'pro_contact_page_id':  $result = $this->find_page_id( $this->_pro_contact_page_id, JBP_PRO_PATTERN_KEY, JBP_PRO_CONTACT_FLAG ); break;
+			case 'pro_search_page_id':   $result = $this->find_page_id( $this->_pro_search_page_id, JBP_PRO_PATTERN_KEY, JBP_PRO_SEARCH_FLAG ); break;
+			case 'pro_single_page_id':   $result = $this->find_page_id( $this->_pro_single_page_id, JBP_PRO_PATTERN_KEY, JBP_PRO_SINGLE_FLAG ); break;
+			case 'pro_update_page_id':   $result = $this->find_page_id( $this->_pro_update_page_id, JBP_PRO_PATTERN_KEY, JBP_PRO_UPDATE_FLAG ); break;
 		}
 
 		return $result;
@@ -198,31 +269,39 @@ class Jobs_Plus_Core{
 
 	function __set($name, $value){
 		switch($name) {
-			case 'add_job_page_id':{
-				$this->_add_job_page_id = $value;
-				break;
-			}
+			case 'job_archive_page_id':  $this->_job_archive_page_id = $value; break;
+			case 'job_taxonomy_page_id': $this->_job_taxonomy_page_id = $value; break;
+			case 'job_contact_page_id':  $this->_job_contact_page_id = $value; break;
+			case 'job_search_page_id':   $this->_job_search_page_id = $value; break;
+			case 'job_single_page_id':   $this->_job_single_page_id = $value; break;
+			case 'job_update_page_id':   $this->_job_update_page_id = $value; break;
 
-			case 'add_pro_page_id':{
-				$this->_add_pro_page_id = $value;
-				break;
-			}
+			case 'pro_archive_page_id':  $this->_pro_archive_page_id = $value; break;
+			case 'pro_taxonomy_page_id': $this->_pro_taxonomy_page_id = $value; break;
+			case 'pro_contact_page_id':  $this->_pro_contact_page_id = $value; break;
+			case 'pro_search_page_id':   $this->_pro_search_page_id = $value; break;
+			case 'pro_single_page_id':   $this->_pro_single_page_id = $value; break;
+			case 'pro_update_page_id':   $this->_pro_update_page_id = $value; break;
 		}
 	}
 
 	function __isset($name){
+		$result = false;
 		switch($name) {
-			case 'add_job_page_id': {
-				$result = $this->_add_job_page_id > 0;
-				break;
-			}
+			case 'job_archive_page_id':  $result = $this->_job_archive_page_id > 0; break;
+			case 'job_taxonomy_page_id': $result = $this->_job_taxonomy_page_id > 0; break;
+			case 'job_contact_page_id':  $result = $this->_job_contact_page_id > 0; break;
+			case 'job_search_page_id':   $result = $this->_job_search_page_id > 0; break;
+			case 'job_single_page_id':   $result = $this->_job_single_page_id > 0; break;
+			case 'job_update_page_id':   $result = $this->_job_update_page_id > 0; break;
 
-			case 'add_pro_page_id': {
-				$result = $this->_add_pro_page_id > 0;
-				break;
-			}
+			case 'pro_archive_page_id':  $result = $this->_pro_archive_page_id > 0; break;
+			case 'pro_taxonomy_page_id': $result = $this->_pro_taxonomy_page_id > 0; break;
+			case 'pro_contact_page_id':  $result = $this->_pro_contact_page_id > 0; break;
+			case 'pro_search_page_id':   $result = $this->_pro_search_page_id > 0; break;
+			case 'pro_single_page_id':   $result = $this->_pro_single_page_id > 0; break;
+			case 'pro_update_page_id':   $result = $this->_pro_update_page_id > 0; break;
 		}
-
 		return $result;
 	}
 
@@ -305,6 +384,9 @@ class Jobs_Plus_Core{
 	function on_plugins_loaded(){
 		//Translations
 		load_plugin_textdomain($this->text_domain, false, plugin_basename( $this->plugin_dir . 'languages/' ) );
+		if( get_site_option('jbp_activate', false) > 1)	{ //Do on first pass
+			require_once($this->plugin_dir . 'class/class-data.php');
+		}
 	}
 
 	function on_wp_loaded(){
@@ -314,14 +396,12 @@ class Jobs_Plus_Core{
 			flush_rewrite_rules();
 			$flag = get_option('jbp_activate') - 1;
 			if( empty( $flag ) ) {
+				do_action('activated_plugin','custompress/loader.php');
+				global $CustomPress_Core;
+				$CustomPress_Core->add_admin_capabilities();
 				delete_site_option('jbp_activate');
 			} else {
 				update_site_option('jbp_activate', $flag);
-				
-				do_action('activated_plugin','custompress/loader.php');
-				global $CustomPress_Core;
-				require_once($this->plugin_dir . 'class/class-data.php');
-				$CustomPress_Core->add_admin_capabilities();
 				wp_redirect( admin_url('/edit.php?post_type=jbp_job&page=jobs-plus-menu&tab=about') );
 				exit;
 			}
@@ -335,14 +415,14 @@ class Jobs_Plus_Core{
 		$this->set_capability_defines();
 		$this->set_rewrite_rules();
 
-		// post_status "virtual" for pages not to be displayed in the menus but that users should not be editing.
-		register_post_status( 'virtual', array(
-		'label' => __( 'Virtual', $this->text_domain ),
-		'public' => false, //This trick prevents the virtual pages from appearing in the All Pages list but can be display on the front end.
+		// post_status "pattern" for pages not to be displayed in the menus but that users should not be editing.
+		register_post_status( 'pattern', array(
+		'label' => __( 'Pattern', $this->text_domain ),
+		'public' => false, //This trick prevents the pattern pages from appearing in the All Pages list but can be display on the front end.
 		'exclude_from_search'       => false,
 		'show_in_admin_all_list'    => false,
 		'show_in_admin_status_list' => true,
-		'label_count'               => _n_noop( 'Virtual <span class="count">(%s)</span>', 'Virtual <span class="count">(%s)</span>' ),
+		'label_count'               => _n_noop( 'Pattern <span class="count">(%s)</span>', 'Pattern <span class="count">(%s)</span>' ),
 		) );
 
 		//Set the pro-thumbnail size. DEFAULT to 160x120
@@ -375,49 +455,49 @@ class Jobs_Plus_Core{
 		$this->pro_slug = $this->pro_obj->rewrite['slug'];
 		$this->job_slug = $this->job_obj->rewrite['slug'];
 
-		// Declare widget areas
-		if(function_exists('register_sidebar') ){
-			register_sidebar(array(
-			'id' => 'pro-widget',
-			'name' => sprintf(__('%s Widget', JBP_TEXT_DOMAIN), $this->pro_labels->name),
-			'description' => sprintf(__('Widget area at the top of the %s page.', $this->text_domain), $this->pro_labels->name),
-			'before_widget' => '<div id="%1$s" class="jbp-widget widget %2$s">' . "\n",
-			'after_widget' => "</div>\n",
-			'before_title' => '<h2 class="widgettitle">',
-			'after_title' => '</h2>'
-			));
-
-			register_sidebar(array(
-			'id' => 'pro-archive-widget',
-			'name' => sprintf(__('%s Archive Widget', JBP_TEXT_DOMAIN), $this->pro_labels->name),
-			'description' => sprintf(__('Widget area at the top of the %s archive.', $this->text_domain), $this->pro_labels->name),
-			'before_widget' => '<div id="%1$s" class="jbp-widget widget %2$s">' . "\n",
-			'after_widget' => "</div>\n",
-			'before_title' => '<h2 class="widgettitle">',
-			'after_title' => '</h2>'
-			));
-
-			register_sidebar(array(
-			'id' => 'job-widget',
-			'name' => sprintf(__('%s Widget', JBP_TEXT_DOMAIN), $this->job_labels->name),
-			'description' => sprintf(__('Widget area at the top of the %s page.', $this->text_domain), $this->job_labels->name),
-			'before_widget' => '<div id="%1$s" class="jbp-widget widget %2$s">' . "\n",
-			'after_widget' => "</div>\n",
-			'before_title' => '<h2 class="widgettitle">',
-			'after_title' => '</h2>'
-			));
-
-
-			register_sidebar(array(
-			'id' => 'job-archive-widget',
-			'name' => sprintf(__('%s Archive Widget', JBP_TEXT_DOMAIN), $this->job_labels->name),
-			'description' => sprintf(__('Widget area at the top of the %s archive.', $this->text_domain), $this->job_labels->name),
-			'before_widget' => '<div id="%1$s" class="jbp-widget widget %2$s">' . "\n",
-			'after_widget' => "</div>\n",
-			'before_title' => '<h2 class="widgettitle">',
-			'after_title' => '</h2>'
-			));
-		}
+//		// Declare widget areas
+//		if(function_exists('register_sidebar') ){
+//			register_sidebar(array(
+//			'id' => 'pro-widget',
+//			'name' => sprintf(__('%s Widget', JBP_TEXT_DOMAIN), $this->pro_labels->name),
+//			'description' => sprintf(__('Widget area at the top of the %s page.', $this->text_domain), $this->pro_labels->name),
+//			'before_widget' => '<div id="%1$s" class="jbp-widget widget %2$s">' . "\n",
+//			'after_widget' => "</div>\n",
+//			'before_title' => '<h2 class="widgettitle">',
+//			'after_title' => '</h2>'
+//			));
+//
+//			register_sidebar(array(
+//			'id' => 'pro-archive-widget',
+//			'name' => sprintf(__('%s Archive Widget', JBP_TEXT_DOMAIN), $this->pro_labels->name),
+//			'description' => sprintf(__('Widget area at the top of the %s archive.', $this->text_domain), $this->pro_labels->name),
+//			'before_widget' => '<div id="%1$s" class="jbp-widget widget %2$s">' . "\n",
+//			'after_widget' => "</div>\n",
+//			'before_title' => '<h2 class="widgettitle">',
+//			'after_title' => '</h2>'
+//			));
+//
+//			register_sidebar(array(
+//			'id' => 'job-widget',
+//			'name' => sprintf(__('%s Widget', JBP_TEXT_DOMAIN), $this->job_labels->name),
+//			'description' => sprintf(__('Widget area at the top of the %s page.', $this->text_domain), $this->job_labels->name),
+//			'before_widget' => '<div id="%1$s" class="jbp-widget widget %2$s">' . "\n",
+//			'after_widget' => "</div>\n",
+//			'before_title' => '<h2 class="widgettitle">',
+//			'after_title' => '</h2>'
+//			));
+//
+//
+//			register_sidebar(array(
+//			'id' => 'job-archive-widget',
+//			'name' => sprintf(__('%s Archive Widget', JBP_TEXT_DOMAIN), $this->job_labels->name),
+//			'description' => sprintf(__('Widget area at the top of the %s archive.', $this->text_domain), $this->job_labels->name),
+//			'before_widget' => '<div id="%1$s" class="jbp-widget widget %2$s">' . "\n",
+//			'after_widget' => "</div>\n",
+//			'before_title' => '<h2 class="widgettitle">',
+//			'after_title' => '</h2>'
+//			));
+//		}
 
 	}
 
@@ -579,113 +659,78 @@ class Jobs_Plus_Core{
 		wp_enqueue_style('jbp-widgets-style',$this->plugin_url.'css/job-plus-widgets.css');
 	}
 
-	/**
-	* Get a virtual page by meta value
-	*
-	* @return int $page[0] /bool false
-	*/
-	function get_page_by_meta( $post_type, $value ) {
-		global $wpdb;
-
-		//To avoid "the_posts" filters do a direct call to the database to find the post by meta
-		$ids = array_keys(
-		$wpdb->get_results($wpdb->prepare(
-		"
-		SELECT post_id
-		FROM {$wpdb->postmeta}
-		WHERE meta_key= %s
-		AND meta_value=%s
-		", "_{$post_type}", $value), OBJECT_K )
-		);
-
-		if( (count($ids) != 1 ) //There can be only one.
-		|| (get_post_status( $ids[0]) == 'trash' ) //no trash
-		){
-			foreach( $ids as $id ) { //Delete all and start over.
-				delete_post_meta($id, "_{$post_type}");
-				wp_delete_post($id, true);
-			}
-			return false;
-		}
-
-		if ( isset( $ids[0] ) && 0 < $ids[0] ){
-			return get_post($ids[0]);
-		}
-
-		return false;
-	}
 
 	public function find_page_by_meta($post_type,$key,$value){
 		global $wpdb;
 		$sql= '
 		SELECT post_id FROM
-			'.$wpdb->posts.',
-			'.$wpdb->postmeta.'
-			WHERE meta_key = %s AND meta_value =%s AND ID = post_id AND post_type=%s
+		'.$wpdb->posts.',
+		'.$wpdb->postmeta.'
+		WHERE meta_key = %s AND meta_value =%s AND ID = post_id AND post_type=%s
 		';
 		$ids = array_keys($wpdb->get_results($wpdb->prepare($sql,$key,$value,$post_type),OBJECT_K));
 		return $ids;
 	}
 
 	/**
-	* Create the default virtual pages.
+	* Create the default pattern pages.
 	* @return void
 	*/
-	function create_virtual_pages() {
+	function create_pattern_pages() {
 		/* Create neccessary pages */
-		$post_content  = __("<p>Virtual page. Editing this page won\'t change anything.<br />", $this->text_domain);
-		$post_content .= __("You may edit the Title and/or the slug only.</p>", $this->text_domain);
-
 		$current_user = wp_get_current_user();
 
 		//jbp_job Add Job
+		$buttons = '<p style="text-align: center;">[jbp-expert-post-btn][jbp-job-post-btn][jbp-expert-browse-btn][jbp-job-browse-btn][jbp-expert-profile-btn][jbp-job-list-btn]</p>';
 
-		$page = $this->get_page_by_meta('jbp_job', 'add_job_page' );
+		$page = $this->get_page_by_meta(JBP_JOB_PATTERN_KEY, JBP_JOB_UPDATE_FLAG );
 		$page_id = ($page && $page->ID > 0) ? $page->ID : 0;
 		if ( empty($page_id) ) {
 			/* Construct args for the new post */
 			$args = array(
 			'post_title'     => sprintf('Add %s', $this->job_labels->singular_name),
 			'post_name'      => sprintf('add-%s', $this->job_slug ),
-			'post_status'    => 'virtual',
+			'post_status'    => 'pattern',
 			'post_author'    => $current_user->ID,
 			'post_type'      => 'jbp_job',
-			'post_content'   => $post_content,
+			'post_content'   => $buttons . '[jbp-update-job]',
 			'ping_status'    => 'closed',
 			'comment_status' => 'closed'
 			);
 			$page_id = wp_insert_post( $args );
 			$page = get_post($page_id);
-			add_post_meta( $page_id, '_jbp_job', 'add_job_page');
+			add_post_meta( $page_id, JBP_JOB_PATTERN_KEY, JBP_JOB_UPDATE_FLAG);
 		} else {
-			//Make sure it stays Virtual
-			if( !in_array($page->post_status, array('virtual', 'trash') ) ) wp_update_post( array('ID' => $page_id, 'post_status' => 'virtual') );
+			//Make sure it stays pattern
+			if( !in_array($page->post_status, array('pattern', 'trash') ) )
+			wp_update_post( array('ID' => $page_id, 'post_status' => 'pattern') );
 		}
-		$this->_add_job_page_id = $page_id; //Remember the number
+		$this->_job_update_page_id = $page_id; //Remember the number
 
 		//jbp_pro Add Pro
-		$page = $this->get_page_by_meta('jbp_pro', 'add_pro_page' );
+		$page = $this->get_page_by_meta(JBP_PRO_PATTERN_KEY, JBP_PRO_UPDATE_FLAG );
 		$page_id = ($page && $page->ID > 0) ? $page->ID : 0;
 		if ( empty($page_id) ) {
 			/* Construct args for the new post */
 			$args = array(
 			'post_title'     => sprintf('Add %s', $this->pro_labels->singular_name),
 			'post_name'      => sprintf('add-%s', $this->pro_slug ),
-			'post_status'    => 'virtual',
+			'post_status'    => 'pattern',
 			'post_author'    => $current_user->ID,
 			'post_type'      => 'jbp_pro',
-			'post_content'   => $post_content,
+			'post_content'   => $buttons . '[jbp-update-expert]',
 			'ping_status'    => 'closed',
 			'comment_status' => 'closed'
 			);
 			$page_id = wp_insert_post( $args );
 			$page = get_post($page_id);
-			add_post_meta( $page_id, '_jbp_pro', 'add_pro_page');
+			add_post_meta( $page_id, JBP_PRO_PATTERN_KEY, JBP_PRO_UPDATE_FLAG);
 		} else {
-			//Make sure it stays Virtual
-			if( !in_array($page->post_status, array('virtual', 'trash') ) ) wp_update_post( array('ID' => $page_id, 'post_status' => 'virtual') );
+			//Make sure it stays pattern
+			if( !in_array($page->post_status, array('pattern', 'trash') ) )
+			wp_update_post( array('ID' => $page_id, 'post_status' => 'pattern') );
 		}
-		$this->_add_pro_page_id = $page_id; //Remember the number
+		$this->_pro_update_page_id = $page_id; //Remember the number
 	}
 
 	/**
@@ -815,7 +860,7 @@ class Jobs_Plus_Core{
 
 					set_query_var('edit', false);
 
-					if($wp_query->post->ID == $this->add_job_page_id) {
+					if($wp_query->post->ID == $this->job_update_page_id) {
 						wp_redirect(add_query_arg('jbp_error',
 						urlencode(sprintf(__('You must register and login to enter a %s.', $this->text_domain), $this->job_labels->new_item) ),
 						get_post_type_archive_link('jbp_job') ) );
@@ -828,7 +873,7 @@ class Jobs_Plus_Core{
 				if( !current_user_can( EDIT_PROS ) ) {
 					set_query_var('edit', false);
 
-					if($wp_query->post->ID == $this->add_pro_page_id) {
+					if($wp_query->post->ID == $this->pro_update_page_id) {
 						wp_redirect(add_query_arg( 'jbp_error',
 						urlencode(sprintf(__('You must register and login to enter a %s.', $this->text_domain), $this->pro_labels->new_item) ),
 						get_post_type_archive_link('jbp_pro') ) );
@@ -851,7 +896,7 @@ class Jobs_Plus_Core{
 		//var_dump($template);
 
 		$this->title = '';
-		$this->content = '';
+		$this->pattern = '';
 
 		//Leave feeds alone
 		if(is_feed()) return $template;
@@ -883,22 +928,24 @@ class Jobs_Plus_Core{
 		if(in_array(get_query_var('post_type'), array('jbp_job', 'jbp_pro'))
 		|| in_array(get_query_var('taxonomy'), array('jbp_category', 'jbp_tag', 'jbp_skills_tag')) ){
 
-			wp_enqueue_script('element-query');
+			wp_enqueue_style('jquery-rateit');
 			wp_enqueue_style('magnific-popup');
+
+			wp_enqueue_script('element-query');
 			wp_enqueue_script('magnific-popup');
 			wp_enqueue_script('jquery-cookie');
 			wp_enqueue_script('jobs-plus');
 			wp_enqueue_script('jquery-rateit');
-			wp_enqueue_style('jquery-rateit');
 		}
 
 		/**
 		* Handle special endpoints edit, contact and search
 		*/
 
+
 		//Is this an jbp_job update?
 		if( ( is_singular('jbp_job') && get_query_var('edit') )
-		|| is_single($this->add_job_page_id) ){
+		|| is_single($this->job_update_page_id) ){
 
 			$limit = intval($this->get_setting('job->max_records', 1) );
 			if( !current_user_can( CREATE_JOBS ) ) {
@@ -919,17 +966,15 @@ class Jobs_Plus_Core{
 				get_post_type_archive_link('jbp_job') ) );
 				exit;
 			}
-
-			$this->content = $this->job_content['update'];
-			$this->custom_type = 'jbp_job';
-
+			$this->title = 'custom_titles';
+			$this->pattern = $this->job_update_page_id;
 		}
 
 		//Is this a jbp_pro update?
 		elseif( (is_singular('jbp_pro') && get_query_var('edit') )
-		|| (is_single($this->add_pro_page_id) ) ){
+		|| (is_single($this->pro_update_page_id) ) ){
 
-			if( is_single($this->add_pro_page_id) ){ //How many can they have
+			if( is_single($this->pro_update_page_id) ){ //How many can they have
 				$limit = intval($this->get_setting('pro->max_records', 1) );
 				if( !current_user_can( CREATE_PROS ) ) {
 					wp_redirect( add_query_arg('jbp_error',
@@ -952,82 +997,69 @@ class Jobs_Plus_Core{
 			}
 
 			$this->title = 'custom_titles';
-			$this->content = $this->pro_content['update'];
-			$this->custom_type = 'jbp_pro';
-
+			$this->pattern = $this->pro_update_page_id;
 
 		}
 		//Is this a jbp_job search?
 		elseif( is_search() && (get_query_var('post_type') == 'jbp_job') ){
 			$this->title = 'custom_titles';
-			$this->content = $this->job_content['search'];
-			$this->custom_type = 'jbp_job';
+			$this->pattern = $this->job_search_page_id;
 		}
 
 		//Is this a jbp_job contact?
 		elseif( is_singular('jbp_job') && get_query_var('contact') ){
 			//css for the edit Pages
 			$this->title = 'custom_titles';
-			$this->content = $this->job_content['contact'];
-			$this->custom_type = 'jbp_job';
+			$this->pattern = $this->job_contact_page_id;
 		}
 
 		//Is this a job_pro search?
 		elseif( is_search() && (get_query_var('post_type') == 'jbp_pro') ){
 			$this->title = 'custom_titles';
-			$this->content = $this->pro_content['search'];
-			$this->custom_type = 'jbp_pro';
+			$this->pattern = $this->pro_search_page_id;
 		}
 
 		//Is this a job_pro contact?
 		elseif( is_singular('jbp_pro') && get_query_var('contact') ){
 			$this->title = 'custom_titles';
-			$this->content = $this->pro_content['contact'];
-			$this->custom_type = 'jbp_pro';
+			$this->pattern = $this->pro_contact_page_id;
 		}
 
 		//Handle any default custom templates
-		if( empty($this->content) ) {
+		if( empty($this->pattern) ) {
 			if( is_tax( array('jbp_category', 'jbp_skills_tag') ) ) {
 				$this->title = 'custom_titles';
-				$this->content = $this->job_content['taxonomy'];
-				$this->custom_type = 'jbp_job';
+				$this->pattern = $this->job_taxonomy_page_id;
 			}
 
 			elseif(is_post_type_archive('jbp_job') ) {
 				$this->title = 'custom_titles';
-				$this->content = $this->job_content['archive'];
-				$this->custom_type = 'jbp_job';
+				$this->pattern = $this->job_archive_page_id;
 			}
 
 			elseif(is_singular('jbp_job') ) {
-				$this->content = $this->job_content['single'];
-				$this->custom_type = 'jbp_job';
+				$this->pattern = $this->job_single_page_id;
 			}
 
 			elseif( is_tax('jbp_tag') ) {
 				$this->title = 'custom_titles';
-				$this->content = $this->pro_content['taxonomy'];
-				$this->custom_type = 'jbp_pro';
+				$this->pattern = $this->job_taxonomy_page_id;
 			}
 
 			elseif(is_post_type_archive('jbp_pro') ) {
 				$this->title = 'custom_titles';
-				$this->content = $this->pro_content['archive'];
-				$this->custom_type = 'jbp_pro';
+				$this->pattern = $this->pro_archive_page_id;
 			}
 
 			elseif(is_singular('jbp_pro') ) {
-				$this->content = $this->pro_content['single'];
-				$this->custom_type = 'jbp_pro';
+				$this->pattern = $this->pro_single_page_id;
 			}
 
 		}
 
-		//var_dump($this->content);
+		//var_dump($this->pattern);
 		//Do the content filters
-		if( !empty($this->content)
-		&& file_exists($this->plugin_dir . 'ui-front/' . $this->content)) {
+		if( !empty($this->pattern) ) {
 			//If substituting content then use page template. If post_type.php exists use it.
 			$template = locate_template( array("{$this->custom_type}.php", 'page.php', 'index.php' ) );
 			add_filter( 'the_content', array( &$this, 'content_template' ), 20 );
@@ -1045,10 +1077,72 @@ class Jobs_Plus_Core{
 		remove_all_filters('the_title', 20);
 		remove_all_filters('the_content', 20);
 
-		//See if there is a child or theme version
-		require locate_jbp_template( $this->content );
+		$vpost = get_post( $this->pattern);
+		echo do_shortcode( $vpost->post_content );
 
 		$wp_query->post_count = 0;
+	}
+
+	function job_archive_page_sc(){
+		ob_start();
+		require locate_jbp_template( $this->job_content['archive'] );
+		return ob_get_clean();
+	}
+	function job_taxonomy_page_sc(){
+		ob_start();
+		require locate_jbp_template( $this->job_content['taxonomy'] );
+		return ob_get_clean();
+	}
+	function job_contact_page_sc(){
+		ob_start();
+		require locate_jbp_template( $this->job_content['contact'] );
+		return ob_get_clean();
+	}
+	function job_search_page_sc(){
+		ob_start();
+		require locate_jbp_template( $this->job_content['search'] );
+		return ob_get_clean();
+	}
+	function job_single_page_sc(){
+		ob_start();
+		require locate_jbp_template( $this->job_content['single'] );
+		return ob_get_clean();
+	}
+	function job_update_page_sc(){
+		ob_start();
+		require locate_jbp_template( $this->job_content['update'] );
+		return ob_get_clean();
+	}
+
+	function pro_archive_page_sc(){
+		ob_start();
+		require locate_jbp_template( $this->pro_content['archive'] );
+		return ob_get_clean();
+	}
+	function pro_taxonomy_page_sc(){
+		ob_start();
+		require locate_jbp_template( $this->pro_content['taxonomy'] );
+		return ob_get_clean();
+	}
+	function pro_contact_page_sc(){
+		ob_start();
+		require locate_jbp_template( $this->pro_content['contact'] );
+		return ob_get_clean();
+	}
+	function pro_search_page_sc(){
+		ob_start();
+		require locate_jbp_template( $this->pro_content['search'] );
+		return ob_get_clean();
+	}
+	function pro_single_page_sc(){
+		ob_start();
+		require locate_jbp_template( $this->pro_content['single'] );
+		return ob_get_clean();
+	}
+	function pro_update_page_sc(){
+		ob_start();
+		require locate_jbp_template( $this->pro_content['update'] );
+		return ob_get_clean();
 	}
 
 	/**
@@ -1244,8 +1338,8 @@ class Jobs_Plus_Core{
 	function on_parse_query($query) {
 		global $wp_query, $wp_post_statuses;
 
-		// Do this so virtual pages don't show up in Archive pages, but can be found as singles
-		if( is_singular() ) $wp_post_statuses['virtual']->public = true;
+		// Do this so pattern pages don't show up in Archive pages, but can be found as singles
+		if( is_singular() ) $wp_post_statuses['pattern']->public = true;
 
 		return $query;
 	}
@@ -1752,7 +1846,7 @@ class Jobs_Plus_Core{
 	}
 
 	function ajax_error( $status_text='', $params){
-		
+
 		$is_iframe = ( !empty($params['X-Requested-With']) && $params['X-Requested-With'] == 'IFrame');
 		header('HTTP/1.0 403 ' . $status_text); //error for standard Ajax
 		if($is_iframe) {
@@ -2307,7 +2401,7 @@ class Jobs_Plus_Core{
 		$content = (empty($content)) ? $text : $content;
 
 		$register_url = $this->button_register_url();
-		$url = get_permalink($this->add_job_page_id);
+		$url = get_permalink($this->job_update_page_id);
 
 		ob_start();
 		require locate_jbp_template((array)'sc-job-post-btn.php');
@@ -2333,7 +2427,7 @@ class Jobs_Plus_Core{
 		}
 
 		$content = (empty($content)) ? $text : $content;
-		$url = get_permalink($this->add_pro_page_id);
+		$url = get_permalink($this->pro_update_page_id);
 		$register_url = $this->button_register_url();
 
 		ob_start();
@@ -2341,7 +2435,7 @@ class Jobs_Plus_Core{
 		return do_shortcode( ob_get_clean() );
 	}
 
-	function jobs_list_btn_sc( $atts, $content = null ) {
+	function job_list_btn_sc( $atts, $content = null ) {
 		extract( shortcode_atts( array(
 		'text' => __('My Jobs', $this->text_domain),
 		'view' => 'both', //loggedin, loggedout, both

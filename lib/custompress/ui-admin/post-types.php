@@ -1,4 +1,4 @@
-<?php if (!defined('ABSPATH')) die('No direct access allowed!'); 
+<?php if (!defined('ABSPATH')) die('No direct access allowed!');
 
 //var_dump($this->all_capabilities('jbp_job') );
 
@@ -26,6 +26,7 @@ if(is_multisite()) {
 $this->render_admin('update-message');
 
 ?>
+
 
 <form action="#" method="post" class="ct-form-single-btn">
 	<input type="submit" class="button-secondary" name="redirect_add_post_type" value="<?php esc_attr_e('Add Post Type', $this->text_domain); ?>" />
