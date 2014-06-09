@@ -384,25 +384,36 @@ class Jobs_Plus_Core{
 	function on_plugins_loaded(){
 		//Translations
 		load_plugin_textdomain($this->text_domain, false, plugin_basename( $this->plugin_dir . 'languages/' ) );
-		if( get_site_option('jbp_activate', false) > 1)	{ //Do on first pass
+
+		//if custom type not created start the activation loop
+		$activate = (int)get_site_option('jbp_activate', false);
+
+		if( ( $activate > 0) )	{ //Do on first pass
 			require_once($this->plugin_dir . 'class/class-data.php');
 		}
 	}
 
 	function on_wp_loaded(){
 		//If the activate flag is set then try to initalize the defaults
-		if( get_site_option('jbp_activate', false))	{
+		$activate = get_site_option('jbp_activate', false);
+
+		if ( !post_type_exists('jbp_job') && empty($activate) ) { 
+			update_site_option('jbp_activate', 3);
+			wp_safe_redirect('#'); exit;
+		}
+
+		if( $activate )	{
 			//For some reason the rewrite rules need to flushed twice
 			flush_rewrite_rules();
-			$flag = get_site_option('jbp_activate') - 1;
-			if( $flag <= 0 ) {
-				do_action('activated_plugin','custompress/loader.php');
-				global $CustomPress_Core;
-				$CustomPress_Core->add_admin_capabilities();
-						$this->job_update_page_id;
+			$activate--;
+			if( $activate <= 0 ) {
+				//do_action('activated_plugin','custompress/loader.php');
+				//global $CustomPress_Core;
+				//$CustomPress_Core->add_admin_capabilities();
+				$this->job_update_page_id;
 				delete_site_option('jbp_activate');
 			} else {
-				update_site_option('jbp_activate', $flag);
+				update_site_option('jbp_activate', $activate);
 				wp_redirect( admin_url('/edit.php?post_type=jbp_job&page=jobs-plus-about&tab=about') );
 				exit;
 			}
@@ -450,11 +461,11 @@ class Jobs_Plus_Core{
 		$this->pro_obj = get_post_type_object('jbp_pro');
 		$this->job_obj = get_post_type_object('jbp_job');
 
-		$this->pro_labels = $this->pro_obj->labels;
-		$this->job_labels = $this->job_obj->labels;
+		@$this->pro_labels = $this->pro_obj->labels;
+		@$this->job_labels = $this->job_obj->labels;
 
-		$this->pro_slug = $this->pro_obj->rewrite['slug'];
-		$this->job_slug = $this->job_obj->rewrite['slug'];
+		@$this->pro_slug = $this->pro_obj->rewrite['slug'];
+		@$this->job_slug = $this->job_obj->rewrite['slug'];
 
 		//		// Declare widget areas
 		//		if(function_exists('register_sidebar') ){
@@ -507,7 +518,7 @@ class Jobs_Plus_Core{
 		add_rewrite_endpoint('edit', EP_PAGES);
 		add_rewrite_endpoint('contact', EP_PAGES);
 
-		$slug = $this->job_obj->has_archive;
+		@$slug = $this->job_obj->has_archive;
 
 		add_rewrite_rule("{$slug}/author/([^/]+)",
 		"index.php?post_type=jbp_job&author_name=\$matches[1]", 'top');
@@ -515,7 +526,7 @@ class Jobs_Plus_Core{
 		add_rewrite_rule("{$slug}/author/([^/]+)/page/?([2-9][0-9]*)",
 		"index.php?post_type=jbp_job&author_name=\$matches[1]&paged=\$matches[2]", 'top');
 
-		$slug = $this->pro_obj->has_archive;
+		@$slug = $this->pro_obj->has_archive;
 
 		add_rewrite_rule("{$slug}/author/([^/]+)",
 		"index.php?post_type=jbp_pro&author_name=\$matches[1]", 'top');
@@ -532,8 +543,8 @@ class Jobs_Plus_Core{
 	function set_capability_defines(){
 
 		//For jbp_pro capabilities
-		$singular_base = $this->pro_obj->capability_type;
-		$plural_base = $singular_base . 's';
+		@$singular_base = $this->pro_obj->capability_type;
+		@$plural_base = $singular_base . 's';
 		define('EDIT_PRO',              "edit_{$singular_base}");
 		define('READ_PRO',              "read_{$singular_base}");
 		define('DELETE_PRO',            "delete_{$singular_base}");
@@ -551,8 +562,8 @@ class Jobs_Plus_Core{
 		define('DELETE_OTHERS_PROS',    "delete_other_{$plural_base}");
 
 		//For jbp_job capabilities
-		$singular_base = $this->job_obj->capability_type;
-		$plural_base = $singular_base . 's';
+		@$singular_base = $this->job_obj->capability_type;
+		@$plural_base = $singular_base . 's';
 		define('EDIT_JOB',              "edit_{$singular_base}");
 		define('READ_JOB',              "read_{$singular_base}");
 		define('DELETE_JOB',            "delete_{$singular_base}");
@@ -758,7 +769,7 @@ class Jobs_Plus_Core{
 		//Is this a jbp_job update?
 		if(! empty($_POST['jbp-job-update']) ) {
 			$id = $this->update_job($_POST);
-			wp_redirect( add_query_arg('jbp_notice', urlencode(sprintf( __('The %s has been updated', $this->text_domain), $this->job_labels->singular_name ) ),
+			wp_safe_redirect( add_query_arg('jbp_notice', urlencode(sprintf( __('The %s has been updated', $this->text_domain), $this->job_labels->singular_name ) ),
 
 			trailingslashit(get_permalink($id) ) ) );
 			exit;
@@ -768,7 +779,7 @@ class Jobs_Plus_Core{
 		if(! empty($_POST['jbp-pro-update'] ) ) {
 			$id = $this->update_pro($_POST);
 			if( !empty($id) ){
-				wp_redirect( add_query_arg('jbp_notice', urlencode(sprintf(__('This %s has been updated', $this->text_domain), $this->pro_labels->singular_name ) ),
+				wp_safe_redirect( add_query_arg('jbp_notice', urlencode(sprintf(__('This %s has been updated', $this->text_domain), $this->pro_labels->singular_name ) ),
 				trailingslashit(get_permalink($id) ) ) );
 				exit;
 			}
@@ -804,7 +815,7 @@ class Jobs_Plus_Core{
 					set_query_var('edit', false);
 
 					if($wp_query->post->ID == $this->job_update_page_id) {
-						wp_redirect(add_query_arg('jbp_error',
+						wp_safe_redirect(add_query_arg('jbp_error',
 						urlencode(sprintf(__('You must register and login to enter a %s.', $this->text_domain), $this->job_labels->new_item) ),
 						get_post_type_archive_link('jbp_job') ) );
 						exit;
@@ -817,7 +828,7 @@ class Jobs_Plus_Core{
 					set_query_var('edit', false);
 
 					if($wp_query->post->ID == $this->pro_update_page_id) {
-						wp_redirect(add_query_arg( 'jbp_error',
+						wp_safe_redirect(add_query_arg( 'jbp_error',
 						urlencode(sprintf(__('You must register and login to enter a %s.', $this->text_domain), $this->pro_labels->new_item) ),
 						get_post_type_archive_link('jbp_pro') ) );
 						exit;

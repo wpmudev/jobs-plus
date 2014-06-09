@@ -28,6 +28,7 @@ class Jobs_Plus_Core_Data{
 	public $plugin_url    = JBP_PLUGIN_URL;
 	public $text_domain   = JBP_TEXT_DOMAIN;
 	public $settings_name = JBP_SETTINGS_NAME;
+	public $allow_network = false;
 
 
 	function __construct(){
@@ -97,7 +98,7 @@ class Jobs_Plus_Core_Data{
 			);
 
 			//Update custom post types
-			if(is_network_admin()){
+			if( $this->allow_network && is_network_admin()){
 				$ct_custom_post_types = get_site_option( 'ct_custom_post_types' );
 				$ct_custom_post_types['jbp_job'] = $jbp_job;
 				update_site_option( 'ct_custom_post_types', $ct_custom_post_types );
@@ -167,7 +168,7 @@ class Jobs_Plus_Core_Data{
 			);
 
 			//Update custom post types
-			if(is_network_admin()){
+			if( $this->allow_network && is_network_admin()){
 				$ct_custom_post_types = get_site_option( 'ct_custom_post_types' );
 				$ct_custom_post_types['jbp_pro'] = $jbp_pro;
 				update_site_option( 'ct_custom_post_types', $ct_custom_post_types );
@@ -244,7 +245,7 @@ class Jobs_Plus_Core_Data{
 			),
 
 			);
-			if(is_network_admin()){
+			if( $this->allow_network && is_network_admin()){
 				$ct_custom_taxonomies = get_site_option('ct_custom_taxonomies');
 				$ct_custom_taxonomies['jbp_category'] = $jbp_category;
 				update_site_option( 'ct_custom_taxonomies', $ct_custom_taxonomies );
@@ -367,7 +368,7 @@ class Jobs_Plus_Core_Data{
 			),
 			);
 
-			if(is_network_admin()){
+			if( $this->allow_network && is_network_admin()){
 				$ct_custom_taxonomies = get_site_option('ct_custom_taxonomies');
 				$ct_custom_taxonomies['jbp_skills_tag'] = $jbp_tag;
 				update_site_option( 'ct_custom_taxonomies', $ct_custom_taxonomies );
@@ -423,7 +424,7 @@ class Jobs_Plus_Core_Data{
 			'field_id' => 'jbp_pro_First_Last',
 			'field_order' => 0,
 			);
-			if( is_network_admin() ){
+			if( $this->allow_network && is_network_admin()){
 				$ct_network_custom_fields['jbp_pro_First_Last'] = $jbp_pro_First_Last;
 				update_site_option( 'ct_custom_fields', $ct_network_custom_fields );
 			} else {
@@ -458,7 +459,7 @@ class Jobs_Plus_Core_Data{
 			'field_order' => 14,
 			);
 			
-			if( is_network_admin() ){
+			if( $this->allow_network && is_network_admin()){
 				$ct_network_custom_fields['jbp_pro_Tagline'] = $jbp_pro_Tagline;
 				update_site_option( 'ct_custom_fields', $ct_network_custom_fields );
 			} else {
@@ -495,7 +496,7 @@ class Jobs_Plus_Core_Data{
 			'field_id' => 'jbp_pro_Company_URL',
 			'field_order' => 0,
 			);
-			if( is_network_admin() ){
+			if( $this->allow_network && is_network_admin()){
 				$ct_network_custom_fields['jbp_pro_Company_URL'] = $jbp_pro_Company_URL;
 				update_site_option( 'ct_custom_fields', $ct_network_custom_fields );
 			} else {
@@ -532,7 +533,7 @@ class Jobs_Plus_Core_Data{
 			'field_id' => 'jbp_pro_Location',
 			'field_order' => 0,
 			);
-			if( is_network_admin() ){
+			if( $this->allow_network && is_network_admin()){
 				$ct_network_custom_fields['jbp_pro_Location'] = $jbp_pro_Location;
 				update_site_option( 'ct_custom_fields', $ct_network_custom_fields );
 			} else {
@@ -569,7 +570,7 @@ class Jobs_Plus_Core_Data{
 			'field_order' => 0,
 			);
 
-			if( is_network_admin() ){
+			if( $this->allow_network && is_network_admin()){
 				$ct_network_custom_fields['jbp_pro_Contact_Email'] = $jbp_pro_Contact_Email;
 				update_site_option( 'ct_custom_fields', $ct_network_custom_fields );
 			} else {
@@ -607,7 +608,7 @@ class Jobs_Plus_Core_Data{
 			'field_id' => 'jbp_pro_Social',
 			'field_order' => 0,
 			);
-			if( is_network_admin() ){
+			if( $this->allow_network && is_network_admin()){
 				$ct_network_custom_fields['jbp_pro_Social'] = $jbp_pro_Social;
 				update_site_option( 'ct_custom_fields', $ct_network_custom_fields );
 			} else {
@@ -644,7 +645,7 @@ class Jobs_Plus_Core_Data{
 		//			'field_id' => 'jbp_pro_Facebook_URL',
 		//			'field_order' => 0,
 		//			);
-		//			if( is_network_admin() ){
+		//			if( $this->allow_network && is_network_admin()){
 		//				$ct_network_custom_fields['jbp_pro_Facebook_URL'] = $jbp_pro_Facebook_URL;
 		//				update_site_option( 'ct_custom_fields', $ct_network_custom_fields );
 		//			} else {
@@ -681,7 +682,7 @@ class Jobs_Plus_Core_Data{
 		//			'field_id' => 'jbp_pro_LinkedIn_URL',
 		//			'field_order' => 0,
 		//			);
-		//			if( is_network_admin() ){
+		//			if( $this->allow_network && is_network_admin()){
 		//				$ct_network_custom_fields['jbp_pro_LinkedIn_URL'] = $jbp_pro_LinkedIn_URL;
 		//				update_site_option( 'ct_custom_fields', $ct_network_custom_fields );
 		//			} else {
@@ -718,7 +719,7 @@ class Jobs_Plus_Core_Data{
 		//			'field_id' => 'jbp_pro_Twitter_URL',
 		//			'field_order' => 0,
 		//			);
-		//			if( is_network_admin() ){
+		//			if( $this->allow_network && is_network_admin()){
 		//				$ct_network_custom_fields['jbp_pro_Twitter_URL'] = $jbp_pro_Twitter_URL;
 		//				update_site_option( 'ct_custom_fields', $ct_network_custom_fields );
 		//			} else {
@@ -755,7 +756,7 @@ class Jobs_Plus_Core_Data{
 		//			'field_id' => 'jbp_pro_Skype_URL',
 		//			'field_order' => 0,
 		//			);
-		//			if( is_network_admin() ){
+		//			if( $this->allow_network && is_network_admin()){
 		//				$ct_network_custom_fields['jbp_pro_Skype_URL'] = $jbp_pro_Skype_URL;
 		//				update_site_option( 'ct_custom_fields', $ct_network_custom_fields );
 		//			} else {
@@ -791,7 +792,7 @@ class Jobs_Plus_Core_Data{
 			'field_id' => 'jbp_pro_Portfolio',
 			'field_order' => 0,
 			);
-			if( is_network_admin() ){
+			if( $this->allow_network && is_network_admin()){
 				$ct_network_custom_fields['jbp_pro_Portfolio'] = $jbp_pro_Portfolio;
 				update_site_option( 'ct_custom_fields', $ct_network_custom_fields );
 			} else {
@@ -828,7 +829,7 @@ class Jobs_Plus_Core_Data{
 			'field_id' => 'jbp_pro_Skills',
 			'field_order' => 0,
 			);
-			if( is_network_admin() ){
+			if( $this->allow_network && is_network_admin()){
 				$ct_network_custom_fields['jbp_pro_Skills'] = $jbp_pro_Skills;
 				update_site_option( 'ct_custom_fields', $ct_network_custom_fields );
 			} else {
@@ -864,7 +865,7 @@ class Jobs_Plus_Core_Data{
 			'field_order' => 0,
 			);
 
-			if( is_network_admin() ){
+			if( $this->allow_network && is_network_admin()){
 				$ct_network_custom_fields['jbp_job_Contact_Email'] = $jbp_job_Contact_Email;
 				update_site_option( 'ct_custom_fields', $ct_network_custom_fields );
 			} else {
@@ -900,7 +901,7 @@ class Jobs_Plus_Core_Data{
 			'field_id' => 'jbp_job_Budget',
 			'field_order' => 0,
 			);
-			if( is_network_admin() ){
+			if( $this->allow_network && is_network_admin()){
 				$ct_network_custom_fields['jbp_job_Budget'] = $jbp_job_Budget;
 				update_site_option( 'ct_custom_fields', $ct_network_custom_fields );
 			} else {
@@ -937,7 +938,7 @@ class Jobs_Plus_Core_Data{
 			'field_id' => 'jbp_job_Min_Budget',
 			'field_order' => 0,
 			);
-			if( is_network_admin() ){
+			if( $this->allow_network && is_network_admin()){
 				$ct_network_custom_fields['jbp_job_Min_Budget'] = $jbp_job_Min_Budget;
 				update_site_option( 'ct_custom_fields', $ct_network_custom_fields );
 			} else {
@@ -977,7 +978,7 @@ class Jobs_Plus_Core_Data{
 			'field_order' => 0,
 			);
 
-			if( is_network_admin() ){
+			if( $this->allow_network && is_network_admin()){
 				$ct_network_custom_fields['jbp_job_Due'] = $jbp_job_Due;
 				update_site_option( 'ct_custom_fields', $ct_network_custom_fields );
 			} else {
@@ -1019,7 +1020,7 @@ class Jobs_Plus_Core_Data{
 			'field_order' => 0,
 			);
 
-			if( is_network_admin() ){
+			if( $this->allow_network && is_network_admin()){
 				$ct_network_custom_fields['jbp_job_Open_for'] = $jbp_job_Open_for;
 				update_site_option( 'ct_custom_fields', $ct_network_custom_fields );
 			} else {
@@ -1055,7 +1056,7 @@ class Jobs_Plus_Core_Data{
 			'field_id' => 'jbp_job_Portfolio',
 			'field_order' => 0,
 			);
-			if( is_network_admin() ){
+			if( $this->allow_network && is_network_admin()){
 				$ct_network_custom_fields['jbp_job_Portfolio'] = $jbp_job_Portfolio;
 				update_site_option( 'ct_custom_fields', $ct_network_custom_fields );
 			} else {

@@ -142,7 +142,7 @@ class Jobs_Plus_Admin extends Jobs_Plus_Core {
 
 		//Intercept redirects to the Front end
 		if( !empty( $_GET['redirect'] ) && ( $_GET['redirect'] == 'add-job' )  ) {
-			wp_redirect( get_permalink( $this->job_update_page_id ) );
+			wp_safe_redirect( get_permalink( $this->job_update_page_id ) );
 			exit;
 		}
 
@@ -181,7 +181,7 @@ class Jobs_Plus_Admin extends Jobs_Plus_Core {
 
 		//Intercept redirects to the Front end
 		if( !empty( $_GET['redirect'] ) && ( $_GET['redirect'] == 'add-pro' )  ) {
-			wp_redirect( get_permalink( $this->pro_update_page_id ) );
+			wp_safe_redirect( get_permalink( $this->pro_update_page_id ) );
 			exit;
 		}
 
@@ -270,7 +270,7 @@ class Jobs_Plus_Admin extends Jobs_Plus_Core {
 
 		if( !empty( $_GET['redirect'] ) && $_GET['redirect'] == 'add-job' ) {
 			var_dump($_GET);
-			wp_redirect( get_permalink( $this->add_jobs_page_id ) );
+			wp_safe_redirect( get_permalink( $this->add_jobs_page_id ) );
 			exit;
 		}
 
