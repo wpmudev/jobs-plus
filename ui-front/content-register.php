@@ -1,4 +1,4 @@
-<?php
+<?php if (!defined('ABSPATH')) die('No direct access allowed!');
 /**
 * @package Jobs +
 * @author Arnold Bailey
@@ -36,10 +36,16 @@
 
 		<div class="jbp-register-buttons left group">
 			<span class="jbp-login-btn"><button type="submit" id="jbp-login-btn" name="jbp-login-btn" value="1" class="jbp-button jbp-login-btn" ><?php esc_html_e('Log In', JBP_TEXT_DOMAIN); ?></button></span>
-			<span class="jbp-login-link left">Forgot your <a href="<?php echo wp_lostpassword_url(); ?>" >password</a><br/>Create a <a id="to-register" href="" >new account</a></span>
+
+			<span class="jbp-login-link left">
+				Forgot your <a href="<?php echo wp_lostpassword_url(); ?>" >password</a><br/>
+				<?php if( get_option('users_can_register', false) ): ?>
+				Create a <a id="to-register" href="" >new account</a>
+				<?php endif; ?>
+			</span>
 		</div>
 
-	<div class="alert result-message"></div>
+		<div class="alert result-message"></div>
 
 	</form>
 
@@ -111,10 +117,10 @@
 		<?php wp_nonce_field('jbp-register', '_wpnonce', false ); ?>
 
 		<div class="jbp-register-buttons left group">
-			<span class="jbp-login-btn"><button type="submit" id="jbp-login-btn" name="jbp-login-btn" value="1" class="jbp-button jbp-login-btn"  ><?php esc_html_e('Create Account', JBP_TEXT_DOMAIN); ?></button></span>
+			<span class="jbp-login-btn"><button type="submit" id="jbp-login-btn" name="jbp-register-btn" value="1" class="jbp-button jbp-login-btn"  ><?php esc_html_e('Create Account', JBP_TEXT_DOMAIN); ?></button></span>
 			<span class="jbp-login-link left"><br/>Already a member <a id="to-login" href="" >sign in</a></span>
 		</div>
-	<div class="alert result-message"></div>
+		<div class="alert result-message"></div>
 	</form>
 
 </div>
@@ -147,7 +153,7 @@
 
 		$('#jbp-login-form').validate( voptions).form();
 		$('#jbp-register-form').validate( voptions);
-		
+
 		//Do it twice with a delay so it can recognize browser form fill inserts.
 		setTimeout( function(){ $active_form.validate().form(); }, 100 );
 

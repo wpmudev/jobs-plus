@@ -186,6 +186,7 @@ class Jobs_Plus_Core{
 		add_shortcode( 'jbp-expert-search-page',   array( &$this, 'pro_search_page_sc' ) );
 		add_shortcode( 'jbp-expert-single-page',   array( &$this, 'pro_single_page_sc' ) );
 		add_shortcode( 'jbp-expert-update-page',   array( &$this, 'pro_update_page_sc' ) );
+
 	}
 
 	/**
@@ -194,10 +195,11 @@ class Jobs_Plus_Core{
 	* @return int $page[0] /bool false
 	*/
 	function get_page_by_meta( $key, $value ) {
-		global $wpdb;
+		global $wpdb, $blog_id;
 
 		//To avoid "the_posts" filters do a direct call to the database to find the post by meta
 		$ids = array_keys(
+
 		$wpdb->get_results($wpdb->prepare(
 		"
 		SELECT post_id
@@ -263,7 +265,6 @@ class Jobs_Plus_Core{
 			case 'pro_single_page_id':   $result = $this->find_page_id( $this->_pro_single_page_id, JBP_PRO_PATTERN_KEY, JBP_PRO_SINGLE_FLAG ); break;
 			case 'pro_update_page_id':   $result = $this->find_page_id( $this->_pro_update_page_id, JBP_PRO_PATTERN_KEY, JBP_PRO_UPDATE_FLAG ); break;
 		}
-
 		return $result;
 	}
 
@@ -382,6 +383,7 @@ class Jobs_Plus_Core{
 	}
 
 	function on_plugins_loaded(){
+
 		//Translations
 		load_plugin_textdomain($this->text_domain, false, plugin_basename( $this->plugin_dir . 'languages/' ) );
 
@@ -410,7 +412,7 @@ class Jobs_Plus_Core{
 				//do_action('activated_plugin','custompress/loader.php');
 				//global $CustomPress_Core;
 				//$CustomPress_Core->add_admin_capabilities();
-				$this->job_update_page_id;
+				//$this->job_update_page_id;
 				delete_site_option('jbp_activate');
 			} else {
 				update_site_option('jbp_activate', $activate);
@@ -815,10 +817,10 @@ class Jobs_Plus_Core{
 					set_query_var('edit', false);
 
 					if($wp_query->post->ID == $this->job_update_page_id) {
-						wp_safe_redirect(add_query_arg('jbp_error',
-						urlencode(sprintf(__('You must register and login to enter a %s.', $this->text_domain), $this->job_labels->new_item) ),
-						get_post_type_archive_link('jbp_job') ) );
-						exit;
+//						wp_safe_redirect(add_query_arg('jbp_error',
+//						urlencode(sprintf(__('You must register and login to enter a %s.', $this->text_domain), $this->job_labels->new_item) ),
+//						get_post_type_archive_link('jbp_job') ) );
+//						exit;
 					}
 				}
 			}
@@ -828,10 +830,10 @@ class Jobs_Plus_Core{
 					set_query_var('edit', false);
 
 					if($wp_query->post->ID == $this->pro_update_page_id) {
-						wp_safe_redirect(add_query_arg( 'jbp_error',
-						urlencode(sprintf(__('You must register and login to enter a %s.', $this->text_domain), $this->pro_labels->new_item) ),
-						get_post_type_archive_link('jbp_pro') ) );
-						exit;
+//						wp_safe_redirect(add_query_arg( 'jbp_error',
+//						urlencode(sprintf(__('You must register and login to enter a %s.', $this->text_domain), $this->pro_labels->new_item) ),
+//						get_post_type_archive_link('jbp_pro') ) );
+//						exit;
 					}
 				}
 			}
@@ -2364,7 +2366,7 @@ class Jobs_Plus_Core{
 
 	function expert_post_btn_sc( $atts, $content = null ) {
 		extract( shortcode_atts( array(
-		'text' => sprintf(__('Post an %s', $this->text_domain),$this->pro_labels->singular_name),
+		'text' => sprintf(__('Add an %s', $this->text_domain),$this->pro_labels->singular_name),
 		'view' => 'both', //loggedin, loggedout, both
 		'class' => '',
 		'img' => 'true',
@@ -2421,14 +2423,15 @@ class Jobs_Plus_Core{
 		'class' => '',
 		'img' => 'true',
 		), $atts ) );
-
 		if( !$this->can_view( $view ) ) return '';
+
 		$img = strtolower( $img ) =='true' ? true : false;
 
 		//Don't display unless they have a profile.
 		if( $this->count_user_posts_by_type(get_current_user_id(), 'jbp_pro') <  1 ) {
 			return '';
 		}
+var_dump('pro');
 
 		$content = (empty($content)) ? $text : $content;
 		$user = wp_get_current_user();
@@ -3053,7 +3056,6 @@ class Jobs_Plus_Core{
 	function on_ajax_register(){
 
 		$params = stripslashes_deep($_POST);
-
 		if( ! check_ajax_referer('jbp-register', '_wpnonce', false) ) {
 			//not a submit so send the form
 			ob_start();
@@ -3089,7 +3091,7 @@ class Jobs_Plus_Core{
 		}
 
 		if( isset( $params['jbp-register-btn'] ) && isset( $params['lr'] ) ){
-
+			
 			$user_id = wp_insert_user( $params['lr'] );
 
 			if( is_wp_error($user) ) {
@@ -3098,6 +3100,14 @@ class Jobs_Plus_Core{
 			} else {
 				$response['status'] = 'success';
 				$response['message'] = sprintf('<div class="updated">%s</div>', __('Thank you for Registering', $this->text_domain) );
+
+				if( is_multisite() ) {
+					global $blog_id;
+					
+					if( !is_user_member_of_blog( $user_id, $blog_id ) ){ //already a member
+						add_user_to_blog( $blog_id, $user_id, get_option( 'default_role', 'subscriber' ) );
+					}
+				}
 
 				//Just made it so only need the cookies
 				wp_set_auth_cookie( $user_id, $params['lr']['remember'] );
