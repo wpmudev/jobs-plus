@@ -400,11 +400,10 @@ class Jobs_Plus_Core{
 				global $CustomPress_Core;
 				$CustomPress_Core->add_admin_capabilities();
 						$this->job_update_page_id;
-
 				delete_site_option('jbp_activate');
 			} else {
 				update_site_option('jbp_activate', $flag);
-				wp_redirect( admin_url('/edit.php?post_type=jbp_job&page=jobs-plus-menu&tab=about') );
+				wp_redirect( admin_url('/edit.php?post_type=jbp_job&page=jobs-plus-about&tab=about') );
 				exit;
 			}
 		}

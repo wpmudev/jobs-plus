@@ -51,7 +51,7 @@ class Jobs_Plus_Admin extends Jobs_Plus_Core {
 		__( 'Getting Started', JBP_TEXT_DOMAIN ),
 		__( 'Getting Started', JBP_TEXT_DOMAIN ),
 		'manage_options',
-		'jobs-plus-menu&tab=about',
+		'jobs-plus-about',
 		array( $this, 'admin_menu_page_job' ) );
 
 		add_submenu_page( 'edit.php?post_type=jbp_job',
@@ -101,15 +101,15 @@ class Jobs_Plus_Admin extends Jobs_Plus_Core {
 
 		add_action( 'load-' . $this->jobs_menu_page, array( &$this, 'on_load_menu' ) );
 		add_action( 'load-' . $this->pros_menu_page, array( &$this, 'on_load_menu' ) );
-	
+
 	}
 
 	function reorder_menu( $menu_order ){
 		global $submenu;
-		
+
 		if( is_network_admin() ) return $menu_order;
-		
-		$job_menu = $submenu['edit.php?post_type=jbp_job'];
+
+		$job_menu = empty($submenu['edit.php?post_type=jbp_job']) ? false : $submenu['edit.php?post_type=jbp_job'];
 		//var_dump( $job_menu);
 
 		if($job_menu) {
@@ -118,10 +118,11 @@ class Jobs_Plus_Admin extends Jobs_Plus_Core {
 			$temp = array_splice($job_menu, -4); //Remove Last 4 items to $temp (our menu)
 			//All that's left is the taxonomies in $job_menu
 			array_splice( $temp, -1, 0, $job_menu );
+
 			$submenu['edit.php?post_type=jbp_job'] = $temp;
 		}
 
-		$pro_menu = $submenu['edit.php?post_type=jbp_pro'];
+		$pro_menu = empty($submenu['edit.php?post_type=jbp_pro']) ? false : $submenu['edit.php?post_type=jbp_pro'];
 
 		if($pro_menu) {
 			array_splice($pro_menu, 0, 2); //Remove First Two item (post_type and add post_type)
@@ -133,7 +134,7 @@ class Jobs_Plus_Admin extends Jobs_Plus_Core {
 		}
 
 		//var_dump($submenu);
-	
+
 		return $menu_order;
 	}
 
@@ -145,7 +146,11 @@ class Jobs_Plus_Admin extends Jobs_Plus_Core {
 			exit;
 		}
 
+		global $plugin_page;
+
 		$current_tab = ( empty( $_GET['tab'] ) ) ? 'job' : $_GET['tab'];
+
+		if($plugin_page == 'jobs-plus-about' ) $current_tab = 'about';
 
 		switch ( $current_tab ) {
 			case 'settings':
@@ -179,7 +184,6 @@ class Jobs_Plus_Admin extends Jobs_Plus_Core {
 			wp_redirect( get_permalink( $this->pro_update_page_id ) );
 			exit;
 		}
-
 
 		$current_tab = ( empty( $_GET['tab'] ) ) ? 'pro' : $_GET['tab'];
 		switch ( $current_tab ) {
@@ -226,15 +230,28 @@ class Jobs_Plus_Admin extends Jobs_Plus_Core {
 		//'page_creation' => __( 'Page Creation', JBP_TEXT_DOMAIN ),
 		);
 
+		global $plugin_page;
+
 		$current_tab = ( empty( $_GET['tab'] ) ) ? $current_tab : $_GET['tab'];
+
+		if($plugin_page == 'jobs-plus-about') $current_tab = 'about';
 
 		?>
 		<h2 class="nav-tab-wrapper">
 			<?php foreach ( $tabs as $tab => $title ):
 			$class = ( $tab === $current_tab ) ? 'nav-tab-active' : '';
 			?>
-			<a class="nav-tab <?php echo $class ?>" href="<?php echo esc_attr( "?post_type=jbp_job&page=jobs-plus-menu&tab=$tab" ); ?>"><img style=" vertical-align: middle; width: 20px;" src="<?php echo $this->plugin_url . "img/{$tab}.svg"; ?>" /> <?php echo $title; ?>
+
+			<?php if( $tab == 'about' ): // So the right menu item highlights?>
+			<a class="nav-tab <?php echo $class ?>" href="<?php echo esc_attr( "?post_type=jbp_job&page=jobs-plus-about&tab=$tab" ); ?>">
+				<img style=" vertical-align: middle; width: 20px;" src="<?php echo $this->plugin_url . "img/{$tab}.svg"; ?>" /> <?php echo $title; ?>
 			</a>
+			<?php else: ?>
+			<a class="nav-tab <?php echo $class ?>" href="<?php echo esc_attr( "?post_type=jbp_job&page=jobs-plus-menu&tab=$tab" ); ?>">
+				<img style=" vertical-align: middle; width: 20px;" src="<?php echo $this->plugin_url . "img/{$tab}.svg"; ?>" /> <?php echo $title; ?>
+			</a>
+			<?php endif; ?>
+
 			<?php endforeach; ?>
 		</h2>
 
