@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.0.3 (7891) - http://www.bohemiancoding.com/sketch -->
+    <title>Artboard 1</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="Artboard-1" sketch:type="MSArtboardGroup">
+            <g id="Group" sketch:type="MSLayerGroup" transform="translate(0.000000, 2.000000)">
+                <path d="M3.7401748,5.21391699 L3.17086133,5 L1,11.1979336 L1.5670498,11.4129824 L3.7401748,5.21391699" id="Fill-123" fill="#939598" sketch:type="MSShapeGroup" transform="translate(2.370087, 8.206491) rotate(12.000000) translate(-2.370087, -8.206491) "></path>
+                <path d="M2.02940479,11.6416592 C1.79737842,11.8827402 1.42387256,11.8827402 1.19184619,11.6416592 L1.17486865,11.6235498 C0.941710449,11.3824687 0.941710449,10.994249 1.17486865,10.7554316 L4.61451807,7.17996191 C4.84428076,6.9400127 5.21891846,6.9400127 5.44981299,7.17996191 L5.4690542,7.19920312 C5.69881689,7.43915234 5.69881689,7.82850391 5.4690542,8.06958496 L2.02940479,11.6416592" id="Fill-122" fill="#58595B" sketch:type="MSShapeGroup" transform="translate(3.320688, 9.411235) rotate(12.000000) translate(-3.320688, -9.411235) "></path>
+                <path d="M14.1057129,11.4275513 C13.1765137,12.1027832 12.4457679,10.2273613 12.1945003,9.77689062 L10.154932,6.10408301 C9.90479622,5.65248047 10.0326937,4 10.0326937,4 C10.0326937,4 11.4746527,4.70966113 11.7259202,5.16013184 C12.2341146,6.07918262 13.7666204,8.83293945 13.7666204,8.83293945 C14.0190198,9.28227832 15.0349121,10.7523193 14.1057129,11.4275513 Z" id="Fill-121" fill="#939598" sketch:type="MSShapeGroup"></path>
+                <path d="M14.0172526,10.9959311 L14.0172526,2.00000001 L15.0184955,-5.26938493e-11 L16.0197384,2.00000001 L16.0197384,12 L14.0172526,10.9959311 Z" id="Fill-120" fill="#58595B" sketch:type="MSShapeGroup"></path>
+                <rect id="Rectangle-1" fill="#EE313B" sketch:type="MSShapeGroup" x="0" y="10" width="16" height="4" rx="8"></rect>
+                <path d="M13.2636719,11.2479658 L14.7758047,11.2479658 L14.7758047,12.7479658 L13.2636719,12.7479658 L13.2636719,11.2479658 Z" id="Fill-118" fill="#FFFFFF" sketch:type="MSShapeGroup"></path>
+            </g>
+        </g>
+    </g>
+</svg>

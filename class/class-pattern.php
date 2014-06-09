@@ -17,7 +17,7 @@ class Jobs_Plus_Pattern{
 		$current_user = wp_get_current_user();
 
 		//Default button set
-		$warning = html__("<!-- You may edit this page, the title and the slug, but it requires a minimum of the correct page shortcode to function. You can recreate the original default page by deleting this one by moving it to trash and calling the page in the front end.-->\n", $core->text_domain);
+		$warning = __("<!-- You may edit this page, the title and the slug, but it requires a minimum of the correct page shortcode to function. You can recreate the original default page by deleting this one by moving it to trash and calling the page in the front end.-->\n", $core->text_domain);
 		$buttons = '<p style="text-align: center;">[jbp-expert-post-btn][jbp-job-post-btn][jbp-expert-browse-btn][jbp-job-browse-btn][jbp-expert-profile-btn][jbp-job-list-btn]</p>';
 
 		/**

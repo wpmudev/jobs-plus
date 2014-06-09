@@ -45,6 +45,7 @@ class Jobs_Plus_Admin extends Jobs_Plus_Core {
 	function on_admin_menu() {
 
 		//Order is important. See reorder_menu!
+		if (is_network_admin() ) return;
 
 		add_submenu_page( 'edit.php?post_type=jbp_job',
 		__( 'Getting Started', JBP_TEXT_DOMAIN ),
@@ -100,11 +101,14 @@ class Jobs_Plus_Admin extends Jobs_Plus_Core {
 
 		add_action( 'load-' . $this->jobs_menu_page, array( &$this, 'on_load_menu' ) );
 		add_action( 'load-' . $this->pros_menu_page, array( &$this, 'on_load_menu' ) );
+	
 	}
 
 	function reorder_menu( $menu_order ){
 		global $submenu;
-
+		
+		if( is_network_admin() ) return $menu_order;
+		
 		$job_menu = $submenu['edit.php?post_type=jbp_job'];
 		//var_dump( $job_menu);
 
@@ -129,7 +133,7 @@ class Jobs_Plus_Admin extends Jobs_Plus_Core {
 		}
 
 		//var_dump($submenu);
-
+	
 		return $menu_order;
 	}
 

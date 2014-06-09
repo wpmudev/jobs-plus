@@ -394,11 +394,13 @@ class Jobs_Plus_Core{
 		if( get_site_option('jbp_activate', false))	{
 			//For some reason the rewrite rules need to flushed twice
 			flush_rewrite_rules();
-			$flag = get_option('jbp_activate') - 1;
-			if( empty( $flag ) ) {
+			$flag = get_site_option('jbp_activate') - 1;
+			if( $flag <= 0 ) {
 				do_action('activated_plugin','custompress/loader.php');
 				global $CustomPress_Core;
 				$CustomPress_Core->add_admin_capabilities();
+						$this->job_update_page_id;
+
 				delete_site_option('jbp_activate');
 			} else {
 				update_site_option('jbp_activate', $flag);

@@ -93,7 +93,7 @@ class Jobs_Plus_Core_Data{
 			'query_var' => true,
 			'can_export' => true,
 			'cf_columns' => NULL,
-			'menu_icon' => $this->plugin_url . 'img/job.svg',
+			'menu_icon' => $this->plugin_url . 'icons/16px/16px_Jobs_Bright.svg',
 			);
 
 			//Update custom post types
@@ -163,7 +163,7 @@ class Jobs_Plus_Core_Data{
 			'query_var' => true,
 			'can_export' => true,
 			'cf_columns' => NULL,
-			'menu_icon' => $this->plugin_url . 'img/pro.svg',
+			'menu_icon' => $this->plugin_url . 'icons/16px/16px_Expert_Bright.svg',
 			);
 
 			//Update custom post types
@@ -1071,6 +1071,7 @@ class Jobs_Plus_Core_Data{
 		$sname = $Jobs_Plus_Core->settings_name;
 
 		$settings = get_option( $sname );
+		
 
 		if( $settings === false) $settings = array('pro' => array(), 'job' => array() );
 
