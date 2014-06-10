@@ -43,6 +43,9 @@ class Jobs_Plus_Core{
 	public $_pro_search_page_id = 0;
 	public $_pro_single_page_id = 0;
 	public $_pro_update_page_id = 0;
+	
+	public $_demo_landing_page_id = 0;
+	
 
 	/**
 	* job file names for content substitutions
@@ -264,6 +267,8 @@ class Jobs_Plus_Core{
 			case 'pro_search_page_id':   $result = $this->find_page_id( $this->_pro_search_page_id, JBP_PRO_PATTERN_KEY, JBP_PRO_SEARCH_FLAG ); break;
 			case 'pro_single_page_id':   $result = $this->find_page_id( $this->_pro_single_page_id, JBP_PRO_PATTERN_KEY, JBP_PRO_SINGLE_FLAG ); break;
 			case 'pro_update_page_id':   $result = $this->find_page_id( $this->_pro_update_page_id, JBP_PRO_PATTERN_KEY, JBP_PRO_UPDATE_FLAG ); break;
+
+			case 'demo_landing_page_id':   $result = $this->find_page_id( $this->_demo_landing_page_id, JBP_DEMO_PATTERN_KEY, JBP_DEMO_LANDING_FLAG ); break;
 		}
 		return $result;
 	}
@@ -283,6 +288,8 @@ class Jobs_Plus_Core{
 			case 'pro_search_page_id':   $this->_pro_search_page_id = $value; break;
 			case 'pro_single_page_id':   $this->_pro_single_page_id = $value; break;
 			case 'pro_update_page_id':   $this->_pro_update_page_id = $value; break;
+
+			case 'demo_landing_page_id':   $this->_demo_landing_page_id = $value; break;
 		}
 	}
 
@@ -302,6 +309,8 @@ class Jobs_Plus_Core{
 			case 'pro_search_page_id':   $result = $this->_pro_search_page_id > 0; break;
 			case 'pro_single_page_id':   $result = $this->_pro_single_page_id > 0; break;
 			case 'pro_update_page_id':   $result = $this->_pro_update_page_id > 0; break;
+
+			case 'demo_landing_page_id': $result = $this->_demo_landing_page_id > 0; break;
 		}
 		return $result;
 	}
@@ -2431,7 +2440,6 @@ class Jobs_Plus_Core{
 		if( $this->count_user_posts_by_type(get_current_user_id(), 'jbp_pro') <  1 ) {
 			return '';
 		}
-var_dump('pro');
 
 		$content = (empty($content)) ? $text : $content;
 		$user = wp_get_current_user();

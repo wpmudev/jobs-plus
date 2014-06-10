@@ -352,6 +352,32 @@ class Jobs_Plus_Pattern{
 			wp_update_post( array('ID' => $page_id, 'post_status' => 'pattern') );
 		}
 		$core->_pro_update_page_id = $page_id; //Remember the number
+
+		/**
+		* DEMO PAGES
+		*/
+		$page = $core->get_page_by_meta(JBP_DEMO_PATTERN_KEY, JBP_DEMO_LANDING_FLAG );
+		$page_id = ($page && $page->ID > 0) ? $page->ID : 0;
+		if ( empty($page_id) ) {
+			/* Construct args for the new post */
+			$args = array(
+			'post_title'     => __('Landing Page', JBP_TEXT_DOMAIN),
+			'post_name'      => __('landing-page', JBP_TEXT_DOMAIN),
+			'post_status'    => 'publish',
+			'post_author'    => $current_user->ID,
+			'post_type'      => 'page',
+			'post_content'   => $warning . $buttons . '[jbp-landing-page]',
+			'ping_status'    => 'closed',
+			'comment_status' => 'closed'
+			);
+			$page_id = wp_insert_post( $args );
+			$page = get_post($page_id);
+			add_post_meta( $page_id, JBP_DEMO_PATTERN_KEY, JBP_DEMO_LANDING_FLAG);
+		} else {
+		}
+		$core->_demo_landing_page_id = $page_id; //Remember the number
+
+
 	
 	}	
 }

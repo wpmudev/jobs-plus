@@ -269,7 +269,6 @@ class Jobs_Plus_Admin extends Jobs_Plus_Core {
 		}
 
 		if( !empty( $_GET['redirect'] ) && $_GET['redirect'] == 'add-job' ) {
-			var_dump($_GET);
 			wp_safe_redirect( get_permalink( $this->add_jobs_page_id ) );
 			exit;
 		}
