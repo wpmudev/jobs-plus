@@ -182,7 +182,7 @@ class Jobs_Plus_Core{
 		add_shortcode( 'jbp-job-search-page',   array( &$this, 'job_search_page_sc' ) );
 		add_shortcode( 'jbp-job-single-page',   array( &$this, 'job_single_page_sc' ) );
 		add_shortcode( 'jbp-job-taxonomy-page', array( &$this, 'job_taxonomy_page_sc' ) );
-		add_shortcode( 'jbp-job-update-page',   array( &$this, 'job_update_page_sc' ),1 );
+		add_shortcode( 'jbp-job-update-page',   array( &$this, 'job_update_page_sc' ) );
 	}
 
 	/**
@@ -463,13 +463,16 @@ class Jobs_Plus_Core{
 
 	function widgets_init(){
 		$this->pro_obj = get_post_type_object('jbp_pro');
+		if( !empty($this->pro_obj) ){
+			$this->pro_labels = $this->pro_obj->labels;
+			$this->pro_slug = $this->pro_obj->rewrite['slug'];
+		}
+
 		$this->job_obj = get_post_type_object('jbp_job');
-
-		@$this->pro_labels = $this->pro_obj->labels;
-		@$this->job_labels = $this->job_obj->labels;
-
-		@$this->pro_slug = $this->pro_obj->rewrite['slug'];
-		@$this->job_slug = $this->job_obj->rewrite['slug'];
+		if( !empty($this->job_obj) ) {
+			$this->job_labels = $this->job_obj->labels;
+			$this->job_slug = $this->job_obj->rewrite['slug'];
+		}
 
 		//		// Declare widget areas
 		//		if(function_exists('register_sidebar') ){
@@ -547,42 +550,47 @@ class Jobs_Plus_Core{
 	function set_capability_defines(){
 
 		//For jbp_pro capabilities
-		@$singular_base = $this->pro_obj->capability_type;
-		@$plural_base = $singular_base . 's';
-		define('EDIT_PRO',              "edit_{$singular_base}");
-		define('READ_PRO',              "read_{$singular_base}");
-		define('DELETE_PRO',            "delete_{$singular_base}");
+		if( !empty( $this->pro_obj ) ) {
+			$singular_base = $this->pro_obj->capability_type;
+			$plural_base = $singular_base . 's';
 
-		define('CREATE_PROS',           "create_{$plural_base}");
-		define('EDIT_PROS',             "edit_{$plural_base}");
-		define('EDIT_OTHERS_PROS',      "edit_others_{$plural_base}");
-		define('EDIT_PRIVATE_PROS',     "edit_private_{$plural_base}");
-		define('EDIT_PUBLISHED_PROS',   "edit_published_{$plural_base}");
-		define('PUBLISH_PROS',          "publish_{$plural_base}");
-		define('READ_PRIVATE_PROS',     "read_private_{$plural_base}");
-		define('DELETE_PROS',           "delete_{$plural_base}");
-		define('DELETE_PRIVATE_PROS',   "delete_private_{$plural_base}");
-		define('DELETE_PUBLISHED_PROS', "delete_published_{$plural_base}");
-		define('DELETE_OTHERS_PROS',    "delete_other_{$plural_base}");
+			define('EDIT_PRO',              "edit_{$singular_base}");
+			define('READ_PRO',              "read_{$singular_base}");
+			define('DELETE_PRO',            "delete_{$singular_base}");
 
+			define('CREATE_PROS',           "create_{$plural_base}");
+			define('EDIT_PROS',             "edit_{$plural_base}");
+			define('EDIT_OTHERS_PROS',      "edit_others_{$plural_base}");
+			define('EDIT_PRIVATE_PROS',     "edit_private_{$plural_base}");
+			define('EDIT_PUBLISHED_PROS',   "edit_published_{$plural_base}");
+			define('PUBLISH_PROS',          "publish_{$plural_base}");
+			define('READ_PRIVATE_PROS',     "read_private_{$plural_base}");
+			define('DELETE_PROS',           "delete_{$plural_base}");
+			define('DELETE_PRIVATE_PROS',   "delete_private_{$plural_base}");
+			define('DELETE_PUBLISHED_PROS', "delete_published_{$plural_base}");
+			define('DELETE_OTHERS_PROS',    "delete_other_{$plural_base}");
+		}
 		//For jbp_job capabilities
-		@$singular_base = $this->job_obj->capability_type;
-		@$plural_base = $singular_base . 's';
-		define('EDIT_JOB',              "edit_{$singular_base}");
-		define('READ_JOB',              "read_{$singular_base}");
-		define('DELETE_JOB',            "delete_{$singular_base}");
+		if( !empty( $this->job_obj ) ) {
+			$singular_base = $this->job_obj->capability_type;
+			$plural_base = $singular_base . 's';
 
-		define('CREATE_JOBS',           "create_{$plural_base}");
-		define('EDIT_JOBS',             "edit_{$plural_base}");
-		define('EDIT_OTHERS_JOBS',      "edit_others_{$plural_base}");
-		define('EDIT_PRIVATE_JOBS',     "edit_private_{$plural_base}");
-		define('EDIT_PUBLISHED_JOBS',   "edit_published_{$plural_base}");
-		define('PUBLISH_JOBS',          "publish_{$plural_base}");
-		define('READ_PRIVATE_JOBS',     "read_private_{$plural_base}");
-		define('DELETE_JOBS',           "delete_{$plural_base}");
-		define('DELETE_PRIVATE_JOBS',   "delete_private_{$plural_base}");
-		define('DELETE_PUBLISHED_JOBS', "delete_published_{$plural_base}");
-		define('DELETE_OTHERS_JOBS',    "delete_other_{$plural_base}");
+			define('EDIT_JOB',              "edit_{$singular_base}");
+			define('READ_JOB',              "read_{$singular_base}");
+			define('DELETE_JOB',            "delete_{$singular_base}");
+
+			define('CREATE_JOBS',           "create_{$plural_base}");
+			define('EDIT_JOBS',             "edit_{$plural_base}");
+			define('EDIT_OTHERS_JOBS',      "edit_others_{$plural_base}");
+			define('EDIT_PRIVATE_JOBS',     "edit_private_{$plural_base}");
+			define('EDIT_PUBLISHED_JOBS',   "edit_published_{$plural_base}");
+			define('PUBLISH_JOBS',          "publish_{$plural_base}");
+			define('READ_PRIVATE_JOBS',     "read_private_{$plural_base}");
+			define('DELETE_JOBS',           "delete_{$plural_base}");
+			define('DELETE_PRIVATE_JOBS',   "delete_private_{$plural_base}");
+			define('DELETE_PUBLISHED_JOBS', "delete_published_{$plural_base}");
+			define('DELETE_OTHERS_JOBS',    "delete_other_{$plural_base}");
+		}
 	}
 
 	function on_get_comment_author_link( $link ){
@@ -987,7 +995,18 @@ class Jobs_Plus_Core{
 
 		//Handle any default custom templates
 		if( empty($this->pattern) ) {
-			if( is_tax( array('jbp_category', 'jbp_skills_tag') ) ) {
+
+			if( is_author() && $this->custom_type == 'jbp_job') {
+				$this->title = 'custom_titles';
+				$this->pattern = $this->job_archive_page_id;
+			}
+		
+			elseif( is_author() && $this->custom_type == 'jbp_pro') {
+				$this->title = 'custom_titles';
+				$this->pattern = $this->pro_archive_page_id;
+			}
+
+			elseif( is_tax( array('jbp_category', 'jbp_skills_tag') ) ) {
 				$this->title = 'custom_titles';
 				$this->pattern = $this->job_taxonomy_page_id;
 			}
@@ -1032,15 +1051,17 @@ class Jobs_Plus_Core{
 
 	function content_template($content) {
 		global $wp_query, $post;
+		//return $content;
 
 		rewind_posts();
 		remove_all_filters('the_title', 20);
 		remove_all_filters('the_content', 20);
 
 		$vpost = get_post( $this->pattern);
-		echo do_shortcode( $vpost->post_content );
+		$content = do_shortcode( $vpost->post_content );
 
 		$wp_query->post_count = 0;
+		return $content;
 	}
 
 	function job_archive_page_sc(){
@@ -1125,6 +1146,10 @@ class Jobs_Plus_Core{
 			return single_term_title($taxonomy->labels->parent_item_colon, false);
 		}
 
+		if ( is_author() ) {
+			return $title = sprintf( __( 'Author Archives: %s', $this->text_domain ), '<span class="vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( "ID" ) ) ) . '" title="' . esc_attr( get_the_author() ) . '" rel="me">' . get_the_author() . '</a></span>' );
+		}
+
 		//Search titles
 		$post_type = get_query_var('post_type');
 		if(is_search() && in_array($post_type, array('jbp_job', 'jbp_pro') ) ){
@@ -1137,7 +1162,7 @@ class Jobs_Plus_Core{
 
 		//archive titles
 		if ( is_post_type_archive(array('jbp_job', 'jbp_pro') ) ){
-			return post_type_archive_title(null, false);
+			return post_type_archive_title( null, false);
 		}
 		return $title;
 	}
@@ -1277,10 +1302,10 @@ class Jobs_Plus_Core{
 	*
 	*/
 	function on_get_edit_post_link($link ='', $post_id = 0 ){
-		
-		if( !empty($link) 
-		&& !is_admin() 
-		&& in_array(get_post_type($post_id), array('jbp_job', 'jbp_pro') ) 
+
+		if( !empty($link)
+		&& !is_admin()
+		&& in_array(get_post_type($post_id), array('jbp_job', 'jbp_pro') )
 		) {
 			if( get_post_status( $post_id ) == 'publish') {
 				$link = untrailingslashit( get_permalink($post_id) ) . '/edit/';
@@ -1398,7 +1423,7 @@ class Jobs_Plus_Core{
 			if ($user->ID == get_current_user_id())
 			{
 				$query->set('post_status', array('publish', 'pending', 'draft'));
-			  //printf('<pre>%s</pre>', print_r($query, true) ); exit;
+				//printf('<pre>%s</pre>', print_r($query, true) ); exit;
 			}
 		}
 
@@ -1784,7 +1809,13 @@ class Jobs_Plus_Core{
 	function get_default_custom_post($post_type = 'post', $post_id = 0){
 
 		if(empty($post_id) ) {
-			$post_id = wp_insert_post( array( 'post_title' => __('Auto Draft', $this->text_domain), 'post_type' => $post_type, 'post_status' => 'auto-draft' ) );
+			$post_id = wp_insert_post( array( 
+			'post_title' => __('Auto Draft', $this->text_domain), 
+			'post_type' => $post_type, 
+			'post_status' => 'auto-draft',
+			'comment_status' => post_type_supports($post_type, 'comments') ? 'open' : 'close',
+			'ping_status' => 'close',
+			) );
 			if ( current_theme_supports( 'post-formats' ) && post_type_supports( $post_type, 'post-formats' ) && get_option( 'default_post_format' ) )
 			set_post_format( $post, get_option( 'default_post_format' ) );
 			$post = get_post($post_id);
@@ -2021,7 +2052,7 @@ class Jobs_Plus_Core{
 		}
 		if(count($post) > 1) {
 			$post['post_status'] = 'draft';
-
+			$post['comment_status'] = post_type_supports('pro_obj', 'comments') ? 'open' : 'close';
 			wp_update_post($post, true); //See if fields added
 		}
 		exit;
@@ -2601,6 +2632,7 @@ class Jobs_Plus_Core{
 		/* Construct args for the new post */
 		$args = $params['data'];
 
+		$args['comment_status'] = post_type_supports('pro_obj', 'comments') ? 'open' : 'close';
 
 		//		$args = array(
 		//		/* If empty ID insert Ad instead of updating it */
@@ -2616,7 +2648,6 @@ class Jobs_Plus_Core{
 		//		//'comment_status' => 'open'
 		//		);
 
-
 		if( !empty($params['data']['post_status']) ){
 			if( $this->is_valid_pro_status( $params['data']['post_status'] ) ){
 				$args['post_status'] = $params['data']['post_status'];
@@ -2624,7 +2655,6 @@ class Jobs_Plus_Core{
 				unset( $args['post_status'] );
 			}
 		}
-
 
 		/* Insert page and get the ID */
 		if(empty($args['ID']) ){
@@ -2675,7 +2705,6 @@ class Jobs_Plus_Core{
 				//remove_filter( 'upload_dir', array($this,'custom_upload_directory') );
 			}
 
-
 			return $post_id;
 		}
 	}
@@ -2700,7 +2729,7 @@ class Jobs_Plus_Core{
 		//'post_author'    => get_current_user_id(),
 		'post_type'      => 'jbp_job',
 		'ping_status'    => 'closed',
-		//'comment_status' => 'open'
+		'comment_status'  => post_type_supports('job_obj', 'comments') ? 'open' : 'close',
 		);
 
 		if( !empty($params['data']['post_status']) ){
@@ -2875,6 +2904,7 @@ class Jobs_Plus_Core{
 
 		if(count($post) > 1) {
 			$post['post_status'] = 'draft';
+			$post['comment_status'] = post_type_supports('job_obj', 'comments') ? 'open' : 'close';
 			wp_update_post($post, true); //See if fields added
 		}
 		exit;

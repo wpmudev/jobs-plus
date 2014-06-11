@@ -17,22 +17,19 @@ $error = get_query_var('jbp_job_error');
 $add_job = false;
 $editing = false;
 //Are we adding a Listing?
-	setup_postdata($post);
-//	var_dump($post->ID);
-//	var_dump($this->job_update_page_id); 
+setup_postdata($post);
 if ($post->ID == $this->job_update_page_id) {
 	$post = $this->get_default_custom_post('jbp_job');
 	$add_job = true;
-	setup_postdata($post);
 	$editing = false;
 } //Or are we editing a listing?
 elseif(get_query_var('edit')){
-	setup_postdata($post);
 	$editing = true;
 }
 
 $data = (array)$post;
 $post_ID = $data['ID'];
+setup_postdata($post);
 
 //get related hierarchical taxonomies
 $taxonomies = get_object_taxonomies('jbp_job', 'objects');

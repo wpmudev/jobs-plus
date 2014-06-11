@@ -14,16 +14,15 @@ $editing = false;
 if ($post->ID == $Jobs_Plus_Core->pro_update_page_id) {
 	$add_pro = true;
 	$post = $Jobs_Plus_Core->get_default_custom_post('jbp_pro');
-	setup_postdata($post);
 	$editing = false;
 	//for become expert widget
-	if(isset($_GET['expert_title']) && !empty($_GET['expert_title'])){
-		$post->post_title=$_GET['expert_title'];
-	}
+	if(!empty($_GET['expert_title'])){ $post->post_title=strip_slashes( $_GET['expert_title'] ); }
 }
 elseif (get_query_var('edit')) { //Or are we editing a listing?
 	$editing = current_user_can( EDIT_PRO, $post->ID);
 }
+
+setup_postdata($post);
 
 //Styles
 wp_enqueue_style('jobs-plus-custom');
@@ -38,7 +37,6 @@ wp_enqueue_script('jqueryui-editable-ext');
 wp_enqueue_script('jquery-ui-dialog');
 wp_enqueue_script('magnific-popup');
 wp_enqueue_script('jquery-ui-slider');
-
 
 //var_dump( $editing );
 //var_dump( current_user_can( EDIT_PRO, $post->ID) );
@@ -305,7 +303,7 @@ $this->no_thumbnail();
 							modal: true
 						});
 					} else {
-						window.location = '<?php echo get_post_edit_link($post->ID); ?>';
+						window.location = '<?php echo get_edit_post_link($post->ID); ?>';
 						jbp_create_dialog(
 						"<?php _e('Creating Profile', JBP_TEXT_DOMAIN); ?>",
 						"<?php _e('Creating Your Profile, Please Wait', JBP_TEXT_DOMAIN); ?>",

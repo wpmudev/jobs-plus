@@ -8,6 +8,7 @@
 
 global $CustomPress_Core, $wp_query, $post, $post_ID;
 
+if( !file_exists( 'days_hours' ) ):
 function days_hours( $expires ){
 	$date = intval($expires);
 	$secs = $date - time();
@@ -19,6 +20,7 @@ function days_hours( $expires ){
 		return __('Expired', JBP_TEXT_DOMAIN);
 	}
 }
+endif;
 
 $project_min = sanitize_text_field(trim( do_shortcode('[ct id="_ct_jbp_job_Min_Budget" ]') ) );
 $project_max = sanitize_text_field(trim( do_shortcode('[ct id="_ct_jbp_job_Budget" ]') ) );

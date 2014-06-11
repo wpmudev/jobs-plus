@@ -12,10 +12,12 @@ wp_enqueue_script('masonry');
 wp_enqueue_script('jquery-ellipsis');
 
 //Need to prevent infinite loop since you can't call have_posts in the loop
+if( !file_exists( 'job_have_posts' ) ):
 function job_have_posts(){
 	global $wp_query;
 	return $wp_query->current_post + 1 < $wp_query->post_count;
 }
+endif;
 
 ?>
 
