@@ -53,7 +53,7 @@ class WP_Widget_Add_Job extends WP_Widget {
 
 		?>
 		<section class="jobsearch-widgetbar postjob">
-			<form method="GET" action="<?php echo site_url('/job/add'); ?>">
+			<form method="GET" action="<?php echo get_permalink($Jobs_Plus_Core->job_update_page_id); ?>">
 				<div class="jbp_search_box_container">
 					<input type="text" name="job_title" value="" autocomplete="off" placeholder="<?php _e('Job title') ?>" />
 					<button type="submit" value="">

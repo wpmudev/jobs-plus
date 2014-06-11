@@ -21,9 +21,7 @@ if($register_url) {
 ?>
 
 <button type="button" class="jbp-button pro-post-btn jbp-register-popup <?php echo $class; ?>" <?php echo $destination; ?>>
-	<?php if($img): ?>
-	<img src="<?php echo $this->plugin_url . 'img/menu-icon-post.png'; ?>" alt="<?php echo esc_attr( $content ); ?>" title="<?php echo esc_attr( $content ); ?>" />
-	<?php endif; ?>
+	<div class="div-img">&nbsp;</div>
 	<?php echo esc_html( $content ); ?>
 </button>
 

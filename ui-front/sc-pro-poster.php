@@ -72,7 +72,7 @@ wp_enqueue_script('element-query');
 		<span><a class="browse-pros-link" href="<?php echo get_post_type_archive_link('jbp_pro'); ?>"><?php echo esc_html( $link ); ?></a></span>
 	</div>
 	<div>
-		[jbp-expert-post-btn text="<?php echo esc_html( $legend ); ?>" img="false"]
+		[jbp-expert-post-btn text="<?php echo esc_html( $legend ); ?>" class="none"]
 	</div>
 	<?php wp_reset_postdata(); ?>
 </div>

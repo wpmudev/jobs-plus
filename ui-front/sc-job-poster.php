@@ -54,7 +54,7 @@ if( $use_cat_img ) {
 		<span><a href="<?php echo get_post_type_archive_link('jbp_job'); ?>"><?php echo esc_html( $link ); ?></a></span>
 	</div>
 	<div>
-		[jbp-job-post-btn text="<?php echo $legend; ?>" img="false"]
+		[jbp-job-post-btn text="<?php echo $legend; ?>" class="none"]
 	</div>
 	<?php wp_reset_postdata(); ?>
 </div>

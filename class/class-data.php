@@ -86,7 +86,7 @@ class Jobs_Plus_Core_Data{
 			'has_archive' => 'jobs',
 			'rewrite' => array (
 			'slug' => 'job',
-			'with_front' => true,
+			'with_front' => false,
 			'feeds' => true,
 			'pages' => true,
 			'ep_mask' => 4096,
@@ -156,7 +156,7 @@ class Jobs_Plus_Core_Data{
 			'rewrite' =>
 			array (
 			'slug' => 'expert',
-			'with_front' => true,
+			'with_front' => false,
 			'feeds' => true,
 			'pages' => true,
 			'ep_mask' => 4096,

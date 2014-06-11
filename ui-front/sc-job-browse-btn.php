@@ -14,9 +14,7 @@
 wp_enqueue_style('jobs-plus');
 ?>
 
-<button type="button" class="jbp-button job-browse-btn <?php echo $class; ?>" onclick="window.location.assign('<?php echo $url; ?>')">
-	<?php if($img): ?>
-	<img src="<?php echo $this->plugin_url . 'img/menu-icon-find.png'; ?>" alt="<?php echo esc_attr( $content ); ?>" title="<?php echo esc_attr( $content ); ?>" />
-	<?php endif; ?>
+<button type="button" class="jbp-button job-browse-btn dark <?php echo $class; ?>" onclick="window.location.assign('<?php echo $url; ?>')">
+	<div class="div-img">&nbsp;</div>
 	<?php echo esc_html($content); ?>
 </button>

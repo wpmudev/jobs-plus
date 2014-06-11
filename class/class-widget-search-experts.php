@@ -56,9 +56,9 @@ class WP_Widget_Search_Experts extends WP_Widget {
 		<section class="jobsearch-widgetbar">
 			<form method="GET" action="<?php echo esc_attr( get_post_type_archive_link( 'jbp_pro' ) ); ?>">
 				<div class="jbp_search_box_container">
-					<input type="text" name="s" value="<?php echo esc_attr( $phrase ); ?>" autocomplete="off" placeholder="<?php echo esc_attr( $text ); ?>" />
-					<button type="submit" value="">
-						<img src="<?php echo $Jobs_Plus_Core->plugin_url . 'img/search.png'; ?>" alt="" title="title" />
+					<input type="text" name="s" value="<?php echo esc_attr( $phrase ); ?>" autocomplete="off" placeholder="<?php echo esc_attr( $phrase ); ?>" />
+					<button type="submit" class="pro-submit-search" value="">
+						<div class="div-img">&nbsp;</div>
 					</button>
 				</div>
 			</form>

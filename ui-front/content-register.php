@@ -118,7 +118,7 @@
 
 		<div class="jbp-register-buttons left group">
 			<span class="jbp-login-btn"><button type="submit" id="jbp-login-btn" name="jbp-register-btn" value="1" class="jbp-button jbp-login-btn"  ><?php esc_html_e('Create Account', JBP_TEXT_DOMAIN); ?></button></span>
-			<span class="jbp-login-link left"><br/>Already a member <a id="to-login" href="" >sign in</a></span>
+			<span class="jbp-login-link left">Already a member <a id="to-login" href="" >sign in</a></span>
 		</div>
 		<div class="alert result-message"></div>
 	</form>
@@ -128,12 +128,24 @@
 <script type="text/javascript">
 	jQuery(document).ready( function($){
 
+		//translate WP_Error code
+
 		var foptions = {
 			dataType: 'json',
 			beforeSubmit : function( data, form) { return form.validate().form(); },
 			success: function( data ){
 				$('.result-message').html(data.message);
-				if(data.status == 'success') setTimeout( function() { location.reload( true ) }, 1000);
+				if(data.status == 'success') {
+					setTimeout( function() { location.reload( true ) }, 1000);
+				} else {
+					var username_error = ['empty_username', 'invalid_username', 'invalidcombo', 'empty_user_login', 'existing_user_login'];
+					var password_error = ['empty_password', 'invalidcombo', 'incorrect_password'];
+					var email_error = ['empty_email', 'invalid_email', 'existing_user_email'];
+					console.log( data.status );
+					if( username_error.indexOf( data.status ) != -1) $( 'input[name="lr[user_login]"]' ).addClass('error');
+					if( password_error.indexOf( data.status ) != -1) $( 'input[name="lr[user_password]"]' ).addClass('error');
+					if( email_error.indexOf( data.status )    != -1) $( 'input[name="lr[user_email]"]' ).addClass('error');
+				}
 			}
 		}
 
@@ -159,7 +171,6 @@
 
 		$('#jbp-login-form').ajaxForm( foptions );
 		$('#jbp-register-form').ajaxForm( foptions );
-
 
 		$('#to-register').click( function(e){
 			e.preventDefault();

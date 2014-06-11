@@ -102,7 +102,7 @@ wp_enqueue_script('jquery-format-currency-i18n');
 				</div>
 
 				<?php if( current_user_can( EDIT_JOB, $post->ID ) ): ?>
-				<span class="job-edit"><button class="jbp-button job-edit" onclick="window.location='<?php echo trailingslashit( get_permalink() ) . 'edit/'; ?>';">Edit</button></span>
+				<span class="job-edit"><button class="jbp-button job-edit" onclick="window.location='<?php echo esc_attr( get_edit_post_link() ); ?>';">Edit</button></span>
 				<?php endif; ?>
 			</div>
 		</div>

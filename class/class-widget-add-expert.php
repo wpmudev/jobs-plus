@@ -58,7 +58,7 @@ class WP_Widget_Add_Expert extends WP_Widget {
 
 		?>
 		<section class="jobsearch-widgetbar postjob">
-			<form method="GET" action="<?php echo site_url('/expert/add'); ?>">
+			<form method="GET" action="<?php echo get_permalink( $Jobs_Plus_Core->pro_update_page_id ); ?>">
 				<div class="jbp_search_box_container">
 					<input type="text" name="expert_title" value="" autocomplete="off" placeholder="<?php _e('Your title') ?>" />
 					<button type="submit" value="">

@@ -19,7 +19,7 @@ $phrase = (empty($_GET['s']) ) ? '' : $_GET['s'];
 							<input type="text" class="pro-search-input" name="s" value="<?php echo esc_attr($phrase); ?>" autocomplete="off" placeholder="<?php echo esc_attr( $text ); ?>" />
 						</span>
 						<button type="submit" class="pro-submit-search" value="" >
-							<img src="<?php echo esc_attr($this->plugin_url . 'img/search.png' ); ?>" alt="alt" title="title" />
+							<div class="div-img">&nbsp;</div>
 						</button>
 					</li>
 				</ul>

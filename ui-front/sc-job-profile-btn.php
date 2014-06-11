@@ -15,8 +15,6 @@ wp_enqueue_style('jobs-plus');
 ?>
 
 <button type="button" class="jbp-button pro-profile-btn <?php echo $class; ?>" onclick="window.location.assign('<?php echo $url; ?>')">
-	<?php if($img): ?>
-	<img src="<?php echo $this->plugin_url . 'img/menu-icon-profile.png'; ?>" alt="<?php echo esc_attr( $content ); ?>" title="<?php echo esc_attr( $content ); ?>" />
-	<?php endif; ?>
+	<div class="div-img">&nbsp;</div>
 	<?php echo esc_html( $content ); ?>
 </button>

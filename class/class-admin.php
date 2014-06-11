@@ -84,8 +84,8 @@ class Jobs_Plus_Admin extends Jobs_Plus_Core {
 		'edit.php?post_type=jbp_pro' );
 
 		add_submenu_page( 'edit.php?post_type=jbp_pro',
-		sprintf(__( 'New %s', JBP_TEXT_DOMAIN ), $this->job_labels->singular_name),
-		sprintf(__( 'New %s', JBP_TEXT_DOMAIN ), $this->job_labels->singular_name),
+		sprintf(__( 'New %s', JBP_TEXT_DOMAIN ), $this->pro_labels->singular_name),
+		sprintf(__( 'New %s', JBP_TEXT_DOMAIN ), $this->pro_labels->singular_name),
 		EDIT_PROS,
 		'jobs-plus-menu&redirect=add-pro',
 		array( $this, 'admin_menu_page_pro' )
@@ -226,7 +226,7 @@ class Jobs_Plus_Admin extends Jobs_Plus_Core {
 		'job'           => esc_html( sprintf( __( '%s Options', JBP_TEXT_DOMAIN ), $this->job_labels->singular_name ) ),
 		'pro'           => esc_html( sprintf( __( '%s Options', JBP_TEXT_DOMAIN ), $this->pro_labels->singular_name ) ),
 		'shortcodes'    => esc_html__( 'Shortcodes', JBP_TEXT_DOMAIN ),
-		'about'         => esc_html__( 'Getting Started with Jobs+', JBP_TEXT_DOMAIN ),
+		//'about'         => esc_html__( 'Getting Started with Jobs +', JBP_TEXT_DOMAIN ),
 		//'page_creation' => __( 'Page Creation', JBP_TEXT_DOMAIN ),
 		);
 
@@ -243,11 +243,11 @@ class Jobs_Plus_Admin extends Jobs_Plus_Core {
 			?>
 
 			<?php if( $tab == 'about' ): // So the right menu item highlights?>
-			<a class="nav-tab <?php echo $class ?>" href="<?php echo esc_attr( "?post_type=jbp_job&page=jobs-plus-about&tab=$tab" ); ?>">
+			<a class="nav-tab <?php echo $class ?>" href="<?php echo esc_attr( "edit.php?post_type=jbp_job&page=jobs-plus-about&tab=$tab" ); ?>">
 				<img style=" vertical-align: middle; width: 20px;" src="<?php echo $this->plugin_url . "img/{$tab}.svg"; ?>" /> <?php echo $title; ?>
 			</a>
 			<?php else: ?>
-			<a class="nav-tab <?php echo $class ?>" href="<?php echo esc_attr( "?post_type=jbp_job&page=jobs-plus-menu&tab=$tab" ); ?>">
+			<a class="nav-tab <?php echo $class ?>" href="<?php echo esc_attr( "edit.php?post_type=jbp_job&page=jobs-plus-menu&tab=$tab" ); ?>">
 				<img style=" vertical-align: middle; width: 20px;" src="<?php echo $this->plugin_url . "img/{$tab}.svg"; ?>" /> <?php echo $title; ?>
 			</a>
 			<?php endif; ?>
@@ -282,7 +282,7 @@ class Jobs_Plus_Admin extends Jobs_Plus_Core {
 			$settings = array_replace( (array) $settings, $params['jbp'] );
 			update_option( $this->settings_name, $settings );
 
-			do_action( 'jpb_after_save_settings', $this->settings_name, $settings );
+			do_action( 'jBp_after_save_settings', $this->settings_name, $settings );
 		}
 
 		if ( ! empty( $params[ TERM_IMAGES_SETTINGS ] ) ) {

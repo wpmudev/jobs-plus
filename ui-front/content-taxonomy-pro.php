@@ -28,15 +28,15 @@ wp_enqueue_script('imagesloaded');
 
 		<?php while( have_posts() ): the_post(); ?>
 
-		<?php if($wp_query->current_post > 4): ?>
-		<?php echo do_shortcode('[jbp-expert-archive size="small"]'); ?>
+		<?php //if($wp_query->current_post > 4): ?>
+		<?php //echo do_shortcode('[jbp-expert-archive size="small"]'); ?>
 
-		<?php elseif($wp_query->current_post > 2): ?>
-		<?php echo do_shortcode('[jbp-expert-archive size="medium"]'); ?>
+		<?php //elseif($wp_query->current_post > 2): ?>
+		<?php //echo do_shortcode('[jbp-expert-archive size="medium"]'); ?>
 
-		<?php else: ?>
+		<?php //else: ?>
 		<?php echo do_shortcode('[jbp-expert-archive size="large"]'); ?>
-		<?php endif; ?>
+		<?php //endif; ?>
 
 		<?php endwhile; ?><!-- have_posts -->
 		<?php else: ?><!-- have_posts -->

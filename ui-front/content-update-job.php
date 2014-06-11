@@ -6,7 +6,7 @@
 * @license GPL2+
 */
 
-global $post, $post_ID, $CustomPress_Core, $Jobs_Plus_Core;
+global $post, $post_ID;
 
 $this->no_comments();
 
@@ -17,18 +17,19 @@ $error = get_query_var('jbp_job_error');
 $add_job = false;
 $editing = false;
 //Are we adding a Listing?
+	setup_postdata($post);
+//	var_dump($post->ID);
+//	var_dump($this->job_update_page_id); 
 if ($post->ID == $this->job_update_page_id) {
 	$post = $this->get_default_custom_post('jbp_job');
 	$add_job = true;
 	setup_postdata($post);
-	$link = add_query_arg('edit', 1, get_permalink($post->ID) );
 	$editing = false;
 } //Or are we editing a listing?
 elseif(get_query_var('edit')){
+	setup_postdata($post);
 	$editing = true;
-	$link = get_permalink($post->ID);
 }
-
 
 $data = (array)$post;
 $post_ID = $data['ID'];
@@ -295,16 +296,15 @@ if(empty($data['post_title']) && isset($_GET['job_title']) && !empty($_GET['job_
 		<div class="jbp-button-wrap group">
 			<div class="jbp-button-group ">
 				<?php wp_nonce_field( 'verify' ); ?>
-
-				<?php if($Jobs_Plus_Core->get_setting('job->moderation->publish') ): ?>
+				<?php if($this->get_setting('job->moderation->publish', 1) ): ?>
 				<button type="submit" id="job-publish" name="data[post_status]" value="publish" class="toggle-job-save jbp-button job-go-public-button" ><?php esc_html_e('Save', JBP_TEXT_DOMAIN); ?></button>
 				<?php endif; ?>
 
-				<?php if( !$Jobs_Plus_Core->get_setting('job->moderation->publish') ): ?>
+				<?php if( !$this->get_setting('job->moderation->publish', 1) ): ?>
 				<button type="submit" id="job-pending" name="data[post_status]" value="pending" class="toggle-job-save jbp-button job-go-public-button" ><?php esc_html_e('Review', JBP_TEXT_DOMAIN); ?></button>
 				<?php endif; ?>
 
-				<?php if($Jobs_Plus_Core->get_setting('job->moderation->draft') ): ?>
+				<?php if($this->get_setting('job->moderation->draft', 1) ): ?>
 				<button type="submit" id="job-draft" name="data[post_status]" value="draft" class="toggle-job-save jbp-button job-go-public-button" ><?php esc_html_e('Draft', JBP_TEXT_DOMAIN); ?></button>
 				<?php endif; ?>
 
@@ -347,6 +347,7 @@ if(empty($data['post_title']) && isset($_GET['job_title']) && !empty($_GET['job_
 
 		jbpPopup();
 		$editables.editable();
+console.log(jbpPopupEnabled);
 
 		$('#_ct_jbp_job_Min_Budget').keyup(function () {
 		var value = $('#_ct_jbp_job_Min_Budget').val();

@@ -66,12 +66,12 @@ class WP_Widget_Search_Jobs extends WP_Widget {
 					</li>
 					<li>
 					<span class="sort-by-latest <?php echo $sort_latest; ?>">
-						<a href="<?php echo add_query_arg( array( 'prj_sort' => 'latest', ), get_post_type_archive_link( 'jbp_job' ) ); ?>"><?php esc_html_e( 'Latest', JPB_TEXT_DOMAIN ); ?></a>
+						<a href="<?php echo add_query_arg( array( 'prj_sort' => 'latest', ), get_post_type_archive_link( 'jbp_job' ) ); ?>"><?php esc_html_e( 'Latest', JBP_TEXT_DOMAIN ); ?></a>
 					</span>
 					</li>
 					<li>
 					<span class="sort-by-end <?php echo $sort_ending; ?>">
-						<a href="<?php echo add_query_arg( array( 'prj_sort' => 'ending', ), get_post_type_archive_link( 'jbp_job' ) ); ?>"><?php esc_html_e( 'About to End', JPB_TEXT_DOMAIN ); ?></a>
+						<a href="<?php echo add_query_arg( array( 'prj_sort' => 'ending', ), get_post_type_archive_link( 'jbp_job' ) ); ?>"><?php esc_html_e( 'About to End', JBP_TEXT_DOMAIN ); ?></a>
 					</span>
 					</li>
 				</ul>
@@ -79,9 +79,9 @@ class WP_Widget_Search_Jobs extends WP_Widget {
 				<div class="jbp_search_box_container">
 					<input type="hidden" class="job_min_price" name="job_min_price" value="<?php echo $job_min_price; ?>" />
 					<input type="hidden" class="job_max_price" name="job_max_price" value="<?php echo $job_max_price; ?>" />
-					<input type="text" name="s" value="<?php echo esc_attr( $phrase ); ?>" autocomplete="off" placeholder="<?php echo $text; ?>" />
-					<button type="submit" value="">
-						<img src="<?php echo $Jobs_Plus_Core->plugin_url . 'img/search.png'; ?>" alt="" title="title" />
+					<input type="text" name="s" value="<?php echo esc_attr( $phrase ); ?>" autocomplete="off" placeholder="<?php echo $phrase; ?>" />
+					<button type="submit" class="job-submit-search" "value="">
+						<div class="div-img">&nbsp;</div>
 					</button>
 				</div>
 			</form>

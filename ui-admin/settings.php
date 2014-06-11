@@ -63,7 +63,7 @@ global $Term_Images;
 						</th>
 						<td>
 							<input type="hidden" name="jbp[general][use_fast_register]" value="0" />
-							<label><input type="checkbox" name="jbp[general][use_fast_register]" value="1" <?php checked( $this->get_setting('general->use_fast_register', '0') ) ?> /> <?php esc_html_e('Enable Fast Registration', JBP_TEXT_DOMAIN ); ?></label>
+							<label><input type="checkbox" name="jbp[general][use_fast_register]" value="1" <?php checked( $this->get_setting('general->use_fast_register', '1') ) ?> /> <?php esc_html_e('Enable Fast Registration', JBP_TEXT_DOMAIN ); ?></label>
 							<br /><span class="description"><?php esc_html_e('Enable Fast Registration, displays a popup registration form which allows either Login or Registration. When registering, no email confirmation is needed and they are immediately logged in.', JBP_TEXT_DOMAIN); ?></span>
 						</td>
 					</tr>
@@ -85,7 +85,7 @@ global $Term_Images;
 						</th>
 						<td>
 							<input type="hidden" name="jbp[general][use_register_email]" value="0" />
-							<label><input type="checkbox" name="jbp[general][use_register_email]" value="1" <?php checked( $this->get_setting('general->use_register_email', '0') ) ?>use_register_email /> <?php esc_html_e('Enable Email notification', JBP_TEXT_DOMAIN ); ?></label>
+							<label><input type="checkbox" name="jbp[general][use_register_email]" value="1" <?php checked( $this->get_setting('general->use_register_email', '1') ) ?> /> <?php esc_html_e('Enable Email notification', JBP_TEXT_DOMAIN ); ?></label>
 							<br /><span class="description"><?php esc_html_e('Enable Email notification for Fast Registration.', JBP_TEXT_DOMAIN); ?></span>
 						</td>
 					</tr>
