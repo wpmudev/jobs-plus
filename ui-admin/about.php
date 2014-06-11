@@ -1,18 +1,47 @@
-<?php if (!defined('ABSPATH')) die('No direct access allowed!');
+<?php if ( ! defined( 'ABSPATH' ) ) {
+	die( 'No direct access allowed!' );
+}
 /**
-* @package Jobs +
-* @author Arnold Bailey
-* @since version 1.0
-* @license GPL2+
-*/
+ * @package Jobs +
+ * @author  Arnold Bailey
+ * @since   version 1.0
+ * @license GPL2+
+ */
 
-wp_enqueue_style('magnific-popup');
-wp_enqueue_style('jobs-plus-custom');
-
+wp_enqueue_style( 'magnific-popup' );
+wp_enqueue_style( 'jobs-plus-custom' );
+global $Jobs_Plus_Core;
 ?>
-<div class="wrap">
-<h2><?php esc_html_e('Getting Started with Jobs +', JBP_TEXT_DOMAIN);?></h2>
-	<div>
-		<img src="<?php echo $this->plugin_url . 'img/getting-started.png';?>" />
-	</div>
+<div class="wrap jbp_started_page">
+	<?php $this->render_tabs( 'job' ); ?>
+	<h2><?php esc_html_e( 'Getting Started with Jobs +', JBP_TEXT_DOMAIN ); ?></h2>
+
+	<p class="jbp_light">Thank you! for using our Jobs & Expert plugin</p>
+
+	<p class="jbp_default">This plugin is AWESOME ! It will – Slow-carb VHS 8-bit Thundercats, leggings bitters pickled hoodie vegan disrupt small batch. Wolf Echo Park DIY,
+		beard small batch pork belly umami lo-ﬁ deep v asymmetrical Intelligentsia. Retro Echo Park PBR&B VHS farm-to-table Pinterest, Odd Future 3 wolf
+		moon street art. 90's actually pour-over messenger bag. Wes Anderson butcher wolf, mixtape lo-ﬁ Intelligentsia messenger bag aesthetic
+		skateboard PBR&B hashtag Odd Future vinyl cruciﬁx leggings.</p>
+
+	<p><img src="<?php echo $this->plugin_url . 'img/getting-started.png'; ?>" /></p>
+
+	<div class="jbp_plans">
+		<div class="jbp_plan">
+			<p class="first"><a href="<?php echo get_permalink($Jobs_Plus_Core->job_archive_page_id) ?>" class="jbp_button jbp_job_pages">Jobs Page</a></p>
+
+			<p><a href="<?php echo admin_url('post.php?post='.$Jobs_Plus_Core->job_archive_page_id.'&action=edit') ?>"><?php _e( 'Edit', JBP_TEXT_DOMAIN ) ?></a> <?php _e( ' this page', JBP_TEXT_DOMAIN ) ?></p>
+
+			<p><a href="<?php echo get_permalink($Jobs_Plus_Core->job_update_page_id) ?>"><?php _e( 'Add', JBP_TEXT_DOMAIN ) ?></a> <?php _e( 'a new job', JBP_TEXT_DOMAIN ) ?> </p>
+		</div>
+		<div class="jbp_plan">
+			<p class="first"><a href="<?php echo get_permalink($Jobs_Plus_Core->demo_landing_page_id) ?>" class="jbp_button jbp_landing_page">Landing Page</a></p>
+			<p><a href="<?php echo admin_url('post.php?post='.$Jobs_Plus_Core->demo_landing_page_id.'&action=edit') ?>"><?php _e( 'Edit', JBP_TEXT_DOMAIN ) ?></a> <?php _e( ' this page', JBP_TEXT_DOMAIN ) ?></p>
+		</div>
+		<div class="jbp_plan">
+			<p class="first"><a href="<?php echo get_permalink($Jobs_Plus_Core->pro_archive_page_id) ?>" class="jbp_button jbp_experts_pages">Experts Page</a></p>
+			<p><a href="<?php echo admin_url('post.php?post='.$Jobs_Plus_Core->pro_archive_page_id.'&action=edit') ?>"><?php _e( 'Edit', JBP_TEXT_DOMAIN ) ?></a> <?php _e( ' this page', JBP_TEXT_DOMAIN ) ?></p>
+
+			<p><a href="<?php echo get_permalink($Jobs_Plus_Core->pro_update_page_id) ?>"><?php _e( 'Add', JBP_TEXT_DOMAIN ) ?></a> <?php _e( 'a new expert', JBP_TEXT_DOMAIN ) ?> </p>
+		</div>
 </div>
+	</div>
