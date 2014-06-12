@@ -1347,7 +1347,7 @@ class Jobs_Plus_Core{
 		AND (pm.post_id = p.ID)
 		"
 		);
-		return $result;
+		return empty( $result ) ? 100 : intval($result);
 	}
 
 	function on_posts_clauses($clauses){
@@ -1429,8 +1429,8 @@ class Jobs_Plus_Core{
 
 		if(is_post_type_archive('jbp_job')
 		&& !is_admin() ){
-			$query->set('meta_key', '_ct_jbp_job_Due');
-			$query->set('orderby', 'meta_value');
+//			$query->set('meta_key', '_ct_jbp_job_Due');
+//			$query->set('orderby', 'meta_value');
 			$query->set( 'posts_per_page', intval( $this->get_setting( 'job->per_page', 20) ) );
 		}
 
