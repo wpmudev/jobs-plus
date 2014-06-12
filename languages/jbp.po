@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Jobs+ Plugin\n"
-"POT-Creation-Date: 2014-05-30 18:57-0500\n"
-"PO-Revision-Date: 2014-05-30 18:57-0500\n"
+"POT-Creation-Date: 2014-06-12 15:26-0500\n"
+"PO-Revision-Date: 2014-06-12 15:26-0500\n"
 "Last-Translator: Arnold Bailey <arnold@incsub.com>\n"
 "Language-Team: Arnold Bailey <arnold@incsub.com>\n"
 "Language: en_US\n"
@@ -17,246 +17,282 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SearchPath-0: ..\n"
 
-#: ../class/class-admin.php:41 ../class/class-admin.php:42
-#: ../class/class-admin.php:48 ../class/class-admin.php:49
+#: ../class/class-admin.php:51 ../class/class-admin.php:52
+msgid "Getting Started"
+msgstr ""
+
+#: ../class/class-admin.php:58 ../class/class-admin.php:59
+#: ../class/class-admin.php:81 ../class/class-admin.php:82
+#, php-format
+msgid "Manage %s"
+msgstr ""
+
+#: ../class/class-admin.php:64 ../class/class-admin.php:65
+#: ../class/class-admin.php:87 ../class/class-admin.php:88
+#, php-format
+msgid "New %s"
+msgstr ""
+
+#: ../class/class-admin.php:73 ../class/class-admin.php:74
+#: ../class/class-admin.php:96 ../class/class-admin.php:97
 #: ../lib/custompress/core/admin.php:142 ../lib/custompress/core/admin.php:160
 msgid "Settings"
 msgstr ""
 
-#: ../class/class-admin.php:95 ../lib/custompress/ui-admin/settings.php:42
+#: ../class/class-admin.php:225 ../lib/custompress/ui-admin/settings.php:42
 msgid "General"
 msgstr ""
 
-#: ../class/class-admin.php:96 ../class/class-admin.php:97
+#: ../class/class-admin.php:226 ../class/class-admin.php:227
 #, php-format
 msgid "%s Options"
 msgstr ""
 
-#: ../class/class-admin.php:98 ../lib/custompress/ui-admin/navigation.php:10
+#: ../class/class-admin.php:228 ../lib/custompress/ui-admin/navigation.php:10
 msgid "Shortcodes"
 msgstr ""
 
-#: ../class/class-admin.php:137
+#: ../class/class-admin.php:299
 msgid "Jobs + Certified"
 msgstr ""
 
-#: ../class/class-admin.php:146
+#: ../class/class-admin.php:308
 #, php-format
 msgid "User is %s"
 msgstr ""
 
-#: ../class/class-admin.php:168
+#: ../class/class-admin.php:336
+#, php-format
 msgid ""
-"<p>Jobs + works best when you use images for Job Categories, please enable "
-"them here and configure the image size that best fits your website</p>"
+"Jobs + works best when you use images for Job Categories, please enable them "
+"<a href=\"%s\">here</a> and configure the image size that best fits your "
+"website"
 msgstr ""
 
-#: ../class/class-admin.php:179 ../class/class-admin.php:191
+#: ../class/class-admin.php:346 ../class/class-admin.php:357
 msgid "Term Images Setup"
 msgstr ""
 
-#: ../class/class-admin.php:203 ../class/class-admin.php:215
-msgid "NEW - WHMCS WordPress Integration Cookie syncing"
+#: ../class/class-admin.php:442
+msgid "<p>Pattern page. Editing this page won\\'t change anything.<br />"
 msgstr ""
 
-#: ../class/class-core.php:274
-msgid "Virtual"
-msgstr ""
-
-#: ../class/class-core.php:279
-#, php-format
-msgid "Virtual <span class=\"count\">(%s)</span>"
-msgstr ""
-
-#: ../class/class-core.php:315 ../class/class-core.php:335
-#, php-format
-msgid "%s Widget"
-msgstr ""
-
-#: ../class/class-core.php:316 ../class/class-core.php:336
-#, php-format
-msgid "Widget area at the top of the %s page."
-msgstr ""
-
-#: ../class/class-core.php:325 ../class/class-core.php:346
-#, php-format
-msgid "%s Archive Widget"
-msgstr ""
-
-#: ../class/class-core.php:326 ../class/class-core.php:347
-#, php-format
-msgid "Widget area at the top of the %s archive."
-msgstr ""
-
-#: ../class/class-core.php:519
-msgid "<p>Virtual page. Editing this page won\\'t change anything.<br />"
-msgstr ""
-
-#: ../class/class-core.php:520
+#: ../class/class-admin.php:443
 msgid "You may edit the Title and/or the slug only.</p>"
 msgstr ""
 
-#: ../class/class-core.php:598
+#: ../class/class-core.php:436
+msgid "Pattern"
+msgstr ""
+
+#: ../class/class-core.php:441
+#, php-format
+msgid "Pattern <span class=\"count\">(%s)</span>"
+msgstr ""
+
+#: ../class/class-core.php:733
 msgid "Not so great"
 msgstr ""
 
-#: ../class/class-core.php:599
+#: ../class/class-core.php:734
 msgid "Quite good"
 msgstr ""
 
-#: ../class/class-core.php:600
+#: ../class/class-core.php:735
 msgid "Good"
 msgstr ""
 
-#: ../class/class-core.php:601
+#: ../class/class-core.php:736
 msgid "Great!"
 msgstr ""
 
-#: ../class/class-core.php:602
+#: ../class/class-core.php:737
 msgid "Excellent!"
 msgstr ""
 
-#: ../class/class-core.php:650
+#: ../class/class-core.php:785
 #, php-format
 msgid "The %s has been updated"
 msgstr ""
 
-#: ../class/class-core.php:660 ../class/class-core.php:1809
-#: ../class/class-core.php:2634
+#: ../class/class-core.php:795 ../class/class-core.php:2073
+#: ../class/class-core.php:2965
 #, php-format
 msgid "This %s has been updated"
 msgstr ""
 
-#: ../class/class-core.php:697 ../class/class-core.php:710
-#, php-format
-msgid "You must register and login to enter a %s."
-msgstr ""
-
-#: ../class/class-core.php:783 ../class/class-core.php:811
+#: ../class/class-core.php:921 ../class/class-core.php:949
 #, php-format
 msgid "You do not have the permissions to enter a %s."
 msgstr ""
 
-#: ../class/class-core.php:788
-#, php-format
-msgid "You do not have permission to edit this %s."
-msgstr ""
-
-#: ../class/class-core.php:793 ../class/class-core.php:821
+#: ../class/class-core.php:927 ../class/class-core.php:955
 #, php-format
 msgid "You have exceeded your quota of %s %s."
 msgstr ""
 
-#: ../class/class-core.php:816
+#: ../class/class-core.php:933
+#, php-format
+msgid "You do not have permission to edit this %s."
+msgstr ""
+
+#: ../class/class-core.php:961
 msgid "You do not have permission to edit this listing."
 msgstr ""
 
-#: ../class/class-core.php:938 ../ui-front/content-contact-pro.php:26
-#: ../ui-front/content-contact-pro.php:31
+#: ../class/class-core.php:1140 ../ui-front/content-contact-pro.php:29
 msgid " &raquo; Contact"
 msgstr ""
 
-#: ../class/class-core.php:1282 ../class/class-core.php:1333
+#: ../class/class-core.php:1150
+#, php-format
+msgid "Author Archives: %s"
+msgstr ""
+
+#: ../class/class-core.php:1503 ../class/class-core.php:1564
+#: ../class/class-core.php:3086
+msgid "Invalid CAPTCH entered. Please enter the characters in the image."
+msgstr ""
+
+#: ../class/class-core.php:1539 ../class/class-core.php:1600
 msgid "Message Sent, Thank You"
 msgstr ""
 
-#: ../class/class-core.php:1286 ../class/class-core.php:1337
+#: ../class/class-core.php:1543 ../class/class-core.php:1604
 msgid "Email is not Responding"
 msgstr ""
 
-#: ../class/class-core.php:1545
+#: ../class/class-core.php:1803
 msgid "Auto Draft"
 msgstr ""
 
-#: ../class/class-core.php:1624 ../class/class-core.php:1636
-#: ../class/class-core.php:2500
+#: ../class/class-core.php:1888 ../class/class-core.php:1900
+#: ../class/class-core.php:2830
 msgid "This field must have a valid value"
 msgstr ""
 
-#: ../class/class-core.php:1672
+#: ../class/class-core.php:1936
 msgid "Not a valid email address"
 msgstr ""
 
-#: ../class/class-core.php:1866
+#: ../class/class-core.php:2130
 msgid "Gravatar"
 msgstr ""
 
-#: ../class/class-core.php:1885 ../class/class-core.php:1964
-#: ../ui-front/content-single-pro.php:185
-#: ../ui-front/content-update-job.php:256
+#: ../class/class-core.php:2149 ../class/class-core.php:2228
+#: ../ui-front/content-single-pro.php:186
+#: ../ui-front/content-update-job.php:262
 msgid "Portfolio"
 msgstr ""
 
-#: ../class/class-core.php:1904 ../ui-front/content-single-pro.php:257
+#: ../class/class-core.php:2168 ../ui-front/content-single-pro.php:258
 #: ../ui-front/sc-pro-skills.php:33
 msgid "Skills"
 msgstr ""
 
-#: ../class/class-core.php:1923 ../ui-front/content-single-pro.php:251
+#: ../class/class-core.php:2187 ../ui-front/content-single-pro.php:252
 msgid "Social"
 msgstr ""
 
-#: ../class/class-core.php:1983 ../class/class-core.php:2209
+#: ../class/class-core.php:2247 ../class/class-core.php:2504
 msgid "Job Excerpt"
 msgstr ""
 
-#: ../class/class-core.php:2003 ../class/class-core.php:2025
+#: ../class/class-core.php:2287 ../class/class-core.php:2309
 msgid "Contact Me"
 msgstr ""
 
-#: ../class/class-core.php:2047 ../class/class-core.php:2067
-#: ../ui-admin/shortcodes.php:69 ../ui-admin/shortcodes.php:74
-#: ../ui-admin/shortcodes.php:151 ../ui-admin/shortcodes.php:156
+#: ../class/class-core.php:2331 ../class/class-core.php:2349
+#: ../ui-admin/shortcodes.php:68 ../ui-admin/shortcodes.php:73
+#: ../ui-admin/shortcodes.php:162 ../ui-admin/shortcodes.php:167
 #, php-format
 msgid "Browse %s"
 msgstr ""
 
-#: ../class/class-core.php:2087 ../ui-admin/shortcodes.php:135
-#: ../ui-admin/shortcodes.php:140
+#: ../class/class-core.php:2367 ../class/class-core.php:2522
+#: ../ui-admin/shortcodes.php:146 ../ui-admin/shortcodes.php:151
+#: ../ui-admin/shortcodes.php:204
 #, php-format
 msgid "Post a %s"
 msgstr ""
 
-#: ../class/class-core.php:2112 ../ui-admin/shortcodes.php:53
-#: ../ui-admin/shortcodes.php:58
+#: ../class/class-core.php:2391
 #, php-format
-msgid "Post an %s"
+msgid "Add an %s"
 msgstr ""
 
-#: ../class/class-core.php:2138 ../ui-admin/shortcodes.php:37
-#: ../ui-admin/shortcodes.php:42
+#: ../class/class-core.php:2415
+msgid "My Jobs"
+msgstr ""
+
+#: ../class/class-core.php:2438 ../ui-admin/shortcodes.php:36
+#: ../ui-admin/shortcodes.php:41
 msgid "My Profile"
 msgstr ""
 
-#: ../class/class-core.php:2165 ../class/class-core.php:2186
+#: ../class/class-core.php:2460 ../class/class-core.php:2481
 #, php-format
 msgid "Search %s for "
 msgstr ""
 
-#: ../class/class-core.php:2226 ../class/class-core.php:2266
-#: ../ui-admin/shortcodes.php:193
+#: ../class/class-core.php:2521 ../class/class-core.php:2584
+#: ../ui-admin/shortcodes.php:204
 #, php-format
 msgid "Recently Posted %s"
 msgstr ""
 
-#: ../class/class-core.php:2249
+#: ../class/class-core.php:2523 ../ui-admin/shortcodes.php:204
+#, php-format
+msgid "Browse More %s..."
+msgstr ""
+
+#: ../class/class-core.php:2547
 #, php-format
 msgid "%s Excerpt"
 msgstr ""
 
-#: ../class/class-core.php:2664
+#: ../class/class-core.php:2564 ../ui-admin/shortcodes.php:110
+#, php-format
+msgid "Our %s"
+msgstr ""
+
+#: ../class/class-core.php:2565 ../class/class-core.php:2585
+#: ../ui-admin/shortcodes.php:110
+#, php-format
+msgid "Become an %s"
+msgstr ""
+
+#: ../class/class-core.php:2566 ../class/class-core.php:2586
+#: ../ui-admin/shortcodes.php:110
+#, php-format
+msgid "Browse %s..."
+msgstr ""
+
+#: ../class/class-core.php:2604
+msgid "Price Range"
+msgstr ""
+
+#: ../class/class-core.php:2995
 msgid "How long is this Job open from today?</option>"
 msgstr ""
 
-#: ../class/class-core.php:2669
+#: ../class/class-core.php:3000
 msgid "Expires on"
 msgstr ""
 
-#: ../class/class-data.php:1105 ../class/class-data.php:1120
+#: ../class/class-core.php:3100
+msgid "Successful Login"
+msgstr ""
+
+#: ../class/class-core.php:3114
+msgid "Thank you for Registering"
+msgstr ""
+
+#: ../class/class-data.php:1104 ../class/class-data.php:1119
 msgid "SITE_NAME Contact Request: [ POST_TITLE ]"
 msgstr ""
 
-#: ../class/class-data.php:1107
+#: ../class/class-data.php:1106
 msgid ""
 "Hi TO_NAME, you have received a message from\n"
 "\n"
@@ -270,7 +306,7 @@ msgid ""
 "Expert link: POST_LINK\n"
 msgstr ""
 
-#: ../class/class-data.php:1122
+#: ../class/class-data.php:1121
 msgid ""
 "Hi TO_NAME, you have received a message from\n"
 "\n"
@@ -284,17 +320,105 @@ msgid ""
 "Job link: POST_LINK\n"
 msgstr ""
 
-#: ../class/class-term-img.php:47
-msgid "Terms Images"
+#: ../class/class-demo.php:31 ../class/class-demo.php:101
+msgid "Experienced WordPress/PHP Developer"
 msgstr ""
 
-#: ../class/class-term-img.php:50 ../class/class-term-img.php:56
-#: ../class/class-term-img.php:57
-msgid "Term Images"
+#: ../class/class-demo.php:32 ../class/class-demo.php:102
+msgid "experienced-wordpress-php-developer"
 msgstr ""
 
-#: ../class/class-term-img.php:51
-msgid "<span id=\"jbp-term-images\">Term Images</span>"
+#: ../class/class-demo.php:53 ../class/class-demo.php:119
+msgid "WordPress Website Support Coordinator"
+msgstr ""
+
+#: ../class/class-demo.php:54 ../class/class-demo.php:120
+msgid "wordpress-website-support-coordinator"
+msgstr ""
+
+#: ../class/class-demo.php:73 ../class/class-demo.php:137
+msgid "Blog, Commerce, Membership custom site"
+msgstr ""
+
+#: ../class/class-demo.php:74 ../class/class-demo.php:138
+msgid "blog-commerce-membership-custom-site"
+msgstr ""
+
+#: ../class/class-pattern.php:20
+msgid ""
+"<!-- You may edit this page, the title and the slug, but it requires a "
+"minimum of the correct page shortcode to function. You can recreate the "
+"original default page by deleting this one by moving it to trash and calling "
+"the page in the front end.-->\n"
+msgstr ""
+
+#: ../class/class-pattern.php:35 ../class/class-pattern.php:202
+#, php-format
+msgid "%s Archive Pattern"
+msgstr ""
+
+#: ../class/class-pattern.php:36 ../class/class-pattern.php:203
+#, php-format
+msgid "%s-archive-pattern"
+msgstr ""
+
+#: ../class/class-pattern.php:62 ../class/class-pattern.php:229
+#, php-format
+msgid "%s Taxonomy Pattern"
+msgstr ""
+
+#: ../class/class-pattern.php:63 ../class/class-pattern.php:230
+#, php-format
+msgid "%s-taxonomy-pattern"
+msgstr ""
+
+#: ../class/class-pattern.php:89 ../class/class-pattern.php:256
+#, php-format
+msgid "%s Contact Pattern"
+msgstr ""
+
+#: ../class/class-pattern.php:90 ../class/class-pattern.php:257
+#, php-format
+msgid "%s-contact-pattern"
+msgstr ""
+
+#: ../class/class-pattern.php:116 ../class/class-pattern.php:283
+#, php-format
+msgid "%s Search Pattern"
+msgstr ""
+
+#: ../class/class-pattern.php:117 ../class/class-pattern.php:284
+#, php-format
+msgid "%s-search-pattern"
+msgstr ""
+
+#: ../class/class-pattern.php:143 ../class/class-pattern.php:310
+#, php-format
+msgid "%s Single Pattern"
+msgstr ""
+
+#: ../class/class-pattern.php:144 ../class/class-pattern.php:311
+#, php-format
+msgid "%s-single-pattern"
+msgstr ""
+
+#: ../class/class-pattern.php:170 ../class/class-pattern.php:337
+#, php-format
+msgid "Add %s"
+msgstr ""
+
+#: ../class/class-pattern.php:171 ../class/class-pattern.php:338
+#, php-format
+msgid "add-%s"
+msgstr ""
+
+#: ../class/class-pattern.php:364 ../class/class-widget-landing-page.php:12
+#: ../class/class-widget-landing-page.php:63 ../ui-admin/about.php:34
+msgid "Landing Page"
+msgstr ""
+
+#: ../class/class-pattern.php:365
+msgid "landing-page"
 msgstr ""
 
 #: ../class/class-term-img.php:98
@@ -321,19 +445,19 @@ msgstr ""
 msgid "Invalid taxonomy"
 msgstr ""
 
-#: ../class/class-term-img.php:281
+#: ../class/class-term-img.php:304
 msgid "Enable Images for"
 msgstr ""
 
-#: ../class/class-term-img.php:284
+#: ../class/class-term-img.php:307
 msgid "Image Sizes"
 msgstr ""
 
-#: ../class/class-term-img.php:315
+#: ../class/class-term-img.php:338
 msgid "Thumbnail Size: "
 msgstr ""
 
-#: ../class/class-term-img.php:320
+#: ../class/class-term-img.php:343
 #, php-format
 msgid ""
 "Width <input type=\"text\" id=\"%s_thumb_width\" name=\"%s[%s]"
@@ -342,11 +466,11 @@ msgid ""
 "><br/>"
 msgstr ""
 
-#: ../class/class-term-img.php:335
+#: ../class/class-term-img.php:358
 msgid "Medium Size: <br/>"
 msgstr ""
 
-#: ../class/class-term-img.php:339
+#: ../class/class-term-img.php:362
 #, php-format
 msgid ""
 "Width <input type=\"text\" id=\"%s_medium_width\" name=\"%s[%s]"
@@ -355,11 +479,11 @@ msgid ""
 "><br/>"
 msgstr ""
 
-#: ../class/class-term-img.php:354
+#: ../class/class-term-img.php:377
 msgid "Large Size: <br/>"
 msgstr ""
 
-#: ../class/class-term-img.php:358
+#: ../class/class-term-img.php:381
 #, php-format
 msgid ""
 "Width <input type=\"text\" id=\"%s_large_width\" name=\"%s[%s]"
@@ -368,29 +492,196 @@ msgid ""
 "><br/>"
 msgstr ""
 
-#: ../class/class-term-img.php:390
+#: ../class/class-term-img.php:413
 #, php-format
 msgid "Term Images Settings %s"
 msgstr ""
 
-#: ../class/class-widgets.php:12
-msgid "The most recent job posts on your site"
+#: ../class/class-widget-add-expert.php:11
+msgid "Let user become expert"
 msgstr ""
 
-#: ../class/class-widgets.php:13 ../class/class-widgets.php:39
-msgid "Recent Job Posts"
+#: ../class/class-widget-add-expert.php:12
+#: ../class/class-widget-add-expert.php:53
+msgid "Become Expert"
 msgstr ""
 
-#: ../class/class-widgets.php:161
+#: ../class/class-widget-add-expert.php:63
+msgid "Your title"
+msgstr ""
+
+#: ../class/class-widget-add-expert.php:65
+#: ../class/class-widget-post-job.php:60
+#: ../ui-front/content-contact-job.php:65
+msgid "Submit"
+msgstr ""
+
+#: ../class/class-widget-add-expert.php:101
+#: ../class/class-widget-post-job.php:96
+#: ../class/class-widget-recent-experts.php:140
+#: ../class/class-widget-recent-job-posts.php:202
+#: ../class/class-widget-search-experts.php:97
+#: ../class/class-widget-search-jobs.php:120
 msgid "Title:"
 msgstr ""
 
-#: ../class/class-widgets.php:166
+#: ../class/class-widget-add-expert.php:105
+#: ../class/class-widget-landing-page.php:213
+#: ../class/class-widget-post-job.php:100
+#: ../class/class-widget-search-experts.php:101
+#: ../class/class-widget-search-jobs.php:124
+msgid "Who can view:"
+msgstr ""
+
+#: ../class/class-widget-add-expert.php:107
+#: ../class/class-widget-landing-page.php:215
+#: ../class/class-widget-post-job.php:102
+#: ../class/class-widget-search-experts.php:103
+#: ../class/class-widget-search-jobs.php:126
+msgid "Both"
+msgstr ""
+
+#: ../class/class-widget-add-expert.php:108
+#: ../class/class-widget-landing-page.php:216
+#: ../class/class-widget-post-job.php:103
+#: ../class/class-widget-search-experts.php:104
+#: ../class/class-widget-search-jobs.php:127
+msgid "Signed in"
+msgstr ""
+
+#: ../class/class-widget-add-expert.php:109
+#: ../class/class-widget-landing-page.php:217
+#: ../class/class-widget-post-job.php:104
+#: ../class/class-widget-search-experts.php:105
+#: ../class/class-widget-search-jobs.php:128
+msgid "Not sign in"
+msgstr ""
+
+#: ../class/class-widget-landing-page.php:11
+msgid "Jobs+ Landing Page"
+msgstr ""
+
+#: ../class/class-widget-landing-page.php:148
+msgid "Jobs"
+msgstr ""
+
+#: ../class/class-widget-landing-page.php:150
+msgid "Job Widget Title:"
+msgstr ""
+
+#: ../class/class-widget-landing-page.php:155
+msgid "Number of job posts to show:"
+msgstr ""
+
+#: ../class/class-widget-landing-page.php:161
+#: ../class/class-widget-recent-job-posts.php:213
+msgid "Display job categories?"
+msgstr ""
+
+#: ../class/class-widget-landing-page.php:165
+#: ../class/class-widget-landing-page.php:205
+#: ../class/class-widget-recent-experts.php:153
+#: ../class/class-widget-recent-job-posts.php:216
+msgid "Order by"
+msgstr ""
+
+#: ../class/class-widget-landing-page.php:172
+#: ../class/class-widget-recent-job-posts.php:223
+#: ../lib/custompress/ui-admin/add-post-type.php:102
+#: ../lib/custompress/ui-admin/edit-post-type.php:118
+msgid "Categories"
+msgstr ""
+
+#: ../class/class-widget-landing-page.php:188
+msgid "Experts"
+msgstr ""
+
+#: ../class/class-widget-landing-page.php:190
+msgid "Expert Widget Title:"
+msgstr ""
+
+#: ../class/class-widget-landing-page.php:195
+msgid "Number of experts to show:"
+msgstr ""
+
+#: ../class/class-widget-landing-page.php:200
+msgid "Number of expert per line:"
+msgstr ""
+
+#: ../class/class-widget-post-job.php:11
+msgid "Post new job widget"
+msgstr ""
+
+#: ../class/class-widget-post-job.php:12 ../class/class-widget-post-job.php:48
+msgid "Post new job"
+msgstr ""
+
+#: ../class/class-widget-post-job.php:58
+msgid "Job title"
+msgstr ""
+
+#: ../class/class-widget-recent-experts.php:11
+msgid "The most recent experts on your site"
+msgstr ""
+
+#: ../class/class-widget-recent-experts.php:12
+msgid "Recent Experts"
+msgstr ""
+
+#: ../class/class-widget-recent-experts.php:41
+msgid "Our Experts"
+msgstr ""
+
+#: ../class/class-widget-recent-experts.php:98
+msgid "Browse experts..."
+msgstr ""
+
+#: ../class/class-widget-recent-experts.php:145
+#: ../class/class-widget-recent-job-posts.php:207
 msgid "Number of posts to show:"
 msgstr ""
 
-#: ../class/class-widgets.php:172
-msgid "Display job categories?"
+#: ../class/class-widget-recent-experts.php:149
+msgid "Number of posts per line:"
+msgstr ""
+
+#: ../class/class-widget-recent-job-posts.php:11
+msgid "The most recent job posts on your site"
+msgstr ""
+
+#: ../class/class-widget-recent-job-posts.php:12
+#: ../class/class-widget-recent-job-posts.php:41
+msgid "Recent Job Posts"
+msgstr ""
+
+#: ../class/class-widget-recent-job-posts.php:158
+msgid "Browse more jobs..."
+msgstr ""
+
+#: ../class/class-widget-search-experts.php:11
+msgid "Search Experts on your site"
+msgstr ""
+
+#: ../class/class-widget-search-experts.php:12
+#: ../class/class-widget-search-experts.php:48
+msgid "Search Experts"
+msgstr ""
+
+#: ../class/class-widget-search-jobs.php:11
+msgid "Search Jobs on your site"
+msgstr ""
+
+#: ../class/class-widget-search-jobs.php:12
+#: ../class/class-widget-search-jobs.php:46
+msgid "Search Jobs"
+msgstr ""
+
+#: ../class/class-widget-search-jobs.php:69 ../ui-front/sc-job-search.php:30
+msgid "Latest"
+msgstr ""
+
+#: ../class/class-widget-search-jobs.php:74 ../ui-front/sc-job-search.php:35
+msgid "About to End"
 msgstr ""
 
 #: ../lib/custompress/core/admin.php:134 ../lib/custompress/core/admin.php:157
@@ -414,7 +705,7 @@ msgstr ""
 msgid "Invalid Taxonomy name in [tax ] shortcode"
 msgstr ""
 
-#: ../lib/custompress/core/core.php:293
+#: ../lib/custompress/core/core.php:292
 msgid "Security check failed!"
 msgstr ""
 
@@ -657,8 +948,8 @@ msgstr ""
 #: ../lib/custompress/ui-admin/edit-post-type.php:27
 #: ../lib/custompress/ui-admin/edit-taxonomy.php:35
 #: ../lib/custompress/ui-admin/edit-taxonomy.php:39
-#: ../lib/custompress/ui-admin/post-types.php:37
-#: ../lib/custompress/ui-admin/post-types.php:50
+#: ../lib/custompress/ui-admin/post-types.php:38
+#: ../lib/custompress/ui-admin/post-types.php:51
 msgid "Post Type"
 msgstr ""
 
@@ -681,8 +972,8 @@ msgstr ""
 
 #: ../lib/custompress/ui-admin/add-post-type.php:3
 #: ../lib/custompress/ui-admin/add-post-type.php:783
-#: ../lib/custompress/ui-admin/post-types.php:31
-#: ../lib/custompress/ui-admin/post-types.php:142
+#: ../lib/custompress/ui-admin/post-types.php:32
+#: ../lib/custompress/ui-admin/post-types.php:143
 msgid "Add Post Type"
 msgstr ""
 
@@ -698,8 +989,8 @@ msgstr ""
 #: ../lib/custompress/ui-admin/add-post-type.php:27
 #: ../lib/custompress/ui-admin/edit-post-type.php:39
 #: ../lib/custompress/ui-admin/edit-post-type.php:43
-#: ../lib/custompress/ui-admin/post-types.php:41
-#: ../lib/custompress/ui-admin/post-types.php:54
+#: ../lib/custompress/ui-admin/post-types.php:42
+#: ../lib/custompress/ui-admin/post-types.php:55
 msgid "Supports"
 msgstr ""
 
@@ -740,7 +1031,7 @@ msgstr ""
 
 #: ../lib/custompress/ui-admin/add-post-type.php:53
 #: ../lib/custompress/ui-admin/edit-post-type.php:69
-#: ../ui-front/content-single-pro.php:171
+#: ../ui-front/content-single-pro.php:172
 msgid "Excerpt"
 msgstr ""
 
@@ -808,11 +1099,6 @@ msgstr ""
 msgid "Assign regular taxonomies to this Post Type."
 msgstr ""
 
-#: ../lib/custompress/ui-admin/add-post-type.php:102
-#: ../lib/custompress/ui-admin/edit-post-type.php:118
-msgid "Categories"
-msgstr ""
-
 #: ../lib/custompress/ui-admin/add-post-type.php:109
 #: ../lib/custompress/ui-admin/edit-post-type.php:125
 msgid "Tags"
@@ -822,18 +1108,19 @@ msgstr ""
 #: ../lib/custompress/ui-admin/add-post-type.php:122
 #: ../lib/custompress/ui-admin/edit-post-type.php:135
 #: ../lib/custompress/ui-admin/edit-post-type.php:139
-#: ../lib/custompress/ui-admin/post-types.php:42
-#: ../lib/custompress/ui-admin/post-types.php:55
+#: ../lib/custompress/ui-admin/post-types.php:43
+#: ../lib/custompress/ui-admin/post-types.php:56
 msgid "Capability Type"
 msgstr ""
 
 #: ../lib/custompress/ui-admin/add-post-type.php:128
 #: ../lib/custompress/ui-admin/custom-fields.php:109
 #: ../lib/custompress/ui-admin/edit-post-type.php:147
-#: ../lib/custompress/ui-admin/post-types.php:85
-#: ../lib/custompress/ui-admin/taxonomies.php:74
-#: ../ui-front/content-single-pro.php:149
-#: ../ui-front/content-update-pro.php:208
+#: ../lib/custompress/ui-admin/post-types.php:86
+#: ../lib/custompress/ui-admin/taxonomies.php:74 ../ui-admin/about.php:30
+#: ../ui-admin/about.php:35 ../ui-admin/about.php:39
+#: ../ui-front/content-single-pro.php:150
+#: ../ui-front/content-update-pro.php:209
 msgid "Edit"
 msgstr ""
 
@@ -954,8 +1241,8 @@ msgstr ""
 #: ../lib/custompress/ui-admin/add-taxonomy.php:53
 #: ../lib/custompress/ui-admin/edit-post-type.php:237
 #: ../lib/custompress/ui-admin/edit-taxonomy.php:60
-#: ../lib/custompress/ui-admin/post-types.php:38
-#: ../lib/custompress/ui-admin/post-types.php:51
+#: ../lib/custompress/ui-admin/post-types.php:39
+#: ../lib/custompress/ui-admin/post-types.php:52
 #: ../lib/custompress/ui-admin/taxonomies.php:32
 #: ../lib/custompress/ui-admin/taxonomies.php:42
 msgid "Name"
@@ -1098,8 +1385,8 @@ msgstr ""
 #: ../lib/custompress/ui-admin/custom-fields.php:61
 #: ../lib/custompress/ui-admin/edit-post-type.php:347
 #: ../lib/custompress/ui-admin/edit-post-type.php:351
-#: ../lib/custompress/ui-admin/post-types.php:39
-#: ../lib/custompress/ui-admin/post-types.php:52
+#: ../lib/custompress/ui-admin/post-types.php:40
+#: ../lib/custompress/ui-admin/post-types.php:53
 msgid "Description"
 msgstr ""
 
@@ -1126,8 +1413,8 @@ msgstr ""
 #: ../lib/custompress/ui-admin/add-post-type.php:310
 #: ../lib/custompress/ui-admin/edit-post-type.php:377
 #: ../lib/custompress/ui-admin/edit-post-type.php:381
-#: ../lib/custompress/ui-admin/post-types.php:40
-#: ../lib/custompress/ui-admin/post-types.php:53
+#: ../lib/custompress/ui-admin/post-types.php:41
+#: ../lib/custompress/ui-admin/post-types.php:54
 msgid "Menu Icon"
 msgstr ""
 
@@ -1144,8 +1431,8 @@ msgstr ""
 #: ../lib/custompress/ui-admin/edit-post-type.php:431
 #: ../lib/custompress/ui-admin/edit-taxonomy.php:219
 #: ../lib/custompress/ui-admin/edit-taxonomy.php:223
-#: ../lib/custompress/ui-admin/post-types.php:43
-#: ../lib/custompress/ui-admin/post-types.php:56
+#: ../lib/custompress/ui-admin/post-types.php:44
+#: ../lib/custompress/ui-admin/post-types.php:57
 #: ../lib/custompress/ui-admin/taxonomies.php:34
 #: ../lib/custompress/ui-admin/taxonomies.php:44
 msgid "Public"
@@ -1197,7 +1484,7 @@ msgstr ""
 
 #: ../lib/custompress/ui-admin/add-post-type.php:360
 #: ../lib/custompress/ui-admin/edit-post-type.php:463
-#: ../lib/custompress/ui-admin/post-types.php:112
+#: ../lib/custompress/ui-admin/post-types.php:113
 #: ../lib/custompress/ui-admin/taxonomies.php:107
 msgid "Advanced"
 msgstr ""
@@ -1282,8 +1569,8 @@ msgstr ""
 #: ../lib/custompress/ui-admin/edit-post-type.php:572
 #: ../lib/custompress/ui-admin/edit-taxonomy.php:338
 #: ../lib/custompress/ui-admin/edit-taxonomy.php:342
-#: ../lib/custompress/ui-admin/post-types.php:44
-#: ../lib/custompress/ui-admin/post-types.php:57
+#: ../lib/custompress/ui-admin/post-types.php:45
+#: ../lib/custompress/ui-admin/post-types.php:58
 #: ../lib/custompress/ui-admin/taxonomies.php:35
 #: ../lib/custompress/ui-admin/taxonomies.php:45
 msgid "Hierarchical"
@@ -1330,8 +1617,8 @@ msgstr ""
 #: ../lib/custompress/ui-admin/edit-post-type.php:624
 #: ../lib/custompress/ui-admin/edit-taxonomy.php:366
 #: ../lib/custompress/ui-admin/edit-taxonomy.php:370
-#: ../lib/custompress/ui-admin/post-types.php:45
-#: ../lib/custompress/ui-admin/post-types.php:58
+#: ../lib/custompress/ui-admin/post-types.php:46
+#: ../lib/custompress/ui-admin/post-types.php:59
 #: ../lib/custompress/ui-admin/taxonomies.php:36
 #: ../lib/custompress/ui-admin/taxonomies.php:46
 msgid "Rewrite"
@@ -1862,13 +2149,13 @@ msgid "Embed Code"
 msgstr ""
 
 #: ../lib/custompress/ui-admin/custom-fields.php:117
-#: ../lib/custompress/ui-admin/post-types.php:82
+#: ../lib/custompress/ui-admin/post-types.php:83
 #: ../lib/custompress/ui-admin/taxonomies.php:83
 msgid "Edit in Network Admin."
 msgstr ""
 
 #: ../lib/custompress/ui-admin/custom-fields.php:122
-#: ../lib/custompress/ui-admin/post-types.php:88
+#: ../lib/custompress/ui-admin/post-types.php:89
 #: ../lib/custompress/ui-admin/taxonomies.php:88
 msgid "Delete"
 msgstr ""
@@ -1878,13 +2165,13 @@ msgid "Field and values"
 msgstr ""
 
 #: ../lib/custompress/ui-admin/custom-fields.php:131
-#: ../lib/custompress/ui-admin/post-types.php:96
+#: ../lib/custompress/ui-admin/post-types.php:97
 #: ../lib/custompress/ui-admin/taxonomies.php:96
-#: ../ui-front/content-contact-job.php:50
-#: ../ui-front/content-contact-pro.php:51
-#: ../ui-front/content-update-job.php:304
-#: ../ui-front/content-update-job.php:306
-#: ../ui-front/content-update-pro.php:274
+#: ../ui-front/content-contact-job.php:66
+#: ../ui-front/content-contact-pro.php:64
+#: ../ui-front/content-update-job.php:309
+#: ../ui-front/content-update-job.php:311
+#: ../ui-front/content-update-pro.php:275
 msgid "Cancel"
 msgstr ""
 
@@ -1928,18 +2215,18 @@ msgstr ""
 msgid "Edit Post Type"
 msgstr ""
 
-#: ../lib/custompress/ui-admin/edit-post-type.php:180 ../ui-admin/job.php:139
-#: ../ui-admin/pro.php:139
+#: ../lib/custompress/ui-admin/edit-post-type.php:180 ../ui-admin/job.php:140
+#: ../ui-admin/pro.php:140
 msgid "Role Capabilities Settings"
 msgstr ""
 
-#: ../lib/custompress/ui-admin/edit-post-type.php:184 ../ui-admin/job.php:144
-#: ../ui-admin/pro.php:144
+#: ../lib/custompress/ui-admin/edit-post-type.php:184 ../ui-admin/job.php:145
+#: ../ui-admin/pro.php:145
 msgid "Assign Capabilities"
 msgstr ""
 
-#: ../lib/custompress/ui-admin/edit-post-type.php:197 ../ui-admin/job.php:157
-#: ../ui-admin/pro.php:157
+#: ../lib/custompress/ui-admin/edit-post-type.php:197 ../ui-admin/job.php:158
+#: ../ui-admin/pro.php:158
 #, php-format
 msgid "Select a role to which you want to assign %s capabilities."
 msgstr ""
@@ -2070,27 +2357,27 @@ msgstr ""
 msgid "Taxonomies"
 msgstr ""
 
-#: ../lib/custompress/ui-admin/post-types.php:85
+#: ../lib/custompress/ui-admin/post-types.php:86
 msgid "Edit the post type"
 msgstr ""
 
-#: ../lib/custompress/ui-admin/post-types.php:95
+#: ../lib/custompress/ui-admin/post-types.php:96
 #: ../lib/custompress/ui-admin/taxonomies.php:95
 msgid "Confirm"
 msgstr ""
 
-#: ../lib/custompress/ui-admin/post-types.php:114
-#: ../lib/custompress/ui-admin/post-types.php:121
-#: ../lib/custompress/ui-admin/post-types.php:128
+#: ../lib/custompress/ui-admin/post-types.php:115
+#: ../lib/custompress/ui-admin/post-types.php:122
+#: ../lib/custompress/ui-admin/post-types.php:129
 #: ../lib/custompress/ui-admin/taxonomies.php:109
 #: ../lib/custompress/ui-admin/taxonomies.php:116
 #: ../lib/custompress/ui-admin/taxonomies.php:123
 msgid "True"
 msgstr ""
 
-#: ../lib/custompress/ui-admin/post-types.php:116
-#: ../lib/custompress/ui-admin/post-types.php:123
-#: ../lib/custompress/ui-admin/post-types.php:130
+#: ../lib/custompress/ui-admin/post-types.php:117
+#: ../lib/custompress/ui-admin/post-types.php:124
+#: ../lib/custompress/ui-admin/post-types.php:131
 #: ../lib/custompress/ui-admin/taxonomies.php:111
 #: ../lib/custompress/ui-admin/taxonomies.php:118
 #: ../lib/custompress/ui-admin/taxonomies.php:125
@@ -2435,101 +2722,122 @@ msgstr ""
 msgid "Content Type Updated"
 msgstr ""
 
-#: ../ui-admin/job.php:14 ../ui-admin/pro.php:15 ../ui-admin/settings.php:13
-#: ../ui-admin/shortcodes.php:11
-#, php-format
-msgid "Jobs+ Settings %s"
+#: ../ui-admin/about.php:16
+msgid "Getting Started with Jobs +"
 msgstr ""
 
-#: ../ui-admin/job.php:20 ../ui-admin/pro.php:21
+#: ../ui-admin/about.php:29 ../ui-admin/about.php:38
+#, php-format
+msgid "%s Page"
+msgstr ""
+
+#: ../ui-admin/about.php:30 ../ui-admin/about.php:35 ../ui-admin/about.php:39
+msgid " this pattern"
+msgstr ""
+
+#: ../ui-admin/about.php:31 ../ui-admin/about.php:40
+msgid "Add"
+msgstr ""
+
+#: ../ui-admin/about.php:31 ../ui-admin/about.php:40
+#, php-format
+msgid "a new %s"
+msgstr ""
+
+#: ../ui-admin/job.php:14 ../ui-admin/pro.php:15
+#, php-format
+msgid "Jobs+ %s Settings"
+msgstr ""
+
+#: ../ui-admin/job.php:19 ../ui-admin/pro.php:20
 #, php-format
 msgid "%s Status Options"
 msgstr ""
 
-#: ../ui-admin/job.php:27 ../ui-admin/pro.php:29
+#: ../ui-admin/job.php:26 ../ui-admin/pro.php:28
 #, php-format
 msgid "Show Edit Button on %s Form"
 msgstr ""
 
-#: ../ui-admin/job.php:31 ../ui-admin/pro.php:33
+#: ../ui-admin/job.php:30 ../ui-admin/pro.php:32
 msgid "Show edit button"
 msgstr ""
 
-#: ../ui-admin/job.php:32
+#: ../ui-admin/job.php:31
 #, php-format
 msgid ""
 "Displays an edit button on the %s form and Archive list. Some themes already "
 "have an edit button."
 msgstr ""
 
-#: ../ui-admin/job.php:38 ../ui-admin/pro.php:40
+#: ../ui-admin/job.php:37 ../ui-admin/pro.php:39
 #, php-format
 msgid "Maximum %s Records per User"
 msgstr ""
 
-#: ../ui-admin/job.php:42 ../ui-admin/pro.php:44
+#: ../ui-admin/job.php:41 ../ui-admin/pro.php:43
 #, php-format
 msgid "Maximum number of %s profiles for each user."
 msgstr ""
 
-#: ../ui-admin/job.php:48 ../ui-admin/pro.php:50
+#: ../ui-admin/job.php:47 ../ui-admin/pro.php:49
 #, php-format
 msgid "%s Records per Page"
 msgstr ""
 
-#: ../ui-admin/job.php:52
+#: ../ui-admin/job.php:51
 #, php-format
 msgid "Maximum number of %s records per archive page."
 msgstr ""
 
-#: ../ui-admin/job.php:58
+#: ../ui-admin/job.php:57
 msgid "Use Budget Range"
 msgstr ""
 
-#: ../ui-admin/job.php:63
+#: ../ui-admin/job.php:62
 msgid "Use Min and Max budget fields"
 msgstr ""
 
-#: ../ui-admin/job.php:65
+#: ../ui-admin/job.php:64
 msgid "Displays both minimum and maximum budget fields."
 msgstr ""
 
-#: ../ui-admin/job.php:71 ../ui-admin/pro.php:60
+#: ../ui-admin/job.php:70 ../ui-admin/pro.php:59
 #, php-format
 msgid "Newly Created %s Status Options"
 msgstr ""
 
-#: ../ui-admin/job.php:75 ../ui-admin/pro.php:64
+#: ../ui-admin/job.php:74 ../ui-admin/pro.php:63
 msgid "Published"
 msgstr ""
 
-#: ../ui-admin/job.php:77 ../ui-admin/pro.php:66
+#: ../ui-admin/job.php:76 ../ui-admin/pro.php:65
 #, php-format
 msgid "Allow members to publish %s themselves."
 msgstr ""
 
-#: ../ui-admin/job.php:82 ../ui-admin/pro.php:71
-#: ../ui-front/content-update-pro.php:268
+#: ../ui-admin/job.php:81 ../ui-admin/pro.php:70
+#: ../ui-front/content-update-pro.php:269
 msgid "Pending Review"
 msgstr ""
 
-#: ../ui-admin/job.php:84 ../ui-admin/pro.php:73
+#: ../ui-admin/job.php:83 ../ui-admin/pro.php:72
 #, php-format
 msgid "%s is pending review by an administrator."
 msgstr ""
 
-#: ../ui-admin/job.php:90 ../ui-admin/pro.php:79
-#: ../ui-front/content-single-pro.php:245
-#: ../ui-front/content-update-job.php:300
-#: ../ui-front/content-update-pro.php:271
+#: ../ui-admin/job.php:89 ../ui-admin/pro.php:78
+#: ../ui-front/content-single-pro.php:246
+#: ../ui-front/content-update-job.php:305
+#: ../ui-front/content-update-pro.php:272
 msgid "Draft"
 msgstr ""
 
-#: ../ui-admin/job.php:92 ../ui-admin/pro.php:81
+#: ../ui-admin/job.php:91 ../ui-admin/pro.php:80
 msgid "Allow members to save Drafts."
 msgstr ""
 
-#: ../ui-admin/job.php:101 ../ui-admin/pro.php:101
+#: ../ui-admin/job.php:100 ../ui-admin/pro.php:100
 #, php-format
 msgid "%s Image Storage"
 msgstr ""
@@ -2547,158 +2855,166 @@ msgid ""
 "%s"
 msgstr ""
 
-#: ../ui-admin/job.php:115 ../ui-admin/pro.php:115
+#: ../ui-admin/job.php:116 ../ui-admin/pro.php:116
 msgid "Maximum Gallery Images"
 msgstr ""
 
-#: ../ui-admin/job.php:119
+#: ../ui-admin/job.php:120
 msgid ""
 "Maximum number of images that can be uploaded to the $s portfolio gallery. "
 "Default is 4"
 msgstr ""
 
-#: ../ui-admin/job.php:124 ../ui-admin/pro.php:124
+#: ../ui-admin/job.php:125 ../ui-admin/pro.php:125
 #, php-format
 msgid "%s image size"
 msgstr ""
 
-#: ../ui-admin/job.php:127 ../ui-admin/pro.php:127
+#: ../ui-admin/job.php:128 ../ui-admin/pro.php:128
 msgid "width"
 msgstr ""
 
-#: ../ui-admin/job.php:128 ../ui-admin/pro.php:128
+#: ../ui-admin/job.php:129 ../ui-admin/pro.php:129
 msgid "height"
 msgstr ""
 
-#: ../ui-admin/job.php:129 ../ui-admin/pro.php:129
+#: ../ui-admin/job.php:130 ../ui-admin/pro.php:130
 #, php-format
 msgid "Size of the %s thumb-image. Defaults to 160x120."
 msgstr ""
 
-#: ../ui-admin/job.php:193 ../ui-admin/pro.php:192
+#: ../ui-admin/job.php:194 ../ui-admin/pro.php:193
 msgid "Notification Settings"
 msgstr ""
 
-#: ../ui-admin/job.php:197 ../ui-admin/pro.php:196
+#: ../ui-admin/job.php:198 ../ui-admin/pro.php:197
 msgid "Disable Contact Form:"
 msgstr ""
 
-#: ../ui-admin/job.php:201 ../ui-admin/pro.php:200
+#: ../ui-admin/job.php:202 ../ui-admin/pro.php:201
 msgid "disable contact form"
 msgstr ""
 
-#: ../ui-admin/job.php:205 ../ui-admin/pro.php:204
+#: ../ui-admin/job.php:207 ../ui-admin/pro.php:206
+msgid "Use CAPTCHA:"
+msgstr ""
+
+#: ../ui-admin/job.php:211 ../ui-admin/pro.php:210
+msgid "use the captcha image on the email form"
+msgstr ""
+
+#: ../ui-admin/job.php:216 ../ui-admin/pro.php:215
 msgid "CC the Administrator:"
 msgstr ""
 
-#: ../ui-admin/job.php:209 ../ui-admin/pro.php:208
+#: ../ui-admin/job.php:220 ../ui-admin/pro.php:219
 msgid "cc the administrator"
 msgstr ""
 
-#: ../ui-admin/job.php:213 ../ui-admin/pro.php:212
+#: ../ui-admin/job.php:224 ../ui-admin/pro.php:223
 msgid "CC the Sender:"
 msgstr ""
 
-#: ../ui-admin/job.php:217 ../ui-admin/pro.php:216
+#: ../ui-admin/job.php:228 ../ui-admin/pro.php:227
 msgid "cc the sender"
 msgstr ""
 
-#: ../ui-admin/job.php:221 ../ui-admin/pro.php:220
+#: ../ui-admin/job.php:232 ../ui-admin/pro.php:231
 msgid "Email Subject:"
 msgstr ""
 
-#: ../ui-admin/job.php:225 ../ui-admin/job.php:235 ../ui-admin/pro.php:224
-#: ../ui-admin/pro.php:234
+#: ../ui-admin/job.php:236 ../ui-admin/job.php:246 ../ui-admin/pro.php:235
+#: ../ui-admin/pro.php:245
 msgid ""
 "Variables: TO_NAME, FROM_NAME, FROM_EMAIL, FROM_MESSAGE, POST_TITLE, "
 "POST_LINK, SITE_NAME"
 msgstr ""
 
-#: ../ui-admin/job.php:229 ../ui-admin/pro.php:228
+#: ../ui-admin/job.php:240 ../ui-admin/pro.php:239
 msgid "Email Content:"
 msgstr ""
 
-#: ../ui-admin/job.php:244 ../ui-admin/job.php:250 ../ui-admin/pro.php:243
-#: ../ui-admin/pro.php:249
+#: ../ui-admin/job.php:255 ../ui-admin/job.php:261 ../ui-admin/pro.php:254
+#: ../ui-admin/pro.php:260
 msgid "Terms of Service Text"
 msgstr ""
 
-#: ../ui-admin/job.php:255 ../ui-admin/pro.php:254
+#: ../ui-admin/job.php:266 ../ui-admin/pro.php:265
 msgid "Text for \"Terms of Service\""
 msgstr ""
 
-#: ../ui-admin/page_creation.php:18 ../ui-admin/page_creation.php:25
+#: ../ui-admin/page-creation.php:18 ../ui-admin/page-creation.php:25
 msgid "Page Creation"
 msgstr ""
 
-#: ../ui-admin/page_creation.php:32
+#: ../ui-admin/page-creation.php:32
 msgid "Add Job"
 msgstr ""
 
-#: ../ui-admin/page_creation.php:41 ../ui-admin/page_creation.php:62
+#: ../ui-admin/page-creation.php:41 ../ui-admin/page-creation.php:62
 msgid "Select a page"
 msgstr ""
 
-#: ../ui-admin/page_creation.php:44 ../ui-admin/page_creation.php:65
+#: ../ui-admin/page-creation.php:44 ../ui-admin/page-creation.php:65
 msgid "Create Page"
 msgstr ""
 
-#: ../ui-admin/page_creation.php:46 ../ui-admin/page_creation.php:67
+#: ../ui-admin/page-creation.php:46 ../ui-admin/page-creation.php:67
 msgid "view page"
 msgstr ""
 
-#: ../ui-admin/page_creation.php:47 ../ui-admin/page_creation.php:68
+#: ../ui-admin/page-creation.php:47 ../ui-admin/page-creation.php:68
 msgid "edit page"
 msgstr ""
 
-#: ../ui-admin/page_creation.php:54
+#: ../ui-admin/page-creation.php:54
 msgid "Add Expert"
 msgstr ""
 
-#: ../ui-admin/page_creation.php:74
+#: ../ui-admin/page-creation.php:74
 msgid "Create Job Board page"
 msgstr ""
 
-#: ../ui-admin/page_creation.php:78
+#: ../ui-admin/page-creation.php:78
 msgid "Edit Page"
 msgstr ""
 
-#: ../ui-admin/page_creation.php:78
+#: ../ui-admin/page-creation.php:78
 msgid "View Page"
 msgstr ""
 
-#: ../ui-admin/page_creation.php:80
+#: ../ui-admin/page-creation.php:80
 msgid "Do you want to create a job board page ?"
 msgstr ""
 
-#: ../ui-admin/page_creation.php:81
+#: ../ui-admin/page-creation.php:81
 msgid "Yes, do that for me"
 msgstr ""
 
-#: ../ui-admin/page_creation.php:93 ../ui-admin/pro.php:264
+#: ../ui-admin/page-creation.php:93 ../ui-admin/pro.php:275
 msgid "Save Changes"
 msgstr ""
 
-#: ../ui-admin/pro.php:34
+#: ../ui-admin/pro.php:33
 msgid ""
 "Displays an edit button on the Pro form and Archive list. Some themes "
 "already have an edit button."
 msgstr ""
 
-#: ../ui-admin/pro.php:54
+#: ../ui-admin/pro.php:53
 #, php-format
 msgid "Maximum number of %s profiles per archive page."
 msgstr ""
 
-#: ../ui-admin/pro.php:87
+#: ../ui-admin/pro.php:86
 msgid "Show Ratings in Comments"
 msgstr ""
 
-#: ../ui-admin/pro.php:91
+#: ../ui-admin/pro.php:90
 msgid "Show comment authors rating of the pro"
 msgstr ""
 
-#: ../ui-admin/pro.php:92
+#: ../ui-admin/pro.php:91
 #, php-format
 msgid "Displays the rating given by the author of the comment for a %s."
 msgstr ""
@@ -2711,59 +3027,155 @@ msgid ""
 "Default is %2$s"
 msgstr ""
 
-#: ../ui-admin/pro.php:119
+#: ../ui-admin/pro.php:120
 #, php-format
 msgid ""
 "Maximum number of images that can be uploaded to the %s portfolio gallery. "
 "Default is 4"
 msgstr ""
 
-#: ../ui-admin/settings.php:19
+#: ../ui-admin/settings.php:14
+msgid "Jobs+ General Settings"
+msgstr ""
+
+#: ../ui-admin/settings.php:22
 msgid "General Options"
 msgstr ""
 
-#: ../ui-admin/settings.php:25 ../ui-admin/settings.php:29
+#: ../ui-admin/settings.php:29 ../ui-admin/settings.php:33
 #, php-format
 msgid "Enable %s Certification"
 msgstr ""
 
-#: ../ui-admin/settings.php:30
+#: ../ui-admin/settings.php:34
 msgid ""
 "Enable the certification checkbox on the users profile page so that the "
 "Administrator can mark them Certified."
 msgstr ""
 
-#: ../ui-admin/settings.php:36
+#: ../ui-admin/settings.php:40
 msgid "Certification Label"
 msgstr ""
 
-#: ../ui-admin/settings.php:39
+#: ../ui-admin/settings.php:43
 msgid "Jobs+ Certified"
 msgstr ""
 
-#: ../ui-admin/settings.php:40
+#: ../ui-admin/settings.php:44
 #, php-format
 msgid "%s Certification Label."
 msgstr ""
 
-#: ../ui-admin/settings.php:45
-msgid "Currency Symbol"
+#: ../ui-admin/settings.php:56
+msgid "New User Registration Options"
 msgstr ""
 
-#: ../ui-admin/settings.php:48 ../ui-front/content-single-job.php:25
-#: ../ui-front/content-single-job.php:27
-msgid "$"
+#: ../ui-admin/settings.php:62 ../ui-admin/settings.php:66
+msgid "Enable Fast Registration"
 msgstr ""
 
-#: ../ui-admin/settings.php:49
-msgid "Currency symbol for this site. Default \"$\""
+#: ../ui-admin/settings.php:67
+msgid ""
+"Enable Fast Registration, displays a popup registration form which allows "
+"either Login or Registration. When registering, no email confirmation is "
+"needed and they are immediately logged in."
 msgstr ""
 
-#: ../ui-admin/shortcodes.php:16
+#: ../ui-admin/settings.php:73
+msgid "CAPTCHA in Registration"
+msgstr ""
+
+#: ../ui-admin/settings.php:77
+msgid "Enable CAPTCHA in Registration"
+msgstr ""
+
+#: ../ui-admin/settings.php:78
+msgid ""
+"Enable a CAPTCHA image on the Fast Registration form. Send username and "
+"password to the registered email address"
+msgstr ""
+
+#: ../ui-admin/settings.php:84
+msgid "Email notification"
+msgstr ""
+
+#: ../ui-admin/settings.php:88
+msgid "Enable Email notification"
+msgstr ""
+
+#: ../ui-admin/settings.php:89
+msgid "Enable Email notification for Fast Registration."
+msgstr ""
+
+#: ../ui-admin/settings.php:95
+msgid "Top Registration Label"
+msgstr ""
+
+#: ../ui-admin/settings.php:98
+msgid "Login with your Username and Password"
+msgstr ""
+
+#: ../ui-admin/settings.php:99
+msgid "Text for the top of the Registration form."
+msgstr ""
+
+#: ../ui-admin/settings.php:105
+msgid "MIddle Registration Label"
+msgstr ""
+
+#: ../ui-admin/settings.php:108
+msgid "or if Registering, please enter all fields."
+msgstr ""
+
+#: ../ui-admin/settings.php:109
+msgid "Text for the middle of the Registration form."
+msgstr ""
+
+#: ../ui-admin/settings.php:115
+msgid "Registration Fields"
+msgstr ""
+
+#: ../ui-admin/settings.php:120
+msgid "First Name"
+msgstr ""
+
+#: ../ui-admin/settings.php:123
+msgid "Last Name"
+msgstr ""
+
+#: ../ui-admin/settings.php:126
+msgid "Display Name"
+msgstr ""
+
+#: ../ui-admin/settings.php:129
+msgid "Website"
+msgstr ""
+
+#: ../ui-admin/settings.php:132
+msgid "Nickname"
+msgstr ""
+
+#: ../ui-admin/settings.php:135 ../ui-front/content-single-pro.php:157
+msgid "Biography"
+msgstr ""
+
+#: ../ui-admin/settings.php:137
+msgid "User fields to be required when registering."
+msgstr ""
+
+#: ../ui-admin/settings.php:150
+msgid "Term Image Sizes"
+msgstr ""
+
+#: ../ui-admin/shortcodes.php:11
+msgid "Jobs+ Shortcode"
+msgstr ""
+
+#: ../ui-admin/shortcodes.php:15
 msgid "Jobs+ Shortcodes"
 msgstr ""
 
-#: ../ui-admin/shortcodes.php:19
+#: ../ui-admin/shortcodes.php:18
 msgid ""
 "Shortcodes allow you to include dynamic store content in posts and pages on "
 "your site. Simply type or paste them into your post or page content where "
@@ -2771,84 +3183,89 @@ msgid ""
 "like <em>[shortcode attr1=\"value\" attr2=\"value\"]</em>."
 msgstr ""
 
-#: ../ui-admin/shortcodes.php:22
+#: ../ui-admin/shortcodes.php:21
 msgid ""
 "Attributes: (\"|\" means use one OR the other. ie view=\"loggedin\" or style="
 "\"loggedout\" NOT style=\"loggedin|loggedout\")"
 msgstr ""
 
-#: ../ui-admin/shortcodes.php:23
+#: ../ui-admin/shortcodes.php:22
 msgid "text = <em>Text to display on a button</em>"
 msgstr ""
 
-#: ../ui-admin/shortcodes.php:24
+#: ../ui-admin/shortcodes.php:23
 msgid ""
 "view = <em>Whether the button is visible when loggedin, loggedout, or both</"
 "em>"
 msgstr ""
 
-#: ../ui-admin/shortcodes.php:25
+#: ../ui-admin/shortcodes.php:24
 msgid "class = <em>define a css class for this button.</em>"
 msgstr ""
 
-#: ../ui-admin/shortcodes.php:30 ../ui-admin/shortcodes.php:128
+#: ../ui-admin/shortcodes.php:29 ../ui-admin/shortcodes.php:139
 #, php-format
 msgid "%s Shortcodes"
 msgstr ""
 
-#: ../ui-admin/shortcodes.php:34
+#: ../ui-admin/shortcodes.php:33
 #, php-format
 msgid "%s Profile Button"
 msgstr ""
 
-#: ../ui-admin/shortcodes.php:42 ../ui-admin/shortcodes.php:58
-#: ../ui-admin/shortcodes.php:74 ../ui-admin/shortcodes.php:90
-#: ../ui-admin/shortcodes.php:140 ../ui-admin/shortcodes.php:156
-#: ../ui-admin/shortcodes.php:172
+#: ../ui-admin/shortcodes.php:41 ../ui-admin/shortcodes.php:57
+#: ../ui-admin/shortcodes.php:73 ../ui-admin/shortcodes.php:89
+#: ../ui-admin/shortcodes.php:151 ../ui-admin/shortcodes.php:167
+#: ../ui-admin/shortcodes.php:183
 msgid "someimage.jpg"
 msgstr ""
 
-#: ../ui-admin/shortcodes.php:45
+#: ../ui-admin/shortcodes.php:44
 msgid ""
 "Links to the current user's profiles. Generates a &lt;button&gt; &lt;/"
 "button&gt; with the HTML contents you define."
 msgstr ""
 
-#: ../ui-admin/shortcodes.php:50 ../ui-admin/shortcodes.php:132
+#: ../ui-admin/shortcodes.php:49 ../ui-admin/shortcodes.php:143
 #, php-format
 msgid "Post %s Button"
 msgstr ""
 
-#: ../ui-admin/shortcodes.php:61 ../ui-admin/shortcodes.php:143
+#: ../ui-admin/shortcodes.php:52 ../ui-admin/shortcodes.php:57
+#, php-format
+msgid "Post an %s"
+msgstr ""
+
+#: ../ui-admin/shortcodes.php:60 ../ui-admin/shortcodes.php:154
 #, php-format
 msgid ""
 "Links to the Post %s Page. Generates a &lt;button&gt; &lt;/button&gt; with "
 "the HTML contents you define."
 msgstr ""
 
-#: ../ui-admin/shortcodes.php:66 ../ui-admin/shortcodes.php:148
+#: ../ui-admin/shortcodes.php:65 ../ui-admin/shortcodes.php:159
 #, php-format
 msgid "%s Archive Button:"
 msgstr ""
 
-#: ../ui-admin/shortcodes.php:77 ../ui-admin/shortcodes.php:159
+#: ../ui-admin/shortcodes.php:76 ../ui-admin/shortcodes.php:170
 #, php-format
 msgid ""
 "Links to the %s Archive Page. Generates a &lt;button&gt; &lt;/button&gt; "
 "with the HTML contents you define."
 msgstr ""
 
-#: ../ui-admin/shortcodes.php:82 ../ui-admin/shortcodes.php:164
+#: ../ui-admin/shortcodes.php:81 ../ui-admin/shortcodes.php:175
 #, php-format
 msgid "%s Contact Button:"
 msgstr ""
 
-#: ../ui-admin/shortcodes.php:85 ../ui-admin/shortcodes.php:90
-#: ../ui-admin/shortcodes.php:167 ../ui-admin/shortcodes.php:172
+#: ../ui-admin/shortcodes.php:84 ../ui-admin/shortcodes.php:89
+#: ../ui-admin/shortcodes.php:178 ../ui-admin/shortcodes.php:183
 msgid "Contact"
 msgstr ""
 
-#: ../ui-admin/shortcodes.php:93
+#: ../ui-admin/shortcodes.php:92
 #, php-format
 msgid ""
 "Links to the %s email contact Page. If \"post\" is not used it defaults to "
@@ -2856,44 +3273,53 @@ msgid ""
 "with the HTML contents you define."
 msgstr ""
 
-#: ../ui-admin/shortcodes.php:98 ../ui-admin/shortcodes.php:180
+#: ../ui-admin/shortcodes.php:97 ../ui-admin/shortcodes.php:191
 #, php-format
 msgid "%s Search Form:"
 msgstr ""
 
-#: ../ui-admin/shortcodes.php:101 ../ui-admin/shortcodes.php:183
+#: ../ui-admin/shortcodes.php:100 ../ui-admin/shortcodes.php:194
 #, php-format
 msgid "Search %s for"
 msgstr ""
 
-#: ../ui-admin/shortcodes.php:103 ../ui-admin/shortcodes.php:185
-#: ../ui-admin/shortcodes.php:195
+#: ../ui-admin/shortcodes.php:102 ../ui-admin/shortcodes.php:196
 #, php-format
 msgid "Displays search form for %s search."
 msgstr ""
 
-#: ../ui-admin/shortcodes.php:108
+#: ../ui-admin/shortcodes.php:107 ../ui-admin/shortcodes.php:201
+#, php-format
+msgid "%s Poster:"
+msgstr ""
+
+#: ../ui-admin/shortcodes.php:112
+#, php-format
+msgid "Displays a group of random %s."
+msgstr ""
+
+#: ../ui-admin/shortcodes.php:117
 msgid "Rating stars:"
 msgstr ""
 
-#: ../ui-admin/shortcodes.php:113
+#: ../ui-admin/shortcodes.php:122
 msgid ""
-"Displays ratings stars for the owner of \"post\". If \"post\" is not used it "
+"Displays rating stars for the owner of \"post\". If \"post\" is not used it "
 "assumes the current global $post object."
 msgstr ""
 
-#: ../ui-admin/shortcodes.php:118
+#: ../ui-admin/shortcodes.php:127
 msgid "Rate this:"
 msgstr ""
 
-#: ../ui-admin/shortcodes.php:123
+#: ../ui-admin/shortcodes.php:132
 msgid ""
 "Allows input of stars rating for the owner of \"post\". If \"post\" is not "
 "used it assumes the current global $post object. \"resetable\" adds a button "
 "that allows clearing all stars."
 msgstr ""
 
-#: ../ui-admin/shortcodes.php:175
+#: ../ui-admin/shortcodes.php:186
 #, php-format
 msgid ""
 "Links to the %s Email Contact Page. If \"post\" is not used it defaults to "
@@ -2901,15 +3327,97 @@ msgid ""
 "with the HTML contents you define."
 msgstr ""
 
-#: ../ui-admin/shortcodes.php:190
+#: ../ui-admin/shortcodes.php:206
 #, php-format
-msgid "%s Poster:"
+msgid "Displays a group of recent %s."
 msgstr ""
 
-#: ../ui-front/content-archive-job.php:42
+#: ../ui-admin/shortcodes.php:211
+msgid "Landing Page:"
+msgstr ""
+
+#: ../ui-admin/shortcodes.php:216
+#, php-format
+msgid "Displays a combination of %s and %s posters above."
+msgstr ""
+
+#: ../ui-admin/shortcodes.php:221
+msgid "Pattern Page Shortcodes"
+msgstr ""
+
+#: ../ui-admin/shortcodes.php:225 ../ui-admin/shortcodes.php:286
+#, php-format
+msgid "%s Archive Page:"
+msgstr ""
+
+#: ../ui-admin/shortcodes.php:230 ../ui-admin/shortcodes.php:291
+#, php-format
+msgid ""
+"Displays the %s archive list. Only works in the %s Archive pattern page. "
+msgstr ""
+
+#: ../ui-admin/shortcodes.php:235 ../ui-admin/shortcodes.php:296
+#, php-format
+msgid "%s Taxonomy Page:"
+msgstr ""
+
+#: ../ui-admin/shortcodes.php:240 ../ui-admin/shortcodes.php:301
+#, php-format
+msgid ""
+"Displays the %s jbp_category and jbp_tags lists. Only works in the %s "
+"Taxononomy pattern page. "
+msgstr ""
+
+#: ../ui-admin/shortcodes.php:245 ../ui-admin/shortcodes.php:306
+#, php-format
+msgid "%s Contact Page:"
+msgstr ""
+
+#: ../ui-admin/shortcodes.php:250 ../ui-admin/shortcodes.php:311
+#, php-format
+msgid ""
+"Displays the %s Contact page. Only works in the %s Contact pattern page. "
+msgstr ""
+
+#: ../ui-admin/shortcodes.php:255 ../ui-admin/shortcodes.php:316
+#, php-format
+msgid "%s Search Page:"
+msgstr ""
+
+#: ../ui-admin/shortcodes.php:260 ../ui-admin/shortcodes.php:321
+#, php-format
+msgid ""
+"Displays the %s Search results page. Only works in the %s Search pattern "
+"page. "
+msgstr ""
+
+#: ../ui-admin/shortcodes.php:265 ../ui-admin/shortcodes.php:326
+#, php-format
+msgid "%s Single Page:"
+msgstr ""
+
+#: ../ui-admin/shortcodes.php:270 ../ui-admin/shortcodes.php:331
+#, php-format
+msgid ""
+"Displays a single %s listing page. Only works in the %s Single pattern page. "
+msgstr ""
+
+#: ../ui-admin/shortcodes.php:275 ../ui-admin/shortcodes.php:336
+#, php-format
+msgid "%s Update Page:"
+msgstr ""
+
+#: ../ui-admin/shortcodes.php:280 ../ui-admin/shortcodes.php:341
+#, php-format
+msgid ""
+"Displays the %s Add and Update page. Only works in the %s Update pattern "
+"page. "
+msgstr ""
+
+#: ../ui-front/content-archive-job.php:45
 #: ../ui-front/content-archive-pro.php:43
-#: ../ui-front/content-search-job.php:42 ../ui-front/content-search-pro.php:43
-#: ../ui-front/content-taxonomy-job.php:42
+#: ../ui-front/content-search-job.php:44 ../ui-front/content-search-pro.php:43
+#: ../ui-front/content-taxonomy-job.php:45
 #: ../ui-front/content-taxonomy-pro.php:43
 #, php-format
 msgid "No %s Found"
@@ -2919,26 +3427,32 @@ msgstr ""
 msgid "Contact "
 msgstr ""
 
-#: ../ui-front/content-contact-job.php:34
-#: ../ui-front/content-contact-pro.php:34
+#: ../ui-front/content-contact-job.php:38
+#: ../ui-front/content-contact-pro.php:36
 msgid "Your name: "
 msgstr ""
 
-#: ../ui-front/content-contact-job.php:39
-#: ../ui-front/content-contact-pro.php:39
+#: ../ui-front/content-contact-job.php:43
+#: ../ui-front/content-contact-pro.php:41
 msgid "Your email: "
 msgstr ""
 
-#: ../ui-front/content-contact-job.php:44
-#: ../ui-front/content-contact-pro.php:44
+#: ../ui-front/content-contact-job.php:48
+#: ../ui-front/content-contact-pro.php:46
 msgid "Content: "
 msgstr ""
 
-#: ../ui-front/content-contact-job.php:49
-msgid "Submit"
+#: ../ui-front/content-contact-job.php:54
+#: ../ui-front/content-contact-pro.php:52 ../ui-front/content-register.php:107
+msgid "Security image (required)"
 msgstr ""
 
-#: ../ui-front/content-contact-pro.php:50
+#: ../ui-front/content-contact-job.php:58
+#: ../ui-front/content-contact-pro.php:56 ../ui-front/content-register.php:111
+msgid "Enter the characters from the image."
+msgstr ""
+
+#: ../ui-front/content-contact-pro.php:63
 msgid "Send"
 msgstr ""
 
@@ -2963,348 +3477,399 @@ msgstr ""
 msgid "Last"
 msgstr ""
 
-#: ../ui-front/content-single-job.php:17
+#: ../ui-front/content-register.php:17
+msgid "Log in"
+msgstr ""
+
+#: ../ui-front/content-register.php:20
+msgid "Username/Email"
+msgstr ""
+
+#: ../ui-front/content-register.php:24 ../ui-front/content-register.php:65
+msgid "Password"
+msgstr ""
+
+#: ../ui-front/content-register.php:29
+msgid "Remember Me"
+msgstr ""
+
+#: ../ui-front/content-register.php:30
+msgid " remember me"
+msgstr ""
+
+#: ../ui-front/content-register.php:38
+msgid "Log In"
+msgstr ""
+
+#: ../ui-front/content-register.php:54
+msgid "Create an Account"
+msgstr ""
+
+#: ../ui-front/content-register.php:57
+msgid "Username"
+msgstr ""
+
+#: ../ui-front/content-register.php:61
+msgid "Your Email"
+msgstr ""
+
+#: ../ui-front/content-register.php:70
+msgid "Your First Name"
+msgstr ""
+
+#: ../ui-front/content-register.php:77
+msgid "Your Last Name"
+msgstr ""
+
+#: ../ui-front/content-register.php:83
+msgid "Your Display Name"
+msgstr ""
+
+#: ../ui-front/content-register.php:89
+msgid "Your Website"
+msgstr ""
+
+#: ../ui-front/content-register.php:95
+msgid "Your Nickname"
+msgstr ""
+
+#: ../ui-front/content-register.php:101
+msgid "Something about You"
+msgstr ""
+
+#: ../ui-front/content-register.php:120
+msgid "Create Account"
+msgstr ""
+
+#: ../ui-front/content-single-job.php:18
 #, php-format
 msgid "%d Days %dhrs"
 msgstr ""
 
-#: ../ui-front/content-single-job.php:19
+#: ../ui-front/content-single-job.php:20
 msgid "Expired"
 msgstr ""
 
-#: ../ui-front/content-single-job.php:42
+#: ../ui-front/content-single-job.php:46
 #, php-format
 msgid "Posted by: %s on %s"
 msgstr ""
 
-#: ../ui-front/content-single-job.php:44
+#: ../ui-front/content-single-job.php:49
 msgid "Job Budget"
 msgstr ""
 
-#: ../ui-front/content-single-job.php:45
+#: ../ui-front/content-single-job.php:50
 msgid "This job open for"
 msgstr ""
 
-#: ../ui-front/content-single-job.php:46
+#: ../ui-front/content-single-job.php:51
 msgid "Must be complete by"
 msgstr ""
 
-#: ../ui-front/content-single-job.php:61
+#: ../ui-front/content-single-job.php:59
+msgid "More like this..."
+msgstr ""
+
+#: ../ui-front/content-single-job.php:71
 msgid "<h2 class=\"job-cat\">Categories:</h2> "
 msgstr ""
 
-#: ../ui-front/content-single-job.php:66
+#: ../ui-front/content-single-job.php:76
 msgid "<h3>You will need to have these skills:"
 msgstr ""
 
-#: ../ui-front/content-single-job.php:70
+#: ../ui-front/content-single-job.php:80
 msgid "Examples:"
 msgstr ""
 
-#: ../ui-front/content-single-pro.php:69
+#: ../ui-front/content-single-pro.php:70
 msgid "Title: "
 msgstr ""
 
-#: ../ui-front/content-single-pro.php:75
+#: ../ui-front/content-single-pro.php:76
 msgid "No Title"
 msgstr ""
 
-#: ../ui-front/content-single-pro.php:78
+#: ../ui-front/content-single-pro.php:79
 msgid "Enter the Title"
 msgstr ""
 
-#: ../ui-front/content-single-pro.php:89
+#: ../ui-front/content-single-pro.php:90
 msgid "Your Tagline"
 msgstr ""
 
-#: ../ui-front/content-single-pro.php:90
+#: ../ui-front/content-single-pro.php:91
 msgid "Tagline"
 msgstr ""
 
-#: ../ui-front/content-single-pro.php:99
+#: ../ui-front/content-single-pro.php:100
 msgid "Your Name"
 msgstr ""
 
-#: ../ui-front/content-single-pro.php:106
+#: ../ui-front/content-single-pro.php:107
 msgid "Company: "
 msgstr ""
 
-#: ../ui-front/content-single-pro.php:111
+#: ../ui-front/content-single-pro.php:112
 msgid "Your Company"
 msgstr ""
 
-#: ../ui-front/content-single-pro.php:112
+#: ../ui-front/content-single-pro.php:113
 msgid "Company:"
 msgstr ""
 
-#: ../ui-front/content-single-pro.php:113
+#: ../ui-front/content-single-pro.php:114
 msgid "Company Name"
 msgstr ""
 
-#: ../ui-front/content-single-pro.php:114
+#: ../ui-front/content-single-pro.php:115
 msgid "www.company.com"
 msgstr ""
 
-#: ../ui-front/content-single-pro.php:116
+#: ../ui-front/content-single-pro.php:117
 msgid "Company and URL"
 msgstr ""
 
-#: ../ui-front/content-single-pro.php:120
-#: ../ui-front/content-update-pro.php:80
+#: ../ui-front/content-single-pro.php:121
+#: ../ui-front/content-update-pro.php:81
 msgid "Location: "
 msgstr ""
 
-#: ../ui-front/content-single-pro.php:124
-#: ../ui-front/content-update-pro.php:84
+#: ../ui-front/content-single-pro.php:125
+#: ../ui-front/content-update-pro.php:85
 msgid "Your Location"
 msgstr ""
 
-#: ../ui-front/content-single-pro.php:127
-#: ../ui-front/content-update-pro.php:87
+#: ../ui-front/content-single-pro.php:128
+#: ../ui-front/content-update-pro.php:88
 msgid "Enter Location from dropdown"
 msgstr ""
 
-#: ../ui-front/content-single-pro.php:131
+#: ../ui-front/content-single-pro.php:132
 msgid "Contact Email: "
 msgstr ""
 
-#: ../ui-front/content-single-pro.php:136
+#: ../ui-front/content-single-pro.php:137
 msgid "Your contact email"
 msgstr ""
 
-#: ../ui-front/content-single-pro.php:138
-#: ../ui-front/content-update-job.php:223
+#: ../ui-front/content-single-pro.php:139
+#: ../ui-front/content-update-job.php:229
 msgid "Contact Email"
 msgstr ""
 
-#: ../ui-front/content-single-pro.php:140
+#: ../ui-front/content-single-pro.php:141
 msgid "Contact email"
 msgstr ""
 
-#: ../ui-front/content-single-pro.php:144
+#: ../ui-front/content-single-pro.php:145
 msgid "Rate me: "
 msgstr ""
 
-#: ../ui-front/content-single-pro.php:156
-msgid "Biography"
-msgstr ""
-
-#: ../ui-front/content-single-pro.php:162
-#: ../ui-front/content-single-pro.php:177
+#: ../ui-front/content-single-pro.php:163
+#: ../ui-front/content-single-pro.php:178
 msgid "Tell us about yourself"
 msgstr ""
 
-#: ../ui-front/content-single-pro.php:163
+#: ../ui-front/content-single-pro.php:164
 msgid "Biography Description"
 msgstr ""
 
-#: ../ui-front/content-single-pro.php:178
+#: ../ui-front/content-single-pro.php:179
 msgid "Short Excerpt"
 msgstr ""
 
-#: ../ui-front/content-single-pro.php:222
+#: ../ui-front/content-single-pro.php:223
 msgid "IS CERTIFIED?"
 msgstr ""
 
-#: ../ui-front/content-single-pro.php:237
-#: ../ui-front/content-update-job.php:292
+#: ../ui-front/content-single-pro.php:238
+#: ../ui-front/content-update-job.php:297
 msgid "Save"
 msgstr ""
 
-#: ../ui-front/content-single-pro.php:241
-#: ../ui-front/content-update-job.php:296
+#: ../ui-front/content-single-pro.php:242
+#: ../ui-front/content-update-job.php:301
 msgid "Review"
 msgstr ""
 
-#: ../ui-front/content-single-pro.php:298
+#: ../ui-front/content-single-pro.php:299
 msgid "Canceling Profile"
 msgstr ""
 
-#: ../ui-front/content-single-pro.php:299
-msgid "Canceling Profile,<br />Please Wait"
-msgstr ""
-
-#: ../ui-front/content-single-pro.php:308
-msgid "Creating Profile"
+#: ../ui-front/content-single-pro.php:300
+msgid "Canceling Profile, Please Wait"
 msgstr ""
 
 #: ../ui-front/content-single-pro.php:309
+msgid "Creating Profile"
+msgstr ""
+
+#: ../ui-front/content-single-pro.php:310
 msgid "Creating Your Profile, Please Wait"
 msgstr ""
 
-#: ../ui-front/content-single-pro.php:329
+#: ../ui-front/content-single-pro.php:330
 msgid "Required Fields"
 msgstr ""
 
-#: ../ui-front/content-single-pro.php:330
-msgid "<p>Please complete the required fields</p>"
+#: ../ui-front/content-single-pro.php:331
+msgid "Please complete the required fields"
 msgstr ""
 
-#: ../ui-front/content-update-job.php:83
+#: ../ui-front/content-update-job.php:89
 msgid "Create a New Job"
 msgstr ""
 
-#: ../ui-front/content-update-job.php:85
+#: ../ui-front/content-update-job.php:91
 msgid "Editing Job &raquo;"
 msgstr ""
 
-#: ../ui-front/content-update-job.php:105
+#: ../ui-front/content-update-job.php:111
 msgid "Chose a Category"
 msgstr ""
 
-#: ../ui-front/content-update-job.php:143
+#: ../ui-front/content-update-job.php:149
 msgid "Give Your Job a  Title"
 msgstr ""
 
-#: ../ui-front/content-update-job.php:156
+#: ../ui-front/content-update-job.php:162
 msgid "Describe the Work to be Done"
 msgstr ""
 
-#: ../ui-front/content-update-job.php:178
+#: ../ui-front/content-update-job.php:184
 msgid "What skills are needed?"
 msgstr ""
 
-#: ../ui-front/content-update-job.php:182
+#: ../ui-front/content-update-job.php:188
 msgid "Skills Required for this job"
 msgstr ""
 
-#: ../ui-front/content-update-job.php:188
+#: ../ui-front/content-update-job.php:194
 msgid "Add a tag, use commas to separate"
 msgstr ""
 
-#: ../ui-front/content-update-job.php:201
+#: ../ui-front/content-update-job.php:207
 msgid "Budget Range"
 msgstr ""
 
-#: ../ui-front/content-update-job.php:203
+#: ../ui-front/content-update-job.php:209
 msgid "Budget"
 msgstr ""
 
-#: ../ui-front/content-update-job.php:232
+#: ../ui-front/content-update-job.php:238
 msgid "Completion Date"
 msgstr ""
 
-#: ../ui-front/content-update-job.php:242
+#: ../ui-front/content-update-job.php:248
 msgid "Job Open for"
 msgstr ""
 
-#: ../ui-front/content-update-job.php:252
+#: ../ui-front/content-update-job.php:258
 msgid "Attach Examples"
 msgstr ""
 
-#: ../ui-front/content-update-job.php:282
-#: ../ui-front/content-update-pro.php:257
+#: ../ui-front/content-update-job.php:288
+#: ../ui-front/content-update-pro.php:258
 msgid "Terms of Service"
 msgstr ""
 
-#: ../ui-front/content-update-pro.php:57
+#: ../ui-front/content-update-pro.php:58
 msgid "Create a New Pro Profile"
 msgstr ""
 
-#: ../ui-front/content-update-pro.php:66
+#: ../ui-front/content-update-pro.php:67
 msgid "Name:"
 msgstr ""
 
-#: ../ui-front/content-update-pro.php:72
+#: ../ui-front/content-update-pro.php:73
 msgid "Company URL:"
 msgstr ""
 
-#: ../ui-front/content-update-pro.php:77
+#: ../ui-front/content-update-pro.php:78
 msgid "Location:"
 msgstr ""
 
-#: ../ui-front/content-update-pro.php:93
+#: ../ui-front/content-update-pro.php:94
 msgid "Contact Email:"
 msgstr ""
 
-#: ../ui-front/content-update-pro.php:99
+#: ../ui-front/content-update-pro.php:100
 msgid "Bio:"
 msgstr ""
 
-#: ../ui-front/content-update-pro.php:106
+#: ../ui-front/content-update-pro.php:107
 msgid "Excerpt:"
 msgstr ""
 
-#: ../ui-front/content-update-pro.php:108
+#: ../ui-front/content-update-pro.php:109
 msgid "A short excerpt of your Bio."
 msgstr ""
 
-#: ../ui-front/content-update-pro.php:181
+#: ../ui-front/content-update-pro.php:182
 msgid "add a tag"
 msgstr ""
 
-#: ../ui-front/content-update-pro.php:185
+#: ../ui-front/content-update-pro.php:186
 msgid "Skills:"
 msgstr ""
 
-#: ../ui-front/content-update-pro.php:197 ../ui-front/sc-pro-skills.php:31
+#: ../ui-front/content-update-pro.php:198 ../ui-front/sc-pro-skills.php:31
 #: ../ui-front/sc-pro-skills.php:50
 msgid "What is your skill?"
 msgstr ""
 
-#: ../ui-front/content-update-pro.php:198 ../ui-front/sc-pro-skills.php:51
+#: ../ui-front/content-update-pro.php:199 ../ui-front/sc-pro-skills.php:51
 msgid "Skill"
 msgstr ""
 
-#: ../ui-front/content-update-pro.php:211
+#: ../ui-front/content-update-pro.php:212
 msgid "Portfolio examples:"
 msgstr ""
 
-#: ../ui-front/content-update-pro.php:215 ../ui-front/sc-pro-skills.php:38
+#: ../ui-front/content-update-pro.php:216 ../ui-front/sc-pro-skills.php:38
 msgid "+Add"
 msgstr ""
 
-#: ../ui-front/content-update-pro.php:224 ../ui-front/sc-job-portfolio.php:38
+#: ../ui-front/content-update-pro.php:225 ../ui-front/sc-job-portfolio.php:38
 #: ../ui-front/sc-pro-portfolio.php:37
 msgid "No Image Selected"
 msgstr ""
 
-#: ../ui-front/content-update-pro.php:226 ../ui-front/sc-job-portfolio.php:39
+#: ../ui-front/content-update-pro.php:227 ../ui-front/sc-job-portfolio.php:39
 #: ../ui-front/sc-job-portfolio.php:62 ../ui-front/sc-pro-portfolio.php:38
 #: ../ui-front/sc-pro-portfolio.php:60
 msgid "Select an Image"
 msgstr ""
 
-#: ../ui-front/content-update-pro.php:227 ../ui-front/sc-job-portfolio.php:40
+#: ../ui-front/content-update-pro.php:228 ../ui-front/sc-job-portfolio.php:40
 #: ../ui-front/sc-pro-portfolio.php:39
 msgid "Choose an image"
 msgstr ""
 
-#: ../ui-front/content-update-pro.php:265
+#: ../ui-front/content-update-pro.php:266
 msgid "Publish"
 msgstr ""
 
-#: ../ui-front/sc-job-excerpt.php:44
+#: ../ui-front/sc-job-excerpt.php:47
 msgid "Categories: "
 msgstr ""
 
-#: ../ui-front/sc-job-excerpt.php:46
+#: ../ui-front/sc-job-excerpt.php:49
 msgid "Skills: "
 msgstr ""
 
-#: ../ui-front/sc-job-excerpt.php:53
+#: ../ui-front/sc-job-excerpt.php:56
 msgid "Due: "
 msgstr ""
 
-#: ../ui-front/sc-job-excerpt.php:54 ../ui-front/sc-job-poster-excerpt.php:36
-msgid "Budget: $"
+#: ../ui-front/sc-job-excerpt.php:57 ../ui-front/sc-job-poster-excerpt.php:38
+msgid "Budget: "
 msgstr ""
 
-#: ../ui-front/sc-job-poster-excerpt.php:34
+#: ../ui-front/sc-job-poster-excerpt.php:36
 msgid "Read more..."
-msgstr ""
-
-#: ../ui-front/sc-job-poster.php:33
-#, php-format
-msgid "Browse More %s ..."
-msgstr ""
-
-#: ../ui-front/sc-job-search.php:24
-msgid "Latest"
-msgstr ""
-
-#: ../ui-front/sc-job-search.php:29
-msgid "About to End"
 msgstr ""
 
 #: ../ui-front/sc-pro-archive.php:23

@@ -100,6 +100,7 @@ global $CustomPress_Core;
 			<h3 class="hndle"><span><?php printf(esc_html__( '%s Image Storage', JBP_TEXT_DOMAIN ), $this->job_labels->singular_name); ?></span></h3>
 			<div class="inside">
 				<table class="form-table">
+<!--					
 					<tr>
 						<th>
 							<label><?php printf(esc_html__('Base path for %s image uploads', JBP_TEXT_DOMAIN ), $this->job_labels->singular_name); ?></label>
@@ -109,6 +110,7 @@ global $CustomPress_Core;
 							<br /><span class="description"><?php printf(esc_html__('Base disk path where any file uploaded with a %s entry are stored. The post id will be added to create individual directories for each user. Default is %s', JBP_TEXT_DOMAIN), $this->job_labels->singular_name, WP_CONTENT_DIR . '/uploads/job/'); ?></span>
 						</td>
 					</tr>
+-->		
 					<tr>
 						<th>
 							<label><?php esc_html_e('Maximum Gallery Images', JBP_TEXT_DOMAIN ) ?></label>

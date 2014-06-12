@@ -1000,7 +1000,7 @@ class Jobs_Plus_Core{
 				$this->title = 'custom_titles';
 				$this->pattern = $this->job_archive_page_id;
 			}
-		
+
 			elseif( is_author() && $this->custom_type == 'jbp_pro') {
 				$this->title = 'custom_titles';
 				$this->pattern = $this->pro_archive_page_id;
@@ -1617,49 +1617,39 @@ class Jobs_Plus_Core{
 	}
 
 	function custom_upload_directory( $args ) {
-		global $post_ID, $attachment_id;
+		global $post_ID, $attachment_id, $post;
 
+		//return $args;
 
-		////		var_dump($args);
-		//		var_dump($post_ID);
-		//		var_dump($attachment_id);
-		//		$post_ID = 0;
-		$post_type = empty($post_ID) ? '' : get_post_type( $post_ID );
+		$post_id = empty($post->ID) ? 0 : $post->ID;
 
-		if( empty($post_type) && !$post = get_post( $attachment_id ) ) return $args;
+		$post_id = empty($post_id) ? $attachment_id : $post_id;
 
-		$parent_id = $post->post_parent;
+		$post_id = empty($post_id) ? $post_ID : $post_id;
 
-		//		var_dump(get_post_type( $parent_id ) );
-		//		var_dump(get_post_type( $post_ID) );
+		if( empty($post_id) ) return $args;
 
-		//var_dump($args); exit;
-
-		// Check the post-type of the current post
-		if( "jbp_pro" == $post_type || "jbp_pro" == get_post_type( $parent_id ) ) {
-			$path = $this->get_setting('pro->upload_path');
-			$path = empty($path) ? '/uploads/pro' : untrailingslashit($path);
-		} elseif( "jbp_job" == $post_type || "jbp_job" == get_post_type( $parent_id ) ) {
-			$path = $this->get_setting('job->upload_path');
-			$path = empty($path) ? '/uploads/job' : untrailingslashit($path);
-		} else {
-			return $args;
+		if ( ($post_type = get_post_type( $post_id) ) == 'attachment' ) {
+			$child = get_post( $post_id );
+			$post_type = empty( $child ) ? false : get_post_type( $child->parent_id );
 		}
 
-		//var_dump($path); exit;
+		if( empty($post_type) ) return $args;
 
-		// Setup modified locations
-		$url = content_url($path);
-		$args['path'] = untrailingslashit(WP_CONTENT_DIR) . "$path/{$post_ID}";
-		$args['url'] = "$url/{$post_ID}";
-		$args['subdir'] = "$path/{$post_ID}"; // No date directories use post id
-		$args['basedir'] = WP_CONTENT_DIR; // Anywhere under wp-content
-		$args['baseurl'] = content_url(); // Anywhere under wp-content
+		// Check the post-type of the current post
+		if( "jbp_pro" == $post_type ) {
+			$args['path'] = str_replace( $args['subdir'], "/pro/{$post_id}", $args['path'] );
+			$args['url'] = str_replace( $args['subdir'], "/pro/{$post_id}", $args['url'] );
+			$args['subdir'] = "/pro/{$post_id}";
+		} elseif( "jbp_job" == $post_type ) {
+			$args['path'] = str_replace( $args['subdir'], "/job/{$post_id}", $args['path'] );
+			$args['url'] = str_replace( $args['subdir'], "/job/{$post_id}", $args['url'] );
+			$args['subdir'] = "/job/{$post_id}";
+		}
 
 		//var_dump($args); exit;
 		return $args;
 	}
-
 
 	/**
 	*
@@ -1809,9 +1799,9 @@ class Jobs_Plus_Core{
 	function get_default_custom_post($post_type = 'post', $post_id = 0){
 
 		if(empty($post_id) ) {
-			$post_id = wp_insert_post( array( 
-			'post_title' => __('Auto Draft', $this->text_domain), 
-			'post_type' => $post_type, 
+			$post_id = wp_insert_post( array(
+			'post_title' => __('Auto Draft', $this->text_domain),
+			'post_type' => $post_type,
 			'post_status' => 'auto-draft',
 			'comment_status' => post_type_supports($post_type, 'comments') ? 'open' : 'close',
 			'ping_status' => 'close',

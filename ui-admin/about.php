@@ -9,6 +9,8 @@
 */
 
 wp_enqueue_style( 'magnific-popup' );
+//include $this->plugin_dir . 'class/class-demo.php';
+
 ?>
 <div class="wrap jbp_started_page">
 	<h2><?php esc_html_e( 'Getting Started with Jobs +', JBP_TEXT_DOMAIN ); ?></h2>

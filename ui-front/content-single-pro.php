@@ -6,14 +6,14 @@
 * @license GPL2+
 */
 
-global $post, $Jobs_Plus_Core, $wp_roles;
+global $post, $wp_roles, $post_ID;
 
 $add_pro = false;
 $editing = false;
 //Are we adding a Listing?
-if ($post->ID == $Jobs_Plus_Core->pro_update_page_id) {
+if ($post->ID == $this->pro_update_page_id) {
 	$add_pro = true;
-	$post = $Jobs_Plus_Core->get_default_custom_post('jbp_pro');
+	$post = $this->get_default_custom_post('jbp_pro');
 	$editing = false;
 	//for become expert widget
 	if(!empty($_GET['expert_title'])){ $post->post_title=strip_slashes( $_GET['expert_title'] ); }
@@ -22,6 +22,7 @@ elseif (get_query_var('edit')) { //Or are we editing a listing?
 	$editing = current_user_can( EDIT_PRO, $post->ID);
 }
 
+$post_ID = $post->ID;
 setup_postdata($post);
 
 //Styles
@@ -233,15 +234,15 @@ $this->no_thumbnail();
 
 			<?php if(current_user_can(EDIT_PROS) ): ?>
 			<div class="pro-button-group show-on-edit">
-				<?php if($Jobs_Plus_Core->get_setting('pro->moderation->publish', 1) ): ?>
+				<?php if($this->get_setting('pro->moderation->publish', 1) ): ?>
 				<button type="submit" id="pro-publish" name="data[post_status]" value="publish" class="toggle-pro-save jbp-button pro-go-public-button" ><?php esc_html_e('Save', JBP_TEXT_DOMAIN); ?></button>
 				<?php endif; ?>
 
-				<?php if( !$Jobs_Plus_Core->get_setting('pro->moderation->publish', 1) ): ?>
+				<?php if( !$this->get_setting('pro->moderation->publish', 1) ): ?>
 				<button type="submit" id="pro-pending" name="data[post_status]" value="pending" class="toggle-pro-save pro-jbp-button go-public-button" ><?php esc_html_e('Review', JBP_TEXT_DOMAIN); ?></button>
 				<?php endif; ?>
 
-				<?php if($Jobs_Plus_Core->get_setting('pro->moderation->draft', 1) ): ?>
+				<?php if($this->get_setting('pro->moderation->draft', 1) ): ?>
 				<button type="submit" id="pro-draft" name="data[post_status]" value="draft" class="toggle-pro-save jbp-button pro-go-public-button" ><?php esc_html_e('Draft', JBP_TEXT_DOMAIN); ?></button>
 				<?php endif; ?>
 			</div>

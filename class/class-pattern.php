@@ -353,7 +353,7 @@ class Jobs_Plus_Pattern{
 		}
 		$core->_pro_update_page_id = $page_id; //Remember the number
 
-		/**
+		/*****************************************************************************************
 		* DEMO PAGES
 		*/
 		$page = $core->get_page_by_meta(JBP_DEMO_PATTERN_KEY, JBP_DEMO_LANDING_FLAG );
@@ -377,8 +377,6 @@ class Jobs_Plus_Pattern{
 		}
 		$core->_demo_landing_page_id = $page_id; //Remember the number
 
-
-	
 	}	
 }
 
