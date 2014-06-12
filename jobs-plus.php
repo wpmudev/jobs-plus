@@ -123,4 +123,4 @@ $wpmudev_notices[] = array( 'id'=> 'xxx',
 'jbp_pro',
 ) );
 
-include_once( JBP_PLUGIN_DIR .'lib/wpmudev-dash-notification.php' );
+include_once( JBP_PLUGIN_DIR .'ext/wpmudev-dash-notification.php' );
