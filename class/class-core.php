@@ -228,6 +228,7 @@ class Jobs_Plus_Core{
 		if(empty($object_id) ){
 			$page = $this->get_page_by_meta($key, $flag );
 			$page_id = ($page && $page->ID > 0) ? $page->ID : 0;
+
 			if(empty($page_id) ) {
 				require_once $this->plugin_dir . 'class/class-pattern.php';
 				$page_id = $object_id;
@@ -414,11 +415,11 @@ class Jobs_Plus_Core{
 				//do_action('activated_plugin','custompress/loader.php');
 				//global $CustomPress_Core;
 				//$CustomPress_Core->add_admin_capabilities();
-				//$this->job_update_page_id;
 				delete_site_option('jbp_activate');
 			} else {
 				update_site_option('jbp_activate', $activate);
-				wp_redirect( admin_url('/edit.php?post_type=jbp_job&page=jobs-plus-about&tab=about') );
+				$this->job_update_page_id; //do this to trigger pattern pages early
+				wp_redirect( admin_url('/edit.php?post_type=jbp_job&page=jobs-plus-about') );
 				exit;
 			}
 		}

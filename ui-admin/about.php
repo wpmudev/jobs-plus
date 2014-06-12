@@ -9,7 +9,8 @@
 */
 
 wp_enqueue_style( 'magnific-popup' );
-include $this->plugin_dir . 'class/class-demo.php';
+
+include_once $this->plugin_dir . 'class/class-demo.php';
 
 ?>
 <div class="wrap jbp_started_page">
@@ -31,7 +32,7 @@ include $this->plugin_dir . 'class/class-demo.php';
 			<p><a href="<?php echo esc_attr( get_permalink($this->job_update_page_id) );?>"><?php _e( 'Add', JBP_TEXT_DOMAIN ) ?></a> <?php echo esc_html( sprintf( __('a new %s', JBP_TEXT_DOMAIN ), $this->job_labels->singular_name ) ); ?></p>
 		</div>
 		<div class="jbp_plan">
-			<p class="first"><a href="<?php echo esc_attr( get_permalink($this->demo_landing_page_id) );?>" target="landing" class="jbp_button jbp_landing_page"><?php esc_html_e('Landing Page',JBP_TEXT_DOMAIN );?></a></p>
+			<p class="first"><a href="<?php echo esc_attr( get_permalink( $this->demo_landing_page_id ) ); ?>" target="landing" class="jbp_button jbp_landing_page"><?php esc_html_e('Landing Page',JBP_TEXT_DOMAIN );?></a></p>
 			<p><a href="<?php echo esc_attr( admin_url('post.php?post='.$this->demo_landing_page_id.'&action=edit') );?>"><?php esc_html_e('Edit', JBP_TEXT_DOMAIN ); ?></a> <?php esc_html_e( ' this pattern', JBP_TEXT_DOMAIN ) ?></p>
 		</div>
 		<div class="jbp_plan">
@@ -41,3 +42,4 @@ include $this->plugin_dir . 'class/class-demo.php';
 		</div>
 	</div>
 </div>
+
