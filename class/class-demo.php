@@ -44,6 +44,9 @@ class Jobs_Plus_Demo{
 			$result = wp_set_object_terms( $page_id, array('PHP', 'AJAX'), 'jbp_skills_tag' );
 			
 			update_post_meta($page_id, '_ct_jbp_job_Budget', 100 );
+			update_post_meta($page_id, '_ct_jbp_job_Contact_Email', 'arnold@incsub.com' );
+			update_post_meta($page_id, '_ct_jbp_job_Due', date( 'M j, Y') );
+			update_post_meta($page_id, JBP_JOB_EXPIRES_KEY, time() + (7 * 24 * 60 * 60) );
 
 		}
 
@@ -67,6 +70,9 @@ class Jobs_Plus_Demo{
 			$result = wp_set_object_terms( $page_id, array('PHP', 'Javascript', 'CSS' ), 'jbp_skills_tag' );
 
 			update_post_meta($page_id, '_ct_jbp_job_Budget', 1500 );
+			update_post_meta($page_id, '_ct_jbp_job_Contact_Email', 'arnold@incsub.com' );
+			update_post_meta($page_id, '_ct_jbp_job_Due', date( 'M j, Y') );
+			update_post_meta($page_id, JBP_JOB_EXPIRES_KEY, time() + (7 * 24 * 60 * 60) );
 
 		}
 
@@ -90,9 +96,10 @@ class Jobs_Plus_Demo{
 			$result = wp_set_object_terms( $page_id, array('bbPress', 'PHP', 'Video', 'Membership', 'eCommerce'), 'jbp_skills_tag' );
 
 			update_post_meta($page_id, '_ct_jbp_job_Budget', 600 );
-
+			update_post_meta($page_id, '_ct_jbp_job_Contact_Email', 'arnold@incsub.com' );
+			update_post_meta($page_id, '_ct_jbp_job_Due', date( 'M j, Y') );
+			update_post_meta($page_id, JBP_JOB_EXPIRES_KEY, time() + (7 * 24 * 60 * 60) );
 		}
-
 	}
 
 

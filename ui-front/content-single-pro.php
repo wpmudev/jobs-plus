@@ -18,12 +18,17 @@ if ($post->ID == $this->pro_update_page_id) {
 	//for become expert widget
 	if(!empty($_GET['expert_title'])){ $post->post_title=strip_slashes( $_GET['expert_title'] ); }
 }
+elseif( $post->post_status == 'auto-draft') {
+	$add_pro = true;
+}
 elseif (get_query_var('edit')) { //Or are we editing a listing?
 	$editing = current_user_can( EDIT_PRO, $post->ID);
 }
 
 $post_ID = $post->ID;
 setup_postdata($post);
+
+$excerpt = empty($post->post_content) ? '' : $this->make_clickable(strip_tags(get_the_excerpt() ) );
 
 //Styles
 wp_enqueue_style('jobs-plus-custom');
@@ -177,7 +182,7 @@ $this->no_thumbnail();
 							data-mode="popup"
 							data-emptytext="<?php esc_attr_e('Tell us about yourself', JBP_TEXT_DOMAIN); ?>"
 							data-original-title="<?php esc_attr_e('Short Excerpt', JBP_TEXT_DOMAIN); ?>"
-						><?php echo $this->make_clickable(strip_tags(get_the_excerpt() ) ); ?></div>
+						><?php echo $excerpt; ?></div>
 					</div>
 				</div>
 				<?php endif; ?>

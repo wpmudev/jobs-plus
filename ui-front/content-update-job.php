@@ -23,7 +23,9 @@ if ($post->ID == $this->job_update_page_id) {
 	$add_job = true;
 	$editing = false;
 } //Or are we editing a listing?
-elseif(get_query_var('edit')){
+elseif( $post->post_status == 'auto-draft') {
+	$add_pro = true;
+}elseif(get_query_var('edit')){
 	$editing = true;
 }
 
