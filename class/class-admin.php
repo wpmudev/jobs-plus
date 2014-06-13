@@ -268,11 +268,16 @@ class Jobs_Plus_Admin extends Jobs_Plus_Core {
 			return;
 		}
 
-		if( !empty( $_GET['redirect'] ) && $_GET['redirect'] == 'add-job' ) {
-			wp_safe_redirect( get_permalink( $this->add_jobs_page_id ) );
-			exit;
-		}
-
+//		if( !empty( $_GET['redirect'] ) && $_GET['redirect'] == 'add-job' ) {
+//			wp_safe_redirect( get_permalink( $this->add_job_page_id ) );
+//			exit;
+//		}
+//
+//		if( !empty( $_GET['redirect'] ) && $_GET['redirect'] == 'add-pro' ) {
+//			wp_safe_redirect( get_permalink( $this->add_pro_page_id ) );
+//			exit;
+//		}
+		
 		check_admin_referer( 'jobs-plus-settings' );
 
 		$params = stripslashes_deep( $_POST );
