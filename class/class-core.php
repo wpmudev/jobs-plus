@@ -27,25 +27,15 @@ class Jobs_Plus_Core{
 	'reputation'  => JBP_PRO_REPUTATION_KEY,
 	);
 
-	/**
-	* Pattern page ids. NOT normally referenced directly. See __get below
-	*/
-	public $_job_archive_page_id = 0;
-	public $_job_taxonomy_page_id = 0;
-	public $_job_contact_page_id = 0;
-	public $_job_search_page_id = 0;
-	public $_job_single_page_id = 0;
-	public $_job_update_page_id = 0;
-
-	public $_pro_archive_page_id = 0;
-	public $_pro_taxonomy_page_id = 0;
-	public $_pro_contact_page_id = 0;
-	public $_pro_search_page_id = 0;
-	public $_pro_single_page_id = 0;
-	public $_pro_update_page_id = 0;
-
-	public $_demo_landing_page_id = 0;
-
+	public $widgets = array(
+	//	'class-widget-recent-job-posts' => 'WP_Widget_Recent_Job_Posts',
+	//	'class-widget-recent-pros'   => 'WP_Widget_Recent_Pros',
+	//	'class-widget-search-jobs'      => 'WP_Widget_Search_Jobs',
+	//	'class-widget-search-pros'   => 'WP_Widget_Search_Pros',
+	//	'class-widget-landing-page'     => 'WP_Widget_Landing_Page',
+	//	'class-widget-post-job'         => 'WP_Widget_Add_Job',
+	'class-widget-add-pro'       => 'WP_Widget_Add_Pro'
+	);
 
 	/**
 	* job file names for content substitutions
@@ -83,6 +73,24 @@ class Jobs_Plus_Core{
 
 	public $job_slug = null;
 	public $pro_slug = null;
+	/**
+	* Pattern page ids. NOT normally referenced directly. See __get below
+	*/
+	public $_job_archive_page_id = 0;
+	public $_job_taxonomy_page_id = 0;
+	public $_job_contact_page_id = 0;
+	public $_job_search_page_id = 0;
+	public $_job_single_page_id = 0;
+	public $_job_update_page_id = 0;
+
+	public $_pro_archive_page_id = 0;
+	public $_pro_taxonomy_page_id = 0;
+	public $_pro_contact_page_id = 0;
+	public $_pro_search_page_id = 0;
+	public $_pro_single_page_id = 0;
+	public $_pro_update_page_id = 0;
+
+	public $_demo_landing_page_id = 0;
 
 	public $js_locale = 'en-US'; //Default language for currency internationaization
 
@@ -190,7 +198,7 @@ class Jobs_Plus_Core{
 	*
 	* @return int $page[0] /bool false
 	*/
-	function get_page_by_meta( $key, $value ) {
+	function get_post_id_by_meta( $key, $value ) {
 		global $wpdb, $blog_id;
 
 		//To avoid "the_posts" filters do a direct call to the database to find the post by meta
@@ -209,14 +217,13 @@ class Jobs_Plus_Core{
 		|| (get_post_status( $ids[0]) == 'trash' ) //no trash
 		){
 			foreach( $ids as $id ) { //Delete all and start over.
-				delete_post_meta($id, $key);
 				wp_delete_post($id, true);
 			}
 			return false;
 		}
 
 		if ( isset( $ids[0] ) && 0 < $ids[0] ){
-			return get_post($ids[0]);
+			return $ids[0];
 		}
 
 		return false;
@@ -226,17 +233,20 @@ class Jobs_Plus_Core{
 		$page_id = false;
 
 		if(empty($object_id) ){
-			$page = $this->get_page_by_meta($key, $flag );
-			$page_id = ($page && $page->ID > 0) ? $page->ID : 0;
+			$page_id = $this->get_post_id_by_meta($key, $flag );
 
 			if(empty($page_id) ) {
 				require_once $this->plugin_dir . 'class/class-pattern.php';
 				$page_id = $object_id;
 			}
-
 			//Make sure it stays pattern
-			if( !in_array(get_post_status( $page_id ), array('pattern', 'trash') ) )
-			wp_update_post( array('ID' => $page_id, 'post_status' => 'pattern') );
+			if( in_array( $key , array( JBP_JOB_PATTERN_KEY, JBP_PRO_PATTERN_KEY ) ) ){
+				if( !in_array(get_post_status( $page_id ), array('pattern', 'trash') ) )
+				wp_update_post( array('ID' => $page_id, 'post_status' => 'pattern') );
+			}
+
+		} else {
+			$page_id = $object_id;
 		}
 		return 	$page_id;
 	}
@@ -475,6 +485,16 @@ class Jobs_Plus_Core{
 			$this->job_slug = $this->job_obj->rewrite['slug'];
 		}
 
+		foreach ( $this->widgets as $file => $widget ) {
+			$file_path = $this->plugin_dir . "class/{$file}.php";
+			if ( file_exists( $file_path ) ) {
+				include_once $file_path;
+				register_widget( $widget );
+				//add_action( 'widgets_init', create_function( '', 'register_widget( "' . $widget . '" );' ) );
+			}
+		}
+global $wp_widget_factory;
+//var_dump( $wp_widget_factory );
 		//		// Declare widget areas
 		//		if(function_exists('register_sidebar') ){
 		//			register_sidebar(array(
@@ -1430,8 +1450,8 @@ class Jobs_Plus_Core{
 
 		if(is_post_type_archive('jbp_job')
 		&& !is_admin() ){
-//			$query->set('meta_key', '_ct_jbp_job_Due');
-//			$query->set('orderby', 'meta_value');
+			//			$query->set('meta_key', '_ct_jbp_job_Due');
+			//			$query->set('orderby', 'meta_value');
 			$query->set( 'posts_per_page', intval( $this->get_setting( 'job->per_page', 20) ) );
 		}
 
