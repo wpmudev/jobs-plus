@@ -10,6 +10,8 @@
 
 wp_enqueue_style( 'magnific-popup' );
 
+//echo $this->demo_landing_page_id;
+
 include_once $this->plugin_dir . 'class/class-demo.php';
 
 ?>

@@ -5,11 +5,14 @@
  *
  * @since 1.0
  */
-class WP_Widget_Recent_Job_Posts extends WP_Widget {
+class WP_Widget_Recent_Jobs extends WP_Widget {
 
 	function __construct() {
-		$widget_ops = array( 'classname' => 'widget_recent_job_entries', 'description' => __( "The most recent job posts on your site" ) );
-		parent::__construct( 'recent-job-posts', __( 'Recent Job Posts' ), $widget_ops );
+		global $Jobs_Plus_Core;
+		$core = $Jobs_Plus_Core;
+
+		$widget_ops = array( 'classname' => 'widget_recent_job_entries', 'description' => sprintf(__( "The most recent %s posts on your site", JBP_TEXT_DOMAIN),$core->job_labels->singular_name ) );
+		parent::__construct( 'recent-jobs', sprintf(__( 'Jobs + Recent %s Posts', JBP_TEXT_DOMAIN), $core->job_labels->singular_name ), $widget_ops );
 		$this->alt_option_name = 'widget_recent_job_entries';
 
 		add_action( 'save_post', array( $this, 'flush_widget_cache' ) );
@@ -18,31 +21,30 @@ class WP_Widget_Recent_Job_Posts extends WP_Widget {
 	}
 
 	function widget( $args, $instance ) {
-		wp_enqueue_style( 'jobs-plus' );
-		$cache = wp_cache_get( 'widget_recent_job_posts', 'widget' );
+		global $Jobs_Plus_Core;
+		$core = $Jobs_Plus_Core;
 
-		if ( ! is_array( $cache ) ) {
-			$cache = array();
-		}
+		wp_enqueue_style( 'jobs-plus-custom' );
+		
+		$cache = wp_cache_get( 'widget_recent_jobs', 'widget' );
 
-		if ( ! isset( $args['widget_id'] ) ) {
-			$args['widget_id'] = $this->id;
-		}
+		if ( ! is_array( $cache ) ) $cache = array();
+
+		if ( ! isset( $args['widget_id'] ) ) $args['widget_id'] = $this->id;
 
 		if ( isset( $cache[$args['widget_id']] ) ) {
 			echo $cache[$args['widget_id']];
-
 			return;
 		}
 
 		ob_start();
+		
 		extract( $args );
 
-		$title = apply_filters( 'widget_title', empty( $instance['title'] ) ? __( 'Recent Job Posts' ) : $instance['title'], $instance, $this->id_base );
+		$title = apply_filters( 'widget_title', empty( $instance['title'] ) ? sprintf(__( 'Recent %s Posts', JBP_TEXT_DOMAIN ), $core->job_labels->singular_name ) : $instance['title'], $instance, $this->id_base );
 
-		if ( empty( $instance['number'] ) || ! $number = absint( $instance['number'] ) ) {
-			$number = 10;
-		}
+		if ( empty( $instance['number'] ) || ! $number = absint( $instance['number'] ) ) $number = 10;
+		
 		$show_cat = isset( $instance['show_cat'] ) ? $instance['show_cat'] : false;
 		//		$r = new WP_Query( apply_filters( 'widget_job_posts_args', array(
 
@@ -79,11 +81,13 @@ class WP_Widget_Recent_Job_Posts extends WP_Widget {
 
 		$posts = get_posts( $post_args );
 		if ( count( $posts ) > 0 ) :
-			?>
-			<?php echo $before_widget; ?>
-			<?php if ( ! isset( $instance['no_title'] ) && $title ) {
+			echo $before_widget;
+			
+			if ( ! isset( $instance['no_title'] ) && $title ) {
 			echo $before_title . $title . $after_title;
-		} ?>
+			} 
+			
+		  ?>
 			<ul class="job-widgetbar">
 				<?php foreach ( $posts as $key => $post ) : setup_postdata( $post ) ?>
 					<li>
@@ -165,7 +169,7 @@ class WP_Widget_Recent_Job_Posts extends WP_Widget {
 		endif;
 
 		$cache[$args['widget_id']] = ob_get_flush();
-		wp_cache_set( 'widget_recent_job_posts', $cache, 'widget' );
+		wp_cache_set( 'widget_recent_jobs', $cache, 'widget' );
 	}
 
 	function update( $new_instance, $old_instance ) {
@@ -186,7 +190,7 @@ class WP_Widget_Recent_Job_Posts extends WP_Widget {
 	}
 
 	function flush_widget_cache() {
-		wp_cache_delete( 'widget_recent_job_posts', 'widget' );
+		wp_cache_delete( 'widget_recent_jobs', 'widget' );
 	}
 
 	function form( $instance ) {
@@ -199,34 +203,34 @@ class WP_Widget_Recent_Job_Posts extends WP_Widget {
 		?>
 
 		<p>
-			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php esc_html_e( 'Title:' ); ?></label>
-			<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo $title; ?>" />
+			<label for="<?php echo esc_attr($this->get_field_id( 'title' ) ); ?>"><?php esc_html_e( 'Title:' ); ?></label>
+			<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" />
 		</p>
 
 		<p>
-			<label for="<?php echo $this->get_field_id( 'number' ); ?>"><?php esc_html_e( 'Number of posts to show:' ); ?></label>
-			<input id="<?php echo $this->get_field_id( 'number' ); ?>" name="<?php echo $this->get_field_name( 'number' ); ?>" type="text" value="<?php echo $number; ?>" size="3" />
+			<label for="<?php echo esc_attr( $this->get_field_id( 'number' ) ); ?>"><?php esc_html_e( 'Number of posts to show:', JBP_TEXT_DOMAIN ); ?></label>
+			<input id="<?php echo esc_attr( $this->get_field_id( 'number' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'number' ) ); ?>" type="text" value="<?php echo esc_attr( $number ); ?>" size="3" />
 		</p>
 
 		<p>
-			<input class="checkbox" type="checkbox" <?php checked( $show_cat ); ?> id="<?php echo $this->get_field_id( 'show_cat' ); ?>" name="<?php echo $this->get_field_name( 'show_cat' ); ?>" />
-			<label for="<?php echo $this->get_field_id( 'show_cat' ); ?>"><?php esc_html_e( 'Display job categories?' ); ?></label>
+			<input class="checkbox" type="checkbox" <?php checked( $show_cat ); ?> id="<?php echo esc_attr($this->get_field_id( 'show_cat' ) ); ?>" name="<?php echo esc_attr($this->get_field_name( 'show_cat' ) ); ?>" />
+			<label for="<?php echo esc_attr( $this->get_field_id( 'show_cat' ) ); ?>"><?php esc_html_e( 'Display job categories?', JBP_TEXT_DOMAIN ); ?></label>
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'order_by' ); ?>"><?php esc_html_e( 'Order by' ); ?>:</label>
-			<select id="<?php echo $this->get_field_id( 'order_by' ) ?>" name="<?php echo $this->get_field_name( 'order_by' ); ?>">
-				<option <?php selected( 'randomize', $order_by ) ?> value="randomize">Randomize</option>
-				<option <?php selected( 'latest', $order_by ) ?> value="latest">Latest</option>
+			<label for="<?php echo esc_attr( $this->get_field_id( 'order_by' ) ); ?>"><?php esc_html_e( 'Order by', JBP_TEXT_DOMAIN ); ?>:</label>
+			<select id="<?php echo esc_attr( $this->get_field_id( 'order_by' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'order_by' ) ); ?>">
+				<option <?php selected( 'randomize', $order_by ) ?> value="randomize"><?php esc_html_e('Randomize', JBP_TEXT_DOMAIN );?></option>
+				<option <?php selected( 'latest', $order_by ) ?> value="latest"><?php esc_html_e('Latest', JBP_TEXT_DOMAIN );?></option>
 			</select>
 		</p>
 		<p>
-			<label><?php esc_html_e( 'Categories' ) ?>:</label>
+			<label><?php esc_html_e( 'Categories', JBP_TEXT_DOMAIN ) ?>:</label>
 			<?php
 			$job_cats = get_terms( 'jbp_category', array(
 				'hide_empty' => false
 			) );
 			?>
-			<select style="display: block;width: 100%" multiple="multiple" name="<?php echo $this->get_field_name( 'category_val' ) ?>[]" id="<?php echo $this->get_field_id( 'category_val' ) ?>">
+			<select style="display: block;width: 100%" multiple="multiple" name="<?php echo esc_attr( $this->get_field_name( 'category_val' ) );?>[]" id="<?php echo esc_attr( $this->get_field_id( 'category_val' ) );?>">
 				<?php foreach ( $job_cats as $cat ): ?>
 					<option <?php echo in_array( $cat->term_id, $category_val ) ? 'selected="selected"' : null ?> value="<?php echo $cat->term_id ?>"><?php echo esc_html( $cat->name ) ?></option>
 				<?php endforeach; ?>

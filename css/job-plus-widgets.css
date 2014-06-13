@@ -78,30 +78,22 @@
 	border-right: none;
 }
 
-.jobsearch-widgetbar .jbp_search_box_container {
+.jobsearch-widgetbar .jbp-search-box-container {
 	width:      100%;
 	height:     46px;
 	position:   relative;
 	margin-top: 5px;
 }
 
-.jobsearch-widgetbar .jbp_search_box_container button {
+.jobsearch-widgetbar .jbp-search-box-container button {
 	width:    46px;
 	height:   100%;
 	position: absolute;
 	right:    0;
 	top:      0;
 }
-.jobsearch-widgetbar.postjob .jbp_search_box_container button {
-	width:    auto;
-	height:   70%;
-	position: relative;
-	display: block;
-	margin-top: 5px;
-	float:right
-}
 
-.jobsearch-widgetbar .jbp_search_box_container input[type="text"] {
+.jobsearch-widgetbar .jbp-search-box-container input[type="text"] {
 	width:         96%;
 	height:        100%;
 	border-radius: 1px;
@@ -109,7 +101,7 @@
 	padding:       0 2%;
 }
 
-.jobsearch-widgetbar .jbp_search_box_container button img {
+.jobsearch-widgetbar .jbp-search-box-container button img {
 	border:          none;
 	box-shadow:      none;
 	-moz-box-shadow: none;

@@ -6,11 +6,10 @@
 * @license GPL2+
 */
 
-global $post, $jbp_query;
+global $post;
 $author = $post->post_author;
 
-
-switch($jbp_query->current_post % 6){
+switch( rand(0,5) ){
 	case 0: $color = 'jbp-yellow'; break;
 	case 1: $color = 'jbp-mint'; break;
 	case 2: $color = 'jbp-rose'; break;
@@ -22,13 +21,16 @@ switch($jbp_query->current_post % 6){
 $size = 'medium';
 $terms = wp_get_post_terms( $post->ID, 'jbp_category', array('fields' => 'ids') );
 
-$term_image = do_shortcode(	sprintf('[ti term="%s" width="120" height="120" class="job-image" ]', $terms[0]) );
+$term_image = '';
+if( !empty($terms) ){
+	$term_image = do_shortcode(	sprintf('[ti term="%s" width="120" height="120" class="job-image" ]', $terms[0]) );
+}
 
 ?>
 
 <div class="job-custom group" data-permalink="<?php echo esc_attr(get_permalink(get_the_ID())); ?>" >
 	<div class="job-image">
-		<?php echo do_shortcode(	sprintf('[ti term="%s" width="120" height="120" class="job-image" ]', $terms[0]) ); ?>
+		<?php echo $term_image; ?>
 	</div>
 
 	<div class="<?php echo $color; ?> job-details group" >

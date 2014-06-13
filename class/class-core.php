@@ -27,14 +27,14 @@ class Jobs_Plus_Core{
 	'reputation'  => JBP_PRO_REPUTATION_KEY,
 	);
 
-	public $widgets = array(
-	//	'class-widget-recent-job-posts' => 'WP_Widget_Recent_Job_Posts',
-	//	'class-widget-recent-pros'   => 'WP_Widget_Recent_Pros',
-	//	'class-widget-search-jobs'      => 'WP_Widget_Search_Jobs',
-	//	'class-widget-search-pros'   => 'WP_Widget_Search_Pros',
-	//	'class-widget-landing-page'     => 'WP_Widget_Landing_Page',
-	//	'class-widget-post-job'         => 'WP_Widget_Add_Job',
-	'class-widget-add-pro'       => 'WP_Widget_Add_Pro'
+	public $widgets = array( //List of widget files
+		'class-widget-recent-jobs' 			=> 'WP_Widget_Recent_Jobs',
+		'class-widget-recent-pros'      => 'WP_Widget_Recent_Pros',
+		'class-widget-search-jobs'      => 'WP_Widget_Search_Jobs',
+		'class-widget-search-pros'      => 'WP_Widget_Search_Pros',
+		'class-widget-landing-page'     => 'WP_Widget_Landing_Page',
+		'class-widget-add-job'          => 'WP_Widget_Add_Job',
+		'class-widget-add-pro'          => 'WP_Widget_Add_Pro'
 	);
 
 	/**
@@ -99,6 +99,7 @@ class Jobs_Plus_Core{
 		register_deactivation_hook($this->plugin_dir . 'jobs-plus.php', array(&$this,'on_deactivate') );
 
 		add_action('plugins_loaded', array(&$this, 'on_plugins_loaded') );
+		add_action('widgets_init', array(&$this, 'on_widgets_init') );
 		add_action('init', array(&$this, 'on_init'), 10);
 		add_action('wp_loaded', array(&$this, 'on_wp_loaded'), 10);
 		add_action('wp_print_scripts', array(&$this, 'on_print_scripts') );
@@ -438,7 +439,6 @@ class Jobs_Plus_Core{
 	function on_init(){
 		global $wp_post_statuses;
 
-		$this->widgets_init();
 		$this->set_capability_defines();
 		$this->set_rewrite_rules();
 
@@ -472,7 +472,7 @@ class Jobs_Plus_Core{
 
 	}
 
-	function widgets_init(){
+	function on_widgets_init(){
 		$this->pro_obj = get_post_type_object('jbp_pro');
 		if( !empty($this->pro_obj) ){
 			$this->pro_labels = $this->pro_obj->labels;
@@ -485,16 +485,15 @@ class Jobs_Plus_Core{
 			$this->job_slug = $this->job_obj->rewrite['slug'];
 		}
 
+		//Register Widgets from list
 		foreach ( $this->widgets as $file => $widget ) {
 			$file_path = $this->plugin_dir . "class/{$file}.php";
 			if ( file_exists( $file_path ) ) {
-				include_once $file_path;
+				require_once $file_path;
 				register_widget( $widget );
-				//add_action( 'widgets_init', create_function( '', 'register_widget( "' . $widget . '" );' ) );
 			}
 		}
-global $wp_widget_factory;
-//var_dump( $wp_widget_factory );
+
 		//		// Declare widget areas
 		//		if(function_exists('register_sidebar') ){
 		//			register_sidebar(array(

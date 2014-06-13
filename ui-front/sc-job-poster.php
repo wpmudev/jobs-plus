@@ -7,15 +7,15 @@
 */
 
 /**
-Variables passed by  shortcode
-		$title
-		$legend
-		$link
-		$view
-		$class
-		$count
+*Variables passed by  shortcode
+*		$title
+*		$legend
+*		$link
+*		$view
+*		$class
+*		$count
 */
-global $post, $jbp_query, $Term_Images;
+global $post, $Term_Images;
 
 $jbp_query = new WP_Query(array(
 'post_type' => 

@@ -260,16 +260,9 @@ input.input-small {
 
 
 
-/*
-button.jbp-button {
-	display:     inline-block;
-	font-size:   16px;
-	padding:     0.5em 1em;
-	font-weight: bold;
-	margin:      0 5px;
-	cursor:      pointer;
+button.no-pad{
+	padding: 0;
 }
-*/
 
 .jbp-button img {
 	display:    block;
