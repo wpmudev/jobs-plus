@@ -17,7 +17,7 @@ class Jobs_Plus_Pattern{
 		$current_user = wp_get_current_user();
 
 		//Default button set
-		$warning = __("<!-- You may edit this page, the title and the slug, but it requires a minimum of the correct page shortcode to function. You can recreate the original default page by deleting this one by moving it to trash and calling the page in the front end.-->\n", $core->text_domain) . PHP_EOL;
+		$warning = __("<!-- You may edit this page, the title and the slug, but it requires a minimum of the correct page shortcode to function. You can recreate the original default page by deleting this one. -->\n", $core->text_domain) . PHP_EOL;
 		$buttons = '<p style="text-align: center;">[jbp-expert-post-btn][jbp-job-post-btn][jbp-expert-browse-btn][jbp-job-browse-btn][jbp-expert-profile-btn][jbp-job-list-btn]</p>' . PHP_EOL;
 
 		/**
@@ -27,8 +27,7 @@ class Jobs_Plus_Pattern{
 		/**
 		* jbp_job Archive
 		*/
-		$page = $core->get_page_by_meta(JBP_JOB_PATTERN_KEY, JBP_JOB_ARCHIVE_FLAG );
-		$page_id = ($page && $page->ID > 0) ? $page->ID : 0;
+		$page_id = $core->get_post_id_by_meta(JBP_JOB_PATTERN_KEY, JBP_JOB_ARCHIVE_FLAG );
 		if ( empty($page_id) ) {
 			/* Construct args for the new post */
 			$args = array(
@@ -54,8 +53,7 @@ class Jobs_Plus_Pattern{
 		/**
 		* jbp_job Taxonomy
 		*/
-		$page = $core->get_page_by_meta(JBP_JOB_PATTERN_KEY, JBP_JOB_TAXONOMY_FLAG );
-		$page_id = ($page && $page->ID > 0) ? $page->ID : 0;
+		$page_id = $core->get_post_id_by_meta(JBP_JOB_PATTERN_KEY, JBP_JOB_TAXONOMY_FLAG );
 		if ( empty($page_id) ) {
 			/* Construct args for the new post */
 			$args = array(
@@ -81,8 +79,7 @@ class Jobs_Plus_Pattern{
 		/**
 		* jbp_job Contact
 		*/
-		$page = $core->get_page_by_meta(JBP_JOB_PATTERN_KEY, JBP_JOB_CONTACT_FLAG );
-		$page_id = ($page && $page->ID > 0) ? $page->ID : 0;
+		$page_id = $core->get_post_id_by_meta(JBP_JOB_PATTERN_KEY, JBP_JOB_CONTACT_FLAG );
 		if ( empty($page_id) ) {
 			/* Construct args for the new post */
 			$args = array(
@@ -108,8 +105,7 @@ class Jobs_Plus_Pattern{
 		/**
 		* jbp_job Search
 		*/
-		$page = $core->get_page_by_meta(JBP_JOB_PATTERN_KEY, JBP_JOB_SEARCH_FLAG );
-		$page_id = ($page && $page->ID > 0) ? $page->ID : 0;
+		$page_id = $core->get_post_id_by_meta(JBP_JOB_PATTERN_KEY, JBP_JOB_SEARCH_FLAG );
 		if ( empty($page_id) ) {
 			/* Construct args for the new post */
 			$args = array(
@@ -135,8 +131,7 @@ class Jobs_Plus_Pattern{
 		/**
 		* jbp_job Single
 		*/
-		$page = $core->get_page_by_meta(JBP_JOB_PATTERN_KEY, JBP_JOB_SINGLE_FLAG );
-		$page_id = ($page && $page->ID > 0) ? $page->ID : 0;
+		$page_id= $core->get_post_id_by_meta(JBP_JOB_PATTERN_KEY, JBP_JOB_SINGLE_FLAG );
 		if ( empty($page_id) ) {
 			/* Construct args for the new post */
 			$args = array(
@@ -162,8 +157,7 @@ class Jobs_Plus_Pattern{
 		/**
 		* jbp_pro Update
 		*/
-		$page = $core->get_page_by_meta(JBP_JOB_PATTERN_KEY, JBP_JOB_UPDATE_FLAG );
-		$page_id = ($page && $page->ID > 0) ? $page->ID : 0;
+		$page_id = $core->get_post_id_by_meta(JBP_JOB_PATTERN_KEY, JBP_JOB_UPDATE_FLAG );
 		if ( empty($page_id) ) {
 			/* Construct args for the new post */
 			$args = array(
@@ -194,8 +188,7 @@ class Jobs_Plus_Pattern{
 		/**
 		* jbp_pro Archive
 		*/
-		$page = $core->get_page_by_meta(JBP_PRO_PATTERN_KEY, JBP_PRO_ARCHIVE_FLAG );
-		$page_id = ($page && $page->ID > 0) ? $page->ID : 0;
+		$page_id = $core->get_post_id_by_meta(JBP_PRO_PATTERN_KEY, JBP_PRO_ARCHIVE_FLAG );
 		if ( empty($page_id) ) {
 			/* Construct args for the new post */
 			$args = array(
@@ -221,8 +214,7 @@ class Jobs_Plus_Pattern{
 		/**
 		* jbp_pro Taxonomy
 		*/
-		$page = $core->get_page_by_meta(JBP_PRO_PATTERN_KEY, JBP_PRO_TAXONOMY_FLAG );
-		$page_id = ($page && $page->ID > 0) ? $page->ID : 0;
+		$page_id = $core->get_post_id_by_meta(JBP_PRO_PATTERN_KEY, JBP_PRO_TAXONOMY_FLAG );
 		if ( empty($page_id) ) {
 			/* Construct args for the new post */
 			$args = array(
@@ -248,8 +240,7 @@ class Jobs_Plus_Pattern{
 		/**
 		* jbp_pro Contact
 		*/
-		$page = $core->get_page_by_meta(JBP_PRO_PATTERN_KEY, JBP_PRO_CONTACT_FLAG );
-		$page_id = ($page && $page->ID > 0) ? $page->ID : 0;
+		$page_id = $core->get_post_id_by_meta(JBP_PRO_PATTERN_KEY, JBP_PRO_CONTACT_FLAG );
 		if ( empty($page_id) ) {
 			/* Construct args for the new post */
 			$args = array(
@@ -275,8 +266,7 @@ class Jobs_Plus_Pattern{
 		/**
 		* jbp_pro Search
 		*/
-		$page = $core->get_page_by_meta(JBP_PRO_PATTERN_KEY, JBP_PRO_SEARCH_FLAG );
-		$page_id = ($page && $page->ID > 0) ? $page->ID : 0;
+		$page_id = $core->get_post_id_by_meta(JBP_PRO_PATTERN_KEY, JBP_PRO_SEARCH_FLAG );
 		if ( empty($page_id) ) {
 			/* Construct args for the new post */
 			$args = array(
@@ -302,8 +292,7 @@ class Jobs_Plus_Pattern{
 		/**
 		* jbp_pro Single
 		*/
-		$page = $core->get_page_by_meta(JBP_PRO_PATTERN_KEY, JBP_PRO_SINGLE_FLAG );
-		$page_id = ($page && $page->ID > 0) ? $page->ID : 0;
+		$page_id = $core->get_post_id_by_meta(JBP_PRO_PATTERN_KEY, JBP_PRO_SINGLE_FLAG );
 		if ( empty($page_id) ) {
 			/* Construct args for the new post */
 			$args = array(
@@ -329,8 +318,7 @@ class Jobs_Plus_Pattern{
 		/**
 		* jbp_pro Update
 		*/
-		$page = $core->get_page_by_meta(JBP_PRO_PATTERN_KEY, JBP_PRO_UPDATE_FLAG );
-		$page_id = ($page && $page->ID > 0) ? $page->ID : 0;
+		$page_id = $core->get_post_id_by_meta(JBP_PRO_PATTERN_KEY, JBP_PRO_UPDATE_FLAG );
 		if ( empty($page_id) ) {
 			/* Construct args for the new post */
 			$args = array(
@@ -356,8 +344,7 @@ class Jobs_Plus_Pattern{
 		/*****************************************************************************************
 		* DEMO PAGES
 		*/
-		$page = $core->get_page_by_meta(JBP_DEMO_PATTERN_KEY, JBP_DEMO_LANDING_FLAG );
-		$page_id = ($page && $page->ID > 0) ? $page->ID : 0;
+		$page_id = $core->get_post_id_by_meta(JBP_DEMO_PATTERN_KEY, JBP_DEMO_LANDING_FLAG );
 		if ( empty($page_id) ) {
 			/* Construct args for the new post */
 			$args = array(
@@ -375,7 +362,7 @@ class Jobs_Plus_Pattern{
 			add_post_meta( $page_id, JBP_DEMO_PATTERN_KEY, JBP_DEMO_LANDING_FLAG);
 		} else {
 		}
-		$core->_demo_landing_page_id = $page_id; //Remember the number
+		//$core->_demo_landing_page_id = $page_id; //Remember the number
 
 	}	
 }

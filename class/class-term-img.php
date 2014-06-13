@@ -105,8 +105,8 @@ class Term_Images{
 		global $taxonomy;
 
 		$key = $this->_key($term_id, $taxonomy);
-		$attachments = $this->get_by_meta( $key );
-		$image = $attachments ? wp_get_attachment_image_src( $attachments[0]->ID, array($width, $height)): false;
+		$attachment_id = $this->get_id_by_meta( $key );
+		$image = $attachment_id ? wp_get_attachment_image_src( $attachment_id, array($width, $height)): false;
 
 		$o = sprintf('<span class="ti-remove-button" data-term-id="%d" data-taxonomy="%s" title="%s" style="position:absolute; margin: -7px 0 0 -7px;">%s</span>',
 		$term_id,
@@ -171,11 +171,9 @@ class Term_Images{
 		$key = $this->_key($term_id, $taxonomy);
 
 		//get any attachments with this term_id
-		$attachments = $this->get_by_meta( $key );
-		if($attachments){
-			foreach($attachments as $attachment){
-				delete_post_meta($attachment->ID, '_ti_term_image', $key);
-			}
+		$attachment_id = $this->get_id_by_meta( $key );
+		if($attachment_id){
+			delete_post_meta($attachment_id, '_ti_term_image', $key);
 		}
 		//might have multiple for the same image.
 		add_post_meta( $params['attachment_id'], '_ti_term_image', $key);
@@ -199,11 +197,9 @@ class Term_Images{
 		$key = $this->_key($term_id, $taxonomy);
 
 		//get any attchemnts with this term_id
-		$attachments = $this->get_by_meta( $key );
-		if($attachments){
-			foreach($attachments as $attachment){
-				delete_post_meta($attachment->ID, '_ti_term_image', $key);
-			}
+		$attachment_id = $this->get_id_by_meta( $key );
+		if($attachment_id){
+			delete_post_meta($attachment_id, '_ti_term_image', $key);
 		}
 		exit('ok');
 	}
@@ -213,7 +209,7 @@ class Term_Images{
 	*
 	* @return int $page[0] / bool false
 	*/
-	function get_by_meta( $key ) {
+	function get_id_by_meta( $key ) {
 		global $wpdb;
 
 		//To avoid "the_posts" filters do a direct call to the database to find the post by meta
@@ -227,14 +223,8 @@ class Term_Images{
 		", "_ti_term_image", $key), OBJECT_K )
 		);
 
-		if( get_post_status( $ids[0]) == 'trash' ){ //no trash
-			wp_delete_post($ids[0], true);
-			return false;
-		}
-
 		if ( isset( $ids[0] ) && 0 < $ids[0] ){
-			$posts = get_posts( array('include' => $ids, 'post_type' => 'attachment') );
-			return $posts;
+			return $ids[0];
 		}
 
 		return false;
@@ -480,9 +470,9 @@ class Term_Images{
 		}
 
 		$key = $this->_key($term_id);
-		$attachments = $this->get_by_meta( $key );
+		$attachment_id = $this->get_id_by_meta( $key );
 
-		$image = $attachments ? wp_get_attachment_image( $attachments[0]->ID, $size, false, $attr ): false;
+		$image = $attachment_id ? wp_get_attachment_image( $attachment_id, $size, false, $attr ) : false;
 
 		return $image;
 	}
@@ -662,12 +652,12 @@ function get_term_image_url( $term_id, $size='thumbnail' ){
 
 	if( !term_exists($term_id) ) return false;
 
-	$attachments = $Term_Images->get_by_meta($term_id);
+	$attachment_id = $Term_Images->get_id_by_meta($term_id);
 
 	//Turn off global post ID so upload filter disabled.
 	$id = $post_ID;
 	$post_ID = 0;
-	$url = wp_get_attachment_url($attachments[0]->ID);
+	$url = wp_get_attachment_url( $attachment_id );
 	$post_ID = $id;
 	
 	return $url;

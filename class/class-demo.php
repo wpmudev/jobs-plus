@@ -23,8 +23,7 @@ class Jobs_Plus_Demo{
 		/**
 		* DEMO JOBS
 		*/
-		$page = $core->get_page_by_meta(JBP_DEMO_PATTERN_KEY, JBP_DEMO_JOB_FLAG.'1' );
-		$page_id = ($page && $page->ID > 0) ? $page->ID : 0;
+		$page_id = $core->get_post_id_by_meta(JBP_DEMO_PATTERN_KEY, JBP_DEMO_JOB_FLAG.'1' );
 		if ( empty($page_id) ) {
 			/* Construct args for the new post */
 			$args = array(
@@ -47,11 +46,9 @@ class Jobs_Plus_Demo{
 			update_post_meta($page_id, '_ct_jbp_job_Contact_Email', 'arnold@incsub.com' );
 			update_post_meta($page_id, '_ct_jbp_job_Due', date( 'M j, Y') );
 			update_post_meta($page_id, JBP_JOB_EXPIRES_KEY, time() + (7 * 24 * 60 * 60) );
-
 		}
 
-		$page = $core->get_page_by_meta(JBP_DEMO_PATTERN_KEY, JBP_DEMO_JOB_FLAG.'2' );
-		$page_id = ($page && $page->ID > 0) ? $page->ID : 0;
+		$page_id = $core->get_post_id_by_meta(JBP_DEMO_PATTERN_KEY, JBP_DEMO_JOB_FLAG.'2' );
 		if ( empty($page_id) ) {
 			// Construct args for the new post
 			$args = array(
@@ -76,8 +73,7 @@ class Jobs_Plus_Demo{
 
 		}
 
-		$page = $core->get_page_by_meta(JBP_DEMO_PATTERN_KEY, JBP_DEMO_JOB_FLAG.'3' );
-		$page_id = ($page && $page->ID > 0) ? $page->ID : 0;
+		$page_id = $core->get_post_id_by_meta(JBP_DEMO_PATTERN_KEY, JBP_DEMO_JOB_FLAG.'3' );
 		if ( empty($page_id) ) {
 			// Construct args for the new post
 			$args = array(
@@ -111,8 +107,7 @@ class Jobs_Plus_Demo{
 		/**
 		* DEMO PROS
 		*/
-		$page = $core->get_page_by_meta(JBP_DEMO_PATTERN_KEY, JBP_DEMO_PRO_FLAG.'1' );
-		$page_id = ($page && $page->ID > 0) ? $page->ID : 0;
+		$page_id = $core->get_post_id_by_meta(JBP_DEMO_PATTERN_KEY, JBP_DEMO_PRO_FLAG.'1' );
 		if ( empty($page_id) ) {
 			// Construct args for the new post
 			$args = array(
@@ -138,8 +133,7 @@ class Jobs_Plus_Demo{
 			update_post_meta($page_id, '_ct_jbp_pro_Skills', '{"539a1402eadb2":{"skill_id":"539a1402eadb2","skill":"WordPress","remove":"","percent":"97"},"539a1413cb368":{"skill_id":"539a1413cb368","skill":"PHP","remove":"","percent":"98"},"539a1425182f2":{"skill_id":"539a1425182f2","skill":"MySQL","remove":"","percent":"94"}}' );
 		}
 /*
-		$page = $core->get_page_by_meta(JBP_DEMO_PATTERN_KEY, JBP_DEMO_PRO_FLAG.'2' );
-		$page_id = ($page && $page->ID > 0) ? $page->ID : 0;
+		$page_id = $core->get_post_id_by_meta(JBP_DEMO_PATTERN_KEY, JBP_DEMO_PRO_FLAG.'2' );
 		if ( empty($page_id) ) {
 			/// Construct args for the new post 
 			$args = array(
@@ -156,8 +150,7 @@ class Jobs_Plus_Demo{
 			add_post_meta( $page_id, JBP_DEMO_PATTERN_KEY, JBP_DEMO_PRO_FLAG.'2');
 		}
 
-		$page = $core->get_page_by_meta(JBP_DEMO_PATTERN_KEY, JBP_DEMO_PRO_FLAG.'3' );
-		$page_id = ($page && $page->ID > 0) ? $page->ID : 0;
+		$page_id = $core->get_post_id_by_meta(JBP_DEMO_PATTERN_KEY, JBP_DEMO_PRO_FLAG.'3' );
 		if ( empty($page_id) ) {
 			// Construct args for the new post
 			$args = array(
