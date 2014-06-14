@@ -18,12 +18,12 @@ include_once $this->plugin_dir . 'class/class-demo.php';
 <div class="wrap jbp_started_page">
 	<h2><?php esc_html_e( 'Getting Started with Jobs +', JBP_TEXT_DOMAIN ); ?></h2>
 
-	<p class="jbp_light">Thank you! for using our Jobs & Expert plugin</p>
+	<p class="jbp_light"><?php esc_html_e('Thank you! for using our Jobs & Expert plugin',JBP_TEXT_DOMAIN) ?></p>
 
-	<p class="jbp_default">This plugin is AWESOME ! It will – Slow-carb VHS 8-bit Thundercats, leggings bitters pickled hoodie vegan disrupt small batch. Wolf Echo Park DIY,
+	<p class="jbp_default"><?php esc_html_e('This plugin is AWESOME ! It will – Slow-carb VHS 8-bit Thundercats, leggings bitters pickled hoodie vegan disrupt small batch. Wolf Echo Park DIY,
 		beard small batch pork belly umami lo-ﬁ deep v asymmetrical Intelligentsia. Retro Echo Park PBR&B VHS farm-to-table Pinterest, Odd Future 3 wolf
-		moon street art. 90's actually pour-over messenger bag. Wes Anderson butcher wolf, mixtape lo-ﬁ Intelligentsia messenger bag aesthetic
-	skateboard PBR&B hashtag Odd Future vinyl cruciﬁx leggings.</p>
+		moon street art. 90\'s actually pour-over messenger bag. Wes Anderson butcher wolf, mixtape lo-ﬁ Intelligentsia messenger bag aesthetic
+	skateboard PBR&B hashtag Odd Future vinyl cruciﬁx leggings.',JBP_TEXT_DOMAIN) ?></p>
 
 	<p><img src="<?php echo $this->plugin_url . 'img/getting-started.png'; ?>" /></p>
 
