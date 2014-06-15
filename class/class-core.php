@@ -28,13 +28,13 @@ class Jobs_Plus_Core{
 	);
 
 	public $widgets = array( //List of widget files
-		'class-widget-recent-jobs' 			=> 'WP_Widget_Recent_Jobs',
-		'class-widget-recent-pros'      => 'WP_Widget_Recent_Pros',
-		'class-widget-search-jobs'      => 'WP_Widget_Search_Jobs',
-		'class-widget-search-pros'      => 'WP_Widget_Search_Pros',
-		'class-widget-landing-page'     => 'WP_Widget_Landing_Page',
-		'class-widget-add-job'          => 'WP_Widget_Add_Job',
-		'class-widget-add-pro'          => 'WP_Widget_Add_Pro'
+	'class-widget-recent-jobs' 			=> 'WP_Widget_Recent_Jobs',
+	'class-widget-recent-pros'      => 'WP_Widget_Recent_Pros',
+	'class-widget-search-jobs'      => 'WP_Widget_Search_Jobs',
+	'class-widget-search-pros'      => 'WP_Widget_Search_Pros',
+	'class-widget-landing-page'     => 'WP_Widget_Landing_Page',
+	'class-widget-add-job'          => 'WP_Widget_Add_Job',
+	'class-widget-add-pro'          => 'WP_Widget_Add_Pro'
 	);
 
 	/**
@@ -64,6 +64,7 @@ class Jobs_Plus_Core{
 
 	public $title = '';
 	public $pattern = '';
+	public $pattern_flag = 0;
 
 	public $jbp_errors = array();
 	public $jbp_notices = array();
@@ -931,88 +932,6 @@ class Jobs_Plus_Core{
 		* Handle special endpoints edit, contact and search
 		*/
 
-		//Is this an jbp_job update?
-		if( ( is_singular('jbp_job') && get_query_var('edit') )
-		|| is_single($this->job_update_page_id) ){
-
-			$limit = intval($this->get_setting('job->max_records', 1) );
-			if( !current_user_can( CREATE_JOBS ) ) {
-				wp_redirect( add_query_arg('jbp_error',
-				urlencode(sprintf(__('You do not have the permissions to enter a %s.', $this->text_domain), $this->job_labels->new_item) ),
-				get_post_type_archive_link('jbp_job') ) );
-				exit;
-			} elseif( !current_user_can('administrator') ) {
-				if( !get_query_var('edit') && $this->count_user_posts_by_type(get_current_user_id(), 'jbp_pro') >= $limit) {
-					wp_redirect(add_query_arg('jbp_error',
-					urlencode(sprintf(__('You have exceeded your quota of %s %s.', $this->text_domain), $limit, $this->job_labels->name) ),
-					get_post_type_archive_link('jbp_job') ) );
-					exit;
-				}
-			} elseif( !current_user_can( EDIT_JOBS ) ) {
-				wp_redirect(add_query_arg('jbp_error',
-				urlencode(sprintf(__('You do not have permission to edit this %s.', $this->text_domain), $this->job_labels->singular_name) ),
-				get_post_type_archive_link('jbp_job') ) );
-				exit;
-			}
-			$this->title = 'custom_titles';
-			$this->pattern = $this->job_update_page_id;
-		}
-
-		//Is this a jbp_pro update?
-		elseif( (is_singular('jbp_pro') && get_query_var('edit') )
-		|| (is_single($this->pro_update_page_id) ) ){
-
-			if( is_single($this->pro_update_page_id) ){ //How many can they have
-				$limit = intval($this->get_setting('pro->max_records', 1) );
-				if( !current_user_can( CREATE_PROS ) ) {
-					wp_redirect( add_query_arg('jbp_error',
-					urlencode(sprintf(__('You do not have the permissions to enter a %s.', $this->text_domain), $this->pro_labels->new_item) ),
-					get_post_type_archive_link('jbp_pro') ) );
-					exit;
-				} elseif( !current_user_can('administrator') ) {
-					if( !get_query_var('edit') && $this->count_user_posts_by_type(get_current_user_id(), 'jbp_job') >= $limit) {
-						wp_redirect(add_query_arg('jbp_error',
-						urlencode(sprintf(__('You have exceeded your quota of %s %s.', $this->text_domain), $limit, $this->pro_labels->name) ),
-						get_post_type_archive_link('jbp_pro') ) );
-						exit;
-					}
-				} elseif( !current_user_can( EDIT_PROS ) ) {
-					wp_redirect(add_query_arg('jbp_error',
-					urlencode(sprintf(__('You do not have permission to edit this listing.', $this->text_domain), $this->pro_labels->singular_name) ),
-					get_post_type_archive_link('jbp_pro') ) );
-					exit;
-				}
-			}
-
-			$this->title = 'custom_titles';
-			$this->pattern = $this->pro_update_page_id;
-
-		}
-		//Is this a jbp_job search?
-		elseif( is_search() && (get_query_var('post_type') == 'jbp_job') ){
-			$this->title = 'custom_titles';
-			$this->pattern = $this->job_search_page_id;
-		}
-
-		//Is this a jbp_job contact?
-		elseif( is_singular('jbp_job') && get_query_var('contact') ){
-			//css for the edit Pages
-			$this->title = 'custom_titles';
-			$this->pattern = $this->job_contact_page_id;
-		}
-
-		//Is this a job_pro search?
-		elseif( is_search() && (get_query_var('post_type') == 'jbp_pro') ){
-			$this->title = 'custom_titles';
-			$this->pattern = $this->pro_search_page_id;
-		}
-
-		//Is this a job_pro contact?
-		elseif( is_singular('jbp_pro') && get_query_var('contact') ){
-			$this->title = 'custom_titles';
-			$this->pattern = $this->pro_contact_page_id;
-		}
-
 		//Handle any default custom templates
 		if( empty($this->pattern) ) {
 
@@ -1055,6 +974,98 @@ class Jobs_Plus_Core{
 			}
 		}
 
+		//Is this an jbp_job update?
+		if( ( is_singular('jbp_job') && get_query_var('edit') )
+		|| is_single($this->job_update_page_id) ){
+
+			$limit = intval($this->get_setting('job->max_records', 1) );
+			if( !current_user_can( CREATE_JOBS ) ) {
+				wp_redirect( add_query_arg('jbp_error',
+				urlencode(sprintf(__('You do not have the permissions to enter a %s.', $this->text_domain), $this->job_labels->new_item) ),
+				get_post_type_archive_link('jbp_job') ) );
+				exit;
+			} elseif( !current_user_can('administrator') ) {
+				if( !get_query_var('edit') && $this->count_user_posts_by_type(get_current_user_id(), 'jbp_pro') >= $limit) {
+					wp_redirect(add_query_arg('jbp_error',
+					urlencode(sprintf(__('You have exceeded your quota of %s %s.', $this->text_domain), $limit, $this->job_labels->name) ),
+					get_post_type_archive_link('jbp_job') ) );
+					exit;
+				}
+			} elseif( !current_user_can( EDIT_JOBS ) ) {
+				wp_redirect(add_query_arg('jbp_error',
+				urlencode(sprintf(__('You do not have permission to edit this %s.', $this->text_domain), $this->job_labels->singular_name) ),
+				get_post_type_archive_link('jbp_job') ) );
+				exit;
+			}
+
+			if( is_single($this->job_update_page_id) ) {
+				$this->title = '';
+				$this->pattern = 0;
+			} else {
+				$this->title = 'custom_titles';
+				$this->pattern = $this->job_update_page_id;
+			}
+		}
+
+		//Is this a jbp_pro update?
+		elseif( (is_singular('jbp_pro') && get_query_var('edit') )
+		|| (is_single($this->pro_update_page_id) ) ){
+
+			if( is_single($this->pro_update_page_id) ){ //How many can they have
+				$limit = intval($this->get_setting('pro->max_records', 1) );
+				if( !current_user_can( CREATE_PROS ) ) {
+					wp_redirect( add_query_arg('jbp_error',
+					urlencode(sprintf(__('You do not have the permissions to enter a %s.', $this->text_domain), $this->pro_labels->new_item) ),
+					get_post_type_archive_link('jbp_pro') ) );
+					exit;
+				} elseif( !current_user_can('administrator') ) {
+					if( !get_query_var('edit') && $this->count_user_posts_by_type(get_current_user_id(), 'jbp_job') >= $limit) {
+						wp_redirect(add_query_arg('jbp_error',
+						urlencode(sprintf(__('You have exceeded your quota of %s %s.', $this->text_domain), $limit, $this->pro_labels->name) ),
+						get_post_type_archive_link('jbp_pro') ) );
+						exit;
+					}
+				} elseif( !current_user_can( EDIT_PROS ) ) {
+					wp_redirect(add_query_arg('jbp_error',
+					urlencode(sprintf(__('You do not have permission to edit this listing.', $this->text_domain), $this->pro_labels->singular_name) ),
+					get_post_type_archive_link('jbp_pro') ) );
+					exit;
+				}
+			}
+
+			if( is_single($this->pro_update_page_id) ) {
+				$this->title = '';
+				$this->pattern = 0;
+			} else {
+				$this->title = 'custom_titles';
+				$this->pattern = $this->pro_update_page_id;
+			}
+		}
+		//Is this a jbp_job search?
+		elseif( is_search() && (get_query_var('post_type') == 'jbp_job') ){
+			$this->title = 'custom_titles';
+			$this->pattern = $this->job_search_page_id;
+		}
+
+		//Is this a jbp_job contact?
+		elseif( is_singular('jbp_job') && get_query_var('contact') ){
+			//css for the edit Pages
+			$this->title = 'custom_titles';
+			$this->pattern = $this->job_contact_page_id;
+		}
+
+		//Is this a job_pro search?
+		elseif( is_search() && (get_query_var('post_type') == 'jbp_pro') ){
+			$this->title = 'custom_titles';
+			$this->pattern = $this->pro_search_page_id;
+		}
+
+		//Is this a job_pro contact?
+		elseif( is_singular('jbp_pro') && get_query_var('contact') ){
+			$this->title = 'custom_titles';
+			$this->pattern = $this->pro_contact_page_id;
+		}
+
 		//var_dump($this->pattern); exit;
 		//Do the content filters
 		if( !empty($this->pattern) ) {
@@ -1072,15 +1083,14 @@ class Jobs_Plus_Core{
 	function content_template($content) {
 		global $wp_query, $post;
 		//return $content;
-
 		rewind_posts();
 		remove_all_filters('the_title', 20);
 		remove_all_filters('the_content', 20);
-
 		$vpost = get_post( $this->pattern);
-		$content = do_shortcode( $vpost->post_content );
-
+		$content = do_shortcode($vpost->post_content );
+		echo $content;
 		$wp_query->post_count = 0;
+		return '';
 		return $content;
 	}
 

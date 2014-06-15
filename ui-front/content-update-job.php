@@ -159,6 +159,8 @@ if(empty($data['post_title']) && isset($_GET['job_title']) && !empty($_GET['job_
 					</td>
 				</tr>
 				<?php endif; ?>
+
+				<?php if(post_type_supports('jbp_job','editor') ): ?>
 				<tr>
 					<th>
 						<label><?php esc_html_e('Describe the Work to be Done',JBP_TEXT_DOMAIN)?></label>
@@ -167,6 +169,18 @@ if(empty($data['post_title']) && isset($_GET['job_title']) && !empty($_GET['job_
 						<textarea name="data[post_content]" rows="4"><?php echo esc_textarea( strip_tags(get_the_content() ) ); ?></textarea>
 					</td>
 				</tr>
+				<?php endif; ?>
+
+				<?php if(post_type_supports('jbp_job','excerpt') ): ?>
+				<tr>
+					<th>
+						<label><?php esc_html_e('Short description for browse list',JBP_TEXT_DOMAIN)?></label>
+					</th>
+					<td>
+						<textarea name="data[post_excerpt]" rows="1"><?php echo esc_textarea( strip_tags( $post->post_excerpt ) ); ?></textarea>
+					</td>
+				</tr>
+				<?php endif; ?>
 
 				<?php
 				//get related non-hierarchical taxonomies
@@ -187,7 +201,7 @@ if(empty($data['post_title']) && isset($_GET['job_title']) && !empty($_GET['job_
 					</th>
 					<td>
 						<input class="job-tags" style="100%" id="tag_<?php echo $tag_name; ?>" name="tag_input[<?php echo $tag_name; ?>]" type="hidden" value="<?php echo $tag_list?>" />
-						<span class="job-description"><?php esc_html_e('Skills Required for this job', JBP_TEXT_DOMAIN); ?></span>
+						<br /><span class="job-description"><?php esc_html_e('Skills Required for this job', JBP_TEXT_DOMAIN); ?></span>
 
 						<script type="text/javascript">
 							jQuery(document).ready( function($){

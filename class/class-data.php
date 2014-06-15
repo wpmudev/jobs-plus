@@ -68,7 +68,7 @@ class Jobs_Plus_Core_Data{
 			'editor' => 'editor',
 			'author' => 'author',
 			'thumbnail' => 'thumbnail',
-			'excerpt' => 'excerpt',
+			'excerpt' => false,
 			'custom_fields' => 'custom-fields',
 			'revisions' => 'revisions',
 			'page_attributes' => 'page-attributes',
@@ -138,7 +138,7 @@ class Jobs_Plus_Core_Data{
 			'editor' => 'editor',
 			'author' => 'author',
 			'thumbnail' => 'thumbnail',
-			'excerpt' => 'excerpt',
+			'excerpt' => false,
 			'revisions' => 'revisions',
 			),
 			'supports_reg_tax' =>

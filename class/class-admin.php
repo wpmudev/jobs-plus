@@ -64,8 +64,8 @@ class Jobs_Plus_Admin extends Jobs_Plus_Core {
 		sprintf(__( 'New %s', JBP_TEXT_DOMAIN ), $this->job_labels->name),
 		sprintf(__( 'New %s', JBP_TEXT_DOMAIN ), $this->job_labels->name),
 		EDIT_JOBS,
-		'jobs-plus-menu&redirect=add-job',
-		array( $this, 'admin_menu_page_job' )
+		'jobs-plus-add-job',
+		array( $this, 'admin_menu_add_job' )
 		//'post-new.php?post_type=jbp_job'
 		);
 
@@ -87,8 +87,8 @@ class Jobs_Plus_Admin extends Jobs_Plus_Core {
 		sprintf(__( 'New %s', JBP_TEXT_DOMAIN ), $this->pro_labels->singular_name),
 		sprintf(__( 'New %s', JBP_TEXT_DOMAIN ), $this->pro_labels->singular_name),
 		EDIT_PROS,
-		'jobs-plus-menu&redirect=add-pro',
-		array( $this, 'admin_menu_page_pro' )
+		'jobs-plus-add-pro',
+		array( $this, 'admin_menu_add_pro' )
 		//'post-new.php?post_type=jbp_pro'
 		);
 
@@ -140,12 +140,6 @@ class Jobs_Plus_Admin extends Jobs_Plus_Core {
 
 	function admin_menu_page_job() {
 
-		//Intercept redirects to the Front end
-		if( !empty( $_GET['redirect'] ) && ( $_GET['redirect'] == 'add-job' )  ) {
-			wp_safe_redirect( get_permalink( $this->job_update_page_id ) );
-			exit;
-		}
-
 		global $plugin_page;
 
 		$current_tab = ( empty( $_GET['tab'] ) ) ? 'job' : $_GET['tab'];
@@ -179,12 +173,6 @@ class Jobs_Plus_Admin extends Jobs_Plus_Core {
 
 	function admin_menu_page_pro() {
 
-		//Intercept redirects to the Front end
-		if( !empty( $_GET['redirect'] ) && ( $_GET['redirect'] == 'add-pro' )  ) {
-			wp_safe_redirect( get_permalink( $this->pro_update_page_id ) );
-			exit;
-		}
-
 		$current_tab = ( empty( $_GET['tab'] ) ) ? 'pro' : $_GET['tab'];
 		switch ( $current_tab ) {
 			case 'settings':
@@ -193,7 +181,8 @@ class Jobs_Plus_Admin extends Jobs_Plus_Core {
 			case 'job':
 			include $this->plugin_dir . 'ui-admin/job.php';
 			break;
-			case 'pro':
+			case 'pro'
+			:
 			include $this->plugin_dir . 'ui-admin/pro.php';
 			break;
 			case 'shortcodes':
@@ -209,6 +198,16 @@ class Jobs_Plus_Admin extends Jobs_Plus_Core {
 			include $this->plugin_dir . 'ui-admin/job.php';
 			break;
 		}
+	}
+	
+	function admin_menu_add_job(){
+			wp_safe_redirect( get_permalink( $this->job_update_page_id ) );
+			exit;
+	}
+
+	function admin_menu_add_pro(){
+			wp_safe_redirect( get_permalink( $this->pro_update_page_id ) );
+			exit;
 	}
 
 	function on_admin_enqueue_scripts() {
@@ -268,16 +267,6 @@ class Jobs_Plus_Admin extends Jobs_Plus_Core {
 			return;
 		}
 
-//		if( !empty( $_GET['redirect'] ) && $_GET['redirect'] == 'add-job' ) {
-//			wp_safe_redirect( get_permalink( $this->add_job_page_id ) );
-//			exit;
-//		}
-//
-//		if( !empty( $_GET['redirect'] ) && $_GET['redirect'] == 'add-pro' ) {
-//			wp_safe_redirect( get_permalink( $this->add_pro_page_id ) );
-//			exit;
-//		}
-		
 		check_admin_referer( 'jobs-plus-settings' );
 
 		$params = stripslashes_deep( $_POST );

@@ -28,7 +28,7 @@ elseif (get_query_var('edit')) { //Or are we editing a listing?
 $post_ID = $post->ID;
 setup_postdata($post);
 
-$excerpt = empty($post->post_content) ? '' : $this->make_clickable(strip_tags(get_the_excerpt() ) );
+$excerpt = $this->make_clickable(strip_tags(get_the_excerpt() ) );;
 
 //Styles
 wp_enqueue_style('jobs-plus-custom');
