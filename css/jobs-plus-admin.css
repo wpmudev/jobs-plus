@@ -31,6 +31,9 @@ code {
 * For users custom CSS declarations. Look for and load any custom css defined,
 * Priority, Child theme, Parent theme, Plugin css
 */
+.jbp_started_page{
+	max-width: 1110px;
+}
 
 p.jbp_default {
 	color:       #adadb5;
