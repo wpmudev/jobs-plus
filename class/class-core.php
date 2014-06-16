@@ -416,7 +416,7 @@ class Jobs_Plus_Core{
 
 		if ( !post_type_exists('jbp_job') && empty($activate) ) {
 			update_site_option('jbp_activate', 3);
-			wp_safe_redirect('#'); exit;
+			wp_redirect('#'); exit;
 		}
 
 		if( $activate )	{
@@ -803,7 +803,7 @@ class Jobs_Plus_Core{
 		//Is this a jbp_job update?
 		if(! empty($_POST['jbp-job-update']) ) {
 			$id = $this->update_job($_POST);
-			wp_safe_redirect( add_query_arg('jbp_notice', urlencode(sprintf( __('The %s has been updated', $this->text_domain), $this->job_labels->singular_name ) ),
+			wp_redirect( add_query_arg('jbp_notice', urlencode(sprintf( __('The %s has been updated', $this->text_domain), $this->job_labels->singular_name ) ),
 
 			trailingslashit(get_permalink($id) ) ) );
 			exit;
@@ -813,7 +813,7 @@ class Jobs_Plus_Core{
 		if(! empty($_POST['jbp-pro-update'] ) ) {
 			$id = $this->update_pro($_POST);
 			if( !empty($id) ){
-				wp_safe_redirect( add_query_arg('jbp_notice', urlencode(sprintf(__('This %s has been updated', $this->text_domain), $this->pro_labels->singular_name ) ),
+				wp_redirect( add_query_arg('jbp_notice', urlencode(sprintf(__('This %s has been updated', $this->text_domain), $this->pro_labels->singular_name ) ),
 				trailingslashit(get_permalink($id) ) ) );
 				exit;
 			}
@@ -849,7 +849,7 @@ class Jobs_Plus_Core{
 					set_query_var('edit', false);
 
 					if($wp_query->post->ID == $this->job_update_page_id) {
-						//						wp_safe_redirect(add_query_arg('jbp_error',
+						//						wp_redirect(add_query_arg('jbp_error',
 						//						urlencode(sprintf(__('You must register and login to enter a %s.', $this->text_domain), $this->job_labels->new_item) ),
 						//						get_post_type_archive_link('jbp_job') ) );
 						//						exit;
@@ -862,7 +862,7 @@ class Jobs_Plus_Core{
 					set_query_var('edit', false);
 
 					if($wp_query->post->ID == $this->pro_update_page_id) {
-						//						wp_safe_redirect(add_query_arg( 'jbp_error',
+						//						wp_redirect(add_query_arg( 'jbp_error',
 						//						urlencode(sprintf(__('You must register and login to enter a %s.', $this->text_domain), $this->pro_labels->new_item) ),
 						//						get_post_type_archive_link('jbp_pro') ) );
 						//						exit;
