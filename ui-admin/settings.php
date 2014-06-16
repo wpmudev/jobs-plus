@@ -11,11 +11,11 @@ global $Term_Images;
 ?>
 <div class="wrap">
 	<?php $this->render_tabs(); ?>
-	<h2><?php esc_html_e('Jobs+ General Settings', JBP_TEXT_DOMAIN);?></h2>
+	<h2><?php esc_html_e('Jobs+ Icon Settings', JBP_TEXT_DOMAIN);?></h2>
 	<form action="#" method="post">
 		<br />
 
-		<a name="certification"></a>
+		<a name="icons"></a>
 
 		<div class="postbox">
 			<div class="handlediv"><br /></div>
@@ -23,7 +23,28 @@ global $Term_Images;
 	
 			<div class="inside">
 				<table class="form-table">
+					<tr>
+						<th>
+							<label><?php esc_html_e('Icon Colors', JBP_TEXT_DOMAIN ); ?></label>
+						</th>
+						<td>
+							<label><input type="radio" name="jbp[general][icons]" value="dark"  <?php checked( $this->get_setting('general->icons', 'dark'), 'dark' ) ?> /><?php printf( '%s, <span class="description">%s</span>', esc_html__('Dark Icons', JBP_TEXT_DOMAIN), esc_html__( 'for light button backgrounds', JBP_TEXT_DOMAIN ) ); ?></label><br/>
+							<label><input type="radio" name="jbp[general][icons]" value="bright"  <?php checked( $this->get_setting('general->icons', 'dark'), 'bright' ) ?> /><?php printf( '%s, <span class="description">%s</span>', esc_html__('Bright Icons', JBP_TEXT_DOMAIN), esc_html__( 'for dark button backgrounds', JBP_TEXT_DOMAIN ) ); ?></label><br/>
+							<label><input type="radio" name="jbp[general][icons]" value="none"  <?php checked( $this->get_setting('general->icons', 'dark'), 'none' ) ?> /><?php printf( '%s, <span class="description">%s</span>', esc_html__('No Icons', JBP_TEXT_DOMAIN), esc_html__( 'to remove the icons from buttons', JBP_TEXT_DOMAIN ) ); ?></label>
+							<br /><span class="description"><?php esc_html_e('Sets the default color of the button icons. May be overriden for individual buttons in the "class" attribute of the shortcode.', JBP_TEXT_DOMAIN); ?></span>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
 
+		<a name="certification"></a>
+
+		<div class="postbox">
+			<div class="handlediv"><br /></div>
+			<h3 class="hndle"><span><?php esc_html_e( 'Certification Options', JBP_TEXT_DOMAIN ) ?></span></h3>
+			<div class="inside">
+				<table class="form-table">
 					<tr>
 						<th>
 							<label><?php printf( esc_html__('Enable %s Certification', JBP_TEXT_DOMAIN ), $this->pro_labels->singular_name ); ?></label>

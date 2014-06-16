@@ -97,23 +97,23 @@
 	margin:         0 0 0 15px;
 }
 
-.updated {
+.jbp-updated {
 	background-color: #fff;
 	border-left:      4px solid #7AD03A;
 	box-shadow:       1px 1px 2px 1px rgba(0, 0, 0, 0.2);
 }
 
-div.updated, div.error {
+div.jbp-updated, div.error {
 	margin:  1em 0;
 	padding: 0.1em 1em;
 }
 
-div.updated p, div.error p {
+div.jbp-updated p, div.error p {
 	margin:  0.5em 0;
 	padding: 0.1em;
 }
 
-label.error, label.updated {
+label.error, label.jbp-updated {
 	margin:  0.5em 0;
 	padding: 0.1em 1em;
 	display: block;

@@ -201,12 +201,12 @@ class Jobs_Plus_Admin extends Jobs_Plus_Core {
 	}
 	
 	function admin_menu_add_job(){
-			wp_safe_redirect( get_permalink( $this->job_update_page_id ) );
+			wp_redirect( get_permalink( $this->job_update_page_id ) );
 			exit;
 	}
 
 	function admin_menu_add_pro(){
-			wp_safe_redirect( get_permalink( $this->pro_update_page_id ) );
+			wp_redirect( get_permalink( $this->pro_update_page_id ) );
 			exit;
 	}
 
@@ -455,7 +455,7 @@ class Jobs_Plus_Admin extends Jobs_Plus_Core {
 				'comment_status' => 'closed'
 				);
 				$id   = wp_insert_post( $args );
-				wp_safe_redirect( admin_url( $tab_url . '&job_update_page_id=' . $id ) );
+				wp_redirect( admin_url( $tab_url . '&job_update_page_id=' . $id ) );
 				break;
 				case 'jbp_create_add_pro_page':
 				check_admin_referer( 'jbp_create_add_pro_page' );
@@ -471,7 +471,7 @@ class Jobs_Plus_Admin extends Jobs_Plus_Core {
 				'comment_status' => 'closed'
 				);
 				$id        = wp_insert_post( $args );
-				wp_safe_redirect( admin_url( $tab_url . '&pro_update_page_id=' . $id ) );
+				wp_redirect( admin_url( $tab_url . '&pro_update_page_id=' . $id ) );
 				break;
 			}
 		}

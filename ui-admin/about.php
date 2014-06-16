@@ -18,6 +18,8 @@ include_once $this->plugin_dir . 'class/class-demo.php';
 <div class="wrap jbp_started_page">
 	<h2><?php esc_html_e( 'Getting Started with Jobs +', JBP_TEXT_DOMAIN ); ?></h2>
 
+<div style="display: inline-table; width: 20%">
+	
 	<p class="jbp_light"><?php esc_html_e('Thank you! for using our Jobs & Expert plugin',JBP_TEXT_DOMAIN) ?></p>
 
 	<p class="jbp_default"><?php esc_html_e('This plugin is AWESOME ! It will – Slow-carb VHS 8-bit Thundercats, leggings bitters pickled hoodie vegan disrupt small batch. Wolf Echo Park DIY,
@@ -45,3 +47,4 @@ include_once $this->plugin_dir . 'class/class-demo.php';
 	</div>
 </div>
 
+</div>

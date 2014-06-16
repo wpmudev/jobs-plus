@@ -33,11 +33,11 @@
 				<th scope="row"><?php printf( esc_html__('%s Profile Button', JBP_TEXT_DOMAIN), $this->pro_labels->singular_name); ?></th>
 				<td>
 					<code>
-						[jbp-expert-profile-btn text="<?php esc_html_e('My Profile', JBP_TEXT_DOMAIN);?>" view="loggedin|loggedout|both" class="some class" img="true|false"]
+						[jbp-expert-profile-btn text="<?php esc_html_e('My Profile', JBP_TEXT_DOMAIN);?>" view="loggedin|loggedout|both" class="dark|bright|none|other" img="true|false"]
 					</code>
 					<br/>or<br/>
 					<code>
-						[jbp-expert-profile-btn view="loggedin|loggedout|both" class="some class" img="true|false"]
+						[jbp-expert-profile-btn view="loggedin|loggedout|both" class="dark|bright|none|other" img="true|false"]
 						<br/>&lt;img src="<?php esc_attr_e('someimage.jpg', JBP_TEXT_DOMAIN); ?>" /&gt;<?php esc_html_e('My Profile', JBP_TEXT_DOMAIN );?>
 						<br/>[/jbp-expert-profile-btn]
 					</code>
@@ -49,11 +49,11 @@
 				<th scope="row"><?php printf( esc_html__('Post %s Button', JBP_TEXT_DOMAIN), $this->pro_labels->singular_name);?></th>
 				<td>
 					<code>
-						[jbp-expert-post-btn text="<?php printf( esc_html__('Post an %s', JBP_TEXT_DOMAIN), $this->pro_labels->singular_name);?>" view="loggedin|loggedout|both" class="some class" img="true|false"]
+						[jbp-expert-post-btn text="<?php printf( esc_html__('Post an %s', JBP_TEXT_DOMAIN), $this->pro_labels->singular_name);?>" view="loggedin|loggedout|both" class="dark|bright|none|other" img="true|false"]
 					</code>
 					<br/>or<br/>
 					<code>
-						[jbp-expert-post-btn view="loggedin|loggedout|both" class="some class" img="true|false"]
+						[jbp-expert-post-btn view="loggedin|loggedout|both" class="dark|bright|none|other" img="true|false"]
 						<br/>&lt;img src="<?php esc_attr_e('someimage.jpg', JBP_TEXT_DOMAIN); ?>" /&gt;<?php printf( esc_html__('Post an %s', JBP_TEXT_DOMAIN), $this->pro_labels->singular_name);?>
 						<br/>[/jbp-expert-post-btn]
 					</code>
@@ -65,11 +65,11 @@
 				<th scope="row"><?php printf( esc_html__( '%s Archive Button:', JBP_TEXT_DOMAIN ), $this->pro_labels->name) ?></th>
 				<td>
 					<code>
-						[jbp-expert-browse-btn text="<?php printf( esc_html__('Browse %s', JBP_TEXT_DOMAIN), $this->pro_labels->name);?>" view="loggedin|loggedout|both" class="some class" img="true|false"]
+						[jbp-expert-browse-btn text="<?php printf( esc_html__('Browse %s', JBP_TEXT_DOMAIN), $this->pro_labels->name);?>" view="loggedin|loggedout|both" class="dark|bright|none|other" img="true|false"]
 					</code>
 					<br/>or<br/>
 					<code>
-						[jbp-expert-browse-btn view="loggedin|loggedout|both" class="some class" img="true|false"]
+						[jbp-expert-browse-btn view="loggedin|loggedout|both" class="dark|bright|none|other" img="true|false"]
 						<br/>&lt;img src="<?php esc_attr_e('someimage.jpg', JBP_TEXT_DOMAIN); ?>" /&gt;<?php printf( esc_html__('Browse %s', JBP_TEXT_DOMAIN), $this->pro_labels->name);?>
 						<br/>[/jbp-expert-browse-btn]
 					</code>
@@ -81,11 +81,11 @@
 				<th scope="row"><?php printf( esc_html__( '%s Contact Button:', JBP_TEXT_DOMAIN ), $this->pro_labels->name); ?></th>
 				<td>
 					<code>
-						[jbp-expert-contact-btn text="<?php esc_html_e('Contact', JBP_TEXT_DOMAIN);?>" post="post_id" view="loggedin|loggedout|both" class="some class"]
+						[jbp-expert-contact-btn text="<?php esc_html_e('Contact', JBP_TEXT_DOMAIN);?>" post="post_id" view="loggedin|loggedout|both" class="dark|bright|none|other"]
 					</code>
 					<br/>or<br/>
 					<code>
-						[jbp-expert-contact-btn  post="post_id" view="loggedin|loggedout|both" class="some class"]
+						[jbp-expert-contact-btn  post="post_id" view="loggedin|loggedout|both" class="dark|bright|none|other"]
 						<br/>&lt;img src="<?php esc_attr_e('someimage.jpg', JBP_TEXT_DOMAIN); ?>" /&gt;<?php esc_html_e('Contact', JBP_TEXT_DOMAIN);?>
 						<br/>[/jbp-expert-contact-btn]
 					</code>
@@ -97,7 +97,7 @@
 				<th scope="row"><?php printf( esc_html__('%s Search Form:', JBP_TEXT_DOMAIN ), $this->pro_labels->name); ?></th>
 				<td>
 					<code>
-						[jbp-expert-search text="<?php printf( esc_html__('Search %s for', JBP_TEXT_DOMAIN), $this->pro_labels->name);?>" view="loggedin|loggedout|both" class="some class"]
+						[jbp-expert-search text="<?php printf( esc_html__('Search %s for', JBP_TEXT_DOMAIN), $this->pro_labels->name);?>" view="loggedin|loggedout|both" class="dark|bright|none|other"]
 					</code>
 					<br/><span class="description"><?php printf( esc_html__( 'Displays search form for %s search.', JBP_TEXT_DOMAIN ), $this->pro_labels->name) ?></span>
 				</td>
@@ -143,11 +143,11 @@
 				<th scope="row"><?php printf( esc_html__('Post %s Button', JBP_TEXT_DOMAIN), $this->job_labels->singular_name);?></th>
 				<td>
 					<code>
-						[jbp-job-post-btn text="<?php printf( esc_html__('Post a %s', JBP_TEXT_DOMAIN), $this->job_labels->singular_name);?>" view="loggedin|loggedout|both" class="some class" img="true|false"]
+						[jbp-job-post-btn text="<?php printf( esc_html__('Post a %s', JBP_TEXT_DOMAIN), $this->job_labels->singular_name);?>" view="loggedin|loggedout|both" class="dark|bright|none|other" img="true|false"]
 					</code>
 					<br/>or<br/>
 					<code>
-						[jbp-job-post-btn view="loggedin|loggedout|both" class="some class" img="true|false"]
+						[jbp-job-post-btn view="loggedin|loggedout|both" class="dark|bright|none|other" img="true|false"]
 						<br/>&lt;img src="<?php esc_attr_e('someimage.jpg', JBP_TEXT_DOMAIN); ?>" /&gt;<?php printf( esc_html__('Post a %s', JBP_TEXT_DOMAIN), $this->job_labels->singular_name);?>
 						<br/>[/jbp-job-post-btn]
 					</code>
@@ -159,11 +159,11 @@
 				<th scope="row"><?php printf( esc_html__( '%s Archive Button:', JBP_TEXT_DOMAIN ), $this->job_labels->name); ?></th>
 				<td>
 					<code>
-						[jbp-job-browse-btn text="<?php printf( esc_html__('Browse %s', JBP_TEXT_DOMAIN), $this->job_labels->name);?>" view="loggedin|loggedout|both" class="some class" img="true|false"]
+						[jbp-job-browse-btn text="<?php printf( esc_html__('Browse %s', JBP_TEXT_DOMAIN), $this->job_labels->name);?>" view="loggedin|loggedout|both" class="dark|bright|none|other" img="true|false"]
 					</code>
 					<br/>or<br/>
 					<code>
-						[jbp-job-browse-btn view="loggedin|loggedout|both" class="some class" img="true|false"]
+						[jbp-job-browse-btn view="loggedin|loggedout|both" class="dark|bright|none|other" img="true|false"]
 						<br/>&lt;img src="<?php esc_html_e('someimage.jpg', JBP_TEXT_DOMAIN); ?>" /&gt;<?php printf( esc_html__('Browse %s', JBP_TEXT_DOMAIN), $this->job_labels->name);?>
 						<br/>[/jbp-job-browse-btn]
 					</code>
@@ -175,11 +175,11 @@
 				<th scope="row"><?php printf( esc_html__( '%s Contact Button:', JBP_TEXT_DOMAIN ), $this->job_labels->name); ?></th>
 				<td>
 					<code>
-						[jbp-expert-contact-btn text="<?php esc_html_e('Contact', JBP_TEXT_DOMAIN);?>" post="post_id" view="loggedin|loggedout|both" class="some class"]
+						[jbp-expert-contact-btn text="<?php esc_html_e('Contact', JBP_TEXT_DOMAIN);?>" post="post_id" view="loggedin|loggedout|both" class="dark|bright|none|other"]
 					</code>
 					<br/>or<br/>
 					<code>
-						[jbp-job-contact-btn  post="post_id" view="loggedin|loggedout|both" class="some class"]
+						[jbp-job-contact-btn  post="post_id" view="loggedin|loggedout|both" class="dark|bright|none|other"]
 						<br/>&lt;img src="<?php esc_html_e('someimage.jpg', JBP_TEXT_DOMAIN); ?>" /&gt;<?php esc_html_e('Contact', JBP_TEXT_DOMAIN);?>
 						<br/>[/jbp-job-contact-btn]
 					</code>
@@ -191,7 +191,7 @@
 				<th scope="row"><?php printf( esc_html__('%s Search Form:', JBP_TEXT_DOMAIN ), $this->job_labels->name); ?></th>
 				<td>
 					<code>
-						[jbp-job-search text="<?php printf( esc_html__('Search %s for', JBP_TEXT_DOMAIN), $this->job_labels->name);?>" view="loggedin|loggedout|both" class="some class"]
+						[jbp-job-search text="<?php printf( esc_html__('Search %s for', JBP_TEXT_DOMAIN), $this->job_labels->name);?>" view="loggedin|loggedout|both" class="dark|bright|none|other"]
 					</code>
 					<br/><span class="description"><?php printf( esc_html__( 'Displays search form for %s search.', JBP_TEXT_DOMAIN ), $this->job_labels->name) ?></span>
 				</td>

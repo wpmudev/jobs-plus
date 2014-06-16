@@ -18,7 +18,7 @@ $phrase = (empty($_GET['s']) ) ? '' : $_GET['s'];
 						<span>
 							<input type="text" class="pro-search-input" name="s" value="<?php echo esc_attr($phrase); ?>" autocomplete="off" placeholder="<?php echo esc_attr( $text ); ?>" />
 						</span>
-						<button type="submit" class="pro-submit-search" value="" >
+						<button type="submit" class="pro-submit-search <?php echo $class; ?>" value="" >
 							<div class="div-img">&nbsp;</div>
 						</button>
 					</li>

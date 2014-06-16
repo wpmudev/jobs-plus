@@ -1491,7 +1491,7 @@ class Jobs_Plus_Core{
 
 	function display_notices(){
 		foreach($this->jbp_notices as $notice){
-			echo '<br clear="all"/><div class="updated"><p>' . sanitize_text_field($notice) . '</p></div><br clear="all"/>';
+			echo '<br clear="all"/><div class="jbp-updated"><p>' . sanitize_text_field($notice) . '</p></div><br clear="all"/>';
 		}
 	}
 
@@ -2316,7 +2316,7 @@ class Jobs_Plus_Core{
 		extract( shortcode_atts( array(
 		'text' => __('Contact Me', $this->text_domain),
 		'view' => 'both', //loggedin, loggedout, both
-		'class' => '',
+		'class' => $this->get_setting('general->icons', 'dark' ),
 		'post' => null,
 		), $atts ) );
 
@@ -2338,7 +2338,7 @@ class Jobs_Plus_Core{
 		extract( shortcode_atts( array(
 		'text' => __('Contact Me', $this->text_domain),
 		'view' => 'both', //loggedin, loggedout, both
-		'class' => '',
+		'class' => $this->get_setting('general->icons', 'dark' ),
 		'post' => null,
 		), $atts ) );
 
@@ -2360,7 +2360,8 @@ class Jobs_Plus_Core{
 		extract( shortcode_atts( array(
 		'text' => sprintf(__('Browse %s', $this->text_domain),$this->job_labels->name),
 		'view' => 'both', //loggedin, loggedout, both
-		'class' => 'dark',
+		'class' => $this->get_setting('general->icons', 'dark' ),
+		'class' => $this->get_setting('general->icons', 'dark' ),
 		), $atts ) );
 
 		if( !$this->can_view( $view ) ) return '';
@@ -2378,7 +2379,7 @@ class Jobs_Plus_Core{
 		extract( shortcode_atts( array(
 		'text' => sprintf(__('Browse %s', $this->text_domain),$this->pro_labels->name),
 		'view' => 'both', //loggedin, loggedout, both
-		'class' => 'dark',
+		'class' => $this->get_setting('general->icons', 'dark' ),
 		), $atts ) );
 
 		if( !$this->can_view( $view ) ) return '';
@@ -2396,7 +2397,7 @@ class Jobs_Plus_Core{
 		extract( shortcode_atts( array(
 		'text' => sprintf(__('Post a %s', $this->text_domain),$this->job_labels->singular_name),
 		'view' => 'both', //loggedin, loggedout, both
-		'class' => 'dark',
+		'class' => $this->get_setting('general->icons', 'dark' ),
 		), $atts ) );
 
 		if( !$this->can_view( $view ) ) return '';
@@ -2420,7 +2421,7 @@ class Jobs_Plus_Core{
 		extract( shortcode_atts( array(
 		'text' => sprintf(__('Add an %s', $this->text_domain),$this->pro_labels->singular_name),
 		'view' => 'both', //loggedin, loggedout, both
-		'class' => 'dark', //dark, bright, none
+		'class' => $this->get_setting('general->icons', 'dark' ),
 		), $atts ) );
 
 		if( !$this->can_view( $view ) ) return '';
@@ -2444,7 +2445,7 @@ class Jobs_Plus_Core{
 		extract( shortcode_atts( array(
 		'text' => __('My Jobs', $this->text_domain),
 		'view' => 'both', //loggedin, loggedout, both
-		'class' => 'dark',
+		'class' => $this->get_setting('general->icons', 'dark' ),
 		), $atts ) );
 
 		if( !$this->can_view( $view ) ) return '';
@@ -2467,7 +2468,7 @@ class Jobs_Plus_Core{
 		extract( shortcode_atts( array(
 		'text' => __('My Profile', $this->text_domain),
 		'view' => 'both', //loggedin, loggedout, both
-		'class' => 'dark',
+		'class' => $this->get_setting('general->icons', 'dark' ),
 		), $atts ) );
 		if( !$this->can_view( $view ) ) return '';
 
@@ -2489,7 +2490,7 @@ class Jobs_Plus_Core{
 		extract( shortcode_atts( array(
 		'text' => strtoUpper( sprintf(__('Search %s for ', $this->text_domain),$this->job_labels->name) ),
 		'view' => 'both', //loggedin, loggedout, both
-		'class' => '',
+		'class' => $this->get_setting('general->icons', 'dark' ),
 		), $atts ) );
 
 
@@ -2510,7 +2511,7 @@ class Jobs_Plus_Core{
 		extract( shortcode_atts( array(
 		'text' => sprintf(__('Search %s for ', $this->text_domain),$this->pro_labels->name),
 		'view' => 'both', //loggedin, loggedout, both
-		'class' => '',
+		'class' => $this->get_setting('general->icons', 'dark' ),
 		), $atts ) );
 
 		if( !$this->can_view( $view ) ) return '';
@@ -3127,7 +3128,7 @@ class Jobs_Plus_Core{
 				$response['message'] = sprintf('<div class="error">%s</div>', $user->get_error_message() );
 			} else {
 				$response['status'] = 'success';
-				$response['message'] = sprintf('<div class="updated">%s</div>', __('Successful Login', $this->text_domain) );
+				$response['message'] = sprintf('<div class="jbp-updated">%s</div>', __('Successful Login', $this->text_domain) );
 			}
 			wp_send_json( $response);
 		}
@@ -3141,7 +3142,7 @@ class Jobs_Plus_Core{
 				$response['message'] = sprintf('<div class="error">%s</div>', $user_id->get_error_message() );
 			} else {
 				$response['status'] = 'success';
-				$response['message'] = sprintf('<div class="updated">%s</div>', __('Thank you for Registering', $this->text_domain) );
+				$response['message'] = sprintf('<div class="jbp-updated">%s</div>', __('Thank you for Registering', $this->text_domain) );
 
 				if( is_multisite() ) {
 					global $blog_id;
