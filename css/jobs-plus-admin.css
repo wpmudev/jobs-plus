@@ -5,6 +5,28 @@
 * @license GPL2+
 */
 
+.jbp-updated {
+	background-color: #fff;
+	border-left:      4px solid #7AD03A;
+	box-shadow:       1px 1px 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+div.jbp-updated, div.error {
+	margin:  1em 0;
+	padding: 0.1em 1em;
+}
+
+div.jbp-updated p, div.error p {
+	margin:  0.5em 0;
+	padding: 0.1em;
+}
+
+label.error, label.jbp-updated {
+	margin:  0.5em 0;
+	padding: 0.1em 1em;
+	display: block;
+}
+
 .postbox h3{
 	line-height: 2em;
 	padding-left:1em;

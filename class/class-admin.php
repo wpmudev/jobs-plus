@@ -61,8 +61,8 @@ class Jobs_Plus_Admin extends Jobs_Plus_Core {
 		'edit.php?post_type=jbp_job' );
 
 		add_submenu_page( 'edit.php?post_type=jbp_job',
-		sprintf(__( 'New %s', JBP_TEXT_DOMAIN ), $this->job_labels->name),
-		sprintf(__( 'New %s', JBP_TEXT_DOMAIN ), $this->job_labels->name),
+		sprintf(__( 'New %s', JBP_TEXT_DOMAIN ), $this->job_labels->singular_name),
+		sprintf(__( 'New %s', JBP_TEXT_DOMAIN ), $this->job_labels->singular_name),
 		EDIT_JOBS,
 		'jobs-plus-add-job',
 		array( $this, 'admin_menu_add_job' )

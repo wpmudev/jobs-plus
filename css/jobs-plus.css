@@ -341,6 +341,7 @@ button.no-pad{
 	font-size: 18px;
 	font-weight: bold;
 	line-height: 50px;
+	margin: 0;
 }
 
 .jbp-register-form{
@@ -409,7 +410,7 @@ button.jbp-login-btn.inactive  {
 }
 
 /* restyle the default mfp button */
-button.mfp-close{
+.jbp-register button.mfp-close{
 	background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIj8+Cjxzdmcgd2lkdGg9IjIzLjk5OTk0OTcxMDMzODQwNiIgaGVpZ2h0PSIyMy45OTk5NDk3MTAzMzg0MDYiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CgogPGc+CiAgPHRpdGxlPmJhY2tncm91bmQ8L3RpdGxlPgogIDxyZWN0IGhlaWdodD0iMjYiIHdpZHRoPSIyNiIgeT0iLTEiIHg9Ii0xIiBmaWxsPSJub25lIiBpZD0iY2FudmFzX2JhY2tncm91bmQiLz4KIDwvZz4KIDxnPgogIDx0aXRsZT5MYXllciAxPC90aXRsZT4KICA8ZWxsaXBzZSByeT0iMTAiIHJ4PSIxMC4yMDU4IiBjeT0iMTIiIGN4PSIxMiIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZT0iI2ZmZiIgZmlsbD0iI2ZmZiIgaWQ9InN2Z18zIi8+CiAgPGcgaWQ9InN2Z18xIi8+CiAgPHBhdGggZD0ibTEyLDBjLTYuNjI3LDAgLTEyLDUuMzczIC0xMiwxMnM1LjM3MywxMiAxMiwxMnMxMiwtNS4zNzI5OTkgMTIsLTEycy01LjM3Mjk5OSwtMTIgLTEyLC0xMnptNiw4LjEyMWwtMy44NzksMy44NzlsMy44NzksMy44NzlsMCwyLjEyMWwtMi4xMjEsMGwtMy44NzksLTMuODc5bC0zLjg3OSwzLjg3OWwtMi4xMjEsMGwwLC0yLjEyMWwzLjg3OSwtMy44NzlsLTMuODc5LC0zLjg3OWwwLC0yLjEyMWwyLjEyMSwwbDMuODc5LDMuODc5bDMuODc5LC0zLjg3OWwyLjEyMSwwbDAsMi4xMjF6IiBmaWxsPSIjZDEyMDI3IiBpZD0ic3ZnXzIiLz4KIDwvZz4KPC9zdmc+) no-repeat center center !important;
 	opacity: 1 !important;
 	position: absolute;
@@ -417,6 +418,6 @@ button.mfp-close{
 	right: -22px;
 }
 
-button.mfp-close:active{
+.jbp-register button.mfp-close:active{
 	top: -40px;
 }

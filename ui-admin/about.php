@@ -12,7 +12,10 @@ wp_enqueue_style( 'magnific-popup' );
 
 //echo $this->demo_landing_page_id;
 
-include_once $this->plugin_dir . 'class/class-demo.php';
+if( !empty($_GET['create-demo']) ){
+	include_once $this->plugin_dir . 'class/class-demo.php';
+	$this->notice_message(__('Demo Data Created', JBP_TEXT_DOMAIN));
+}
 
 ?>
 <div class="wrap jbp_started_page">
@@ -26,6 +29,11 @@ include_once $this->plugin_dir . 'class/class-demo.php';
 		beard small batch pork belly umami lo-ﬁ deep v asymmetrical Intelligentsia. Retro Echo Park PBR&B VHS farm-to-table Pinterest, Odd Future 3 wolf
 		moon street art. 90\'s actually pour-over messenger bag. Wes Anderson butcher wolf, mixtape lo-ﬁ Intelligentsia messenger bag aesthetic
 	skateboard PBR&B hashtag Odd Future vinyl cruciﬁx leggings.',JBP_TEXT_DOMAIN) ?></p>
+	<div style="text-align: center;">
+		<p class="first"><a href="<?php echo esc_attr( 'edit.php?post_type=jbp_job&page=jobs-plus-about&create-demo=true' ); ?>"class="jbp_button jbp_job_pages"><?php echo esc_html_e('Create Demo Data', JBP_TEXT_DOMAIN);?></a></p>
+	</div>
+	
+	<?php echo do_action('jbp_notice'); ?>
 
 	<p><img src="<?php echo $this->plugin_url . 'img/getting-started.png'; ?>" /></p>
 
