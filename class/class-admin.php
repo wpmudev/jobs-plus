@@ -105,8 +105,8 @@ class Jobs_Plus_Admin extends Jobs_Plus_Core {
 	}
 
 	function reorder_menu( $menu_order ){
-		global $submenu;
-
+		global $submenu, $menu;
+		//var_dump($menu);
 		if( is_network_admin() ) return $menu_order;
 
 		$job_menu = empty($submenu['edit.php?post_type=jbp_job']) ? false : $submenu['edit.php?post_type=jbp_job'];

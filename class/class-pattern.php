@@ -348,8 +348,8 @@ class Jobs_Plus_Pattern{
 		if ( empty($page_id) ) {
 			/* Construct args for the new post */
 			$args = array(
-			'post_title'     => __('Landing Page', JBP_TEXT_DOMAIN),
-			'post_name'      => __('landing-page', JBP_TEXT_DOMAIN),
+			'post_title'     => __('Jobs & Experts', JBP_TEXT_DOMAIN),
+			'post_name'      => __('jobs-experts', JBP_TEXT_DOMAIN),
 			'post_status'    => 'publish',
 			'post_author'    => $current_user->ID,
 			'post_type'      => 'page',
