@@ -36,6 +36,7 @@ wp_enqueue_style('jqueryui-editable');
 wp_enqueue_style('magnific-popup');
 
 //Scripts
+wp_enqueue_script('element-query');
 wp_enqueue_script('jobs-plus');
 wp_enqueue_script('jquery-ui-dialog');
 wp_enqueue_script('jqueryui-editable');
@@ -50,7 +51,7 @@ $this->no_thumbnail();
 ?>
 
 
-<div class="pro-profile-wrapper group">
+<div class="pro-profile-wrapper group" data-eq-pts="tablet: 420, desk:768">
 
 	<div class="group">
 		<?php if(dynamic_sidebar('pro-widget') ) : else: endif; ?>

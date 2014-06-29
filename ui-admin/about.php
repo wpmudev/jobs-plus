@@ -21,38 +21,38 @@ if( !empty($_GET['create-demo']) ){
 <div class="wrap jbp_started_page">
 	<h2><?php esc_html_e( 'Getting Started with Jobs +', JBP_TEXT_DOMAIN ); ?></h2>
 
-<div style="display: inline-table; width: 20%">
-	
-	<p class="jbp_light"><?php esc_html_e('Thank you! for using our Jobs & Expert plugin',JBP_TEXT_DOMAIN) ?></p>
+	<div style="display: inline-table; width: 20%">
 
-	<p class="jbp_default"><?php esc_html_e('This plugin is AWESOME ! It will – Slow-carb VHS 8-bit Thundercats, leggings bitters pickled hoodie vegan disrupt small batch. Wolf Echo Park DIY,
-		beard small batch pork belly umami lo-ﬁ deep v asymmetrical Intelligentsia. Retro Echo Park PBR&B VHS farm-to-table Pinterest, Odd Future 3 wolf
-		moon street art. 90\'s actually pour-over messenger bag. Wes Anderson butcher wolf, mixtape lo-ﬁ Intelligentsia messenger bag aesthetic
-	skateboard PBR&B hashtag Odd Future vinyl cruciﬁx leggings.',JBP_TEXT_DOMAIN) ?></p>
-	<div style="text-align: center;">
-		<p class="first"><a href="<?php echo esc_attr( 'edit.php?post_type=jbp_job&page=jobs-plus-about&create-demo=true' ); ?>"class="jbp_button jbp_job_pages"><?php echo esc_html_e('Create Demo Data', JBP_TEXT_DOMAIN);?></a></p>
+		<p class="jbp_light"><?php esc_html_e('Thank you! for using our Jobs & Expert plugin',JBP_TEXT_DOMAIN) ?></p>
+
+		<p class="jbp_default"><?php esc_html_e('This plugin is AWESOME ! It will – Slow-carb VHS 8-bit Thundercats, leggings bitters pickled hoodie vegan disrupt small batch. Wolf Echo Park DIY,
+			beard small batch pork belly umami lo-ﬁ deep v asymmetrical Intelligentsia. Retro Echo Park PBR&B VHS farm-to-table Pinterest, Odd Future 3 wolf
+			moon street art. 90\'s actually pour-over messenger bag. Wes Anderson butcher wolf, mixtape lo-ﬁ Intelligentsia messenger bag aesthetic
+			skateboard PBR&B hashtag Odd Future vinyl cruciﬁx leggings.',JBP_TEXT_DOMAIN) ?></p>
+			<div style="text-align: center;">
+				<p class="first"><a href="<?php echo esc_attr( 'edit.php?post_type=jbp_job&page=jobs-plus-about&create-demo=true' ); ?>"class="jbp_button jbp_job_pages"><?php echo esc_html_e('Create Demo Data', JBP_TEXT_DOMAIN);?></a></p>
+			</div>
+
+			<?php echo do_action('jbp_notice'); ?>
+
+			<p><img src="<?php echo $this->plugin_url . 'img/getting-started.png'; ?>" /></p>
+
+			<div class="jbp_plans">
+				<div class="jbp_plan">
+					<p class="first"><a href="<?php echo esc_attr( get_post_type_archive_link('jbp_job') ); ?>" target="jobs" class="jbp_button jbp_job_pages"><?php echo esc_html( sprintf(__('%s Page', JBP_TEXT_DOMAIN), $this->job_labels->name) );?></a></p>
+					<p><a href="<?php echo esc_attr( admin_url('post.php?post='.$this->job_archive_page_id.'&action=edit') );?>"><?php _e( 'Edit', JBP_TEXT_DOMAIN ) ?></a><?php esc_html_e( ' this virtual page', JBP_TEXT_DOMAIN ) ?></p>
+					<p><a href="<?php echo esc_attr( get_permalink($this->job_update_page_id) );?>"><?php _e( 'Add', JBP_TEXT_DOMAIN ) ?></a> <?php echo esc_html( sprintf( __('a new %s', JBP_TEXT_DOMAIN ), $this->job_labels->singular_name ) ); ?></p>
+				</div>
+				<div class="jbp_plan">
+					<p class="first"><a href="<?php echo esc_attr( get_permalink( $this->demo_landing_page_id ) ); ?>" target="landing" class="jbp_button jbp_landing_page"><?php esc_html_e('Jobs & Experts',JBP_TEXT_DOMAIN );?></a></p>
+					<p><a href="<?php echo esc_attr( admin_url('post.php?post='.$this->demo_landing_page_id.'&action=edit') );?>"><?php esc_html_e('Edit', JBP_TEXT_DOMAIN ); ?></a> <?php esc_html_e( ' this virtual page', JBP_TEXT_DOMAIN ) ?></p>
+				</div>
+				<div class="jbp_plan">
+					<p class="first"><a href="<?php echo esc_attr( get_post_type_archive_link('jbp_pro') ); ?>" target="pros" class="jbp_button jbp_experts_pages"><?php echo esc_html( sprintf(__('%s Page', JBP_TEXT_DOMAIN), $this->pro_labels->name) );?></a></p>
+					<p><a href="<?php echo esc_attr( admin_url('post.php?post='.$this->pro_archive_page_id.'&action=edit') ); ?>"><?php _e( 'Edit', JBP_TEXT_DOMAIN ) ?></a> <?php _e( ' this virtual page', JBP_TEXT_DOMAIN ) ?></p>
+					<p><a href="<?php echo esc_attr( get_permalink($this->pro_update_page_id) ); ?>"><?php esc_html_e( 'Add', JBP_TEXT_DOMAIN ) ?></a> <?php echo esc_html( sprintf( __('a new %s', JBP_TEXT_DOMAIN ), $this->pro_labels->singular_name ) ); ?> </p>
+				</div>
+			</div>
+		</div>
+
 	</div>
-	
-	<?php echo do_action('jbp_notice'); ?>
-
-	<p><img src="<?php echo $this->plugin_url . 'img/getting-started.png'; ?>" /></p>
-
-	<div class="jbp_plans">
-		<div class="jbp_plan">
-			<p class="first"><a href="<?php echo esc_attr( get_post_type_archive_link('jbp_job') ); ?>" target="jobs" class="jbp_button jbp_job_pages"><?php echo esc_html( sprintf(__('%s Page', JBP_TEXT_DOMAIN), $this->job_labels->name) );?></a></p>
-			<p><a href="<?php echo esc_attr( admin_url('post.php?post='.$this->job_archive_page_id.'&action=edit') );?>"><?php _e( 'Edit', JBP_TEXT_DOMAIN ) ?></a><?php esc_html_e( ' this pattern', JBP_TEXT_DOMAIN ) ?></p>
-			<p><a href="<?php echo esc_attr( get_permalink($this->job_update_page_id) );?>"><?php _e( 'Add', JBP_TEXT_DOMAIN ) ?></a> <?php echo esc_html( sprintf( __('a new %s', JBP_TEXT_DOMAIN ), $this->job_labels->singular_name ) ); ?></p>
-		</div>
-		<div class="jbp_plan">
-			<p class="first"><a href="<?php echo esc_attr( get_permalink( $this->demo_landing_page_id ) ); ?>" target="landing" class="jbp_button jbp_landing_page"><?php esc_html_e('Jobs & Experts',JBP_TEXT_DOMAIN );?></a></p>
-			<p><a href="<?php echo esc_attr( admin_url('post.php?post='.$this->demo_landing_page_id.'&action=edit') );?>"><?php esc_html_e('Edit', JBP_TEXT_DOMAIN ); ?></a> <?php esc_html_e( ' this pattern', JBP_TEXT_DOMAIN ) ?></p>
-		</div>
-		<div class="jbp_plan">
-			<p class="first"><a href="<?php echo esc_attr( get_post_type_archive_link('jbp_pro') ); ?>" target="pros" class="jbp_button jbp_experts_pages"><?php echo esc_html( sprintf(__('%s Page', JBP_TEXT_DOMAIN), $this->pro_labels->name) );?></a></p>
-			<p><a href="<?php echo esc_attr( admin_url('post.php?post='.$this->pro_archive_page_id.'&action=edit') ); ?>"><?php _e( 'Edit', JBP_TEXT_DOMAIN ) ?></a> <?php _e( ' this pattern', JBP_TEXT_DOMAIN ) ?></p>
-			<p><a href="<?php echo esc_attr( get_permalink($this->pro_update_page_id) ); ?>"><?php esc_html_e( 'Add', JBP_TEXT_DOMAIN ) ?></a> <?php echo esc_html( sprintf( __('a new %s', JBP_TEXT_DOMAIN ), $this->pro_labels->singular_name ) ); ?> </p>
-		</div>
-	</div>
-</div>
-
-</div>

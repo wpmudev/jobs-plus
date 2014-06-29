@@ -25,24 +25,31 @@ class Jobs_Plus_Demo{
 		/**
 		* DEMO JOBS
 		*/
-		$page_id = $core->get_post_id_by_meta(JBP_DEMO_PATTERN_KEY, JBP_DEMO_JOB_FLAG.'1' );
+		$page_id = $core->get_post_id_by_meta(JBP_DEMO_VIRTUAL_KEY, JBP_DEMO_JOB_FLAG.'1' );
 		if ( empty($page_id) ) {
 			/* Construct args for the new post */
 			$args = array(
-			'post_title'     => __('Experienced WordPress / PHP Developer', JBP_TEXT_DOMAIN),
-			'post_name'      => __('experienced-wordpress-php-developer', JBP_TEXT_DOMAIN),
+			'post_title'     => __('Revamp | WordPress guru needed', JBP_TEXT_DOMAIN),
+			'post_name'      => __('revamp-wordpress-guru-needed', JBP_TEXT_DOMAIN),
 			'post_status'    => 'publish',
 			'post_type'      => 'jbp_job',
-			'post_content'   => 'Content text',
+			'post_content'   => 
+			
+			'I am looking for a professional WordPress developer. I have a website that needs new coding, '
+			.'fresh installation, update plugins. make site according to Google guidelines. '
+			.'\n\nThis is a time sensitive project. I do have the PSD files and all the images are on the server. '
+			.'For some reason Google is not reading the site correctly so we decided to hire someone who can redo the coding.'
+			,
+
 			'ping_status'    => 'closed',
 			'comment_status' => 'closed',
 
 			);
 			$page_id = wp_insert_post( $args );
 			$page = get_post($page_id);
-			add_post_meta( $page_id, JBP_DEMO_PATTERN_KEY, JBP_DEMO_JOB_FLAG.'1');
+			add_post_meta( $page_id, JBP_DEMO_VIRTUAL_KEY, JBP_DEMO_JOB_FLAG.'1');
 			$result = wp_set_object_terms( $page_id, 'plugins-code', 'jbp_category' );
-			$result = wp_set_object_terms( $page_id, array('PHP', 'AJAX'), 'jbp_skills_tag' );
+			$result = wp_set_object_terms( $page_id, array('Google', 'SEO', 'HTACCESS', 'W3C Validation', 'Robots.txt'), 'jbp_skills_tag' );
 
 			update_post_meta($page_id, '_ct_jbp_job_Budget', 100 );
 			update_post_meta($page_id, '_ct_jbp_job_Contact_Email', 'arnold@incsub.com' );
@@ -57,21 +64,26 @@ class Jobs_Plus_Demo{
 			);
 		}
 
-		$page_id = $core->get_post_id_by_meta(JBP_DEMO_PATTERN_KEY, JBP_DEMO_JOB_FLAG.'2' );
+		$page_id = $core->get_post_id_by_meta(JBP_DEMO_VIRTUAL_KEY, JBP_DEMO_JOB_FLAG.'2' );
 		if ( empty($page_id) ) {
 			// Construct args for the new post
 			$args = array(
-			'post_title'     => __('WordPress Website Support Coordinator', JBP_TEXT_DOMAIN),
-			'post_name'      => __('wordpress-website-support-coordinator', JBP_TEXT_DOMAIN),
+			'post_title'     => __('Making WordPress theme compatible with PHP 5', JBP_TEXT_DOMAIN),
+			'post_name'      => __('making-wordpress-theme-compatible-with-PHP-5', JBP_TEXT_DOMAIN),
 			'post_status'    => 'publish',
 			'post_type'      => 'jbp_job',
-			'post_content'   => 'Content text',
+			'post_content'   => 
+			
+			"I have just upgraded mysql and my WordPress theme is not working anymore. I need someone to look into it and see where is the problem. "
+			."/n/nThis is urgent. Please contact me asap. Payment will be made via paypal."
+			,
+			
 			'ping_status'    => 'closed',
 			'comment_status' => 'closed'
 			);
 			$page_id = wp_insert_post( $args );
 			$page = get_post($page_id);
-			add_post_meta( $page_id, JBP_DEMO_PATTERN_KEY, JBP_DEMO_JOB_FLAG.'2');
+			add_post_meta( $page_id, JBP_DEMO_VIRTUAL_KEY, JBP_DEMO_JOB_FLAG.'2');
 			$result = wp_set_object_terms( $page_id, 'themes-design', 'jbp_category' );
 			$result = wp_set_object_terms( $page_id, array('PHP', 'Javascript', 'CSS' ), 'jbp_skills_tag' );
 
@@ -89,21 +101,30 @@ class Jobs_Plus_Demo{
 
 		}
 
-		$page_id = $core->get_post_id_by_meta(JBP_DEMO_PATTERN_KEY, JBP_DEMO_JOB_FLAG.'3' );
+		$page_id = $core->get_post_id_by_meta(JBP_DEMO_VIRTUAL_KEY, JBP_DEMO_JOB_FLAG.'3' );
 		if ( empty($page_id) ) {
 			// Construct args for the new post
 			$args = array(
-			'post_title'     => __('Blog, Commerce, Membership custom site', JBP_TEXT_DOMAIN),
-			'post_name'      => __('blog-commerce-membership-custom-site', JBP_TEXT_DOMAIN),
+			'post_title'     => __('WordPress specialist', JBP_TEXT_DOMAIN),
+			'post_name'      => __('wordpress-specialist', JBP_TEXT_DOMAIN),
 			'post_status'    => 'publish',
 			'post_type'      => 'jbp_job',
-			'post_content'   => 'Content text',
+			'post_content'   => 
+			
+			"Our site has been developed by another programmer that is no longer available. "
+			."Some things got screwed up and need fixing. We need someone to fix the menu "
+			."(doesn’t show all the pages), some links are not working and help us move the site to another domain "
+			."(we own it as well). \n\nWe are a non-profit and tight on budget, so looking for someone who will do honest "
+			."quick job without extra charges. Open for other suggestions and corrections that we might not know about. "
+			."The project is pretty straight forward and easy (but not easy enough for our limited WordPress skills))"
+			,
+			
 			'ping_status'    => 'closed',
 			'comment_status' => 'closed'
 			);
 			$page_id = wp_insert_post( $args );
 			$page = get_post($page_id);
-			add_post_meta( $page_id, JBP_DEMO_PATTERN_KEY, JBP_DEMO_JOB_FLAG.'3');
+			add_post_meta( $page_id, JBP_DEMO_VIRTUAL_KEY, JBP_DEMO_JOB_FLAG.'3');
 			$result = wp_set_object_terms( $page_id, 'wordpress', 'jbp_category' );
 			$result = wp_set_object_terms( $page_id, array('bbPress', 'PHP', 'Video', 'Membership', 'eCommerce'), 'jbp_skills_tag' );
 
@@ -130,7 +151,7 @@ class Jobs_Plus_Demo{
 		/**
 		* DEMO PROS
 		*/
-		$page_id = $core->get_post_id_by_meta(JBP_DEMO_PATTERN_KEY, JBP_DEMO_PRO_FLAG.'1' );
+		$page_id = $core->get_post_id_by_meta(JBP_DEMO_VIRTUAL_KEY, JBP_DEMO_PRO_FLAG.'1' );
 		if ( empty($page_id) ) {
 			// Construct args for the new post
 			$args = array(
@@ -149,7 +170,7 @@ class Jobs_Plus_Demo{
 			);
 			$page_id = wp_insert_post( $args );
 			$page = get_post($page_id);
-			add_post_meta( $page_id, JBP_DEMO_PATTERN_KEY, JBP_DEMO_PRO_FLAG.'1');
+			add_post_meta( $page_id, JBP_DEMO_VIRTUAL_KEY, JBP_DEMO_PRO_FLAG.'1');
 
 			update_post_meta($page_id, '_ct_jbp_pro_First_Last', json_encode( array('first' => 'Phil', 'last' => 'Anders') ) );
 			update_post_meta($page_id, '_ct_jbp_pro_Company_URL', json_encode( array('link' => 'WPMU DEV', 'url' => 'http://premium.wpmudev.org') ) );
@@ -167,7 +188,7 @@ class Jobs_Plus_Demo{
 			);
 		}
 
-		$page_id = $core->get_post_id_by_meta(JBP_DEMO_PATTERN_KEY, JBP_DEMO_PRO_FLAG.'2' );
+		$page_id = $core->get_post_id_by_meta(JBP_DEMO_VIRTUAL_KEY, JBP_DEMO_PRO_FLAG.'2' );
 		if ( empty($page_id) ) {
 			/// Construct args for the new post
 			$args = array(
@@ -186,7 +207,7 @@ class Jobs_Plus_Demo{
 			);
 			$page_id = wp_insert_post( $args );
 			$page = get_post($page_id);
-			add_post_meta( $page_id, JBP_DEMO_PATTERN_KEY, JBP_DEMO_PRO_FLAG.'2');
+			add_post_meta( $page_id, JBP_DEMO_VIRTUAL_KEY, JBP_DEMO_PRO_FLAG.'2');
 
 			update_post_meta($page_id, '_ct_jbp_pro_First_Last', json_encode( array('first' => 'Tom', 'last' => 'Eagles') ) );
 			update_post_meta($page_id, '_ct_jbp_pro_Company_URL', json_encode( array('link' => 'WPMU DEV', 'url' => 'http://premium.wpmudev.org') ) );
@@ -204,7 +225,7 @@ class Jobs_Plus_Demo{
 			);
 		}
 
-		$page_id = $core->get_post_id_by_meta(JBP_DEMO_PATTERN_KEY, JBP_DEMO_PRO_FLAG.'3' );
+		$page_id = $core->get_post_id_by_meta(JBP_DEMO_VIRTUAL_KEY, JBP_DEMO_PRO_FLAG.'3' );
 		if ( empty($page_id) ) {
 			// Construct args for the new post
 			$args = array(
@@ -223,7 +244,7 @@ class Jobs_Plus_Demo{
 			);
 			$page_id = wp_insert_post( $args );
 			$page = get_post($page_id);
-			add_post_meta( $page_id, JBP_DEMO_PATTERN_KEY, JBP_DEMO_PRO_FLAG.'3');
+			add_post_meta( $page_id, JBP_DEMO_VIRTUAL_KEY, JBP_DEMO_PRO_FLAG.'3');
 
 			update_post_meta($page_id, '_ct_jbp_pro_First_Last', json_encode( array('first' => 'John', 'last' => 'Rivera') ) );
 			update_post_meta($page_id, '_ct_jbp_pro_Company_URL', json_encode( array('link' => 'WPMU DEV', 'url' => 'http://premium.wpmudev.org') ) );

@@ -285,9 +285,9 @@ button.no-pad{
 	text-align: center;
 }
 
-@media screen and (max-width: 959px) {
+@media screen and (max-width: 480px) {
 
-	.jbp-widget .jbp-button {
+	.jbp-button {
 		float:          none;
 		display:        block;
 		width:          100%;
@@ -298,13 +298,13 @@ button.no-pad{
 		margin-bottom:  .5em;
 	}
 
-	.jbp-widget .jbp-button img {
+	.div-img {
 		display: none;
 	}
 
 }
 
-/** Ajax Register popup **/
+/** Ajax Register po.pup **/
 
 .jbp-register{
 	position: relative;

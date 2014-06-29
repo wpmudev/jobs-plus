@@ -152,18 +152,15 @@ a.pro-add{
 	padding: 0;
 }
 .pro-portfolio ul li{
-	width: 238px;   /* 1up=100% - 2up=48% - 3up=31% - 4up=23% - 5up=18% 6up=14% */
+	width: 100%;   /* 1up=100% - 2up=48% - 3up=31% - 4up=23% - 5up=18% 6up=14% */
 	float: left;
 	margin: 0 19px 20px 0;
 	list-style: none outside none;
 }
 
-.pro-portfolio ul li:nth-child(2n){
-	margin: 0 0 20px 0;
-}
-
 .portfolio a img{
 	box-shadow: none;
+	width: 100%;
 }
 
 /* Skills gauge */
@@ -225,7 +222,7 @@ a.pro-add{
 }
 
 .pro-profile-wrapper{
-	width: 825px;
+	width: 100%;
 	box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	-webkit-box-sizing: border-box;
@@ -239,26 +236,80 @@ h2.pro-title{
 }
 
 .pro-pad{
-	margin: 0 50px;
+	margin: 0;
 }
 
-.pro-left{
-	float: left;
-	width: 230px;
-	test-align: center;
+.pro-content{
+	float: right;
+	width: 100%;
 	box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	-webkit-box-sizing: border-box;
 }
 
+.pro-left{
+	float: left;
+	width: 100%;
+	text-align: center;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+}
+
+/* EQ.JS */
+.pro-profile-wrapper[data-eq-state="tablet"] .pro-content{
+	width: 100%;
+}
+
+.pro-profile-wrapper[data-eq-state="tablet"] .pro-left{
+	width: 100%;
+}
+
+.pro-profile-wrapper[data-eq-state="tablet"] .pro-portfolio ul li{
+	width: 48%;
+	margin-right: 2%;
+}
+	
+.pro-profile-wrapper[data-eq-state="desk"] .pro-content{
+	width: 70%;
+}
+
+.pro-profile-wrapper[data-eq-state="desk"] .pro-left{
+	width: 30%;
+}
+
+.pro-profile-wrapper[data-eq-state="desk"] .pro-portfolio ul li{
+	width: 48%;
+	margin-right: 2%;
+}
+	
+.pro-profile-wrapper[data-eq-state="desk"] .pro-pad{
+	margin:0 8%;
+}
+
+
+/*
+.pro-portfolio ul li:nth-child(2n){
+	margin: 0 0 20px 0;
+}
+*/
+
+/*
 @media screen and (min-width: 800px) {
 
+
+
+	.pro-left{
+		float: left;
+		width: 30%;
+	}
+
 	.pro-content{
-		width: 595px;
+		width: 70%;
 		float: right;
-		margin: 0;
 	}
 }
+*/
 
 .pro-content label{
 	display: block;

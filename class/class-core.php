@@ -63,8 +63,8 @@ class Jobs_Plus_Core{
 	public $job_obj = null;
 
 	public $title = '';
-	public $pattern = '';
-	public $pattern_flag = 0;
+	public $virtual = '';
+	public $virtual_flag = 0;
 
 	public $jbp_errors = array();
 	public $jbp_notices = array();
@@ -75,7 +75,7 @@ class Jobs_Plus_Core{
 	public $job_slug = null;
 	public $pro_slug = null;
 	/**
-	* Pattern page ids. NOT normally referenced directly. See __get below
+	* virtual page ids. NOT normally referenced directly. See __get below
 	*/
 	public $_job_archive_page_id = 0;
 	public $_job_taxonomy_page_id = 0;
@@ -179,7 +179,7 @@ class Jobs_Plus_Core{
 		add_shortcode( 'jbp-job-price-search', array( &$this, 'job_price_search_sc' ) );
 		add_shortcode( 'jbp-job-search', array( &$this, 'job_search_sc' ) );
 
-		//Page Pattern shortcodes
+		//Virtual Page shortcodes
 		add_shortcode( 'jbp-expert-archive-page',  array( &$this, 'pro_archive_page_sc' ) );
 		add_shortcode( 'jbp-expert-contact-page',  array( &$this, 'pro_contact_page_sc' ) );
 		add_shortcode( 'jbp-expert-search-page',   array( &$this, 'pro_search_page_sc' ) );
@@ -196,7 +196,7 @@ class Jobs_Plus_Core{
 	}
 
 	/**
-	* Get a pattern page by meta value
+	* Get a virtual page by meta value
 	*
 	* @return int $page[0] /bool false
 	*/
@@ -238,13 +238,13 @@ class Jobs_Plus_Core{
 			$page_id = $this->get_post_id_by_meta($key, $flag );
 
 			if(empty($page_id) ) {
-				require_once $this->plugin_dir . 'class/class-pattern.php';
+				require_once $this->plugin_dir . 'class/class-virtual.php';
 				$page_id = $object_id;
 			}
-			//Make sure it stays pattern
-			if( in_array( $key , array( JBP_JOB_PATTERN_KEY, JBP_PRO_PATTERN_KEY ) ) ){
-				if( !in_array(get_post_status( $page_id ), array('pattern', 'trash') ) )
-				wp_update_post( array('ID' => $page_id, 'post_status' => 'pattern') );
+			//Make sure it stays virtual
+			if( in_array( $key , array( JBP_JOB_VIRTUAL_KEY, JBP_PRO_VIRTUAL_KEY ) ) ){
+				if( !in_array(get_post_status( $page_id ), array('virtual', 'trash') ) )
+				wp_update_post( array('ID' => $page_id, 'post_status' => 'virtual') );
 			}
 
 		} else {
@@ -254,27 +254,27 @@ class Jobs_Plus_Core{
 	}
 
 	/**
-	* __get , __set and __isset to abstract the pattern pageids so they are only called if actually used.
+	* __get , __set and __isset to abstract the virtual pageids so they are only called if actually used.
 	*
 	*/
 	function __get($name){
 		$result = false;
 		switch($name){
-			case 'job_archive_page_id':  $result = $this->find_page_id( $this->_job_archive_page_id, JBP_JOB_PATTERN_KEY, JBP_JOB_ARCHIVE_FLAG); break;
-			case 'job_taxonomy_page_id': $result = $this->find_page_id( $this->_job_taxonomy_page_id, JBP_JOB_PATTERN_KEY, JBP_JOB_TAXONOMY_FLAG); break;
-			case 'job_contact_page_id':  $result = $this->find_page_id( $this->_job_contact_page_id, JBP_JOB_PATTERN_KEY, JBP_JOB_CONTACT_FLAG); break;
-			case 'job_search_page_id':   $result = $this->find_page_id( $this->_job_search_page_id, JBP_JOB_PATTERN_KEY, JBP_JOB_SEARCH_FLAG); break;
-			case 'job_single_page_id':   $result = $this->find_page_id( $this->_job_single_page_id, JBP_JOB_PATTERN_KEY, JBP_JOB_SINGLE_FLAG); break;
-			case 'job_update_page_id':   $result = $this->find_page_id( $this->_job_update_page_id, JBP_JOB_PATTERN_KEY, JBP_JOB_UPDATE_FLAG); break;
+			case 'job_archive_page_id':  $result = $this->find_page_id( $this->_job_archive_page_id, JBP_JOB_VIRTUAL_KEY, JBP_JOB_ARCHIVE_FLAG); break;
+			case 'job_taxonomy_page_id': $result = $this->find_page_id( $this->_job_taxonomy_page_id, JBP_JOB_VIRTUAL_KEY, JBP_JOB_TAXONOMY_FLAG); break;
+			case 'job_contact_page_id':  $result = $this->find_page_id( $this->_job_contact_page_id, JBP_JOB_VIRTUAL_KEY, JBP_JOB_CONTACT_FLAG); break;
+			case 'job_search_page_id':   $result = $this->find_page_id( $this->_job_search_page_id, JBP_JOB_VIRTUAL_KEY, JBP_JOB_SEARCH_FLAG); break;
+			case 'job_single_page_id':   $result = $this->find_page_id( $this->_job_single_page_id, JBP_JOB_VIRTUAL_KEY, JBP_JOB_SINGLE_FLAG); break;
+			case 'job_update_page_id':   $result = $this->find_page_id( $this->_job_update_page_id, JBP_JOB_VIRTUAL_KEY, JBP_JOB_UPDATE_FLAG); break;
 
-			case 'pro_archive_page_id':  $result = $this->find_page_id( $this->_pro_archive_page_id, JBP_PRO_PATTERN_KEY, JBP_PRO_ARCHIVE_FLAG ); break;
-			case 'pro_taxonomy_page_id': $result = $this->find_page_id( $this->_pro_taxonomy_page_id, JBP_PRO_PATTERN_KEY, JBP_PRO_TAXONOMY_FLAG ); break;
-			case 'pro_contact_page_id':  $result = $this->find_page_id( $this->_pro_contact_page_id, JBP_PRO_PATTERN_KEY, JBP_PRO_CONTACT_FLAG ); break;
-			case 'pro_search_page_id':   $result = $this->find_page_id( $this->_pro_search_page_id, JBP_PRO_PATTERN_KEY, JBP_PRO_SEARCH_FLAG ); break;
-			case 'pro_single_page_id':   $result = $this->find_page_id( $this->_pro_single_page_id, JBP_PRO_PATTERN_KEY, JBP_PRO_SINGLE_FLAG ); break;
-			case 'pro_update_page_id':   $result = $this->find_page_id( $this->_pro_update_page_id, JBP_PRO_PATTERN_KEY, JBP_PRO_UPDATE_FLAG ); break;
+			case 'pro_archive_page_id':  $result = $this->find_page_id( $this->_pro_archive_page_id, JBP_PRO_VIRTUAL_KEY, JBP_PRO_ARCHIVE_FLAG ); break;
+			case 'pro_taxonomy_page_id': $result = $this->find_page_id( $this->_pro_taxonomy_page_id, JBP_PRO_VIRTUAL_KEY, JBP_PRO_TAXONOMY_FLAG ); break;
+			case 'pro_contact_page_id':  $result = $this->find_page_id( $this->_pro_contact_page_id, JBP_PRO_VIRTUAL_KEY, JBP_PRO_CONTACT_FLAG ); break;
+			case 'pro_search_page_id':   $result = $this->find_page_id( $this->_pro_search_page_id, JBP_PRO_VIRTUAL_KEY, JBP_PRO_SEARCH_FLAG ); break;
+			case 'pro_single_page_id':   $result = $this->find_page_id( $this->_pro_single_page_id, JBP_PRO_VIRTUAL_KEY, JBP_PRO_SINGLE_FLAG ); break;
+			case 'pro_update_page_id':   $result = $this->find_page_id( $this->_pro_update_page_id, JBP_PRO_VIRTUAL_KEY, JBP_PRO_UPDATE_FLAG ); break;
 
-			case 'demo_landing_page_id':   $result = $this->find_page_id( $this->_demo_landing_page_id, JBP_DEMO_PATTERN_KEY, JBP_DEMO_LANDING_FLAG ); break;
+			case 'demo_landing_page_id':   $result = $this->find_page_id( $this->_demo_landing_page_id, JBP_DEMO_VIRTUAL_KEY, JBP_DEMO_LANDING_FLAG ); break;
 		}
 		return $result;
 	}
@@ -430,7 +430,7 @@ class Jobs_Plus_Core{
 				delete_site_option('jbp_activate');
 			} else {
 				update_site_option('jbp_activate', $activate);
-				$this->job_update_page_id; //do this to trigger pattern pages early
+				$this->job_update_page_id; //do this to trigger virtual pages early
 				wp_redirect( admin_url('/edit.php?post_type=jbp_job&page=jobs-plus-about') );
 				exit;
 			}
@@ -443,14 +443,14 @@ class Jobs_Plus_Core{
 		$this->set_capability_defines();
 		$this->set_rewrite_rules();
 
-		// post_status "pattern" for pages not to be displayed in the menus but that users should not be editing.
-		register_post_status( 'pattern', array(
-		'label' => __( 'Pattern', $this->text_domain ),
-		'public' => false, //This trick prevents the pattern pages from appearing in the All Pages list but can be display on the front end.
+		// post_status "virtual" for pages not to be displayed in the menus but that users should not be editing.
+		register_post_status( 'virtual', array(
+		'label' => __( 'Virtual', $this->text_domain ),
+		'public' => false, //This trick prevents the virtual pages from appearing in the All Pages list but can be display on the front end.
 		'exclude_from_search'       => false,
 		'show_in_admin_all_list'    => false,
 		'show_in_admin_status_list' => true,
-		'label_count'               => _n_noop( 'Pattern <span class="count">(%s)</span>', 'Pattern <span class="count">(%s)</span>' ),
+		'label_count'               => _n_noop( 'Virtual <span class="count">(%s)</span>', 'Virtual <span class="count">(%s)</span>' ),
 		) );
 
 		//Set the pro-thumbnail size. DEFAULT to 160x120
@@ -884,7 +884,7 @@ class Jobs_Plus_Core{
 		//var_dump($template);
 
 		$this->title = '';
-		$this->pattern = '';
+		$this->virtual = '';
 
 		//Leave feeds alone
 		if(is_feed()) return $template;
@@ -933,44 +933,44 @@ class Jobs_Plus_Core{
 		*/
 
 		//Handle any default custom templates
-		if( empty($this->pattern) ) {
+		if( empty($this->virtual) ) {
 
 			if( is_author() && $this->custom_type == 'jbp_job') {
 				$this->title = 'custom_titles';
-				$this->pattern = $this->job_archive_page_id;
+				$this->virtual = $this->job_archive_page_id;
 			}
 
 			elseif( is_author() && $this->custom_type == 'jbp_pro') {
 				$this->title = 'custom_titles';
-				$this->pattern = $this->pro_archive_page_id;
+				$this->virtual = $this->pro_archive_page_id;
 			}
 
 			elseif( is_tax( array('jbp_category', 'jbp_skills_tag') ) ) {
 				$this->title = 'custom_titles';
-				$this->pattern = $this->job_taxonomy_page_id;
+				$this->virtual = $this->job_taxonomy_page_id;
 			}
 
 			elseif(is_post_type_archive('jbp_job') ) {
 				$this->title = 'custom_titles';
-				$this->pattern = $this->job_archive_page_id;
+				$this->virtual = $this->job_archive_page_id;
 			}
 
 			elseif(is_singular('jbp_job') ) {
-				$this->pattern = $this->job_single_page_id;
+				$this->virtual = $this->job_single_page_id;
 			}
 
 			elseif( is_tax('jbp_tag') ) {
 				$this->title = 'custom_titles';
-				$this->pattern = $this->job_taxonomy_page_id;
+				$this->virtual = $this->job_taxonomy_page_id;
 			}
 
 			elseif(is_post_type_archive('jbp_pro') ) {
 				$this->title = 'custom_titles';
-				$this->pattern = $this->pro_archive_page_id;
+				$this->virtual = $this->pro_archive_page_id;
 			}
 
 			elseif(is_singular('jbp_pro') ) {
-				$this->pattern = $this->pro_single_page_id;
+				$this->virtual = $this->pro_single_page_id;
 			}
 		}
 
@@ -1000,10 +1000,10 @@ class Jobs_Plus_Core{
 
 			if( is_single($this->job_update_page_id) ) {
 				$this->title = '';
-				$this->pattern = 0;
+				$this->virtual = 0;
 			} else {
 				$this->title = 'custom_titles';
-				$this->pattern = $this->job_update_page_id;
+				$this->virtual = $this->job_update_page_id;
 			}
 		}
 
@@ -1035,40 +1035,40 @@ class Jobs_Plus_Core{
 
 			if( is_single($this->pro_update_page_id) ) {
 				$this->title = '';
-				$this->pattern = 0;
+				$this->virtual = 0;
 			} else {
 				$this->title = 'custom_titles';
-				$this->pattern = $this->pro_update_page_id;
+				$this->virtual = $this->pro_update_page_id;
 			}
 		}
 		//Is this a jbp_job search?
 		elseif( is_search() && (get_query_var('post_type') == 'jbp_job') ){
 			$this->title = 'custom_titles';
-			$this->pattern = $this->job_search_page_id;
+			$this->virtual = $this->job_search_page_id;
 		}
 
 		//Is this a jbp_job contact?
 		elseif( is_singular('jbp_job') && get_query_var('contact') ){
 			//css for the edit Pages
 			$this->title = 'custom_titles';
-			$this->pattern = $this->job_contact_page_id;
+			$this->virtual = $this->job_contact_page_id;
 		}
 
 		//Is this a job_pro search?
 		elseif( is_search() && (get_query_var('post_type') == 'jbp_pro') ){
 			$this->title = 'custom_titles';
-			$this->pattern = $this->pro_search_page_id;
+			$this->virtual = $this->pro_search_page_id;
 		}
 
 		//Is this a job_pro contact?
 		elseif( is_singular('jbp_pro') && get_query_var('contact') ){
 			$this->title = 'custom_titles';
-			$this->pattern = $this->pro_contact_page_id;
+			$this->virtual = $this->pro_contact_page_id;
 		}
 
-		//var_dump($this->pattern); exit;
+		//var_dump($this->virtual); exit;
 		//Do the content filters
-		if( !empty($this->pattern) ) {
+		if( !empty($this->virtual) ) {
 			//If substituting content then use page template. If post_type.php exists use it.
 			$template = locate_template( array("{$this->custom_type}.php", 'page.php', 'index.php' ) );
 			add_filter( 'the_content', array( &$this, 'content_template' ), 20 );
@@ -1086,7 +1086,7 @@ class Jobs_Plus_Core{
 		rewind_posts();
 		remove_all_filters('the_title', 20);
 		remove_all_filters('the_content', 20);
-		$vpost = get_post( $this->pattern);
+		$vpost = get_post( $this->virtual);
 		$content = do_shortcode($vpost->post_content );
 		echo $content;
 		$wp_query->post_count = 0;
@@ -1359,8 +1359,8 @@ class Jobs_Plus_Core{
 	function on_parse_query($query) {
 		global $wp_query, $wp_post_statuses;
 
-		// Do this so pattern pages don't show up in Archive pages, but can be found as singles
-		if( is_singular() ) $wp_post_statuses['pattern']->public = true;
+		// Do this so virtual pages don't show up in Archive pages, but can be found as singles
+		if( is_singular() ) $wp_post_statuses['virtual']->public = true;
 
 		return $query;
 	}

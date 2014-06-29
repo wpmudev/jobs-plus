@@ -74,7 +74,7 @@ define('JBP_POST_VIEWS_KEY',    '_jbp_post_views_count');
 define('JBP_PRO_CERTIFIED_KEY', '_jbp_pro_certified');
 define('JBP_JOB_EXPIRES_KEY',   '_jbp_job_expires');
 
-define('JBP_PRO_PATTERN_KEY',   '_jbp_pro');
+define('JBP_PRO_VIRTUAL_KEY',   '_jbp_pro');
 
 define('JBP_PRO_ARCHIVE_FLAG',  'pro-archive-page');
 define('JBP_PRO_TAXONOMY_FLAG', 'pro-taxonomy-page');
@@ -83,7 +83,7 @@ define('JBP_PRO_SEARCH_FLAG',   'pro-search-page');
 define('JBP_PRO_SINGLE_FLAG',   'pro-single-page');
 define('JBP_PRO_UPDATE_FLAG',   'pro-update-page');
 
-define('JBP_JOB_PATTERN_KEY',   '_jbp_job');
+define('JBP_JOB_VIRTUAL_KEY',   '_jbp_job');
 
 define('JBP_JOB_ARCHIVE_FLAG',  'job-archive-page');
 define('JBP_JOB_TAXONOMY_FLAG', 'job-taxonomy-page');
@@ -92,7 +92,7 @@ define('JBP_JOB_SEARCH_FLAG',   'job-search-page');
 define('JBP_JOB_SINGLE_FLAG',   'job-single-page');
 define('JBP_JOB_UPDATE_FLAG',   'job-update-page');
 
-define('JBP_DEMO_PATTERN_KEY',  '_jbp_demo');
+define('JBP_DEMO_VIRTUAL_KEY',  '_jbp_demo');
 
 define('JBP_DEMO_LANDING_FLAG', 'job-landing-page');
 define('JBP_DEMO_PRO_FLAG',     'job-demo-pro-page');

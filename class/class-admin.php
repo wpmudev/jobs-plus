@@ -263,10 +263,20 @@ class Jobs_Plus_Admin extends Jobs_Plus_Core {
 	*/
 	function handle_post() {
 
+		if( !empty( $_GET['page'] ) && $_GET['page'] == 'jobs-plus-add-job' ){
+			wp_redirect( get_permalink( $this->job_update_page_id ) );
+			exit;
+		}
+
+		if( !empty( $_GET['page'] ) && $_GET['page'] == 'jobs-plus-add-pro' ){
+			wp_redirect( get_permalink( $this->pro_update_page_id ) );
+			exit;
+		}
+
 		if ( defined( 'DOING_AJAX' ) || empty( $_POST['jobs-plus-settings'] ) ) {
 			return;
 		}
-
+		
 		check_admin_referer( 'jobs-plus-settings' );
 
 		$params = stripslashes_deep( $_POST );
@@ -433,7 +443,7 @@ class Jobs_Plus_Admin extends Jobs_Plus_Core {
 
 			$tab_url = 'edit.php?post_type=' . $this->get_key( 'post_type', '', $_GET ) . '&page=' . $this->get_key( 'page', '', $_GET ) . '&tab=' . $this->get_key( 'tab', '', $_GET );
 
-			$post_content = __( "<p>Pattern page. Editing this page won\'t change anything.<br />", JBP_TEXT_DOMAIN );
+			$post_content = __( "<p>Virtual page. Editing this page won\'t change anything.<br />", JBP_TEXT_DOMAIN );
 			$post_content .= __( "You may edit the Title and/or the slug only.</p>", JBP_TEXT_DOMAIN );
 
 			global $Jobs_Plus_Core;
