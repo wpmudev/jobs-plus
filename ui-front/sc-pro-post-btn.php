@@ -20,7 +20,7 @@ if($register_url) {
 }
 ?>
 
-<button type="button" class="jbp-button pro-post-btn jbp-register-popup <?php echo $class; ?>" <?php echo $destination; ?>>
+<button type="button" class="jbp-button pro-post-btn jbp-nav jbp-register-popup <?php echo $class; ?>" <?php echo $destination; ?>>
 	<div class="div-img">&nbsp;</div>
 	<?php echo esc_html( $content ); ?>
 </button>

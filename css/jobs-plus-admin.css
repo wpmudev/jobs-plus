@@ -57,6 +57,11 @@ code {
 	max-width: 1110px;
 }
 
+.jbp-demo{
+	margin: 50px 0;
+	text-align: center;
+}
+
 p.jbp_default {
 	color:       #adadb5;
 	line-height: 20px;

@@ -679,10 +679,13 @@ input.job-search-input{
 	margin: 0;
 	padding: 0;
 	border: 0 !important;
-	box-shadow: none;
+	outline: 0 !important;
+	box-shadow: none !important;
 	width: 100%;
 	height: 100%;
 	padding-left: 0.5em;
+	background: transparent !important;
+	
 }
 
 

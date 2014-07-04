@@ -899,6 +899,7 @@ class Jobs_Plus_Core{
 		'taxonomy',
 		'attachment',
 		'single',
+		//'singular', //for Ignite which misnames "single" as "singular"
 		'page',
 		'category',
 		'tag',
@@ -2549,7 +2550,7 @@ class Jobs_Plus_Core{
 
 	function job_poster_sc( $atts, $content = null ) {
 		extract( shortcode_atts( array(
-		'title' => sprintf(__('Recently Posted %s', $this->text_domain),$this->job_labels->name),
+		'title' => sprintf(__('Recent %s', $this->text_domain),$this->job_labels->name),
 		'legend' => sprintf(__('Post a %s', $this->text_domain),$this->job_labels->singular_name),
 		'link' => sprintf(__('Browse More %s...', $this->text_domain),$this->job_labels->name),
 		'view' => 'both', //loggedin, loggedout, both

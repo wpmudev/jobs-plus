@@ -285,6 +285,12 @@ button.no-pad{
 	text-align: center;
 }
 
+.jbp-nav{
+		border:         0 !important;
+		background:     none !important;
+		box-shadow: none;
+}
+
 @media screen and (max-width: 480px) {
 
 	.jbp-button {
@@ -421,3 +427,4 @@ button.jbp-login-btn.inactive  {
 .jbp-register button.mfp-close:active{
 	top: -40px;
 }
+

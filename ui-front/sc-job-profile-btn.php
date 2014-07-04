@@ -14,7 +14,7 @@
 wp_enqueue_style('jobs-plus');
 ?>
 
-<button type="button" class="jbp-button pro-profile-btn <?php echo $class; ?>" onclick="window.location.assign('<?php echo $url; ?>')">
+<button type="button" class="jbp-button pro-profile-btn jbp-nav <?php echo $class; ?>" onclick="window.location.assign('<?php echo $url; ?>')">
 	<div class="div-img">&nbsp;</div>
 	<?php echo esc_html( $content ); ?>
 </button>

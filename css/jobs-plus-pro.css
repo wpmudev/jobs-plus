@@ -569,11 +569,13 @@ h2.pro-skills{
 input.pro-search-input{
 	margin: 0 15px;
 	border: 0 !important;
-	box-shadow: none;
+	outline: 0 !important;
+	box-shadow: none !important;
 	width: 100%;
 	height: 100%;
 	padding-left: 15px;
 	text-transform: uppercase;
+	background: transparent !important;
 }
 
 button.pro-submit-search{
@@ -601,6 +603,7 @@ button.pro-submit-search >img{
 .pro-poster ul.pro-gallery{
 	margin: 0;
 	padding: 0;
+	height: 310px;
 
 }
 
