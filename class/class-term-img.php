@@ -1,51 +1,83 @@
 <?php
 /**
-* @package Jobs +
-* @author Arnold Bailey
-* @since version 1.0
-* @license GPL2+
-*/
+ * @package Jobs +
+ * @author  Arnold Bailey
+ * @since   version 1.0
+ * @license GPL2+
+ */
 
-if( ! class_exists('Term_Images') ):
+if ( ! class_exists( 'Term_Images' ) ):
 
-define('TERM_IMAGES_VERSION', '1.0');
-define('TERM_IMAGES_SETTINGS', 'term_images_settings');
+	define( 'TERM_IMAGES_VERSION', '1.0' );
+	define( 'TERM_IMAGES_SETTINGS', 'term_images_settings' );
 
-class Term_Images{
+	class Term_Images {
 
-	public $text_domain = 'ti';
-	public $settings_name = TERM_IMAGES_SETTINGS;
+		public $text_domain = 'ti';
+		public $settings_name = TERM_IMAGES_SETTINGS;
 
-	public $thumb_w;
-	public $thumb_h;
-	public $medium_w;
-	public $medium_h;
-	public $large_w;
-	public $large_h;
+		public $thumb_w;
+		public $thumb_h;
+		public $medium_w;
+		public $medium_h;
+		public $large_w;
+		public $large_h;
 
-	function __construct(){
+		function __construct() {
 
-		$this->thumb_w = get_option('thumnail_size_w', 150);
-		$this->thumb_h = get_option('thumnail_size_h', 150);
-		$this->medium_w = get_option('medium_size_w', 300);
-		$this->medium_h = get_option('medium_size_h', 300);
-		$this->large_w = get_option('large_size_w', 1024);
-		$this->large_h = get_option('large_size_h', 1024);
+			$this->thumb_w  = get_option( 'thumnail_size_w', 150 );
+			$this->thumb_h  = get_option( 'thumnail_size_h', 150 );
+			$this->medium_w = get_option( 'medium_size_w', 300 );
+			$this->medium_h = get_option( 'medium_size_h', 300 );
+			$this->large_w  = get_option( 'large_size_w', 1024 );
+			$this->large_h  = get_option( 'large_size_h', 1024 );
 
-		add_action('admin_menu', array(&$this, 'on_admin_menu') );
-		add_action('admin_init', array(&$this, 'on_admin_init') );
+			add_action( 'admin_menu', array( &$this, 'on_admin_menu' ) );
+			add_action( 'admin_init', array( &$this, 'on_admin_init' ) );
 
-		add_action('init', array(&$this, 'add_image_sizes') );
+			add_action( 'init', array( &$this, 'add_image_sizes' ) );
 
-		add_action('wp_ajax_' . 'ti-term-image', array(&$this, 'on_ajax_ti_term_image'));
-		add_action('wp_ajax_' . 'ti-remove-image', array(&$this, 'on_ajax_ti_remove_image'));
+			add_action( 'wp_ajax_' . 'ti-term-image', array( &$this, 'on_ajax_ti_term_image' ) );
+			add_action( 'wp_ajax_' . 'ti-remove-image', array( &$this, 'on_ajax_ti_remove_image' ) );
 
-		add_shortcode('ti', array(&$this, 'ti_sc') );
-	}
+			add_shortcode( 'ti', array( &$this, 'ti_sc' ) );
 
-	function on_admin_menu(){
+			//add upload field for jobs categories
+			add_action( 'jbp_category_add_form_fields', array( &$this, 'add_upload_element_job_categories_edit_screen' ) );
+			add_action( 'created_jbp_category', array( $this, 'add_image_to_jbp_cat' ), 10, 1 );
+		}
+
+		function add_image_to_jbp_cat( $term_id ) {
+			if ( isset( $_POST['job_cat_img'] ) ) {
+				$taxonomy = $_POST['taxonomy'];
+
+				$key = $this->_key( $term_id, $taxonomy );
+
+				//get any attachments with this term_id
+				$attachment_id = $this->get_id_by_meta( $key );
+				if ( $attachment_id ) {
+					delete_post_meta( $attachment_id, '_ti_term_image', $key );
+				}
+				//might have multiple for the same image.
+				add_post_meta( $_POST['job_cat_img'], '_ti_term_image', $key );
+			}
+		}
+
+		function add_upload_element_job_categories_edit_screen( $tag ) {
+			?>
+			<div class="form-field">
+				<label for="parent"><?php _e( 'Image', JBP_TEXT_DOMAIN ); ?></label>
+				<button type="button" data-ajax="no" data-target="jbp_cat_upload_result" class="button ti-upload-image-button"><?php _e( 'Upload Image', JBP_TEXT_DOMAIN ) ?></button>
+				<div id="jbp_cat_upload_result">
+					<input type="hidden" name="job_cat_img" value="">
+				</div>
+			</div>
+		<?php
+		}
+
+		function on_admin_menu() {
 //		add_options_page(__('Terms Images', $this->text_domain), __('Terms Images', $this->text_domain), 'manage_categories', 'term-images', array(&$this, 'admin_menu_page') );
-		
+
 //		$this->jobs_menu_page = add_submenu_page('edit.php?post_type=jbp_job',
 //		__('Term Images', JBP_TEXT_DOMAIN),
 //		__('<span id="jbp-term-images">Term Images</span>', JBP_TEXT_DOMAIN),
@@ -58,530 +90,583 @@ class Term_Images{
 //		'manage_categories', 'term-images',
 //		array($this, 'admin_menu_page') );
 
-	}
+		}
 
-	private function _key( $term_id, $taxonomy='') {
-		return sprintf( '%d', intval($term_id));
-	}
+		private function _key( $term_id, $taxonomy = '' ) {
+			return sprintf( '%d', intval( $term_id ) );
+		}
 
-	function on_admin_init(){
-		register_setting( TERM_IMAGES_SETTINGS, TERM_IMAGES_SETTINGS, array(&$this,'term_images_validate') );
-		add_settings_section('term_images_main', 'Main Settings', array(&$this,'term_images_main_html'), 'term-images');
+		function on_admin_init() {
+			register_setting( TERM_IMAGES_SETTINGS, TERM_IMAGES_SETTINGS, array( &$this, 'term_images_validate' ) );
+			add_settings_section( 'term_images_main', 'Main Settings', array( &$this, 'term_images_main_html' ), 'term-images' );
 
-		$settings = get_option($this->settings_name);
-		if($settings) {
-			foreach($settings as $key => $taxonomy) {
-				if( $this->get_setting( "{$key}->use", 0) ) {
-					add_filter( 'manage_' . $key . '_custom_column', array(&$this, 'taxonomy_rows'), 10, 3 );
-					add_filter( 'manage_edit-' . $key . '_columns',  array(&$this, 'taxonomy_columns') );
+			$settings = get_option( $this->settings_name );
+			if ( $settings ) {
+				foreach ( $settings as $key => $taxonomy ) {
+					if ( $this->get_setting( "{$key}->use", 0 ) ) {
+						add_filter( 'manage_' . $key . '_custom_column', array( &$this, 'taxonomy_rows' ), 10, 3 );
+						add_filter( 'manage_edit-' . $key . '_columns', array( &$this, 'taxonomy_columns' ) );
 
-					add_action("{$key}_edit_form_fields", array(&$this, 'on_edit_form_fields'), 10, 2 );
+						add_action( "{$key}_edit_form_fields", array( &$this, 'on_edit_form_fields' ), 10, 2 );
 
-					add_action("after-{$key}-table", array(&$this, 'upload_js') );
+						add_action( "after-{$key}-table", array( &$this, 'upload_js' ) );
+					}
 				}
 			}
 		}
-	}
 
-	function taxonomy_rows($row, $column_name, $term_id ){
-		global $taxonomy;
+		function taxonomy_rows( $row, $column_name, $term_id ) {
+			global $taxonomy;
 
-		if( 'term-images' !== $column_name ) return $row;
+			if ( 'term-images' !== $column_name ) {
+				return $row;
+			}
 
-		return $row . $this->image_widget( $term_id );
+			return $row . $this->image_widget( $term_id );
 
-	}
+		}
 
-	function taxonomy_columns( $columns ){
+		function taxonomy_columns( $columns ) {
 
-		$new_columns = array_slice( $columns, 0, 1, true)
-		+ array('term-images' => esc_html__( 'Image', $this->text_domain ) )
-		+ array_slice( $columns, 1, null, true );
+			$new_columns = array_slice( $columns, 0, 1, true )
+				+ array( 'term-images' => esc_html__( 'Image', $this->text_domain ) )
+				+ array_slice( $columns, 1, null, true );
 
-		return $new_columns;
-	}
+			return $new_columns;
+		}
 
-	function image_widget($term_id=0, $width=40, $height=40 ){
-		global $taxonomy;
+		function image_widget( $term_id = 0, $width = 40, $height = 40 ) {
+			global $taxonomy;
 
-		$key = $this->_key($term_id, $taxonomy);
-		$attachment_id = $this->get_id_by_meta( $key );
-		$image = $attachment_id ? wp_get_attachment_image_src( $attachment_id, array($width, $height)): false;
+			$key           = $this->_key( $term_id, $taxonomy );
+			$attachment_id = $this->get_id_by_meta( $key );
+			$image         = $attachment_id ? wp_get_attachment_image_src( $attachment_id, array( $width, $height ) ) : false;
+			if ( isset( $_GET['tag_ID'] ) ) {
+				/*$o = sprintf('<span class="ti-remove-button" data-term-id="%d" data-taxonomy="%s" title="%s" style="position:absolute; margin: -7px 0 0 -7px;">%s</span>',
+				$term_id,
+				$taxonomy,
+				__('Click to remove this images', $this->text_domain),
+				$this->delete_img() );*/
 
-		$o = sprintf('<span class="ti-remove-button" data-term-id="%d" data-taxonomy="%s" title="%s" style="position:absolute; margin: -7px 0 0 -7px;">%s</span>',
-		$term_id,
-		$taxonomy,
-		__('Click to remove this images', $this->text_domain),
-		$this->delete_img() );
 
+				$o = sprintf( '<button value="%d" id="ti_%d" data-url="%s" name="ti_term_id" data-taxonomy="%s" type="button" class="ti-upload-image-button" style="cursor: pointer; display: inline-block; min-width: 40px;  width: %dpx; height: %dpx; background-color: #fff; color: #ddd;  font-size: 30px; font-weight: 900; padding: 0;line-height: 30px; text-shadow: 1px 1px 1px #444;" >%s</button>',
+					$term_id,
+					$term_id,
+					esc_attr( get_edit_term_link( $term_id, $taxonomy ) ),
+					$taxonomy,
+					//__( 'Click to edit or change the images', $this->text_domain ),
+					$width,
+					$height,
+					$image ? sprintf( '<img src="%s" style="width: 100%%; height:100%%; margin: 0;" />', $image[0] ) : '?' );
+			} else {
+				$link_text = $image ? sprintf( '<img src="%s" style="width: 100%%; height:100%%; margin: 0;" />', $image[0] ) : '?';
+				$o         = sprintf( '<a style="cursor: pointer; display: inline-block; min-width: 40px;  width: %dpx; height: %dpx; background-color: #fff; color: #ddd;  font-size: 30px; font-weight: 900; padding: 0;line-height: 30px; text-shadow: 1px 1px 1px #444;" href="%s">%s</a>',
+					$width,
+					$height,
+					esc_attr( get_edit_term_link( $term_id, $taxonomy ) ),
+					$link_text );
+			}
+			$o .= sprintf( '<br /><code style="font-size: 9px;white-space: nowrap;">[ti term="%s"]</code>', $term_id );
 
-		$o .= sprintf( '<button value="%d" id="ti_%d" name="ti_term_id" data-taxonomy="%s" title="%s" type="button" class="ti-upload-image-button" style="cursor: pointer; display: inline-block; min-width: 40px;  width: %dpx; height: %dpx; background-color: #fff; color: #ddd;  font-size: 30px; font-weight: 900; padding: 0;line-height: 30px; text-shadow: 1px 1px 1px #444;" >%s</button>',
-		$term_id,
-		$term_id,
-		$taxonomy,
-		__('Click to edit or change the images', $this->text_domain),
-		$width,
-		$height,
-		$image ? sprintf('<img src="%s" style="width: 100%%; height:100%%; margin: 0;" />', $image[0]) : '?' );
+			return $o;
+		}
 
-		$o .= sprintf('<br /><code style="font-size: 9px;white-space: nowrap;">[ti term="%s"]</code>', $term_id);
+		function on_edit_form_fields( $tag = null, $taxonomy = null ) {
 
-		return $o;
-	}
+			if ( empty( $_GET['action'] ) || $_GET['action'] != 'edit' ) {
+				return;
+			}
+			if ( empty( $_GET['tag_ID'] ) ) {
+				return;
+			}
+			?>
 
-	function on_edit_form_fields( $tag = null, $taxonomy = null){
+			<tr class="form-field">
+				<th scope="row" valign="top">
+					<label for="description"><?php esc_attr_e( 'Tag Image', $this->text_domain ); ?></label></th>
+				<td>
 
-		if(empty($_GET['action']) || $_GET['action'] != 'edit') return;
-		if(empty($_GET['tag_ID']) ) return;
-		?>
+					<?php echo $this->image_widget( $tag->term_id,
+						intval( $this->get_setting( "{$tag->taxonomy}->medium_width", $this->medium_w ) ),
+						intval( $this->get_setting( "{$tag->taxonomy}->medium_height", $this->medium_h ) )
+					); ?><br />
 
-		<tr class="form-field">
-			<th scope="row" valign="top"><label for="description"><?php esc_attr_e('Tag Image', $this->text_domain); ?></label></th>
-			<td>
-
-				<?php echo $this->image_widget( $tag->term_id,
-				intval( $this->get_setting("{$tag->taxonomy}->medium_width", $this->medium_w) ),
-				intval( $this->get_setting("{$tag->taxonomy}->medium_height", $this->medium_h) )
-				); ?><br />
-
-				<br />
-				<span class="description"><?php esc_html_e('Click the image to edit or change it for this tag.'); ?></span>
-				<?php $this->upload_js(); ?>
-			</td>
-		</tr>
+					<br />
+					<span class="description"><?php esc_html_e( 'Click the image to edit or change it for this tag.' ); ?></span>
+					<?php $this->upload_js(); ?>
+				</td>
+			</tr>
 
 		<?php
-	}
-
-
-	function on_ajax_ti_term_image(){
-		$params = stripslashes_deep($_REQUEST);
-
-		if( !wp_verify_nonce($params['_wpnonce'], 'ti-term-image') ){
-			return;
 		}
 
-		$term_id = intval($params['term_id']);
-		$taxonomy = $params['taxonomy'];
 
-		if ( ! taxonomy_exists($taxonomy) ) {
-			exit( __('Invalid taxonomy'));
+		function on_ajax_ti_term_image() {
+			$params = stripslashes_deep( $_REQUEST );
+
+			if ( ! wp_verify_nonce( $params['_wpnonce'], 'ti-term-image' ) ) {
+				return;
+			}
+
+			$term_id  = intval( $params['term_id'] );
+			$taxonomy = $params['taxonomy'];
+
+			if ( ! taxonomy_exists( $taxonomy ) ) {
+				exit( __( 'Invalid taxonomy' ) );
+			}
+
+			$key = $this->_key( $term_id, $taxonomy );
+
+			//get any attachments with this term_id
+			$attachment_id = $this->get_id_by_meta( $key );
+			if ( $attachment_id ) {
+				delete_post_meta( $attachment_id, '_ti_term_image', $key );
+			}
+			//might have multiple for the same image.
+			add_post_meta( $params['attachment_id'], '_ti_term_image', $key );
+			exit;
 		}
 
-		$key = $this->_key($term_id, $taxonomy);
+		function on_ajax_ti_remove_image() {
+			$params = stripslashes_deep( $_REQUEST );
 
-		//get any attachments with this term_id
-		$attachment_id = $this->get_id_by_meta( $key );
-		if($attachment_id){
-			delete_post_meta($attachment_id, '_ti_term_image', $key);
-		}
-		//might have multiple for the same image.
-		add_post_meta( $params['attachment_id'], '_ti_term_image', $key);
-		exit;
-	}
+			if ( ! wp_verify_nonce( $params['_wpnonce'], 'ti-remove-image' ) ) {
+				exit( 'failed' );
+			}
 
-	function on_ajax_ti_remove_image(){
-		$params = stripslashes_deep($_REQUEST);
+			$term_id  = intval( $params['term_id'] );
+			$taxonomy = $params['taxonomy'];
 
-		if( !wp_verify_nonce($params['_wpnonce'], 'ti-remove-image') ){
-			exit('failed');
-		}
+			if ( ! taxonomy_exists( $taxonomy ) ) {
+				exit( __( 'Invalid taxonomy' ) );
+			}
 
-		$term_id = intval($params['term_id']);
-		$taxonomy = $params['taxonomy'];
+			$key = $this->_key( $term_id, $taxonomy );
 
-		if ( ! taxonomy_exists($taxonomy) ) {
-			exit( __('Invalid taxonomy'));
+			//get any attchemnts with this term_id
+			$attachment_id = $this->get_id_by_meta( $key );
+			if ( $attachment_id ) {
+				delete_post_meta( $attachment_id, '_ti_term_image', $key );
+			}
+			exit( 'ok' );
 		}
 
-		$key = $this->_key($term_id, $taxonomy);
+		/**
+		 * Get a  page by meta value
+		 *
+		 * @return int $page[0] / bool false
+		 */
+		function get_id_by_meta( $key ) {
+			global $wpdb;
 
-		//get any attchemnts with this term_id
-		$attachment_id = $this->get_id_by_meta( $key );
-		if($attachment_id){
-			delete_post_meta($attachment_id, '_ti_term_image', $key);
-		}
-		exit('ok');
-	}
-
-	/**
-	* Get a  page by meta value
-	*
-	* @return int $page[0] / bool false
-	*/
-	function get_id_by_meta( $key ) {
-		global $wpdb;
-
-		//To avoid "the_posts" filters do a direct call to the database to find the post by meta
-		$ids = array_keys(
-		$wpdb->get_results($wpdb->prepare(
-		"
+			//To avoid "the_posts" filters do a direct call to the database to find the post by meta
+			$ids = array_keys(
+				$wpdb->get_results( $wpdb->prepare(
+					"
 		SELECT post_id
 		FROM {$wpdb->postmeta}
 		WHERE meta_key= %s
 		AND meta_value=%s
-		", "_ti_term_image", $key), OBJECT_K )
-		);
+		", "_ti_term_image", $key ), OBJECT_K )
+			);
 
-		if ( isset( $ids[0] ) && 0 < $ids[0] ){
-			return $ids[0];
+			if ( isset( $ids[0] ) && 0 < $ids[0] ) {
+				return $ids[0];
+			}
+
+			return false;
 		}
 
-		return false;
-	}
+		/**
+		 * function get_key
+		 *
+		 * @param string $key     A setting key, or -> separated list of keys to go multiple levels into an array
+		 * @param mixed  $default Returns when setting is not set
+		 *
+		 * an easy way to get to our settings array without undefined indexes
+		 */
+		function get_key( $key, $default = null, $settings = array() ) {
 
-	/**
-	* function get_key
-	* @param string $key A setting key, or -> separated list of keys to go multiple levels into an array
-	* @param mixed $default Returns when setting is not set
-	*
-	* an easy way to get to our settings array without undefined indexes
-	*/
-	function get_key($key, $default = null, $settings=array() ) {
+			$keys = explode( '->', $key );
+			$keys = array_map( 'trim', $keys );
+			if ( count( $keys ) == 1 ) {
+				$setting = isset( $settings[$keys[0]] ) ? $settings[$keys[0]] : $default;
+			} else {
+				if ( count( $keys ) == 2 ) {
+					$setting = isset( $settings[$keys[0]][$keys[1]] ) ? $settings[$keys[0]][$keys[1]] : $default;
+				} else {
+					if ( count( $keys ) == 3 ) {
+						$setting = isset( $settings[$keys[0]][$keys[1]][$keys[2]] ) ? $settings[$keys[0]][$keys[1]][$keys[2]] : $default;
+					} else {
+						if ( count( $keys ) == 4 ) {
+							$setting = isset( $settings[$keys[0]][$keys[1]][$keys[2]][$keys[3]] ) ? $settings[$keys[0]][$keys[1]][$keys[2]][$keys[3]] : $default;
+						}
+					}
+				}
+			}
 
-		$keys = explode('->', $key);
-		$keys = array_map('trim', $keys);
-		if (count($keys) == 1)
-		$setting = isset($settings[$keys[0]]) ? $settings[$keys[0]] : $default;
-		else if (count($keys) == 2)
-		$setting = isset($settings[$keys[0]][$keys[1]]) ? $settings[$keys[0]][$keys[1]] : $default;
-		else if (count($keys) == 3)
-		$setting = isset($settings[$keys[0]][$keys[1]][$keys[2]]) ? $settings[$keys[0]][$keys[1]][$keys[2]] : $default;
-		else if (count($keys) == 4)
-		$setting = isset($settings[$keys[0]][$keys[1]][$keys[2]][$keys[3]]) ? $settings[$keys[0]][$keys[1]][$keys[2]][$keys[3]] : $default;
+			return $setting;
+		}
 
-		return $setting;
-	}
+		/**
+		 * function get_setting
+		 *
+		 * @param string $key     A setting key, or -> separated list of keys to go multiple levels into an array
+		 * @param mixed  $default Returns when setting is not set
+		 *
+		 * an easy way to get to our settings array without undefined indexes
+		 */
+		function get_setting( $key, $default = false ) {
+			$settings = get_option( $this->settings_name );
+			$keys     = explode( '->', $key );
+			array_map( 'trim', $keys );
+			if ( count( $keys ) == 1 ) {
+				$setting = isset( $settings[$keys[0]] ) ? $settings[$keys[0]] : $default;
+			} else {
+				if ( count( $keys ) == 2 ) {
+					$setting = isset( $settings[$keys[0]][$keys[1]] ) ? $settings[$keys[0]][$keys[1]] : $default;
+				} else {
+					if ( count( $keys ) == 3 ) {
+						$setting = isset( $settings[$keys[0]][$keys[1]][$keys[2]] ) ? $settings[$keys[0]][$keys[1]][$keys[2]] : $default;
+					} else {
+						if ( count( $keys ) == 4 ) {
+							$setting = isset( $settings[$keys[0]][$keys[1]][$keys[2]][$keys[3]] ) ? $settings[$keys[0]][$keys[1]][$keys[2]][$keys[3]] : $default;
+						}
+					}
+				}
+			}
 
-	/**
-	* function get_setting
-	* @param string $key A setting key, or -> separated list of keys to go multiple levels into an array
-	* @param mixed $default Returns when setting is not set
-	*
-	* an easy way to get to our settings array without undefined indexes
-	*/
-	function get_setting($key, $default = false) {
-		$settings = get_option( $this->settings_name );
-		$keys = explode('->', $key);
-		array_map('trim', $keys);
-		if (count($keys) == 1)
-		$setting = isset($settings[$keys[0]]) ? $settings[$keys[0]] : $default;
-		else if (count($keys) == 2)
-		$setting = isset($settings[$keys[0]][$keys[1]]) ? $settings[$keys[0]][$keys[1]] : $default;
-		else if (count($keys) == 3)
-		$setting = isset($settings[$keys[0]][$keys[1]][$keys[2]]) ? $settings[$keys[0]][$keys[1]][$keys[2]] : $default;
-		else if (count($keys) == 4)
-		$setting = isset($settings[$keys[0]][$keys[1]][$keys[2]][$keys[3]]) ? $settings[$keys[0]][$keys[1]][$keys[2]][$keys[3]] : $default;
-
-		return $setting;
-	}
+			return $setting;
+		}
 
 
-	function term_images_main_html(){
+		function term_images_main_html() {
 
-		global $_wp_additional_image_sizes;
+			global $_wp_additional_image_sizes;
 
-		$settings = get_option( TERM_IMAGES_SETTINGS );
-		$taxonomies = get_taxonomies( array('show_ui' => true), 'objects');
-		//var_dump($_wp_additional_image_sizes);
-		?>
+			$settings   = get_option( TERM_IMAGES_SETTINGS );
+			$taxonomies = get_taxonomies( array( 'show_ui' => true ), 'objects' );
+			//var_dump($_wp_additional_image_sizes);
+			?>
 
-		<code><b>Shortcode:</b> [ti term="{term_id}" taxonomy="{taxonomy}" size="{size label}" width="{100}" height="{100}" ]</code>
-		<table class="form-table">
-			<thead>
+			<code><b>Shortcode:</b> [ti term="{term_id}" taxonomy="{taxonomy}" size="{size label}" width="{100}" height="{100}" ]</code>
+			<table class="form-table">
+				<thead>
 				<tr>
 					<th>
-						<?php esc_html_e('Enable Images for', $this->text_domain); ?>
+						<?php esc_html_e( 'Enable Images for', $this->text_domain ); ?>
 					</th>
 					<th colspan="2">
-						<span style="padding-left: 20px"><?php esc_html_e('Image Sizes', $this->text_domain); ?></span>
+						<span style="padding-left: 20px"><?php esc_html_e( 'Image Sizes', $this->text_domain ); ?></span>
 					</th>
 				</tr>
-			</thead>
-			<tbody>
-				<?php foreach($taxonomies as $taxonomy): ?>
-				<tr style="border-top: 1px solid #ddd;">
-					<th>
-						<?php
-						printf('<input type="hidden" name="%s[%s][use]" value="0" />',
-						TERM_IMAGES_SETTINGS,
-						$taxonomy->name
-						);
+				</thead>
+				<tbody>
+				<?php foreach ( $taxonomies as $taxonomy ): ?>
+					<tr style="border-top: 1px solid #ddd;">
+						<th>
+							<?php
+							printf( '<input type="hidden" name="%s[%s][use]" value="0" />',
+								TERM_IMAGES_SETTINGS,
+								$taxonomy->name
+							);
 
-						printf('<label><input type="checkbox" id="%s_%s" name="%s[%s][use]" %s value="1" /> %s</label><br/>',
-						TERM_IMAGES_SETTINGS,
-						$taxonomy->name,
-						TERM_IMAGES_SETTINGS,
-						$taxonomy->name,
-						checked($this->get_setting("{$taxonomy->name}->use", '0'), '1', false),
-						$taxonomy->label
-						);
-						?>
-						<br /><code style="font-size: x-small;">[ti size="<?php echo"{$taxonomy->name}-thumb"?>"] </code>
-						<br /><code style="font-size: x-small;">[ti size="<?php echo"{$taxonomy->name}-medium"?>"]</code>
-						<br /><code style="font-size: x-small;">[ti size="<?php echo"{$taxonomy->name}-large"?>"] </code>
-					</th>
-					<td>
-						<table>
-							<tr>
-								<td style="padding-top: 0; padding-bottom: 0;">
-									<?php printf(__('Thumbnail Size: ', $this->text_domain) ); ?>
-								</td>
+							printf( '<label><input type="checkbox" id="%s_%s" name="%s[%s][use]" %s value="1" /> %s</label><br/>',
+								TERM_IMAGES_SETTINGS,
+								$taxonomy->name,
+								TERM_IMAGES_SETTINGS,
+								$taxonomy->name,
+								checked( $this->get_setting( "{$taxonomy->name}->use", '0' ), '1', false ),
+								$taxonomy->label
+							);
+							?>
+							<br /><code style="font-size: x-small;">[ti size="<?php echo "{$taxonomy->name}-thumb" ?>"] </code>
+							<br /><code style="font-size: x-small;">[ti size="<?php echo "{$taxonomy->name}-medium" ?>"]</code>
+							<br /><code style="font-size: x-small;">[ti size="<?php echo "{$taxonomy->name}-large" ?>"] </code>
+						</th>
+						<td>
+							<table>
+								<tr>
+									<td style="padding-top: 0; padding-bottom: 0;">
+										<?php printf( __( 'Thumbnail Size: ', $this->text_domain ) ); ?>
+									</td>
 
-								<td style="padding-top: 0; padding-bottom: 0;">
-									<?php
-									printf(__('Width <input type="text" id="%s_thumb_width" name="%s[%s][thumb_width]" value="%s" size="4" /> Height <input type="text" id="%s_thumb_height" name="%s[%s][thumb_height]" value="%s" size="4" /><br/>', $this->text_domain),
-									$taxonomy->name,
-									TERM_IMAGES_SETTINGS,
-									$taxonomy->name,
-									intval( $this->get_setting("{$taxonomy->name}->thumb_width", $this->thumb_w) ),
-									$taxonomy->name,
-									TERM_IMAGES_SETTINGS,
-									$taxonomy->name,
-									intval( $this->get_setting("{$taxonomy->name}->thumb_height", $this->thumb_h) )
-									) ;
-									?>
-								</td>
-							</tr>
-							<tr>
-								<td style="padding-top: 0; padding-bottom: 0;">
-									<?php printf(__('Medium Size: <br/>', $this->text_domain) ); ?>
-								</td>
-								<td style="padding-top: 0; padding-bottom: 0;">
-									<?php
-									printf(__('Width <input type="text" id="%s_medium_width" name="%s[%s][medium_width]" value="%s" size="4" /> Height <input type="text" id="%s_medium_height" name="%s[%s][medium_height]" value="%s" size="4" /><br/>', $this->text_domain),
-									$taxonomy->name,
-									TERM_IMAGES_SETTINGS,
-									$taxonomy->name,
-									intval( $this->get_setting("{$taxonomy->name}->medium_width", $this->medium_w) ),
-									$taxonomy->name,
-									TERM_IMAGES_SETTINGS,
-									$taxonomy->name,
-									intval( $this->get_setting("{$taxonomy->name}->medium_height", $this->medium_h) )
-									) ;
-									?>
-								</td>
-							</tr>
-							<tr>
-								<td style="padding-top: 0; padding-bottom: 0;">
-									<?php printf(__('Large Size: <br/>', $this->text_domain) ); ?>
-								</td>
-								<td style="padding-top: 0; padding-bottom: 0;">
-									<?php
-									printf(__('Width <input type="text" id="%s_large_width" name="%s[%s][large_width]" value="%s" size="4" /> Height <input type="text" id="%s_large_height" name="%s[%s][large_height]" value="%s" size="4" /><br/>', $this->text_domain),
-									$taxonomy->name,
-									TERM_IMAGES_SETTINGS,
-									$taxonomy->name,
-									intval( $this->get_setting("{$taxonomy->name}->large_width", $this->large_w) ),
-									$taxonomy->name,
-									TERM_IMAGES_SETTINGS,
-									$taxonomy->name,
-									intval( $this->get_setting("{$taxonomy->name}->large_height", $this->large_h) )
-									) ;
-									?>
-								</td>
-							</tr>
-						</table>
-					</td>
-				</tr>
-				<?php endforeach;?>
-			</tbody>
-		</table>
-
-		<?php
-	}
-
-	function term_images_validate($input){
-
-		return $input;
-	}
-
-	function admin_menu_page(){
-		?>
-
-		<div class="wrap">
-			<h2><?php printf( __('Term Images Settings %s', $this->text_domain), TERM_IMAGES_VERSION );?></h2>
-			<form action="options.php" method="POST" >
-				<?php settings_fields(TERM_IMAGES_SETTINGS); ?>
-
-				<?php do_settings_sections('term-images'); ?>
-
-				<input class="button-primary" name="Submit" type="submit" value="<?php echo esc_attr('Save Settings'); ?>" />
-			</form>
-
-		</div>
+									<td style="padding-top: 0; padding-bottom: 0;">
+										<?php
+										printf( __( 'Width <input type="text" id="%s_thumb_width" name="%s[%s][thumb_width]" value="%s" size="4" /> Height <input type="text" id="%s_thumb_height" name="%s[%s][thumb_height]" value="%s" size="4" /><br/>', $this->text_domain ),
+											$taxonomy->name,
+											TERM_IMAGES_SETTINGS,
+											$taxonomy->name,
+											intval( $this->get_setting( "{$taxonomy->name}->thumb_width", $this->thumb_w ) ),
+											$taxonomy->name,
+											TERM_IMAGES_SETTINGS,
+											$taxonomy->name,
+											intval( $this->get_setting( "{$taxonomy->name}->thumb_height", $this->thumb_h ) )
+										);
+										?>
+									</td>
+								</tr>
+								<tr>
+									<td style="padding-top: 0; padding-bottom: 0;">
+										<?php printf( __( 'Medium Size: <br/>', $this->text_domain ) ); ?>
+									</td>
+									<td style="padding-top: 0; padding-bottom: 0;">
+										<?php
+										printf( __( 'Width <input type="text" id="%s_medium_width" name="%s[%s][medium_width]" value="%s" size="4" /> Height <input type="text" id="%s_medium_height" name="%s[%s][medium_height]" value="%s" size="4" /><br/>', $this->text_domain ),
+											$taxonomy->name,
+											TERM_IMAGES_SETTINGS,
+											$taxonomy->name,
+											intval( $this->get_setting( "{$taxonomy->name}->medium_width", $this->medium_w ) ),
+											$taxonomy->name,
+											TERM_IMAGES_SETTINGS,
+											$taxonomy->name,
+											intval( $this->get_setting( "{$taxonomy->name}->medium_height", $this->medium_h ) )
+										);
+										?>
+									</td>
+								</tr>
+								<tr>
+									<td style="padding-top: 0; padding-bottom: 0;">
+										<?php printf( __( 'Large Size: <br/>', $this->text_domain ) ); ?>
+									</td>
+									<td style="padding-top: 0; padding-bottom: 0;">
+										<?php
+										printf( __( 'Width <input type="text" id="%s_large_width" name="%s[%s][large_width]" value="%s" size="4" /> Height <input type="text" id="%s_large_height" name="%s[%s][large_height]" value="%s" size="4" /><br/>', $this->text_domain ),
+											$taxonomy->name,
+											TERM_IMAGES_SETTINGS,
+											$taxonomy->name,
+											intval( $this->get_setting( "{$taxonomy->name}->large_width", $this->large_w ) ),
+											$taxonomy->name,
+											TERM_IMAGES_SETTINGS,
+											$taxonomy->name,
+											intval( $this->get_setting( "{$taxonomy->name}->large_height", $this->large_h ) )
+										);
+										?>
+									</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+				<?php endforeach; ?>
+				</tbody>
+			</table>
 
 		<?php
-	}
-
-	function add_image_sizes(){
-
-		if( !$settings = get_option($this->settings_name) ) return;
-
-		foreach($settings as $key => $taxonomy){
-			if( $this->get_setting("{$key}->use", 0) ) {
-				add_image_size("{$key}-thumb", intval($taxonomy['thumb_width']), intval($taxonomy['thumb_height']) );
-				add_image_size("{$key}-medium", intval($taxonomy['medium_width']), intval($taxonomy['medium_height']) );
-				add_image_size("{$key}-large", intval($taxonomy['large_width']), intval($taxonomy['large_height']) );
-			}
 		}
-	}
 
-	function ti_sc( $atts, $content = null ) {
-		global $wp_query, $post;
-		extract( shortcode_atts( array(
-		'term' => '',
-		'taxonomy' => '',
-		'class' => '',
-		'size' => 'thumbnail',
-		'width' => '',
-		'height' => '',
-		), $atts ) );
+		function term_images_validate( $input ) {
 
-		//var_dump($wp_query);
+			return $input;
+		}
 
-		$settings = get_option($this->settings_name);
-		$queried_object = get_queried_object();
+		function admin_menu_page() {
+			?>
 
-		$taxonomy = (empty($taxonomy) && is_tax() ) ? $queried_object->taxonomy : $taxonomy;
+			<div class="wrap">
+				<h2><?php printf( __( 'Term Images Settings %s', $this->text_domain ), TERM_IMAGES_VERSION ); ?></h2>
 
-		$use = $settings ? !empty($settings[$taxonomy]['use']) : false;
+				<form action="options.php" method="POST">
+					<?php settings_fields( TERM_IMAGES_SETTINGS ); ?>
 
-		$term = (empty($term) && is_tax()) ? 	$queried_object->term_id : $term;
+					<?php do_settings_sections( 'term-images' ); ?>
 
+					<input class="button-primary" name="Submit" type="submit" value="<?php echo esc_attr( 'Save Settings' ); ?>" />
+				</form>
 
-		$size = (min($width, $height) != 0) ? array($width, $height) : $size;
+			</div>
 
-		$attr = empty($class) ? '' : array('class' => $class);
+		<?php
+		}
 
-		if( $term_id = term_exists( intval($term), $taxonomy ) ) {
-			if(is_array($term_id) ){
-				$term_id = $term_id['term_id'];
+		function add_image_sizes() {
+
+			if ( ! $settings = get_option( $this->settings_name ) ) {
+				return;
+			}
+
+			foreach ( $settings as $key => $taxonomy ) {
+				if ( $this->get_setting( "{$key}->use", 0 ) ) {
+					add_image_size( "{$key}-thumb", intval( $taxonomy['thumb_width'] ), intval( $taxonomy['thumb_height'] ) );
+					add_image_size( "{$key}-medium", intval( $taxonomy['medium_width'] ), intval( $taxonomy['medium_height'] ) );
+					add_image_size( "{$key}-large", intval( $taxonomy['large_width'] ), intval( $taxonomy['large_height'] ) );
+				}
 			}
 		}
 
-		if( $use && in_array($size, array('thumb', 'thumbnail', 'medium', 'large') ) ) {
-			switch ($size) {
-				case 'thumb':
-				case 'thumbnail' : $size = "{$taxonomy}-thumb"; break;
-				case 'medium' : $size = "{$taxonomy}-medium"; break;
-				case 'large' : $size = "{$taxonomy}-large"; break;
+		function ti_sc( $atts, $content = null ) {
+			global $wp_query, $post;
+			extract( shortcode_atts( array(
+				'term'     => '',
+				'taxonomy' => '',
+				'class'    => '',
+				'size'     => 'thumbnail',
+				'width'    => '',
+				'height'   => '',
+			), $atts ) );
+
+			//var_dump($wp_query);
+
+			$settings       = get_option( $this->settings_name );
+			$queried_object = get_queried_object();
+
+			$taxonomy = ( empty( $taxonomy ) && is_tax() ) ? $queried_object->taxonomy : $taxonomy;
+
+			$use = $settings ? ! empty( $settings[$taxonomy]['use'] ) : false;
+
+			$term = ( empty( $term ) && is_tax() ) ? $queried_object->term_id : $term;
+
+
+			$size = ( min( $width, $height ) != 0 ) ? array( $width, $height ) : $size;
+
+			$attr = empty( $class ) ? '' : array( 'class' => $class );
+
+			if ( $term_id = term_exists( intval( $term ), $taxonomy ) ) {
+				if ( is_array( $term_id ) ) {
+					$term_id = $term_id['term_id'];
+				}
 			}
+
+			if ( $use && in_array( $size, array( 'thumb', 'thumbnail', 'medium', 'large' ) ) ) {
+				switch ( $size ) {
+					case 'thumb':
+					case 'thumbnail' :
+						$size = "{$taxonomy}-thumb";
+						break;
+					case 'medium' :
+						$size = "{$taxonomy}-medium";
+						break;
+					case 'large' :
+						$size = "{$taxonomy}-large";
+						break;
+				}
+			}
+
+			$key           = $this->_key( $term_id );
+			$attachment_id = $this->get_id_by_meta( $key );
+
+			$image = $attachment_id ? wp_get_attachment_image( $attachment_id, $size, false, $attr ) : false;
+
+			return $image;
 		}
 
-		$key = $this->_key($term_id);
-		$attachment_id = $this->get_id_by_meta( $key );
+		function upload_js() {
 
-		$image = $attachment_id ? wp_get_attachment_image( $attachment_id, $size, false, $attr ) : false;
+			wp_enqueue_media();
+			?>
 
-		return $image;
-	}
+			<script type="text/javascript">
+				jQuery(document).ready(function ($) {
+					// Uploading files
+					var ti_file_frame;
+					var wp_media_post_id = wp.media.model.settings.post.id; // Store the old id
+					var set_to_term_id = 0; // Set this
+					var taxonomy = 0;
+					var $button;
 
-	function upload_js(){
+					$('.ti-remove-button').on('click', function (event) {
+						event.preventDefault();
 
-		wp_enqueue_media();
-		?>
+						/*$remove = $(this);
+						 $remove.next('button.ti-upload-image-button').html('?');
 
-		<script type="text/javascript">
-			jQuery(document).ready( function($) {
-				// Uploading files
-				var ti_file_frame;
-				var wp_media_post_id = wp.media.model.settings.post.id; // Store the old id
-				var set_to_term_id = 0; // Set this
-				var taxonomy = 0;
-				var $button;
-
-				$('.ti-remove-button').on('click', function( event ){
-					event.preventDefault();
-
-					$remove = $(this);
-					$remove.next( 'button.ti-upload-image-button' ).html('?');
-
-					$.get( '<?php echo admin_url('admin-ajax.php'); ?>', {
-						"action": "ti-remove-image",
-						"term_id": $remove.data('term-id'),
-						"taxonomy": $remove.data('taxonomy'),
-						"_wpnonce": "<?php echo wp_create_nonce('ti-remove-image');?>"
+						 $.get('
+						<?php echo admin_url('admin-ajax.php'); ?>', {
+						 "action"  : "ti-remove-image",
+						 "term_id" : $remove.data('term-id'),
+						 "taxonomy": $remove.data('taxonomy'),
+						 "_wpnonce": "
+						<?php echo wp_create_nonce('ti-remove-image');?>"
+						 });*/
 					});
-				});
 
-				$('.ti-upload-image-button').on('click', function( event ){
-					event.preventDefault();
-					$button = $(this);
-					set_to_term_id = $button.val();
-					taxonomy = $button.data('taxonomy');
+					$('.ti-upload-image-button').on('click', function (event) {
+						event.preventDefault();
 
-					// If the media frame already exists, reopen it.
-					if ( ti_file_frame ) {
-						// Set the post ID to what we want
-						ti_file_frame.uploader.uploader.param( 'post_id', set_to_term_id );
-						// Open frame
-						ti_file_frame.open();
-						return;
-					} else {
-						// Set the wp.media post id so the uploader grabs the ID we want when initialised
-						wp.media.model.settings.post.id = set_to_term_id;
-					}
+						$button = $(this);
+						set_to_term_id = $button.val();
+						taxonomy = $button.data('taxonomy');
 
-					// Create the media frame.
-					ti_file_frame = wp.media.frames.ti_file_frame = wp.media({
-						title: jQuery( this ).data( 'uploader_title' ),
-						button: {
-							text: jQuery( this ).data( 'uploader_button_text' ),
-						},
-						multiple: false  // Set to true to allow multiple files to be selected
-					});
+						// If the media frame already exists, reopen it.
+						if (ti_file_frame) {
+							// Set the post ID to what we want
+							ti_file_frame.uploader.uploader.param('post_id', set_to_term_id);
+							// Open frame
+							ti_file_frame.open();
+							return;
+						} else {
+							// Set the wp.media post id so the uploader grabs the ID we want when initialised
+							wp.media.model.settings.post.id = set_to_term_id;
+						}
 
-					// When an image is selected, run a callback.
-					ti_file_frame.on( 'select', function() {
-						// We set multiple to false so only get one image from the uploader
-						attachment = ti_file_frame.state().get('selection').first().toJSON();
-
-						// Do something with attachment.id and/or attachment.url here
-						$button.empty();
-						$('<img />',{
-							src : attachment.url,
-							alt : attachment.name
-						}).css( {
-							"width":"100%",
-							"height": "100%",
-							"margin": "0"
-						})
-						.appendTo( $button );
-
-
-						$.get( '<?php echo admin_url('admin-ajax.php'); ?>', {
-							"action": "ti-term-image",
-							"term_id": set_to_term_id,
-							"taxonomy": taxonomy,
-							"attachment_id": attachment.id,
-							"attachment_url": attachment.url,
-							"_wpnonce": "<?php echo wp_create_nonce('ti-term-image');?>"
+						// Create the media frame.
+						ti_file_frame = wp.media.frames.ti_file_frame = wp.media({
+							title   : jQuery(this).data('uploader_title'),
+							button  : {
+								text: jQuery(this).data('uploader_button_text')
+							},
+							multiple: false  // Set to true to allow multiple files to be selected
 						});
 
+						// When an image is selected, run a callback.
+						ti_file_frame.on('select', function () {
+							// We set multiple to false so only get one image from the uploader
+							attachment = ti_file_frame.state().get('selection').first().toJSON();
 
-						// Restore the main post ID
-						wp.media.model.settings.post.id = wp_media_post_id;
+							if ($button.data('ajax') == 'no') {
+								var target = $button.data('target');
+								if ($('#' + target).find('img').size() > 0) {
+									$('#' + target).find('img').attr('src', attachment.url)
+								} else {
+									$('#' + target).append($('<img/>').attr('src', attachment.url));
+								}
+								$('#' + target).find('input').val(attachment.id);
+							} else {
+								// Do something with attachment.id and/or attachment.url here
+								$button.empty();
+								$('<img />', {
+									src: attachment.url,
+									alt: attachment.name
+								}).css({
+									"width" : "100%",
+									"height": "100%",
+									"margin": "0"
+								})
+									.appendTo($button);
+
+
+								$.get('<?php echo admin_url('admin-ajax.php'); ?>', {
+									"action"        : "ti-term-image",
+									"term_id"       : set_to_term_id,
+									"taxonomy"      : taxonomy,
+									"attachment_id" : attachment.id,
+									"attachment_url": attachment.url,
+									"_wpnonce"      : "<?php echo wp_create_nonce('ti-term-image');?>"
+								});
+
+
+								// Restore the main post ID
+								wp.media.model.settings.post.id = wp_media_post_id;
+							}
+						});
+
+						// Finally, open the modal
+						ti_file_frame.open();
 					});
 
-					// Finally, open the modal
-					ti_file_frame.open();
+					// Restore the main ID when the add media button is pressed
+					jQuery('a.add_media').on('click', function () {
+						wp.media.model.settings.post.id = wp_media_post_id;
+					});
 				});
-
-				// Restore the main ID when the add media button is pressed
-				jQuery('a.add_media').on('click', function() {
-					wp.media.model.settings.post.id = wp_media_post_id;
-				});
-			});
-		</script>
+			</script>
 
 		<?php
-	}
+		}
 
 
-	function delete_img(){
+		function delete_img() {
 
-		return '<img alt="" src="data:image/png;base64,
+			return '<img alt="" src="data:image/png;base64,
 		iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAAABWzo5XAAAACXBIWXMAAAsTAAALEwEAmpwYAAAKT2lD
 		Q1BQaG90b3Nob3AgSUNDIHByb2ZpbGUAAHjanVNnVFPpFj333vRCS4iAlEtvUhUIIFJCi4AUkSYqIQkQ
 		SoghodkVUcERRUUEG8igiAOOjoCMFVEsDIoK2AfkIaKOg6OIisr74Xuja9a89+bN/rXXPues852zzwfA
@@ -637,30 +722,34 @@ class Term_Images{
 		QLw0woyqNw3iL5kTDTh1x6h6hJUrTrzZkhDed8H77hlYvGlZueIQmtcsphshAKi1eqo7SZhaq5/MHc1r
 		liJH5MebV6+BCJnb904aM21E1Fodwbu3ABRcvP/o4Zy1tjWzoZ39GvnfxfZ3AAG9IKfF3BhfAAAAAElF
 		TkSuQmCC" />';
+		}
+
 	}
 
-}
+	global $Term_Images;
 
-global $Term_Images;
+	$Term_Images = new Term_Images;
 
-$Term_Images  = new Term_Images;
+	function get_term_image_url( $term_id, $size = 'thumbnail' ) {
+		global $Term_Images, $post_ID;
 
-function get_term_image_url( $term_id, $size='thumbnail' ){
-	global $Term_Images, $post_ID;
+		if ( ! is_int( intval( $term_id ) ) ) {
+			return false;
+		}
 
-	if(!is_int( intval( $term_id) ) ) return false;
+		if ( ! term_exists( $term_id ) ) {
+			return false;
+		}
 
-	if( !term_exists($term_id) ) return false;
+		$attachment_id = $Term_Images->get_id_by_meta( $term_id );
 
-	$attachment_id = $Term_Images->get_id_by_meta($term_id);
+		//Turn off global post ID so upload filter disabled.
+		$id      = $post_ID;
+		$post_ID = 0;
+		$url     = wp_get_attachment_url( $attachment_id );
+		$post_ID = $id;
 
-	//Turn off global post ID so upload filter disabled.
-	$id = $post_ID;
-	$post_ID = 0;
-	$url = wp_get_attachment_url( $attachment_id );
-	$post_ID = $id;
-	
-	return $url;
-}
+		return $url;
+	}
 
 endif;

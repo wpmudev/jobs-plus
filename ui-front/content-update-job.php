@@ -274,7 +274,7 @@ if(empty($data['post_title']) && isset($_GET['job_title']) && !empty($_GET['job_
 
 				<tr>
 					<th style="vertical-align: top">
-						<label><?php esc_html_e('Attach Examples',JBP_TEXT_DOMAIN)?></label>
+						<label><?php esc_html_e('Attach specs examples or extra information',JBP_TEXT_DOMAIN)?></label>
 					</th>
 					<td>
 						<div class="job-content-wrapper job-portfolio">
@@ -314,13 +314,13 @@ if(empty($data['post_title']) && isset($_GET['job_title']) && !empty($_GET['job_
 				<?php wp_nonce_field( 'verify' ); ?>
 
 				<?php if($editing): ?>
-				<button type="button" class="jbp-button" onclick="window.location='<?php echo get_permalink( get_the_id() ); ?>';"><?php esc_html_e('Cancel', JBP_TEXT_DOMAIN); ?></button>
+				<button type="button" class="jbp-button" onclick="window.location='<?php echo get_permalink( get_the_id() ); ?>';"><?php esc_html_e('Trash', JBP_TEXT_DOMAIN); ?></button>
 				<?php else: ?>
 				<button type="button" class="jbp-button" onclick="window.location='<?php echo get_post_type_archive_link('jbp_jobs'); ?>';"><?php esc_html_e('Cancel', JBP_TEXT_DOMAIN); ?></button>
 				<?php endif; ?>
 
 				<?php if($this->get_setting('job->moderation->draft', 1) ): ?>
-				<button type="submit" id="job-draft" name="data[post_status]" value="draft" class="toggle-job-save jbp-button job-go-public-button" ><?php esc_html_e('Draft', JBP_TEXT_DOMAIN); ?></button>
+				<button type="submit" id="job-draft" name="data[post_status]" value="draft" class="toggle-job-save jbp-button job-go-public-button" ><?php esc_html_e('Save Draft', JBP_TEXT_DOMAIN); ?></button>
 				<?php endif; ?>
 
 				<?php if( !$this->get_setting('job->moderation->publish', 1) ): ?>
@@ -328,7 +328,7 @@ if(empty($data['post_title']) && isset($_GET['job_title']) && !empty($_GET['job_
 				<?php endif; ?>
 
 				<?php if($this->get_setting('job->moderation->publish', 1) ): ?>
-				<button type="submit" id="job-publish" name="data[post_status]" value="publish" class="toggle-job-save jbp-button job-go-public-button" ><?php esc_html_e('Save', JBP_TEXT_DOMAIN); ?></button>
+				<button type="submit" id="job-publish" name="data[post_status]" value="publish" class="toggle-job-save jbp-button job-go-public-button" ><?php esc_html_e('Publish', JBP_TEXT_DOMAIN); ?></button>
 				<?php endif; ?>
 
 			</div>
@@ -364,7 +364,6 @@ if(empty($data['post_title']) && isset($_GET['job_title']) && !empty($_GET['job_
 
 		jbpPopup();
 		$editables.editable();
-console.log(jbpPopupEnabled);
 
 		$('#_ct_jbp_job_Min_Budget').keyup(function () {
 		var value = $('#_ct_jbp_job_Min_Budget').val();

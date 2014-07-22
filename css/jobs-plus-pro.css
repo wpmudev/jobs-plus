@@ -96,10 +96,12 @@
 	box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	-webkit-box-sizing: border-box;
+	text-align: left;
 }
 
 .pro-content-wrapper ul{
 	margin: 0;
+	text-align: left;
 }
 
 .pro-content-editable{
@@ -367,7 +369,7 @@ h2.pro-skills{
 	clear: both;
 }
 
-.pro-social{margin:0;text-align:left; border: 0; max-width: 370px;}
+.pro-social{margin:0;text-align:left; border: 0;/* max-width: 370px;*/}
 .pro-social li{
 	background-image: none;
 	padding: 0;

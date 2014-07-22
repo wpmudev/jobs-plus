@@ -40,6 +40,7 @@ jQuery(document).ready( function($) {
 		$ul = $(this).siblings('ul'),
 		count = $ul.find('li').size();
 		$portfolio.attr('data-name', '_ct_jbp_pro_Portfolio['+count+']');
+
 		$ul.append($template);
 		$portfolio.editable('enable').editable('show');
 	});
@@ -53,6 +54,7 @@ jQuery(document).ready( function($) {
 		$ul = $(this).siblings('ul'),
 		count = $ul.find('li').size();
 		$portfolio.attr('data-name', '_ct_jbp_job_Portfolio['+count+']');
+		console.log($template);
 		$ul.append($template);
 		$portfolio.editable().editable('show');
 	});
@@ -183,7 +185,7 @@ jQuery(document).ready( function($) {
 			function(){
 				text += $(this).data('label') + '<br />';
 			});
-			console.log(text);
+			//console.log(text);
 			dlg = jbp_create_dialog(title, text,{
 				width: '400',
 				resize: 'auto',

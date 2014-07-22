@@ -23,7 +23,7 @@ wp_enqueue_script('jquery-validate');
 ?>
 
 <div id="post-jbp-job">
-	<h3><?php esc_html_e('Contact ', JBP_TEXT_DOMAIN); the_title()?></h3>
+	<!--<h3><?php /*esc_html_e('Contact ', JBP_TEXT_DOMAIN); the_title()*/?></h3>-->
 
 	<?php echo do_action('jbp_error'); ?>
 	<?php echo do_action('jbp_notice'); ?>

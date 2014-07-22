@@ -428,3 +428,6 @@ button.jbp-login-btn.inactive  {
 	top: -40px;
 }
 
+.required{
+	color:#000;
+}

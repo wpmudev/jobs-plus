@@ -36,7 +36,7 @@
 					data-name="<?php echo esc_attr("_ct_jbp_job_Portfolio[$key]"); ?>"
 					data-value="<?php echo esc_attr( json_encode($portfolio) ); ?>"
 					data-emptytext="<?php esc_attr_e('No Image Selected', JBP_TEXT_DOMAIN); ?>"
-					data-original-title="<?php esc_attr_e(__('Select an Image', JBP_TEXT_DOMAIN) ); ?>"
+					data-original-title="<?php esc_attr_e(__('Select image or file', JBP_TEXT_DOMAIN) ); ?>"
 					data-button-label="<?php esc_attr_e('Choose an image', JBP_TEXT_DOMAIN); ?>"
 					>
 				</div>
@@ -57,9 +57,10 @@
 		class="editable portfolio"
 		data-type="portfolio"
 		data-mode="popup"
+		data-emptytext=""
 		data-name="<?php echo esc_attr('_ct_jbp_job_Portfolio[]'); ?>"
 		data-value=""
-		data-original-title="<?php esc_attr_e(__('Select an Image', JBP_TEXT_DOMAIN) ); ?>"
+		data-original-title="<?php esc_attr_e(__('Select image or file', JBP_TEXT_DOMAIN) ); ?>"
 		data-button-label="Choose an image"
 		>
 		</div>

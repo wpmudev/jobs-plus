@@ -1,6 +1,6 @@
 <?php
 /**
-Plugin Name: Jobs +
+Plugin Name: Jobs and Experts
 Plugin URI: http://premium.wpmudev.org/jobs-plus/
 Description:
 Version: 1.0 beta 24

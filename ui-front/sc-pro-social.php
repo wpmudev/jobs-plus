@@ -31,7 +31,7 @@
 				data-original-title="<?php esc_attr_e('Select a Social Icon and enter your url', JBP_TEXT_DOMAIN); ?>">
 			</div>
 		</li><?php endforeach; ?></ul>
-	<a href="#" id="add-social-link" class="pro-content-command pro-add show-on-edit"><?php esc_html_e('+Add an Icon', JBP_TEXT_DOMAIN ); ?></a>
+	<a href="#" id="add-social-link" class="pro-content-command pro-add show-on-edit"><?php esc_html_e('+Add an Social Profile', JBP_TEXT_DOMAIN ); ?></a>
 </div>
 
 <script id="add-social" type="text/template">

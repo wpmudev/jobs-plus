@@ -269,10 +269,10 @@ $editor_settings =   array(
 			<input type="submit" value="<?php esc_attr_e( 'Pending Review', JBP_TEXT_DOMAIN ); ?>" name="data[post_status]" value="pending" />
 			<?php endif; ?>
 			<?php if($Jobs_Plus_Core->get_setting('pro->moderation->draft') ): ?>
-			<input type="submit" value="<?php esc_attr_e( 'Draft', JBP_TEXT_DOMAIN ); ?>" name="data[post_status]" value="draft" />
+			<input type="submit" value="<?php esc_attr_e( 'Save Draft', JBP_TEXT_DOMAIN ); ?>" name="data[post_status]" value="draft" />
 			<?php endif; ?>
 
-			<input type="button" value="<?php esc_attr_e( 'Cancel', JBP_TEXT_DOMAIN ); ?>" onclick="location.href='<?php echo esc_attr(get_permalink($post->ID) ); ?>'">
+			<input type="button" value="<?php esc_attr_e( 'Trash', JBP_TEXT_DOMAIN ); ?>" onclick="location.href='<?php echo esc_attr(get_permalink($post->ID) ); ?>'">
 		</div>
 
 	</form>

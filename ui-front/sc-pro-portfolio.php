@@ -56,9 +56,10 @@
 	data-type="portfolio"
 	data-mode="popup"
 	data-name="<?php echo esc_attr('_ct_jbp_pro_Portfolio[]'); ?>"
-	data-value=""
+	data-emptytext=""
 	data-original-title="<?php esc_attr_e(__('Select an Image', JBP_TEXT_DOMAIN) ); ?>"
-	data-button-label="Choose an image"
+	data-button-label="Choose an image",
+	data-empty=""
 	>
 	</div>
 	</li>

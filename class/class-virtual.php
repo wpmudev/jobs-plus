@@ -31,8 +31,8 @@ class Jobs_Plus_Virtual{
 		if ( empty($page_id) ) {
 			/* Construct args for the new post */
 			$args = array(
-			'post_title'     => sprintf( __('%s Archive Virtual', JBP_TEXT_DOMAIN), $core->job_labels->singular_name),
-			'post_name'      => sprintf( __('%s-archive-virtual', JBP_TEXT_DOMAIN), $core->job_slug ),
+			'post_title'     => sprintf( __('%s Listing Page', JBP_TEXT_DOMAIN), $core->job_labels->singular_name),
+			'post_name'      => sprintf( __('%s-listing-page', JBP_TEXT_DOMAIN), $core->job_slug ),
 			'post_status'    => 'virtual',
 			'post_author'    => $current_user->ID,
 			'post_type'      => 'jbp_job',
@@ -161,8 +161,8 @@ class Jobs_Plus_Virtual{
 		if ( empty($page_id) ) {
 			/* Construct args for the new post */
 			$args = array(
-			'post_title'     => sprintf( __('Add %s', JBP_TEXT_DOMAIN), $core->job_labels->singular_name),
-			'post_name'      => sprintf( __('add-%s', JBP_TEXT_DOMAIN), $core->job_slug ),
+			'post_title'     => sprintf( __('Add a %s', JBP_TEXT_DOMAIN), $core->job_labels->singular_name),
+			'post_name'      => sprintf( __('add-a-%s', JBP_TEXT_DOMAIN), $core->job_slug ),
 			'post_status'    => 'virtual',
 			'post_author'    => $current_user->ID,
 			'post_type'      => 'jbp_job',
@@ -192,7 +192,7 @@ class Jobs_Plus_Virtual{
 		if ( empty($page_id) ) {
 			/* Construct args for the new post */
 			$args = array(
-			'post_title'     => sprintf( __('%s Archive Virtual', JBP_TEXT_DOMAIN), $core->pro_labels->singular_name),
+			'post_title'     => sprintf( __('%s Listing Page', JBP_TEXT_DOMAIN), $core->pro_labels->singular_name),
 			'post_name'      => sprintf( __('%s-archive-virtual', JBP_TEXT_DOMAIN), $core->pro_slug ),
 			'post_status'    => 'virtual',
 			'post_author'    => $current_user->ID,
@@ -322,8 +322,8 @@ class Jobs_Plus_Virtual{
 		if ( empty($page_id) ) {
 			/* Construct args for the new post */
 			$args = array(
-			'post_title'     => sprintf( __('Add %s', JBP_TEXT_DOMAIN), $core->pro_labels->singular_name),
-			'post_name'      => sprintf( __('add-%s', JBP_TEXT_DOMAIN), $core->pro_slug ),
+			'post_title'     => sprintf( __('Add a new %s', JBP_TEXT_DOMAIN), $core->pro_labels->singular_name),
+			'post_name'      => sprintf( __('add-a-new-%s', JBP_TEXT_DOMAIN), $core->pro_slug ),
 			'post_status'    => 'virtual',
 			'post_author'    => $current_user->ID,
 			'post_type'      => 'jbp_pro',
