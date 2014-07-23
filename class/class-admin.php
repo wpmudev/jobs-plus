@@ -38,9 +38,20 @@ if ( ! class_exists( 'Jobs_Plus_Admin' ) ):
 			add_action( 'admin_notices', array( $this, 'check_permalink_format' ) );
 			add_filter( 'admin_url', array( &$this, 'filter_add_new_link' ), 10, 3 );
 
-
+			add_action( 'admin_footer', array( &$this, 'hide_metabox_if_page_not_created' ) );
 		}
 
+		function hide_metabox_if_page_not_created() {
+			if ( get_post_type() == 'jbp_job' && isset($_GET['action']) && $_GET['action']=='edit') {
+				?>
+				<script type="text/javascript">
+					jQuery(document).ready(function ($) {
+						$('#pageparentdiv').hide();
+					})
+				</script>
+			<?php
+			}
+		}
 
 
 		function filter_add_new_link( $url, $path, $blog_id ) {
