@@ -82,6 +82,7 @@ define( 'JBP_PRO_CONTACT_FLAG', 'pro-contact-page' );
 define( 'JBP_PRO_SEARCH_FLAG', 'pro-search-page' );
 define( 'JBP_PRO_SINGLE_FLAG', 'pro-single-page' );
 define( 'JBP_PRO_UPDATE_FLAG', 'pro-update-page' );
+define( 'JBP_PRO_EMPTY_FLAG', 'pro_empty_page' );
 
 define( 'JBP_JOB_VIRTUAL_KEY', '_jbp_job' );
 

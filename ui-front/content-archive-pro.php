@@ -8,7 +8,12 @@
 
 wp_enqueue_script('masonry');
 wp_enqueue_script('imagesloaded');
-
+$no_pros = false;
+global $Jobs_Plus_Core;
+$page_id = get_the_ID();
+if ( $page_id == $Jobs_Plus_Core->pro_empty_page_id ) {
+	$no_pros = true;
+}
 ?>
 <div class="pro-archive-wrapper">
 
@@ -20,7 +25,7 @@ wp_enqueue_script('imagesloaded');
 	<?php echo do_action('jbp_notice'); ?>
 	<?php echo do_shortcode('[jbp-expert-search]'); ?>
 
-	<?php if( have_posts()): ?>
+	<?php if( have_posts() && $no_pros==false): ?>
 
 	<div id="pro-grid-container">
 		<div class="pro-grid-sizer"></div>

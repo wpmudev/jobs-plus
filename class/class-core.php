@@ -92,6 +92,7 @@ if ( ! class_exists( 'Jobs_Plus_Core' ) ):
 		public $_pro_search_page_id = 0;
 		public $_pro_single_page_id = 0;
 		public $_pro_update_page_id = 0;
+		public $_pro_empty_page_id = 0;
 
 		public $_demo_landing_page_id = 0;
 
@@ -306,6 +307,9 @@ if ( ! class_exists( 'Jobs_Plus_Core' ) ):
 				case 'pro_update_page_id':
 					$result = $this->find_page_id( $this->_pro_update_page_id, JBP_PRO_VIRTUAL_KEY, JBP_PRO_UPDATE_FLAG );
 					break;
+				case 'pro_empty_page_id':
+					$result = $this->find_page_id( $this->_pro_empty_page_id, JBP_PRO_VIRTUAL_KEY, JBP_PRO_EMPTY_FLAG );
+					break;
 
 				case 'demo_landing_page_id':
 					$result = $this->find_page_id( $this->_demo_landing_page_id, JBP_DEMO_VIRTUAL_KEY, JBP_DEMO_LANDING_FLAG );
@@ -335,6 +339,9 @@ if ( ! class_exists( 'Jobs_Plus_Core' ) ):
 				case 'job_update_page_id':
 					$this->_job_update_page_id = $value;
 					break;
+				case 'job_empty_page_id':
+					$this->_job_empty_page_id = $value;
+					break;
 
 				case 'pro_archive_page_id':
 					$this->_pro_archive_page_id = $value;
@@ -353,6 +360,9 @@ if ( ! class_exists( 'Jobs_Plus_Core' ) ):
 					break;
 				case 'pro_update_page_id':
 					$this->_pro_update_page_id = $value;
+					break;
+				case 'pro_empty_page_id':
+					$this->_pro_empty_page_id = $value;
 					break;
 
 				case 'demo_landing_page_id':
@@ -382,6 +392,9 @@ if ( ! class_exists( 'Jobs_Plus_Core' ) ):
 				case 'job_update_page_id':
 					$result = $this->_job_update_page_id > 0;
 					break;
+				case 'job_empty_page_id':
+					$result = $this->_job_empty_page_id > 0;
+					break;
 
 				case 'pro_archive_page_id':
 					$result = $this->_pro_archive_page_id > 0;
@@ -400,6 +413,9 @@ if ( ! class_exists( 'Jobs_Plus_Core' ) ):
 					break;
 				case 'pro_update_page_id':
 					$result = $this->_pro_update_page_id > 0;
+					break;
+				case 'pro_empty_page_id':
+					$result = $this->_pro_empty_page_id > 0;
 					break;
 
 				case 'demo_landing_page_id':
@@ -1188,24 +1204,37 @@ if ( ! class_exists( 'Jobs_Plus_Core' ) ):
 			elseif ( is_singular( 'jbp_pro' ) && get_query_var( 'contact' ) ) {
 				$this->title   = 'custom_titles';
 				$this->virtual = $this->pro_contact_page_id;
-			} elseif ( get_the_ID() == $this->job_empty_page_id ) {
+			} elseif ( is_singular( 'jbp_job' ) && get_the_ID() == $this->job_empty_page_id ) {
+				//if we still in the no job page, but there's having jobs, redirect
+				if ( count(get_posts('post_type=jbp_job&post_status=publish')) > 0 ) {
+					wp_redirect( get_post_type_archive_link( 'jbp_job' ) );
+				}
 				$this->title   = 'archive_title';
-				$this->virtual = $this->job_archive_page_id;
+				$this->virtual = $this->job_empty_page_id;
+			} elseif ( is_singular( 'jbp_pro' ) && get_the_ID() == $this->pro_empty_page_id ) {
+				if ( count( get_posts( 'post_type=jbp_pro&post_status=publish' ) ) > 0 ) {
+					wp_redirect( get_post_type_archive_link( 'jbp_pro' ) );
+				}
+				$this->title   = 'archive_title';
+				$this->virtual = $this->pro_empty_page_id;
 			}
+
 			//var_dump($this->virtual); exit;
 			//Do the content filters
 			if ( ! empty( $this->virtual ) ) {
-				//If substituting content then use page template. If post_type.php exists use it.
 				$template = locate_template( array( "{$this->custom_type}.php", 'page.php', 'index.php' ) );
 				add_filter( 'the_content', array( &$this, 'content_template' ), 20 );
+				//If substituting content then use page template. If post_type.php exists use it.
 				if ( $wp_query->post_count == 0 ) {
 					//redirect to the empty page
 					if ( get_query_var( 'post_type' ) == 'jbp_job' ) {
 						wp_redirect( get_permalink( $this->job_empty_page_id ) );
 						exit;
+					} elseif ( get_query_var( 'post_type' ) == 'jbp_pro' ) {
+						wp_redirect( get_permalink( $this->pro_empty_page_id ) );
+						exit;
 					}
-
-					$wp_query->current_post = - 2;
+					//$wp_query->current_post = - 2;
 				}
 
 				if ( ! empty( $this->title ) ) {

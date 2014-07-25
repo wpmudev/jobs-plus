@@ -368,6 +368,29 @@ class Jobs_Plus_Virtual{
 		}
 		$core->_pro_update_page_id = $page_id; //Remember the number
 
+		$page_id = $core->get_post_id_by_meta(JBP_PRO_VIRTUAL_KEY, JBP_PRO_EMPTY_FLAG );
+		if ( empty($page_id) ) {
+			/* Construct args for the new post */
+			$args = array(
+				'post_title'     => sprintf( __('No %s Found', JBP_TEXT_DOMAIN), $core->pro_labels->name),
+				'post_name'      => sprintf( __('no-%s-found', JBP_TEXT_DOMAIN), $core->pro_slug ),
+				'post_status'    => 'virtual',
+				'post_author'    => $current_user->ID,
+				'post_type'      => 'jbp_pro',
+				'post_content'   => $warning . $buttons . '[jbp-expert-archive-page]',
+				'ping_status'    => 'closed',
+				'comment_status' => 'closed'
+			);
+			$page_id = wp_insert_post( $args );
+			$page = get_post($page_id);
+			add_post_meta( $page_id, JBP_PRO_VIRTUAL_KEY, JBP_PRO_EMPTY_FLAG);
+		} else {
+			//Make sure it stays virtual
+			if( !in_array($page->post_status, array('virtual', 'trash') ) )
+				wp_update_post( array('ID' => $page_id, 'post_status' => 'virtual') );
+		}
+		$core->_pro_empty_page_id = $page_id; //Remember the number
+
 		/*****************************************************************************************
 		* DEMO PAGES
 		*/
