@@ -1,17 +1,17 @@
 <?php
 /**
-Plugin Name: Jobs and Experts
-Plugin URI: http://premium.wpmudev.org/jobs-plus/
-Description:
-Version: 1.0 beta 24
-Author: WPMU DEV
-Author URI: http://premium.wpmudev.org
-Text Domain: jbp
-Domain Path: languages
-Network: false
-WDP ID: ***
-License: GPLv2 or later
-*/
+ * Plugin Name: Jobs and Experts
+ * Plugin URI: http://premium.wpmudev.org/jobs-plus/
+ * Description:
+ * Version: 1.0 beta 24
+ * Author: WPMU DEV
+ * Author URI: http://premium.wpmudev.org
+ * Text Domain: jbp
+ * Domain Path: languages
+ * Network: false
+ * WDP ID: ***
+ * License: GPLv2 or later
+ */
 /*
 
 Copyright 2013 Incsub, (http://incsub.com)
@@ -37,12 +37,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 define( 'JOBS_PLUS_VERSION', '1.0' );
 
 // define the plugin file signature
-$pinfo = pathinfo(__FILE__);
-define( 'JBP_PLUGIN', basename($pinfo['dirname']) .'/'. $pinfo['basename'] );
+$pinfo = pathinfo( __FILE__ );
+define( 'JBP_PLUGIN', basename( $pinfo['dirname'] ) . '/' . $pinfo['basename'] );
 // define the plugin folder url
-define( 'JBP_PLUGIN_URL', plugin_dir_url(__FILE__) );
+define( 'JBP_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 // define the plugin folder dir
-define( 'JBP_PLUGIN_DIR', plugin_dir_path(__FILE__) );
+define( 'JBP_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 // The text domain for strings localization
 define( 'JBP_TEXT_DOMAIN', 'jbp' );
 // The key for the options array
@@ -51,52 +51,53 @@ define( 'JBP_SETTINGS_NAME', 'jobs_plus_settings' );
 define( 'JBP_CAPTCHA', 'jbp_captcha' );
 
 //Script Versions
-define( 'IMAGESLOADED',            'v3.0.4' );
-define( 'JQUERYUI_EDITABLE',       'v1.4.6' );
-define( 'JQUERY_COOKIE',           'v1.3.1' );
-define( 'JQUERY_ELLIPSIS',         'v1.0.8' );
-define( 'JQUERY_FORMAT_CURRENCY',  'v1.4.0' );
-define( 'JQUERY_IFRAME_TRANSPORT', 'v1.1'   );
-define( 'JQUERY_MAGNIFIC_POPUP',   'v0.9.5' );
-define( 'JQUERY_RATEIT',           'v1.0.9' );
-define( 'SELECT2',                 'v3.4.3' );
-define( 'MASONRY',                 'v3.1.5' );
+define( 'IMAGESLOADED', 'v3.0.4' );
+define( 'JQUERYUI_EDITABLE', 'v1.4.6' );
+define( 'JQUERY_COOKIE', 'v1.3.1' );
+define( 'JQUERY_ELLIPSIS', 'v1.0.8' );
+define( 'JQUERY_FORMAT_CURRENCY', 'v1.4.0' );
+define( 'JQUERY_IFRAME_TRANSPORT', 'v1.1' );
+define( 'JQUERY_MAGNIFIC_POPUP', 'v0.9.5' );
+define( 'JQUERY_RATEIT', 'v1.0.9' );
+define( 'SELECT2', 'v3.4.3' );
+define( 'MASONRY', 'v3.1.5' );
 
 //Rating  metadata keys
-define('JBP_PRO_RATING_KEY',    '_jbp_pro_rating');
-define('JBP_PRO_AVERAGE_KEY',   '_jbp_pro_average');
-define('JBP_PRO_VOTERS_KEY' ,   '_jbp_pro_voters');
-define('JBP_PRO_VOTED_KEY',     '_jbp_pro_voted');
-define('JBP_PRO_REPUTATION_KEY','_jbp_pro_reputation');
+define( 'JBP_PRO_RATING_KEY', '_jbp_pro_rating' );
+define( 'JBP_PRO_AVERAGE_KEY', '_jbp_pro_average' );
+define( 'JBP_PRO_VOTERS_KEY', '_jbp_pro_voters' );
+define( 'JBP_PRO_VOTED_KEY', '_jbp_pro_voted' );
+define( 'JBP_PRO_REPUTATION_KEY', '_jbp_pro_reputation' );
 
 //metadata keys
-define('JBP_POST_VIEWS_KEY',    '_jbp_post_views_count');
-define('JBP_PRO_CERTIFIED_KEY', '_jbp_pro_certified');
-define('JBP_JOB_EXPIRES_KEY',   '_jbp_job_expires');
+define( 'JBP_POST_VIEWS_KEY', '_jbp_post_views_count' );
+define( 'JBP_PRO_CERTIFIED_KEY', '_jbp_pro_certified' );
+define( 'JBP_JOB_EXPIRES_KEY', '_jbp_job_expires' );
 
-define('JBP_PRO_VIRTUAL_KEY',   '_jbp_pro');
+define( 'JBP_PRO_VIRTUAL_KEY', '_jbp_pro' );
 
-define('JBP_PRO_ARCHIVE_FLAG',  'pro-archive-page');
-define('JBP_PRO_TAXONOMY_FLAG', 'pro-taxonomy-page');
-define('JBP_PRO_CONTACT_FLAG',  'pro-contact-page');
-define('JBP_PRO_SEARCH_FLAG',   'pro-search-page');
-define('JBP_PRO_SINGLE_FLAG',   'pro-single-page');
-define('JBP_PRO_UPDATE_FLAG',   'pro-update-page');
+define( 'JBP_PRO_ARCHIVE_FLAG', 'pro-archive-page' );
+define( 'JBP_PRO_TAXONOMY_FLAG', 'pro-taxonomy-page' );
+define( 'JBP_PRO_CONTACT_FLAG', 'pro-contact-page' );
+define( 'JBP_PRO_SEARCH_FLAG', 'pro-search-page' );
+define( 'JBP_PRO_SINGLE_FLAG', 'pro-single-page' );
+define( 'JBP_PRO_UPDATE_FLAG', 'pro-update-page' );
 
-define('JBP_JOB_VIRTUAL_KEY',   '_jbp_job');
+define( 'JBP_JOB_VIRTUAL_KEY', '_jbp_job' );
 
-define('JBP_JOB_ARCHIVE_FLAG',  'job-archive-page');
-define('JBP_JOB_TAXONOMY_FLAG', 'job-taxonomy-page');
-define('JBP_JOB_CONTACT_FLAG',  'job-contact-page');
-define('JBP_JOB_SEARCH_FLAG',   'job-search-page');
-define('JBP_JOB_SINGLE_FLAG',   'job-single-page');
-define('JBP_JOB_UPDATE_FLAG',   'job-update-page');
+define( 'JBP_JOB_ARCHIVE_FLAG', 'job-archive-page' );
+define( 'JBP_JOB_TAXONOMY_FLAG', 'job-taxonomy-page' );
+define( 'JBP_JOB_CONTACT_FLAG', 'job-contact-page' );
+define( 'JBP_JOB_SEARCH_FLAG', 'job-search-page' );
+define( 'JBP_JOB_SINGLE_FLAG', 'job-single-page' );
+define( 'JBP_JOB_UPDATE_FLAG', 'job-update-page' );
+define( 'JBP_JOB_EMPTY_FLAG', 'job_empty_page' );
 
-define('JBP_DEMO_VIRTUAL_KEY',  '_jbp_demo');
+define( 'JBP_DEMO_VIRTUAL_KEY', '_jbp_demo' );
 
-define('JBP_DEMO_LANDING_FLAG', 'job-landing-page');
-define('JBP_DEMO_PRO_FLAG',     'job-demo-pro-page');
-define('JBP_DEMO_JOB_FLAG',     'job-demo-job-page');
+define( 'JBP_DEMO_LANDING_FLAG', 'job-landing-page' );
+define( 'JBP_DEMO_PRO_FLAG', 'job-demo-pro-page' );
+define( 'JBP_DEMO_JOB_FLAG', 'job-demo-job-page' );
 
 //Load everything
 //if need to check for the custompress init
@@ -109,18 +110,18 @@ require_once JBP_PLUGIN_DIR . 'class/class-term-img.php';
 
 /* -------------------- WPMU DEV Dashboard Notice -------------------- */
 global $wpmudev_notices;
-$wpmudev_notices[] = array( 'id'=> 'xxx',
-'name'=> 'Jobs +',
-'screens' => array(
-'plugins',
-'jbp_job_page_jobs-plus-menu',
-'edit-jbp_job',
-'edit-jbp_category',
-'edit-jbp_tag',
-'edit-jbp_skills_tag',
-'jbp_job',
-'edit-jbp_pro',
-'jbp_pro',
-) );
+$wpmudev_notices[] = array( 'id'      => 'xxx',
+							'name'    => 'Jobs +',
+							'screens' => array(
+								'plugins',
+								'jbp_job_page_jobs-plus-menu',
+								'edit-jbp_job',
+								'edit-jbp_category',
+								'edit-jbp_tag',
+								'edit-jbp_skills_tag',
+								'jbp_job',
+								'edit-jbp_pro',
+								'jbp_pro',
+							) );
 
-include_once( JBP_PLUGIN_DIR .'ext/wpmudev-dash-notification.php' );
+include_once( JBP_PLUGIN_DIR . 'ext/wpmudev-dash-notification.php' );

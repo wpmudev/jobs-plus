@@ -84,6 +84,7 @@ if ( ! class_exists( 'Jobs_Plus_Core' ) ):
 		public $_job_search_page_id = 0;
 		public $_job_single_page_id = 0;
 		public $_job_update_page_id = 0;
+		public $_job_empty_page_id = 0;
 
 		public $_pro_archive_page_id = 0;
 		public $_pro_taxonomy_page_id = 0;
@@ -282,6 +283,9 @@ if ( ! class_exists( 'Jobs_Plus_Core' ) ):
 					break;
 				case 'job_update_page_id':
 					$result = $this->find_page_id( $this->_job_update_page_id, JBP_JOB_VIRTUAL_KEY, JBP_JOB_UPDATE_FLAG );
+					break;
+				case 'job_empty_page_id':
+					$result = $this->find_page_id( $this->_job_empty_page_id, JBP_JOB_VIRTUAL_KEY, JBP_JOB_EMPTY_FLAG );
 					break;
 
 				case 'pro_archive_page_id':
@@ -545,8 +549,8 @@ if ( ! class_exists( 'Jobs_Plus_Core' ) ):
 		function finish_plugin_install() {
 			//If the activate flag is set then try to initalize the defaults
 			$activate = get_site_option( 'jbp_install_need_finish' );
-			if($activate){
-				delete_option('jbp_install_need_finish');
+			if ( $activate ) {
+				delete_option( 'jbp_install_need_finish' );
 				wp_redirect( admin_url( 'admin.php?page=jobs-plus-about' ) );
 				exit;
 			}
@@ -1184,8 +1188,10 @@ if ( ! class_exists( 'Jobs_Plus_Core' ) ):
 			elseif ( is_singular( 'jbp_pro' ) && get_query_var( 'contact' ) ) {
 				$this->title   = 'custom_titles';
 				$this->virtual = $this->pro_contact_page_id;
+			} elseif ( get_the_ID() == $this->job_empty_page_id ) {
+				$this->title   = 'archive_title';
+				$this->virtual = $this->job_archive_page_id;
 			}
-
 			//var_dump($this->virtual); exit;
 			//Do the content filters
 			if ( ! empty( $this->virtual ) ) {
@@ -1193,6 +1199,12 @@ if ( ! class_exists( 'Jobs_Plus_Core' ) ):
 				$template = locate_template( array( "{$this->custom_type}.php", 'page.php', 'index.php' ) );
 				add_filter( 'the_content', array( &$this, 'content_template' ), 20 );
 				if ( $wp_query->post_count == 0 ) {
+					//redirect to the empty page
+					if ( get_query_var( 'post_type' ) == 'jbp_job' ) {
+						wp_redirect( get_permalink( $this->job_empty_page_id ) );
+						exit;
+					}
+
 					$wp_query->current_post = - 2;
 				}
 
@@ -1354,6 +1366,15 @@ if ( ! class_exists( 'Jobs_Plus_Core' ) ):
 			//archive titles
 			if ( is_post_type_archive( array( 'jbp_job', 'jbp_pro' ) ) ) {
 				return post_type_archive_title( null, false );
+			}
+
+			return $title;
+		}
+
+		function archive_title( $title ) {
+			$post_type = get_post_type_object( get_query_var( 'post_type' ) );
+			if ( ! empty( $post_type ) ) {
+				return $post_type->labels->name;
 			}
 
 			return $title;

@@ -44,6 +44,7 @@ class Jobs_Plus_Virtual{
 			$page = get_post($page_id);
 			add_post_meta( $page_id, JBP_JOB_VIRTUAL_KEY, JBP_JOB_ARCHIVE_FLAG);
 		} else {
+			$page = get_post($page_id);
 			//Make sure it stays virtual
 			if( !in_array($page->post_status, array('virtual', 'trash') ) ) 
 			wp_update_post( array('ID' => $page_id, 'post_status' => 'virtual') );
@@ -70,6 +71,7 @@ class Jobs_Plus_Virtual{
 			$page = get_post($page_id);
 			add_post_meta( $page_id, JBP_JOB_VIRTUAL_KEY, JBP_JOB_TAXONOMY_FLAG);
 		} else {
+			$page = get_post($page_id);
 			//Make sure it stays virtual
 			if( !in_array($page->post_status, array('virtual', 'trash') ) ) 
 			wp_update_post( array('ID' => $page_id, 'post_status' => 'virtual') );
@@ -179,7 +181,32 @@ class Jobs_Plus_Virtual{
 			wp_update_post( array('ID' => $page_id, 'post_status' => 'virtual') );
 		}
 		$core->_job_update_page_id = $page_id; //Remember the number
+		/**
+		 * jbp_job when empty job
+		 */
 
+		$page_id = $core->get_post_id_by_meta(JBP_JOB_VIRTUAL_KEY, JBP_JOB_EMPTY_FLAG );
+		if ( empty($page_id) ) {
+			/* Construct args for the new post */
+			$args = array(
+				'post_title'     => sprintf( __('No %s Found', JBP_TEXT_DOMAIN), $core->job_labels->name),
+				'post_name'      => sprintf( __('no-%s-found', JBP_TEXT_DOMAIN), $core->job_slug ),
+				'post_status'    => 'virtual',
+				'post_author'    => $current_user->ID,
+				'post_type'      => 'jbp_job',
+				'post_content'   => $warning . $buttons . '[jbp-job-archive-page]',
+				'ping_status'    => 'closed',
+				'comment_status' => 'closed'
+			);
+			$page_id = wp_insert_post( $args );
+			$page = get_post($page_id);
+			add_post_meta( $page_id, JBP_JOB_VIRTUAL_KEY, JBP_JOB_EMPTY_FLAG);
+		} else {
+			//Make sure it stays virtual
+			if( !in_array($page->post_status, array('virtual', 'trash') ) )
+				wp_update_post( array('ID' => $page_id, 'post_status' => 'virtual') );
+		}
+		$core->_job_update_page_id = $page_id; //Remember the number
 
 		/**
 		* PRO VIRTUALS
