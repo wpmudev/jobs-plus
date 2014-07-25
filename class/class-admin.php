@@ -65,9 +65,9 @@ if ( ! class_exists( 'Jobs_Plus_Admin' ) ):
 		}
 
 		function on_init() {
+			parent::on_init();
 			$this->handle_post();
 			//Now init
-			parent::on_init();
 		}
 
 		function on_admin_menu() {

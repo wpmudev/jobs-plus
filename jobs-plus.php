@@ -99,7 +99,10 @@ define('JBP_DEMO_PRO_FLAG',     'job-demo-pro-page');
 define('JBP_DEMO_JOB_FLAG',     'job-demo-job-page');
 
 //Load everything
+//if need to check for the custompress init
+require_once JBP_PLUGIN_DIR . 'class/class-data.php';
 require_once JBP_PLUGIN_DIR . 'lib/custompress/loader.php';
+
 require_once JBP_PLUGIN_DIR . 'class/class-core.php';
 require_once JBP_PLUGIN_DIR . 'class/functions.php';
 require_once JBP_PLUGIN_DIR . 'class/class-term-img.php';

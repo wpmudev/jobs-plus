@@ -24,6 +24,7 @@ if ( ! class_exists( 'Term_Images' ) ):
 		public $large_h;
 
 		function __construct() {
+			$this->default_setting();
 
 			$this->thumb_w  = get_option( 'thumnail_size_w', 150 );
 			$this->thumb_h  = get_option( 'thumnail_size_h', 150 );
@@ -45,6 +46,57 @@ if ( ! class_exists( 'Term_Images' ) ):
 			//add upload field for jobs categories
 			add_action( 'jbp_category_add_form_fields', array( &$this, 'add_upload_element_job_categories_edit_screen' ) );
 			add_action( 'created_jbp_category', array( $this, 'add_image_to_jbp_cat' ), 10, 1 );
+		}
+
+		function default_setting(){
+			//term
+			$tsettings = get_option( TERM_IMAGES_SETTINGS );
+			if ( ! isset( $tsettings['category'] ) ) {
+				$tsettings['category'] = array(
+					'use'           => '1',
+					'thumb_width'   => '150',
+					'thumb_height'  => '150',
+					'medium_width'  => '300',
+					'medium_height' => '300',
+					'large_width'   => '1024',
+					'large_height'  => '1024',
+				);
+			}
+			if ( ! isset( $tsettings['post_tag'] ) ) {
+				$tsettings['post_tag'] = array(
+					'use'           => '1',
+					'thumb_width'   => '150',
+					'thumb_height'  => '150',
+					'medium_width'  => '300',
+					'medium_height' => '300',
+					'large_width'   => '1024',
+					'large_height'  => '1024'
+				);
+			}
+			if ( ! isset( $tsettings['jbp_category'] ) ) {
+				$tsettings['jbp_category'] = array(
+					'use'           => '1',
+					'thumb_width'   => '150',
+					'thumb_height'  => '150',
+					'medium_width'  => '300',
+					'medium_height' => '300',
+					'large_width'   => '1024',
+					'large_height'  => '1024'
+				);
+			}
+			if ( ! isset( $tsettings['jbp_skills_tag'] ) ) {
+				$tsettings['jbp_skills_tag'] = array(
+					'use'           => '1',
+					'thumb_width'   => '150',
+					'thumb_height'  => '150',
+					'medium_width'  => '300',
+					'medium_height' => '300',
+					'large_width'   => '1024',
+					'large_height'  => '1024',
+				);
+			}
+
+			update_option( TERM_IMAGES_SETTINGS, $tsettings );
 		}
 
 		function add_image_to_jbp_cat( $term_id ) {

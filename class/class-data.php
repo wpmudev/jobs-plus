@@ -34,8 +34,11 @@ if ( ! class_exists( 'Jobs_Plus_Core_Data' ) ):
 		function __construct() {
 			add_action( 'init', array( &$this, 'load_custom_post_types' ), 0 ); //zero priority because need data before setting it.
 			add_action( 'init', array( &$this, 'load_custom_taxonomies' ), 0 );
-			add_action( 'init', array( &$this, 'load_custom_fields' ), 0 );
-			add_action( 'init', array( &$this, 'load_default_settings' ), 0 );
+			$activate = (int) get_site_option( 'jbp_activate', false );
+			if ( ( $activate == 0 ) ) {
+				add_action( 'init', array( &$this, 'load_custom_fields' ), 0 );
+				add_action( 'init', array( &$this, 'load_default_settings' ), 0 );
+			}
 		}
 
 		/**
@@ -97,6 +100,8 @@ if ( ! class_exists( 'Jobs_Plus_Core_Data' ) ):
 					'menu_icon'        => $this->plugin_url . 'icons/16px/16px_Jobs_Bright.svg',
 				);
 
+				register_post_type( 'jbp_job', $jbp_job );
+
 				//Update custom post types
 				if ( $this->allow_network && is_network_admin() ) {
 					$ct_custom_post_types            = get_site_option( 'ct_custom_post_types' );
@@ -110,6 +115,7 @@ if ( ! class_exists( 'Jobs_Plus_Core_Data' ) ):
 
 				// Update post types and delete tmp options
 				flush_network_rewrite_rules();
+
 			} //jbp_job post type complete
 
 			/**
@@ -177,9 +183,9 @@ if ( ! class_exists( 'Jobs_Plus_Core_Data' ) ):
 					$ct_custom_post_types['jbp_pro'] = $jbp_pro;
 					update_option( 'ct_custom_post_types', $ct_custom_post_types );
 				}
-
+				register_post_type( 'jbp_pro', $jbp_pro );
 				// Update post types and delete tmp options
-				flush_network_rewrite_rules();
+				//flush_network_rewrite_rules();
 			} //jbp_pro post type complete
 
 			//Custompress specfic
@@ -1083,7 +1089,7 @@ if ( ! class_exists( 'Jobs_Plus_Core_Data' ) ):
 		function load_default_settings() {
 			global $Jobs_Plus_Core;
 
-			$sname = $Jobs_Plus_Core->settings_name;
+			$sname = JBP_SETTINGS_NAME;
 
 			$settings = get_option( $sname );
 
@@ -1122,57 +1128,7 @@ if ( ! class_exists( 'Jobs_Plus_Core_Data' ) ):
 			//if(!isset($settings['category']['use']))
 
 			update_option( $sname, $settings );
-
-			//term
-			$tsettings = get_option( TERM_IMAGES_SETTINGS );
-			if ( ! isset( $tsettings['category'] ) ) {
-				$tsettings['category'] = array(
-					'use'           => '1',
-					'thumb_width'   => '150',
-					'thumb_height'  => '150',
-					'medium_width'  => '300',
-					'medium_height' => '300',
-					'large_width'   => '1024',
-					'large_height'  => '1024',
-				);
-			}
-			if ( ! isset( $tsettings['post_tag'] ) ) {
-				$tsettings['post_tag'] = array(
-					'use'           => '1',
-					'thumb_width'   => '150',
-					'thumb_height'  => '150',
-					'medium_width'  => '300',
-					'medium_height' => '300',
-					'large_width'   => '1024',
-					'large_height'  => '1024'
-				);
-			}
-			if ( ! isset( $tsettings['jbp_category'] ) ) {
-				$tsettings['jbp_category'] = array(
-					'use'           => '1',
-					'thumb_width'   => '150',
-					'thumb_height'  => '150',
-					'medium_width'  => '300',
-					'medium_height' => '300',
-					'large_width'   => '1024',
-					'large_height'  => '1024'
-				);
-			}
-			if ( ! isset( $tsettings['jbp_skills_tag'] ) ) {
-				$tsettings['jbp_skills_tag'] = array(
-					'use'           => '1',
-					'thumb_width'   => '150',
-					'thumb_height'  => '150',
-					'medium_width'  => '300',
-					'medium_height' => '300',
-					'large_width'   => '1024',
-					'large_height'  => '1024',
-				);
-			}
-
-			update_option( TERM_IMAGES_SETTINGS, $tsettings );
 		}
-
 	}
 
 	new Jobs_Plus_Core_Data;
@@ -1183,7 +1139,7 @@ endif;
 
 global $default_pro_subject, $default_pro_content, $default_job_subject, $default_job_content;
 
-$default_pro_subject = __( 'SITE_NAME Contact Request: [ POST_TITLE ]', $this->text_domain );
+$default_pro_subject = __( 'SITE_NAME Contact Request: [ POST_TITLE ]', JBP_TEXT_DOMAIN );
 $default_pro_content = __(
 	'Hi TO_NAME, you have received a message from
 
@@ -1195,10 +1151,10 @@ $default_pro_content = __(
 
 
 	Expert link: POST_LINK
-	', $this->text_domain );
+	', JBP_TEXT_DOMAIN );
 
 
-$default_job_subject = __( 'SITE_NAME Contact Request: [ POST_TITLE ]', $this->text_domain );
+$default_job_subject = __( 'SITE_NAME Contact Request: [ POST_TITLE ]', JBP_TEXT_DOMAIN );
 $default_job_content = __(
 	'Hi TO_NAME, you have received a message from
 
@@ -1210,6 +1166,6 @@ $default_job_content = __(
 
 
 	Job link: POST_LINK
-	', $this->text_domain );
+	', JBP_TEXT_DOMAIN );
 
 

@@ -101,9 +101,11 @@ if ( ! class_exists( 'Jobs_Plus_Core' ) ):
 			register_deactivation_hook( $this->plugin_dir . 'jobs-plus.php', array( &$this, 'on_deactivate' ) );
 
 			add_action( 'plugins_loaded', array( &$this, 'on_plugins_loaded' ) );
-			add_action( 'widgets_init', array( &$this, 'on_widgets_init' ) );
-			add_action( 'init', array( &$this, 'on_init' ), 10 );
 			add_action( 'wp_loaded', array( &$this, 'on_wp_loaded' ), 10 );
+			add_action( 'init', array( &$this, 'on_init' ), 10 );
+			add_action( 'init', array( &$this, 'on_widgets_init' ) );
+			add_action( 'admin_init', array( &$this, 'finish_plugin_install' ) );
+
 			add_action( 'wp_print_scripts', array( &$this, 'on_print_scripts' ) );
 			add_action( 'wp_enqueue_scripts', array( &$this, 'include_scripts' ) );
 
@@ -491,6 +493,9 @@ if ( ! class_exists( 'Jobs_Plus_Core' ) ):
 		}
 
 		function on_activate() {
+			//regsiter post type
+
+
 			flush_network_rewrite_rules();
 		}
 
@@ -504,11 +509,7 @@ if ( ! class_exists( 'Jobs_Plus_Core' ) ):
 			load_plugin_textdomain( $this->text_domain, false, plugin_basename( $this->plugin_dir . 'languages/' ) );
 
 			//if custom type not created start the activation loop
-			$activate = (int) get_site_option( 'jbp_activate', false );
-
-			if ( ( $activate > 0 ) ) { //Do on first pass
-				require_once( $this->plugin_dir . 'class/class-data.php' );
-			}
+			require_once( $this->plugin_dir . 'class/class-data.php' );
 		}
 
 		function on_wp_loaded() {
@@ -520,7 +521,6 @@ if ( ! class_exists( 'Jobs_Plus_Core' ) ):
 				wp_redirect( '#' );
 				exit;
 			}
-
 			if ( $activate ) {
 				//For some reason the rewrite rules need to flushed twice
 				flush_rewrite_rules();
@@ -532,10 +532,23 @@ if ( ! class_exists( 'Jobs_Plus_Core' ) ):
 					delete_site_option( 'jbp_activate' );
 				} else {
 					update_site_option( 'jbp_activate', $activate );
+					update_option( 'jbp_install_need_finish', 1 );
 					$this->job_update_page_id; //do this to trigger virtual pages early
-					wp_redirect( admin_url( '/edit.php?post_type=jbp_job&page=jobs-plus-about' ) );
+					//wp_redirect( admin_url( 'edit.php?post_type=jbp_job&page=jobs-plus-about' ) );
+					wp_redirect( admin_url( 'plugins.php' ) );
+					//wp_redirect( admin_url( 'admin.php?page=jobs-plus-about' ) );
 					exit;
 				}
+			}
+		}
+
+		function finish_plugin_install() {
+			//If the activate flag is set then try to initalize the defaults
+			$activate = get_site_option( 'jbp_install_need_finish' );
+			if($activate){
+				delete_option('jbp_install_need_finish');
+				wp_redirect( admin_url( 'admin.php?page=jobs-plus-about' ) );
+				exit;
 			}
 		}
 
@@ -544,7 +557,21 @@ if ( ! class_exists( 'Jobs_Plus_Core' ) ):
 		}
 
 		function on_init() {
-			global $wp_post_statuses;
+			if ( ! post_type_exists( 'jbp_pro' ) || ! post_type_exists( 'jbp_job' ) ) {
+				require_once( $this->plugin_dir . 'class/class-data.php' );
+			}
+
+			$this->pro_obj = get_post_type_object( 'jbp_pro' );
+			$this->job_obj = get_post_type_object( 'jbp_job' );
+
+			if ( ! empty( $this->pro_obj ) ) {
+				$this->pro_labels = $this->pro_obj->labels;
+				$this->pro_slug   = $this->pro_obj->rewrite['slug'];
+			}
+			if ( ! empty( $this->job_obj ) ) {
+				$this->job_labels = $this->job_obj->labels;
+				$this->job_slug   = $this->job_obj->rewrite['slug'];
+			}
 
 			$this->set_capability_defines();
 			$this->set_rewrite_rules();
@@ -580,18 +607,6 @@ if ( ! class_exists( 'Jobs_Plus_Core' ) ):
 		}
 
 		function on_widgets_init() {
-			$this->pro_obj = get_post_type_object( 'jbp_pro' );
-			if ( ! empty( $this->pro_obj ) ) {
-				$this->pro_labels = $this->pro_obj->labels;
-				$this->pro_slug   = $this->pro_obj->rewrite['slug'];
-			}
-
-			$this->job_obj = get_post_type_object( 'jbp_job' );
-			if ( ! empty( $this->job_obj ) ) {
-				$this->job_labels = $this->job_obj->labels;
-				$this->job_slug   = $this->job_obj->rewrite['slug'];
-			}
-
 			//Register Widgets from list
 			foreach ( $this->widgets as $file => $widget ) {
 				$file_path = $this->plugin_dir . "class/{$file}.php";
@@ -651,7 +666,6 @@ if ( ! class_exists( 'Jobs_Plus_Core' ) ):
 			// add endpoints for front end special pages
 			add_rewrite_endpoint( 'edit', EP_PAGES );
 			add_rewrite_endpoint( 'contact', EP_PAGES );
-
 			$slug = $this->job_obj->has_archive;
 
 			add_rewrite_rule( "{$slug}/author/([^/]+)",
@@ -3531,9 +3545,9 @@ if ( ! class_exists( 'Jobs_Plus_Core' ) ):
 	if ( is_admin() ) {
 		require JBP_PLUGIN_DIR . 'class/class-admin.php';
 		$Jobs_Plus_Core = new Jobs_Plus_Admin;
+	} else {
+		$Jobs_Plus_Core = new Jobs_Plus_Core;
 	}
-else {
-	$Jobs_Plus_Core = new Jobs_Plus_Core;
-}
 
+	//init widget
 endif;
