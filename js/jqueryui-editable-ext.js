@@ -220,6 +220,7 @@ last: "Bailey"
 		value2html: function (value, element) {
 			$(element).empty();
 			if (!value) return;
+			console.log(value);
 			if (value.first != undefined && value.last != undefined)
 				$(element).text(value.first + ' ' + value.last);
 			else

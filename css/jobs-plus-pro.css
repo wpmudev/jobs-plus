@@ -710,7 +710,7 @@ h2.pro-skills {
 }
 
 .pro-archive-image img.avatar {
-	display:   block;
+	/*display:   block;*/
 	top:       0;
 	left:      0;
 	max-width: 100%;
