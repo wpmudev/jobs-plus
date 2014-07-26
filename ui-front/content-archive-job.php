@@ -40,7 +40,7 @@ if ( $page_id == $Jobs_Plus_Core->job_empty_page_id ) {
 	<?php echo do_shortcode( '[jbp-job-search]' ); ?>
 	<?php echo do_shortcode( '[jbp-job-price-search]' ); ?>
 
-	<?php if ( have_posts() && $no_jobs==false ): ?>
+	<?php if ( have_posts() && $no_jobs == false ): ?>
 		<div id="job-grid-container">
 			<div class="job-grid-sizer"></div>
 			<div class="job-gutter-sizer"></div>
@@ -68,9 +68,11 @@ if ( $page_id == $Jobs_Plus_Core->job_empty_page_id ) {
 			var $container = $("#job-grid-container");
 			$container.masonry({
 				itemSelector: ".job-excerpt",
-				columnWidth : ".job-grid-sizer",
-				gutter      : ".job-gutter-sizer"
+				columnWidth : $(".job-grid-sizer").width(),
+				gutter      : ".job-gutter-sizer",
+				isFitWidth  : true
 			});
+			console.log($container);
 
 			$(window).resize(function () {
 				$container.masonry('layout');

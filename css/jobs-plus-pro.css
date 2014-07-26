@@ -1059,6 +1059,6 @@ button.pro-profile-btn:hover .div-img {
 h3.subheader1 {
 	text-align: center;
 	font-size: 16pt;
-	margin: 0;
+	margin: 0 0 20px 0;
 	padding: 0;
 }
