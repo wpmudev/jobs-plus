@@ -163,6 +163,7 @@ a.pro-add{
 .portfolio a img{
 	box-shadow: none;
 	width: 100%;
+	cursor: pointer;
 }
 
 /* Skills gauge */

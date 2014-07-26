@@ -1206,7 +1206,7 @@ if ( ! class_exists( 'Jobs_Plus_Core' ) ):
 				$this->virtual = $this->pro_contact_page_id;
 			} elseif ( is_singular( 'jbp_job' ) && get_the_ID() == $this->job_empty_page_id ) {
 				//if we still in the no job page, but there's having jobs, redirect
-				if ( count(get_posts('post_type=jbp_job&post_status=publish')) > 0 ) {
+				if ( count( get_posts( 'post_type=jbp_job&post_status=publish' ) ) > 0 ) {
 					wp_redirect( get_post_type_archive_link( 'jbp_job' ) );
 				}
 				$this->title   = 'archive_title';
@@ -1548,15 +1548,19 @@ if ( ! class_exists( 'Jobs_Plus_Core' ) ):
 		 *
 		 */
 		function on_get_edit_post_link( $link = '', $post_id = 0 ) {
-
-			if ( ! empty( $link )
-				&& ! is_admin()
-				&& in_array( get_post_type( $post_id ), array( 'jbp_job', 'jbp_pro' ) )
-			) {
+			if ( ! empty( $link ) && ! is_admin() && in_array( get_post_type( $post_id ), array( 'jbp_job', 'jbp_pro' ) ) ) {
 				if ( get_post_status( $post_id ) == 'publish' ) {
 					$link = untrailingslashit( get_permalink( $post_id ) ) . '/edit/';
 				} else {
-					$link = add_query_arg( 'edit', 1, get_permalink( $post_id ) );
+					global $wp_query;
+					//check does this add new page
+					$add_new_page = get_post( $this->job_update_page_id );
+					if ( get_query_var( 'name' ) == $add_new_page->post_name ) {
+						$link = '';
+					} else {
+						$link = add_query_arg( 'edit', 1, get_permalink( $post_id ) );
+					}
+					//$link = '';
 				}
 			}
 

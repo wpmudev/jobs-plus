@@ -74,6 +74,11 @@ $this->no_thumbnail();
 <div class="pro-content">
 	<div class="pro-pad group">
 		<?php echo do_shortcode( '[jbp-expert-gravatar]' ); ?>
+
+		<div class="hide-on-edit pro-contact">
+			<?php echo do_shortcode( '[jbp-expert-contact-btn class="pro-contact"]' ); ?>
+		</div>
+
 		<div class="pro-content-wrapper pro-tagline show-on-edit">
 			<h2 class="subheader1 pro-content-editable pro-title"><?php esc_html_e( 'Expert Name: ', JBP_TEXT_DOMAIN ); ?>
 				<span class="editable editable-title"
@@ -166,11 +171,6 @@ $this->no_thumbnail();
 				<strong><?php /*esc_html_e( 'Rate me: ', JBP_TEXT_DOMAIN ); */ ?></strong>
 				<?php /*echo do_shortcode( '[jbp-rate-this]' ); */ ?>
 			</label>-->
-			<?php if ( current_user_can( EDIT_PRO, $post->ID ) ): ?>
-				<div class="pro-edit">
-					<span><button type="button" id="toggle-pro-edit" class="pro-button jbp-button pro-edit-button hide-on-edit"><?php esc_html_e( 'Edit', JBP_TEXT_DOMAIN ); ?></button></span>
-				</div>
-			<?php endif; ?>
 		</div>
 
 		<?php if ( post_type_supports( 'jbp_pro', 'editor' ) ): ?>
@@ -250,12 +250,6 @@ $this->no_thumbnail();
 			</div>
 		</div>
 	<?php endif; ?>
-
-
-	<div class="hide-on-edit pro-contact">
-		<?php echo do_shortcode( '[jbp-expert-contact-btn class="pro-contact"]' ); ?>
-	</div>
-
 	<div class="pro-content-wrapper">
 		<h2 class="pro-social"><?php esc_html_e( 'Social', JBP_TEXT_DOMAIN ); ?></h2>
 
@@ -284,6 +278,11 @@ $this->no_thumbnail();
 			<?php if ( $this->get_setting( 'pro->moderation->draft', 1 ) ): ?>
 				<button type="submit" id="pro-draft" name="data[post_status]" value="draft" class="toggle-pro-save jbp-button pro-go-public-button"><?php esc_html_e( 'Save Draft', JBP_TEXT_DOMAIN ); ?></button>
 			<?php endif; ?>
+		</div>
+	<?php endif; ?>
+	<?php if ( current_user_can( EDIT_PRO, $post->ID ) ): ?>
+		<div class="pro-edit" style="text-align: left">
+			<span><button type="button" id="toggle-pro-edit" class="pro-button jbp-button pro-edit-button hide-on-edit"><?php esc_html_e( 'Edit', JBP_TEXT_DOMAIN ); ?></button></span>
 		</div>
 	<?php endif; ?>
 </div>
