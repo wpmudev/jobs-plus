@@ -357,6 +357,13 @@ $this->no_thumbnail();
 		jbpPopup();
 		jbpFirstField($editables);
 
+		var general_height = $('.pro-general-info').height();
+		var detail_height = $('.pro-detail-info').height();
+		/*if(general_height > detail_height){
+			$('.pro-general-info').css('border-right','solid 1px #ddd');
+		}else{
+			$('.pro-detail-info').css('border-right','solid 1px #ddd');
+		}*/
 	});
 
 </script>
