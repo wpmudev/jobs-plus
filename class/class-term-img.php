@@ -46,9 +46,30 @@ if ( ! class_exists( 'Term_Images' ) ):
 			//add upload field for jobs categories
 			add_action( 'jbp_category_add_form_fields', array( &$this, 'add_upload_element_job_categories_edit_screen' ) );
 			add_action( 'created_jbp_category', array( $this, 'add_image_to_jbp_cat' ), 10, 1 );
+			add_action( 'admin_footer', array( &$this, 'reset_form' ) );
 		}
 
-		function default_setting(){
+		function reset_form() {
+			?>
+			<script type="text/javascript">
+				jQuery(document).ajaxSuccess(function (event, request, settings) {
+					if(typeof settings.data =='string' && settings.data.indexOf('add-tag') > -1){
+						if(request.responseText.indexOf('wp_error')==-1){
+							//reset
+							jQuery('#jbp_cat_upload_result').find('input').val('');
+							jQuery('#jbp_cat_upload_result').find('img').remove();
+						}
+						console.log(request.responseText);
+					}
+					//console.log(event);
+					//console.log(request);
+					//console.log(settings);
+				});
+			</script>
+		<?php
+		}
+
+		function default_setting() {
 			//term
 			$tsettings = get_option( TERM_IMAGES_SETTINGS );
 			if ( ! isset( $tsettings['category'] ) ) {
