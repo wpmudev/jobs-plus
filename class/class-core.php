@@ -1252,10 +1252,8 @@ if ( ! class_exists( 'Jobs_Plus_Core' ) ):
 			remove_all_filters( 'the_title', 20 );
 			remove_all_filters( 'the_content', 20 );
 			$vpost   = get_post( $this->virtual );
-			$content = do_shortcode( $vpost->post_content );
-			if ( $wp_query->post_count == 0 ) {
-				$content = '<h1>' . post_type_archive_title( '', false ) . '</h1>' . $content;
-			}
+			$content = do_shortcode( trim($vpost->post_content));
+
 			echo $content;
 			$wp_query->post_count = 0;
 

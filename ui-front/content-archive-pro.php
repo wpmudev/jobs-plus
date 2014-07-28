@@ -26,7 +26,6 @@ if ( $page_id == $Jobs_Plus_Core->pro_empty_page_id ) {
 	<?php echo do_action( 'jbp_error' ); ?>
 	<?php echo do_action( 'jbp_notice' ); ?>
 	<?php echo do_shortcode( '[jbp-expert-search]' ); ?>
-
 	<?php if (have_posts() && $no_pros == false): ?>
 
 	<div id="pro-grid-container">
@@ -53,47 +52,41 @@ if ( $page_id == $Jobs_Plus_Core->pro_empty_page_id ) {
 		<?php endif; ?><!-- have_posts -->
 	</div>
 </div>
-<?php add_action( 'wp_footer', 'add_masony_script_pro_archive',999 );
-function add_masony_script_pro_archive() {
-	?>
-	<script type="text/javascript">
-		jQuery(document).ready(function ($) {
-			var $container = $("#pro-grid-container");
-			imagesLoaded($container,function(){
-				console.log($(".pro-grid-sizer").first().width());
-				$container.masonry({
-					itemSelector: ".pro-archive",
-					columnWidth: $(".pro-grid-sizer").first().width()+10,
-					gutter: 10
-					//containerStyle: null
-					//,stamp: $(".pros-stamp")
-				});
-			})
-			/*$container.imagesLoaded(function () {
-				$container.masonry({
-					itemSelector: ".pro-archive", columnWidth: ".pro-grid-sizer", gutter: ".pro-gutter-sizer", containerStyle: null
-					//,stamp: $(".pros-stamp")
-				});
-			});*/
-
-			$(".pro-archive").click(function () {
-				window.location = $(this).data('permalink');
+<script type="text/javascript">
+	jQuery(document).ready(function ($) {
+		var $container = $("#pro-grid-container");
+		imagesLoaded($container,function(){
+			console.log($(".pro-grid-sizer").first().width());
+			$container.masonry({
+				itemSelector: ".pro-archive",
+				columnWidth: $(".pro-grid-sizer").first().width()+10,
+				gutter: 10
+				//containerStyle: null
+				//,stamp: $(".pros-stamp")
 			});
+		})
+		/*$container.imagesLoaded(function () {
+		 $container.masonry({
+		 itemSelector: ".pro-archive", columnWidth: ".pro-grid-sizer", gutter: ".pro-gutter-sizer", containerStyle: null
+		 //,stamp: $(".pros-stamp")
+		 });
+		 });*/
 
-			$(".pro-archive-image").mouseover(function () {
-				$(this).next(".pro-more").show();
-			});
-
-			$(".pro-more").mouseleave(function () {
-				$(".pro-more").hide();
-			});
-
-
+		$(".pro-archive").click(function () {
+			window.location = $(this).data('permalink');
 		});
-	</script>
-<?php
-}
 
-?>
+		$(".pro-archive-image").mouseover(function () {
+			$(this).next(".pro-more").show();
+		});
+
+		$(".pro-more").mouseleave(function () {
+			$(".pro-more").hide();
+		});
+
+
+	});
+</script>
+
 
 
