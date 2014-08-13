@@ -10,8 +10,8 @@ class JobsExperts_Core_Views_ExpertSingle extends JobsExperts_Framework_Render {
 	}
 
 	public function _to_html() {
-		$model  = $this->model;
-		$plugin = JobsExperts_Plugin::instance();
+		$model       = $this->model;
+		$plugin      = JobsExperts_Plugin::instance();
 		$page_module = $plugin->page_module();
 		?>
 		<div class="jbp_pro_single">
@@ -29,31 +29,35 @@ class JobsExperts_Core_Views_ExpertSingle extends JobsExperts_Framework_Render {
 						</div>
 					</div>
 				</div>
-				<div class="panel panel-default">
-					<div class="jbo_pro_social">
-						<div class="panel-heading"><h4><?php _e( 'Social Profile', JBP_TEXT_DOMAIN ) ?></h4></div>
-						<div class="panel-body">
-							<div class="social_list">
-								<ul>
-									<?php
-									$socials = ! empty( $model->social ) ? json_decode( stripslashes( $model->social ), true ) : array();
-									$model->social = esc_attr( stripslashes( $model->social ) );
-									if ( ! is_array( $socials ) ) {
-										$socials = array();
-									}
-									foreach ( $socials as $social ):?>
-										<li>
-											<a target="_blank" title="<?php echo ucwords( $social['id'] ) ?>" href="<?php echo $social['url'] ?>"">
-											<img style="opacity:1" src="<?php echo $plugin->_module_url ?>assets/social_icon/<?php echo $social['id'] ?>.png">
-											</a>
-										</li>
-									<?php endforeach; ?>
-								</ul>
-								<div style="clear: both"></div>
+				<?php
+				$socials = ! empty( $model->social ) ? json_decode( stripslashes( $model->social ), true ) : array();
+				$model->social = esc_attr( stripslashes( $model->social ) );
+				if ( ! is_array( $socials ) ) {
+					$socials = array();
+				}
+				?>
+				<?php if (is_array($socials) &&  count( $socials ) ): ?>
+					<div class="panel panel-default">
+						<div class="jbo_pro_social">
+							<div class="panel-heading"><h4><?php _e( 'Social Profile', JBP_TEXT_DOMAIN ) ?></h4></div>
+							<div class="panel-body">
+								<div class="social_list">
+									<ul>
+										<?php
+										foreach ( $socials as $social ):?>
+											<li>
+												<a target="_blank" title="<?php echo ucwords( $social['id'] ) ?>" href="<?php echo $social['url'] ?>"">
+												<img style="opacity:1" src="<?php echo $plugin->_module_url ?>assets/social_icon/<?php echo $social['id'] ?>.png">
+												</a>
+											</li>
+										<?php endforeach; ?>
+									</ul>
+									<div style="clear: both"></div>
+								</div>
 							</div>
 						</div>
 					</div>
-				</div>
+				<?php endif; ?>
 
 				<div class="panel panel-default">
 					<div class="jbo_pro_social">

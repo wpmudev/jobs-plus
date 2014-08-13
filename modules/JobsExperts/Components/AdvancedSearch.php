@@ -340,6 +340,15 @@ class JobsExpert_Compnents_AdvancedSearch extends JobsExperts_Components {
 			}
 		}
 
+		if ( isset( $_GET['country'] ) && ! empty( $_GET['country'] ) ) {
+			$args['meta_query'] = array(
+				array(
+					'key'   => '_ct_jbp_pro_Location',
+					'value' => $_GET['country']
+				)
+			);
+		}
+
 		return $args;
 	}
 
@@ -351,14 +360,13 @@ class JobsExpert_Compnents_AdvancedSearch extends JobsExperts_Components {
 			<input type="hidden" name="advance_search" value="1">
 			<table class="table">
 				<tr>
-					<td style="width: 20%"><?php _e( 'Skills', JBP_TEXT_DOMAIN ) ?></td>
+					<td style="width: 20%"><?php _e( 'Location', JBP_TEXT_DOMAIN ) ?></td>
 					<td style="width: 80%">
 						<?php
-						echo JobsExperts_Framework_Form::dropDownList( 'pro_skill', array(), array_combine( array_values( JobsExperts_Core_Models_Pro::instance()->get_all_skills() ), array_values( JobsExperts_Core_Models_Pro::instance()->get_all_skills() ) ), array(
-							/*'multiple' => 'multiple',*/
-							'style'  => 'width:100%',
-							'prompt' => __( '--Select--', JBP_TEXT_DOMAIN )
-						) )
+						$selected = ( isset( $_GET['country'] ) && ! empty( $_GET['country'] ) ) ? $_GET['country'] : null;
+						echo JobsExperts_Framework_Form::countryDropdown( 'country', array( $selected ), array(
+							'prompt' => '--Select--'
+						) );
 						?>
 					</td>
 				</tr>

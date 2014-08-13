@@ -26,6 +26,8 @@ class JobsExpert_Compnents_ExpertDemoData extends JobsExperts_Components {
 		$model->status            = 'publish';
 		$model->company           = 'WPMUDEV';
 		$model->company_url       = 'http://wpmudev.org';
+		$model->views_count       = rand( 0, 100 );
+		$model->likes_count       = rand( 0, 100 );
 		//if empty social
 		if ( empty( $socials ) ) {
 			$t = array_rand( $plugin->settings()->social_list, 5 );
@@ -84,12 +86,14 @@ class JobsExpert_Compnents_ExpertDemoData extends JobsExperts_Components {
 		$model->last_name         = $this->content_bank( 'lname' );
 		$model->biography         = $this->content_bank( 'content' );
 		$model->short_description = $this->content_bank( 'scontent' );
-		$model->location          = 'USA';
+		$model->location          = 'United State';
 		$model->contact_email     = $this->content_bank( 'email' );
 		$model->user_id           = get_current_user_id();
 		$model->status            = 'publish';
 		$model->company           = 'WPMUDEV';
 		$model->company_url       = 'http://wpmudev.org';
+		$model->views_count       = rand( 0, 100 );
+		$model->likes_count       = rand( 0, 100 );
 		//if empty social
 		if ( empty( $socials ) ) {
 			$t = array_rand( $plugin->settings()->social_list, 5 );

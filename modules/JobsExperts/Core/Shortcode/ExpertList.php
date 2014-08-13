@@ -48,9 +48,11 @@ class JobsExperts_Core_Shortcode_ExpertList extends JobsExperts_Shortcode {
 		$plugin = JobsExperts_Plugin::instance();
 		//get jobs
 		$post_per_page = $plugin->settings()->expert_per_page;
+		$paged         = get_query_var( 'paged' );
 		$args          = array(
 			'post_status'    => 'publish',
-			'posts_per_page' => $post_per_page
+			'posts_per_page' => $post_per_page,
+			'paged'          => $paged
 		);
 
 		$search = '';
@@ -62,9 +64,11 @@ class JobsExperts_Core_Shortcode_ExpertList extends JobsExperts_Shortcode {
 
 		$data = JobsExperts_Core_Models_Pro::instance()->get_all( $args );
 		$pros = $data['data'];
+
 		//now filter the skills
 		//todo better skills manager to sync the pro and job
 		if ( isset( $_GET['pro_skill'] ) && ! empty( $_GET['pro_skill'] ) ) {
+			$data = JobsExperts_Core_Models_Pro::instance()->get_all( $args );
 			$skill = $_GET['pro_skill'];
 			foreach ( $pros as $key => $pro ) {
 				$skills     = json_decode( $pro->skills, true );
@@ -79,6 +83,7 @@ class JobsExperts_Core_Shortcode_ExpertList extends JobsExperts_Shortcode {
 					unset( $pros[$key] );
 				}
 			}
+			//recal the total pages
 		}
 
 		$total_pages = $data['total_pages'];
