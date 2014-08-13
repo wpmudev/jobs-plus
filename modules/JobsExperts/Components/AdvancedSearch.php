@@ -4,7 +4,10 @@
  * Author: Hoang Ngo
  */
 class JobsExpert_Compnents_AdvancedSearch extends JobsExperts_Components {
+	public $id;
+
 	public function __construct() {
+		$this->id = 'advanced_search';
 		$this->_add_action( 'jbp_setting_menu', 'menu' );
 		$this->_add_action( 'jbp_setting_content', 'content', 10, 2 );
 
@@ -28,7 +31,9 @@ class JobsExpert_Compnents_AdvancedSearch extends JobsExperts_Components {
 	}
 
 	function content( JobsExperts_Framework_ActiveForm $form, JobsExperts_Core_Models_Settings $model ) {
-		_e( 'This will add an advanced search form to job listing page and expert listing page', JBP_TEXT_DOMAIN );
+		if ( $this->is_current_tab( 'advanced_search' ) ) {
+			_e( 'This will add an advanced search form to job listing page and expert listing page', JBP_TEXT_DOMAIN );
+		}
 	}
 
 	function scripts() {
@@ -193,16 +198,17 @@ class JobsExpert_Compnents_AdvancedSearch extends JobsExperts_Components {
 
 		$meta_query = array();
 		if ( $order_by == 'latest' ) {
-			$args['order_by'] = 'ID';
-			$args['order']    = 'DESC';
+			$args['orderby'] = 'ID';
+			$args['order']   = 'DESC';
 		} elseif ( $order_by == 'ending' ) {
 			$args['orderby']  = 'meta_value';
-			$args['meta_key'] = '_jbp_job_expires';
-			$args['order']    = 'DESC';
+			$args['meta_key'] = '_ct_jbp_job_Due ';
+			$args['order']    = 'ASC';
 		} elseif ( $order_by == 'name' ) {
 			$args['orderby'] = 'title';
 			$args['order']   = 'ASC';
 		}
+
 		//category
 		if ( ! empty( $cat ) ) {
 			$tax_query[] = array(

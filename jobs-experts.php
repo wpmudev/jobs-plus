@@ -3,8 +3,8 @@
  * Plugin Name: Jobs and Experts
  * Plugin URI: http://premium.wpmudev.org/jobs-plus/
  * Description:
- * Version: 1.0 beta 24
- * Author:Hoang Ngo (WPMU DEV) Arnold Bailey(WPMU DEV)
+ * Version: 1.0 beta 25
+ * Author:Hoang Ngo (WPMU DEV)
  * Author URI: http://premium.wpmudev.org
  * Text Domain: jbp
  * Domain Path: languages

@@ -31,4 +31,13 @@ class JobsExperts_Components extends JobsExperts_Framework_Module {
 
 		return null;
 	}
+
+	function is_current_tab( $id ) {
+		$tab = isset( $_GET['tab'] ) ? $_GET['tab'] : null;
+		if ( $tab == $id ) {
+			return true;
+		}
+
+		return false;
+	}
 }

@@ -50,7 +50,7 @@ class JobsExperts_Core_Models_Job extends JobsExperts_Framework_PostModel {
 			'meta'       => array(
 				'_ct_jbp_job_Budget'        => $this->budget,
 				'_ct_jbp_job_Contact_Email' => $this->contact_email,
-				'_ct_jbp_job_Due'           => $this->dead_line,
+				'_ct_jbp_job_Due'           => date( 'Y-m-d', strtotime( $this->dead_line ) ),
 				'_jbp_job_expires'          => $this->open_for,
 				'_jbp_job_portfolios'       => $this->portfolios,
 				'_jbp_job_budget_min'       => $this->min_budget,

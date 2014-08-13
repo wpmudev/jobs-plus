@@ -117,31 +117,23 @@ class JobsExperts_Core_Shortcode_JobForm extends JobsExperts_Shortcode {
 	function load_login_form() {
 		?>
 		<div class="row">
-			<div class="jbp_login_form col-md-7 col-sm-12 col-sx-12 hidden-sm hidden-xs">
-				<h1><?php _e( 'Please login', JBP_TEXT_DOMAIN ) ?>
-
-					<?php
-					$can_register = is_multisite() == true ? get_site_option( 'users_can_register' ) : get_option( 'users_can_register' );
-					if ( $can_register ): ?>
-						or <?php echo sprintf( '<a href="%s">%s</a>', wp_registration_url(), __( 'register here', JBP_TEXT_DOMAIN ) ) ?>
-					<?php endif; ?>
-
-				</h1>
-
-				<div class="jbp_body">
-					<?php echo wp_login_form( array( 'echo' => false ) ) ?>
+			<div class="col-md-8 col-md-offset-2">
+				<div class="panel panel-default jbp_login_form">
+					<div class="panel-heading">
+						<h3 class="panel-title">
+							<?php _e( 'Please login', JBP_TEXT_DOMAIN ) ?>
+							<?php
+							$can_register = is_multisite() == true ? get_site_option( 'users_can_register' ) : get_option( 'users_can_register' );
+							if ( $can_register ): ?>
+								or <?php echo sprintf( '<a href="%s">%s</a>', wp_registration_url(), __( 'register here', JBP_TEXT_DOMAIN ) ) ?>
+							<?php endif; ?>
+						</h3>
+					</div>
+					<div class="panel-body">
+						<?php echo wp_login_form( array( 'echo' => false ) ) ?>
+					</div>
 				</div>
 			</div>
-			<div class="jbp_login_form col-sm-12 col-sx-12 hidden-md hidden-lg">
-				<h1><?php _e( 'You must login to add a job', JBP_TEXT_DOMAIN ) ?></h1>
-
-				<div class="jbp_body">
-					<?php wp_login_form( array() ); ?>
-
-				</div>
-			</div>
-
-			<div style="clear: both"></div>
 		</div>
 	<?php
 	}

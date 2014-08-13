@@ -33,7 +33,7 @@ class JobsExperts_Core_Views_JobList extends JobsExperts_Framework_Render {
 						<div class="jbp_job_except <?php echo $color ?>">
 							<div class="jbp_inside">
 								<h4>
-									<a href="<?php echo get_permalink( $model->id ) ?>"><?php echo $model->job_title ?></a>
+									<a href="<?php echo get_permalink( $model->id ) ?>"><?php echo jbp_shorten_text($model->job_title,50) ?></a>
 								</h4>
 								<?php if ( $lite == false ): ?>
 									<div class="ellipsis">

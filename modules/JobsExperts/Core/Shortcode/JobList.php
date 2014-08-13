@@ -46,9 +46,13 @@ class JobsExperts_Core_Shortcode_JobList extends JobsExperts_Shortcode {
 		$plugin = JobsExperts_Plugin::instance();
 		//get jobs
 		$post_per_page = $plugin->settings()->job_per_page;
-		$args          = array(
+
+		$paged = get_query_var( 'paged' );
+
+		$args = array(
 			'post_status'    => 'publish',
-			'posts_per_page' => $post_per_page
+			'posts_per_page' => $post_per_page,
+			'paged'          => $paged
 		);
 
 
@@ -73,8 +77,8 @@ class JobsExperts_Core_Shortcode_JobList extends JobsExperts_Shortcode {
 
 		}
 
-		$args               = apply_filters( 'jbp_job_search_params', $args );
-		$data               = JobsExperts_Core_Models_Job::instance()->get_all( $args );
+		$args = apply_filters( 'jbp_job_search_params', $args );
+		$data = JobsExperts_Core_Models_Job::instance()->get_all( $args );
 
 		$jobs = $data['data'];
 
@@ -83,7 +87,7 @@ class JobsExperts_Core_Shortcode_JobList extends JobsExperts_Shortcode {
 		$css_class = array(
 			'lg' => 'col-md-12 col-xs-12 col-sm-12',
 			'md' => 'col-md-6 col-xs-12 col-sm-12',
-			'sx' => 'col-md-3 col-xs-12 col-sm-12',
+			'xs' => 'col-md-3 col-xs-12 col-sm-12',
 			'sm' => 'col-md-4 col-xs-12 col-sm-12'
 		);
 
@@ -126,11 +130,13 @@ class JobsExperts_Core_Shortcode_JobList extends JobsExperts_Shortcode {
 						2 => 'lg',
 						3 => 'md,md'
 					);
+					$grid_rules = apply_filters( 'jbp_jobs_list_layout', $grid_rules );
 					$chunks = array();
 					foreach ( $grid_rules as $rule ) {
 						$rule  = explode( ',', $rule );
 						$chunk = array();
 						foreach ( $rule as $val ) {
+							$val  = trim( $val );
 							$post = array_shift( $jobs );
 							if ( is_object( $post ) ) {
 								$chunk[] = array(
@@ -160,8 +166,9 @@ class JobsExperts_Core_Shortcode_JobList extends JobsExperts_Shortcode {
 						}
 					}
 					$template = new JobsExperts_Core_Views_JobList( array(
-						'chunks' => $chunks,
-						'colors' => $colors
+						'chunks'      => $chunks,
+						'colors'      => $colors,
+						'total_pages' => $total_pages
 					) );
 					$template->render();
 					?>
