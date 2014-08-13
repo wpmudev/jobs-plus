@@ -15,6 +15,10 @@
 		width:       24%;
 		margin-left: 1%;
 	}
+	.hn-container .jbp-pro-list .col-md-6, .jbp-pro-list .col-lg-6 {
+		width:       48%;
+		margin-left: 2%;
+	}
 }
 
 

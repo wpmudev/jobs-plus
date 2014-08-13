@@ -68,7 +68,7 @@ class JobsExperts_Core_Shortcode_ExpertList extends JobsExperts_Shortcode {
 		//now filter the skills
 		//todo better skills manager to sync the pro and job
 		if ( isset( $_GET['pro_skill'] ) && ! empty( $_GET['pro_skill'] ) ) {
-			$data = JobsExperts_Core_Models_Pro::instance()->get_all( $args );
+			$data  = JobsExperts_Core_Models_Pro::instance()->get_all( $args );
 			$skill = $_GET['pro_skill'];
 			foreach ( $pros as $key => $pro ) {
 				$skills     = json_decode( $pro->skills, true );
@@ -90,7 +90,7 @@ class JobsExperts_Core_Shortcode_ExpertList extends JobsExperts_Shortcode {
 		$css_class   = array(
 			'lg' => 'col-md-12 col-sx-12 col-sm-12',
 			'md' => 'col-md-6 col-sx-6 col-sm-6',
-			'sx' => 'col-md-3 col-sx-12 col-sm-12',
+			'xs' => 'col-md-3 col-sx-12 col-sm-12',
 			'sm' => 'col-md-4 col-sx-12 col-sm-4'
 		);
 		ob_start();
@@ -129,11 +129,14 @@ class JobsExperts_Core_Shortcode_ExpertList extends JobsExperts_Shortcode {
 						0 => 'sm,sm,sm',
 						1 => 'sm,sm,sm',
 					);
+					$grid_rules = apply_filters( 'jbp_expert_list_layout', $grid_rules );
 					$chunks = array();
 					foreach ( $grid_rules as $rule ) {
 						$rule  = explode( ',', $rule );
+						$rule  = array_filter( $rule );
 						$chunk = array();
 						foreach ( $rule as $val ) {
+							$val  = trim( $val );
 							$post = array_shift( $pros );
 							if ( is_object( $post ) ) {
 								$chunk[] = array(
@@ -154,7 +157,7 @@ class JobsExperts_Core_Shortcode_ExpertList extends JobsExperts_Shortcode {
 							$chunk = array();
 							foreach ( $row as $r ) {
 								$chunk[] = array(
-									'class'       => $css_class['sx'],
+									'class'       => $css_class['xs'],
 									'item'        => $r,
 									'text_length' => 1.6
 								);
