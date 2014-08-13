@@ -38,9 +38,9 @@ $taxonomies = get_object_taxonomies('jbp_job', 'objects');
 $taxonomies = empty($taxonomies) ? array() : $taxonomies;
 
 //code for wp_editor
-require_once(ABSPATH . 'wp-admin/includes/template.php');
-require_once(ABSPATH . 'wp-admin/includes/media.php');
-require_once(ABSPATH . 'wp-admin/includes/post.php');
+require_once( ABSPATH . 'wp-admin/includes/template.php' );
+require_once( ABSPATH . 'wp-admin/includes/media.php' );
+require_once( ABSPATH . 'wp-admin/includes/post.php' );
 
 $editor_settings =   array(
 'wpautop' => true, // use wpautop?

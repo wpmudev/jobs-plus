@@ -29,9 +29,9 @@ $post_ID = $data['ID'];
 //if ( isset( $_POST['data'] ) ) $data = $_POST['data'];
 
 //code for wp_editor
-require_once(ABSPATH . 'wp-admin/includes/template.php');
-require_once(ABSPATH . 'wp-admin/includes/media.php');
-require_once(ABSPATH . 'wp-admin/includes/post.php');
+require_once( ABSPATH . 'wp-admin/includes/template.php' );
+require_once( ABSPATH . 'wp-admin/includes/media.php' );
+require_once( ABSPATH . 'wp-admin/includes/post.php' );
 
 $editor_settings =   array(
 'wpautop' => true, // use wpautop?

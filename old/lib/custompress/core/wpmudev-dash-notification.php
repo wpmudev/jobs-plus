@@ -50,7 +50,7 @@ if ( !class_exists('WPMUDEV_Dashboard_Notice3') ) {
 				if ( file_exists(WP_PLUGIN_DIR . '/wpmudev-updates/update-notifications.php') ) {
 					if ( !get_site_option('wdp_un_autoactivated') ) {
 						//include plugin API if necessary
-						if ( !function_exists('activate_plugin') ) require_once(ABSPATH . 'wp-admin/includes/plugin.php');
+						if ( !function_exists('activate_plugin') ) require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 						$result = activate_plugin( '/wpmudev-updates/update-notifications.php', network_admin_url('admin.php?page=wpmudev'), is_multisite() );
 						if ( !is_wp_error($result) ) { //if autoactivate successful don't show notices
 							update_site_option('wdp_un_autoactivated', 1);
