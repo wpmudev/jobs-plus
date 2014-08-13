@@ -15,7 +15,7 @@ class JobsExperts_Core_Shortcode_LandingPage extends JobsExperts_Shortcode {
 		$page_module = $plugin->page_module();
 
 		$jobs_query = JobsExperts_Core_Models_Job::instance()->get_all( array(
-			'post_per_page' => 3,
+			'posts_per_page' => 3,
 			'post_status'   => 'publish',
 			'orderby'       => 'date',
 			'order'         => 'DESC'
@@ -24,7 +24,7 @@ class JobsExperts_Core_Shortcode_LandingPage extends JobsExperts_Shortcode {
 		$jobs = $jobs_query['data'];
 		/////epxert
 		$expert_query = JobsExperts_Core_Models_Pro::instance()->get_all( array(
-			'post_per_page' => 3,
+			'posts_per_page' => 6,
 			'post_status'   => 'publish',
 			'orderby'       => 'date',
 			'order'         => 'DESC'
@@ -88,7 +88,7 @@ class JobsExperts_Core_Shortcode_LandingPage extends JobsExperts_Shortcode {
 						<div class="jbp-pro-list">
 							<?php
 							$chunks = array();
-							foreach ( array_chunk( $pros, 4 ) as $row ) {
+							foreach ( array_chunk( $pros, 2 ) as $row ) {
 								//ok now, we have large chunk each is 3 items
 								$chunk = array();
 								foreach ( $row as $r ) {

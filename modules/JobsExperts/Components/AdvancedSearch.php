@@ -325,6 +325,7 @@ class JobsExpert_Compnents_AdvancedSearch extends JobsExperts_Components {
 			switch ( $_GET['order_by'] ) {
 				case 'name':
 					$args['orderby'] = 'title';
+					$args['order']   = 'ASC';
 					break;
 				case 'popular':
 					$args['orderby']  = 'meta_value';

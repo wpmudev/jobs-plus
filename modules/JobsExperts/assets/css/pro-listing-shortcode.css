@@ -6,10 +6,18 @@
 	padding: 0 !important;
 }
 
-.jbp-pro-list .col-md-4, .jbp-pro-list .col-lg-4 {
-	width:       32%;
-	margin-left: 2%;
+@media (min-width: 992px) {
+	.hn-container .jbp-pro-list .col-md-4, .jbp-pro-list .col-lg-4 {
+		width:       32%;
+		margin-left: 2%;
+	}
+	.hn-container .jbp-pro-list .col-md-3, .jbp-pro-list .col-lg-3 {
+		width:       24%;
+		margin-left: 1%;
+	}
 }
+
+
 
 .jbp_pro_except {
 	border:           1px solid #ddd;

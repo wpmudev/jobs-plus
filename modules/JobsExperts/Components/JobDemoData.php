@@ -3,7 +3,7 @@
 /**
  * Author: Hoang Ngo
  */
-class JobsExpert_Compnents_DemoData extends JobsExperts_Components {
+class JobsExpert_Compnents_JobDemoData extends JobsExperts_Components {
 	public function __construct() {
 		$this->_add_action( 'jbp_setting_menu', 'menu' );
 		$this->_add_action( 'jbp_setting_content', 'content', 10, 2 );
@@ -276,4 +276,4 @@ class JobsExpert_Compnents_DemoData extends JobsExperts_Components {
 	}
 }
 
-new JobsExpert_Compnents_DemoData();
+new JobsExpert_Compnents_JobDemoData();
