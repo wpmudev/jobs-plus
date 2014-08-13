@@ -1,0 +1,81 @@
+@import url("job-buttons-shortcode.css");
+@import url("job-form-shortcode.css");
+@import url("job-single-shortcode.css");
+@import url("job-listing-shortcode.css");
+@import url("pro-listing-shortcode.css");
+@import url("pro-form-shortcode.css");
+@import url("pro-single-shortcode.css");
+@import url("landing-shortcode.css");
+.hide {
+	display: none;
+}
+
+
+
+.jbp_login_form p {
+	margin: 20px 0 0;
+}
+
+.jbp_login_form p:first-child {
+	margin-top: 0;
+}
+
+.jbp_login_form input[type=text], .jbp_login_form input[type=password] {
+	width:   98%;
+	padding: 6px 0 6px 2% !important;
+}
+
+.jbp_login_form p.login-remember {
+	float:       left;
+	line-height: 31px;
+}
+
+.jbp_login_form p.login-remember label {
+	font-size: 12px;
+	color:     #777;
+	cursor:    pointer;
+}
+
+.jbp_login_form p.login-remember input {
+	position:       relative;
+	bottom:         1px;
+	margin-right:   4px;
+	vertical-align: middle;
+}
+
+.jbp_login_form p.login-submit {
+	text-align: right;
+}
+.jbp_login_form p.login-submit input[type="submit"]{
+	padding: 6px;
+}
+
+.jbp-contact .row {
+	margin-bottom: 20px;
+}
+
+.jbp-contact .row label {
+	font-weight: 600;
+}
+
+.jbp-contact .row input, .jbp-contact .row textarea {
+	width: 100%;
+}
+
+.hn-container ol.breadcrumb {
+	background: none;
+	padding:    0;
+
+}
+
+.hn-container ol.breadcrumb li {
+	margin: 0 5px 0 0;
+}
+
+.hn-container ol.breadcrumb li a {
+	color: #000;
+}
+
+.hn-container ol.breadcrumb li::before {
+	color: #000;
+}

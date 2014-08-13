@@ -1,0 +1,10 @@
+@import "../bootstrap/css/bootstrap-with-namespace.css";
+
+/* Form fields, general styles first */
+.hn-container input,
+.hn-container textarea {
+	border:        1px solid #ccc;
+	border-radius: 0 !important;
+	font-family:   inherit;
+	padding:       4px 0 4px 6px ;
+}

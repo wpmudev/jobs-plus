@@ -1,0 +1,11 @@
+.job-add-container {
+
+}
+
+.job-add-container form label {
+	font-weight: 500;
+}
+
+.job-add-container form input,.job-add-container form textarea, .job-add-container form select {
+	width: 100%;
+}

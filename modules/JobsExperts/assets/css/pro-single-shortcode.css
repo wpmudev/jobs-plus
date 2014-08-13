@@ -1,0 +1,77 @@
+.jbp_pro_single .jbo_pro_social .panel-body, .jbp_pro_single .jbo_pro_social .panel-body {
+	padding: 0;
+}
+
+.jbp_pro_single .jbp_skill_meta {
+	padding: 0 10px 0 10px;;
+}
+
+.jbp_pro_single label {
+	font-weight: 600;
+}
+
+.jbp_pro_single .row p {
+	margin-bottom: 0;
+}
+
+.jbp_pro_single .row.full {
+	margin-top: 10px;
+}
+
+.jbp_pro_single .jbp_pro_full_name {
+	text-align: left;
+}
+
+.jbp_pro_single .row.full label {
+	display:        block;
+	padding-bottom: 5px;
+	margin-bottom:  10px;
+	border-bottom:  solid 1px #ddd;
+	font-weight:    600;
+	font-size:      16px;
+}
+
+.jbp_pro_single .row.full {
+	text-align: justify;
+}
+
+.pro-single-content {
+	padding-left: 10px;
+}
+
+.pro-tag-line {
+	font-weight:   600;
+	font-size:     16px;
+	text-align:    center;
+	margin-bottom: 30px;
+}
+
+.jbp-pro-stat {
+	text-align:  center;
+	font-size:   14px;
+	margin-top:  20px;
+}
+
+.jbp-pro-stat span {
+	font-size: 18px;
+	position:  relative;
+	top:       -3px;
+}
+
+.jbp-pro-stat small {
+	display:  block;
+	clear:    both;
+	position: relative;
+	top:      -8px;
+	left:     -2px;
+}
+
+.glyphicon-heart {
+	color:     red;
+	font-size: 20px;
+}
+
+.glyphicon-eye-open {
+	color:     #008000;
+	font-size: 20px;
+}
