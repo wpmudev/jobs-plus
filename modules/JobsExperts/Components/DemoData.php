@@ -19,7 +19,7 @@ class JobsExpert_Compnents_DemoData extends JobsExperts_Components {
 
 		$model                = new JobsExperts_Core_Models_Job();
 		$model->job_title     = $faker->sentence();
-		$model->description   = $faker->realText( 500 );
+		$model->description   = $faker->realText( 500, 4 );
 		$model->budget        = rand( $budgets[0], $budgets[1] );
 		$model->min_budget    = rand( $budgets[0], $budgets[1] );
 		$model->max_budget    = rand( $model->min_budget, $budgets[1] );
@@ -64,25 +64,87 @@ class JobsExpert_Compnents_DemoData extends JobsExperts_Components {
 		}
 	}
 
-	function normal_generator() {
+	function normal_generator( $budgets, $categories, $skills, $have_file ) {
+		$open_for = array( 3, 7, 14, 21 );
+		$weeks    = array( 1, 2, 3, 4 );
 
+		$model                = new JobsExperts_Core_Models_Job();
+		$model->job_title     = $this->content_bank( 'title' );
+		$model->description   = $this->content_bank( 'content' );
+		$model->budget        = rand( $budgets[0], $budgets[1] );
+		$model->min_budget    = rand( $budgets[0], $budgets[1] );
+		$model->max_budget    = rand( $model->min_budget, $budgets[1] );
+		$model->status        = 'publish';
+		$model->contact_email = $this->content_bank( 'email' );
+		$model->open_for      = $open_for[array_rand( $open_for )];
+		$model->dead_line     = date( 'Y-m-d', strtotime( '+' . $weeks[array_rand( $weeks )] . ' week' ) );
+		$model->owner         = get_current_user_id();
+		//save dummy data
+		$model->save();
+		//categories
+		$categories = explode( ',', $categories );
+		$categories = array_filter( $categories );
+		$model->assign_categories( $categories[array_rand( $categories )] );
+		$skills      = explode( ',', $skills );
+		$skills      = array_filter( $skills );
+		$tmp         = array_rand( $skills, 3 );
+		$rand_skills = array();
+		foreach ( $tmp as $t ) {
+			$rand_skills[] = $skills[$t];
+		}
+
+		$model->assign_skill_tag( $rand_skills );
+		if ( $have_file ) {
+			//random generate 3 files
+			$ids = array();
+			for ( $i = 0; $i < 3; $i ++ ) {
+				//get the random image
+				$upload_dir = wp_upload_dir();
+				$path       = $upload_dir['path'] . '/' . uniqid() . '.jpg';
+				$image_url  = $this->content_bank( 'image' );
+				//download the image
+				$this->download_image( $image_url, $path );
+				//now handler the file
+				$att_id = $this->handler_upload( $model->id, $path );
+				update_post_meta( $att_id, 'portfolio_link', 'http://wpmudev.org' );
+				update_post_meta( $att_id, 'portfolio_des', jbp_filter_text( $this->content_bank('scontent') ) );
+				$ids[] = $att_id;
+			}
+			$model->portfolios = implode( ',', $ids );
+			$model->save();
+		}
+	}
+
+	function content_bank( $type ) {
+		$plugin = JobsExperts_Plugin::instance();
+		$data   = file_get_contents( $plugin->_module_path . 'Components/DemoData/job_data.txt' );
+		$data   = json_decode( $data, true );
+
+		switch ( $type ) {
+			case 'title':
+				$titles = $data['titles'];
+
+				return $titles[array_rand( $titles )];
+			case 'content':
+				$c = $data['contents'];
+
+				return $c[array_rand( $c )];
+			case 'scontent':
+				$c = $data['short_contents'];
+
+				return $c[array_rand( $c )];
+			case 'email':
+				$c = $data['emails'];
+
+				return $c[array_rand( $c )];
+			case 'image':
+				$c = $data['image_urls'];
+
+				return $c[array_rand( $c )];
+		}
 	}
 
 	function save_setting() {
-		$titles_bank = array(
-			'Australia Post Shipping Plugin for Marketpress',
-			'WordPress & Buddypress theme development',
-			'Browser to Browser Twilio Application',
-			'Finish a wordpress theme implementation',
-			'Membership Plugin + Small Custom Tweaks',
-			'Membership Plugin + Small Custom Tweaks',
-			'WordPress Developers, Work From Home, Flexible Hours',
-			''
-		);
-
-		$content = '';
-
-
 		if ( isset( $_POST['create_jobs_dummy_data'] ) ) {
 			$qty         = $_POST['dummy_job_qty'];
 			$prices      = $_POST['dummy_job_price_range'];
@@ -97,7 +159,7 @@ class JobsExpert_Compnents_DemoData extends JobsExperts_Components {
 					if ( version_compare( phpversion(), '5.3.3' ) >= 0 ) {
 						$this->faker_generator( $prices, $categories, $skills, $have_sample );
 					} else {
-						$this->normal_generator();
+						$this->normal_generator( $prices, $categories, $skills, $have_sample );
 					}
 				}
 			}
