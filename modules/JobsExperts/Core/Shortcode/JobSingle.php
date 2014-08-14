@@ -178,12 +178,26 @@ class JobsExperts_Core_Shortcode_JobSingle extends JobsExperts_Shortcode {
 						<a class="btn btn-primary" href="<?php echo add_query_arg( array( 'job' => $var ), get_permalink( $page_module->page( $page_module::JOB_EDIT ) ) ) ?>">
 							<?php _e( 'Edit', JBP_TEXT_DOMAIN ) ?>
 						</a>
-						<a class="btn btn-danger" href="<?php echo admin_url( 'edit.php?post_type=jbp_job' ) ?>">
-							<?php _e( 'Trash', JBP_TEXT_DOMAIN ) ?>
-						</a>
+						<form class="frm-delete" method="post" style="display: inline-block">
+							<input name="job_id" type="hidden" value="<?php echo $model->id ?>">
+							<?php wp_nonce_field( 'delete_job_' . $model->id ) ?>
+							<button name="delete_job" class="btn btn-danger" type="submit"><?php _e( 'Trash', JBP_TEXT_DOMAIN ) ?></button>
+						</form>
+						<script type="text/javascript">
+							jQuery(document).ready(function ($) {
+								$('.frm-delete').submit(function () {
+									if (confirm('<?php _e('Are you sure?',JBP_TEXT_DOMAIN) ?>')) {
+
+									} else {
+										return false;
+									}
+								})
+							})
+						</script>
 					<?php endif; ?>
 				</div>
 			</div>
+
 		</div>
 		<?php
 		return ob_get_clean();

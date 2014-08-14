@@ -60,6 +60,9 @@ class JobsExpert_Compnents_AdvancedSearch extends JobsExperts_Components {
 		}
 		$order_by = isset( $_GET['order_by'] ) ? $_GET['order_by'] : 'latest';
 		$cat      = ( isset( $_GET['job_cat'] ) && $_GET['job_cat'] > 0 ) ? $_GET['job_cat'] : null;
+
+		global $wpdb;
+		$range_max = $wpdb->get_var( "select meta_value from wp_postmeta where meta_key='_jbp_job_budget_max' ORDER BY ABS(meta_value) DESC LIMIT 1; " );;
 		?>
 		<button style="display: block" type="button" class="btn btn-link job-advance-search"><?php _e( 'Advanced Search', JBP_TEXT_DOMAIN ) ?></button>
 		<script type="text/javascript">
@@ -108,7 +111,7 @@ class JobsExpert_Compnents_AdvancedSearch extends JobsExperts_Components {
 
 					$(".job-price-range").ionRangeSlider({
 						min       : <?php echo $plugin->settings()->job_min_search_budget ?>,
-						max       : <?php echo $plugin->settings()->job_max_search_budget ?>,
+						max       : '<?php echo $range_max+100 ?>',
 						type      : "double",
 						prefix    : "$",
 						maxPostfix: "+",
@@ -221,6 +224,8 @@ class JobsExpert_Compnents_AdvancedSearch extends JobsExperts_Components {
 		$args['tax_query'] = $tax_query;
 
 		$job_min_price = $plugin->settings()->job_min_search_budget;
+		//get the max price
+		global $wpdb;
 		$job_max_price = $plugin->settings()->job_max_search_budget;
 		if ( isset( $_GET['min_price'] ) && ! empty( $_GET['min_price'] ) ) {
 			$job_min_price = $_GET['min_price'];
@@ -259,6 +264,7 @@ class JobsExpert_Compnents_AdvancedSearch extends JobsExperts_Components {
 	}
 
 	function experts_search_form() {
+
 		?>
 		<button type="button" class="btn btn-link pro-advance-search"><?php _e( 'Advanced Search', JBP_TEXT_DOMAIN ) ?></button>
 		<script type="text/javascript">
@@ -332,12 +338,13 @@ class JobsExpert_Compnents_AdvancedSearch extends JobsExperts_Components {
 					$args['meta_key'] = 'jbp_pro_view_count';
 					$args['order']    = 'DESC';
 					break;
-				case 'likes':
+				case 'like':
 					$args['orderby']  = 'meta_value';
 					$args['meta_key'] = 'jbp_pro_like_count';
 					$args['order']    = 'DESC';
 					break;
 			}
+
 		}
 
 		if ( isset( $_GET['country'] ) && ! empty( $_GET['country'] ) ) {

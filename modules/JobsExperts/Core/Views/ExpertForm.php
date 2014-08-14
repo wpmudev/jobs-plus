@@ -217,15 +217,17 @@ class JobsExperts_Core_Views_ExpertForm extends JobsExperts_Framework_Render {
 							foreach ( $skills as $skill ):
 								?>
 								<?php $ccolor = $colors[array_rand( $colors )]; ?>
-								<div class="jbp_skillbar edit-skill" style="position: relative" data-percent="<?php echo $skill['score'] ?>">
-									<i class="dashicons dashicons-trash remove-skill" style="position: absolute;right:-21px;color: red"></i>
+								<div class="jbp_skillbar_container" style="position: relative">
+									<i class="dashicons dashicons-trash remove-skill" style="position: absolute;right:-21px;color: red;cursor: pointer"></i>
 
-									<div class="jbp_skillbar-title" style="<?php echo $ccolor[1] ?>">
-										<span><?php echo $skill['name'] ?></span>
+									<div class="jbp_skillbar edit-skill" data-percent="<?php echo $skill['score'] ?>">
+
+										<div class="jbp_skillbar-title" style="<?php echo $ccolor[1] ?>">
+											<span><?php echo $skill['name'] ?></span>
+										</div>
+										<div class="jbp_skillbar-bar" style="<?php echo $ccolor[0] ?>"></div>
+										<div class="jbp_skillbar-percent"><?php echo $skill['score'] ?> %</div>
 									</div>
-									<div class="jbp_skillbar-bar" style="<?php echo $ccolor[0] ?>"></div>
-									<div class="jbp_skillbar-percent"><?php echo $skill['score'] ?> %</div>
-
 								</div>
 								<!-- End Skill Bar -->
 							<?php endforeach; ?>
@@ -425,10 +427,11 @@ class JobsExperts_Core_Views_ExpertForm extends JobsExperts_Framework_Render {
 						var target = $('.jbp_skillbar:eq(' + _this.data('target') + ')');
 						target.data('percent', score);
 						target.find('span').first().html(name);
-						target.find('.jbp_skillbar-percent').text(score + ' %');
+						target.find('.jbp_skillbar-percent').text(score + '%');
 						map_skillbar_color();
 						//find the data
 						skill_data[_this.data('target')] = data;
+						$('input[name="JobsExperts_Core_Models_Pro[skills]"]').val(JSON.stringify(skill_data));
 					} else {
 						//build thml
 						var colors = <?php echo json_encode($colors) ?>;
@@ -519,7 +522,7 @@ class JobsExperts_Core_Views_ExpertForm extends JobsExperts_Framework_Render {
 					content.find('input[name="skill_name"]').first().val(name);
 					content.find('input[name="skill_score"]').first().val(score);
 					//add some needed param
-					_this.addClass('update-skill bind-popover').attr('data-target', _this.index());
+					_this.addClass('update-skill bind-popover').attr('data-target', _this.parent().index());
 					//init
 					_this.popover({
 						content  : content,
@@ -609,16 +612,18 @@ class JobsExperts_Core_Views_ExpertForm extends JobsExperts_Framework_Render {
 	function get_skillbar_template() {
 		ob_start();
 		?>
-
-		<div class="jbp_skillbar edit-skill" style="position: relative" data-percent="{{percent}}">
+		<div class="jbp_skillbar_container" style="position: relative">
 			<i class="dashicons dashicons-trash remove-skill" style="position: absolute;right:-21px;color: red"></i>
 
-			<div class="jbp_skillbar-title" style="{{c2}}"><span>{{name}}</span>
-			</div>
-			<div class="jbp_skillbar-bar" style="{{c1}}"></div>
-			<div class="jbp_skillbar-percent">{{percent}}%</div>
+			<div class="jbp_skillbar edit-skill"  data-percent="{{percent}}">
+				<div class="jbp_skillbar-title" style="{{c2}}"><span>{{name}}</span>
+				</div>
+				<div class="jbp_skillbar-bar" style="{{c1}}"></div>
+				<div class="jbp_skillbar-percent">{{percent}}%</div>
 
+			</div>
 		</div>
+
 		<?php
 		return ob_get_clean();
 	}

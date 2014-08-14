@@ -156,7 +156,7 @@
 	position:                          absolute;
 	top:                               0;
 	left:                              0;
-	width:                             80px;
+	/*width:                             80px;*/
 	font-weight:                       bold;
 	font-size:                         11px;
 	color:                             #ffffff;
@@ -199,6 +199,5 @@
 	font-size:   11px;
 	height:      20px;
 	line-height: 20px;
-	color:       #ffffff;
-	color:       rgba(0, 0, 0, 0.4);
+	color:       white;
 }

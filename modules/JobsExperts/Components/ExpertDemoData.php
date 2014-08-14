@@ -292,7 +292,7 @@ class JobsExpert_Compnents_ExpertDemoData extends JobsExperts_Components {
 							<input type="checkbox" checked="checked" name="have_sample">
 
 							<div class="clearfix"></div>
-							<small><?php _e( 'If you want this job have sample files, checked this field', JBP_TEXT_DOMAIN ) ?></small>
+							<small><?php _e( 'If you want this expert have sample files, check this field', JBP_TEXT_DOMAIN ) ?></small>
 						</td>
 						<input type="hidden" name="create_expert_dummy_data">
 					</tr>

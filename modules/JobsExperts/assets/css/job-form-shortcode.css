@@ -3,9 +3,10 @@
 }
 
 .job-add-container form label {
-	font-weight: 500;
+	font-weight: 600;
+	color:       #000;
 }
 
-.job-add-container form input,.job-add-container form textarea, .job-add-container form select {
+.job-add-container form input, .job-add-container form textarea, .job-add-container form select {
 	width: 100%;
 }

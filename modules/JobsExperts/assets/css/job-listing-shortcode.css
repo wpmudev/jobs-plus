@@ -3,8 +3,8 @@
 }
 
 .job-search .row {
-	padding: 0;
-	margin:  0;
+	/*padding: 0;
+	margin:  0;*/
 }
 
 .job-search .col-xs-1, .job-search .col-sm-1, .job-search .col-md-1, .job-search .col-lg-1, .job-search .col-xs-2, .job-search .col-sm-2, .job-search .col-md-2, .job-search .col-lg-2, .job-search .col-xs-3, .job-search .col-sm-3, .job-search .col-md-3, .job-search .col-lg-3, .job-search .col-xs-4, .job-search .col-sm-4, .job-search .col-md-4, .job-search .col-lg-4, .job-search .col-xs-5, .job-search .col-sm-5, .job-search .col-md-5, .job-search .col-lg-5, .job-search .col-xs-6, .job-search .col-sm-6, .job-search .col-md-6, .job-search .col-lg-6, .job-search .col-xs-7, .job-search .col-sm-7, .job-search .col-md-7, .job-search .col-lg-7, .job-search .col-xs-8, .job-search .col-sm-8, .job-search .col-md-8, .job-search .col-lg-8, .job-search .col-xs-9, .job-search .col-sm-9, .job-search .col-md-9, .job-search .col-lg-9, .job-search .col-xs-10, .job-search .col-sm-10, .job-search .col-md-10, .job-search .col-lg-10, .job-search .col-xs-11, .job-search .col-sm-11, .job-search .col-md-11, .job-search .col-lg-11, .job-search .col-xs-12, .job-search .col-sm-12, .job-search .col-md-12, .job-search .col-lg-12 {

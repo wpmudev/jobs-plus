@@ -181,10 +181,18 @@ class JobsExperts_Core_Frontend extends JobsExperts_Framework_Module {
 			} elseif ( isset( $_POST['delete_job'] ) && isset( $_POST['job_id'] ) ) {
 				if ( wp_verify_nonce( $_POST['_wpnonce'], 'delete_job_' . $_POST['job_id'] ) ) {
 					JobsExperts_Core_Controllers_Job::delete_job( $_POST['job_id'] );
+					wp_redirect( add_query_arg( array(
+						'post_status' => '2'
+					), get_permalink( $page_module->page( $page_module::MY_JOB ) ) ) );
+					exit;
 				}
 			} elseif ( isset( $_POST['delete_expert'] ) && isset( $_POST['expert_id'] ) ) {
 				if ( wp_verify_nonce( $_POST['_wpnonce'], 'delete_expert_' . $_POST['expert_id'] ) ) {
 					JobsExperts_Core_Controllers_Pro::delete_expert( $_POST['expert_id'] );
+					wp_redirect( add_query_arg( array(
+						'post_status' => '2'
+					), get_permalink( $page_module->page( $page_module::MY_EXPERT ) ) ) );
+					exit;
 				}
 			}
 		}

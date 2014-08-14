@@ -21,11 +21,24 @@ class JobsExpert_Core_Shortcode_MyJob extends JobsExperts_Shortcode {
 		ob_start();
 		?>
 		<div class="hn-container">
-			<?php if ( isset( $_GET['post_status'] ) && $_GET['post_status'] == 1 ): ?>
-				<div class="alert alert-success">
-					<?php _e( 'Job post successful!', JBP_TEXT_DOMAIN ) ?>
-				</div>
-			<?php endif; ?>
+			<?php if ( isset( $_GET['post_status'] ) ) {
+				switch ( $_GET['post_status'] ) {
+					case 1:
+						?>
+						<div class="alert alert-success">
+							<?php _e( 'Job post successful!', JBP_TEXT_DOMAIN ) ?>
+						</div>
+						<?php
+						break;
+					case 2:
+						?>
+						<div class="alert alert-success">
+							<?php _e( 'Job delete successful!', JBP_TEXT_DOMAIN ) ?>
+						</div>
+						<?php
+						break;
+				}
+			} ?>
 			<table class="table table-hover table-striped table-bordered">
 				<thead>
 				<th><?php _e( 'Title', JBP_TEXT_DOMAIN ) ?></th>

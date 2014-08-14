@@ -58,7 +58,7 @@ class JobsExperts_Core_Views_Settings_Expert extends JobsExperts_Framework_Rende
 					<br />
 
 					<label>
-						<?php echo $form->radioButton( $model, 'expert_new_expert_status', 'review' ) ?>
+						<?php echo $form->radioButton( $model, 'expert_new_expert_status', 'pending' ) ?>
 						<?php esc_html_e( 'Pending Review', JBP_TEXT_DOMAIN ); ?>
 					</label>
 					<br /><span class="description"><?php printf( esc_html__( '%s is pending review by an administrator.', JBP_TEXT_DOMAIN ), $pro_labels->singular_name ); ?></span>
