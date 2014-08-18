@@ -79,6 +79,158 @@ class JobsExperts_Core_Backend extends JobsExperts_Framework_Module
         $this->_add_action('jbp_setting_content', 'setting_tabs', 10, 2);
 
         $this->_add_action('admin_notices', 'check_permalink_format');
+        // $this->_add_action('admin_notices', 'show_errors');
+
+        //metabox
+        //$this->_add_action('add_meta_boxes', 'job_meta_box');
+        //$this->_add_action('save_post_jbp_job', 'job_save', 9999);
+    }
+
+    function job_meta_box()
+    {
+        add_meta_box(
+            'job_edit_form',
+            __('Addition Information', JBP_TEXT_DOMAIN),
+            array(&$this, '_job_meta_box'),
+            'jbp_job'
+        );
+    }
+
+    function job_save($post_id)
+    {
+        $page_module = JobsExperts_Plugin::instance()->page_module();
+
+        if ($page_module::is_core_page($post_id)) {
+            return;
+        }
+
+
+        if (!isset($_POST['JobsExperts_Core_Models_Job'])) {
+            return;
+        }
+
+
+        /*if (is_admin() && isset($_POST['JobsExperts_Core_Models_Job'])) {
+
+            if (!wp_verify_nonce($_POST['jbp_save_job'], 'jbp_save_job')) {
+                return;
+            }
+
+            $post_id = @$_POST['post_ID'];
+            if (!$post_id) {
+                return;
+            }
+
+            // If this is an autosave, our form has not been submitted, so we don't want to do anything.
+            if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
+                return;
+            }
+
+            $page_module = JobsExperts_Plugin::instance()->page_module();
+            if ($page_module->is_core_page($post_id)) {
+                return;
+            }
+            var_dump($post_id);
+            $post = get_post($post_id);
+            if (!$post instanceof WP_Post) {
+                return;
+            }
+            //only for job saved in admin
+            $model = JobsExperts_Core_Models_Job::instance()->get_one($post_id);
+            if (!is_object($model)) {
+                $model = new JobsExperts_Core_Models_Job();
+            }
+
+            $model->import($_POST['JobsExperts_Core_Models_Job']);
+            $model->job_title = $post->post_title;
+            if ($model->validate()) {
+
+            } else {
+                //save the error for displaying
+                update_post_meta($post_id, '_validate_error', $model->get_errors());
+                //remove this hook to prevent endless loop
+                //remove_action('save_post', array(&$this, 'job_save'));
+                wp_transition_post_status('draft', $post->post_status, $post);
+            }
+        }*/
+    }
+
+    function _job_meta_box($post)
+    {
+        $model = JobsExperts_Core_Models_Job::instance()->get_one($post->ID);
+        if (!is_object($model)) {
+            $model = new JobsExperts_Core_Models_Job();
+        }
+        $form = JobsExperts_Framework_ActiveForm::generateForm($model);
+        $plugin = JobsExperts_Plugin::instance();
+        ?>
+        <?php wp_nonce_field('jbp_save_job', 'jbp_save_job') ?>
+        <table class="form-table">
+            <tr>
+                <th scope="row">
+                    <label><?php _e('Budget ($)', JBP_TEXT_DOMAIN) ?></label>
+                </th>
+                <td>
+                    <?php if (!$plugin->settings()->job_budget_range): ?>
+                        <?php echo $form->textField($model, 'budget') ?>
+                    <?php else: ?>
+                        <?php echo $form->textField($model, 'min_budget') ?>
+                        -
+                        <?php echo $form->textField($model, 'max_budget') ?>
+                    <?php endif; ?>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">
+                    <label><?php _e('Contact Email', JBP_TEXT_DOMAIN) ?></label>
+                </th>
+                <td>
+                    <?php $form->textField($model, 'contact_email', array(
+                        'class' => 'validate[required,custom[email]] job-tool-tip',
+                        'data-toggle' => "tooltip",
+                        'title' => __('Contact email address for the job offer', JBP_TEXT_DOMAIN),
+                        'data-placement' => 'bottom'
+                    )) ?>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">
+                    <label><?php _e('Completion Date', JBP_TEXT_DOMAIN) ?></label>
+                </th>
+                <td>
+                    <?php
+                    $form->textField($model, 'dead_line', array(
+                        'class' => 'validate[required,funcCall[no_past_date]] datepicker job-tool-tip',
+                        'data-toggle' => "tooltip",
+                        'title' => __('When must this job be completed by? Or NA for not applicable.', JBP_TEXT_DOMAIN),
+                        'data-placement' => 'bottom'
+                    )) ?>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">
+                    <label><?php _e('Job Open for', JBP_TEXT_DOMAIN) ?></label>
+                </th>
+                <td>
+                    <?php $days = $plugin->settings()->open_for_days;
+                    $days = array_filter(explode(',', $days));
+                    $data = array();
+                    foreach ($days as $day) {
+                        $data[$day] = $day . ' ' . __('Days', JBP_TEXT_DOMAIN);
+                    }
+
+                    $form->dropDownList($model, 'open_for', $data, array(
+                        'prompt' => '--Select--', 'class' => 'validate[required] job-tool-tip',
+                        'data-toggle' => "tooltip",
+                        'title' => __('How long is this job open for from Today?', JBP_TEXT_DOMAIN),
+                        'data-placement' => 'bottom',
+                    ));
+                    ?>
+                </td>
+            </tr>
+            <input type="hidden" name="save_job_backend" value="1">
+        </table>
+    <?php
     }
 
     function hide_row_actions($actions, $post)
@@ -123,6 +275,24 @@ class JobsExperts_Core_Backend extends JobsExperts_Framework_Module
         }
         if (isset($views['mine'])) {
             return array($views['mine']);
+        }
+    }
+
+    function show_errors()
+    {
+        global $wpdb;
+        $sql = 'SELECT * FROM ' . $wpdb->postmeta . ' WHERE meta_key=%s';
+        $data = $wpdb->get_results($wpdb->prepare($sql, '_validate_error'));
+        var_dump($data);
+        if (count($data)) {
+            $ids = wp_list_pluck($data, 'post_id');
+            $list = array();
+            foreach ($ids as $id) {
+                $post = get_post($id);
+                $list[] = '<a href="' . get_edit_post_link($id) . '">' . $post->post_title . '</a>';
+            }
+            echo '<div class="error"><p>' . sprintf('Some jobs can not view in the frontend,the list are %s', implode(',', $list)) .
+                '</p></div>';
         }
     }
 
@@ -216,10 +386,10 @@ class JobsExperts_Core_Backend extends JobsExperts_Framework_Module
             wp_redirect(admin_url('plugins.php'));
         }
 
-        /*if ( isset( $_GET['page'] ) && $_GET['page'] == 'jobs-plus-add-job' ) {
-            wp_redirect( get_permalink( $page_module->page( $page_module::JOB_ADD ) ) );
+        if (isset($_GET['page']) && $_GET['page'] == 'jobs-plus-add-job') {
+            wp_redirect(admin_url('post-new.php?post_type=jbp_job'));
             exit;
-        }*/
+        }
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST['jobs-plus-settings'])) {
             check_admin_referer('jobs-plus-settings');
@@ -315,7 +485,7 @@ class JobsExperts_Core_Backend extends JobsExperts_Framework_Module
             sprintf(__('New %s', JBP_TEXT_DOMAIN), $job_labels->singular_name),
             'manage_options',
             'jobs-plus-add-job',
-            array($this, 'admin_menu_add_job')
+            array(&$this, 'add_new_job_screen')
         );
 
         $this->jobs_menu_page = add_submenu_page('edit.php?post_type=jbp_job',
@@ -403,5 +573,10 @@ class JobsExperts_Core_Backend extends JobsExperts_Framework_Module
                 $template->render();
                 break;
         }
+    }
+
+    function add_new_job_screen()
+    {
+
     }
 }

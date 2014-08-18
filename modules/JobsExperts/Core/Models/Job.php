@@ -30,6 +30,20 @@ class JobsExperts_Core_Models_Job extends JobsExperts_Framework_PostModel
         return 'jbp_job';
     }
 
+    public function rules()
+    {
+        $rules = array(
+            array('required', 'job_title,contact_email,dead_line,open_for')
+        );
+        if (JobsExperts_Plugin::instance()->settings()->job_budget_range == 1) {
+            $rules[] = array('required', 'min_budget,max_budget');
+        } else {
+            $rules[] = array('required', 'budget');
+        }
+
+        return $rules;
+    }
+
     ///////////////////// CURD///////////////////////////
 
     /**
@@ -91,6 +105,12 @@ class JobsExperts_Core_Models_Job extends JobsExperts_Framework_PostModel
         //check does it max size
         if ($this->is_reach_max()) {
             $this->set_error('id', __('You have reach maximum job amount!'));
+        }
+
+        if (JobsExperts_Plugin::instance()->settings()->job_budget_range == 1) {
+            if ($this->min_budget >= $this->max_budget) {
+                $this->set_error('min_budget', __('Min budget can not be larger than max budget'));
+            }
         }
     }
 

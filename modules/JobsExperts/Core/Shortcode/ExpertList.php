@@ -196,7 +196,7 @@ class JobsExperts_Core_Shortcode_ExpertList extends JobsExperts_Shortcode
                                                 <a href="<?php echo get_permalink($pro->id) ?>"> <?php echo $avatar ?></a>
                                                 <?php $text = !empty($pro->short_description) ? $pro->short_description : $pro->biography; ?>
                                                 <div class="jbp_pro_meta hide hidden-sx hidden-sm">
-                                                    <p><?php echo apply_filters('jbp_pro_listing_biography', (jbp_shorten_text($text, 100 / $col['text_length'])), $text, 100 / $col['text_length']) ?></p>
+                                                    <p><?php echo apply_filters('jbp_pro_listing_biography', esc_html(jbp_shorten_text($text, 100 / $col['text_length'])), $text, 100 / $col['text_length']) ?></p>
 
                                                     <div class="row jbp-pro-stat">
                                                         <div class="col-md-6">
