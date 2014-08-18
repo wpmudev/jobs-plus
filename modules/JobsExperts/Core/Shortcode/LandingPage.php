@@ -82,7 +82,10 @@ class JobsExperts_Core_Shortcode_LandingPage extends JobsExperts_Shortcode {
 								?>
 							</div>
 						<?php endif; ?>
-						<a class="btn btn-primary add-record" href="<?php echo get_permalink( $page_module->page( $page_module::JOB_ADD ) ) ?>"><?php _e( 'Add a Job', JBP_TEXT_DOMAIN ) ?></a>
+                        <div class="add-record">
+                            <a class="btn btn-primary" href="<?php echo get_permalink( $page_module->page( $page_module::JOB_ADD ) ) ?>"><?php _e( 'Add a Job', JBP_TEXT_DOMAIN ) ?></a>
+                        </div>
+
 					</div>
 					<div class="col-md-5 col-xs-12 col-sm-12 pull-right">
 						<div class="page-header">
@@ -160,7 +163,10 @@ class JobsExperts_Core_Shortcode_LandingPage extends JobsExperts_Shortcode {
 							<?php
 							}
 							?>
-							<a class="btn btn-primary add-record" href="<?php echo get_permalink( $page_module->page( $page_module::EXPERT_ADD ) ) ?>"><?php _e( 'Become Expert', JBP_TEXT_DOMAIN ) ?></a>
+                            <div class="add-record">
+                                <a class="btn btn-primary" href="<?php echo get_permalink( $page_module->page( $page_module::EXPERT_ADD ) ) ?>"><?php _e( 'Become Expert', JBP_TEXT_DOMAIN ) ?></a>
+                            </div>
+
 						</div>
 					</div>
 					<div class="clearfix"></div>

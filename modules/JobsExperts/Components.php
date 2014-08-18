@@ -3,41 +3,70 @@
 /**
  * Author: Hoang Ngo
  */
-class JobsExperts_Components extends JobsExperts_Framework_Module {
-	const NAME = __CLASS__;
+class JobsExperts_Components extends JobsExperts_Framework_Module
+{
+    const NAME = __CLASS__;
 
-	/**
-	 * The shortcode
-	 * @var array
-	 */
-	public $shortcodes = array();
+    /**
+     * The shortcode
+     * @var array
+     */
+    public $shortcodes = array();
 
-	public function __construct() {
-		//load all shortcode
-		$coms = glob( JBP_PLUGIN_DIR . '/modules/JobsExperts/Components/*.php' );
-		foreach ( $coms as $com ) {
-			if ( file_exists( $com ) ) {
-				include $com;
-			}
-		}
-	}
+    public function __construct()
+    {
+        //todo load saved components
+        $plugin = JobsExperts_Plugin::instance();
+        $components = $plugin->settings()->plugins;
+        $components = explode(',', $components);
+        foreach ($components as $com) {
+            if (file_exists($com)) {
+                include $com;
+            }
+        }
+    }
 
-	function active_tab( $id ) {
-		if ( isset( $_GET['tab'] ) ) {
-			if ( $id == $_GET['tab'] ) {
-				return 'class="active"';
-			}
-		}
+    public static function get_available_components()
+    {
+        //load all shortcode
+        $coms = glob(JBP_PLUGIN_DIR . '/modules/JobsExperts/Components/*.php');
+        $data = array();
+        foreach ($coms as $com) {
+            if (file_exists($com)) {
+                $meta = get_file_data($com, array(
+                    'Name' => 'Name',
+                    'Author' => 'Author',
+                    'Description' => 'Description',
+                    'AuthorURI' => 'Author URI',
+                    'Network' => 'Network'
+                ), 'component');
 
-		return null;
-	}
+                if (strlen(trim($meta['Name'])) > 0) {
+                    $data[$com] = $meta;
+                }
+            }
+        }
+        return $data;
+    }
 
-	function is_current_tab( $id ) {
-		$tab = isset( $_GET['tab'] ) ? $_GET['tab'] : null;
-		if ( $tab == $id ) {
-			return true;
-		}
+    function active_tab($id)
+    {
+        if (isset($_GET['tab'])) {
+            if ($id == $_GET['tab']) {
+                return 'class="active"';
+            }
+        }
 
-		return false;
-	}
+        return null;
+    }
+
+    function is_current_tab($id)
+    {
+        $tab = isset($_GET['tab']) ? $_GET['tab'] : null;
+        if ($tab == $id) {
+            return true;
+        }
+
+        return false;
+    }
 }

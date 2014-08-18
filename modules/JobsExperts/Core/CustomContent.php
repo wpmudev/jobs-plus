@@ -114,7 +114,7 @@ class JobsExperts_Core_CustomContent extends JobsExperts_Framework_Module {
 					'excerpt'       => false,
 					'custom_fields' => 'custom-fields',
 					'revisions'     => 'revisions',
-					//'page_attributes' => 'page-attributes',
+					'page_attributes' => 'page-attributes',
 				),
 				'supports_reg_tax' => array(
 					'category' => '',
@@ -172,6 +172,8 @@ class JobsExperts_Core_CustomContent extends JobsExperts_Framework_Module {
 						'thumbnail' => 'thumbnail',
 						'excerpt'   => false,
 						'revisions' => 'revisions',
+                        'post-formats'=>'post-formats'
+                        //'page_attributes' => 'page-attributes',
 					),
 				'supports_reg_tax' =>
 					array(

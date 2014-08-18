@@ -1,6 +1,8 @@
 <?php
 
 /**
+ * Name: Job Demo Data
+ * Description: Create random job records, for testing purpose
  * Author: Hoang Ngo
  */
 class JobsExpert_Compnents_JobDemoData extends JobsExperts_Components {

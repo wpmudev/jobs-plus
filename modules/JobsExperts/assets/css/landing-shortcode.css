@@ -3,31 +3,31 @@
 }
 
 @media (min-width: 992px) {
-	.jbp-landing-page .col-md-6.only-45 {
-		width: 45% !important;
-	}
+    .jbp-landing-page .col-md-6.only-45 {
+        width: 45% !important;
+    }
 }
 
 .jbp-landing-page .page-header {
-	text-align: center;
+    text-align: center;
 }
 
 .jbp-landing-page .jbp_job_except {
-	height: 150px;
+    height: 150px;
 }
 
 .jbp-landing-page .jbp_expert_item.col-md-6 {
-	width:       48%;
-	margin-left: 2%;
+    width: 48%;
+    margin-left: 2%;
 }
 
 .jbp-landing-page .empty-records {
-	text-align:    center;
+    text-align: center;
 
 }
 
 .hn-container .jbp-landing-page .add-record {
-	display: block;
-	margin:  10px auto;
-	width:   100px;
+    display: block;
+    margin: 10px auto;
+    text-align: center;
 }

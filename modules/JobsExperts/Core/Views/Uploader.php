@@ -19,7 +19,7 @@ class JobsExperts_Core_Views_Uploader extends JobsExperts_Framework_Render {
 
 		<div style="margin-top: 0" class="page-header">
 			<label><?php echo $text ?></label>
-			<button type="button" class="btn btn-success btn-sm pull-right add-file">
+			<button type="button" class="btn btn-success btn-xs pull-right add-file">
 				<?php _e( 'Add', JBP_TEXT_DOMAIN ) ?> <i class="glyphicon glyphicon-plus"></i>
 			</button>
 		</div>

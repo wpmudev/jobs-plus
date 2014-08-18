@@ -99,7 +99,7 @@ class JobsExperts_Core_Shortcode_JobList extends JobsExperts_Shortcode {
 			<div class="job-search">
 				<form method="get" action="<?php echo get_post_type_archive_link( 'jbp_job' ); ?>">
 					<!--Search section-->
-					<div class="jbp_sort_search row">
+					<div class="jbp_sort_search">
 						<div class="jbp_search_form">
 							<input type="text" class="job-query" name="s" value="<?php echo esc_attr( $search ) ?>" autocomplete="off" placeholder="<?php echo __( sprintf( 'Search For %s', $plugin->get_job_type()->labels->name ), JBP_TEXT_DOMAIN ) ?>" />
 							<button type="submit" class="job-submit-search" value="">

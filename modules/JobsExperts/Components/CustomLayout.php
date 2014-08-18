@@ -1,6 +1,8 @@
 <?php
 
 /**
+ * Name: Custom layout
+ * Description: Dynamic layout for jobs/experts listing page
  * Author: Hoang Ngo
  */
 class JobsExpert_Compnents_CustomLayout extends JobsExperts_Components {
