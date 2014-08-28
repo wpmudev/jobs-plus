@@ -59,7 +59,7 @@ class JobsExperts_Core_Frontend extends JobsExperts_Framework_Module
         $this->_add_filter('the_content', 'pro_single_content');
         //$this->_add_filter( 'wp_title', 'custom_wp_title', 10, 2 );
         $this->_add_filter('the_title', 'custom_title');
-        $this->_add_action('wp_enqueue_scripts', 'front_scripts');
+        //$this->_add_action('wp_enqueue_scripts', 'front_scripts');
 
         $this->_add_filter('get_edit_post_link', 'hide_edit_post_link');
 
@@ -239,7 +239,7 @@ class JobsExperts_Core_Frontend extends JobsExperts_Framework_Module
         $page_factory = JobsExperts_Plugin::instance()->page_module();
         if (get_query_var('post_type') == 'jbp_job' && !is_404()) {
             global $wp_query;
-            $template = array('page.php', 'index.php');
+            $template = array('single-jbp_job.php', 'page.php', 'index.php');
             if (is_archive('jbp_job')) {
                 $vpost = get_post($page_factory->page($page_factory::JOB_LISTING));
                 $wp_query->posts = array($vpost);
@@ -251,7 +251,7 @@ class JobsExperts_Core_Frontend extends JobsExperts_Framework_Module
         //yah, experts time
         if (get_query_var('post_type') == 'jbp_pro') {
             $template = locate_template(array('page.php', 'index.php'));
-            $template = array('page.php', 'index.php');
+            $template = array('single-jbp_pro.php', 'page.php', 'index.php');
             if (is_archive('jbp_job')) {
                 $vpost = get_post($page_factory->page($page_factory::JOB_LISTING));
                 global $wp_query;

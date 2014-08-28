@@ -25,118 +25,135 @@
  *
  * @since    1.0.0
  */
-class JobsExperts_Core_Shortcode_JobForm extends JobsExperts_Shortcode {
-	const NAME = __CLASS__;
+class JobsExperts_Core_Shortcode_JobForm extends JobsExperts_Shortcode
+{
+    const NAME = __CLASS__;
 
-	public function __construct() {
-		$this->_add_shortcode( 'jbp-job-update-page', 'shortcode' );
-		//shortcode style
-		$this->_add_action( 'wp_enqueue_scripts', 'scripts', 999 );
-	}
+    public function __construct()
+    {
+        $this->_add_shortcode('jbp-job-update-page', 'shortcode');
+        //shortcode style
+    }
 
-	function scripts() {
-		$plugin = JobsExperts_Plugin::instance();
+    function scripts()
+    {
+        $plugin = JobsExperts_Plugin::instance();
 
-		//validate
-		wp_register_script( 'jbp_validate_script', $plugin->_module_url . 'assets/js/jquery.validationEngine.js' );
-		wp_register_script( 'jbp_validate_script_en', $plugin->_module_url . 'assets/js/jquery.validationEngine-en.js' );
-		wp_register_style( 'jbp_validate_style', $plugin->_module_url . 'assets/css/validationEngine.jquery.css' );
+        //validate
+        wp_register_script('jbp_validate_script', $plugin->_module_url . 'assets/js/jquery.validationEngine.js');
+        wp_register_script('jbp_validate_script_en', $plugin->_module_url . 'assets/js/jquery.validationEngine-en.js');
+        wp_register_style('jbp_validate_style', $plugin->_module_url . 'assets/css/validationEngine.jquery.css');
 
-		wp_register_script( 'jbp_iframe_transport', $plugin->_module_url . 'assets/js/jquery-iframe-transport.js' );
-		wp_register_script( 'jbp_select2', $plugin->_module_url . 'assets/js/select2.min.js' );
-		wp_register_style( 'jbp_select2', $plugin->_module_url . 'assets/css/select2.css' );
+        wp_register_script('jbp_iframe_transport', $plugin->_module_url . 'assets/js/jquery-iframe-transport.js');
+        wp_register_script('jbp_select2', $plugin->_module_url . 'assets/js/select2.min.js');
+        wp_register_style('jbp_select2', $plugin->_module_url . 'assets/css/select2.css');
 
-		wp_register_script( 'jbp_datepicker', $plugin->_module_url . 'assets/datepicker/js/bootstrap-datepicker.js' );
-		wp_register_style( 'jbp_datepicker', $plugin->_module_url . 'assets/datepicker/css/datepicker.css' );
+        wp_register_script('jbp_datepicker', $plugin->_module_url . 'assets/datepicker/js/bootstrap-datepicker.js');
+        wp_register_style('jbp_datepicker', $plugin->_module_url . 'assets/datepicker/css/datepicker.css');
+    }
 
-	}
+    function load_scripts()
+    {
+        wp_enqueue_style('jobs-form-shortcode');
+        global $jbp_component_uploader;
+        $jbp_component_uploader->load_scripts();
 
-	public function shortcode( $atts ) {
-		wp_enqueue_style( 'jobs-plus' );
+        //validate
+        wp_enqueue_script('jobs-validation');
+        wp_enqueue_script('jobs-validation-en');
+        wp_enqueue_style('jobs-validation');
+        //calendar
+        wp_enqueue_script('jobs-datepicker');
+        wp_enqueue_style('jobs-datepicker');
+        //select2
+        wp_enqueue_script('jobs-select2');
+        wp_enqueue_style('jobs-select2');
+        //noty
+        wp_enqueue_script('jobs-noty');
+    }
 
-		wp_enqueue_script( 'jbp_validate_script' );
-		wp_enqueue_script( 'jbp_validate_script_en' );
-		wp_enqueue_style( 'jbp_validate_style' );
-		wp_enqueue_script( 'jbp_iframe_transport' );
+    public function shortcode($atts)
+    {
+        $this->load_scripts();
+        $plugin = JobsExperts_Plugin::instance();
+        $page_module = $plugin->page_module();
+        ob_start();
+        echo '<div class="hn-container">';
+        if (!is_user_logged_in()) {
+            //user still not login, we need to load login form
+            $this->load_login_form();
+        } else {
+            ///load model
+            $model = '';
+            $is_edit = false;
+            if (isset($plugin->global['jbp_job'])) {
+                $model = $plugin->global['jbp_job'];
+            } else {
+                $is_edit = $page_module->page($page_module::JOB_EDIT) == get_the_ID();
+                if ($is_edit && isset($_GET['job']) && !empty($_GET['job'])) {
+                    $model = JobsExperts_Core_Models_Job::instance()->get_one($_GET['job'], array('publish', 'draft', 'pending'));
+                }
 
-		wp_enqueue_script( 'jbp_select2' );
-		wp_enqueue_style( 'jbp_select2' );
+                if (!is_object($model)) {
+                    $model = new JobsExperts_Core_Models_Job();
+                    if (isset($_GET['job_title'])) {
+                        $model->job_title = $_GET['job_title'];
+                    }
+                    $model->status = 'auto-draft';
+                    $model->save();
+                }
+            }
 
-		wp_enqueue_script( 'jbp_datepicker' );
-		wp_enqueue_style( 'jbp_datepicker' );
+            //bind
+            //now we need to check does this user can add new job
+            if ($model->is_current_can_edit() == false) {
+                //oh no, he can not
+                echo '<h4 style="text-align: center">' . _e('Sorry you do not have enough permission to add new job', JBP_TEXT_DOMAIN) . '</h4>';
+            } elseif ($model->is_reach_max() && !$is_edit) {
+                //this user can not add more
+                echo '<h4 style="text-align: center">' . __('Sorry, you reach max amount of jobs', JBP_TEXT_DOMAIN) . '</h4>';
+            } else {
+                echo '<div class="jobs-form">';
+                //ok, load the form
 
-		wp_enqueue_script( 'jbp_bootstrap' );
+                $template = new JobsExperts_Core_Views_JobForm(array(
+                    'model' => $model,
+                    'is_edit' => $is_edit
+                ));
+                $template->render();
+                echo '</div>';
+            }
 
-		$plugin      = JobsExperts_Plugin::instance();
-		$page_module = $plugin->page_module();
-		ob_start();
-		echo '<div class="hn-container">';
-		if ( ! is_user_logged_in() ) {
-			//user still not login, we need to load login form
-			$this->load_login_form();
-		} else {
-			///load model
-			$model   = '';
-			$is_edit = $page_module->page( $page_module::JOB_EDIT ) == get_the_ID();
-			if ( $is_edit && isset( $_GET['job'] ) && ! empty( $_GET['job'] ) ) {
-				$model = JobsExperts_Core_Models_Job::instance()->get_one( $_GET['job'], array( 'publish', 'draft', 'pending' ) );
-			}
+        }
+        echo '</div>';
 
-			if ( ! is_object( $model ) ) {
-				$model = new JobsExperts_Core_Models_Job();
-			}
+        return apply_filters('jbp_job_form_output', ob_get_clean());
+    }
 
-			//bind
-			//now we need to check does this user can add new job
-			if ( $model->is_current_can_edit() == false ) {
-				//oh no, he can not
-				echo '<h4 style="text-align: center">' . _e( 'Sorry you do not have enough permission to add new job', JBP_TEXT_DOMAIN ) . '</h4>';
-			} elseif ( $model->is_reach_max() && ! $is_edit ) {
-				//this user can not add more
-				echo '<h4 style="text-align: center">' . __( 'Sorry, you reach max amount of jobs', JBP_TEXT_DOMAIN ) . '</h4>';
-			} else {
-				echo '<div class="job-add-container">';
-				//ok, load the form
-				if ( isset( $plugin->global['jbp_job'] ) ) {
-					$model = $plugin->global['jbp_job'];
-				}
-				$template = new JobsExperts_Core_Views_JobForm( array(
-					'model'   => $model,
-					'is_edit' => $is_edit
-				) );
-				$template->render();
-				echo '</div>';
-			}
-
-		}
-		echo '</div>';
-
-		return apply_filters( 'jbp_job_form_output', ob_get_clean() );
-	}
-
-	function load_login_form() {
-		?>
-		<div class="row">
-			<div class="col-md-8 col-md-offset-2">
-				<div class="panel panel-default jbp_login_form">
-					<div class="panel-heading">
-						<h3 class="panel-title">
-							<?php _e( 'Please login', JBP_TEXT_DOMAIN ) ?>
-							<?php
-							$can_register = is_multisite() == true ? get_site_option( 'users_can_register' ) : get_option( 'users_can_register' );
-							if ( $can_register ): ?>
-								or <?php echo sprintf( '<a href="%s">%s</a>', wp_registration_url(), __( 'register here', JBP_TEXT_DOMAIN ) ) ?>
-							<?php endif; ?>
-						</h3>
-					</div>
-					<div class="panel-body">
-						<?php echo wp_login_form( array( 'echo' => false ) ) ?>
-					</div>
-				</div>
-			</div>
-		</div>
-	<?php
-	}
+    function load_login_form()
+    {
+        ?>
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="panel panel-default jbp_login_form">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">
+                            <?php _e('Please login', JBP_TEXT_DOMAIN) ?>
+                            <?php
+                            $can_register = is_multisite() == true ? get_site_option('users_can_register') : get_option('users_can_register');
+                            if ($can_register): ?>
+                                or <?php echo sprintf('<a href="%s">%s</a>', wp_registration_url(), __('register here', JBP_TEXT_DOMAIN)) ?>
+                            <?php endif; ?>
+                        </h3>
+                    </div>
+                    <div class="panel-body">
+                        <?php echo wp_login_form(array('echo' => false)) ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <?php
+    }
 }
 
 new JobsExperts_Core_Shortcode_JobForm;

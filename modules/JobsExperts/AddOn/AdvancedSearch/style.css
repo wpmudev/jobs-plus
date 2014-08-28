@@ -1,0 +1,14 @@
+.hn-container .job_advanced_search_form {
+    width: 400px;
+}
+
+.hn-container .job_advanced_search_form label {
+    font-family: "Open Sans", sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+}
+
+.hn-container .job-advance-search {
+    margin: 0 auto;
+    display: block;
+}

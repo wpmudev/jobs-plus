@@ -15,58 +15,24 @@ class JobsExperts_Components extends JobsExperts_Framework_Module
 
     public function __construct()
     {
-        //todo load saved components
-        $plugin = JobsExperts_Plugin::instance();
-        $components = $plugin->settings()->plugins;
-        $components = explode(',', $components);
-        foreach ($components as $com) {
-            if (file_exists($com)) {
-                include $com;
-            }
-        }
-    }
-
-    public static function get_available_components()
-    {
-        //load all shortcode
         $coms = glob(JBP_PLUGIN_DIR . '/modules/JobsExperts/Components/*.php');
         $data = array();
         foreach ($coms as $com) {
             if (file_exists($com)) {
-                $meta = get_file_data($com, array(
-                    'Name' => 'Name',
-                    'Author' => 'Author',
-                    'Description' => 'Description',
-                    'AuthorURI' => 'Author URI',
-                    'Network' => 'Network'
-                ), 'component');
-
-                if (strlen(trim($meta['Name'])) > 0) {
-                    $data[$com] = $meta;
-                }
+                include $com;
             }
         }
-        return $data;
+        //load widget
+        $this->_add_action( 'widgets_init', 'widget_init' );
     }
 
-    function active_tab($id)
+    function widget_init()
     {
-        if (isset($_GET['tab'])) {
-            if ($id == $_GET['tab']) {
-                return 'class="active"';
+        $widgets = glob( JobsExperts_Plugin::instance()->_module_path . 'Core/Widgets/*.php' );
+        foreach ( $widgets as $widget ) {
+            if ( file_exists( $widget ) ) {
+                include $widget;
             }
         }
-
-        return null;
-    }
-
-    function is_current_tab($id)
-    {
-        $tab = isset($_GET['tab']) ? $_GET['tab'] : null;
-        if ($tab == $id) {
-            return true;
-        }
-
-        return false;
     }
 }

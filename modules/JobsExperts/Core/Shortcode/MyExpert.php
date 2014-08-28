@@ -73,7 +73,7 @@ class JobsExpert_Core_Shortcode_MyExpert extends JobsExperts_Shortcode {
 					<?php endforeach; ?>
 				<?php else: ?>
 					<tr>
-						<td colspan="4"><?php _e( 'You don\'t have any profile.', JBP_TEXT_DOMAIN ) ?></td>
+						<td colspan="5"><?php _e( 'You don\'t have any profile.', JBP_TEXT_DOMAIN ) ?></td>
 					</tr>
 				<?php endif; ?>
 				</tbody>

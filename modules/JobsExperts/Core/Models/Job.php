@@ -30,13 +30,35 @@ class JobsExperts_Core_Models_Job extends JobsExperts_Framework_PostModel
         return 'jbp_job';
     }
 
+    function before_save()
+    {
+        $this->description = wp_kses($this->description,wp_kses_allowed_html('pre_user_description'));
+    }
+
+    function after_save()
+    {
+        $categories = $this->categories;
+        $skills = explode(',', $this->skills);
+        $skills = array_filter($skills);
+        if (!empty($categories)) {
+            //update the term
+            $this->assign_categories($categories, false);
+        }
+
+        if (!empty($skills)) {
+            $this->assign_skill_tag($skills, false);
+        }
+    }
+
     public function rules()
     {
         $rules = array(
-            array('required', 'job_title,contact_email,dead_line,open_for')
+            array('required', 'job_title,contact_email,dead_line,open_for,description'),
+            array('email', 'contact_email'),
         );
         if (JobsExperts_Plugin::instance()->settings()->job_budget_range == 1) {
             $rules[] = array('required', 'min_budget,max_budget');
+            $rules[] = array('numeric', 'min_budget,max_budget');
         } else {
             $rules[] = array('required', 'budget');
         }
@@ -100,7 +122,7 @@ class JobsExperts_Core_Models_Job extends JobsExperts_Framework_PostModel
         $this->categories = $this->find_terms('jbp_category');
     }
 
-    public function before_save()
+    public function addition_validate()
     {
         //check does it max size
         if ($this->is_reach_max()) {
@@ -108,7 +130,7 @@ class JobsExperts_Core_Models_Job extends JobsExperts_Framework_PostModel
         }
 
         if (JobsExperts_Plugin::instance()->settings()->job_budget_range == 1) {
-            if ($this->min_budget >= $this->max_budget) {
+            if (!empty($this->max_budget) && $this->min_budget >= $this->max_budget) {
                 $this->set_error('min_budget', __('Min budget can not be larger than max budget'));
             }
         }
@@ -148,6 +170,16 @@ class JobsExperts_Core_Models_Job extends JobsExperts_Framework_PostModel
         } else {
             return $this->budget;
         }
+    }
+
+    public function get_files()
+    {
+        $files = get_posts(array(
+            'post_type' => 'jbp_media',
+            'post_parent' => $this->id
+        ));
+        var_dump($files);
+        return $files;
     }
 
     public function render_prices($return = '')
@@ -251,6 +283,12 @@ class JobsExperts_Core_Models_Job extends JobsExperts_Framework_PostModel
         }
 
         return false;
+    }
+
+    public function add_view_count()
+    {
+        $view = intval(get_post_meta($this->id, 'jbp_job_view_count', true));
+        update_post_meta($this->id, 'jbp_job_view_count', $view + 1);
     }
 
 

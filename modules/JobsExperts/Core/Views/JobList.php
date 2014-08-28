@@ -20,7 +20,7 @@ class JobsExperts_Core_Views_JobList extends JobsExperts_Framework_Render
         }
 
         foreach ($this->chunks as $chunk): ?>
-            <div class="row">
+            <div class="row no-margin">
                 <?php foreach ($chunk as $key => $col): ?>
                     <?php
                     $color = '';
@@ -32,8 +32,8 @@ class JobsExperts_Core_Views_JobList extends JobsExperts_Framework_Render
 
                     setup_postdata($model->get_raw_post());
                     ?>
-                    <div style="<?php echo($key == 0 ? 'margin-left:0' : null) ?>"
-                         class="jbp_job_item <?php echo $size; ?>">
+                    <div <?php echo $key == 0 ? 'style="margin-left:0"' : null ?>
+                        class="jbp_job_item <?php echo $size; ?> no-padding">
                         <div class="jbp_job_except <?php echo $color ?>">
                             <div class="jbp_inside">
                                 <h4>

@@ -33,7 +33,11 @@ class JobsExperts_Core_Models_Pro extends JobsExperts_Framework_PostModel
     public function rules()
     {
         return array(
-            array('required', 'name,location,contact_email,biography')
+            array('required', 'first_name,last_name,location,contact_email,biography'),
+            array('url', 'company_url'),
+            array('length', 'biography', 'min' => 200),
+            array('length', 'short_description', 'max' => 100),
+            array('email', 'contact_email')
         );
     }
 
@@ -131,9 +135,8 @@ class JobsExperts_Core_Models_Pro extends JobsExperts_Framework_PostModel
     {
         if (empty($id)) {
             $id = get_current_user_id();
-        } else {
-            $id = get_current_user_id();
         }
+
         $user = get_user_by('id', $id);
         if ($user instanceof WP_User) {
             $likes = get_user_meta(get_current_user_id(), 'jbp_pro_liked');
@@ -211,21 +214,19 @@ class JobsExperts_Core_Models_Pro extends JobsExperts_Framework_PostModel
             return $data;
         } else {
             global $wpdb;
-            $sql = $wpdb->prepare('SELECT * FROM ' . $wpdb->postmeta . ' WHERE meta_key=%s', '_ct_jbp_pro_Skills');
+            $sql = $wpdb->prepare('SELECT * FROM ' . $wpdb->postmeta . ' WHERE meta_key=%s', '_expert_skill');
             $raw = $wpdb->get_results($sql);
             $skills = array();
             foreach ($raw as $key => $val) {
-                $row = json_decode($val->meta_value, true);
+                $row = maybe_unserialize($val->meta_value);
                 if ($row) {
-                    foreach ($row as $s) {
-                        if (isset($s['name'])) {
-                            $skills[] = $s['name'];
-                        }
-                    }
+                    $skills[] = $row['name'];
                 }
 
             }
             $skills = array_filter(array_unique($skills));
+            sort($skills);
+            $skills = array_map('trim', $skills);
             wp_cache_set('jbp_pro_skill', $skills);
 
             return $skills;
@@ -235,5 +236,77 @@ class JobsExperts_Core_Models_Pro extends JobsExperts_Framework_PostModel
     public function after_save()
     {
         $this->get_all_skills(true);
+    }
+
+    public function before_save()
+    {
+        $this->short_description = wp_kses($this->short_description, wp_kses_allowed_html('post'));
+        $this->biography = wp_kses($this->biography, wp_kses_allowed_html('post'));
+    }
+
+    public function get_avatar($size = 640, $use_ratio = false)
+    {
+        $avatar = get_post_meta($this->id, '_expert_avatar', true);
+
+        if ($avatar) {
+            $name = pathinfo($avatar, PATHINFO_FILENAME);
+            $upload_dir = wp_upload_dir();
+            //if avatar is url, convert to system path
+
+            $apath = str_replace($upload_dir['baseurl'], '', $avatar);
+            $apath = $upload_dir['basedir'] . $apath;
+
+            $image = wp_get_image_editor($apath);
+            //ratio
+            $isize = $image->get_size();
+            $width = $size;
+            $ratio = $isize['width'] / $isize['height'];
+            $height = $width / $ratio;
+
+            if ($use_ratio == false) {
+
+                //we will create round image
+                if ($ratio < 1) {
+                    $width = $height;
+                } else {
+                    $height = $width;
+                }
+            }
+
+            $new_path = $upload_dir['path'] . '/' . $name . '_' . $width . '-' . $height . '.jpg';
+            $new_url = $upload_dir['url'] . '/' . $name . '_' . $width . '-' . $height . '.jpg';
+
+            $is_overwrite = false;
+
+            if (file_exists($new_path)) {
+                $is_overwrite = false;
+            }
+
+            $is_overwrite = true;
+
+            if (!$is_overwrite) {
+                return '<img src="' . $new_url . '"/>';
+            } else {
+
+                if (!is_wp_error($image)) {
+                    $image->resize($width, $width, true);
+                    $image->save($new_path);
+                    return '<img src="' . $new_url . '"/>';
+
+                } else {
+                    get_avatar($this->contact_email, $size);
+                }
+            }
+        }
+        return get_avatar($this->contact_email, $size);
+    }
+
+    function has_avatar()
+    {
+        $avatar = get_post_meta($this->id, '_expert_avatar', true);
+        if ($avatar) {
+            return true;
+        }
+        return false;
     }
 }

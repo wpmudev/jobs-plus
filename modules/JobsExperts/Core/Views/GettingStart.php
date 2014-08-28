@@ -56,13 +56,13 @@ class JobsExperts_Core_Views_GettingStart extends JobsExperts_Framework_Render {
 				<p class="jbp_light"><?php esc_html_e( 'Thank you! for using our Jobs & Expert plugin', JBP_TEXT_DOMAIN ) ?></p>
 
 				<p class="jbp_default">
-					<?php esc_html_e( 'To get started just create some demo content or browse, edit and add content using the buttons below. You can return to this page at anytime.', JBP_TEXT_DOMAIN ) ?></p>
-
-				<div class="jbp-demo">
+					<?php /*esc_html_e( 'To get started just create some demo content or browse, edit and add content using the buttons below. You can return to this page at anytime.', JBP_TEXT_DOMAIN ) */?><!--</p>
+-->
+				<!--<div class="jbp-demo">
 					<p class="first">
-						<a href="<?php echo esc_attr( 'edit.php?post_type=jbp_job&page=jobs-plus-about&create-demo=true' ); ?>" class="jbp_button"><?php esc_html_e( 'Create demo Jobs & Experts content', JBP_TEXT_DOMAIN ); ?></a>
+						<a href="<?php /*echo esc_attr( 'edit.php?post_type=jbp_job&page=jobs-plus-about&create-demo=true' ); */?>" class="jbp_button"><?php /*esc_html_e( 'Create demo Jobs & Experts content', JBP_TEXT_DOMAIN ); */?></a>
 					</p>
-				</div>
+				</div>-->
 
 				<?php echo do_action( 'jbp_notice' ); ?>
 

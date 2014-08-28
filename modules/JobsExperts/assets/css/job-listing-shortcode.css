@@ -1,3 +1,7 @@
+.job-search {
+    margin-bottom: 20px;
+}
+
 .jbp-job-list .col-xs-1, .jbp-job-list .col-sm-1, .jbp-job-list .col-md-1, .jbp-job-list .col-lg-1, .jbp-job-list .col-xs-2, .jbp-job-list .col-sm-2, .jbp-job-list .col-md-2, .jbp-job-list .col-lg-2, .jbp-job-list .col-xs-3, .jbp-job-list .col-sm-3, .jbp-job-list .col-md-3, .jbp-job-list .col-lg-3, .jbp-job-list .col-xs-4, .jbp-job-list .col-sm-4, .jbp-job-list .col-md-4, .jbp-job-list .col-lg-4, .jbp-job-list .col-xs-5, .jbp-job-list .col-sm-5, .jbp-job-list .col-md-5, .jbp-job-list .col-lg-5, .jbp-job-list .col-xs-6, .jbp-job-list .col-sm-6, .jbp-job-list .col-md-6, .jbp-job-list .col-lg-6, .jbp-job-list .col-xs-7, .jbp-job-list .col-sm-7, .jbp-job-list .col-md-7, .jbp-job-list .col-lg-7, .jbp-job-list .col-xs-8, .jbp-job-list .col-sm-8, .jbp-job-list .col-md-8, .jbp-job-list .col-lg-8, .jbp-job-list .col-xs-9, .jbp-job-list .col-sm-9, .jbp-job-list .col-md-9, .jbp-job-list .col-lg-9, .jbp-job-list .col-xs-10, .jbp-job-list .col-sm-10, .jbp-job-list .col-md-10, .jbp-job-list .col-lg-10, .jbp-job-list .col-xs-11, .jbp-job-list .col-sm-11, .jbp-job-list .col-md-11, .jbp-job-list .col-lg-11, .jbp-job-list .col-xs-12, .jbp-job-list .col-sm-12, .jbp-job-list .col-md-12, .jbp-job-list .col-lg-12 {
     padding: 0 !important;
 }

@@ -33,20 +33,17 @@ class JobsExperts_Core_Shortcode_ExpertList extends JobsExperts_Shortcode
     {
         $this->_add_shortcode('jbp-expert-archive-page', 'shortcode');
         //shortcode style
-        $this->_add_action('wp_enqueue_scripts', 'scripts', 999);
     }
 
-    function scripts()
+    function load_scripts()
     {
-        //wp_register_style( 'jbp_shortcode', JBP_PLUGIN_URL . 'assets/css/job-plus-shortcode.css' );
-        //wp_register_style( 'jbp_shortcode_grid', JBP_PLUGIN_URL . 'assets/css/grids.css' );
+        wp_enqueue_style('expert-list-shortcode');
+        wp_enqueue_script('jobs-ellipsis');
     }
 
     public function shortcode($atts)
     {
-        wp_enqueue_style('jobs-plus');
-        wp_enqueue_style('jbp_shortcode');
-        wp_enqueue_script('jbp_bootstrap');
+        $this->load_scripts();
 
         //get plugin instance
         $plugin = JobsExperts_Plugin::instance();
@@ -101,25 +98,21 @@ class JobsExperts_Core_Shortcode_ExpertList extends JobsExperts_Shortcode
         ?>
         <div class="hn-container">
             <!--Search section-->
-            <div class="job-search">
+            <div class="expert-search">
                 <form method="get" action="<?php echo get_post_type_archive_link('jbp_pro'); ?>">
-                    <!--Search section-->
-                    <div class="jbp_sort_search row">
-                        <div class="jbp_search_form">
-                            <input type="text" class="pro-search" name="s" value="<?php echo esc_attr($search) ?>"
-                                   autocomplete="off"
-                                   placeholder="<?php echo __(sprintf('Search For %s', $plugin->get_expert_type()->labels->name), JBP_TEXT_DOMAIN) ?>"/>
-                            <button type="submit" class="job-submit-search" value="">
-                                <?php echo __('Search', JBP_TEXT_DOMAIN) ?>
-                            </button>
-                        </div>
-                        <div style="clear: both"></div>
-
+                    <div class="search input-group input-group-lg has-feedback" role="search" id="mySearch">
+                        <input style="border-radius: 0" name="s" value="<?php echo $search ?>" type="search" class="form-control pro-search"
+                               placeholder="<?php echo __(sprintf('Search For %s', $plugin->get_expert_type()->labels->name), JBP_TEXT_DOMAIN) ?>"/>
+<span class="input-group-btn">
+    <button class="btn btn-default" style="border-radius: 0" type="submit">
+        <span class="glyphicon glyphicon-search"></span>
+        <span class="sr-only">Search</span>
+    </button>
+  </span>
                     </div>
                 </form>
-                <div class="clearfix"></div>
                 <?php do_action('jbp_expert_listing_after_search_form') ?>
-
+                <div class="clearfix"></div>
             </div>
             <!--End search section-->
 
@@ -173,7 +166,7 @@ class JobsExperts_Core_Shortcode_ExpertList extends JobsExperts_Shortcode
                     }
 
                     foreach ($chunks as $chunk): ?>
-                        <div class="row">
+                        <div class="row no-margin">
                             <?php foreach ($chunk as $key => $col): ?>
                                 <?php
                                 $pro = $col['item'];
@@ -181,32 +174,40 @@ class JobsExperts_Core_Shortcode_ExpertList extends JobsExperts_Shortcode
                                 global $post;
                                 setup_postdata($pro->get_raw_post());
 
-                                $avatar = get_avatar($pro->contact_email, 240);
+                                $avatar = $pro->get_avatar(640, true);
                                 $name = $pro->name;
-                                $charlength = 30 / ($col['text_length'] == 1 ? 1 : 1.3);
+                                $charlength = 78 / ($col['text_length'] == 1 ? 1 : 1.3);
 
                                 $name = jbp_shorten_text($name, $charlength);
 
                                 ?>
                                 <div style="<?php echo($key == 0 ? 'margin-left:0' : null) ?>"
-                                     class="jbp_expert_item <?php echo $size; ?>">
+                                     class="jbp_expert_item <?php echo $size; ?> no-padding">
                                     <div class="jbp_pro_except">
                                         <div class="jbp_inside">
                                             <div class="meta_holder">
-                                                <a href="<?php echo get_permalink($pro->id) ?>"> <?php echo $avatar ?></a>
-                                                <?php $text = !empty($pro->short_description) ? $pro->short_description : $pro->biography; ?>
+                                                <div class="expert-avatar">
+                                                    <a href="<?php echo get_permalink($pro->id) ?>"> <?php echo $avatar ?></a>
+                                                </div>
+                                                <?php
+                                                $text = !empty($pro->short_description) ? wpautop($pro->short_description) : wpautop($pro->biography);
+                                                //$text = strip_tags($text);
+                                                $text = jbp_shorten_text($text, $charlength);
+                                                ?>
                                                 <div class="jbp_pro_meta hide hidden-sx hidden-sm">
-                                                    <p><?php echo apply_filters('jbp_pro_listing_biography', esc_html(jbp_shorten_text($text, 100 / $col['text_length'])), $text, 100 / $col['text_length']) ?></p>
+                                                    <div class="text-shorten">
+                                                        <?php echo apply_filters('jbp_pro_listing_biography', $text) ?>
+                                                    </div>
 
-                                                    <div class="row jbp-pro-stat">
-                                                        <div class="col-md-6">
+                                                    <div class="row no-margin jbp-pro-stat">
+                                                        <div class="col-md-6 no-padding">
                                                             <span><?php echo $pro->get_view_count() ?></span>&nbsp;<i
                                                                 class="glyphicon glyphicon-eye-open"></i>
                                                             <small><?php _e('Views', JBP_TEXT_DOMAIN) ?></small>
                                                         </div>
-                                                        <div class="col-md-6">
+                                                        <div class="col-md-6 no-padding">
                                                             <span><?php echo $pro->get_like_count() ?></span><i
-                                                                class="glyphicon glyphicon-heart"></i>
+                                                                class="glyphicon glyphicon-heart text-warning"></i>
                                                             <small><?php _e('Likes', JBP_TEXT_DOMAIN) ?></small>
                                                         </div>
                                                         <div class="clearfix"></div>
@@ -239,6 +240,8 @@ class JobsExperts_Core_Shortcode_ExpertList extends JobsExperts_Shortcode
                     }).mouseleave(function () {
                         $(this).find('.jbp_pro_meta').addClass('hide');
                     });
+                    /*$('.text-shorten').ellipsis({
+                     });*/
                 })
             </script>
         </div>

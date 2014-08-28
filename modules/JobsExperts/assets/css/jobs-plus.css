@@ -1,10 +1,118 @@
-@import "../bootstrap/css/bootstrap-with-namespace.css";
+@import "animate.css";
 
 /* Form fields, general styles first */
 .hn-container input,
 .hn-container textarea {
-	border:        1px solid #ccc;
-	border-radius: 0 !important;
-	font-family:   inherit;
-	padding:       4px 0 4px 6px ;
+    border: 1px solid #ccc;
+    border-radius: 0 !important;
+    font-family: inherit;
+    padding: 4px 0 4px 6px;
+}
+
+.jbp-widget {
+    width: 100%;
+    height: 150px;
+    color: white;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.jbp-widget .jbp-widget-body {
+    text-align: center;
+    height: 70%;
+    vertical-align: middle;
+}
+
+.jbp-widget .jbp-widget-footer {
+    border-top: solid 3px #f0f0ed;
+    height: 30%
+}
+
+.jbp-widget .jbp-widget-footer .jbp-widget-cell {
+    border-right: solid 3px #f0f0ed;
+    width: 49%;
+    float: left;
+    height: 100%;
+    text-align: center;
+    font-size: 20px;
+    position: relative;
+    line-height: 20px;
+    box-sizing: border-box;
+}
+
+.jbp-widget .jbp-widget-footer .jbp-widget-cell button {
+    top: 5px;
+    position: relative;
+}
+
+.jbp-widget .jbp-widget-footer .jbp-widget-cell:before {
+    content: '';
+    position: absolute;
+    border-style: solid;
+    border-width: 0 9px 9px;
+    border-color: #f0f0ed transparent;
+    display: block;
+    width: 0;
+    z-index: 0;
+    margin-left: -9px;
+    top: -9px;
+    left: 50%;
+}
+
+.jbp-widget .jbp-widget-footer .jbp-widget-cell span {
+    position: relative;
+    top: 3px
+}
+
+.jbp-widget .jbp-widget-footer .jbp-widget-cell small {
+    display: block;
+    font-size: 12px;
+    margin: 0;
+    padding: 0;
+}
+
+.jbp-widget .jbp-widget-footer .jbp-widget-cell:last-child {
+    border-right: none;
+}
+
+.jbp-widget .jbp-widget-body i {
+    font-size: 70px;
+    position: relative;
+    top: 50%;
+    margin-top: -35px;
+    color: white;
+}
+
+.jbp-widget.dark {
+    background: #595f66;
+}
+
+.jbp-widget.dark .jbp-widget-body i {
+    color: #f87aa0;
+}
+
+.jbp-widget.light-blue {
+    background: #a7609a;
+}
+
+.jbp-widget.green {
+    background: #58b868;
+}
+
+.jbp-widget.blue {
+    background: #5bc0de;
+}
+
+.jbp-widget.orange {
+    background: #f0ad4e;
+}
+
+.jbp-widget.light-blue .jbp-widget-cell:last-child {
+    /*background-color: #58b868;*/
+}
+
+.jbp-widget.light-blue .jbp-widget-cell:last-child i {
+    position: relative;
+    top: 7px;
+    font-size: 24px;
 }

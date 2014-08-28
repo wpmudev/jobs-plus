@@ -25,42 +25,51 @@
  *
  * @since    1.0.0
  */
-class JobsExperts_Core_Shortcode_ExpertSingle extends JobsExperts_Shortcode {
-	const NAME = __CLASS__;
+class JobsExperts_Core_Shortcode_ExpertSingle extends JobsExperts_Shortcode
+{
+    const NAME = __CLASS__;
 
-	public function __construct() {
-		$this->_add_shortcode( 'jbp-pro-single-page', 'shortcode' );
-		//shortcode style
-		$this->_add_action( 'wp_enqueue_scripts', 'scripts', 999 );
-	}
+    public function __construct()
+    {
+        $this->_add_shortcode('jbp-pro-single-page', 'shortcode');
+        //shortcode style
+    }
 
-	function scripts() {
+    function load_scripts()
+    {
+        wp_enqueue_style('expert-single-shortcode');
 
-	}
+        global $jbp_component_uploader;
+        $jbp_component_uploader->load_scripts();
+        global $jbp_component_social;
+        $jbp_component_social->load_scripts();
+        global $jbp_component_skill;
+        $jbp_component_skill->load_scripts();
+    }
 
-	public function shortcode( $atts ) {
-		wp_enqueue_style( 'jobs-plus' );
-		wp_enqueue_style( 'jbp_shortcode' );
-		wp_enqueue_script( 'jbp_bootstrap' );
 
-		//get plugin instance
-		$plugin = JobsExperts_Plugin::instance();
+    public function shortcode($atts)
+    {
+        $this->load_scripts();
 
-		$model = JobsExperts_Core_Models_Pro::instance()->get_one( get_the_ID() );
-		$model->add_view_count();
-		ob_start();
-		?>
-		<div class="hn-container">
-			<?php echo do_shortcode( '<p style="text-align: center">[jbp-expert-post-btn][jbp-job-post-btn][jbp-expert-browse-btn][jbp-job-browse-btn][jbp-expert-profile-btn][jbp-my-job-btn]</p>' ); ?>
-			<?php $template = new JobsExperts_Core_Views_ExpertSingle( array(
-				'model' => $model
-			) );
-			$template->render();
-			?>
-		</div>
-		<?php
-		return ob_get_clean();
-	}
+        //get plugin instance
+        $plugin = JobsExperts_Plugin::instance();
+
+        $model = JobsExperts_Core_Models_Pro::instance()->get_one(get_the_ID());
+        $model->add_view_count();
+        ob_start();
+        ?>
+        <div class="hn-container">
+            <?php echo do_shortcode('<p style="text-align: center">[jbp-expert-post-btn][jbp-job-post-btn][jbp-expert-browse-btn][jbp-job-browse-btn][jbp-expert-profile-btn][jbp-my-job-btn]</p>'); ?>
+            <?php $template = new JobsExperts_Core_Views_ExpertSingle(array(
+                'model' => $model
+            ));
+            $template->render();
+            ?>
+        </div>
+        <?php
+        return ob_get_clean();
+    }
 }
 
 new JobsExperts_Core_Shortcode_ExpertSingle;
