@@ -360,7 +360,25 @@ INNER JOIN wp_postmeta max_price ON max_price.post_id = posts.ID AND max_price.m
             ', $job_min_price, $job_max_price);
 
         } else {
+            if (isset($_GET['min_price']) && !empty($_GET['min_price'])) {
+                $job_min_price = $_GET['min_price'];
+            } else {
+                $job_min_price = $plugin->settings()->job_min_search_budget;
+            }
+            if (isset($_GET['max_price']) && !empty($_GET['max_price'])) {
+                $job_max_price = $_GET['max_price'];
+            } else {
+                $range_max = $wpdb->get_var("select meta_value from wp_postmeta where meta_key='_jbp_job_budget' ORDER BY ABS(meta_value) DESC LIMIT 1; ");;
+                $job_max_price = $range_max;
+            }
 
+            $join[] = $wpdb->prepare('
+            INNER JOIN wp_postmeta price ON price.post_id = posts.ID AND price.meta_key=%s
+            ', '_ct_jbp_job_Budget');
+
+            $where[] = $wpdb->prepare('
+            ABS(price.meta_value) BETWEEN %d AND %d
+            ', $job_min_price, $job_max_price);
         }
 
 

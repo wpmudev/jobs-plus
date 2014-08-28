@@ -194,6 +194,7 @@ class JobsExperts_Core_Models_Job extends JobsExperts_Framework_PostModel
             <?php endif; ?>
         <?php
         } else {
+           
             ?>
             $<?php echo money_format($this->budget, 2) ?>
         <?php

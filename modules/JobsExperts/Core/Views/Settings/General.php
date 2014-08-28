@@ -38,7 +38,7 @@ class JobsExperts_Core_Views_Settings_General extends JobsExperts_Framework_Rend
                         <?php printf('%s, <span class="description">%s</span>', esc_html__('Bright Icons', JBP_TEXT_DOMAIN), esc_html__('for dark button backgrounds', JBP_TEXT_DOMAIN)); ?>
                     </label>
                 </div>
-                <div class="radio disabled">
+                <div class="radio">
                     <label>
                         <?php $form->radioButton($model, 'theme', 'none') ?>
                         <?php printf('%s, <span class="description">%s</span>', esc_html__('No Icons', JBP_TEXT_DOMAIN), esc_html__('to remove the icons from buttons', JBP_TEXT_DOMAIN)); ?>

@@ -14,6 +14,13 @@ jQuery(document).ready(function ($) {
         });
     }
     if ($('.jbp_pro_except').size() > 0) {
-       // $('.jbp_pro_except').find('img').addClass('img-circle');
+        // $('.jbp_pro_except').find('img').addClass('img-circle');
+    }
+
+    if ($('.jbp-pro-list').size() > 0) {
+        $('.jbp-pro-list').find('.expert-avatar').each(function () {
+            $(this).css('height', $(this).width());
+        })
+
     }
 })

@@ -1,10 +1,6 @@
 <?php
 
-/**
- * Name: Advanced textarea
- * Description: Use WYSIWYG for jobs/experts detail field, the value will be filtered by kses for security
- * Author: Hoang Ngo
- */
+
 class JobsExpert_Compnents_AdvancedTextArea extends JobsExperts_AddOn
 {
     public function __construct()

@@ -133,13 +133,15 @@
 
 .jbp-pro-list .expert-avatar {
     background: #C5C5C5;;
+    overflow-y: hidden;
+    border-bottom: solid 1px #ddd;
 }
 
 .jbp-pro-list .expert-avatar img {
-    border-bottom: solid 1px #ddd;
+
     box-shadow: none;
-    width: 100%;
-    height: auto;
+    width: auto;
+    height: 100%;
     display: block;
     margin: 0 auto;
     border-radius: 0;
@@ -161,7 +163,7 @@
         margin-left: 1.5%;
     }
 
-    .jbp-pro-list .col-md-12 .expert-avatar img {
+    /*.jbp-pro-list .col-md-12 .expert-avatar img {
         width: 100%;
     }
 
@@ -176,9 +178,8 @@
     }
 
     .jbp-pro-list .col-md-4 .expert-avatar img {
-        width: auto;
-        height: 193px;
-    }
+        max-height: 150px;
+    }*/
 }
 
 .jbp-pro-stat .col-md-6 {

@@ -44,6 +44,18 @@ class JobsExperts_Core_Views_Settings_Job extends JobsExperts_Framework_Render {
         </div>
         <div class="form-group">
             <label class="col-md-3 control-label">
+                <?php esc_html_e( 'Use Budget Range', JBP_TEXT_DOMAIN ); ?>
+            </label>
+            <div class="col-md-9">
+                <?php $form->hiddenField( $model, 'job_budget_range', array( 'value' => 0 ) ) ?>
+                <?php echo $form->checkBox( $model, 'job_budget_range', array( 'value' => 1 ) ) ?>
+                <?php esc_html_e( 'Use Min and Max budget fields', JBP_TEXT_DOMAIN ); ?>
+                <p class="help-block"><?php esc_html_e( 'Displays both minimum and maximum budget fields.', JBP_TEXT_DOMAIN ); ?></p>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-3 control-label">
                 <?php printf(esc_html__('Newly Created %s Status Options', JBP_TEXT_DOMAIN), $job_labels->singular_name); ?>
             </label>
 
