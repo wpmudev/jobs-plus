@@ -20,7 +20,6 @@
 .hn-container .skill-preview h5 {
     font-weight: bold;
     font-size: 15px;
-    margin: 0;
 }
 
 .hn-container .skill-bar h5 {
@@ -29,7 +28,7 @@
     font-weight: 500;
     font-size: 13px;
     margin-top: 0;
-    margin-bottom: 0;
+    margin-bottom: 5px;
 }
 
 .hn-container .social-preview h4 {

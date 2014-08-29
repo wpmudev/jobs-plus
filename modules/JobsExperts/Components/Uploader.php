@@ -100,12 +100,12 @@ class JobsExperts_Components_Uploader extends JobsExperts_Components
                     //var next = $('#' + popover_id);
                     var next = $(this).next();
                     var that = $(this);
-                    console.log(next);
-                    console.log(next.hasClass('popover'));
+                    //console.log(next);
+                    //console.log(next.hasClass('popover'));
                     if (next.hasClass('popover')) {
 
                         var form = next.find('form').first();
-                        console.log(form);
+                        //console.log(form);
                         form.find('.hn_uploader_element').change(function (e) {
                             var file = e.target.files[0];
                             var type = file.type.split('/');
@@ -459,13 +459,13 @@ class JobsExperts_Components_Uploader extends JobsExperts_Components
                     }
                 ];
                 $.each(data, function (i, v) {
-                    console.log(width <= v.width);
+                    //console.log(width <= v.width);
                     if (width <= v.width) {
                         css = v.css;
                         return false;
                     }
                 })
-                console.log(css);
+                //console.log(css);
                 $('.hn-sample-files .hn-widget').parent().addClass(css);
 
             })

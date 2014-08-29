@@ -32,7 +32,7 @@ class JobsExperts_Core_Models_Job extends JobsExperts_Framework_PostModel
 
     function before_save()
     {
-        $this->description = wp_kses($this->description,wp_kses_allowed_html('pre_user_description'));
+        $this->description = wp_kses($this->description,wp_kses_allowed_html('post'));
     }
 
     function after_save()
@@ -194,7 +194,7 @@ class JobsExperts_Core_Models_Job extends JobsExperts_Framework_PostModel
             <?php endif; ?>
         <?php
         } else {
-           
+
             ?>
             $<?php echo money_format($this->budget, 2) ?>
         <?php

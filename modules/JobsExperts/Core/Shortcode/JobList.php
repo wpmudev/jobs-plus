@@ -41,7 +41,6 @@ class JobsExperts_Core_Shortcode_JobList extends JobsExperts_Shortcode
 
     public function shortcode($atts)
     {
-        $this->load_scripts();
         //get plugin instance
         $plugin = JobsExperts_Plugin::instance();
         //get jobs

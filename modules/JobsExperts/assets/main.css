@@ -1,7 +1,6 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800);
 @import url("vendors/fa/css/font-awesome.css");
 @import url("vendors/animate/animate.css");
-@import url("bootstrap/css/bootstrap-with-namespace.css");
 
 .hn-container ol {
     margin-left: 0;

@@ -62,12 +62,69 @@ class JobsExperts_Core_CustomContent extends JobsExperts_Framework_Module
         //register all scripts
         $this->_add_action('wp_enqueue_scripts', 'scripts');
         $this->_add_action('admin_enqueue_scripts', 'scripts');
+
+        $this->_add_action('wp_enqueue_scripts', 'determine_css', 9999);
+    }
+
+    function determine_css()
+    {
+        $shortcodes = array(
+            'jbp-expert-post-btn' => 'jobs-buttons-shortcode',
+            'jbp-job-post-btn' => 'jobs-buttons-shortcode',
+            'jbp-job-browse-btn' => 'jobs-buttons-shortcode',
+            'jbp-expert-profile-btn' => 'jobs-buttons-shortcode',
+            'jbp-my-job-btn' => 'jobs-buttons-shortcode',
+            'jbp-expert-browse-btn' => 'jobs-buttons-shortcode',
+            'jbp-expert-contact-page',
+            'jbp-landing-page' => array(
+                'jobs-landing-shortcode',
+                'expert-list-shortcode',
+                'jobs-list-shortcode'
+            ),
+            'jbp-job-update-page' => 'jobs-form-shortcode',
+            'jbp-job-archive-page',
+            'jbp-job-contact-page',
+            'jbp-my-job-page',
+            'jbp-expert-update-page' => 'expert-form-shortcode',
+            'jbp-expert-archive-page',
+            'jbp-expert-contact-page',
+            'jbp-my-expert-page',
+            ''
+        );
+        $plugin = JobsExperts_Plugin::instance();
+        $page_module = $plugin->page_module();
+        global $post;
+        if ($post) {
+            if ($page_module->is_core_page($post->ID)) {
+                foreach ($shortcodes as $shortcode => $q) {
+                    $has = preg_match_all('/\[' . $shortcode . '\]/s', $post->post_content, $matches);
+                    if ($has == 1) {
+                        if (is_array($q)) {
+                            foreach ($q as $v) {
+                                wp_enqueue_style($v);
+                            }
+                        } else {
+                            wp_enqueue_style($q);
+                        }
+                    }
+                }
+            } elseif (is_single() && $post->post_type == 'jbp_job') {
+                wp_enqueue_style('jobs-single-shortcode');
+            } elseif (is_single() && $post->post_type == 'jbp_pro') {
+                wp_enqueue_style('expert-single-shortcode');
+            } elseif (is_post_type_archive('jbp_job')) {
+                wp_enqueue_style('jobs-list-shortcode');
+            } elseif (is_post_type_archive('jbp_pro')) {
+                wp_enqueue_style('expert-list-shortcode');
+            }
+        }
     }
 
     function scripts()
     {
         $plugin = JobsExperts_Plugin::instance();
         //style
+        wp_enqueue_style('jobs-bootstrap', $plugin->_module_url . 'assets/bootstrap/css/bootstrap-with-namespace.css', array(), JBP_VERSION);
         wp_enqueue_style('jobs-main', $plugin->_module_url . 'assets/main.css', array(), JBP_VERSION);
         wp_register_style('jobs-buttons-shortcode', $plugin->_module_url . 'assets/buttons.css', array(), JBP_VERSION);
         wp_register_style('jobs-single-shortcode', $plugin->_module_url . 'assets/jobs-single.css', array(), JBP_VERSION);
@@ -80,7 +137,9 @@ class JobsExperts_Core_CustomContent extends JobsExperts_Framework_Module
         wp_register_style('jobs-landing-shortcode', $plugin->_module_url . 'assets/landing.css', array(), JBP_VERSION);
         wp_register_style('job-plus-widgets', $plugin->_module_url . 'assets/widget.css', array(), JBP_VERSION);
         //js
-        wp_enqueue_script('jobs-modern', $plugin->_module_url . 'assets/ modernizr.js', array(), JBP_VERSION);
+        wp_enqueue_script('jobs-responsedjs', $plugin->_module_url . 'assets/respond.js', array('jquery'), JBP_VERSION);
+        wp_enqueue_script('jobs-html5-shiv', $plugin->_module_url . 'assets/html5shiv.js', array('jobs-modern'), JBP_VERSION);
+        //wp_enqueue_script('jobs-modern', $plugin->_module_url . 'assets/modernizr.js', array(), JBP_VERSION);
         wp_enqueue_script('jobs-main', $plugin->_module_url . 'assets/main.js', array('jquery'), JBP_VERSION, true);
         wp_enqueue_script('jobs-bootstrap', $plugin->_module_url . 'assets/bootstrap/js/bootstrap.min.js', array('jquery'), JBP_VERSION, true);
 

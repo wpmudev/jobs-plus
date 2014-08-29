@@ -69,11 +69,11 @@ class JobsExperts_Core_Views_Settings_General extends JobsExperts_Framework_Rend
                         if ($(this).data('type') == 'deactive') {
                             $(this).data('type', 'active');
                             $('#jbp_components').val($('#jbp_components').val().replace(id, ''));
-                            $(this).text('Active');
+                            $(this).text('<?php _e('Activate',JBP_TEXT_DOMAIN) ?>');
                         } else {
                             $(this).data('type', 'deactive');
                             $('#jbp_components').val($('#jbp_components').val() + ',' + id);
-                            $(this).text('Deactive');
+                            $(this).text('<?php _e('Deactivate',JBP_TEXT_DOMAIN) ?>');
                         }
                         $('.notif').removeClass('hide');
                     })

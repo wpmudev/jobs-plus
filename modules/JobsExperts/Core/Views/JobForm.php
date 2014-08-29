@@ -311,7 +311,7 @@ class JobsExperts_Core_Views_JobForm extends JobsExperts_Framework_Render
                                 //rebind
                                 form.find('.submit').removeAttr('disabled');
                                 that.text(old_text);
-                                console.log(data);
+                                //console.log(data);
                                 //fill error
                                 $.each(data.errors, function (i, v) {
                                     //build name

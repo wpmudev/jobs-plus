@@ -1,28 +1,38 @@
 <?php
 
-
+/**
+ * Name: Advanced textarea
+ * Description: Use WYSIWYG for jobs/experts detail field, the value will be filtered by kses for security
+ * Author: Hoang Ngo
+ */
 class JobsExpert_Compnents_AdvancedTextArea extends JobsExperts_AddOn
 {
     public function __construct()
     {
         $this->_add_action('wp_enqueue_scripts', 'scripts');
+        $this->_add_action('wp_footer', 'footer_script');
+        $this->_add_filter('jbp_job_list_content', 'job_content', 10, 3);
+        $this->_add_filter('jbp_expert_list_content', 'job_content', 10, 3);
+        /*
         $this->_add_filter('jbp_expert_form_element', 'expert_text', 10, 3);
         $this->_add_filter('jbp_job_form_element', 'job_text', 10, 4);
         $this->_add_action('wp_footer', 'footer_script');
         $this->_add_filter('jbp_job_list_content', 'ensure_job_html', 10, 3);
+    }*/
     }
 
-    function ensure_job_html($shroten, $content, $length)
+    function job_content($shroten, $content, $length)
     {
-        if (class_exists('tidy')) {
+        /*if (class_exists('tidy')) {
             $tidy = new tidy();
             $clean = $tidy->repairString($content);
         } else {
             $dom = new DOMDocument();
             $dom->loadHTML($content);
             $clean = $dom->saveHTML();
-        }
-        $content = $this->truncate($clean, $length);
+        }*/
+        $clean = strip_tags($content);
+        $content = $this->truncate(wpautop($clean), $length);
         return $content;
     }
 
@@ -38,29 +48,28 @@ class JobsExpert_Compnents_AdvancedTextArea extends JobsExperts_AddOn
             $page_module->page($page_module::JOB_EDIT)
         ))
         ) {
+            wp_enqueue_style('jobs-advanced-textarea');
+
+            wp_enqueue_script('jobs-advanced-textarea');
             ?>
-            <script type="text/javascript"
-                    src="<?php echo $plugin->_module_url . 'Components/AdvancedTextArea/parser_rules/advanced.js' ?>"></script>
-            <script type="text/javascript"
-                    src="<?php echo $plugin->_module_url . 'Components/AdvancedTextArea/wysihtml5-0.3.0.min.js' ?>"></script>
             <script type="text/javascript">
                 jQuery(document).ready(function ($) {
-                    setInterval(function () {
-                        if ($('#biography:visible').size() > 0) {
-                            var editor = new wysihtml5.Editor("biography", {
-                                toolbar: "wysihtml5-toolbar",
-                                parserRules: wysihtml5ParserRules,
-                                stylesheets: ["<?php echo $plugin->_module_url ?>Components/AdvancedTextArea/editor.css"]
-                            });
-                        }
-                    }, 1000);
                     if ($('#job_description').size() > 0) {
-                        var editor = new wysihtml5.Editor("job_description", {
-                            toolbar: "wysihtml5-toolbar",
-                            parserRules: wysihtml5ParserRules,
-                            stylesheets: ["<?php echo $plugin->_module_url ?>Components/AdvancedTextArea/editor.css"]
+                        $('#job_description').wysiwyg({
+                            css: '<?php echo $plugin->_module_url.'assets/main.css' ?>'
                         });
                     }
+
+                    setInterval(function () {
+                        if ($('#biography').size() > 0) {
+                            if ($('#biography-wysiwyg-iframe').size() == 0) {
+                                $('#biography').wysiwyg({
+                                    css: '<?php echo $plugin->_module_url.'assets/main.css' ?>'
+                                });
+                            }
+                        }
+                    }, 1000);
+
                 })
             </script>
         <?php
@@ -70,8 +79,11 @@ class JobsExpert_Compnents_AdvancedTextArea extends JobsExperts_AddOn
     function scripts()
     {
         $plugin = JobsExperts_Plugin::instance();
-        wp_enqueue_style('dashicons');
-        wp_enqueue_style('jbp_wysiwyg', $plugin->_module_url . "Components/AdvancedTextArea/editor.css");
+        wp_register_style('jobs-advanced-textarea', $plugin->_module_url . 'AddOn/AdvancedTextArea/jquery.wysiwyg.css');
+        wp_register_script('jobs-advanced-textarea', $plugin->_module_url . 'AddOn/AdvancedTextArea/jquery.wysiwyg.js');
+
+        //wp_register_style('jobs-advanced-textarea', $plugin->_module_url . 'AddOn/AdvancedTextArea/bootstrap3-wysihtml5.min.css');
+        //wp_register_script('jobs-advanced-textarea', $plugin->_module_url . 'AddOn/AdvancedTextArea/bootstrap3-wysihtml5.all.min.js');
     }
 
     function job_text($html, $element_type, $model, $key)
@@ -173,7 +185,8 @@ class JobsExpert_Compnents_AdvancedTextArea extends JobsExperts_AddOn
      *
      * @return string
      */
-    private function _buildFormElementName($model, $attribute)
+    private
+    function _buildFormElementName($model, $attribute)
     {
         $model_class_name = get_class($model);
         $frm_element_name = $model_class_name . "[$attribute]";
@@ -271,6 +284,7 @@ class JobsExpert_Compnents_AdvancedTextArea extends JobsExperts_AddOn
         }
         return $truncate;
     }
+
 }
 
 new JobsExpert_Compnents_AdvancedTextArea();

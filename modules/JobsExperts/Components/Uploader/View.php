@@ -139,7 +139,7 @@ class JobsExperts_Components_Uploader_View extends JobsExperts_Framework_Render
                                 processData: false,
                                 iframe: true,
                                 method: 'POST',
-                                url: '<?php echo add_query_arg(array('upload_file_nonce'=>wp_create_nonce('hn_upload_file')),home_url()) ?>'
+                                url: '<?php echo add_query_arg(array('upload_file_nonce'=>wp_create_nonce('hn_upload_file'),'a'=>(is_admin()?1:0)),home_url()) ?>'
                             }
                             var file = $(":file", form);
 
@@ -154,7 +154,7 @@ class JobsExperts_Components_Uploader_View extends JobsExperts_Framework_Render
                                     if (evt.lengthComputable) {
                                         var percentComplete = evt.loaded / evt.total;
                                         //Do something with upload progress
-                                        console.log(percentComplete);
+                                        //console.log(percentComplete);
                                     }
                                 }, false);
                                 return xhr;
@@ -170,7 +170,7 @@ class JobsExperts_Components_Uploader_View extends JobsExperts_Framework_Render
                                 form.find(':input, button').removeAttr('disabled');
 
                                 if (is_json(data)) {
-                                    console.log(parent);
+                                    //console.log(parent);
                                     var result = $.parseJSON(data);
                                     var error = $('<div class="alert alert-danger"/>').html(result.errors);
                                     form.closest('div').addClass('animated shake').prepend(error).one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function () {
@@ -266,7 +266,7 @@ class JobsExperts_Components_Uploader_View extends JobsExperts_Framework_Render
                                 if (evt.lengthComputable) {
                                     var percentComplete = evt.loaded / evt.total;
                                     //Do something with upload progress
-                                    console.log(percentComplete);
+                                    //console.log(percentComplete);
                                 }
                             }, false);
                             return xhr;

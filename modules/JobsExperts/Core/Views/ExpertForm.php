@@ -45,7 +45,7 @@ class JobsExperts_Core_Views_ExpertForm extends JobsExperts_Framework_Render
                                             'short_description' => array(
                                                 'type' => 'textArea',
                                                 'id' => 'short_description',
-                                                'class' => 'validate[required,maxSize[100]]'
+                                                'class' => 'validate[maxSize[100]]'
                                             )
                                         ), 'hn-container jbp_text_popup', __('Short description about your self', JBP_TEXT_DOMAIN));
                                     echo $sdesc->render();

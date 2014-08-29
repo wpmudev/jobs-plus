@@ -37,7 +37,7 @@ class JobsExperts_Core_Shortcode_ExpertSingle extends JobsExperts_Shortcode
 
     function load_scripts()
     {
-        wp_enqueue_style('expert-single-shortcode');
+        //wp_enqueue_style('expert-single-shortcode');
 
         global $jbp_component_uploader;
         $jbp_component_uploader->load_scripts();

@@ -43,7 +43,7 @@ class JobsExperts_Core_Shortcode_ExpertList extends JobsExperts_Shortcode
 
     public function shortcode($atts)
     {
-        $this->load_scripts();
+        //$this->load_scripts();
 
         //get plugin instance
         $plugin = JobsExperts_Plugin::instance();
@@ -101,7 +101,8 @@ class JobsExperts_Core_Shortcode_ExpertList extends JobsExperts_Shortcode
             <div class="expert-search">
                 <form method="get" action="<?php echo get_post_type_archive_link('jbp_pro'); ?>">
                     <div class="search input-group input-group-lg has-feedback" role="search" id="mySearch">
-                        <input style="border-radius: 0" name="s" value="<?php echo $search ?>" type="search" class="form-control pro-search"
+                        <input style="border-radius: 0" name="s" value="<?php echo $search ?>" type="search"
+                               class="form-control pro-search"
                                placeholder="<?php echo __(sprintf('Search For %s', $plugin->get_expert_type()->labels->name), JBP_TEXT_DOMAIN) ?>"/>
 <span class="input-group-btn">
     <button class="btn btn-default" style="border-radius: 0" type="submit">
@@ -190,9 +191,10 @@ class JobsExperts_Core_Shortcode_ExpertList extends JobsExperts_Shortcode
                                                     <a href="<?php echo get_permalink($pro->id) ?>"> <?php echo $avatar ?></a>
                                                 </div>
                                                 <?php
-                                                $text = !empty($pro->short_description) ? wpautop($pro->short_description) : wpautop($pro->biography);
+                                                $text = !empty($pro->short_description) ? $pro->short_description : $pro->biography;
                                                 //$text = strip_tags($text);
                                                 $text = jbp_shorten_text($text, $charlength);
+                                                $text = apply_filters('jbp_expert_list_content', jbp_shorten_text(esc_html($text), $charlength), $text, $charlength);
                                                 ?>
                                                 <div class="jbp_pro_meta hide hidden-sx hidden-sm">
                                                     <div class="text-shorten">

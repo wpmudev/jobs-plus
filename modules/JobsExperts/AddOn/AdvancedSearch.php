@@ -514,7 +514,7 @@ INNER JOIN wp_postmeta max_price ON max_price.post_id = posts.ID AND max_price.m
                                     form.find('input[name="' + v.name + '"][value="' + v.value + '"]').prop('checked', true);
                                 }
                             })
-                            console.log(selected);
+                            //console.log(selected);
                             //form.find('select').val(selected).trigger('change');
                         }
                         form.find(':input').on('change', function () {

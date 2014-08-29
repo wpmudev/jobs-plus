@@ -87,7 +87,7 @@ class JobsExpert_Core_Shortcode_Buttons extends JobsExperts_Shortcode
      */
     function job_add($atts)
     {
-        wp_enqueue_style('jbp_shortcode');
+        
         $plugin = JobsExperts_Plugin::instance();
         $page_module = $plugin->page_module();
         extract(shortcode_atts(array(
@@ -131,7 +131,7 @@ class JobsExpert_Core_Shortcode_Buttons extends JobsExperts_Shortcode
 
     function expert_list($atts)
     {
-        wp_enqueue_style('jbp_shortcode');
+        
         $plugin = JobsExperts_Plugin::instance();
         extract(shortcode_atts(array(
             'text' => sprintf(__('Browse %s', JBP_TEXT_DOMAIN), $plugin->get_expert_type()->labels->name),
@@ -174,7 +174,7 @@ class JobsExpert_Core_Shortcode_Buttons extends JobsExperts_Shortcode
      */
     function job_list($atts)
     {
-        wp_enqueue_style('jbp_shortcode');
+        
         $plugin = JobsExperts_Plugin::instance();
         extract(shortcode_atts(array(
             'text' => sprintf(__('Browse %s', JBP_TEXT_DOMAIN), $plugin->get_job_type()->labels->name),
@@ -201,7 +201,7 @@ class JobsExpert_Core_Shortcode_Buttons extends JobsExperts_Shortcode
 
     function my_profile($atts)
     {
-        wp_enqueue_style('jbp_shortcode');
+        
         $plugin = JobsExperts_Plugin::instance();
         $page_module = $plugin->page_module();
         extract(shortcode_atts(array(
@@ -233,7 +233,7 @@ class JobsExpert_Core_Shortcode_Buttons extends JobsExperts_Shortcode
 
     function my_jobs($atts)
     {
-        wp_enqueue_style('jbp_shortcode');
+        
         $plugin = JobsExperts_Plugin::instance();
         $page_module = $plugin->page_module();
         extract(shortcode_atts(array(

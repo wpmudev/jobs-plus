@@ -55,7 +55,7 @@ class JobsExperts_Core_Shortcode_ExpertForm extends JobsExperts_Shortcode
 
     function load_scripts()
     {
-        wp_enqueue_style('expert-form-shortcode');
+        //wp_enqueue_style('expert-form-shortcode');
 
         global $jbp_component_uploader;
         $jbp_component_uploader->load_scripts();

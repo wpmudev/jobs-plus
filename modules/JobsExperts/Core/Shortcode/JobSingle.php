@@ -36,12 +36,17 @@ class JobsExperts_Core_Shortcode_JobSingle extends JobsExperts_Shortcode
 
     private function load_assets()
     {
+        $this->_add_action('wp_head','inject_assets',999);
+
+    }
+
+    function inject_asset(){
         wp_enqueue_style('jobs-single-shortcode');
     }
 
     public function shortcode($atts)
     {
-        $this->load_assets();
+        ///$this->load_assets();
         global $jbp_component_uploader;
         $jbp_component_uploader->load_scripts();
         //get plugin instance
@@ -88,7 +93,7 @@ class JobsExperts_Core_Shortcode_JobSingle extends JobsExperts_Shortcode
                 </div>
                 <div class="row job-content">
                     <div class="col-md-12">
-                        <?php echo wpautop($model->description) ?>
+                        <?php echo ($model->description) ?>
                     </div>
                     <div class="col-md-12">
                         <?php
