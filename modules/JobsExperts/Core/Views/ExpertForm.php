@@ -20,6 +20,7 @@ class JobsExperts_Core_Views_ExpertForm extends JobsExperts_Framework_Render
         $form->openForm('', 'POST', array('id' => 'experts-form'));
         $form->hiddenField($model, 'id');
         $edit_icon = '<i class="dashicons dashicons-edit"></i>';
+        $is_edit = $this->is_edit;
         global $jbp_component_uploader;
         ?>
         <div class="jobs-expert-form">
@@ -270,8 +271,8 @@ class JobsExperts_Core_Views_ExpertForm extends JobsExperts_Framework_Render
                             data = $.parseJSON(data);
                             if (data.status == 1) {
                                 var n = noty({
-                                    text: '<?php _e('Expert profile create successful, redirecting...',JBP_TEXT_DOMAIN) ?>',
-                                    layout: 'centerRight',
+                                    text: '<?php _e('Expert profile '.($is_edit==true?'updated':'created').' successful, redirecting...',JBP_TEXT_DOMAIN) ?>',
+                                    layout: 'center',
                                     type: 'success',
                                     timeout: 5000
                                 });
@@ -290,7 +291,7 @@ class JobsExperts_Core_Views_ExpertForm extends JobsExperts_Framework_Render
                                 //display noty
                                 var n = noty({
                                     text: '<?php _e('Error happen, please check the form data',JBP_TEXT_DOMAIN) ?>',
-                                    layout: 'centerRight',
+                                    layout: 'center',
                                     type: 'error',
                                     timeout: 5000
                                 });

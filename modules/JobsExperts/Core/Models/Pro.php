@@ -262,9 +262,7 @@ class JobsExperts_Core_Models_Pro extends JobsExperts_Framework_PostModel
             $width = $size;
             $ratio = $isize['width'] / $isize['height'];
             $height = $width / $ratio;
-
             if ($use_ratio == false) {
-
                 //we will create round image
                 if ($ratio < 1) {
                     $width = $height;
@@ -287,7 +285,6 @@ class JobsExperts_Core_Models_Pro extends JobsExperts_Framework_PostModel
             if (!$is_overwrite) {
                 return '<img src="' . $new_url . '"/>';
             } else {
-
                 if (!is_wp_error($image)) {
                     $image->resize($width, $width, true);
                     $image->save($new_path);

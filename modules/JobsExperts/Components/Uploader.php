@@ -78,7 +78,7 @@ class JobsExperts_Components_Uploader extends JobsExperts_Components
         <div class="expert-avatar">
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <?php echo $model->get_avatar() ?>
+                    <?php echo $model->get_avatar(420) ?>
                 </div>
                 <div class="panel-footer">
                     <button type="button" class="btn btn-xs btn-primary change-avatar">

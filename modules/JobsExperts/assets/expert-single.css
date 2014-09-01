@@ -23,7 +23,9 @@
     /* padding-top: 10px !important;*/
     text-align: center;
     height: 140px;
+    width: 100%;
     vertical-align: middle;
+    overflow: hidden;
 }
 
 .expert-single .expert-avatar .panel-footer {
@@ -31,15 +33,16 @@
 }
 
 .expert-single .expert-avatar img {
-    width: 130px;
-    height: 130px;
-    display: block;
-    margin: auto auto;
-    /*height: auto;*/
+    width: 100%;
+    max-width: 130px;
+    max-height: 130px;
+    height: auto;
     border-radius: 50%;
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
+    display: block;
     border: solid 5px white;
+    margin: 0 auto;
 }
 
 .expert-single .expert-avatar .panel-footer {

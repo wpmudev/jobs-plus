@@ -25,7 +25,7 @@ class JobsExperts_Core_Views_ExpertSingle extends JobsExperts_Framework_Render
                     <div class="expert-avatar">
                         <div class="panel panel-default">
                             <div class="panel-body no-padding">
-                                <?php echo $model->get_avatar() ?>
+                                <?php echo $model->get_avatar(420) ?>
                             </div>
                             <div class="panel-footer">
                                 <a class="btn btn-sm btn-primary" href="<?php echo add_query_arg(array(

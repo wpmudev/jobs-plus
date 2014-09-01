@@ -302,7 +302,7 @@ class JobsExperts_Core_PageFactory
 
     protected function expert_edit()
     {
-        $id = $this->plugin->settings()->expert_add;
+        $id = $this->plugin->settings()->expert_edit;
 
         if (empty($id) || !$this->page_exist($id)) {
             $args = array(
@@ -317,7 +317,7 @@ class JobsExperts_Core_PageFactory
             );
             $id = wp_insert_post($args);
             //update setting
-            $this->save_setting(self::EXPERT_ADD, $id);
+            $this->save_setting(self::EXPERT_EDIT, $id);
         } else {
             wp_update_post(array(
                 'post_status' => 'virtual',

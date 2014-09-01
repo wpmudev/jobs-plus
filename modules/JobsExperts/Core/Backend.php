@@ -91,12 +91,12 @@ class JobsExperts_Core_Backend extends JobsExperts_Framework_Module
         $page_module = JobsExperts_Plugin::instance()->page_module();
         if ($post->post_type == 'jbp_job') {
             //check does page core
-            if(!$page_module->is_core_page($post->ID)){
+            if (!$page_module->is_core_page($post->ID)) {
                 $url = add_query_arg(array('id' => $post->ID), admin_url('edit.php?post_type=jbp_job&page=jobs-plus-edit-job'));
             }
         } elseif ($post->post_type == 'jbp_pro') {
             //check does page core
-            if(!$page_module->is_core_page($post->ID)){
+            if (!$page_module->is_core_page($post->ID)) {
                 $url = add_query_arg(array('id' => $post->ID), admin_url('edit.php?post_type=jbp_pro&page=jobs-plus-edit-pro'));
             }
         }
@@ -105,16 +105,21 @@ class JobsExperts_Core_Backend extends JobsExperts_Framework_Module
 
     function hide_row_actions($actions, $post)
     {
+        $page_module = JobsExperts_Plugin::instance()->page_module();
         if ($post->post_type == 'jbp_job') {
-            //remove quick edit
-            unset($actions['inline hide-if-no-js']);
-            //update edit link
-            $actions['edit'] = '<a href="' . add_query_arg(array('id' => $post->ID), admin_url('edit.php?post_type=jbp_job&page=jobs-plus-edit-job')) . '" title="' . __('Edit this item') . '">' . __('Edit') . '</a>';
+            if (!$page_module->is_core_page($post->ID)) {
+                //remove quick edit
+                unset($actions['inline hide-if-no-js']);
+                //update edit link
+                $actions['edit'] = '<a href="' . add_query_arg(array('id' => $post->ID), admin_url('edit.php?post_type=jbp_job&page=jobs-plus-edit-job')) . '" title="' . __('Edit this item') . '">' . __('Edit') . '</a>';
+            }
         } elseif ($post->post_type == 'jbp_pro') {
             //remove quick edit
-            unset($actions['inline hide-if-no-js']);
-            //update edit link
-            $actions['edit'] = '<a href="' . add_query_arg(array('id' => $post->ID), admin_url('edit.php?post_type=jbp_job&page=jobs-plus-edit-pro')) . '" title="' . __('Edit this item') . '">' . __('Edit') . '</a>';
+            if (!$page_module->is_core_page($post->ID)) {
+                unset($actions['inline hide-if-no-js']);
+                //update edit link
+                $actions['edit'] = '<a href="' . add_query_arg(array('id' => $post->ID), admin_url('edit.php?post_type=jbp_job&page=jobs-plus-edit-pro')) . '" title="' . __('Edit this item') . '">' . __('Edit') . '</a>';
+            }
         }
 
         return $actions;
