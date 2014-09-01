@@ -88,10 +88,17 @@ class JobsExperts_Core_Backend extends JobsExperts_Framework_Module
     function update_edit_link($url, $post_id, $context)
     {
         $post = get_post($post_id);
+        $page_module = JobsExperts_Plugin::instance()->page_module();
         if ($post->post_type == 'jbp_job') {
-            $url = add_query_arg(array('id' => $post->ID), admin_url('edit.php?post_type=jbp_job&page=jobs-plus-edit-job'));
+            //check does page core
+            if(!$page_module->is_core_page($post->ID)){
+                $url = add_query_arg(array('id' => $post->ID), admin_url('edit.php?post_type=jbp_job&page=jobs-plus-edit-job'));
+            }
         } elseif ($post->post_type == 'jbp_pro') {
-            $url = add_query_arg(array('id' => $post->ID), admin_url('edit.php?post_type=jbp_job&page=jobs-plus-edit-pro'));
+            //check does page core
+            if(!$page_module->is_core_page($post->ID)){
+                $url = add_query_arg(array('id' => $post->ID), admin_url('edit.php?post_type=jbp_pro&page=jobs-plus-edit-pro'));
+            }
         }
         return $url;
     }
