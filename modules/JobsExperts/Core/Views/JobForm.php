@@ -27,6 +27,7 @@ class JobsExperts_Core_Views_JobForm extends JobsExperts_Framework_Render
             $model->job_title = $_GET['job_title'];
         }
         $edit_icon = '<i class="fa fa-pencil"></i>';
+        $is_edit = $this->is_edit;
         ?>
         <div class="form-group has-feedback">
             <label class="col-md-3 control-label"><?php _e('Choose a category', JBP_TEXT_DOMAIN) ?></label>
@@ -301,7 +302,7 @@ class JobsExperts_Core_Views_JobForm extends JobsExperts_Framework_Render
                             data = $.parseJSON(data);
                             if (data.status == 1) {
                                 var n = noty({
-                                    text: '<?php _e('Job post successful, redirecting...',JBP_TEXT_DOMAIN) ?>',
+                                    text: '<?php _e('Job '.($is_edit==true?'updated':'posted').' successful, redirecting...',JBP_TEXT_DOMAIN) ?>',
                                     layout: 'center',
                                     type: 'success',
                                     timeout: 5000
@@ -331,7 +332,7 @@ class JobsExperts_Core_Views_JobForm extends JobsExperts_Framework_Render
                                 });
                                 //display noty
                                 var n = noty({
-                                    text: '<?php _e('Error happen, please check the form data',JBP_TEXT_DOMAIN) ?>',
+                                    text: '<?php _e('Error happened, please check the form data',JBP_TEXT_DOMAIN) ?>',
                                     layout: 'center',
                                     type: 'error',
                                     timeout: 5000
