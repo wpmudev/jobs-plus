@@ -302,7 +302,7 @@ class JobsExperts_Core_Views_JobForm extends JobsExperts_Framework_Render
                             if (data.status == 1) {
                                 var n = noty({
                                     text: '<?php _e('Job post successful, redirecting...',JBP_TEXT_DOMAIN) ?>',
-                                    layout: 'centerRight',
+                                    layout: 'center',
                                     type: 'success',
                                     timeout: 5000
                                 });
@@ -332,7 +332,7 @@ class JobsExperts_Core_Views_JobForm extends JobsExperts_Framework_Render
                                 //display noty
                                 var n = noty({
                                     text: '<?php _e('Error happen, please check the form data',JBP_TEXT_DOMAIN) ?>',
-                                    layout: 'centerRight',
+                                    layout: 'center',
                                     type: 'error',
                                     timeout: 5000
                                 });
