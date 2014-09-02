@@ -100,17 +100,19 @@
     font-size: 14px;
 }
 
-.jbp-job-list .col-md-6 {
-    width: 49.25%;
-    margin-left: 1.5%;
-}
+@media (min-width: 992px) {
+    .jbp-job-list .col-md-6 {
+        width: 49.25%;
+        margin-left: 1.5%;
+    }
 
-.jbp-job-list .col-md-3 {
-    width: 23.87%;
-    margin-left: 1.5%;
-}
+    .jbp-job-list .col-md-3 {
+        width: 23.87%;
+        margin-left: 1.5%;
+    }
 
-.jbp-job-list .col-md-4 {
-    width: 32.33%;
-    margin-left: 1.5%;
+    .jbp-job-list .col-md-4 {
+        width: 32.33%;
+        margin-left: 1.5%;
+    }
 }

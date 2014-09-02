@@ -247,7 +247,6 @@ class JobsExperts_Core_Models_Pro extends JobsExperts_Framework_PostModel
     public function get_avatar($size = 640, $use_ratio = false)
     {
         $avatar = get_post_meta($this->id, '_expert_avatar', true);
-
         if ($avatar) {
             $name = pathinfo($avatar, PATHINFO_FILENAME);
             $upload_dir = wp_upload_dir();
@@ -257,43 +256,42 @@ class JobsExperts_Core_Models_Pro extends JobsExperts_Framework_PostModel
             $apath = $upload_dir['basedir'] . $apath;
 
             $image = wp_get_image_editor($apath);
-            //ratio
-            $isize = $image->get_size();
-            $width = $size;
-            $ratio = $isize['width'] / $isize['height'];
-            $height = $width / $ratio;
-            if ($use_ratio == false) {
-                //we will create round image
-                if ($ratio < 1) {
-                    $width = $height;
-                } else {
-                    $height = $width;
+            if (!is_wp_error($image)) {
+                //ratio
+                $isize = @$image->get_size();
+
+                $width = $size;
+                $ratio = $isize['width'] / $isize['height'];
+                $height = $width / $ratio;
+                if ($use_ratio == false) {
+                    //we will create round image
+                    if ($ratio < 1) {
+                        $width = $height;
+                    } else {
+                        $height = $width;
+                    }
                 }
-            }
 
-            $new_path = $upload_dir['path'] . '/' . $name . '_' . $width . '-' . $height . '.jpg';
-            $new_url = $upload_dir['url'] . '/' . $name . '_' . $width . '-' . $height . '.jpg';
+                $new_path = $upload_dir['path'] . '/' . $name . '_' . $width . '-' . $height . '.jpg';
+                $new_url = $upload_dir['url'] . '/' . $name . '_' . $width . '-' . $height . '.jpg';
 
-            $is_overwrite = false;
-
-            if (file_exists($new_path)) {
                 $is_overwrite = false;
-            }
 
-            $is_overwrite = true;
+                if (file_exists($new_path)) {
+                    $is_overwrite = false;
+                }
 
-            if (!$is_overwrite) {
-                return '<img src="' . $new_url . '"/>';
-            } else {
-                if (!is_wp_error($image)) {
+                $is_overwrite = true;
+
+                if (!$is_overwrite) {
+                    return '<img src="' . $new_url . '"/>';
+                } else {
                     $image->resize($width, $width, true);
                     $image->save($new_path);
                     return '<img src="' . $new_url . '"/>';
-
-                } else {
-                    get_avatar($this->contact_email, $size);
                 }
             }
+
         }
         return get_avatar($this->contact_email, $size);
     }
