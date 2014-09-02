@@ -112,7 +112,7 @@ class JobsExperts_Core_CustomContent extends JobsExperts_Framework_Module
                 wp_enqueue_style('jobs-single-shortcode');
             } elseif (is_single() && $post->post_type == 'jbp_pro') {
                 wp_enqueue_style('expert-single-shortcode');
-            } elseif (is_post_type_archive('jbp_job')) {
+            } elseif (is_post_type_archive('jbp_job')|| is_tax('jbp_category') || is_tax('jbp_skills_tag')) {
                 wp_enqueue_style('jobs-list-shortcode');
             } elseif (is_post_type_archive('jbp_pro')) {
                 wp_enqueue_style('expert-list-shortcode');
