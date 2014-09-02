@@ -19,7 +19,14 @@ jQuery(document).ready(function ($) {
 
     if ($('.jbp-pro-list').size() > 0) {
         $('.jbp-pro-list').find('.expert-avatar').each(function () {
-            $(this).css('height', $(this).width());
+            var img = $(this).find('img').first();
+            $(this).css('height',$(this).width());
+            if (!img.hasClass('avatar')) {
+                img.css({
+                    'height': '100%',
+                    'width': 'auto'
+                })
+            }
         })
 
     }

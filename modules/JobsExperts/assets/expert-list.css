@@ -140,8 +140,8 @@
 .jbp-pro-list .expert-avatar img {
 
     box-shadow: none;
-    width: auto;
-    height: 100%;
+    width: 100%;
+    height: auto;
     display: block;
     margin: 0 auto;
     border-radius: 0;
