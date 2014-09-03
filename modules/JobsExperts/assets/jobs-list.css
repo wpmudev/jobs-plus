@@ -54,6 +54,10 @@
     padding-top: 10px;
 }
 
+.jbp_job_except .jbp_inside h4 {
+    font-family: "Open Sans", sans-serif;
+}
+
 .jbp_job_except .jbp_inside .ellipsis {
     max-height: 120px;
     overflow-y: hidden;

@@ -14,7 +14,7 @@
     background: #f1f1f1;
 }
 
-.jobs-expert-form .expert-avatar {
+.expert-single .expert-avatar {
     background: #f1f1f1;
 }
 
@@ -26,6 +26,7 @@
     width: 100%;
     vertical-align: middle;
     overflow: hidden;
+    padding: 5px 0 !important;
 }
 
 .expert-single .expert-avatar .panel-footer {
@@ -34,7 +35,7 @@
 
 .expert-single .expert-avatar img {
     width: 100%;
-    max-width: 130px;
+    max-width: 125px;
     max-height: 130px;
     height: auto;
     border-radius: 50%;
@@ -42,7 +43,7 @@
     -moz-border-radius: 50%;
     display: block;
     border: solid 5px white;
-    margin: 0 auto;
+    margin: auto;
 }
 
 .expert-single .expert-avatar .panel-footer {
