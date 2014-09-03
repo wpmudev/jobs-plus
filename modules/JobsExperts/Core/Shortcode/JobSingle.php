@@ -36,11 +36,12 @@ class JobsExperts_Core_Shortcode_JobSingle extends JobsExperts_Shortcode
 
     private function load_assets()
     {
-        $this->_add_action('wp_head','inject_assets',999);
+        $this->_add_action('wp_head', 'inject_assets', 999);
 
     }
 
-    function inject_asset(){
+    function inject_asset()
+    {
         wp_enqueue_style('jobs-single-shortcode');
     }
 
@@ -85,7 +86,7 @@ class JobsExperts_Core_Shortcode_JobSingle extends JobsExperts_Shortcode
                             <a class="btn btn-info btn-sm" href="<?php echo add_query_arg(array(
                                 'contact' => get_post()->post_name
                             ), get_permalink($page_module->page($page_module::JOB_CONTACT))) ?>"><?php _e('Contact', JBP_TEXT_DOMAIN) ?></a>
-                            <?php else: ?>
+                        <?php else: ?>
                             <a disabled class="btn btn-info btn-sm" href="#"><?php _e('Contact', JBP_TEXT_DOMAIN) ?></a>
                         <?php endif; ?>
                     </div>
@@ -93,7 +94,7 @@ class JobsExperts_Core_Shortcode_JobSingle extends JobsExperts_Shortcode
                 </div>
                 <div class="row job-content">
                     <div class="col-md-12">
-                        <?php echo ($model->description) ?>
+                        <?php echo($model->description) ?>
                     </div>
                     <div class="col-md-12">
                         <?php
@@ -113,7 +114,9 @@ class JobsExperts_Core_Shortcode_JobSingle extends JobsExperts_Shortcode
                         $files = array_unique(array_filter(explode(',', $model->portfolios)));
                         if (!empty($files)): ?>
                             <div class="row-fluid full">
-                                <label><?php _e('Sample Files', JBP_TEXT_DOMAIN) ?></label>
+                                <div class="page-header">
+                                    <label><?php _e('Sample Files', JBP_TEXT_DOMAIN) ?></label>
+                                </div>
                                 <?php
                                 global $jbp_component_uploader;
                                 $jbp_component_uploader->show_on_front($model->id, $files);
