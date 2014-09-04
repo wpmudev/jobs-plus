@@ -63,6 +63,7 @@ class JobsExperts_Core_Views_Settings_General extends JobsExperts_Framework_Rend
             ?>
             <script type="text/javascript">
                 jQuery(document).ready(function ($) {
+                    var addon_has_changed = false;
                     $('.plugin').click(function (e) {
                         e.preventDefault();
                         var id = $(this).data('id');
@@ -76,7 +77,18 @@ class JobsExperts_Core_Views_Settings_General extends JobsExperts_Framework_Rend
                             $(this).text('<?php _e('Deactivate',JBP_TEXT_DOMAIN) ?>');
                         }
                         $('.notif').removeClass('hide');
+                        addon_has_changed = true;
+                    });
+
+                    $('#jobs-setting').on('submit', function () {
+                        addon_has_changed = false;
                     })
+
+                    window.onbeforeunload = function () {
+                        if (addon_has_changed == true) {
+                            return '<?php echo __('It looks like you have been editing something -- if you leave before submitting your changes will be lost.',JBP_TEXT_DOMAIN) ?>';
+                        }
+                    }
                 })
             </script>
         </div>
