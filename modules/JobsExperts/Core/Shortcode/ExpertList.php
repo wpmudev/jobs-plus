@@ -43,12 +43,16 @@ class JobsExperts_Core_Shortcode_ExpertList extends JobsExperts_Shortcode
 
     public function shortcode($atts)
     {
-        //$this->load_scripts();
+        $this->load_scripts();
 
         //get plugin instance
         $plugin = JobsExperts_Plugin::instance();
+	    $a = shortcode_atts( array(
+		    'post_per_page' => $plugin->settings()->expert_per_page
+	    ), $atts );
+
         //get jobs
-        $post_per_page = $plugin->settings()->expert_per_page;
+        $post_per_page = $a['post_per_page'];
         $paged = get_query_var('paged');
         $args = array(
             'post_status' => 'publish',

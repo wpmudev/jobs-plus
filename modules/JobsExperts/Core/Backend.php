@@ -436,6 +436,13 @@ class JobsExperts_Core_Backend extends JobsExperts_Framework_Module
                 ));
                 $template->render();
                 break;
+            case 'shortcode':
+                $template = new JobsExperts_Core_Views_Settings_Shortcode(array(
+                    'form' => $form,
+                    'model' => $model
+                ));
+                $template->render();
+                break;
         }
     }
 

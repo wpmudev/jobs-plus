@@ -78,6 +78,7 @@ class JobsExperts_Core_Views_Settings_General extends JobsExperts_Framework_Rend
                         }
                         $('.notif').removeClass('hide');
                         addon_has_changed = true;
+	                    console.log(addon_has_changed);
                     });
 
                     $('#jobs-setting').on('submit', function () {

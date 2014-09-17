@@ -50,6 +50,10 @@ class JobsExperts_Core_Shortcode_ExpertSingle extends JobsExperts_Shortcode
 
     public function shortcode($atts)
     {
+        extract(shortcode_atts(array(
+
+        ), $atts));
+
         $this->load_scripts();
 
         //get plugin instance

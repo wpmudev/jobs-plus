@@ -77,6 +77,11 @@ class JobsExperts_Core_Views_Settings extends JobsExperts_Framework_Render
                                             <img
                                                 src="<?php echo $plugin->_module_url ?>assets/image/backend/icons/16px/16px_Expert_Dark.svg"> <?php _e('Experts Settings', JBP_TEXT_DOMAIN) ?>
                                         </a></li>
+                                    <li <?php echo $this->active_tab('shortcode') ?>>
+                                        <a href="<?php echo admin_url('edit.php?post_type=jbp_job&page=jobs-plus-menu&tab=shortcode') ?>">
+                                            <i class="fa fa-info"></i>
+                                            <?php _e('Shortcode Implement', JBP_TEXT_DOMAIN) ?>
+                                        </a></li>
                                     <?php do_action('jbp_setting_menu') ?>
                                 </ul>
                             </div>
