@@ -244,7 +244,7 @@ class JobsExperts_Core_Views_Settings_Shortcode extends JobsExperts_Framework_Re
 			    <div class="clearfix"></div>
 
 			    <div class="text-left">
-				    <p><code>[jbp-update-update-page]</code></p>
+				    <p><code>[jbp-expert-update-page]</code></p>
 				    <ul>
 					    <li>
 						    <?php _e("This shortcode doesn't have any parameter.", JBP_TEXT_DOMAIN) ?>
@@ -267,7 +267,7 @@ class JobsExperts_Core_Views_Settings_Shortcode extends JobsExperts_Framework_Re
 				    <ul>
 					    <li>
 						    <mark>id</mark>:
-						    <?php _e("ID of the job you want to send contact",JBP_TEXT_DOMAIN) ?>
+						    <?php _e("ID of the job you want to send contact to.",JBP_TEXT_DOMAIN) ?>
 					    </li>
 					    <li>
 						    <mark><?php _e("success_text", JBP_TEXT_DOMAIN) ?></mark>
@@ -289,7 +289,7 @@ class JobsExperts_Core_Views_Settings_Shortcode extends JobsExperts_Framework_Re
 				    <ul>
 					    <li>
 						    <mark>id</mark>:
-						    <?php _e("ID of the expert you want to send contact",JBP_TEXT_DOMAIN) ?>
+						    <?php _e("ID of the expert you want to send contact to.",JBP_TEXT_DOMAIN) ?>
 					    </li>
 					    <li>
 						    <mark><?php _e("success_text", JBP_TEXT_DOMAIN) ?></mark>

@@ -14,9 +14,9 @@ class JobsExperts_Core_Shortcode_LandingPage extends JobsExperts_Shortcode {
 			'expert_show_count' => 6
 		), $atts );
 
-		/*        wp_enqueue_style('jobs-list-shortcode');
+		        wp_enqueue_style('jobs-list-shortcode');
 				wp_enqueue_style('expert-list-shortcode');
-				wp_enqueue_style('jobs-landing-shortcode');*/
+				wp_enqueue_style('jobs-landing-shortcode');
 		$plugin      = JobsExperts_Plugin::instance();
 		$page_module = $plugin->page_module();
 
