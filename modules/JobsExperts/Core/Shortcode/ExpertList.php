@@ -61,8 +61,8 @@ class JobsExperts_Core_Shortcode_ExpertList extends JobsExperts_Shortcode
         );
 
         $search = '';
-        if (isset($_GET['s'])) {
-            $search = $args['s'] = $_GET['s'];
+        if (isset($_GET['query'])) {
+            $search = $args['s'] = $_GET['query'];
         }
 
         $args = apply_filters('jbp_expert_search_params', $args);
@@ -103,9 +103,9 @@ class JobsExperts_Core_Shortcode_ExpertList extends JobsExperts_Shortcode
         <div class="hn-container">
             <!--Search section-->
             <div class="expert-search">
-                <form method="get" action="<?php echo get_post_type_archive_link('jbp_pro'); ?>">
+                <form method="get" action="<?php echo is_singular() ? get_permalink( get_the_ID() ) : get_post_type_archive_link( 'jbp_expert' ) ?>">
                     <div class="search input-group input-group-lg has-feedback" role="search" id="mySearch">
-                        <input style="border-radius: 0" name="s" value="<?php echo $search ?>" type="search"
+                        <input style="border-radius: 0" name="query" value="<?php echo $search ?>" type="search"
                                class="form-control pro-search"
                                placeholder="<?php echo __(sprintf('Search For %s', $plugin->get_expert_type()->labels->name), JBP_TEXT_DOMAIN) ?>"/>
 <span class="input-group-btn">

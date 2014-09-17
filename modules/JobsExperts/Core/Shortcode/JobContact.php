@@ -38,13 +38,20 @@ class JobsExperts_Core_Shortcode_JobContact extends JobsExperts_Shortcode {
 
 		$a = shortcode_atts( array(
 			'success_text' => __( "Your request has been sent. Thank you!", JBP_TEXT_DOMAIN ),
-			'error_text'   => __( "Some error happened, please try later. Thank you!", JBP_TEXT_DOMAIN )
+			'error_text'   => __( "Some error happened, please try later. Thank you!", JBP_TEXT_DOMAIN ),
+			'id'           => 0
 		), $atts );
 
 		//get plugin instance
-		$plugin  = JobsExperts_Plugin::instance();
-		$slug    = isset( $_GET['contact'] ) ? $_GET['contact'] : null;
-		$model   = JobsExperts_Core_Models_Job::instance()->get_one( $slug );
+		$plugin = JobsExperts_Plugin::instance();
+		if ( $a['id'] != 0 ) {
+			$model = JobsExperts_Core_Models_Job::instance()->get_one($a['id']);
+		} else {
+			$slug  = isset( $_GET['contact'] ) ? $_GET['contact'] : null;
+			$model = JobsExperts_Core_Models_Job::instance()->get_one( $slug );
+		}
+
+
 		$contact = new JobsExperts_Core_Models_Contact();
 		$form    = JobsExperts_Framework_ActiveForm::generateForm( $contact );
 
@@ -67,11 +74,11 @@ class JobsExperts_Core_Shortcode_JobContact extends JobsExperts_Shortcode {
 					<?php if ( isset( $_GET['status'] ) ): ?>
 						<?php if ( $_GET['status'] == 'success' ): ?>
 						<div class="alert alert-success">
-							<strong><?php echo esc_html($a['success_text']) ?></strong>
+							<strong><?php echo esc_html( $a['success_text'] ) ?></strong>
 						</div>
 					<?php else: ?>
 						<div class="alert alert-danger">
-							<strong><?php echo esc_html($a['error_text']) ?></strong>
+							<strong><?php echo esc_html( $a['error_text'] ) ?></strong>
 						</div>
 					<?php endif; ?>
 					<?php else: ?>

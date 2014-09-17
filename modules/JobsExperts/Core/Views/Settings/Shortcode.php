@@ -266,6 +266,10 @@ class JobsExperts_Core_Views_Settings_Shortcode extends JobsExperts_Framework_Re
 				    <p><code>[jbp-job-contact-page]</code></p>
 				    <ul>
 					    <li>
+						    <mark>id</mark>:
+						    <?php _e("ID of the job you want to send contact",JBP_TEXT_DOMAIN) ?>
+					    </li>
+					    <li>
 						    <mark><?php _e("success_text", JBP_TEXT_DOMAIN) ?></mark>
 						    : <?php _e("The text to display after user submission successfully.", JBP_TEXT_DOMAIN) ?>
 					    </li>
@@ -283,6 +287,10 @@ class JobsExperts_Core_Views_Settings_Shortcode extends JobsExperts_Framework_Re
 			    <div class="text-left">
 				    <p><code>[jbp-expert-contact-page]</code></p>
 				    <ul>
+					    <li>
+						    <mark>id</mark>:
+						    <?php _e("ID of the expert you want to send contact",JBP_TEXT_DOMAIN) ?>
+					    </li>
 					    <li>
 						    <mark><?php _e("success_text", JBP_TEXT_DOMAIN) ?></mark>
 						    : <?php _e("The text to display after user submission successfully.", JBP_TEXT_DOMAIN) ?>
