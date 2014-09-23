@@ -53,13 +53,13 @@ class JobsExperts_Core_Views_Settings_General extends JobsExperts_Framework_Rend
             <h3 class="hndle"><span><?php esc_html_e('Addons', JBP_TEXT_DOMAIN) ?></span></h3>
         </div>
         <div class="">
-            <div class="alert alert-info alert-sm hide notif">
-                <?php _e('Settings have changed, you should save them!'); ?>
+            <div class="alert alert-success alert-sm hide notif">
+
             </div>
             <?php
             $components->prepare_items();
             $components->display();
-            $form->hiddenField($model, 'plugins', array('id' => 'jbp_components'));
+            //$form->hiddenField($model, 'plugins', array('id' => 'jbp_components'));
             ?>
             <script type="text/javascript">
                 jQuery(document).ready(function ($) {
@@ -67,18 +67,54 @@ class JobsExperts_Core_Views_Settings_General extends JobsExperts_Framework_Rend
                     $('.plugin').click(function (e) {
                         e.preventDefault();
                         var id = $(this).data('id');
+                        var that = $(this);
                         if ($(this).data('type') == 'deactive') {
                             $(this).data('type', 'active');
-                            $('#jbp_components').val($('#jbp_components').val().replace(id, ''));
-                            $(this).text('<?php _e('Activate',JBP_TEXT_DOMAIN) ?>');
+                            /*$('#jbp_components').val($('#jbp_components').val().replace(id, ''));*/
+                            //ajax update
+                            $.ajax({
+                                type: 'POST',
+                                url: '<?php echo admin_url('admin-ajax.php') ?>',
+                                data: {
+                                    action: 'addons_action',
+                                    type: 'deactive',
+                                    id: id,
+                                    _nonce: '<?php echo wp_create_nonce('addons_action') ?>'
+                                },
+                                beforeSend: function () {
+                                    that.attr('disabled','disabled');
+                                },
+                                success: function (data) {
+                                    that.removeAttr('disabled');
+                                    that.text('<?php _e('Activate',JBP_TEXT_DOMAIN) ?>');
+                                    $('.notif').html(data).removeClass('hide');
+                                }
+                            })
                         } else {
                             $(this).data('type', 'deactive');
-                            $('#jbp_components').val($('#jbp_components').val() + ',' + id);
-                            $(this).text('<?php _e('Deactivate',JBP_TEXT_DOMAIN) ?>');
+                            //$('#jbp_components').val($('#jbp_components').val() + ',' + id);
+                            $.ajax({
+                                type: 'POST',
+                                url: '<?php echo admin_url('admin-ajax.php') ?>',
+                                data: {
+                                    action: 'addons_action',
+                                    type: 'active',
+                                    id: id,
+                                    _nonce: '<?php echo wp_create_nonce('addons_action') ?>'
+                                },
+                                beforeSend: function () {
+                                    that.attr('disabled','disabled');
+                                },
+                                success: function (data) {
+                                    that.removeAttr('disabled');
+                                    that.text('<?php _e('Deactivate',JBP_TEXT_DOMAIN) ?>');
+                                    $('.notif').html(data).removeClass('hide');
+                                }
+                            })
                         }
-                        $('.notif').removeClass('hide');
-                        addon_has_changed = true;
-	                    console.log(addon_has_changed);
+
+                        addon_has_changed = false;
+                        //console.log(addon_has_changed);
                     });
 
                     $('#jobs-setting').on('submit', function () {

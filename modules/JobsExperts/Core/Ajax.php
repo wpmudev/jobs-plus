@@ -13,6 +13,42 @@ class JobsExperts_Core_Ajax extends JobsExperts_Framework_Module
         $this->_add_ajax_action('job_validate', 'ajax_validate');
         $this->_add_ajax_action('job_save', 'save_model');
         $this->_add_ajax_action('send_email', 'send_contact');
+
+        //addon manager
+        if (is_admin()) {
+            $this->_add_ajax_action('addons_action', 'addons_action');
+        }
+    }
+
+    function addons_action()
+    {
+        if (isset($_POST['_nonce']) && wp_verify_nonce($_POST['_nonce'], 'addons_action')) {
+            $id = $_POST['id'];
+            $type = $_POST['type'];
+            $setting = JobsExperts_Plugin::instance()->settings();
+            //get the active plugins
+            $plugins = array_filter(explode(',', $setting->plugins));
+            //find this add on data
+            $a = JobsExperts_AddOn::get_available_components();
+            $current_addon = $a[$id];
+
+            if ($type == 'deactive') {
+                $index = array_search($id, $plugins);
+                if ($index!==false) {
+                    unset($plugins[$index]);
+                    echo sprintf(__('The add on <strong>%s</strong> has been deactivated', JBP_TEXT_DOMAIN), $current_addon['Name']);
+                }
+            } else {
+                $plugins[] = $id;
+                echo sprintf(__('The add on <strong>%s</strong> has been activated', JBP_TEXT_DOMAIN), $current_addon['Name']);
+            }
+            $plugins = array_unique($plugins);
+            $setting->plugins = implode(',', $plugins);
+            $setting->save();
+        }else{
+            echo 123;
+        }
+        exit;
     }
 
     function send_contact()

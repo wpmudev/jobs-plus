@@ -35,7 +35,6 @@ class JobsExperts_Framework_EditableForm
             if ($this->model->$key) {
                 $is_display = true;
                 if ($val['type'] == 'dropdown') {
-                    $text = [];
                     if (!is_array($this->model->$key)) {
                         $this->model->$key = array($this->model->$key);
                     }
