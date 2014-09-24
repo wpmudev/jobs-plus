@@ -1059,15 +1059,18 @@
 .hn-container img {
     vertical-align: middle;
 }
+
 .hn-container .img-responsive {
     display: block;
     width: 100% \9;
     max-width: 100%;
     height: auto;
 }
+
 .hn-container .img-rounded {
     border-radius: 6px;
 }
+
 .hn-container .img-thumbnail {
     padding: 4px;
     line-height: 1.428571429;
@@ -1082,6 +1085,7 @@
     max-width: 100%;
     height: auto;
 }
+
 .hn-container .img-circle {
     border-radius: 50%;
 }
@@ -6133,4 +6137,129 @@ a.list-group-item.active > .hn-container .badge,
     .hn-container .hidden-print {
         display: none !important;
     }
+}
+
+.hn-container {
+    /*!
+   * bootstrap-vertical-tabs - v1.1.0
+   * https://dbtek.github.io/bootstrap-vertical-tabs
+   * 2014-07-24
+   * Copyright (c) 2014 İsmail Demirbilek
+   * License: MIT
+   */
+}
+
+.hn-container .tabs-left,
+.hn-container .tabs-right {
+    border-bottom: none;
+    padding-top: 2px;
+    margin-top: 0;
+}
+
+.hn-container .tabs-left {
+    /*border-right: 1px solid #ddd;*/
+    margin-right: -1px;
+}
+
+.hn-container .tabs-right {
+    border-left: 1px solid #ddd;
+}
+
+.hn-container .tabs-left > li,
+.hn-container .tabs-right > li {
+    float: none;
+    margin-bottom: 2px;
+}
+
+.hn-container .tabs-left > li {
+    margin-right: -1px;
+}
+
+.hn-container .tabs-right > li {
+    margin-left: -1px;
+}
+
+.hn-container .tabs-left > li.active > a,
+.hn-container .tabs-left > li.active > a:hover,
+.hn-container .tabs-left > li.active > a:focus {
+    border-bottom-color: #ddd;
+    border-right-color: transparent;
+}
+
+.hn-container .tabs-left li.active {
+    background-color: transparent !important;
+}
+
+.hn-container .tabs-left > li > a:hover {
+    background-color: white;
+    border: solid 1px #ddd;
+}
+
+.hn-container .tabs-right > li.active > a,
+.hn-container .tabs-right > li.active > a:hover,
+.hn-container .tabs-right > li.active > a:focus {
+    border-bottom: 1px solid #ddd;
+    border-left-color: transparent;
+}
+
+.hn-container .tabs-left > li > a {
+    border-radius: 4px 0 0 4px;
+    margin-right: 0;
+    display: block;
+}
+
+.hn-container .tabs-right > li > a {
+    border-radius: 0 4px 4px 0;
+    margin-right: 0;
+}
+
+.hn-container .sideways {
+    margin-top: 50px;
+    border: none;
+    position: relative;
+}
+
+.hn-container .sideways > li {
+    height: 20px;
+    width: 120px;
+    margin-bottom: 100px;
+}
+
+.hn-container .sideways > li > a {
+    border-bottom: 1px solid #ddd;
+    border-right-color: transparent;
+    text-align: center;
+    border-radius: 4px 4px 0px 0px;
+}
+
+.hn-container .sideways > li.active > a,
+.hn-container .sideways > li.active > a:hover,
+.hn-container .sideways > li.active > a:focus {
+    border-bottom-color: transparent;
+    border-right-color: #ddd;
+    border-left-color: #ddd;
+}
+
+.hn-container .sideways.tabs-left {
+    left: -50px;
+}
+
+.hn-container .sideways.tabs-right {
+    right: -50px;
+}
+
+.hn-container .sideways.tabs-right > li {
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    transform: rotate(90deg);
+}
+
+.hn-container .sideways.tabs-left > li {
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg);
+    transform: rotate(-90deg);
 }

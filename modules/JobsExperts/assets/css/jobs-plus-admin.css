@@ -169,3 +169,6 @@ a.jbp_button.jbp_experts_pages:hover:before {
     float: left;
     margin-right: 10px;
 }
+.jbp-setting-content{
+    background-color: #ffffff;
+}
