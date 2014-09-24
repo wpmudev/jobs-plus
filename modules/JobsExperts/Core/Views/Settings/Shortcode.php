@@ -21,7 +21,7 @@ class JobsExperts_Core_Views_Settings_Shortcode extends JobsExperts_Framework_Re
             <div class="col-md-6 col-xs-6 col-sm-6 text-center">
                 <img class=""
                      src="<?php echo $plugin->_module_url ?>assets/image/icons/Add_an_Expert/Add_an_Experts_Dark.svg">
-                <p><strong><?php _e("Become Expert Button", JBP_TEXT_DOMAIN) ?></strong></p>
+                <p><strong><?php _e("Become an Expert Button", JBP_TEXT_DOMAIN) ?></strong></p>
 
                 <div class="clearfix"></div>
 
@@ -234,7 +234,7 @@ class JobsExperts_Core_Views_Settings_Shortcode extends JobsExperts_Framework_Re
 				    <p><code>[jbp-job-update-page]</code></p>
 				    <ul>
 					    <li>
-						    <?php _e("This shortcode doesn't have any parameter.", JBP_TEXT_DOMAIN) ?>
+						    <?php _e("This shortcode doesn't have any parameters.", JBP_TEXT_DOMAIN) ?>
 					    </li>
 				    </ul>
 			    </div>
@@ -247,7 +247,7 @@ class JobsExperts_Core_Views_Settings_Shortcode extends JobsExperts_Framework_Re
 				    <p><code>[jbp-expert-update-page]</code></p>
 				    <ul>
 					    <li>
-						    <?php _e("This shortcode doesn't have any parameter.", JBP_TEXT_DOMAIN) ?>
+						    <?php _e("This shortcode doesn't have any parameters.", JBP_TEXT_DOMAIN) ?>
 					    </li>
 				    </ul>
 			    </div>
@@ -368,7 +368,7 @@ class JobsExperts_Core_Views_Settings_Shortcode extends JobsExperts_Framework_Re
 				    <p><code>[jbp-my-job-page]</code></p>
 				    <ul>
 					    <li>
-						    <?php _e("This shortcode doesn't have any parameter.", JBP_TEXT_DOMAIN) ?>
+						    <?php _e("This shortcode doesn't have any parameters.", JBP_TEXT_DOMAIN) ?>
 					    </li>
 				    </ul>
 			    </div>
@@ -382,7 +382,7 @@ class JobsExperts_Core_Views_Settings_Shortcode extends JobsExperts_Framework_Re
 				    <p><code>[jbp-my-expert-page]</code></p>
 				    <ul>
 					    <li>
-						    <?php _e("This shortcode doesn't have any parameter.", JBP_TEXT_DOMAIN) ?>
+						    <?php _e("This shortcode doesn't have any parameters.", JBP_TEXT_DOMAIN) ?>
 					    </li>
 				    </ul>
 			    </div>
