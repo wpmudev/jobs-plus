@@ -730,7 +730,7 @@ class JobsExperts_Components_Uploader_View extends JobsExperts_Framework_Render
                 <input type="hidden" name="parent_id" value="<?php echo $model->id ?>">
                 <button class="btn btn-primary btn-sm hn-save-file"
                         type="submit"><?php _e('Submit', JBP_TEXT_DOMAIN) ?></button>
-                <button class="btn btn-danger btn-sm hn-cancel-file"
+                <button class="btn btn-default btn-sm hn-cancel-file"
                         type="button"><?php _e('Cancel', JBP_TEXT_DOMAIN) ?></button>
             </form>
         </div>
