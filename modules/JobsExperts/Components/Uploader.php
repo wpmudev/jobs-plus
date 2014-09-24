@@ -194,7 +194,9 @@ class JobsExperts_Components_Uploader extends JobsExperts_Components
     -moz-opacity:0.6;
     -khtml-opacity: 0.6;
     opacity: 0.6;top:0;left:0">
-            <img style="box-shadow:none;position: absolute;width:auto;height:auto;top: 50%;left: 50%;margin-top: -15px;margin-left: -15px;" src="<?php echo JobsExperts_Plugin::instance()->_module_url ?>assets/image/ajax-loader.gif"/>
+            <img
+                style="box-shadow:none;position: absolute;width:auto;height:auto;top: 50%;left: 50%;margin-top: -15px;margin-left: -15px;"
+                src="<?php echo JobsExperts_Plugin::instance()->_module_url ?>assets/image/ajax-loader.gif"/>
         </div>
         <?php
         return preg_replace('/^\s+|\n|\r|\s+$/m', '', ob_get_clean());
@@ -245,6 +247,11 @@ class JobsExperts_Components_Uploader extends JobsExperts_Components
             if (isset($_FILES['hn_uploader'])) {
                 $model->file = $_FILES['hn_uploader'];
             }
+
+            if (!empty($_POST['attachment'])) {
+                $model->file = $_POST['attachment'];
+            }
+
             $model->parent_id = $_POST['parent_id'];
 
             if ($model->validate()) {

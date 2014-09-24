@@ -53,16 +53,23 @@ class JobsExperts_Components_Uploader_Model extends JobsExperts_Framework_PostMo
         require_once(ABSPATH . 'wp-admin/includes/image.php');
         require_once(ABSPATH . 'wp-admin/includes/file.php');
         require_once(ABSPATH . 'wp-admin/includes/media.php');
-        if (!empty($this->file) && is_array($this->file)) {
-            $media_id = media_handle_sideload($this->file, $this->parent_id, $this->description, array(
-                'post_status' => 'inherit'
-            ));
-            update_post_meta($this->id, '_file', $media_id);
-            $this->file = $media_id;
-            //update post title
-            $post = get_post($this->parent_id);
-            $post->post_title = $this->file['name'];
-            wp_update_post($post->to_array());
+        if (!empty($this->file)) {
+            if (is_array($this->file)) {
+                $media_id = media_handle_sideload($this->file, $this->parent_id, $this->description, array(
+                    'post_status' => 'inherit'
+                ));
+                update_post_meta($this->id, '_file', $media_id);
+                $this->file = $media_id;
+                //update post title
+                $post = get_post($this->parent_id);
+                $post->post_title = $this->file['name'];
+                wp_update_post($post->to_array());
+            }else{
+                update_post_meta($this->id, '_file', $this->file);
+                $post = get_post($this->parent_id);
+                $post->post_title = $this->name();
+                wp_update_post($post->to_array());
+            }
         }
     }
 
@@ -77,7 +84,11 @@ class JobsExperts_Components_Uploader_Model extends JobsExperts_Framework_PostMo
     {
         if ($this->is_new_record()) {
             if (!empty($this->file)) {
-                return $this->file['name'];
+                if (is_array($this->file)) {
+                    return $this->file['name'];
+                } else {
+                    return pathinfo(wp_get_attachment_url($this->file), PATHINFO_BASENAME);
+                }
             } else {
                 return __('Link', JBP_TEXT_DOMAIN);
             }
@@ -99,15 +110,20 @@ class JobsExperts_Components_Uploader_Model extends JobsExperts_Framework_PostMo
             }
 
             if (!empty($this->file)) {
-                //validate files
-                $allowed = array_values(get_allowed_mime_types());
+                if (is_array($this->file)) {
+                    //validate files
+                    $allowed = array_values(get_allowed_mime_types());
 
-                if (!in_array($this->file['type'], $allowed)) {
-                    $this->set_error('file', __('File type not allow', JBP_TEXT_DOMAIN));
-                } elseif (jbp_format_bytes($this->file['size']) > get_max_file_upload() * 1000000) {
-                    $this->set_error('file', __('File too large!', JBP_TEXT_DOMAIN));
+                    if (!in_array($this->file['type'], $allowed)) {
+                        $this->set_error('file', __('File type not allow', JBP_TEXT_DOMAIN));
+                    } elseif (jbp_format_bytes($this->file['size']) > get_max_file_upload() * 1000000) {
+                        $this->set_error('file', __('File too large!', JBP_TEXT_DOMAIN));
+                    }
+                } else {
+
                 }
             }
+
         }
     }
 

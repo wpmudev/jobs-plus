@@ -53,7 +53,7 @@ class JobsExpert_Core_Shortcode_MyJob extends JobsExperts_Shortcode {
 							<td><a href="<?php echo get_permalink( $model->id ) ?>"><?php echo $model->job_title ?></a>
 							</td>
 							<td><?php echo $model->render_prices() ?></td>
-							<td><?php echo ucfirst( $model->get_raw_post()->post_status ) ?></td>
+							<td><?php echo ucfirst( $model->get_status() ) ?></td>
 							<td style="width: 120px">
 								<a class="btn btn-primary btn-sm" href="<?php echo add_query_arg( array(
 									'job' => $model->get_raw_post()->ID

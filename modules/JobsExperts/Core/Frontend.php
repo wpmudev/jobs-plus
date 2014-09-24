@@ -304,6 +304,11 @@ class JobsExperts_Core_Frontend extends JobsExperts_Framework_Module
             $term = get_term_by('slug', get_query_var('jbp_category'), 'jbp_category');
 
             return __('Job Category: ', JBP_TEXT_DOMAIN) . ' ' . $term->name;
+        } elseif (is_singular('jbp_job') && in_the_loop()) {
+            global $wp_query;
+            if ($wp_query->is_main_query()) {
+                $title = do_shortcode('<p style="text-align: center">[jbp-expert-post-btn][jbp-job-post-btn][jbp-expert-browse-btn][jbp-job-browse-btn][jbp-expert-profile-btn][jbp-my-job-btn]</p>') . $title;
+            }
         }
 
         return $title;

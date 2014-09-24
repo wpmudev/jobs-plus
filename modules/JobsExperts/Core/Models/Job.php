@@ -32,7 +32,7 @@ class JobsExperts_Core_Models_Job extends JobsExperts_Framework_PostModel
 
     function before_save()
     {
-        $this->description = wp_kses($this->description,wp_kses_allowed_html('post'));
+        $this->description = wp_kses($this->description, wp_kses_allowed_html('post'));
     }
 
     function after_save()
@@ -284,6 +284,15 @@ class JobsExperts_Core_Models_Job extends JobsExperts_Framework_PostModel
         }
 
         return false;
+    }
+
+    function get_status()
+    {
+        $status = $this->get_raw_post()->post_status;
+        if ($status == 'publish') {
+            $status = 'published';
+        }
+        return $status;
     }
 
     public function add_view_count()

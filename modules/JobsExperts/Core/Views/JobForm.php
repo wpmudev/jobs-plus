@@ -332,7 +332,7 @@ class JobsExperts_Core_Views_JobForm extends JobsExperts_Framework_Render
                                 });
                                 //display noty
                                 var n = noty({
-                                    text: '<?php _e('Error happened, please check the form data',JBP_TEXT_DOMAIN) ?>',
+                                    text: '<?php _e('Error, please check the form data.',JBP_TEXT_DOMAIN) ?>',
                                     layout: 'center',
                                     type: 'error',
                                     timeout: 5000

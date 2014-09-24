@@ -47,9 +47,9 @@ class JobsExperts_Core_Shortcode_ExpertList extends JobsExperts_Shortcode
 
         //get plugin instance
         $plugin = JobsExperts_Plugin::instance();
-	    $a = shortcode_atts( array(
-		    'post_per_page' => $plugin->settings()->expert_per_page
-	    ), $atts );
+        $a = shortcode_atts(array(
+            'post_per_page' => $plugin->settings()->expert_per_page
+        ), $atts);
 
         //get jobs
         $post_per_page = $a['post_per_page'];
@@ -103,7 +103,8 @@ class JobsExperts_Core_Shortcode_ExpertList extends JobsExperts_Shortcode
         <div class="hn-container">
             <!--Search section-->
             <div class="expert-search">
-                <form method="get" action="<?php echo is_singular() ? get_permalink( get_the_ID() ) : get_post_type_archive_link( 'jbp_expert' ) ?>">
+                <form method="get"
+                      action="<?php echo is_singular() ? get_permalink(get_the_ID()) : get_post_type_archive_link('jbp_expert') ?>">
                     <div class="search input-group input-group-lg has-feedback" role="search" id="mySearch">
                         <input style="border-radius: 0" name="query" value="<?php echo $search ?>" type="search"
                                class="form-control pro-search"
@@ -196,13 +197,15 @@ class JobsExperts_Core_Shortcode_ExpertList extends JobsExperts_Shortcode
                                                 </div>
                                                 <?php
                                                 $text = !empty($pro->short_description) ? $pro->short_description : $pro->biography;
-                                                //$text = strip_tags($text);
-                                                $text = jbp_shorten_text($text, $charlength);
-                                                $text = apply_filters('jbp_expert_list_content', jbp_shorten_text(esc_html($text), $charlength), $text, $charlength);
+                                                $text = strip_tags($text);
+                                                //$text = jbp_shorten_text($text, $charlength);
+                                                //$text = apply_filters('jbp_expert_list_content', jbp_shorten_text(esc_html($text), $charlength), $text, $charlength);
                                                 ?>
-                                                <div class="jbp_pro_meta hide hidden-sx hidden-sm">
+                                                <div class="jbp_pro_meta hidden-sx hidden-sm">
                                                     <div class="text-shorten">
-                                                        <?php echo apply_filters('jbp_pro_listing_biography', $text) ?>
+                                                        <div class="text-shorten-inner">
+                                                            <?php echo apply_filters('jbp_pro_listing_biography', $text) ?>
+                                                        </div>
                                                     </div>
 
                                                     <div class="row no-margin jbp-pro-stat">
@@ -240,14 +243,34 @@ class JobsExperts_Core_Shortcode_ExpertList extends JobsExperts_Shortcode
             <?php endif; ?>
             <div style="clear: both"></div>
             <script type="text/javascript">
-                jQuery(document).ready(function ($) {
-                    $('.meta_holder').mouseenter(function () {
-                        $(this).find('.jbp_pro_meta').removeClass('hide');
-                    }).mouseleave(function () {
-                        $(this).find('.jbp_pro_meta').addClass('hide');
-                    });
-                    /*$('.text-shorten').ellipsis({
-                     });*/
+                jQuery(window).load(function () {
+                    jQuery(document).ready(function($){
+                        $('.meta_holder').mouseenter(function () {
+                            $(this).find('.jbp_pro_meta').css('visibility', 'visible');
+                        }).mouseleave(function () {
+                            $(this).find('.jbp_pro_meta').css('visibility', 'hidden');
+                        });
+
+                        $('.text-shorten').each(function () {
+                            var inner = $(this).find('.text-shorten-inner').first();
+                            //cal inner height
+                            if ($(this).innerHeight() < inner.height()) {
+                                var text = $.trim(inner.text());
+                                //height overflow, do something
+                                var height = inner.height();
+                                console.log(height +"-"+$(this).outerHeight());
+                                var denst = text.length;
+                                //cal the count word to trim
+                                var c = ($(this).innerHeight() * denst) / height;
+                                c = Math.floor(c);
+                                //trim the word
+                                var trimmed = text.substr(0, c);
+                                trimmed = trimmed.substr(0, Math.min(trimmed.length, trimmed.lastIndexOf(" ")-1));
+                                //apply the text
+                                inner.text(trimmed+'...');
+                            }
+                        });
+                    })
                 })
             </script>
         </div>

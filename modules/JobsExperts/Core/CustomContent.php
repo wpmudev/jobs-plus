@@ -156,7 +156,7 @@ class JobsExperts_Core_CustomContent extends JobsExperts_Framework_Module
 
         wp_register_script('jobs-noty', $plugin->_module_url . 'assets/vendors/noty/packaged/jquery.noty.packaged.min.js', array(), JBP_VERSION, true);
 
-        wp_register_script('jobs-ellipsis', $plugin->_module_url . 'assets/vendors/jquery.dotdotdot.min.js', array('jquery'), JBP_VERSION, true);
+        ///wp_register_script('jobs-ellipsis', $plugin->_module_url . 'assets/vendors/jquery.dotdotdot.min.js', array('jquery'), JBP_VERSION, true);
     }
 
     function custom_post_status()

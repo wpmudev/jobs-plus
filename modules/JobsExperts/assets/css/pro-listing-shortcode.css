@@ -70,6 +70,7 @@
 	z-index:    2;
 	overflow:   hidden;
 	width:      100%;
+    visibility: hidden;
 }
 
 .meta_holder .jbp_pro_meta p {

@@ -52,24 +52,6 @@ class JobsExperts_Core_Views_GettingStart extends JobsExperts_Framework_Render
         $page_module = $plugin->page_module();
         ?>
         <div class="hn-container">
-            <div class="row">
-                <div class="col-md-12">
-                    <h2><?php esc_html_e('Welcome to Jobs & Experts - Getting Started & Overview Page', JBP_TEXT_DOMAIN); ?></h2>
-                    <p class="text-muted"><?php esc_html_e('Thank you! for using our Jobs & Expert plugin', JBP_TEXT_DOMAIN) ?></p>
-                </div>
-            </div>
-        </div>
-    <?php
-    }
-
-    function _to_html1()
-    {
-        $plugin = JobsExperts_Plugin::instance();
-        $job_labels = JobsExperts_Plugin::instance()->get_job_type()->labels;
-        $pro_labels = JobsExperts_Plugin::instance()->get_expert_type()->labels;
-        $page_module = $plugin->page_module();
-        ?>
-        <div class="hn-container">
             <div class="row  hidden-lg hidden-md">
                 <div class="col-xs-12 text-center">
                     <h4><?php esc_html_e('Welcome to Jobs & Experts - Getting Started & Overview Page', JBP_TEXT_DOMAIN); ?></h4>
