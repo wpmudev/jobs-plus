@@ -160,6 +160,32 @@ class JobsExperts_Core_Views_ExpertSingle extends JobsExperts_Framework_Render
                             <?php echo wpautop($model->biography) ?>
                         </div>
                         <div class="tab-pane social-skill" id="profile">
+
+                            <div class="page-header">
+                                <label><i class="fa fa-flask"></i> <?php _e('Skills', JBP_TEXT_DOMAIN) ?></label>
+                            </div>
+                            <?php $skills = array_unique(array_filter(explode(',', $model->skills)));
+                            if (count($skills)) {
+                                ?>
+
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <ul class="jbp-socials" style="padding-left: 0">
+                                            <?php foreach ($skills as $key) {
+                                                $skill = JobsExperts_Components_Skill_Model::instance()->get_one($key, $model->id);
+                                                global $jbp_component_skill;
+                                                if (is_object($skill)) {
+                                                    echo $jbp_component_skill->skill_bar_template($skill, false);
+                                                }
+                                            } ?>
+                                        </ul>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                            <?php }else{
+                                _e('This member hasn\'t added any skills yet', JBP_TEXT_DOMAIN);
+                            } ?>
+                            <br/>
                             <div class="page-header">
                                 <label><i class="fa fa-globe"></i> <?php _e('Social Profile', JBP_TEXT_DOMAIN) ?>
                                 </label>
@@ -186,31 +212,7 @@ class JobsExperts_Core_Views_ExpertSingle extends JobsExperts_Framework_Render
                                 _e('This member still not add any social profile.', JBP_TEXT_DOMAIN);
                                 echo '<br/>';
                             } ?>
-                            <br/>
-                            <div class="page-header">
-                                <label><i class="fa fa-flask"></i> <?php _e('Skills', JBP_TEXT_DOMAIN) ?></label>
-                            </div>
-                            <?php $skills = array_unique(array_filter(explode(',', $model->skills)));
-                            if (count($skills)) {
-                                ?>
 
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <ul class="jbp-socials" style="padding-left: 0">
-                                            <?php foreach ($skills as $key) {
-                                                $skill = JobsExperts_Components_Skill_Model::instance()->get_one($key, $model->id);
-                                                global $jbp_component_skill;
-                                                if (is_object($skill)) {
-                                                    echo $jbp_component_skill->skill_bar_template($skill, false);
-                                                }
-                                            } ?>
-                                        </ul>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                </div>
-                            <?php }else{
-                                _e('This member still not add any skill information.', JBP_TEXT_DOMAIN);
-                            } ?>
                         </div>
                         <div class="tab-pane" id="portfolio"></div>
                     </div>

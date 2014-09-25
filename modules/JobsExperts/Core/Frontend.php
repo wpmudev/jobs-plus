@@ -300,14 +300,15 @@ class JobsExperts_Core_Frontend extends JobsExperts_Framework_Module
 
     function custom_title($title)
     {
+        $page_module = JobsExperts_Plugin::instance()->page_module();
         if (is_tax('jbp_category')) {
             $term = get_term_by('slug', get_query_var('jbp_category'), 'jbp_category');
 
             return __('Job Category: ', JBP_TEXT_DOMAIN) . ' ' . $term->name;
-        } elseif (is_singular('jbp_job') && in_the_loop()) {
+        } elseif (is_singular('jbp_job') && in_the_loop() && !$page_module->is_core_page(get_the_ID())) {
             global $wp_query;
             if ($wp_query->is_main_query()) {
-                $title = do_shortcode('<p style="text-align: center">[jbp-expert-post-btn][jbp-job-post-btn][jbp-expert-browse-btn][jbp-job-browse-btn][jbp-expert-profile-btn][jbp-my-job-btn]</p>') . $title;
+                $title = do_shortcode('<p style="text-align: center">[jbp-job-browse-btn][jbp-expert-browse-btn][jbp-job-post-btn][jbp-expert-post-btn][jbp-my-job-btn][jbp-expert-profile-btn]</p>') . $title;
             }
         }
 

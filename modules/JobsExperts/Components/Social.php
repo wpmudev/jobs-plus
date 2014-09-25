@@ -88,7 +88,8 @@ class JobsExpert_Components_Social extends JobsExperts_Components
         }
 
         ?>
-        <a href="<?php echo $url ?>" data-id="<?php echo $data['name'] ?>" data-value="<?php echo esc_attr($data['value']) ?>"
+        <a href="<?php echo $url ?>" data-id="<?php echo $data['name'] ?>"
+           data-value="<?php echo esc_attr($data['value']) ?>"
            data-type="<?php echo $social['type'] ?>" class="jbp-social"
            data-toggle="tooltip" data-placement="auto"
            title="<?php echo $social['name'] . ' | ' . $data['value'] ?>">
@@ -114,6 +115,8 @@ class JobsExpert_Components_Social extends JobsExperts_Components
                 'url' => JobsExperts_Plugin::instance()->_module_url . 'Components/Social/social_icon/' . pathinfo($file, PATHINFO_BASENAME)
             );
         }
+        $plugin = JobsExperts_Plugin::instance();
+
         /*        echo '<pre>';
                 var_export($list);
                 echo '</pre>';*/
@@ -122,183 +125,204 @@ class JobsExpert_Components_Social extends JobsExperts_Components
                 array(
                     'key' => 'blogger',
                     'name' => 'Blogger',
+                    'domain' => 'blogger.com',
                     'type' => 'url',
-                    'url' => 'http://createdn.com/wp-content/plugins/jobs-plus/modules/JobsExperts/Components/Social/social_icon/blogger.png',
+                    'url' => $plugin->_module_url . '/Components/Social/social_icon/blogger.png',
                 ),
             'deviantart' =>
                 array(
                     'key' => 'deviantart',
                     'name' => 'Deviantart',
+                    'domain' => 'deviantart.com',
                     'type' => 'url',
-                    'url' => 'http://createdn.com/wp-content/plugins/jobs-plus/modules/JobsExperts/Components/Social/social_icon/deviantart.png',
+                    'url' => $plugin->_module_url . '/Components/Social/social_icon/deviantart.png',
                 ),
             'digg' =>
                 array(
                     'key' => 'digg',
                     'name' => 'Digg',
                     'type' => 'url',
-                    'url' => 'http://createdn.com/wp-content/plugins/jobs-plus/modules/JobsExperts/Components/Social/social_icon/digg.png',
+                    'domain' => 'digg.com',
+                    'url' => $plugin->_module_url . '/Components/Social/social_icon/digg.png',
                 ),
             'dribble' =>
                 array(
                     'key' => 'dribble',
                     'name' => 'Dribble',
                     'type' => 'url',
-                    'url' => 'http://createdn.com/wp-content/plugins/jobs-plus/modules/JobsExperts/Components/Social/social_icon/dribble.png',
+                    'domain' => 'dribbble.com',
+                    'url' => $plugin->_module_url . '/Components/Social/social_icon/dribble.png',
                 ),
             'dropbox' =>
                 array(
                     'key' => 'dropbox',
                     'name' => 'Dropbox',
                     'type' => 'url',
-                    'url' => 'http://createdn.com/wp-content/plugins/jobs-plus/modules/JobsExperts/Components/Social/social_icon/dropbox.png',
+                    'domain' => 'dropbox.com',
+                    'url' => $plugin->_module_url . '/Components/Social/social_icon/dropbox.png',
                 ),
             'email' =>
                 array(
                     'key' => 'email',
                     'name' => 'Email',
                     'type' => 'email',
-                    'url' => 'http://createdn.com/wp-content/plugins/jobs-plus/modules/JobsExperts/Components/Social/social_icon/email.png',
+                    'url' => $plugin->_module_url . '/Components/Social/social_icon/email.png',
                 ),
             'engadget' =>
                 array(
                     'key' => 'engadget',
                     'name' => 'Engadget',
                     'type' => 'url',
-                    'url' => 'http://createdn.com/wp-content/plugins/jobs-plus/modules/JobsExperts/Components/Social/social_icon/engadget.png',
+                    'domain' => 'engadget.com',
+                    'url' => $plugin->_module_url . '/Components/Social/social_icon/engadget.png',
                 ),
             'fb' =>
                 array(
                     'key' => 'fb',
                     'name' => 'Facebook',
                     'type' => 'url',
-                    'url' => 'http://createdn.com/wp-content/plugins/jobs-plus/modules/JobsExperts/Components/Social/social_icon/fb.png',
+                    'domain' => 'facebook.com',
+                    'url' => $plugin->_module_url . '/Components/Social/social_icon/fb.png',
                 ),
             'flickr' =>
                 array(
                     'key' => 'flickr',
                     'name' => 'Flickr',
                     'type' => 'url',
-                    'url' => 'http://createdn.com/wp-content/plugins/jobs-plus/modules/JobsExperts/Components/Social/social_icon/flickr.png',
+                    'domain' => 'flickr.com',
+                    'url' => $plugin->_module_url . '/Components/Social/social_icon/flickr.png',
                 ),
             'google+' =>
                 array(
                     'key' => 'google+',
                     'name' => 'Google Plus',
                     'type' => 'url',
-                    'url' => 'http://createdn.com/wp-content/plugins/jobs-plus/modules/JobsExperts/Components/Social/social_icon/google+.png',
+                    'domain' => 'google.com',
+                    'url' => $plugin->_module_url . '/Components/Social/social_icon/google+.png',
                 ),
             'google_hangouts' =>
                 array(
                     'key' => 'google_hangouts',
                     'name' => 'Google Hangouts',
                     'type' => 'text',
-                    'url' => 'http://createdn.com/wp-content/plugins/jobs-plus/modules/JobsExperts/Components/Social/social_icon/google_hangouts.png',
+                    'domain' => '',
+                    'url' => $plugin->_module_url . '/Components/Social/social_icon/google_hangouts.png',
                 ),
             'instagram' =>
                 array(
                     'key' => 'instagram',
                     'name' => 'Instagram',
                     'type' => 'url',
-                    'url' => 'http://createdn.com/wp-content/plugins/jobs-plus/modules/JobsExperts/Components/Social/social_icon/instagram.png',
+                    'domain' => 'instagram.com',
+                    'url' => $plugin->_module_url . '/Components/Social/social_icon/instagram.png',
                 ),
             'linkedin' =>
                 array(
                     'key' => 'linkedin',
                     'name' => 'Linkedin',
+                    'domain' => 'linkedin.com',
                     'type' => 'url',
-                    'url' => 'http://createdn.com/wp-content/plugins/jobs-plus/modules/JobsExperts/Components/Social/social_icon/linkedin.png',
+                    'url' => $plugin->_module_url . '/Components/Social/social_icon/linkedin.png',
                 ),
             'myspace' =>
                 array(
                     'key' => 'myspace',
                     'name' => 'Myspace',
                     'type' => 'url',
-                    'url' => 'http://createdn.com/wp-content/plugins/jobs-plus/modules/JobsExperts/Components/Social/social_icon/myspace.png',
+                    'domain' => 'myspace.com',
+                    'url' => $plugin->_module_url . '/Components/Social/social_icon/myspace.png',
                 ),
             'pinterest' =>
                 array(
                     'key' => 'pinterest',
                     'name' => 'Pinterest',
                     'type' => 'url',
-                    'url' => 'http://createdn.com/wp-content/plugins/jobs-plus/modules/JobsExperts/Components/Social/social_icon/pinterest.png',
+                    'domain' => 'pinterest.com',
+                    'url' => $plugin->_module_url . '/Components/Social/social_icon/pinterest.png',
                 ),
             'reddit' =>
                 array(
                     'key' => 'reddit',
                     'name' => 'Reddit',
                     'type' => 'url',
-                    'url' => 'http://createdn.com/wp-content/plugins/jobs-plus/modules/JobsExperts/Components/Social/social_icon/reddit.png',
+                    'domain' => 'reddit.com',
+                    'url' => $plugin->_module_url . '/Components/Social/social_icon/reddit.png',
                 ),
             'rss' =>
                 array(
                     'key' => 'rss',
                     'name' => 'Rss',
                     'type' => 'url',
-                    'url' => 'http://createdn.com/wp-content/plugins/jobs-plus/modules/JobsExperts/Components/Social/social_icon/rss.png',
+                    'url' => $plugin->_module_url . '/Components/Social/social_icon/rss.png',
                 ),
             'skype' =>
                 array(
                     'key' => 'skype',
                     'name' => 'Skype',
                     'type' => 'text',
-                    'url' => 'http://createdn.com/wp-content/plugins/jobs-plus/modules/JobsExperts/Components/Social/social_icon/skype.png',
+                    'url' => $plugin->_module_url . '/Components/Social/social_icon/skype.png',
                 ),
             'trillian' =>
                 array(
                     'key' => 'trillian',
                     'name' => 'Trillian',
                     'type' => 'url',
-                    'url' => 'http://createdn.com/wp-content/plugins/jobs-plus/modules/JobsExperts/Components/Social/social_icon/trillian.png',
+                    'domain'=>'trillian.com',
+                    'url' => $plugin->_module_url . '/Components/Social/social_icon/trillian.png',
                 ),
             'tumblr' =>
                 array(
                     'key' => 'tumblr',
                     'name' => 'Tumblr',
                     'type' => 'url',
-                    'url' => 'http://createdn.com/wp-content/plugins/jobs-plus/modules/JobsExperts/Components/Social/social_icon/tumblr.png',
+                    'domain' => 'tumblr.com',
+                    'url' => $plugin->_module_url . '/Components/Social/social_icon/tumblr.png',
                 ),
             'twitter' =>
                 array(
                     'key' => 'twitter',
                     'name' => 'Twitter',
                     'type' => 'url',
-                    'url' => 'http://createdn.com/wp-content/plugins/jobs-plus/modules/JobsExperts/Components/Social/social_icon/twitter.png',
+                    'domain' => 'twitter.com',
+                    'url' => $plugin->_module_url . '/Components/Social/social_icon/twitter.png',
                 ),
             'wordpress' =>
                 array(
                     'key' => 'wordpress',
                     'name' => 'Wordpress',
                     'type' => 'url',
-                    'url' => 'http://createdn.com/wp-content/plugins/jobs-plus/modules/JobsExperts/Components/Social/social_icon/wordpress.png',
+                    'url' => $plugin->_module_url . '/Components/Social/social_icon/wordpress.png',
                 ),
             'xda' =>
                 array(
                     'key' => 'xda',
                     'name' => 'Xda',
                     'type' => 'url',
-                    'url' => 'http://createdn.com/wp-content/plugins/jobs-plus/modules/JobsExperts/Components/Social/social_icon/xda.png',
+                    'domain' => 'xda-developers.com',
+                    'url' => $plugin->_module_url . '/Components/Social/social_icon/xda.png',
                 ),
             'yahoo' =>
                 array(
                     'key' => 'yahoo',
                     'name' => 'Yahoo',
                     'type' => 'text',
-                    'url' => 'http://createdn.com/wp-content/plugins/jobs-plus/modules/JobsExperts/Components/Social/social_icon/yahoo.png',
+                    'url' => $plugin->_module_url . '/Components/Social/social_icon/yahoo.png',
                 ),
             'yelp' =>
                 array(
                     'key' => 'yelp',
                     'name' => 'Yelp',
                     'type' => 'url',
-                    'url' => 'http://createdn.com/wp-content/plugins/jobs-plus/modules/JobsExperts/Components/Social/social_icon/yelp.png',
+                    'domain' => 'yelp.com',
+                    'url' => $plugin->_module_url . '/Components/Social/social_icon/yelp.png',
                 ),
             'youtube' =>
                 array(
                     'key' => 'youtube',
                     'name' => 'Youtube',
                     'type' => 'url',
-                    'url' => 'http://createdn.com/wp-content/plugins/jobs-plus/modules/JobsExperts/Components/Social/social_icon/youtube.png',
+                    'domain' => 'youtube.com',
+                    'url' => $plugin->_module_url . '/Components/Social/social_icon/youtube.png',
                 ),
         );
         return apply_filters('get_social_list', $social_list);

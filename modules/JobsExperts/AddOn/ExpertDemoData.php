@@ -165,6 +165,17 @@ class JobsExpert_Compnents_ExpertDemoData extends JobsExperts_AddOn
         $this->download_image($image_url, $path);
         //update avatar
         update_post_meta($model->id, '_expert_avatar', $upload_dir['url'] . '/' . $name);
+
+        //now add some fake view count
+        for ($i = 0; $i < $model->views_count; $i++) {
+            $faker = Faker\Factory::create();
+            $view = array(
+                'ip' => $faker->ipv4,
+                'user_id' => 0,
+                'date_view' => date('Y-m-d H:i:s', strtotime($faker->date()))
+            );
+            add_post_meta($model->id, '_jbp_pro_view_count', $view);
+        }
     }
 
     function get_image_category()
@@ -287,6 +298,17 @@ class JobsExpert_Compnents_ExpertDemoData extends JobsExperts_AddOn
         $this->download_image($image_url, $path);
         //update avatar
         update_post_meta($model->id, '_expert_avatar', $upload_dir['url'] . '/' . $name);
+
+        //now add some fake view count
+        for ($i = 0; $i < $model->views_count; $i++) {
+            $faker = Faker\Factory::create();
+            $view = array(
+                'ip' => '0.0.0.0',
+                'user_id' => 0,
+                'date_view' => date('Y-m-d H:i:s')
+            );
+            add_post_meta($model->id, '_jbp_pro_view_count', $view);
+        }
     }
 
     function content_bank($type)
@@ -444,12 +466,12 @@ class JobsExpert_Compnents_ExpertDemoData extends JobsExperts_AddOn
                     <div class="clearfix"></div>
                 </div>
                 <div class="form-group">
-                    <label class="col-md-3 label-control"><?php _e('Have Sample Files', JBP_TEXT_DOMAIN) ?></label>
+                    <label class="col-md-3 label-control"><?php _e('Sample files?', JBP_TEXT_DOMAIN) ?></label>
 
                     <div class="col-md-9">
                         <p class="help-block">
                             <input type="checkbox" checked="checked" name="have_sample">
-                            <?php _e('If you want these demo expert to have sample files, check this box.', JBP_TEXT_DOMAIN) ?>
+                            <?php _e('If you want the demo experts to have sample files, check this box.', JBP_TEXT_DOMAIN) ?>
                         </p>
                     </div>
                     <div class="clearfix"></div>

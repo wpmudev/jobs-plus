@@ -78,7 +78,7 @@ class JobsExperts_Core_Shortcode_JobSingle extends JobsExperts_Shortcode
                             <small class="text-warning"><?php echo $model->get_due_day() ?></small>
                         </div>
                         <div class="col-md-3">
-                            <h5><?php _e('Must be complete by', JBP_TEXT_DOMAIN) ?></h5>
+                            <h5><?php _e('Must be completed by', JBP_TEXT_DOMAIN) ?></h5>
                             <?php if (strtotime($model->dead_line)): ?>
                                 <small
                                     class="text-warning"><?php echo date_i18n(get_option('date_format'), strtotime($model->dead_line)); ?></small>

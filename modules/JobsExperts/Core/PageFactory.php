@@ -65,7 +65,7 @@ class JobsExperts_Core_PageFactory
         $this->expert_obj = $this->plugin->get_expert_type();
         //prepared content
         $this->waring = __("<!-- You may edit this page, the title and the slug, but it requires a minimum of the correct page shortcode to function. You can recreate the original default page by deleting this one. -->\n", JBP_TEXT_DOMAIN) . PHP_EOL;
-        $this->buttons = '<p style="text-align: center;">[jbp-expert-post-btn][jbp-job-post-btn][jbp-expert-browse-btn][jbp-job-browse-btn][jbp-expert-profile-btn][jbp-my-job-btn]</p>' . PHP_EOL;
+        $this->buttons = '<p style="text-align: center">[jbp-job-browse-btn][jbp-expert-browse-btn][jbp-job-post-btn][jbp-expert-post-btn][jbp-my-job-btn][jbp-expert-profile-btn]</p>' . PHP_EOL;
     }
 
     public static function instance()

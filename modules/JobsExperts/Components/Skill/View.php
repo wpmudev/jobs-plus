@@ -55,7 +55,7 @@ class JobsExperts_Components_Skill_View extends JobsExperts_Framework_Render
                 html: true,
                 trigger: 'click',
                 container: false,
-                placement: 'auto'
+                placement: 'left'
             }).on('shown.bs.popover', function () {
                 //load slider
                 var that = $(this);

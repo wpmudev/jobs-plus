@@ -63,6 +63,25 @@ class JobsExperts_Components_Social_Model extends JobsExperts_Framework_Model
 
     }
 
+    public function addition_validate()
+    {
+        //todo check the service
+        if ($this->type == 'url' && !empty($this->value)) {
+            global $jbp_component_social;
+            $social = $jbp_component_social->social($this->name);
+            if (!empty($social['domain'])) {
+                //start to validate
+                $domain = parse_url($this->value, PHP_URL_HOST);
+                if (preg_match('/(?P<domain>[a-z0-9][a-z0-9\-]{1,63}\.[a-z\.]{2,6})$/i', $domain, $regs)) {
+                    $domain = $regs['domain'];
+                }
+                if (strcmp($domain, $social['domain']) != 0) {
+                    $this->set_error('url', sprintf(__('This url is not from <strong>%s</strong>'), $social['name']));
+                }
+            }
+        }
+    }
+
     public function rules()
     {
         $rules = array(

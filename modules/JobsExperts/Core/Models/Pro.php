@@ -117,8 +117,46 @@ class JobsExperts_Core_Models_Pro extends JobsExperts_Framework_PostModel
 
     public function add_view_count()
     {
-        $view = intval(get_post_meta($this->id, 'jbp_pro_view_count', true));
-        update_post_meta($this->id, 'jbp_pro_view_count', $view + 1);
+        $all_views = array_filter(get_post_meta($this->id, '_jbp_pro_view_count'));
+
+        //gather information
+        $view = array(
+            'ip' => $_SERVER['REMOTE_ADDR'],
+            'user_id' => is_user_logged_in() ? get_current_user_id() : 0,
+            'date_view' => date('Y-m-d H:i:s')
+        );
+
+        //if the author viewing, don't count
+        if ($this->user_id == $view['user_id']) {
+            return;
+        }
+
+        if (empty($all_views)) {
+            //nothing added, no need to check
+            add_post_meta($this->id, '_jbp_pro_view_count', $view);
+            $view = count($all_views);
+            update_post_meta($this->id, 'jbp_pro_view_count', $view + 1);
+
+            return;
+        }
+
+        $can_add = false;
+
+        foreach ($all_views as $v) {
+            if ($v['ip'] == $view['ip']) {
+                //check if this time avalable for add count
+                if (strtotime('+24 hours', strtotime($v['date_view'])) <= time()) {
+                    $can_add = true;
+                    break;
+                }
+            }
+        }
+
+        if ($can_add == true) {
+            add_post_meta($this->id, '_jbp_pro_view_count', $view);
+            $view = count($all_views);
+            update_post_meta($this->id, 'jbp_pro_view_count', $view + 1);
+        }
     }
 
     public function get_view_count()

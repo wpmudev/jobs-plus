@@ -104,7 +104,7 @@ class JobsExperts_Core_Models_Settings extends JobsExperts_Framework_OptionModel
 	Job link: POST_LINK
 	';
 
-            $this->expert_max_records = 4;
+            $this->expert_max_records = 1;
             $this->expert_per_page = 12;
             $this->expert_budget_range = 1;
             $this->expert_new_expert_status = 'publish';
