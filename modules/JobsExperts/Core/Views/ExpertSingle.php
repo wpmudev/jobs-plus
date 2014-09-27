@@ -30,7 +30,7 @@ class JobsExperts_Core_Views_ExpertSingle extends JobsExperts_Framework_Render
                             <div class="panel-footer">
                                 <a class="btn btn-sm btn-primary" href="<?php echo add_query_arg(array(
                                     'contact' => get_post()->post_name
-                                ), get_permalink($page_module->page($page_module::EXPERT_CONTACT))) ?>"><?php _e('Contact Me', JBP_TEXT_DOMAIN) ?></a>
+                                ), apply_filters('jbp_expert_contact_link',get_permalink($page_module->page($page_module::EXPERT_CONTACT)))) ?>"><?php _e('Contact Me', JBP_TEXT_DOMAIN) ?></a>
                             </div>
                         </div>
                     </div>
@@ -241,7 +241,7 @@ class JobsExperts_Core_Views_ExpertSingle extends JobsExperts_Framework_Render
                 <div class="row" style="margin-top: 40px">
                     <div class="col-md-12" style="margin-left: 0">
                         <a class="btn btn-primary"
-                           href="<?php echo add_query_arg(array('pro' => $var), get_permalink($page_module->page($page_module::EXPERT_EDIT))) ?>">
+                           href="<?php echo add_query_arg(array('pro' => $var), apply_filters('expert_edit_button_link',get_permalink($page_module->page($page_module::EXPERT_EDIT)))) ?>">
                             <?php _e('Edit', JBP_TEXT_DOMAIN) ?>
                         </a>
 

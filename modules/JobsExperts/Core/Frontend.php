@@ -54,15 +54,21 @@ class JobsExperts_Core_Frontend extends JobsExperts_Framework_Module
         $this->_add_action('init', 'add_rewrite_rule', 11);
         //$this->_add_filter( 'query_vars', 'add_query_vars_filter' );
         //template stuff
-        $this->_add_filter('template_include', 'process_virtual_page_content');
-        $this->_add_filter('the_content', 'job_single_content');
-        $this->_add_filter('the_content', 'pro_single_content');
-        //$this->_add_filter( 'wp_title', 'custom_wp_title', 10, 2 );
-        $this->_add_filter('the_title', 'custom_title');
-        //$this->_add_action('wp_enqueue_scripts', 'front_scripts');
+        $this->_add_action('init', 'core_frontend_process');
+    }
 
-        $this->_add_filter('get_edit_post_link', 'hide_edit_post_link');
+    function core_frontend_process()
+    {
+        if (apply_filters('jbp_use_core_front_request', true)) {
+            $this->_add_filter('template_include', 'process_virtual_page_content');
+            $this->_add_filter('the_content', 'job_single_content');
+            $this->_add_filter('the_content', 'pro_single_content');
+            //$this->_add_filter( 'wp_title', 'custom_wp_title', 10, 2 );
+            $this->_add_filter('the_title', 'custom_title');
+            //$this->_add_action('wp_enqueue_scripts', 'front_scripts');
 
+            $this->_add_filter('get_edit_post_link', 'hide_edit_post_link');
+        }
     }
 
     /**
@@ -189,7 +195,7 @@ class JobsExperts_Core_Frontend extends JobsExperts_Framework_Module
                     JobsExperts_Core_Controllers_Job::delete_job($_POST['job_id']);
                     wp_redirect(add_query_arg(array(
                         'post_status' => '2'
-                    ), get_permalink($page_module->page($page_module::MY_JOB))));
+                    ), get_permalink(apply_filters('jbp_my_jobs_url', $page_module->page($page_module::MY_JOB)))));
                     exit;
                 }
             } elseif (isset($_POST['delete_expert']) && isset($_POST['expert_id'])) {
@@ -197,7 +203,7 @@ class JobsExperts_Core_Frontend extends JobsExperts_Framework_Module
                     JobsExperts_Core_Controllers_Pro::delete_expert($_POST['expert_id']);
                     wp_redirect(add_query_arg(array(
                         'post_status' => '2'
-                    ), get_permalink($page_module->page($page_module::MY_EXPERT))));
+                    ), get_permalink(apply_filters('jbp_my_experts_url', $page_module->page($page_module::MY_EXPERT)))));
                     exit;
                 }
             }

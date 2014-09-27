@@ -31,7 +31,6 @@
  */
 class JobsExperts_Core_PageFactory
 {
-
     const JOB_ADD = 'job_add',
         JOB_EDIT = 'job_edit',
         JOB_LISTING = 'job_listing',

@@ -88,7 +88,7 @@ class JobsExperts_Core_Views_Settings_General extends JobsExperts_Framework_Rend
                                     that.removeAttr('disabled');
                                     that.text('<?php _e('Activate',JBP_TEXT_DOMAIN) ?>');
                                     $('.notif').html(data).removeClass('hide');
-                                    $('#jbp_setting_nav').load("<?php echo "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]" ?> #jbp_setting_nav");
+                                    $('#jbp_setting_nav').load("<?php echo "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]" ?> #jbp_setting_nav li");
                                 }
                             })
                         } else {

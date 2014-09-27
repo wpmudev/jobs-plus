@@ -112,7 +112,7 @@ class JobsExperts_Core_CustomContent extends JobsExperts_Framework_Module
                 wp_enqueue_style('jobs-single-shortcode');
             } elseif (is_single() && $post->post_type == 'jbp_pro') {
                 wp_enqueue_style('expert-single-shortcode');
-            } elseif (is_post_type_archive('jbp_job')|| is_tax('jbp_category') || is_tax('jbp_skills_tag')) {
+            } elseif (is_post_type_archive('jbp_job') || is_tax('jbp_category') || is_tax('jbp_skills_tag')) {
                 wp_enqueue_style('jobs-list-shortcode');
             } elseif (is_post_type_archive('jbp_pro')) {
                 wp_enqueue_style('expert-list-shortcode');
@@ -167,17 +167,17 @@ class JobsExperts_Core_CustomContent extends JobsExperts_Framework_Module
                 'public' => false,
                 'exclude_from_search' => true,
                 'show_in_admin_all_list' => false,
-                'show_in_admin_status_list' => true,
+                'show_in_admin_status_list' => apply_filters('jpb_virtual_status_show_in_admin_status_list', true),
                 'label_count' => _n_noop('Virtual <span class="count">(%s)</span>', 'Virtual <span class="count">(%s)</span>'),
             ));
         } else {
             //we allowed this status available on frontend to make it compatibility with other themes
             register_post_status('virtual', array(
                 'label' => __('Virtual', JBP_TEXT_DOMAIN),
-                'public' => true,
+                'public' => apply_filters('jpb_virtual_status_public', true),
                 'exclude_from_search' => true,
                 'show_in_admin_all_list' => false,
-                'show_in_admin_status_list' => true,
+                'show_in_admin_status_list' => apply_filters('jpb_virtual_status_show_in_admin_status_list', true),
                 'label_count' => _n_noop('Virtual <span class="count">(%s)</span>', 'Virtual <span class="count">(%s)</span>'),
             ));
         }
@@ -228,7 +228,7 @@ class JobsExperts_Core_CustomContent extends JobsExperts_Framework_Module
                 'menu_position' => '',
                 'public' => true,
                 'hierarchical' => true,
-                'has_archive' => 'jobs',
+                'has_archive' => apply_filters('jbp_job_archive_slug', 'jobs'),
                 'rewrite' => array(
                     'slug' => 'job',
                     'with_front' => false,
@@ -288,7 +288,7 @@ class JobsExperts_Core_CustomContent extends JobsExperts_Framework_Module
                 'menu_position' => '',
                 'public' => true,
                 'hierarchical' => true,
-                'has_archive' => 'experts',
+                'has_archive' => apply_filters('jbp_pro_archive_slug', 'experts'),
                 'rewrite' =>
                     array(
                         'slug' => 'expert',

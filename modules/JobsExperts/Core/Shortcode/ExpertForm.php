@@ -87,7 +87,7 @@ class JobsExperts_Core_Shortcode_ExpertForm extends JobsExperts_Shortcode
             $page_module = JobsExperts_Plugin::instance()->page_module();
             ///load model
             $model = '';
-            $is_edit = $page_module->page($page_module::EXPERT_EDIT) == get_the_ID();
+            $is_edit = apply_filters('jbp_is_expert_edit',$page_module->page($page_module::EXPERT_EDIT) == get_the_ID());
             if (isset($plugin->global['jbp_pro'])) {
                 $model = $plugin->global['jbp_pro'];
             } else {

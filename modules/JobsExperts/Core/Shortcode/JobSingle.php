@@ -90,7 +90,7 @@ class JobsExperts_Core_Shortcode_JobSingle extends JobsExperts_Shortcode
                             <?php if (strtolower($model->get_due_day()) != 'expired'): ?>
                                 <a class="btn btn-info btn-sm" href="<?php echo add_query_arg(array(
                                     'contact' => get_post()->post_name
-                                ), get_permalink($page_module->page($page_module::JOB_CONTACT))) ?>"><?php _e('Contact', JBP_TEXT_DOMAIN) ?></a>
+                                ), apply_filters('jbp_job_contact_link', get_permalink($page_module->page($page_module::JOB_CONTACT)), get_the_ID())) ?>"><?php _e('Contact', JBP_TEXT_DOMAIN) ?></a>
                             <?php else: ?>
                                 <a disabled class="btn btn-info btn-sm"
                                    href="#"><?php _e('Contact', JBP_TEXT_DOMAIN) ?></a>
@@ -141,7 +141,7 @@ class JobsExperts_Core_Shortcode_JobSingle extends JobsExperts_Shortcode
                             $var = $post->post_status == 'publish' ? $post->post_name : $post->ID;
                             ?>
                                 <a class="btn btn-primary"
-                                   href="<?php echo add_query_arg(array('job' => $var), get_permalink($page_module->page($page_module::JOB_EDIT))) ?>">
+                                   href="<?php echo add_query_arg(array('job' => $var), apply_filters('job_edit_button_link', get_permalink($page_module->page($page_module::JOB_EDIT)))) ?>">
                                     <?php _e('Edit', JBP_TEXT_DOMAIN) ?>
                                 </a>
                                 <form class="frm-delete" method="post" style="display: inline-block">

@@ -65,7 +65,7 @@ class JobsExpert_Core_Shortcode_Buttons extends JobsExperts_Shortcode
 
         $ob = sprintf('<a class="jbp-shortcode-button jbp-add-pro %s" href="%s">
 			%s
-		</a>', esc_attr($class), $url, esc_html($text));
+		</a>', esc_attr($class), apply_filters('jbp_button_url', $url, 'add_new_expert'), esc_html($text));
 
         return apply_filters('jbp_pro_post_btn_output', $ob);
     }
@@ -87,9 +87,10 @@ class JobsExpert_Core_Shortcode_Buttons extends JobsExperts_Shortcode
      */
     function job_add($atts)
     {
-        
+
         $plugin = JobsExperts_Plugin::instance();
         $page_module = $plugin->page_module();
+
         extract(shortcode_atts(array(
             'text' => sprintf(__('Post a %s', JBP_TEXT_DOMAIN), $plugin->get_job_type()->labels->singular_name),
             'view' => 'both', //loggedin, loggedout, both
@@ -101,14 +102,13 @@ class JobsExpert_Core_Shortcode_Buttons extends JobsExperts_Shortcode
         if (!$this->can_view($view)) {
             return '';
         }
-
         if (!empty($template) && locate_template($template)) {
             return $this->custom_template($template);
         }
 
         $ob = sprintf('<a class="jbp-shortcode-button jbp-add-job %s" href="%s">
 			%s
-		</a>', esc_attr($class), $url, esc_html($text));
+		</a>', esc_attr($class), apply_filters('jbp_button_url', $url, 'add_new_job'), esc_html($text));
 
         return apply_filters('jbp_job_post_btn_output', $ob);
     }
@@ -131,7 +131,7 @@ class JobsExpert_Core_Shortcode_Buttons extends JobsExperts_Shortcode
 
     function expert_list($atts)
     {
-        
+
         $plugin = JobsExperts_Plugin::instance();
         extract(shortcode_atts(array(
             'text' => sprintf(__('Browse %s', JBP_TEXT_DOMAIN), $plugin->get_expert_type()->labels->name),
@@ -174,7 +174,7 @@ class JobsExpert_Core_Shortcode_Buttons extends JobsExperts_Shortcode
      */
     function job_list($atts)
     {
-        
+
         $plugin = JobsExperts_Plugin::instance();
         extract(shortcode_atts(array(
             'text' => sprintf(__('Browse %s', JBP_TEXT_DOMAIN), $plugin->get_job_type()->labels->name),
@@ -201,7 +201,7 @@ class JobsExpert_Core_Shortcode_Buttons extends JobsExperts_Shortcode
 
     function my_profile($atts)
     {
-        
+
         $plugin = JobsExperts_Plugin::instance();
         $page_module = $plugin->page_module();
         extract(shortcode_atts(array(
@@ -226,14 +226,14 @@ class JobsExpert_Core_Shortcode_Buttons extends JobsExperts_Shortcode
 
         $ob = sprintf('<a class="jbp-shortcode-button jbp-profile-pro %s" href="%s">
 			%s
-		</a>', esc_attr($class), $url, esc_html($text));
+		</a>', esc_attr($class), apply_filters('jbp_button_url', $url, 'my_profiles'), esc_html($text));
 
         return apply_filters('jbp_expert_profile_btn_output', $ob);
     }
 
     function my_jobs($atts)
     {
-        
+
         $plugin = JobsExperts_Plugin::instance();
         $page_module = $plugin->page_module();
         extract(shortcode_atts(array(
@@ -258,7 +258,7 @@ class JobsExpert_Core_Shortcode_Buttons extends JobsExperts_Shortcode
 
         $ob = sprintf('<a class="jbp-shortcode-button jbp-list-job %s" href="%s">
 			%s
-		</a>', esc_attr($class), $url, esc_html($text));
+		</a>', esc_attr($class), apply_filters('jbp_button_url', $url, 'my_jobs'), esc_html($text));
 
         return apply_filters('jbp_job_list_btn_output', $ob);
     }

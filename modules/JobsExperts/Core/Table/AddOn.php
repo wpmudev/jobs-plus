@@ -90,7 +90,7 @@ class JobsExperts_Core_Table_AddOn extends WP_List_Table
         }
 
         //How many to display per page?
-        $perpage = 5;
+        $perpage = 10;
         //Which page is this?
         $paged = !empty($_GET["paged"]) ? mysql_real_escape_string($_GET["paged"]) : '';
         //Page Number
