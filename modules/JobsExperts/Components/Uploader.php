@@ -111,10 +111,10 @@ class JobsExperts_Components_Uploader extends JobsExperts_Components
                             var type = file.type.split('/');
                             var size_allowed = '<?php echo (get_max_file_upload() * 1000000) ?>';
                             if (type[0] != 'image') {
-                                alert('<?php _e('Avatar must be an image',JBP_TEXT_DOMAIN) ?>');
+                                alert('<?php echo esc_js_e('Avatar must be an image',JBP_TEXT_DOMAIN) ?>');
                                 $(this).val("");
                             } else if (file.size > size_allowed) {
-                                alert('<?php _e('File too large.',JBP_TEXT_DOMAIN) ?>');
+                                alert('<?php echo esc_js('File too large.',JBP_TEXT_DOMAIN) ?>');
                                 $(this).val("");
                             }
                         });
@@ -155,7 +155,7 @@ class JobsExperts_Components_Uploader extends JobsExperts_Components
                             var file = $(":file", form);
 
                             if (!file.val()) {
-                                alert('<?php _e('Please select a file',JBP_TEXT_DOMAIN) ?>');
+                                alert('<?php echo esc_js('Please select a file',JBP_TEXT_DOMAIN) ?>');
                             } else {
                                 args.files = file;
                                 var overlay = $('<?php echo $this->load_overlay() ?>');

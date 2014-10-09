@@ -271,7 +271,7 @@ class JobsExperts_Core_Views_ExpertForm extends JobsExperts_Framework_Render
                             data = $.parseJSON(data);
                             if (data.status == 1) {
                                 var n = noty({
-                                    text: '<?php _e('Expert profile '.($is_edit==true?'updated':'created').' successful, redirecting...',JBP_TEXT_DOMAIN) ?>',
+                                    text: '<?php echo esc_js('Expert profile '.($is_edit==true?'updated':'created').' successful, redirecting...',JBP_TEXT_DOMAIN) ?>',
                                     layout: 'center',
                                     type: 'success',
                                     timeout: 5000
@@ -290,7 +290,7 @@ class JobsExperts_Core_Views_ExpertForm extends JobsExperts_Framework_Render
                                 $('.expert-form-container').prepend(error);
                                 //display noty
                                 var n = noty({
-                                    text: '<?php _e('Error happen, please check the form data',JBP_TEXT_DOMAIN) ?>',
+                                    text: '<?php echo esc_js('Error happen, please check the form data',JBP_TEXT_DOMAIN) ?>',
                                     layout: 'center',
                                     type: 'error',
                                     timeout: 5000

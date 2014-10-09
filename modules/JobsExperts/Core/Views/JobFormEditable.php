@@ -206,7 +206,7 @@ class JobsExperts_Core_Views_JobForm extends JobsExperts_Framework_Render
 
                     var diff = value - current_date;
                     if (diff < 0) {
-                        return '<?php _e('*Must be a future date',JBP_TEXT_DOMAIN) ?>';
+                        return '<?php echo esc_js('*Must be a future date',JBP_TEXT_DOMAIN) ?>';
                     }
                 }
             </script>

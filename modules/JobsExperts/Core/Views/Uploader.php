@@ -103,7 +103,7 @@ class JobsExperts_Core_Views_Uploader extends JobsExperts_Framework_Render {
 						var max_file_upload = <?php echo get_max_file_upload() * 1000000 ?>;
 						//max file size
 						if (file.size > max_file_upload) {
-							alert('<?php _e('Your file is too large!',JBP_TEXT_DOMAIN) ?>');
+							alert('<?php echo esc_js('Your file is too large!',JBP_TEXT_DOMAIN) ?>');
 							$(this).val("");
 						}
 						//check type
@@ -111,7 +111,7 @@ class JobsExperts_Core_Views_Uploader extends JobsExperts_Framework_Render {
 						if (type != undefined && type.length > 0) {
 							var allowed = <?php echo json_encode(array_values(get_allowed_mime_types())) ?>;
 							if ($.inArray(type, allowed) == -1) {
-								alert('<?php _e('Your file type is not supported!',JBP_TEXT_DOMAIN) ?>');
+								alert('<?php echo esc_js('Your file type is not supported!',JBP_TEXT_DOMAIN) ?>');
 								$(this).val("");
 							}
 						}

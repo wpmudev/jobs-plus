@@ -185,7 +185,7 @@ class JobsExperts_Core_Views_JobForm extends JobsExperts_Framework_Render
 
                     var diff = value - current_date;
                     if (diff < 0) {
-                        return '<?php _e('*Must be a future date',JBP_TEXT_DOMAIN) ?>';
+                        return '<?php echo esc_js('*Must be a future date',JBP_TEXT_DOMAIN) ?>';
                     }
                 }
             </script>
@@ -305,7 +305,7 @@ class JobsExperts_Core_Views_JobForm extends JobsExperts_Framework_Render
                             data = $.parseJSON(data);
                             if (data.status == 1) {
                                 var n = noty({
-                                    text: '<?php _e('Job '.($is_edit==true?'updated':'posted').' successful, redirecting...',JBP_TEXT_DOMAIN) ?>',
+                                    text: '<?php echo esc_js('Job '.($is_edit==true?'updated':'posted').' successful, redirecting...',JBP_TEXT_DOMAIN) ?>',
                                     layout: 'center',
                                     type: 'success',
                                     timeout: 5000
@@ -335,7 +335,7 @@ class JobsExperts_Core_Views_JobForm extends JobsExperts_Framework_Render
                                 });
                                 //display noty
                                 var n = noty({
-                                    text: '<?php _e('Error, please check the form data.',JBP_TEXT_DOMAIN) ?>',
+                                    text: '<?php echo esc_js('Error, please check the form data.',JBP_TEXT_DOMAIN) ?>',
                                     layout: 'center',
                                     type: 'error',
                                     timeout: 5000

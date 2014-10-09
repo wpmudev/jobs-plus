@@ -163,7 +163,7 @@ class JobsExperts_Components_Skill_View extends JobsExperts_Framework_Render
                     trigger: 'click',
                     container: false,
                     placement: 'auto',
-                    'title': '<?php _e('Update Skill',JBP_TEXT_DOMAIN) ?>'
+                    'title': '<?php echo esc_js('Update Skill',JBP_TEXT_DOMAIN) ?>'
                 }).on('shown.bs.popover', function () {
                     //load slider
                     var that = $(this);
@@ -214,7 +214,7 @@ class JobsExperts_Components_Skill_View extends JobsExperts_Framework_Render
                             that.popover('hide');
                         });
                         form.find('.hn-delete-skill').click(function () {
-                            if (confirm('<?php  _e('Are you sure?',JBP_TEXT_DOMAIN)?>')) {
+                            if (confirm('<?php  echo esc_js('Are you sure?',JBP_TEXT_DOMAIN)?>')) {
                                 main_input.val(main_input.val().replace(top_parent.data('id'), ''));
                                 top_parent.remove();
                                 that.popover().hide();
