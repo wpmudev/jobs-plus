@@ -3,7 +3,7 @@
 /**
  * Name: Advanced Search
  * Description: Add advanced search form for jobs and experts listing page
- * Author: Hoang Ngo
+ * Author: WPMUDEV
  */
 class JobsExpert_Compnents_AdvancedSearch extends JobsExperts_AddOn
 {

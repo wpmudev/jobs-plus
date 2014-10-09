@@ -3,7 +3,7 @@
 /**
  * Name: Custom layout
  * Description: Dynamic layout for jobs/experts listing page
- * Author: Hoang Ngo
+ * Author: WPMUDEV
  */
 class JobsExpert_Compnents_CustomLayout extends JobsExperts_AddOn {
 	public function __construct() {

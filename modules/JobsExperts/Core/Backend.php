@@ -451,14 +451,15 @@ class JobsExperts_Core_Backend extends JobsExperts_Framework_Module
         $plugin = JobsExperts_Plugin::instance();
 
         $model = JobsExperts_Core_Controllers_Pro::get_model_backend();
-        wp_enqueue_script('jbp_datepicker', $plugin->_module_url . 'assets/datepicker/js/bootstrap-datepicker.js');
-        wp_enqueue_style('jbp_datepicker', $plugin->_module_url . 'assets/datepicker/css/datepicker.css');
+        //wp_enqueue_script('jbp_datepicker', $plugin->_module_url . 'assets/datepicker/js/bootstrap-datepicker.js');
+        //wp_enqueue_style('jbp_datepicker', $plugin->_module_url . 'assets/datepicker/css/datepicker.css');
         global $jbp_component_uploader;
         $jbp_component_uploader->load_scripts();
         global $jbp_component_social;
         $jbp_component_social->load_scripts();
         global $jbp_component_skill;
         $jbp_component_skill->load_scripts();
+        wp_enqueue_media();
         $template = new JobsExperts_Core_Views_Backend_ExpertForm(array(
             'model' => $model
         ));

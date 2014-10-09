@@ -3,7 +3,7 @@
 /**
  * Name: Expert Demo Data
  * Description: Create random expert records, for testing purposes.
- * Author: Hoang Ngo
+ * Author: WPMUDEV
  */
 class JobsExpert_Compnents_ExpertDemoData extends JobsExperts_AddOn
 {

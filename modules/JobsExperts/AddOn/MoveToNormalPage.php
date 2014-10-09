@@ -3,7 +3,7 @@
 /**
  * Name: Jobs & Experts Pages
  * Description: Instead of using virtual pages, using your wordpress page
- * Author: Hoang Ngo
+ * Author: WPMUDEV
  */
 include __DIR__ . '/MoveToNormalPage/model.php';
 
