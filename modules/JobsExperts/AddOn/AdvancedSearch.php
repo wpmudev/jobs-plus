@@ -180,7 +180,7 @@ class JobsExpert_Compnents_AdvancedSearch extends JobsExperts_AddOn
                     html: true,
                     trigger: 'click',
                     content: '<?php echo $this->get_job_advance_search_form() ?>',
-                    title: '<?php echo esc_js('Advance Search Form',JBP_TEXT_DOMAIN) ?>'
+                    title: '<?php echo esc_js(__('Advance Search Form',JBP_TEXT_DOMAIN)) ?>'
                 }).on('shown.bs.popover', function () {
                     var that = $(this);
                     var next = $(this).next();
@@ -242,7 +242,7 @@ class JobsExpert_Compnents_AdvancedSearch extends JobsExperts_AddOn
         ob_start();
         ?>
         <form class="job_advanced_search_form form-horizontal" method="get"
-              action="<?php echo is_singular() ? get_permalink( get_the_ID() ) : get_post_type_archive_link( 'jbp_job' ) ?>">
+              action="<?php echo is_singular() ? get_permalink(get_the_ID()) : get_post_type_archive_link('jbp_job') ?>">
             <input type="hidden" name="advance_search" value="1">
 
             <table class="table">
@@ -498,7 +498,7 @@ INNER JOIN wp_postmeta max_price ON max_price.post_id = posts.ID AND max_price.m
                     html: true,
                     trigger: 'click',
                     content: '<?php echo $this->get_advance_search_form() ?>',
-                    title: '<?php echo esc_js('Advance Search Form',JBP_TEXT_DOMAIN) ?>'
+                    title: '<?php echo esc_js(__('Advance Search Form',JBP_TEXT_DOMAIN)) ?>'
                 }).on('shown.bs.popover', function () {
                     var that = $(this);
                     var next = $(this).next();

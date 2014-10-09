@@ -82,7 +82,7 @@ class JobsExpert_Core_Shortcode_MyExpert extends JobsExperts_Shortcode {
 		<script type="text/javascript">
 			jQuery(document).ready(function ($) {
 				$('.frm-delete').submit(function () {
-					if (confirm('<?php echo esc_js('Are you sure?',JBP_TEXT_DOMAIN) ?>')) {
+					if (confirm('<?php echo esc_js(__('Are you sure?',JBP_TEXT_DOMAIN) )?>')) {
 
 					} else {
 						return false;

@@ -82,11 +82,11 @@ class JobsExperts_Core_Views_Settings_General extends JobsExperts_Framework_Rend
                                     _nonce: '<?php echo wp_create_nonce('addons_action') ?>'
                                 },
                                 beforeSend: function () {
-                                    that.attr('disabled','disabled');
+                                    that.attr('disabled', 'disabled');
                                 },
                                 success: function (data) {
                                     that.removeAttr('disabled');
-                                    that.text('<?php echo esc_js('Activate',JBP_TEXT_DOMAIN) ?>');
+                                    that.text('<?php echo esc_js(__('Activate',JBP_TEXT_DOMAIN) )?>');
                                     $('.notif').html(data).removeClass('hide');
                                     $('#jbp_setting_nav').load("<?php echo "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]" ?> #jbp_setting_nav li");
                                 }
@@ -104,11 +104,11 @@ class JobsExperts_Core_Views_Settings_General extends JobsExperts_Framework_Rend
                                     _nonce: '<?php echo wp_create_nonce('addons_action') ?>'
                                 },
                                 beforeSend: function () {
-                                    that.attr('disabled','disabled');
+                                    that.attr('disabled', 'disabled');
                                 },
                                 success: function (data) {
                                     that.removeAttr('disabled');
-                                    that.text('<?php echo esc_js('Deactivate',JBP_TEXT_DOMAIN) ?>');
+                                    that.text('<?php echo esc_js(__('Deactivate',JBP_TEXT_DOMAIN) )?>');
                                     $('.notif').html(data).removeClass('hide');
                                     $('#jbp_setting_nav').load("<?php echo "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]" ?> #jbp_setting_nav li");
                                 }

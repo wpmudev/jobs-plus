@@ -80,7 +80,7 @@ class JobsExperts_Components_Skill_View extends JobsExperts_Framework_Render
                         preview.find('.skill-name').text($(this).val());
                     });
 
-                    form.find('input[name="score"]').on('change mousemove',function () {
+                    form.find('input[name="score"]').on('change mousemove', function () {
                         preview.find('.progress-bar').text($(this).val() + '%').css('width', $(this).val() + '%')
                     }).trigger('change');
 
@@ -163,7 +163,7 @@ class JobsExperts_Components_Skill_View extends JobsExperts_Framework_Render
                     trigger: 'click',
                     container: false,
                     placement: 'auto',
-                    'title': '<?php echo esc_js('Update Skill',JBP_TEXT_DOMAIN) ?>'
+                    'title': '<?php echo esc_js(__('Update Skill',JBP_TEXT_DOMAIN)) ?>'
                 }).on('shown.bs.popover', function () {
                     //load slider
                     var that = $(this);
@@ -180,7 +180,7 @@ class JobsExperts_Components_Skill_View extends JobsExperts_Framework_Render
                             preview.find('.skill-name').text($(this).val());
                         }).val(top_parent.data('id')).trigger('change');
 
-                        form.find('input[name="score"]').on('change mousemove',function () {
+                        form.find('input[name="score"]').on('change mousemove', function () {
                             preview.find('.progress-bar').text($(this).val() + '%').css('width', $(this).val() + '%')
                         }).val(top_parent.data('value')).trigger('change');
                         var selected = top_parent.find('.progress-bar').first();
@@ -214,7 +214,7 @@ class JobsExperts_Components_Skill_View extends JobsExperts_Framework_Render
                             that.popover('hide');
                         });
                         form.find('.hn-delete-skill').click(function () {
-                            if (confirm('<?php  echo esc_js('Are you sure?',JBP_TEXT_DOMAIN)?>')) {
+                            if (confirm('<?php  echo esc_js(__('Are you sure?',JBP_TEXT_DOMAIN))?>')) {
                                 main_input.val(main_input.val().replace(top_parent.data('id'), ''));
                                 top_parent.remove();
                                 that.popover().hide();
@@ -294,7 +294,7 @@ class JobsExperts_Components_Skill_View extends JobsExperts_Framework_Render
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6"  style="box-sizing: border-box">
+                <div class="col-md-6" style="box-sizing: border-box">
                     <form method="post">
                         <label>Name</label>
                         <input type="text" name="name">

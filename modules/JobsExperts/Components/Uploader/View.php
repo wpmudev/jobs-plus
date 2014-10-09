@@ -58,7 +58,7 @@ class JobsExperts_Components_Uploader_View extends JobsExperts_Framework_Render
 
             $('body').on('click', '.hn-file-delete', function () {
                 var parent = $(this).closest('div').parent();
-                if (confirm('<?php echo esc_js('Are you sure?',JBP_TEXT_DOMAIN) ?>')) {
+                if (confirm('<?php echo esc_js(__('Are you sure?',JBP_TEXT_DOMAIN)) ?>')) {
                     var id = parent.data('id');
                     $.ajax({
                         type: 'POST',
@@ -137,7 +137,7 @@ class JobsExperts_Components_Uploader_View extends JobsExperts_Framework_Render
 
                             // Create the media frame.
                             file_frame = wp.media.frames.file_frame = wp.media({
-                                title: '<?php echo esc_js('Please select a file',JBP_TEXT_DOMAIN) ?>',
+                                title: '<?php echo esc_js(__('Please select a file',JBP_TEXT_DOMAIN)) ?>',
                                 multiple: false  // Set to true to allow multiple files to be selected
                             });
 
@@ -257,7 +257,7 @@ class JobsExperts_Components_Uploader_View extends JobsExperts_Framework_Render
                         var upload_btn = $(this);
                         // Create the media frame.
                         var file_frame = wp.media.frames.file_frame = wp.media({
-                            title: '<?php echo esc_js('Please select a file',JBP_TEXT_DOMAIN) ?>',
+                            title: '<?php echo esc_js(__('Please select a file',JBP_TEXT_DOMAIN)) ?>',
                             multiple: false  // Set to true to allow multiple files to be selected
                         });
 
@@ -403,7 +403,7 @@ class JobsExperts_Components_Uploader_View extends JobsExperts_Framework_Render
 
             $('body').on('click', '.hn-file-delete', function () {
                 var parent = $(this).closest('div').parent();
-                if (confirm('<?php echo esc_js('Are you sure?',JBP_TEXT_DOMAIN) ?>')) {
+                if (confirm('<?php echo esc_js(__('Are you sure?',JBP_TEXT_DOMAIN)) ?>')) {
                     var id = parent.data('id');
                     $.ajax({
                         type: 'POST',
@@ -476,10 +476,10 @@ class JobsExperts_Components_Uploader_View extends JobsExperts_Framework_Render
                             var allowed = <?php echo json_encode(array_values(get_allowed_mime_types())) ?>;
                             var size_allowed = '<?php echo (get_max_file_upload() * 1000000) ?>';
                             if ($.inArray(file.type, allowed) == -1) {
-                                alert('<?php echo esc_js('File type not allow.',JBP_TEXT_DOMAIN) ?>');
+                                alert('<?php echo esc_js(__('File type not allow.',JBP_TEXT_DOMAIN) )?>');
                                 $(this).val("");
                             } else if (file.size > size_allowed) {
-                                alert('<?php echo esc_js('File too large.',JBP_TEXT_DOMAIN) ?>');
+                                alert('<?php echo esc_js(__('File too large.',JBP_TEXT_DOMAIN)) ?>');
                                 $(this).val("");
                             }
                         });
@@ -587,10 +587,10 @@ class JobsExperts_Components_Uploader_View extends JobsExperts_Framework_Render
                         var allowed = <?php echo json_encode(array_values(get_allowed_mime_types())) ?>;
                         var size_allowed = '<?php echo (get_max_file_upload() * 1000000) ?>';
                         if ($.inArray(file.type, allowed) == -1) {
-                            alert('<?php echo esc_js('File type not allow.',JBP_TEXT_DOMAIN) ?>');
+                            alert('<?php echo esc_js(__('File type not allow.',JBP_TEXT_DOMAIN) )?>');
                             $(this).val("");
                         } else if (file.size > size_allowed) {
-                            alert('<?php echo esc_js('File too large.',JBP_TEXT_DOMAIN) ?>');
+                            alert('<?php echo esc_js(__('File too large.',JBP_TEXT_DOMAIN)) ?>');
                             $(this).val("");
                         }
                     });

@@ -227,7 +227,7 @@ class JobsExperts_Core_Shortcode_JobContact extends JobsExperts_Shortcode {
 												});
 												//display noty
 												var n = noty({
-													text: '<?php echo esc_js('Error happen, please check the form data',JBP_TEXT_DOMAIN) ?>',
+													text: '<?php echo esc_js(__('Error happen, please check the form data',JBP_TEXT_DOMAIN)) ?>',
 													layout: 'centerRight',
 													type: 'error',
 													timeout: 5000

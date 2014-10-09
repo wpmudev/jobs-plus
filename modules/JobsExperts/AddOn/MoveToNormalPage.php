@@ -658,11 +658,11 @@ class JobsExpert_Compnents_MoveToNormalPage extends JobsExperts_AddOn
                             },
                             url: '<?php echo admin_url('admin-ajax.php') ?>',
                             beforeSend: function () {
-                                that.attr('disabled', 'disabled').text('<?php echo esc_js('Creating...',JBP_TEXT_DOMAIN) ?>');
+                                that.attr('disabled', 'disabled').text('<?php echo esc_js(__('Creating...',JBP_TEXT_DOMAIN)) ?>');
                             },
                             success: function (data) {
                                 $('#page-creator').load("<?php echo "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]" ?> #page-creator", function (html) {
-                                    that.removeAttr('disabled').text('<?php echo esc_js('Create Page',JBP_TEXT_DOMAIN) ?>');
+                                    that.removeAttr('disabled').text('<?php echo esc_js(__('Create Page',JBP_TEXT_DOMAIN)) ?>');
                                 });
                             }
                         })
