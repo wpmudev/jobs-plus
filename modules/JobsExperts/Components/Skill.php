@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Author: Hoang Ngo
+ * Author: WPMUDEV
  */
 class JobsExpert_Components_Skill extends JobsExperts_Components
 {

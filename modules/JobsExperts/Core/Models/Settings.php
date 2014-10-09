@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Author: Hoang Ngo
+ * Author: WPMUDEV
  */
 class JobsExperts_Core_Models_Settings extends JobsExperts_Framework_OptionModel
 {

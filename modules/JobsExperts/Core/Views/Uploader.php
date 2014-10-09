@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Author: Hoang Ngo
+ * Author: WPMUDEV
  */
 class JobsExperts_Core_Views_Uploader extends JobsExperts_Framework_Render {
 	public function  __construct( $data ) {

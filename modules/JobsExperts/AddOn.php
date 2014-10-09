@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Author: Hoang Ngo
+ * Author: WPMUDEV
  */
 class JobsExperts_AddOn extends JobsExperts_Framework_Module
 {

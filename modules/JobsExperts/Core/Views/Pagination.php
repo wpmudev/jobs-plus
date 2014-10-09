@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Author: Hoang Ngo
+ * Author: WPMUDEV
  */
 class JobsExperts_Core_Views_Pagination extends JobsExperts_Framework_Render {
 
@@ -41,11 +41,11 @@ class JobsExperts_Core_Views_Pagination extends JobsExperts_Framework_Render {
 					<span><?php printf( __( 'Page %1$d of %2$d', JBP_TEXT_DOMAIN ), $paged, $pages ); ?></span>
 
 					<?php if ( $paged > 2 && $paged > $range + 1 && $showitems < $pages ): ?>
-						<a href="<?php echo get_pagenum_link( 1 ); ?>">&laquo;<?php esc_html_e( 'First', JBP_TEXT_DOMAIN ); ?></a>
+						<a href="<?php echo get_pagenum_link( 1 ); ?>">&laquo;<?php _e( 'First', JBP_TEXT_DOMAIN ); ?></a>
 					<?php endif; ?>
 
 					<?php if ( $paged > 1 && $showitems < $pages ) : ?>
-						<a href="<?php echo get_pagenum_link( $paged - 1 ); ?>">&lsaquo;<?php esc_html_e( 'Previous', JBP_TEXT_DOMAIN ); ?></a>
+						<a href="<?php echo get_pagenum_link( $paged - 1 ); ?>">&lsaquo;<?php _e( 'Previous', JBP_TEXT_DOMAIN ); ?></a>
 					<?php endif; ?>
 
 					<?php for ( $i = 1; $i <= $pages; $i ++ ) :
@@ -55,11 +55,11 @@ class JobsExperts_Core_Views_Pagination extends JobsExperts_Framework_Render {
 					endfor;
 
 					if ( $paged < $pages && $showitems < $pages ) : ?>
-						<a href="<?php echo get_pagenum_link( $paged + 1 ); ?>"><?php esc_html_e( 'Next', JBP_TEXT_DOMAIN ); ?>&rsaquo;</a>
+						<a href="<?php echo get_pagenum_link( $paged + 1 ); ?>"><?php _e( 'Next', JBP_TEXT_DOMAIN ); ?>&rsaquo;</a>
 					<?php endif; ?>
 
 					<?php if ( $paged < $pages - 1 && $paged + $range - 1 < $pages && $showitems < $pages ): ?>
-						<a href="<?php echo get_pagenum_link( $pages ); ?>"><?php esc_html_e( 'Last', JBP_TEXT_DOMAIN ); ?>&raquo;</a>
+						<a href="<?php echo get_pagenum_link( $pages ); ?>"><?php _e( 'Last', JBP_TEXT_DOMAIN ); ?>&raquo;</a>
 					<?php endif; ?>
 
 				</div> <!--end .jbp-pagination-->

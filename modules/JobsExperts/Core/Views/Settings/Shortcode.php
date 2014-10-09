@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Author: Hoang Ngo
+ * Author: WPMUDEV
  */
 class JobsExperts_Core_Views_Settings_Shortcode extends JobsExperts_Framework_Render
 {

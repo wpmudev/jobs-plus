@@ -129,7 +129,7 @@ class JobsExperts_Components_Uploader_View extends JobsExperts_Framework_Render
                         });
                         var file_frame;
                         form.find('.upload_image_button').on('click', function () {
-                            if ( file_frame ) {
+                            if (file_frame) {
                                 // Open frame
                                 file_frame.open();
                                 return;
@@ -164,7 +164,7 @@ class JobsExperts_Components_Uploader_View extends JobsExperts_Framework_Render
                                 processData: false,
                                 iframe: true,
                                 method: 'POST',
-                                url: '<?php echo add_query_arg(array('upload_file_nonce'=>wp_create_nonce('hn_upload_file'),'a'=>(is_admin()?1:0)),home_url()) ?>'
+                                url: '<?php echo add_query_arg(array('upload_file_nonce'=>wp_create_nonce('hn_upload_file')),"http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]") ?>'
                             }
                             var file = $(":file", form);
 
@@ -288,7 +288,7 @@ class JobsExperts_Components_Uploader_View extends JobsExperts_Framework_Render
                             processData: false,
                             iframe: true,
                             method: 'POST',
-                            url: '<?php echo add_query_arg(array('upload_file_nonce'=>wp_create_nonce('hn_upload_file')),home_url()) ?>'
+                            url: '<?php echo add_query_arg(array('upload_file_nonce'=>wp_create_nonce('hn_upload_file')),"http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]") ?>'
                         }
                         var file = $(":file", form);
 
@@ -494,7 +494,7 @@ class JobsExperts_Components_Uploader_View extends JobsExperts_Framework_Render
                                 processData: false,
                                 iframe: true,
                                 method: 'POST',
-                                url: '<?php echo add_query_arg(array('upload_file_nonce'=>wp_create_nonce('hn_upload_file'),'a'=>(is_admin()?1:0)),home_url()) ?>'
+                                url: '<?php echo add_query_arg(array('upload_file_nonce'=>wp_create_nonce('hn_upload_file')),"http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]") ?>'
                             }
                             var file = $(":file", form);
 
@@ -605,7 +605,7 @@ class JobsExperts_Components_Uploader_View extends JobsExperts_Framework_Render
                             processData: false,
                             iframe: true,
                             method: 'POST',
-                            url: '<?php echo add_query_arg(array('upload_file_nonce'=>wp_create_nonce('hn_upload_file')),home_url()) ?>'
+                            url: '<?php echo add_query_arg(array('upload_file_nonce'=>wp_create_nonce('hn_upload_file')),"http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]") ?>'
                         }
                         var file = $(":file", form);
 

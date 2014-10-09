@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Author: Hoang Ngo
+ * Author: WPMUDEV
  */
 class JobsExperts_Components_Uploader extends JobsExperts_Components
 {
@@ -244,12 +244,18 @@ class JobsExperts_Components_Uploader extends JobsExperts_Components
             }
             $model->url = $_POST['link'];
             $model->description = jbp_filter_text($_POST['description']);
-            if (isset($_FILES['hn_uploader'])) {
-                $model->file = $_FILES['hn_uploader'];
-            }
 
-            if (!empty($_POST['attachment'])) {
-                $model->file = $_POST['attachment'];
+            //case frontend, the upload as normal FILE
+            if (!is_admin()) {
+                if (isset($_FILES['hn_uploader'])) {
+                    $model->file_upload = $_FILES['hn_uploader'];
+                }
+            } else {
+                //this is for the admin
+                //the admin always ID of the attachment.
+                if (!empty($_POST['attachment'])) {
+                    $model->file = $_POST['attachment'];
+                }
             }
 
             $model->parent_id = $_POST['parent_id'];
@@ -384,6 +390,8 @@ class JobsExperts_Components_Uploader extends JobsExperts_Components
                                         $file = $model->file;
                                         $file_url = '';
                                         $show_image = false;
+
+
                                         if ($file) {
                                             $file_url = wp_get_attachment_url($file);
                                             $mime = explode('/', get_post_mime_type($file));

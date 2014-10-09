@@ -94,21 +94,21 @@ class JobsExperts_Core_Widgets_JobSearch extends WP_Widget
 
         <p>
             <label
-                for="<?php echo esc_attr($this->get_field_id('title')); ?>"><?php esc_html_e('Title: ', JBP_TEXT_DOMAIN); ?></label>
+                for="<?php echo esc_attr($this->get_field_id('title')); ?>"><?php _e('Title: ', JBP_TEXT_DOMAIN); ?></label>
             <input class="widefat" id="<?php echo esc_attr($this->get_field_id('title')); ?>"
                    name="<?php esc_attr($this->get_field_name('title')); ?>" type="text"
                    value="<?php echo esc_attr($title); ?>"/>
         </p>
         <p>
             <label
-                for="<?php echo esc_attr($this->get_field_id('view')); ?>"><?php esc_html_e('Who can view:', JBP_TEXT_DOMAIN); ?></label>
+                for="<?php echo esc_attr($this->get_field_id('view')); ?>"><?php _e('Who can view:', JBP_TEXT_DOMAIN); ?></label>
             <select name="<?php echo esc_attr($this->get_field_name('view')); ?>">
                 <option <?php echo selected('both', $view) ?>
-                    value="both"><?php esc_html_e('Both', JBP_TEXT_DOMAIN) ?></option>
+                    value="both"><?php _e('Both', JBP_TEXT_DOMAIN) ?></option>
                 <option <?php echo selected('loggedin', $view) ?>
-                    value="loggedin"><?php esc_html_e('Signed in', JBP_TEXT_DOMAIN) ?></option>
+                    value="loggedin"><?php _e('Signed in', JBP_TEXT_DOMAIN) ?></option>
                 <option <?php echo selected('loggedout', $view) ?>
-                    value="loggedout"><?php esc_html_e('Not sign in', JBP_TEXT_DOMAIN) ?></option>
+                    value="loggedout"><?php _e('Not sign in', JBP_TEXT_DOMAIN) ?></option>
             </select>
         </p>
     <?php

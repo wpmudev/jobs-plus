@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Author: Hoang Ngo
+ * Author: WPMUDEV
  */
 class JobsExperts_Core_Views_Settings_Job extends JobsExperts_Framework_Render {
 	public function __construct( $data ) {
@@ -44,13 +44,13 @@ class JobsExperts_Core_Views_Settings_Job extends JobsExperts_Framework_Render {
         </div>
         <div class="form-group">
             <label class="col-md-3 control-label">
-                <?php esc_html_e( 'Use Budget Range', JBP_TEXT_DOMAIN ); ?>
+                <?php _e( 'Use Budget Range', JBP_TEXT_DOMAIN ); ?>
             </label>
             <div class="col-md-9">
                 <?php $form->hiddenField( $model, 'job_budget_range', array( 'value' => 0 ) ) ?>
                 <?php echo $form->checkBox( $model, 'job_budget_range', array( 'value' => 1 ) ) ?>
-                <?php esc_html_e( 'Use Min and Max budget fields', JBP_TEXT_DOMAIN ); ?>
-                <p class="help-block"><?php esc_html_e( 'Displays both minimum and maximum budget fields.', JBP_TEXT_DOMAIN ); ?></p>
+                <?php _e( 'Use Min and Max budget fields', JBP_TEXT_DOMAIN ); ?>
+                <p class="help-block"><?php _e( 'Displays both minimum and maximum budget fields.', JBP_TEXT_DOMAIN ); ?></p>
             </div>
             <div class="clearfix"></div>
         </div>
@@ -62,13 +62,13 @@ class JobsExperts_Core_Views_Settings_Job extends JobsExperts_Framework_Render {
             <div class="col-md-9">
                 <label><?php echo $form->radioButton($model, 'job_new_job_status', 'publish') ?>
 
-                    <?php esc_html_e('Published', JBP_TEXT_DOMAIN); ?></label>
+                    <?php _e('Published', JBP_TEXT_DOMAIN); ?></label>
 
                 <p class="help-block">
                     <?php printf(esc_html__('Allow members to publish %s themselves.', JBP_TEXT_DOMAIN), $job_labels->name); ?>
                 </p>
                 <label> <?php echo $form->radioButton($model, 'job_new_job_status', 'pending') ?>
-                    <?php esc_html_e('Pending Review', JBP_TEXT_DOMAIN); ?></label>
+                    <?php _e('Pending Review', JBP_TEXT_DOMAIN); ?></label>
 
                 <p class="help-block">
                     <?php printf(esc_html__('%s is pending review by an administrator.', JBP_TEXT_DOMAIN), $job_labels->singular_name); ?>
@@ -76,11 +76,11 @@ class JobsExperts_Core_Views_Settings_Job extends JobsExperts_Framework_Render {
                 <label>
                     <?php $form->hiddenField($model, 'job_allow_draft', array('value' => 0)) ?>
                     <?php echo $form->checkBox($model, 'job_allow_draft', array('value' => 1)) ?>
-                    <?php esc_html_e('Draft', JBP_TEXT_DOMAIN); ?>
+                    <?php _e('Draft', JBP_TEXT_DOMAIN); ?>
                 </label>
 
                 <p class="help-block">
-                    <?php esc_html_e('Allow members to save Drafts.', JBP_TEXT_DOMAIN); ?>
+                    <?php _e('Allow members to save Drafts.', JBP_TEXT_DOMAIN); ?>
                 </p>
             </div>
             <div class="clearfix"></div>
@@ -92,7 +92,7 @@ class JobsExperts_Core_Views_Settings_Job extends JobsExperts_Framework_Render {
         </div>
         <div class="form-group">
             <label class="col-md-3 control-label">
-                <?php esc_html_e('Maximum Gallery Images', JBP_TEXT_DOMAIN) ?>
+                <?php _e('Maximum Gallery Images', JBP_TEXT_DOMAIN) ?>
             </label>
 
             <div class="col-md-9">
@@ -103,58 +103,58 @@ class JobsExperts_Core_Views_Settings_Job extends JobsExperts_Framework_Render {
             <div class="clearfix"></div>
         </div>
         <div class="page-header">
-            <h3 class='hndle'><span><?php esc_html_e('Notification Settings', JBP_TEXT_DOMAIN); ?></span></h3>
+            <h3 class='hndle'><span><?php _e('Notification Settings', JBP_TEXT_DOMAIN); ?></span></h3>
         </div>
         <div class="form-group">
             <label class="col-md-3 control-label">
-                <?php esc_html_e('Disable Contact Form:', JBP_TEXT_DOMAIN); ?>
+                <?php _e('Disable Contact Form:', JBP_TEXT_DOMAIN); ?>
             </label>
 
             <div class="col-md-9">
                 <label class="text-muted" style="font-weight: normal">
                     <?php $form->hiddenField($model, 'job_contact_form', array('value' => 0)) ?>
                     <?php $form->checkBox($model, 'job_contact_form', array('value' => 1)) ?>
-                    <?php esc_html_e('disable contact form', JBP_TEXT_DOMAIN); ?>
+                    <?php _e('disable contact form', JBP_TEXT_DOMAIN); ?>
                 </label>
             </div>
             <div class="clearfix"></div>
         </div>
         <div class="form-group">
             <label class="col-md-3 control-label">
-                <?php esc_html_e('CC the Administrator:', JBP_TEXT_DOMAIN); ?>
+                <?php _e('CC the Administrator:', JBP_TEXT_DOMAIN); ?>
             </label>
 
             <div class="col-md-9">
                 <label class="text-muted" style="font-weight: normal">
                     <?php $form->hiddenField($model, 'job_cc_admin', array('value' => 0)) ?>
                     <?php $form->checkBox($model, 'job_cc_admin', array('value' => 1)) ?>
-                    <?php esc_html_e('cc the administrator', JBP_TEXT_DOMAIN); ?>
+                    <?php _e('cc the administrator', JBP_TEXT_DOMAIN); ?>
                 </label>
             </div>
             <div class="clearfix"></div>
         </div>
         <div class="form-group">
             <label class="col-md-3 control-label">
-                <?php esc_html_e('Email Subject:', JBP_TEXT_DOMAIN); ?>
+                <?php _e('Email Subject:', JBP_TEXT_DOMAIN); ?>
             </label>
 
             <div class="col-md-9">
                 <?php echo $form->textField($model, 'job_email_subject', array('class' => 'large-text')); ?>
                 <p class="help-block">
-                    <?php esc_html_e('Variables: TO_NAME, FROM_NAME, FROM_EMAIL, FROM_MESSAGE, POST_TITLE, POST_LINK, SITE_NAME', JBP_TEXT_DOMAIN); ?>
+                    <?php _e('Variables: TO_NAME, FROM_NAME, FROM_EMAIL, FROM_MESSAGE, POST_TITLE, POST_LINK, SITE_NAME', JBP_TEXT_DOMAIN); ?>
                 </p>
             </div>
             <div class="clearfix"></div>
         </div>
         <div class="form-group">
             <label class="col-md-3 control-label">
-                <?php esc_html_e('Email Content:', JBP_TEXT_DOMAIN); ?>
+                <?php _e('Email Content:', JBP_TEXT_DOMAIN); ?>
             </label>
 
             <div class="col-md-9">
                 <?php echo $form->textArea($model, 'job_email_content', array('class' => 'large-text', 'rows' => 5)); ?>
                 <p class="help-block">
-                    <?php esc_html_e('Variables: TO_NAME, FROM_NAME, FROM_EMAIL, FROM_MESSAGE, POST_TITLE, POST_LINK, SITE_NAME', JBP_TEXT_DOMAIN); ?>
+                    <?php _e('Variables: TO_NAME, FROM_NAME, FROM_EMAIL, FROM_MESSAGE, POST_TITLE, POST_LINK, SITE_NAME', JBP_TEXT_DOMAIN); ?>
                 </p>
             </div>
             <div class="clearfix"></div>

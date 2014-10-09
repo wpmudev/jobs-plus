@@ -70,11 +70,11 @@ class JobsExperts_Core_Shortcode_JobSingle extends JobsExperts_Shortcode
                 <div class="jbp-job-single">
                     <div class="row hn-border hn-border-round jobs-meta">
                         <div class="col-md-3">
-                            <h5><?php esc_html_e('Job Budget', JBP_TEXT_DOMAIN); ?></h5>
+                            <h5><?php _e('Job Budget', JBP_TEXT_DOMAIN); ?></h5>
                             <small class="text-warning"><?php $model->render_prices() ?></small>
                         </div>
                         <div class="col-md-3">
-                            <h5><?php esc_html_e('This job open for', JBP_TEXT_DOMAIN) ?></h5>
+                            <h5><?php _e('This job open for', JBP_TEXT_DOMAIN) ?></h5>
                             <small class="text-warning"><?php echo $model->get_due_day() ?></small>
                         </div>
                         <div class="col-md-3">

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Author: Hoang Ngo
+ * Author: WPMUDEV
  */
 class JobsExperts_Core_Views_Settings_General extends JobsExperts_Framework_Render
 {
@@ -20,10 +20,10 @@ class JobsExperts_Core_Views_Settings_General extends JobsExperts_Framework_Rend
         $components = new JobsExperts_Core_Table_AddOn();
         ?>
         <div class="page-header">
-            <h3 class="hndle"><span><?php esc_html_e('General Options', JBP_TEXT_DOMAIN) ?></span></h3>
+            <h3 class="hndle"><span><?php _e('General Options', JBP_TEXT_DOMAIN) ?></span></h3>
         </div>
         <div class="form-group">
-            <label class="col-md-2 control-label"><?php esc_html_e('Icon Colors', JBP_TEXT_DOMAIN); ?></label>
+            <label class="col-md-2 control-label"><?php _e('Icon Colors', JBP_TEXT_DOMAIN); ?></label>
 
             <div class="col-sm-10">
                 <div class="radio">
@@ -45,12 +45,12 @@ class JobsExperts_Core_Views_Settings_General extends JobsExperts_Framework_Rend
                     </label>
                 </div>
                 <span
-                    class="help-block"><?php esc_html_e('Sets the default color of the button icons. May be overriden for individual buttons in the "class" attribute of the shortcode.', JBP_TEXT_DOMAIN); ?></span>
+                    class="help-block"><?php _e('Sets the default color of the button icons. May be overriden for individual buttons in the "class" attribute of the shortcode.', JBP_TEXT_DOMAIN); ?></span>
             </div>
         </div>
 
         <div class="page-header">
-            <h3 class="hndle"><span><?php esc_html_e('Addons', JBP_TEXT_DOMAIN) ?></span></h3>
+            <h3 class="hndle"><span><?php _e('Addons', JBP_TEXT_DOMAIN) ?></span></h3>
         </div>
         <div class="">
             <div class="alert alert-success alert-sm hide notif">

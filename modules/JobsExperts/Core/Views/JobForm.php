@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Author: Hoang Ngo
+ * Author: WPMUDEV
  */
 class JobsExperts_Core_Views_JobForm extends JobsExperts_Framework_Render
 {
@@ -165,6 +165,9 @@ class JobsExperts_Core_Views_JobForm extends JobsExperts_Framework_Render
                 <div class="input-group pull-left">
                     <span class="input-group-addon"><i class="fa fa-calendar"></i> </span>
                     <?php
+                    if ($model->dead_line && strtotime($model->dead_line)) {
+                        $model->dead_line = date('M d, Y', strtotime($model->dead_line));
+                    }
                     $form->textField($model, 'dead_line', array(
                         'class' => 'form-control datepicker job-tool-tip validate[required]',
                         'data-toggle' => "tooltip",
@@ -242,7 +245,7 @@ class JobsExperts_Core_Views_JobForm extends JobsExperts_Framework_Render
         <script type="text/javascript">
             jQuery(document).ready(function ($) {
                 $('.form-control-feedback').hide();
-                $("#jbp_job_form").find(':input').blur(function () {
+                $("#jbp_job_form").find(':input').change(function () {
                     var parent = $(this).closest('div');
                     var top_parent = parent.parent();
                     if (parent.hasClass('input-group')) {
@@ -347,7 +350,8 @@ class JobsExperts_Core_Views_JobForm extends JobsExperts_Framework_Render
                     autoclose: true,
                     format: "M d, yyyy",
                     todayHighlight: true,
-                    startDate: '<?php echo date('M d, Y') ?>'
+                    startDate: '<?php echo date('M d, Y') ?>',
+                    forceParse: false
                 });
             })
         </script>

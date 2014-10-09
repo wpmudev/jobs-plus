@@ -4,7 +4,7 @@ if (!class_exists('WP_List_Table')) {
 }
 
 /**
- * Author: Hoang Ngo
+ * Author: WPMUDEV
  */
 class JobsExperts_Core_Table_AddOn extends WP_List_Table
 {

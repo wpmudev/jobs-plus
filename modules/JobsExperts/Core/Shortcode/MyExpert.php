@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Author: Hoang Ngo
+ * Author: WPMUDEV
  */
 class JobsExpert_Core_Shortcode_MyExpert extends JobsExperts_Shortcode {
 	public function  __construct() {

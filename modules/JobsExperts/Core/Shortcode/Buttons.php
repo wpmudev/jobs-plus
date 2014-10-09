@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Author: Hoang Ngo
+ * Author: WPMUDEV
  */
 class JobsExpert_Core_Shortcode_Buttons extends JobsExperts_Shortcode
 {

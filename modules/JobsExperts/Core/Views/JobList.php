@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Author: Hoang Ngo
+ * Author: WPMUDEV
  */
 class JobsExperts_Core_Views_JobList extends JobsExperts_Framework_Render
 {
@@ -60,10 +60,10 @@ class JobsExperts_Core_Views_JobList extends JobsExperts_Framework_Render
                                     </div>
                                     <div class="jbp_meta">
                                         <div class="pull-left">
-                                            <?php esc_html_e('Due: ', JBP_TEXT_DOMAIN); ?><?php echo $model->get_end_date() ?>
+                                            <?php _e('Due: ', JBP_TEXT_DOMAIN); ?><?php echo $model->get_end_date() ?>
                                         </div>
                                         <div class="pull-right">
-                                            <?php esc_html_e('Budget: ', JBP_TEXT_DOMAIN); ?>
+                                            <?php _e('Budget: ', JBP_TEXT_DOMAIN); ?>
                                             <?php
                                             $model->render_prices('max');
                                             ?>

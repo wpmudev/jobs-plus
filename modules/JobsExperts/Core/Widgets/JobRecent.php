@@ -121,7 +121,7 @@ class JobsExperts_Core_Widgets_JobRecent extends WP_Widget
         ?>
 
         <p>
-            <label for="<?php echo esc_attr($this->get_field_id('title')); ?>"><?php esc_html_e('Title:'); ?></label>
+            <label for="<?php echo esc_attr($this->get_field_id('title')); ?>"><?php _e('Title:'); ?></label>
             <input class="widefat" id="<?php echo esc_attr($this->get_field_id('title')); ?>"
                    name="<?php echo esc_attr($this->get_field_name('title')); ?>" type="text"
                    value="<?php echo esc_attr($title); ?>"/>
@@ -129,7 +129,7 @@ class JobsExperts_Core_Widgets_JobRecent extends WP_Widget
 
         <p>
             <label
-                for="<?php echo esc_attr($this->get_field_id('number')); ?>"><?php esc_html_e('Number of posts to show:', JBP_TEXT_DOMAIN); ?></label>
+                for="<?php echo esc_attr($this->get_field_id('number')); ?>"><?php _e('Number of posts to show:', JBP_TEXT_DOMAIN); ?></label>
             <input id="<?php echo esc_attr($this->get_field_id('number')); ?>"
                    name="<?php echo esc_attr($this->get_field_name('number')); ?>" type="text"
                    value="<?php echo esc_attr($number); ?>" size="3"/>
@@ -140,22 +140,22 @@ class JobsExperts_Core_Widgets_JobRecent extends WP_Widget
                    id="<?php echo esc_attr($this->get_field_id('show_cat')); ?>"
                    name="<?php echo esc_attr($this->get_field_name('show_cat')); ?>"/>
             <label
-                for="<?php echo esc_attr($this->get_field_id('show_cat')); ?>"><?php esc_html_e('Display job categories?', JBP_TEXT_DOMAIN); ?></label>
+                for="<?php echo esc_attr($this->get_field_id('show_cat')); ?>"><?php _e('Display job categories?', JBP_TEXT_DOMAIN); ?></label>
         </p>
         <p>
             <label
-                for="<?php echo esc_attr($this->get_field_id('order_by')); ?>"><?php esc_html_e('Order by', JBP_TEXT_DOMAIN); ?>
+                for="<?php echo esc_attr($this->get_field_id('order_by')); ?>"><?php _e('Order by', JBP_TEXT_DOMAIN); ?>
                 :</label>
             <select id="<?php echo esc_attr($this->get_field_id('order_by')); ?>"
                     name="<?php echo esc_attr($this->get_field_name('order_by')); ?>">
                 <option <?php selected('randomize', $order_by) ?>
-                    value="randomize"><?php esc_html_e('Randomize', JBP_TEXT_DOMAIN); ?></option>
+                    value="randomize"><?php _e('Randomize', JBP_TEXT_DOMAIN); ?></option>
                 <option <?php selected('latest', $order_by) ?>
-                    value="latest"><?php esc_html_e('Latest', JBP_TEXT_DOMAIN); ?></option>
+                    value="latest"><?php _e('Latest', JBP_TEXT_DOMAIN); ?></option>
             </select>
         </p>
         <p>
-            <label><?php esc_html_e('Categories', JBP_TEXT_DOMAIN) ?>:</label>
+            <label><?php _e('Categories', JBP_TEXT_DOMAIN) ?>:</label>
             <?php
             $job_cats = get_terms('jbp_category', array(
                 'hide_empty' => false

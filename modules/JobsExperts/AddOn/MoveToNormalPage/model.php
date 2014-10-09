@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Author: Hoang Ngo
+ * Author: WPMUDEV
  */
 class JobsExpert_AddOn_MoveToNormalPage_Model extends JobsExperts_Framework_OptionModel
 {

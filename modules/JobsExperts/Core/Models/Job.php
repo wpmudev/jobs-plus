@@ -178,7 +178,6 @@ class JobsExperts_Core_Models_Job extends JobsExperts_Framework_PostModel
             'post_type' => 'jbp_media',
             'post_parent' => $this->id
         ));
-        var_dump($files);
         return $files;
     }
 
