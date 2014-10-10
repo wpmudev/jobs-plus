@@ -2,14 +2,14 @@
 /**
  * Plugin Name: Jobs and Experts
  * Plugin URI: http://premium.wpmudev.org/jobs-plus/
- * Description:
- * Version: 1.0 RC
+ * Description: Match people with projects to industry professionals – it’s more than your average WordPress jobs board.
+ * Version: 1.0
  * Author:WPMU DEV
  * Author URI: http://premium.wpmudev.org
  * Text Domain: jbp
  * Domain Path: languages
  * Network: false
- * WDP ID: ***
+ * WDP ID: 912971
  * License: GPLv2 or later
  */
 

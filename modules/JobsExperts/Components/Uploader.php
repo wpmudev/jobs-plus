@@ -433,7 +433,7 @@ class JobsExperts_Components_Uploader extends JobsExperts_Components
                                     </div>
                                     <div class="modal-footer">
                                         <?php if ($model->url): ?>
-                                            <a class="btn btn-info" href="<?php echo $model->url ?>" target="_blank">Visit
+                                            <a class="btn btn-info" rel="nofollow" href="<?php echo $model->url ?>" target="_blank">Visit
                                                 Link</a>
                                         <?php endif; ?>
                                         <?php if ($file): ?>

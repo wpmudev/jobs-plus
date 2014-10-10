@@ -426,7 +426,7 @@ class JobsExpert_Compnents_MoveToNormalPage extends JobsExperts_AddOn
                                 <?php
                                 $form->dropDownList($m, 'add_new_job',
                                     array_combine(wp_list_pluck(get_pages(), 'ID'), wp_list_pluck(get_pages(), 'post_title')),
-                                    array('class' => 'form-control', 'prompt' => __('--Chose--', JBP_TEXT_DOMAIN))
+                                    array('class' => 'form-control', 'prompt' => __('--Choose--', JBP_TEXT_DOMAIN))
                                 );
                                 ?>
                             </div>
@@ -448,7 +448,7 @@ class JobsExpert_Compnents_MoveToNormalPage extends JobsExperts_AddOn
                                 <?php
                                 $form->dropDownList($m, 'edit_job',
                                     array_combine(wp_list_pluck(get_pages(), 'ID'), wp_list_pluck(get_pages(), 'post_title')),
-                                    array('class' => 'form-control', 'prompt' => __('--Chose--', JBP_TEXT_DOMAIN))
+                                    array('class' => 'form-control', 'prompt' => __('--Choose--', JBP_TEXT_DOMAIN))
                                 );
                                 ?>
                             </div>
@@ -471,7 +471,7 @@ class JobsExpert_Compnents_MoveToNormalPage extends JobsExperts_AddOn
                                 <?php
                                 $form->dropDownList($m, 'list_jobs',
                                     array_combine(wp_list_pluck(get_pages(), 'ID'), wp_list_pluck(get_pages(), 'post_title')),
-                                    array('class' => 'form-control', 'prompt' => __('--Chose--', JBP_TEXT_DOMAIN))
+                                    array('class' => 'form-control', 'prompt' => __('--Choose--', JBP_TEXT_DOMAIN))
                                 );
                                 ?>
                             </div>
@@ -493,7 +493,7 @@ class JobsExpert_Compnents_MoveToNormalPage extends JobsExperts_AddOn
                                 <?php
                                 $form->dropDownList($m, 'my_jobs',
                                     array_combine(wp_list_pluck(get_pages(), 'ID'), wp_list_pluck(get_pages(), 'post_title')),
-                                    array('class' => 'form-control', 'prompt' => __('--Chose--', JBP_TEXT_DOMAIN))
+                                    array('class' => 'form-control', 'prompt' => __('--Choose--', JBP_TEXT_DOMAIN))
                                 );
                                 ?>
                             </div>
@@ -515,7 +515,7 @@ class JobsExpert_Compnents_MoveToNormalPage extends JobsExperts_AddOn
                                 <?php
                                 $form->dropDownList($m, 'contact_job',
                                     array_combine(wp_list_pluck(get_pages(), 'ID'), wp_list_pluck(get_pages(), 'post_title')),
-                                    array('class' => 'form-control', 'prompt' => __('--Chose--', JBP_TEXT_DOMAIN))
+                                    array('class' => 'form-control', 'prompt' => __('--Choose--', JBP_TEXT_DOMAIN))
                                 );
                                 ?>
                             </div>
@@ -541,7 +541,7 @@ class JobsExpert_Compnents_MoveToNormalPage extends JobsExperts_AddOn
                                 <?php
                                 $form->dropDownList($m, 'add_new_expert',
                                     array_combine(wp_list_pluck(get_pages(), 'ID'), wp_list_pluck(get_pages(), 'post_title')),
-                                    array('class' => 'form-control', 'prompt' => __('--Chose--', JBP_TEXT_DOMAIN))
+                                    array('class' => 'form-control', 'prompt' => __('--Choose--', JBP_TEXT_DOMAIN))
                                 );
                                 ?>
                             </div>
@@ -563,7 +563,7 @@ class JobsExpert_Compnents_MoveToNormalPage extends JobsExperts_AddOn
                                 <?php
                                 $form->dropDownList($m, 'edit_expert',
                                     array_combine(wp_list_pluck(get_pages(), 'ID'), wp_list_pluck(get_pages(), 'post_title')),
-                                    array('class' => 'form-control', 'prompt' => __('--Chose--', JBP_TEXT_DOMAIN))
+                                    array('class' => 'form-control', 'prompt' => __('--Choose--', JBP_TEXT_DOMAIN))
                                 );
                                 ?>
                             </div>
@@ -586,7 +586,7 @@ class JobsExpert_Compnents_MoveToNormalPage extends JobsExperts_AddOn
                                 <?php
                                 $form->dropDownList($m, 'list_experts',
                                     array_combine(wp_list_pluck(get_pages(), 'ID'), wp_list_pluck(get_pages(), 'post_title')),
-                                    array('class' => 'form-control', 'prompt' => __('--Chose--', JBP_TEXT_DOMAIN))
+                                    array('class' => 'form-control', 'prompt' => __('--Choose--', JBP_TEXT_DOMAIN))
                                 );
                                 ?>
                             </div>
@@ -608,7 +608,7 @@ class JobsExpert_Compnents_MoveToNormalPage extends JobsExperts_AddOn
                                 <?php
                                 $form->dropDownList($m, 'my_profiles',
                                     array_combine(wp_list_pluck(get_pages(), 'ID'), wp_list_pluck(get_pages(), 'post_title')),
-                                    array('class' => 'form-control', 'prompt' => __('--Chose--', JBP_TEXT_DOMAIN))
+                                    array('class' => 'form-control', 'prompt' => __('--Choose--', JBP_TEXT_DOMAIN))
                                 );
                                 ?>
                             </div>
@@ -630,7 +630,7 @@ class JobsExpert_Compnents_MoveToNormalPage extends JobsExperts_AddOn
                                 <?php
                                 $form->dropDownList($m, 'contact_expert',
                                     array_combine(wp_list_pluck(get_pages(), 'ID'), wp_list_pluck(get_pages(), 'post_title')),
-                                    array('class' => 'form-control', 'prompt' => __('--Chose--', JBP_TEXT_DOMAIN))
+                                    array('class' => 'form-control', 'prompt' => __('--Choose--', JBP_TEXT_DOMAIN))
                                 );
                                 ?>
                             </div>

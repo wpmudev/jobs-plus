@@ -2,7 +2,7 @@
 
 /**
  * Uploader render class
- * Author: Hoang Ngo
+ * Author: WPMUDEV
  */
 class JobsExperts_Components_Uploader_View extends JobsExperts_Framework_Render
 {
