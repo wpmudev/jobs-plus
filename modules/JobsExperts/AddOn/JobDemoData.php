@@ -3,7 +3,7 @@
 /**
  * Name: Job Demo Data
  * Description: Create random job records, for testing purposes.
- * Author: WPMUDEV
+ * Author: WPMU DEV
  */
 class JobsExpert_Compnents_JobDemoData extends JobsExperts_AddOn
 {

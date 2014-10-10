@@ -3,7 +3,7 @@
 /**
  * Name: Advanced textarea
  * Description: Use WYSIWYG for jobs/experts detail field, the value will be filtered by kses for security
- * Author: WPMUDEV
+ * Author: WPMU DEV
  */
 class JobsExpert_Compnents_AdvancedTextArea extends JobsExperts_AddOn
 {
