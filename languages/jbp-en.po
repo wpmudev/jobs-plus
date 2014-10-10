@@ -1,0 +1,1938 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Jobs & Experts\n"
+"POT-Creation-Date: 2014-10-11 00:28+0700\n"
+"PO-Revision-Date: 2014-10-11 00:30+0700\n"
+"Last-Translator: \n"
+"Language-Team: WPMUDEV\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.6.5\n"
+"X-Poedit-Basepath: /Users/hoangngo/Work/WPMUDEV/wp-content/plugins/\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-SearchPath-0: jobs-plus\n"
+
+#: jobs-plus/modules/JobsExperts/AddOn/AdvancedSearch.php:37
+#: jobs-plus/modules/JobsExperts/AddOn/AdvancedSearch.php:169
+#: jobs-plus/modules/JobsExperts/AddOn/AdvancedSearch.php:473
+msgid "Advanced Search"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/AddOn/AdvancedSearch.php:45
+msgid ""
+"This will add an advanced search form to job listing page and expert listing "
+"page"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/AddOn/AdvancedSearch.php:84
+#: jobs-plus/modules/JobsExperts/AddOn/AdvancedSearch.php:250
+#: jobs-plus/modules/JobsExperts/AddOn/JobDemoData.php:310
+msgid "Price Range"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/AddOn/AdvancedSearch.php:89
+#: jobs-plus/modules/JobsExperts/AddOn/AdvancedSearch.php:260
+#: jobs-plus/modules/JobsExperts/Core/Views/Backend/JobForm.php:170
+msgid "Category"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/AddOn/AdvancedSearch.php:96
+#: jobs-plus/modules/JobsExperts/AddOn/AdvancedSearch.php:267
+msgid "--SELECT--"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/AddOn/AdvancedSearch.php:99
+#: jobs-plus/modules/JobsExperts/AddOn/AdvancedSearch.php:273
+#: jobs-plus/modules/JobsExperts/AddOn/AdvancedSearch.php:647
+msgid "Order By"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/AddOn/AdvancedSearch.php:101
+#: jobs-plus/modules/JobsExperts/AddOn/AdvancedSearch.php:276
+#: jobs-plus/modules/JobsExperts/AddOn/AdvancedSearch.php:650
+#: jobs-plus/modules/JobsExperts/Core/Shortcode/MyExpert.php:44
+#: jobs-plus/modules/JobsExperts/Core/Table/AddOn.php:35
+#: jobs-plus/modules/JobsExperts/Core/Views/Uploader.php:32
+msgid "Name"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/AddOn/AdvancedSearch.php:104
+#: jobs-plus/modules/JobsExperts/AddOn/AdvancedSearch.php:279
+#: jobs-plus/modules/JobsExperts/Core/Widgets/JobRecent.php:154
+msgid "Latest"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/AddOn/AdvancedSearch.php:107
+#: jobs-plus/modules/JobsExperts/AddOn/AdvancedSearch.php:282
+msgid "About to End"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/AddOn/AdvancedSearch.php:183
+#: jobs-plus/modules/JobsExperts/AddOn/AdvancedSearch.php:501
+msgid "Advance Search Form"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/AddOn/AdvancedSearch.php:290
+#: jobs-plus/modules/JobsExperts/AddOn/AdvancedSearch.php:665
+#: jobs-plus/modules/JobsExperts/Core/Widgets/JobSearch.php:61
+msgid "Search"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/AddOn/AdvancedSearch.php:293
+#: jobs-plus/modules/JobsExperts/AddOn/AdvancedSearch.php:668
+#: jobs-plus/modules/JobsExperts/Components/Skill/View.php:317
+#: jobs-plus/modules/JobsExperts/Components/Social/View.php:275
+#: jobs-plus/modules/JobsExperts/Components/Uploader.php:228
+#: jobs-plus/modules/JobsExperts/Components/Uploader/View.php:734
+#: jobs-plus/modules/JobsExperts/Core/Views/ExpertForm.php:241
+#: jobs-plus/modules/JobsExperts/Core/Views/JobForm.php:237
+#: jobs-plus/modules/JobsExperts/Core/Views/JobFormEditable.php:262
+#: jobs-plus/modules/JobsExperts/Core/Views/Uploader.php:377
+#: jobs-plus/modules/JobsExperts/Framework/EditableForm.php:158
+msgid "Cancel"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/AddOn/AdvancedSearch.php:624
+#: jobs-plus/modules/JobsExperts/Core/Views/Backend/ExpertForm.php:122
+msgid "Location"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/AddOn/AdvancedSearch.php:635
+msgid "Skill"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/AddOn/AdvancedSearch.php:654
+msgid "Most Popular"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/AddOn/AdvancedSearch.php:657
+msgid "Most Likes"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/AddOn/AdvancedTextArea.php:133
+msgid "Colors"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/AddOn/AdvancedTextArea.php:138
+msgid "Black"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/AddOn/AdvancedTextArea.php:140
+msgid "Gray"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/AddOn/AdvancedTextArea.php:143
+msgid "Maroon"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/AddOn/AdvancedTextArea.php:145
+#: jobs-plus/modules/JobsExperts/Components/Skill/View.php:306
+msgid "Red"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/AddOn/AdvancedTextArea.php:147
+msgid "Purple"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/AddOn/AdvancedTextArea.php:149
+#: jobs-plus/modules/JobsExperts/Components/Skill/View.php:309
+msgid "Green"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/AddOn/AdvancedTextArea.php:151
+msgid "Olive"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/AddOn/AdvancedTextArea.php:153
+msgid "Navy"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/AddOn/AdvancedTextArea.php:155
+#: jobs-plus/modules/JobsExperts/Components/Skill/View.php:305
+msgid "Blue"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/AddOn/CustomLayout.php:59
+msgid "Custom Layout"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/AddOn/CustomLayout.php:68
+msgid "Jobs listing page custom layout"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/AddOn/CustomLayout.php:72
+msgid "mean the job block will have 100% width"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/AddOn/CustomLayout.php:73
+msgid "mean the job block will have 1/2 width"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/AddOn/CustomLayout.php:74
+msgid "mean the job block will have 1/3 width"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/AddOn/CustomLayout.php:75
+msgid "mean the job block will have 1/4 width"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/AddOn/CustomLayout.php:77
+#, php-format
+msgid ""
+"You can customize the layout, each row should have 100% score, and the "
+"default is sm"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/AddOn/CustomLayout.php:78
+#: jobs-plus/modules/JobsExperts/AddOn/CustomLayout.php:108
+msgid "Example for default layout"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/AddOn/CustomLayout.php:97
+msgid "Expert listing page custom layout"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/AddOn/CustomLayout.php:101
+msgid "mean the expert block will have 100% width"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/AddOn/CustomLayout.php:103
+msgid "mean the expert block will have 1/2 width"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/AddOn/CustomLayout.php:104
+msgid "mean the expert block will have 1/3 width"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/AddOn/CustomLayout.php:105
+msgid "mean the expert block will have 1/4 width"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/AddOn/CustomLayout.php:107
+#, php-format
+msgid ""
+"You can customize the layout, each row should have 100% score, and the "
+"default is xs"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/AddOn/ExpertDemoData.php:416
+msgid "Experts Demo Data"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/AddOn/ExpertDemoData.php:427
+msgid "Create dummy data for experts"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/AddOn/ExpertDemoData.php:431
+msgid "Dummy experts amount"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/AddOn/ExpertDemoData.php:436
+msgid "Number of dummy experts to create"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/AddOn/ExpertDemoData.php:441
+msgid "Socials"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/AddOn/ExpertDemoData.php:453
+msgid ""
+"Social profile for experts. If empty, 3-5 profiles will be randomly added"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/AddOn/ExpertDemoData.php:458
+#: jobs-plus/modules/JobsExperts/Components/Skill/View.php:25
+#: jobs-plus/modules/JobsExperts/Core/Views/Backend/JobForm.php:194
+#: jobs-plus/modules/JobsExperts/Core/Views/ExpertSingle.php:165
+msgid "Skills"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/AddOn/ExpertDemoData.php:464
+msgid "Experts skills. Score will be random from 0-100."
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/AddOn/ExpertDemoData.php:469
+msgid "Sample files?"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/AddOn/ExpertDemoData.php:474
+msgid "If you want the demo experts to have sample files, check this box."
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/AddOn/ExpertDemoData.php:480
+#: jobs-plus/modules/JobsExperts/AddOn/JobDemoData.php:352
+msgid "Creating demo data,please wait...."
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/AddOn/JobDemoData.php:286
+msgid "Jobs Demo Data"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/AddOn/JobDemoData.php:297
+msgid "Create dummy data for jobs"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/AddOn/JobDemoData.php:300
+msgid "Dummy jobs amount"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/AddOn/JobDemoData.php:305
+msgid "Number of dummy jobs to create"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/AddOn/JobDemoData.php:314
+msgid "Range of price"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/AddOn/JobDemoData.php:319
+#: jobs-plus/modules/JobsExperts/Core/Widgets/JobRecent.php:158
+msgid "Categories"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/AddOn/JobDemoData.php:325
+msgid "Demo job categories, separated by commas. Will be randomly assigned."
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/AddOn/JobDemoData.php:330
+msgid "Skill tags"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/AddOn/JobDemoData.php:336
+msgid "Demo job skills, separated by commas. Will be randomly assigned."
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/AddOn/JobDemoData.php:341
+msgid "Have Sample Files"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/AddOn/JobDemoData.php:346
+msgid "If you want these demo jobs to have sample files, check this box."
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/AddOn/MoveToNormalPage.php:404
+msgid "Pages Manager"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/AddOn/MoveToNormalPage.php:418
+msgid "Job Pages"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/AddOn/MoveToNormalPage.php:421
+msgid "Add new Job"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/AddOn/MoveToNormalPage.php:429
+#: jobs-plus/modules/JobsExperts/AddOn/MoveToNormalPage.php:451
+#: jobs-plus/modules/JobsExperts/AddOn/MoveToNormalPage.php:474
+#: jobs-plus/modules/JobsExperts/AddOn/MoveToNormalPage.php:496
+#: jobs-plus/modules/JobsExperts/AddOn/MoveToNormalPage.php:518
+#: jobs-plus/modules/JobsExperts/AddOn/MoveToNormalPage.php:544
+#: jobs-plus/modules/JobsExperts/AddOn/MoveToNormalPage.php:566
+#: jobs-plus/modules/JobsExperts/AddOn/MoveToNormalPage.php:589
+#: jobs-plus/modules/JobsExperts/AddOn/MoveToNormalPage.php:611
+#: jobs-plus/modules/JobsExperts/AddOn/MoveToNormalPage.php:633
+msgid "--Choose--"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/AddOn/MoveToNormalPage.php:435
+#: jobs-plus/modules/JobsExperts/AddOn/MoveToNormalPage.php:457
+#: jobs-plus/modules/JobsExperts/AddOn/MoveToNormalPage.php:480
+#: jobs-plus/modules/JobsExperts/AddOn/MoveToNormalPage.php:502
+#: jobs-plus/modules/JobsExperts/AddOn/MoveToNormalPage.php:524
+#: jobs-plus/modules/JobsExperts/AddOn/MoveToNormalPage.php:550
+#: jobs-plus/modules/JobsExperts/AddOn/MoveToNormalPage.php:572
+#: jobs-plus/modules/JobsExperts/AddOn/MoveToNormalPage.php:595
+#: jobs-plus/modules/JobsExperts/AddOn/MoveToNormalPage.php:617
+#: jobs-plus/modules/JobsExperts/AddOn/MoveToNormalPage.php:639
+#: jobs-plus/modules/JobsExperts/AddOn/MoveToNormalPage.php:665
+msgid "Create Page"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/AddOn/MoveToNormalPage.php:443
+msgid "Edit Job"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/AddOn/MoveToNormalPage.php:466
+msgid "Job Listing"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/AddOn/MoveToNormalPage.php:488
+#: jobs-plus/modules/JobsExperts/Core/Shortcode/Buttons.php:240
+msgid "My Jobs"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/AddOn/MoveToNormalPage.php:510
+msgid "Contact Job"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/AddOn/MoveToNormalPage.php:533
+msgid "Expert Pages"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/AddOn/MoveToNormalPage.php:536
+msgid "Add new Expert"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/AddOn/MoveToNormalPage.php:558
+msgid "Edit Expert"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/AddOn/MoveToNormalPage.php:581
+msgid "Expert Listing"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/AddOn/MoveToNormalPage.php:603
+msgid "My Profiles"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/AddOn/MoveToNormalPage.php:625
+msgid "Contact Expert"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/AddOn/MoveToNormalPage.php:661
+msgid "Creating..."
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Components/Skill.php:71
+msgid "Please click here for update data . "
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Components/Skill/View.php:27
+#: jobs-plus/modules/JobsExperts/Components/Social/View.php:27
+#: jobs-plus/modules/JobsExperts/Components/Uploader/View.php:34
+#: jobs-plus/modules/JobsExperts/Components/Uploader/View.php:380
+#: jobs-plus/modules/JobsExperts/Core/Views/GettingStart.php:73
+#: jobs-plus/modules/JobsExperts/Core/Views/GettingStart.php:100
+#: jobs-plus/modules/JobsExperts/Core/Views/GettingStart.php:140
+#: jobs-plus/modules/JobsExperts/Core/Views/GettingStart.php:172
+#: jobs-plus/modules/JobsExperts/Core/Views/Uploader.php:26
+msgid "Add"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Components/Skill/View.php:35
+msgid "No skill added."
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Components/Skill/View.php:166
+msgid "Update Skill"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Components/Skill/View.php:217
+#: jobs-plus/modules/JobsExperts/Components/Uploader/View.php:61
+#: jobs-plus/modules/JobsExperts/Components/Uploader/View.php:406
+#: jobs-plus/modules/JobsExperts/Core/Shortcode/JobSingle.php:156
+#: jobs-plus/modules/JobsExperts/Core/Shortcode/MyExpert.php:85
+#: jobs-plus/modules/JobsExperts/Core/Shortcode/MyJob.php:83
+#: jobs-plus/modules/JobsExperts/Core/Views/ExpertSingle.php:260
+msgid "Are you sure?"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Components/Skill/View.php:287
+msgid "Skill name"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Components/Skill/View.php:307
+msgid "Orange"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Components/Skill/View.php:308
+msgid "Light Blue"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Components/Skill/View.php:311
+msgid "Enable Animated"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Components/Skill/View.php:314
+#: jobs-plus/modules/JobsExperts/Components/Social/View.php:272
+#: jobs-plus/modules/JobsExperts/Components/Uploader.php:219
+#: jobs-plus/modules/JobsExperts/Components/Uploader/View.php:732
+msgid "Submit"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Components/Skill/View.php:321
+#: jobs-plus/modules/JobsExperts/Components/Social/View.php:279
+#: jobs-plus/modules/JobsExperts/Core/Shortcode/MyExpert.php:67
+#: jobs-plus/modules/JobsExperts/Core/Shortcode/MyJob.php:65
+msgid "Delete"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Components/Social/Model.php:79
+#, php-format
+msgid "This url is not from <strong>%s</strong>"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Components/Social/View.php:25
+#: jobs-plus/modules/JobsExperts/Core/Views/ExpertSingle.php:190
+msgid "Social Profile"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Components/Social/View.php:37
+msgid "No social profile."
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Components/Social/View.php:261
+msgid "Select Social"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Components/Social/View.php:269
+msgid "Social information (Url or Username)"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Components/Uploader.php:85
+msgid "Change Avatar"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Components/Uploader.php:114
+msgid "Avatar must be an image"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Components/Uploader.php:117
+#: jobs-plus/modules/JobsExperts/Components/Uploader/View.php:482
+#: jobs-plus/modules/JobsExperts/Components/Uploader/View.php:593
+msgid "File too large."
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Components/Uploader.php:158
+#: jobs-plus/modules/JobsExperts/Components/Uploader/View.php:140
+#: jobs-plus/modules/JobsExperts/Components/Uploader/View.php:260
+msgid "Please select a file"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Components/Uploader.php:212
+#: jobs-plus/modules/JobsExperts/Components/Uploader/View.php:709
+#: jobs-plus/modules/JobsExperts/Core/Views/Uploader.php:344
+msgid "Select image or file"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Components/Uploader.php:222
+#: jobs-plus/modules/JobsExperts/Components/Uploader.php:225
+msgid "Delete Uploaded Avatar"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Components/Uploader.php:410
+msgid "Size"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Components/Uploader.php:415
+msgid "Type"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Components/Uploader.php:425
+#: jobs-plus/modules/JobsExperts/Components/Uploader/Model.php:114
+msgid "Link"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Components/Uploader.php:441
+msgid "Download File"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Components/Uploader.php:444
+msgid "Close"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Components/Uploader/Model.php:135
+#: jobs-plus/modules/JobsExperts/Components/Uploader/Model.php:141
+msgid "You must upload a <strong>file</strong> or set an <strong>url</strong>"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Components/Uploader/Model.php:146
+msgid "File type not allow"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Components/Uploader/Model.php:148
+msgid "File too large!"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Components/Uploader/Model.php:152
+msgid ""
+"Can not upload the <strong>file</strong>, also <strong>url</strong> is empty!"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Components/Uploader/View.php:32
+#: jobs-plus/modules/JobsExperts/Components/Uploader/View.php:378
+msgid "Attach specs examples or extra information"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Components/Uploader/View.php:42
+#: jobs-plus/modules/JobsExperts/Components/Uploader/View.php:388
+msgid "No sample file."
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Components/Uploader/View.php:479
+#: jobs-plus/modules/JobsExperts/Components/Uploader/View.php:590
+msgid "File type not allow."
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Components/Uploader/View.php:714
+msgid "Chose File"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Components/Uploader/View.php:721
+msgid "File attached, upload new file will replace the current file."
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Components/Uploader/View.php:723
+#: jobs-plus/modules/JobsExperts/Core/Views/Uploader.php:355
+msgid "Add link for more information"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Components/Uploader/View.php:726
+#: jobs-plus/modules/JobsExperts/Core/Table/AddOn.php:36
+#: jobs-plus/modules/JobsExperts/Core/Views/Backend/JobForm.php:52
+#: jobs-plus/modules/JobsExperts/Core/Views/Uploader.php:363
+msgid "Description"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Ajax.php:39
+#, php-format
+msgid "The add on <strong>%s</strong> has been deactivated"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Ajax.php:43
+#, php-format
+msgid "The add on <strong>%s</strong> has been activated"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Backend.php:114
+#: jobs-plus/modules/JobsExperts/Core/Backend.php:121
+msgid "Edit this item"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Backend.php:114
+#: jobs-plus/modules/JobsExperts/Core/Backend.php:121
+#: jobs-plus/modules/JobsExperts/Core/Shortcode/JobSingle.php:145
+#: jobs-plus/modules/JobsExperts/Core/Shortcode/MyExpert.php:62
+#: jobs-plus/modules/JobsExperts/Core/Shortcode/MyJob.php:60
+#: jobs-plus/modules/JobsExperts/Core/Views/ExpertSingle.php:245
+#: jobs-plus/modules/JobsExperts/Core/Views/GettingStart.php:69
+#: jobs-plus/modules/JobsExperts/Core/Views/GettingStart.php:85
+#: jobs-plus/modules/JobsExperts/Core/Views/GettingStart.php:96
+#: jobs-plus/modules/JobsExperts/Core/Views/GettingStart.php:134
+#: jobs-plus/modules/JobsExperts/Core/Views/GettingStart.php:155
+#: jobs-plus/modules/JobsExperts/Core/Views/GettingStart.php:165
+msgid "Edit"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Backend.php:146
+#, php-format
+msgid ""
+"You must must update your permalink structure to something other than "
+"default to use Jobs and Experts. <a href=\"%s\">You can do so here.</a>"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Backend.php:318
+#: jobs-plus/modules/JobsExperts/Core/Backend.php:319
+msgid "Getting Started"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Backend.php:326
+#: jobs-plus/modules/JobsExperts/Core/Backend.php:327
+#: jobs-plus/modules/JobsExperts/Core/Backend.php:358
+#: jobs-plus/modules/JobsExperts/Core/Backend.php:359
+#, php-format
+msgid "Manage %s"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Backend.php:333
+#: jobs-plus/modules/JobsExperts/Core/Backend.php:334
+#: jobs-plus/modules/JobsExperts/Core/Backend.php:341
+#: jobs-plus/modules/JobsExperts/Core/Backend.php:342
+#: jobs-plus/modules/JobsExperts/Core/Backend.php:365
+#: jobs-plus/modules/JobsExperts/Core/Backend.php:366
+#, php-format
+msgid "New %s"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Backend.php:349
+#: jobs-plus/modules/JobsExperts/Core/Backend.php:350
+#: jobs-plus/modules/JobsExperts/Core/Backend.php:380
+#: jobs-plus/modules/JobsExperts/Core/Backend.php:381
+#: jobs-plus/modules/JobsExperts/Core/Views/GettingStart.php:144
+#: jobs-plus/modules/JobsExperts/Core/Views/GettingStart.php:176
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings.php:56
+msgid "Settings"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Backend.php:372
+#: jobs-plus/modules/JobsExperts/Core/Backend.php:373
+#: jobs-plus/modules/JobsExperts/Core/PageFactory.php:166
+#: jobs-plus/modules/JobsExperts/Core/PageFactory.php:308
+#, php-format
+msgid "Edit %s"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/CustomContent.php:166
+#: jobs-plus/modules/JobsExperts/Core/CustomContent.php:176
+msgid "Virtual"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Frontend.php:313
+msgid "Job Category: "
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Models/Job.php:129
+msgid "You have reach maximum job amount!"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Models/Job.php:134
+msgid "Min budget can not be larger than max budget"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Models/Job.php:226
+#, php-format
+msgid "%d Days %dhrs"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Models/Job.php:228
+msgid "Expired"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/PageFactory.php:66
+msgid ""
+"<!-- You may edit this page, the title and the slug, but it requires a "
+"minimum of the correct page shortcode to function. You can recreate the "
+"original default page by deleting this one. -->\n"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/PageFactory.php:105
+msgid "Jobs & Experts"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/PageFactory.php:106
+msgid "jobs-experts"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/PageFactory.php:139
+#: jobs-plus/modules/JobsExperts/Core/PageFactory.php:280
+#, php-format
+msgid "Add a %s"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/PageFactory.php:140
+#: jobs-plus/modules/JobsExperts/Core/PageFactory.php:281
+#, php-format
+msgid "add-a-%s"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/PageFactory.php:167
+#: jobs-plus/modules/JobsExperts/Core/PageFactory.php:309
+#, php-format
+msgid "edit-%s"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/PageFactory.php:194
+#: jobs-plus/modules/JobsExperts/Core/PageFactory.php:195
+#: jobs-plus/modules/JobsExperts/Core/PageFactory.php:336
+#: jobs-plus/modules/JobsExperts/Core/PageFactory.php:337
+#: jobs-plus/modules/JobsExperts/Core/Views/GettingStart.php:137
+#: jobs-plus/modules/JobsExperts/Core/Views/GettingStart.php:144
+#: jobs-plus/modules/JobsExperts/Core/Views/GettingStart.php:168
+#: jobs-plus/modules/JobsExperts/Core/Views/GettingStart.php:176
+#, php-format
+msgid "%s"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/PageFactory.php:223
+#: jobs-plus/modules/JobsExperts/Core/PageFactory.php:364
+#, php-format
+msgid "%s Contact"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/PageFactory.php:224
+#: jobs-plus/modules/JobsExperts/Core/PageFactory.php:365
+#, php-format
+msgid "%s-contact"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/PageFactory.php:252
+#, php-format
+msgid "My %s"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/PageFactory.php:253
+#, php-format
+msgid "my-%s"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/PageFactory.php:393
+#, php-format
+msgid "My %s Profile"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/PageFactory.php:394
+#, php-format
+msgid "my-%s-profile"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Shortcode/Buttons.php:51
+#, php-format
+msgid "Add an %s"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Shortcode/Buttons.php:95
+#, php-format
+msgid "Post a %s"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Shortcode/Buttons.php:137
+#: jobs-plus/modules/JobsExperts/Core/Shortcode/Buttons.php:180
+#, php-format
+msgid "Browse %s"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Shortcode/Buttons.php:208
+msgid "My Profile"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Shortcode/ExpertContact.php:41
+#: jobs-plus/modules/JobsExperts/Core/Shortcode/JobContact.php:40
+msgid "Your request has been sent. Thank you!"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Shortcode/ExpertContact.php:42
+#: jobs-plus/modules/JobsExperts/Core/Shortcode/JobContact.php:41
+msgid "Some error happened, please try later. Thank you!"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Shortcode/ExpertContact.php:62
+#: jobs-plus/modules/JobsExperts/Core/Shortcode/JobContact.php:65
+msgid "Home"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Shortcode/ExpertContact.php:86
+#: jobs-plus/modules/JobsExperts/Core/Shortcode/JobContact.php:89
+msgid "Your Name:"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Shortcode/ExpertContact.php:99
+#: jobs-plus/modules/JobsExperts/Core/Shortcode/JobContact.php:102
+msgid "Contact email:"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Shortcode/ExpertContact.php:111
+#: jobs-plus/modules/JobsExperts/Core/Shortcode/JobContact.php:114
+msgid "Content:"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Shortcode/ExpertContact.php:128
+#: jobs-plus/modules/JobsExperts/Core/Shortcode/JobContact.php:131
+msgid "Send Message"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Shortcode/ExpertContact.php:227
+#: jobs-plus/modules/JobsExperts/Core/Shortcode/JobContact.php:230
+#: jobs-plus/modules/JobsExperts/Core/Views/ExpertForm.php:293
+msgid "Error happen, please check the form data"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Shortcode/ExpertContact.php:245
+#: jobs-plus/modules/JobsExperts/Core/Shortcode/JobContact.php:248
+#, php-format
+msgid "%s not found!"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Shortcode/ExpertForm.php:113
+msgid "Sorry you do not have enough permission to become an expert"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Shortcode/ExpertForm.php:116
+msgid "Sorry, you reach max amount of expert profile"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Shortcode/ExpertForm.php:142
+#: jobs-plus/modules/JobsExperts/Core/Shortcode/JobForm.php:140
+msgid "Please login"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Shortcode/ExpertForm.php:146
+#: jobs-plus/modules/JobsExperts/Core/Shortcode/JobForm.php:144
+msgid "register here"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Shortcode/ExpertList.php:126
+#: jobs-plus/modules/JobsExperts/Core/Shortcode/JobList.php:119
+#: jobs-plus/modules/JobsExperts/Core/Shortcode/LandingPage.php:60
+#, php-format
+msgid "No %s Found"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Shortcode/ExpertList.php:215
+#: jobs-plus/modules/JobsExperts/Core/Shortcode/LandingPage.php:156
+#: jobs-plus/modules/JobsExperts/Core/Shortcode/MyExpert.php:45
+msgid "Views"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Shortcode/ExpertList.php:220
+#: jobs-plus/modules/JobsExperts/Core/Shortcode/LandingPage.php:161
+#: jobs-plus/modules/JobsExperts/Core/Shortcode/MyExpert.php:46
+msgid "Likes"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Shortcode/JobForm.php:110
+msgid "Sorry you do not have enough permission to add new job"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Shortcode/JobForm.php:113
+msgid "Sorry, you reach max amount of jobs"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Shortcode/JobSingle.php:73
+msgid "Job Budget"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Shortcode/JobSingle.php:77
+msgid "This job open for"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Shortcode/JobSingle.php:81
+msgid "Must be completed by"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Shortcode/JobSingle.php:86
+msgid "N/A"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Shortcode/JobSingle.php:93
+#: jobs-plus/modules/JobsExperts/Core/Shortcode/JobSingle.php:96
+msgid "Contact"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Shortcode/JobSingle.php:111
+msgid "<h4>You will need to have these skills:"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Shortcode/JobSingle.php:124
+#: jobs-plus/modules/JobsExperts/Core/Views/ExpertSingle.php:226
+msgid "Sample Files"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Shortcode/JobSingle.php:151
+#: jobs-plus/modules/JobsExperts/Core/Views/ExpertSingle.php:252
+msgid "Trash"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Shortcode/LandingPage.php:56
+#, php-format
+msgid "Recently posted %s"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Shortcode/LandingPage.php:101
+msgid "Add a Job"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Shortcode/LandingPage.php:107
+#, php-format
+msgid "Recent %s"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Shortcode/LandingPage.php:181
+#, php-format
+msgid "No %s found"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Shortcode/LandingPage.php:188
+#: jobs-plus/modules/JobsExperts/Core/Widgets/ProAdd.php:65
+msgid "Become Expert"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Shortcode/MyExpert.php:29
+msgid "Expert profile created successful."
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Shortcode/MyExpert.php:36
+msgid "Expert profile deleted."
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Shortcode/MyExpert.php:47
+#: jobs-plus/modules/JobsExperts/Core/Shortcode/MyJob.php:46
+msgid "Status"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Shortcode/MyExpert.php:76
+msgid "You don't have any profile."
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Shortcode/MyJob.php:29
+msgid "Job post successful!"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Shortcode/MyJob.php:36
+msgid "Job delete successful!"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Shortcode/MyJob.php:44
+msgid "Title"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Shortcode/MyJob.php:45
+msgid "Price"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Shortcode/MyJob.php:74
+msgid "You don't have any job."
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Table/AddOn.php:60
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/General.php:111
+msgid "Deactivate"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Table/AddOn.php:62
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/General.php:89
+msgid "Activate"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Table/AddOn.php:70
+msgid "Created by: "
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/Backend/ExpertForm.php:30
+msgid "Expert profile saved!"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/Backend/ExpertForm.php:38
+#: jobs-plus/modules/JobsExperts/Core/Views/Backend/JobForm.php:38
+msgid "General Information"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/Backend/ExpertForm.php:43
+msgid "First Name"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/Backend/ExpertForm.php:52
+msgid "Last Name"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/Backend/ExpertForm.php:62
+#: jobs-plus/modules/JobsExperts/Core/Views/ExpertForm.php:161
+#: jobs-plus/modules/JobsExperts/Core/Views/ExpertSingle.php:149
+msgid "Biography"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/Backend/ExpertForm.php:79
+msgid "Profile Owner"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/Backend/ExpertForm.php:90
+#: jobs-plus/modules/JobsExperts/Core/Views/Backend/JobForm.php:75
+msgid "Job Status"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/Backend/ExpertForm.php:108
+msgid "Addition Information"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/Backend/ExpertForm.php:113
+#: jobs-plus/modules/JobsExperts/Core/Views/Backend/JobForm.php:116
+#: jobs-plus/modules/JobsExperts/Core/Views/JobForm.php:145
+#: jobs-plus/modules/JobsExperts/Core/Views/JobFormEditable.php:167
+msgid "Contact Email"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/Backend/ExpertForm.php:131
+msgid "Company Name"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/Backend/ExpertForm.php:140
+msgid "Company Url"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/Backend/ExpertForm.php:150
+msgid "Short Description"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/Backend/ExpertForm.php:198
+#: jobs-plus/modules/JobsExperts/Core/Views/Backend/JobForm.php:241
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings.php:128
+msgid "Save Changes"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/Backend/JobForm.php:30
+msgid "Job saved!"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/Backend/JobForm.php:43
+msgid "Job title"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/Backend/JobForm.php:64
+msgid "Job Owner"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/Backend/JobForm.php:95
+msgid "Job Meta"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/Backend/JobForm.php:100
+msgid "Budget ($)"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/Backend/JobForm.php:128
+#: jobs-plus/modules/JobsExperts/Core/Views/JobForm.php:162
+#: jobs-plus/modules/JobsExperts/Core/Views/JobFormEditable.php:186
+msgid "Completion Date"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/Backend/JobForm.php:141
+#: jobs-plus/modules/JobsExperts/Core/Views/JobForm.php:195
+#: jobs-plus/modules/JobsExperts/Core/Views/JobFormEditable.php:216
+msgid "Job Open for"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/Backend/JobForm.php:149
+#: jobs-plus/modules/JobsExperts/Core/Views/JobForm.php:202
+#: jobs-plus/modules/JobsExperts/Core/Views/JobFormEditable.php:223
+msgid "Days"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/Backend/JobForm.php:165
+msgid "Category & Skill"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/ExpertForm.php:39
+msgid "Tag line"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/ExpertForm.php:45
+msgid ""
+"Short version of yourself, maximum 100 characters. This will be use to "
+"display at listing page"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/ExpertForm.php:51
+msgid "Short description about yourself"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/ExpertForm.php:82
+msgid "Your name"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/ExpertForm.php:86
+#: jobs-plus/modules/JobsExperts/Core/Views/ExpertSingle.php:116
+#, php-format
+msgid "Member since %s"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/ExpertForm.php:91
+#: jobs-plus/modules/JobsExperts/Core/Views/ExpertForm.php:100
+#: jobs-plus/modules/JobsExperts/Core/Views/ExpertSingle.php:123
+msgid "Company:"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/ExpertForm.php:97
+#: jobs-plus/modules/JobsExperts/Core/Views/ExpertForm.php:108
+msgid "Your Company"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/ExpertForm.php:105
+msgid "Company Url:"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/ExpertForm.php:117
+#: jobs-plus/modules/JobsExperts/Core/Views/ExpertSingle.php:135
+msgid "Location:"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/ExpertForm.php:123
+msgid "Your Location"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/ExpertForm.php:129
+msgid "Where are you from?"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/ExpertForm.php:138
+msgid "Contact Email:"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/ExpertForm.php:144
+msgid "Your Contact Email"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/ExpertForm.php:150
+msgid "Your email will not be published over the site"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/ExpertForm.php:164
+#: jobs-plus/modules/JobsExperts/Core/Views/ExpertSingle.php:152
+msgid "Social & Skill"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/ExpertForm.php:173
+msgid "Tell us about yourself (required, at least 200 characters)"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/ExpertForm.php:179
+msgid "Tell us about yourself"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/ExpertForm.php:230
+#: jobs-plus/modules/JobsExperts/Core/Views/JobForm.php:225
+#: jobs-plus/modules/JobsExperts/Core/Views/JobFormEditable.php:250
+msgid "Publish"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/ExpertForm.php:233
+#: jobs-plus/modules/JobsExperts/Core/Views/JobForm.php:228
+#: jobs-plus/modules/JobsExperts/Core/Views/JobFormEditable.php:253
+msgid "Submit for review"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/ExpertForm.php:237
+#: jobs-plus/modules/JobsExperts/Core/Views/JobForm.php:232
+#: jobs-plus/modules/JobsExperts/Core/Views/JobFormEditable.php:257
+msgid "Save Draft"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/ExpertForm.php:274
+msgid "Expert profile "
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/ExpertSingle.php:33
+msgid "Contact Me"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/ExpertSingle.php:48
+msgid "likes"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/ExpertSingle.php:100
+msgid "views"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/ExpertSingle.php:186
+msgid "This member hasn't added any skills yet"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/ExpertSingle.php:212
+msgid "This member still not add any social profile."
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/GettingStart.php:57
+#: jobs-plus/modules/JobsExperts/Core/Views/GettingStart.php:107
+msgid "Get started with Jobs & Experts"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/GettingStart.php:65
+#: jobs-plus/modules/JobsExperts/Core/Views/GettingStart.php:92
+#: jobs-plus/modules/JobsExperts/Core/Views/GettingStart.php:130
+#: jobs-plus/modules/JobsExperts/Core/Views/GettingStart.php:161
+#, php-format
+msgid "View %s Listings"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/GettingStart.php:69
+#: jobs-plus/modules/JobsExperts/Core/Views/GettingStart.php:85
+#: jobs-plus/modules/JobsExperts/Core/Views/GettingStart.php:96
+#: jobs-plus/modules/JobsExperts/Core/Views/GettingStart.php:134
+#: jobs-plus/modules/JobsExperts/Core/Views/GettingStart.php:155
+#: jobs-plus/modules/JobsExperts/Core/Views/GettingStart.php:165
+msgid " this virtual page"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/GettingStart.php:73
+#: jobs-plus/modules/JobsExperts/Core/Views/GettingStart.php:100
+#: jobs-plus/modules/JobsExperts/Core/Views/GettingStart.php:140
+#: jobs-plus/modules/JobsExperts/Core/Views/GettingStart.php:172
+#, php-format
+msgid "a new %s"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/GettingStart.php:81
+#: jobs-plus/modules/JobsExperts/Core/Views/GettingStart.php:151
+msgid "Jobs & Experts Overview"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/GettingStart.php:137
+#: jobs-plus/modules/JobsExperts/Core/Views/GettingStart.php:168
+msgid "Manage"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/JobForm.php:33
+#: jobs-plus/modules/JobsExperts/Core/Views/JobFormEditable.php:32
+msgid "Choose a category"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/JobForm.php:55
+#: jobs-plus/modules/JobsExperts/Core/Views/JobFormEditable.php:58
+#: jobs-plus/modules/JobsExperts/Core/Views/JobFormEditable.php:69
+msgid "Give your job a title"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/JobForm.php:65
+#: jobs-plus/modules/JobsExperts/Core/Views/JobFormEditable.php:77
+#: jobs-plus/modules/JobsExperts/Core/Views/JobFormEditable.php:89
+msgid "Describe the work to be done"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/JobForm.php:76
+#: jobs-plus/modules/JobsExperts/Core/Views/JobFormEditable.php:97
+msgid "What skills are needed?"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/JobForm.php:104
+#: jobs-plus/modules/JobsExperts/Core/Views/JobFormEditable.php:124
+msgid "Budget"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/JobForm.php:117
+msgid "Budget From"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/JobForm.php:130
+msgid "Budget To"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/JobForm.php:152
+msgid "Contact email address for the job offer"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/JobForm.php:174
+msgid "When must this job be completed by? Or NA for not applicable."
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/JobForm.php:188
+#: jobs-plus/modules/JobsExperts/Core/Views/JobFormEditable.php:209
+msgid "*Must be a future date"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/JobForm.php:208
+msgid "How long is this job open for from Today?"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/JobForm.php:308
+msgid "Job "
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/JobForm.php:338
+msgid "Error, please check the form data."
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/JobFormEditable.php:43
+msgid " Category (required)"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/JobFormEditable.php:50
+msgid "Job Category"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/JobFormEditable.php:63
+msgid "Job Title (required)"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/JobFormEditable.php:83
+msgid "What need to be done (required)?"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/JobFormEditable.php:110
+msgid "What skill will be recommend for this job?"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/JobFormEditable.php:116
+msgid "Please enter skills, separate by comma."
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/JobFormEditable.php:131
+#: jobs-plus/modules/JobsExperts/Core/Views/JobFormEditable.php:144
+msgid "How much you want to pay (required) ?"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/JobFormEditable.php:134
+msgid "Budget:"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/JobFormEditable.php:147
+msgid "Min budget:"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/JobFormEditable.php:153
+msgid "Max budget:"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/JobFormEditable.php:157
+msgid "How much you want to pay?"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/JobFormEditable.php:172
+msgid "Please input your email (required)"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/JobFormEditable.php:178
+msgid "We need email for communicate"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/JobFormEditable.php:191
+msgid "Job complete day."
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/JobFormEditable.php:196
+msgid "Please select a day"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/JobFormEditable.php:227
+#: jobs-plus/modules/JobsExperts/Core/Views/JobFormEditable.php:234
+msgid "How long you want this job open?"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/JobList.php:59
+msgid "Categories: "
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/JobList.php:63
+msgid "Due: "
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/JobList.php:66
+msgid "Budget: "
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/Pagination.php:41
+#, php-format
+msgid "Page %1$d of %2$d"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/Pagination.php:44
+msgid "First"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/Pagination.php:48
+msgid "Previous"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/Pagination.php:58
+msgid "Next"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/Pagination.php:62
+msgid "Last"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings.php:63
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings.php:87
+msgid "General Settings"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings.php:69
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings.php:93
+msgid "Jobs Settings"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings.php:75
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings.php:99
+msgid "Experts Settings"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings.php:80
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings.php:104
+msgid "Shortcodes"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Expert.php:56
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Job.php:65
+msgid "Published"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Expert.php:62
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Job.php:71
+msgid "Pending Review"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Expert.php:70
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Job.php:79
+msgid "Draft"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Expert.php:74
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Job.php:83
+msgid "Allow members to save Drafts."
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Expert.php:86
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Job.php:95
+msgid "Maximum Gallery Images"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Expert.php:97
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Job.php:106
+msgid "Notification Settings"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Expert.php:101
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Job.php:110
+msgid "Disable Contact Form:"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Expert.php:108
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Job.php:117
+msgid "disable contact form"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Expert.php:115
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Job.php:124
+msgid "CC the Administrator:"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Expert.php:122
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Job.php:131
+msgid "cc the administrator"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Expert.php:129
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Job.php:138
+msgid "Email Subject:"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Expert.php:135
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Expert.php:148
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Job.php:144
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Job.php:157
+msgid ""
+"Variables: TO_NAME, FROM_NAME, FROM_EMAIL, FROM_MESSAGE, POST_TITLE, "
+"POST_LINK, SITE_NAME"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Expert.php:142
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Job.php:151
+msgid "Email Content:"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/General.php:23
+msgid "General Options"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/General.php:26
+msgid "Icon Colors"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/General.php:48
+msgid ""
+"Sets the default color of the button icons. May be overriden for individual "
+"buttons in the \"class\" attribute of the shortcode."
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/General.php:53
+msgid "Addons"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/General.php:128
+msgid ""
+"It looks like you have been editing something -- if you leave before "
+"submitting your changes will be lost."
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Job.php:20
+#, php-format
+msgid "%s Status Options"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Job.php:47
+msgid "Use Budget Range"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Job.php:52
+msgid "Use Min and Max budget fields"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Job.php:53
+msgid "Displays both minimum and maximum budget fields."
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Shortcode.php:18
+msgid "Buttons Shortcode"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Shortcode.php:24
+msgid "Become an Expert Button"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Shortcode.php:32
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Shortcode.php:59
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Shortcode.php:87
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Shortcode.php:115
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Shortcode.php:143
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Shortcode.php:171
+msgid "text"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Shortcode.php:33
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Shortcode.php:60
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Shortcode.php:88
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Shortcode.php:116
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Shortcode.php:144
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Shortcode.php:172
+msgid "The text will show below this button."
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Shortcode.php:36
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Shortcode.php:63
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Shortcode.php:91
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Shortcode.php:119
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Shortcode.php:147
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Shortcode.php:175
+msgid "view"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Shortcode.php:37
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Shortcode.php:64
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Shortcode.php:92
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Shortcode.php:120
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Shortcode.php:148
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Shortcode.php:176
+#, php-format
+msgid "Scenario for people can view this button, we have %s %s %s"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Shortcode.php:40
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Shortcode.php:67
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Shortcode.php:95
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Shortcode.php:123
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Shortcode.php:151
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Shortcode.php:179
+msgid "class"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Shortcode.php:41
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Shortcode.php:68
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Shortcode.php:96
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Shortcode.php:124
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Shortcode.php:152
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Shortcode.php:180
+msgid "Custom Css Class for this button"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Shortcode.php:44
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Shortcode.php:71
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Shortcode.php:99
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Shortcode.php:127
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Shortcode.php:155
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Shortcode.php:183
+msgid "url"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Shortcode.php:45
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Shortcode.php:72
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Shortcode.php:100
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Shortcode.php:128
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Shortcode.php:156
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Shortcode.php:184
+msgid "The destination of this button."
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Shortcode.php:52
+msgid "Add new Post Button"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Shortcode.php:80
+msgid "Listing Jobs Button"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Shortcode.php:108
+msgid "Listing Experts Button"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Shortcode.php:136
+msgid "Listing My Posted Jobs"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Shortcode.php:164
+msgid "Listing My Expert's profiles"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Shortcode.php:192
+msgid "Listing Page"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Shortcode.php:196
+msgid "Job Archive Page"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Shortcode.php:203
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Shortcode.php:217
+msgid "post_per_page"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Shortcode.php:204
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Shortcode.php:218
+msgid ""
+"Number of jobs you want to list on a page. Default is the config from "
+"setting page."
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Shortcode.php:210
+msgid "Expert Archive Page"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Shortcode.php:226
+msgid "Form Page"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Shortcode.php:230
+msgid "Job Add/Update Page"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Shortcode.php:237
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Shortcode.php:250
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Shortcode.php:371
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Shortcode.php:385
+msgid "This shortcode doesn't have any parameters."
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Shortcode.php:243
+msgid "Expert Add/Update Page"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Shortcode.php:258
+msgid "Communication Page"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Shortcode.php:262
+msgid "Contact Job Poster Page"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Shortcode.php:270
+msgid "ID of the job you want to send contact to."
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Shortcode.php:273
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Shortcode.php:295
+msgid "success_text"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Shortcode.php:274
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Shortcode.php:296
+msgid "The text to display after user submission successfully."
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Shortcode.php:277
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Shortcode.php:299
+msgid "error_text"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Shortcode.php:278
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Shortcode.php:300
+msgid "The text to display when error happen after user submission."
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Shortcode.php:284
+msgid "Contact Expert Page"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Shortcode.php:292
+msgid "ID of the expert you want to send contact to."
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Shortcode.php:308
+msgid "Single Page"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Shortcode.php:312
+msgid "Job Single Page"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Shortcode.php:319
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Shortcode.php:333
+msgid "id"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Shortcode.php:320
+msgid "ID of the Job"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Shortcode.php:326
+msgid "Expert Single Page"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Shortcode.php:334
+msgid "ID of the Expert"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Shortcode.php:342
+msgid "Others Page"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Shortcode.php:346
+msgid "Landing Page"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Shortcode.php:353
+msgid "job_show_count"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Shortcode.php:354
+msgid "Number of jobs to show, default 3."
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Shortcode.php:357
+msgid "expert_show_count"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Shortcode.php:358
+msgid "Number of experts to show, default 6."
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Shortcode.php:364
+msgid "My Jobs Page"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/Settings/Shortcode.php:378
+msgid "My Experts Page"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/Uploader.php:31
+msgid "Image"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/Uploader.php:42
+msgid "No file attached!"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/Uploader.php:110
+msgid "Your file is too large!"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/Uploader.php:118
+msgid "Your file type is not supported!"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/Uploader.php:348
+msgid "Leave it blank for not modify the attachment"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Views/Uploader.php:373
+msgid "Done"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Widgets/JobAdd.php:16
+#, php-format
+msgid "Post a new %s"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Widgets/JobAdd.php:18
+#, php-format
+msgid "Jobs + Post New %s"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Widgets/JobAdd.php:36
+#, php-format
+msgid "Post new %s"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Widgets/JobAdd.php:52
+#, php-format
+msgid "%s title"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Widgets/JobAdd.php:56
+msgid "Post it"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Widgets/JobAdd.php:92
+#: jobs-plus/modules/JobsExperts/Core/Widgets/JobSearch.php:97
+#: jobs-plus/modules/JobsExperts/Core/Widgets/ProAdd.php:102
+msgid "Title: "
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Widgets/JobAdd.php:99
+#: jobs-plus/modules/JobsExperts/Core/Widgets/JobSearch.php:104
+#: jobs-plus/modules/JobsExperts/Core/Widgets/ProAdd.php:109
+msgid "Who can view:"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Widgets/JobAdd.php:102
+#: jobs-plus/modules/JobsExperts/Core/Widgets/JobSearch.php:107
+#: jobs-plus/modules/JobsExperts/Core/Widgets/ProAdd.php:112
+msgid "Both"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Widgets/JobAdd.php:104
+#: jobs-plus/modules/JobsExperts/Core/Widgets/JobSearch.php:109
+#: jobs-plus/modules/JobsExperts/Core/Widgets/ProAdd.php:114
+msgid "Signed in"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Widgets/JobAdd.php:106
+#: jobs-plus/modules/JobsExperts/Core/Widgets/JobSearch.php:111
+#: jobs-plus/modules/JobsExperts/Core/Widgets/ProAdd.php:116
+msgid "Not sign in"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Widgets/JobRecent.php:18
+#, php-format
+msgid "The most recent %s posts on your site"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Widgets/JobRecent.php:20
+#, php-format
+msgid "Jobs+ The most recent %s posts on your site"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Widgets/JobRecent.php:38
+#, php-format
+msgid "Recent %s Posts"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Widgets/JobRecent.php:124
+msgid "Title:"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Widgets/JobRecent.php:132
+msgid "Number of posts to show:"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Widgets/JobRecent.php:143
+msgid "Display job categories?"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Widgets/JobRecent.php:147
+msgid "Order by"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Widgets/JobRecent.php:152
+msgid "Randomize"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Widgets/JobSearch.php:18
+#, php-format
+msgid "Search %s Widget"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Widgets/JobSearch.php:20
+#, php-format
+msgid "Jobs+ Search %s"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Widgets/JobSearch.php:38
+#, php-format
+msgid "Search %s"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Widgets/JobSearch.php:56
+msgid "Keywords"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Widgets/ProAdd.php:16
+#: jobs-plus/modules/JobsExperts/Core/Widgets/ProAdd.php:36
+#, php-format
+msgid "Become %s"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Widgets/ProAdd.php:18
+#, php-format
+msgid "Jobs + Become %s"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Widgets/ProAdd.php:52
+msgid "First name"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Core/Widgets/ProAdd.php:58
+msgid "Last name"
+msgstr ""
+
+#: jobs-plus/modules/JobsExperts/Framework/EditableForm.php:155
+msgid "Save"
+msgstr ""
