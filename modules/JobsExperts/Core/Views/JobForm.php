@@ -105,7 +105,7 @@ class JobsExperts_Core_Views_JobForm extends JobsExperts_Framework_Render
 
                 <div class="col-md-9">
                     <div class="input-group pull-left" style="width: 40%">
-                        <span class="input-group-addon">$</span>
+                        <span class="input-group-addon"><?php echo JobsExperts_Helper::get_currency_symbol() ?></span>
                         <?php $form->textField($model, 'budget', array('class' => 'form-control validate[required,custom[number],min[1]]')) ?>
                     </div>
                     <span class="fa fa-circle-o-notch fa-spin form-control-feedback"></span>
@@ -118,7 +118,7 @@ class JobsExperts_Core_Views_JobForm extends JobsExperts_Framework_Render
 
                 <div class="col-md-9">
                     <div class="input-group">
-                        <span class="input-group-addon">$</span>
+                        <span class="input-group-addon"><?php echo JobsExperts_Helper::get_currency_symbol() ?></span>
                         <?php $form->textField($model, 'min_budget',
                             array('class' => 'form-control validate[required,funcCall[checkMax],min[1],custom[number]]')) ?>
                         <span class="fa fa-circle-o-notch fa-spin form-control-feedback"></span>
@@ -131,7 +131,7 @@ class JobsExperts_Core_Views_JobForm extends JobsExperts_Framework_Render
 
                 <div class="col-md-9">
                     <div class="input-group">
-                        <span class="input-group-addon">$</span>
+                        <span class="input-group-addon"><?php echo JobsExperts_Helper::get_currency_symbol() ?></span>
                         <?php  $form->textField($model, 'max_budget',
                             array('class' => 'form-control validate[required,funcCall[checkMax],min[1],custom[number]]')) ?>
                         <span class="fa fa-circle-o-notch fa-spin form-control-feedback"></span>

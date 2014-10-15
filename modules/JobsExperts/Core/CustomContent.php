@@ -196,17 +196,17 @@ class JobsExperts_Core_CustomContent extends JobsExperts_Framework_Module
         if (!post_type_exists('jbp_job')) {
             $jbp_job = array(
                 'labels' => array(
-                    'name' => 'Jobs',
-                    'singular_name' => 'Job',
-                    'add_new' => 'Add New',
-                    'add_new_item' => 'Add New Job',
-                    'edit_item' => 'Edit Job',
-                    'new_item' => 'New Job',
-                    'view_item' => 'View Job',
-                    'search_items' => 'Search Jobs',
-                    'not_found' => 'No jobs found',
-                    'not_found_in_trash' => 'No jobs found in Trash',
-                    'custom_fields_block' => 'Jobs Fields',
+                    'name' => __('Jobs', JBP_TEXT_DOMAIN),
+                    'singular_name' => __('Job', JBP_TEXT_DOMAIN),
+                    'add_new' => __('Add New', JBP_TEXT_DOMAIN),
+                    'add_new_item' => __('Add New Job', JBP_TEXT_DOMAIN),
+                    'edit_item' => __('Edit Job', JBP_TEXT_DOMAIN),
+                    'new_item' => __('New Job', JBP_TEXT_DOMAIN),
+                    'view_item' => __('View Job', JBP_TEXT_DOMAIN),
+                    'search_items' => __('Search Jobs', JBP_TEXT_DOMAIN),
+                    'not_found' => __('No jobs found', JBP_TEXT_DOMAIN),
+                    'not_found_in_trash' => __('No jobs found in Trash', JBP_TEXT_DOMAIN),
+                    'custom_fields_block' => __('Jobs Fields', JBP_TEXT_DOMAIN),
                 ),
                 'supports' => array(
                     'title' => 'title',
@@ -254,17 +254,17 @@ class JobsExperts_Core_CustomContent extends JobsExperts_Framework_Module
             $jbp_pro = array(
                 'labels' =>
                     array(
-                        'name' => 'Experts',
-                        'singular_name' => 'Expert',
-                        'add_new' => 'Add New',
-                        'add_new_item' => 'Add New Expert',
-                        'edit_item' => 'Edit Expert',
-                        'new_item' => 'New Expert',
-                        'view_item' => 'View Expert',
-                        'search_items' => 'Search Expert',
-                        'not_found' => 'No experts found',
-                        'not_found_in_trash' => 'No experts found in Trash',
-                        'custom_fields_block' => 'Expert fields',
+                        'name' => __('Experts', JBP_TEXT_DOMAIN),
+                        'singular_name' => __('Expert', JBP_TEXT_DOMAIN),
+                        'add_new' => __('Add New', JBP_TEXT_DOMAIN),
+                        'add_new_item' => __('Add New Expert', JBP_TEXT_DOMAIN),
+                        'edit_item' => __('Edit Expert', JBP_TEXT_DOMAIN),
+                        'new_item' =>__( 'New Expert', JBP_TEXT_DOMAIN),
+                        'view_item' => __('View Expert', JBP_TEXT_DOMAIN),
+                        'search_items' => __('Search Expert', JBP_TEXT_DOMAIN),
+                        'not_found' => __('No experts found', JBP_TEXT_DOMAIN),
+                        'not_found_in_trash' =>__( 'No experts found in Trash', JBP_TEXT_DOMAIN),
+                        'custom_fields_block' => __('Expert fields', JBP_TEXT_DOMAIN),
                     ),
                 'supports' =>
                     array(
