@@ -184,18 +184,20 @@ class JobsExperts_Core_Models_Job extends JobsExperts_Framework_PostModel
     public function render_prices($return = '')
     {
         $prices = $this->get_price();
+        $currency = JobsExperts_Plugin::instance()->settings()->currency;
         if (is_array($prices)) {
             ?>
             <?php if (empty($return)): ?>
-                $<?php echo money_format($this->min_budget, 2) ?> - $<?php echo money_format($this->max_budget, 2) ?>
+                <?php echo JobsExperts_Helper::format_currency($currency,$this->min_budget) ?> -
+                <?php echo JobsExperts_Helper::format_currency($currency,$this->max_budget) ?>
             <?php else: ?>
-                $<?php echo money_format($this->max_budget, 2) ?>
+                <?php echo JobsExperts_Helper::format_currency($currency,$this->max_budget) ?>
             <?php endif; ?>
         <?php
         } else {
 
             ?>
-            $<?php echo money_format($this->budget, 2) ?>
+            <?php echo JobsExperts_Helper::format_currency($currency,$this->budget) ?>
         <?php
         }
     }

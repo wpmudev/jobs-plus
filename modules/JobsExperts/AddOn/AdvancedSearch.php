@@ -210,12 +210,23 @@ class JobsExpert_Compnents_AdvancedSearch extends JobsExperts_AddOn
                             form.append('<input type="hidden" value="' + $('.job-query').val() + '" name="query"> ');
                         })
                     }
+                    <?php
+                     //build the format
+                     $setting = JobsExperts_Plugin::instance()->settings();
+
+                     $pos = $setting->curr_symbol_position;
+                     if($pos==1 || $pos==2){
+                        $pos='prefix';
+                     }else{
+                         $pos = 'postfix';
+                     }
+                    ?>
 
                     $(".job-price-range").ionRangeSlider({
                         min: <?php echo $plugin->settings()->job_min_search_budget ?>,
                         max: '<?php echo $range_max+100 ?>',
                         type: "double",
-                        prefix: "$",
+                        <?php echo $pos ?>: "<?php echo JobsExperts_Helper::format_currency($setting->currency,'') ?>",
                         maxPostfix: "+",
                         prettify: false,
                         hasGrid: true,

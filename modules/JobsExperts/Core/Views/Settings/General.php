@@ -48,7 +48,69 @@ class JobsExperts_Core_Views_Settings_General extends JobsExperts_Framework_Rend
                     class="help-block"><?php _e('Sets the default color of the button icons. May be overriden for individual buttons in the "class" attribute of the shortcode.', JBP_TEXT_DOMAIN); ?></span>
             </div>
         </div>
+        <div class="form-group">
+            <label class="col-md-2 control-label"><?php _e('Currency', JBP_TEXT_DOMAIN); ?></label>
 
+            <div class="col-sm-10">
+                <select id="jbp-currency-select" name="JobsExperts_Core_Models_Settings[currency]">
+                    <?php
+                    foreach ($model->currency_list() as $key => $value) {
+                        ?>
+                        <option value="<?php echo $key; ?>"<?php selected($model->currency, $key); ?>><?php echo esc_attr($value[0]) . ' - ' . JobsExperts_Helper::format_currency($key); ?></option><?php
+                    }
+                    ?>
+                </select>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 control-label"><?php _e('Currency Symbol Position', JBP_TEXT_DOMAIN); ?></label>
+
+            <div class="col-sm-10">
+                <div class="radio">
+                    <label>
+                        <?php $form->radioButton($model, 'curr_symbol_position', '1') ?>
+                        <?php echo JobsExperts_Helper::format_currency($model->currency); ?>100
+                    </label>
+                </div>
+                <div class="radio">
+                    <label>
+                        <?php $form->radioButton($model, 'curr_symbol_position', '2') ?>
+                        <?php echo JobsExperts_Helper::format_currency($model->currency); ?> 100
+                    </label>
+                </div>
+                <div class="radio">
+                    <label>
+                        <?php $form->radioButton($model, 'curr_symbol_position', '3') ?>
+                        100<?php echo JobsExperts_Helper::format_currency($model->currency); ?>
+                    </label>
+                </div>
+                <div class="radio">
+                    <label>
+                        <?php $form->radioButton($model, 'curr_symbol_position', '4') ?>
+                        100 <?php echo JobsExperts_Helper::format_currency($model->currency); ?>
+                    </label>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 control-label"><?php _e('Show Decimal in Prices', JBP_TEXT_DOMAIN); ?></label>
+
+            <div class="col-sm-10">
+                <div class="radio">
+                    <label class="radio-inline">
+                        <?php $form->radioButton($model, 'curr_decimal', '1') ?>
+                        <?php _e('Yes', JBP_TEXT_DOMAIN) ?>
+                    </label>
+                    <label class="radio-inline">
+                        <?php $form->radioButton($model, 'curr_decimal', '0') ?>
+                        <?php _e('No', JBP_TEXT_DOMAIN) ?>
+                    </label>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
         <div class="page-header">
             <h3 class="hndle"><span><?php _e('Addons', JBP_TEXT_DOMAIN) ?></span></h3>
         </div>
