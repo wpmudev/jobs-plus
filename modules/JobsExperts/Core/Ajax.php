@@ -34,7 +34,7 @@ class JobsExperts_Core_Ajax extends JobsExperts_Framework_Module
 
             if ($type == 'deactive') {
                 $index = array_search($id, $plugins);
-                if ($index!==false) {
+                if ($index !== false) {
                     unset($plugins[$index]);
                     echo sprintf(__('The add on <strong>%s</strong> has been deactivated', JBP_TEXT_DOMAIN), $current_addon['Name']);
                 }
@@ -45,7 +45,7 @@ class JobsExperts_Core_Ajax extends JobsExperts_Framework_Module
             $plugins = array_unique($plugins);
             $setting->plugins = implode(',', $plugins);
             $setting->save();
-        }else{
+        } else {
             echo 123;
         }
         exit;
@@ -71,19 +71,22 @@ class JobsExperts_Core_Ajax extends JobsExperts_Framework_Module
                     'errors' => $model->get_errors()
                 ));
             } else {
-                $type = $_POST['type'];
-                if ($type == 'job') {
-                    $result = JobsExperts_Core_Controllers_Job::send_contact($id, $model->export());
-                    echo json_encode(array(
-                        'status' => 1,
-                        'url' => $result
-                    ));
-                } else {
-                    $result = JobsExperts_Core_Controllers_Pro::send_contact($id, $model->export());
-                    echo json_encode(array(
-                        'status' => 1,
-                        'url' => $result
-                    ));
+                $send_email = apply_filters('jbp_contact_send_email', true, $_POST['type'], $id, $model, get_current_user_id());
+                if ($send_email) {
+                    $type = $_POST['type'];
+                    if ($type == 'job') {
+                        $result = JobsExperts_Core_Controllers_Job::send_contact($id, $model->export());
+                        echo json_encode(array(
+                            'status' => 1,
+                            'url' => $result
+                        ));
+                    } else {
+                        $result = JobsExperts_Core_Controllers_Pro::send_contact($id, $model->export());
+                        echo json_encode(array(
+                            'status' => 1,
+                            'url' => $result
+                        ));
+                    }
                 }
             }
         }

@@ -5837,6 +5837,28 @@ a.list-group-item.active > .hn-container .badge,
     clear: both;
 }
 
+.hn-container .btn-lg,
+.hn-container .btn-group-lg > .btn {
+    padding: 10px 16px;
+    font-size: 18px;
+    line-height: 1.33;
+    border-radius: 6px;
+}
+.hn-container .btn-sm,
+.hn-container .btn-group-sm > .btn {
+    padding: 5px 10px;
+    font-size: 12px;
+    line-height: 1.5;
+    border-radius: 3px;
+}
+.hn-container .btn-xs,
+.hn-container .btn-group-xs > .btn {
+    padding: 1px 5px;
+    font-size: 12px;
+    line-height: 1.5;
+    border-radius: 3px;
+}
+
 .hn-container .center-block {
     display: block;
     margin-left: auto;

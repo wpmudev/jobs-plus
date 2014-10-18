@@ -111,7 +111,7 @@ class JobsExperts_Core_Shortcode_ExpertForm extends JobsExperts_Shortcode
             if ($model->is_current_can_edit() == false) {
                 //oh no, he can not
                 echo '<h4 style="text-align: center">' . _e('Sorry you do not have enough permission to become an expert', JBP_TEXT_DOMAIN) . '</h4>';
-            } elseif ($model->is_reach_max()) {
+            } elseif ($model->is_reach_max() && !$is_edit) {
                 //this user can not add more
                 echo '<h4 style="text-align: center">' . __('Sorry, you reach max amount of expert profile', JBP_TEXT_DOMAIN) . '</h4>';
             } else {

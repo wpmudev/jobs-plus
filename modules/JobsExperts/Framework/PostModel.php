@@ -77,6 +77,7 @@ abstract class JobsExperts_Framework_PostModel extends JobsExperts_Framework_Mod
             }
         }
         $posts['total_pages'] = $query->max_num_pages;
+        $posts['total'] = $query->post_count;
         wp_reset_query();
         return $posts;
     }
