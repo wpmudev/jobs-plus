@@ -60,7 +60,7 @@ class JobsExperts_Core_Views_ExpertForm extends JobsExperts_Framework_Render
             <div class="col-md-8 expert-form-container">
                 <div class="page-header">
                     <?php
-                    $empty_text = '<h2 class="can-edit">' . sprintf('Your Name (required)') . '</h2>';
+                    $empty_text = '<h2 class="can-edit">' . sprintf(__('Your Name (required)', JBP_TEXT_DOMAIN)) . '</h2>';
                     $display_text = '<h2 class="can-edit">' . sprintf('{{first_name}} {{last_name}}') . '</h2>';
                     $mapped = array(
                         'first_name' => array(
