@@ -2,7 +2,7 @@
 
 /**
  * Name: Message
- * Description: This addon use to integrate Jobs&Experts with Message Plugin, require Message plugin active¬
+ * Description: This add-on extends the contact form of Jobs&Experts, make it an full feature in-site private message.
  * Author: WPMU DEV
  */
 class JobsExperts_AddOn_Message extends JobsExperts_AddOn
