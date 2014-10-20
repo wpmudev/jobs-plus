@@ -180,7 +180,7 @@ class JobsExperts_Core_Ajax extends JobsExperts_Framework_Module
                 } else {
                     $model = new $class();
                     //todo cleanup
-                    $attribute = str_replace(array(
+                    $attribute = @str_replace(array(
                         $class, '[', ']'
                     ), '', $_POST['key']);
 

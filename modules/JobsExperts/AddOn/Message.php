@@ -41,6 +41,34 @@ class JobsExperts_AddOn_Message extends JobsExperts_AddOn
         //admin page
         $this->_add_action('admin_menu', 'custom_admin_menu');
         $this->_add_filter('menu_order', 'reorder_menu', 20);
+
+
+        $this->_add_filter('jbp_contact_validate_rules', 'contact_validate_rules');
+        $this->_add_filter('jbp_expert_contact', 'jbp_expert_contact', 10, 2);
+        $this->_add_filter('jbp_job_contact', 'jbp_job_contact', 10, 2);
+    }
+
+    function contact_validate_rules()
+    {
+        return array(
+            array('required', 'name,content'),
+        );
+    }
+
+    function jbp_job_contact($content, $a)
+    {
+        $render = new JobsExperts_AddOn_Message_Views_JobContact(array(
+            'a' => $a
+        ));
+        return $render->_to_html();
+    }
+
+    function jbp_expert_contact($content, $a)
+    {
+        $render = new JobsExperts_AddOn_Message_Views_ExpertContact(array(
+            'a' => $a
+        ));
+        return $render->_to_html();
     }
 
     function reorder_menu($menu_order)
@@ -126,12 +154,24 @@ class JobsExperts_AddOn_Message extends JobsExperts_AddOn
         if ($setting->user_receipt == true) {
             //check does user enable
             $sender_setting = get_user_meta($model->send_from, 'messages_user_setting', true);
+            if (!$sender_setting) {
+                $sender_setting = array(
+                    'enable_receipt' => $setting->global_receipt,
+                    'prevent_receipt' => false
+                );
+            }
             if ($sender_setting['enable_receipt'] != true) {
                 //user don't enable it,
                 return;
             }
             //user enable it, checking does the receiver block it
             $reciver_setting = get_user_meta($model->send_to, 'messages_user_setting', true);
+            if (!$reciver_setting) {
+                $reciver_setting = array(
+                    'enable_receipt' => $setting->global_receipt,
+                    'prevent_receipt' => false
+                );
+            }
             if ($reciver_setting['prevent_receipt'] == true) {
                 //this user has block it, return
                 return;

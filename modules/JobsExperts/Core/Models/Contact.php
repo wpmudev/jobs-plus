@@ -11,9 +11,9 @@ class JobsExperts_Core_Models_Contact extends JobsExperts_Framework_Model
 
     public function rules()
     {
-        return array(
+        return apply_filters('jbp_contact_validate_rules', array(
             array('required', 'name,email,content'),
             array('email', 'email')
-        );
+        ));
     }
 }

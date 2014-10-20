@@ -1,49 +1,21 @@
 <?php
 
-// +----------------------------------------------------------------------+
-// | Copyright Incsub (http://incsub.com/)                                |
-// +----------------------------------------------------------------------+
-// | This program is free software; you can redistribute it and/or modify |
-// | it under the terms of the GNU General Public License, version 2, as  |
-// | published by the Free Software Foundation.                           |
-// |                                                                      |
-// | This program is distributed in the hope that it will be useful,      |
-// | but WITHOUT ANY WARRANTY; without even the implied warranty of       |
-// | MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the        |
-// | GNU General Public License for more details.                         |
-// |                                                                      |
-// | You should have received a copy of the GNU General Public License    |
-// | along with this program; if not, write to the Free Software          |
-// | Foundation, Inc., 51 Franklin St, Fifth Floor, Boston,               |
-// | MA 02110-1301 USA                                                    |
-// +----------------------------------------------------------------------+
-
 /**
- *
- * @category JobsExperts
- * @package  Shorcode
- *
- * @since    1.0.0
+ * Author: Hoang Ngo
  */
-class JobsExperts_Core_Shortcode_JobContact extends JobsExperts_Shortcode
+class JobsExperts_AddOn_Message_Views_JobContact extends JobsExperts_Framework_Render
 {
-    const NAME = __CLASS__;
-
-    public function __construct()
+    public function __construct($data = array())
     {
-        $this->_add_shortcode('jbp-job-contact-page', 'shortcode');
+        parent::__construct($data);
     }
 
-    public function shortcode($atts)
+    public function _to_html()
     {
         wp_enqueue_style('jobs-contact');
         wp_enqueue_script('jobs-noty');
 
-        $a = shortcode_atts(array(
-            'success_text' => __("Your request has been sent. Thank you!", JBP_TEXT_DOMAIN),
-            'error_text' => __("Some error happened, please try later. Thank you!", JBP_TEXT_DOMAIN),
-            'id' => 0
-        ), $atts);
+        $a = $this->a;
         if (!is_user_logged_in()) {
             ob_start();
             //user still not login, we need to load login form
@@ -98,19 +70,6 @@ class JobsExperts_Core_Shortcode_JobContact extends JobsExperts_Shortcode
 
                                     <div class="col-sm-9">
                                         <?php  $form->textField($contact, 'name', array(
-                                            'class' => 'form-control'
-                                        )) ?>
-                                        <span class="fa fa-circle-o-notch fa-spin form-control-feedback"></span>
-
-                                    </div>
-                                    <div class="clearfix"></div>
-                                </div>
-                                <div class="form-group has-feedback">
-                                    <label
-                                        class="col-sm-3 control-label"><?php _e('Contact email:', JBP_TEXT_DOMAIN) ?></label>
-
-                                    <div class="col-sm-9">
-                                        <?php  $form->textField($contact, 'email', array(
                                             'class' => 'form-control'
                                         )) ?>
                                         <span class="fa fa-circle-o-notch fa-spin form-control-feedback"></span>
@@ -257,9 +216,8 @@ class JobsExperts_Core_Shortcode_JobContact extends JobsExperts_Shortcode
             } else {
                 echo '<h3>' . sprintf(__('%s not found!', JBP_TEXT_DOMAIN), $post_type->labels->singular_name) . '</h3>';
             }
-            return apply_filters('jbp_job_contact', ob_get_clean(), $a);
+            return ob_get_clean();
         }
-
     }
 
     function load_login_form()
@@ -289,5 +247,3 @@ class JobsExperts_Core_Shortcode_JobContact extends JobsExperts_Shortcode
     <?php
     }
 }
-
-new JobsExperts_Core_Shortcode_JobContact;
