@@ -6,3 +6,5 @@ Initial Release
 Fix bug require to refresh permalink
 ==1.0.1.1
 Ability to change currency in setting
+==1.0.1.2
+Add Message Add-On
