@@ -28,9 +28,10 @@ class JobsExperts_Core_Views_ExpertSingle extends JobsExperts_Framework_Render
                                 <?php echo $model->get_avatar(420) ?>
                             </div>
                             <div class="panel-footer">
-                                <a class="btn btn-sm btn-primary" href="<?php echo add_query_arg(array(
-                                    'contact' => get_post()->post_name
-                                ), apply_filters('jbp_expert_contact_link',get_permalink($page_module->page($page_module::EXPERT_CONTACT)))) ?>"><?php _e('Contact Me', JBP_TEXT_DOMAIN) ?></a>
+                                <a class="btn btn-sm btn-primary jbp_contact_expert"
+                                   href="<?php echo add_query_arg(array(
+                                       'contact' => get_post()->post_name
+                                   ), apply_filters('jbp_expert_contact_link', get_permalink($page_module->page($page_module::EXPERT_CONTACT)))) ?>"><?php _e('Contact Me', JBP_TEXT_DOMAIN) ?></a>
                             </div>
                         </div>
                     </div>
@@ -182,10 +183,12 @@ class JobsExperts_Core_Views_ExpertSingle extends JobsExperts_Framework_Render
                                     </div>
                                     <div class="clearfix"></div>
                                 </div>
-                            <?php }else{
+                            <?php
+                            } else {
                                 _e('This member hasn\'t added any skills yet', JBP_TEXT_DOMAIN);
                             } ?>
                             <br/>
+
                             <div class="page-header">
                                 <label><i class="fa fa-globe"></i> <?php _e('Social Profile', JBP_TEXT_DOMAIN) ?>
                                 </label>
@@ -241,7 +244,7 @@ class JobsExperts_Core_Views_ExpertSingle extends JobsExperts_Framework_Render
                 <div class="row" style="margin-top: 40px">
                     <div class="col-md-12" style="margin-left: 0">
                         <a class="btn btn-primary"
-                           href="<?php echo add_query_arg(array('pro' => $var), apply_filters('expert_edit_button_link',get_permalink($page_module->page($page_module::EXPERT_EDIT)))) ?>">
+                           href="<?php echo add_query_arg(array('pro' => $var), apply_filters('expert_edit_button_link', get_permalink($page_module->page($page_module::EXPERT_EDIT)))) ?>">
                             <?php _e('Edit', JBP_TEXT_DOMAIN) ?>
                         </a>
 
@@ -270,7 +273,7 @@ class JobsExperts_Core_Views_ExpertSingle extends JobsExperts_Framework_Render
         <div class="clearfix"></div>
         </div>
         </div>
-
+        <?php do_action('jbp_after_single_expert') ?>
         <script type="text/javascript">
             jQuery(document).ready(function ($) {
                 $('[data-toggle="tooltip"]').tooltip()

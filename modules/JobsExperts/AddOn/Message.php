@@ -2,7 +2,7 @@
 
 /**
  * Name: Message
- * Description: This add-on extends the contact form of Jobs&Experts, make it an full feature in-site private message.
+ * Description: This add-on extends the contact form functionality of Jobs & Experts to make it into a fully featured on-site private message system.
  * Author: WPMU DEV
  */
 class JobsExperts_AddOn_Message extends JobsExperts_AddOn
@@ -46,12 +46,22 @@ class JobsExperts_AddOn_Message extends JobsExperts_AddOn
         $this->_add_filter('jbp_contact_validate_rules', 'contact_validate_rules');
         $this->_add_filter('jbp_expert_contact', 'jbp_expert_contact', 10, 2);
         $this->_add_filter('jbp_job_contact', 'jbp_job_contact', 10, 2);
+
+        //contact popup
+        $this->_add_action('jbp_after_single_expert', 'contact_in_popup');
+        $this->_add_action('jbp_after_single_job', 'contact_in_popup');
+    }
+
+    function contact_in_popup()
+    {
+        $render = new JobsExperts_AddOn_Message_Views_PopupContact(array());
+        $render->render();
     }
 
     function contact_validate_rules()
     {
         return array(
-            array('required', 'name,content'),
+            array('required', 'content'),
         );
     }
 
@@ -318,10 +328,10 @@ class JobsExperts_AddOn_Message extends JobsExperts_AddOn
             'template' => '',
             'url' => $link
         ), $atts));
-
         $ob = sprintf('<a class="jbp-shortcode-button jbp-message-inbox %s" href="%s">
 			<i style="display: block" class="fa fa-inbox fa-2x"></i>%s
-		</a>', esc_attr($class), apply_filters('jbp_button_url', $url, 'my_jobs'), esc_html($text));
+		</a>', esc_attr($class), $url, esc_html($text));
+
         return $ob;
     }
 
@@ -352,7 +362,7 @@ class JobsExperts_AddOn_Message extends JobsExperts_AddOn
             $message->status = 'unread';
             $message->send_from = $user_id;
             $message->send_to = $to;
-            $message->content = $contact->content;
+            $message->content = jbp_filter_text($contact->content);
             $message->subject = $subject;
             $message->contact_type = $type;
             $message->ref_id = $id;
@@ -681,7 +691,7 @@ class JobsExperts_AddOn_Message extends JobsExperts_AddOn
                                                     <h4 class="modal-title"><?php echo $upload->name() ?></h4>
                                                 </div>
                                                 <div class="modal-body sample-pop"
-                                                     style="max-height:500px;overflow-y:scroll">
+                                                     style="max-height:450px;overflow-y:scroll">
                                                     <?php
                                                     $file = $upload->file;
                                                     $file_url = '';
@@ -799,11 +809,22 @@ class JobsExperts_AddOn_Message extends JobsExperts_AddOn
         $model->status = 'unread';
         $model->send_from = get_current_user_id();
         $model->send_to = $parent->send_from;
-        $model->content = $content;
+        $model->content = trim(jbp_filter_text($content));
         $model->attachments = trim($attachments);
         $model->subject = __('Re:', JBP_TEXT_DOMAIN) . ' ' . $parent->subject;
         $model->reply_to = $parent->id;
-        $model->save();
+        if ($model->validate()) {
+            $model->save();
+            echo json_encode(array(
+                'status' => 'success'
+            ));
+        } else {
+            echo json_encode(array(
+                'status' => 'fail',
+                'data' => $model->get_errors()
+            ));
+        }
+
         exit;
     }
 

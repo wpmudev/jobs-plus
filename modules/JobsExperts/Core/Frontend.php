@@ -109,7 +109,7 @@ class JobsExperts_Core_Frontend extends JobsExperts_Framework_Module
         if (get_option('jbp_rp') == false) {
             update_option('jbp_rp', 1);
             global $wp_rewrite;
-            $wp_rewrite->flush_rules(false);
+            $wp_rewrite->flush_rules();
         }
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['_wpnonce'])) {

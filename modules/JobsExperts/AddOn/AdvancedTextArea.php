@@ -19,6 +19,35 @@ class JobsExpert_Compnents_AdvancedTextArea extends JobsExperts_AddOn
         $this->_add_action('wp_footer', 'footer_script');
         $this->_add_filter('jbp_job_list_content', 'ensure_job_html', 10, 3);
     }*/
+
+        $this->_add_action('jbp_after_popup_contact', 'addition_wysiwyg');
+        $this->_add_action('jbp_after_inbox_message', 'addition_wysiwyg');
+
+    }
+
+    function addition_wysiwyg()
+    {
+        wp_enqueue_style('jbp_jquery_te');
+        wp_enqueue_script('jbp_jquery_te');
+        wp_enqueue_script('jbp_jquery_te_xhtml');
+        $plugin = JobsExperts_Plugin::instance();
+        ?>
+        <script type="text/javascript">
+            jQuery(document).ready(function ($) {
+                if ($('.jbp_wysiwyg').size() > 0) {
+                    $('.jbp_wysiwyg').sceditor({
+                        plugins: "xhtml",
+                        autoUpdate: true,
+                        width: '100%',
+                        emoticonsEnabled: false,
+                        toolbar: "bold,italic,underline,strike|left,center,right,justify|font,size,color,removeformat|cut,copy,paste,pastetext|bulletlist,orderedlist,indent,outdent|link,unlink|date,time",
+                        emoticonsRoot: '<?php echo $plugin->_module_url ?>AddOn/AdvancedTextArea/',
+                        style: "<?php echo $plugin->_module_url ?>AddOn/AdvancedTextArea/minified/jquery.sceditor.default.min.css"
+                    });
+                }
+            })
+        </script>
+    <?php
     }
 
     function job_content($shroten, $content, $length)
@@ -42,29 +71,41 @@ class JobsExpert_Compnents_AdvancedTextArea extends JobsExperts_AddOn
         $plugin = JobsExperts_Plugin::instance();
         $page_module = $plugin->page_module();
         if (!is_home() && in_array(get_the_ID(), array(
-            $page_module->page($page_module::EXPERT_ADD),
-            $page_module->page($page_module::EXPERT_EDIT),
-            $page_module->page($page_module::JOB_ADD),
-            $page_module->page($page_module::JOB_EDIT)
-        ))
+                $page_module->page($page_module::EXPERT_ADD),
+                $page_module->page($page_module::EXPERT_EDIT),
+                $page_module->page($page_module::JOB_ADD),
+                $page_module->page($page_module::JOB_EDIT)
+            ))
         ) {
-            wp_enqueue_style('jobs-advanced-textarea');
-
-            wp_enqueue_script('jobs-advanced-textarea');
+            wp_enqueue_style('jbp_jquery_te');
+            wp_enqueue_script('jbp_jquery_te');
+            wp_enqueue_script('jbp_jquery_te_xhtml');
             ?>
             <script type="text/javascript">
                 jQuery(document).ready(function ($) {
                     if ($('#job_description').size() > 0) {
-                        $('#job_description').wysiwyg({
-                            css: '<?php echo $plugin->_module_url.'assets/main.css' ?>'
+                        $('#job_description').sceditor({
+                            plugins: "xhtml",
+                            autoUpdate: true,
+                            width: '100%',
+                            emoticonsEnabled: false,
+                            toolbar: "bold,italic,underline,strike|left,center,right,justify|font,size,color,removeformat|cut,copy,paste,pastetext|bulletlist,orderedlist,indent,outdent|link,unlink|date,time",
+                            emoticonsRoot: '<?php echo $plugin->_module_url ?>AddOn/AdvancedTextArea/',
+                            style: "<?php echo $plugin->_module_url ?>AddOn/AdvancedTextArea/minified/jquery.sceditor.default.min.css"
                         });
                     }
 
                     setInterval(function () {
                         if ($('#biography').size() > 0) {
                             if ($('#biography-wysiwyg-iframe').size() == 0) {
-                                $('#biography').wysiwyg({
-                                    css: '<?php echo $plugin->_module_url.'assets/main.css' ?>'
+                                $('#biography').sceditor({
+                                    plugins: "xhtml",
+                                    autoUpdate: true,
+                                    width: '100%',
+                                    emoticonsEnabled: false,
+                                    toolbar: "bold,italic,underline,strike|left,center,right,justify|font,size,color,removeformat|cut,copy,paste,pastetext|bulletlist,orderedlist,indent,outdent|link,unlink|date,time",
+                                    emoticonsRoot: '<?php echo $plugin->_module_url ?>AddOn/AdvancedTextArea/',
+                                    style: "<?php echo $plugin->_module_url ?>AddOn/AdvancedTextArea/minified/jquery.sceditor.default.min.css"
                                 });
                             }
                         }
@@ -82,6 +123,9 @@ class JobsExpert_Compnents_AdvancedTextArea extends JobsExperts_AddOn
         wp_register_style('jobs-advanced-textarea', $plugin->_module_url . 'AddOn/AdvancedTextArea/jquery.wysiwyg.css');
         wp_register_script('jobs-advanced-textarea', $plugin->_module_url . 'AddOn/AdvancedTextArea/jquery.wysiwyg.js');
 
+        wp_register_style('jbp_jquery_te', $plugin->_module_url . 'AddOn/AdvancedTextArea/minified/themes/default.min.css');
+        wp_register_script('jbp_jquery_te', $plugin->_module_url . 'AddOn/AdvancedTextArea/minified/jquery.sceditor.min.js');
+        wp_register_script('jbp_jquery_te_xhtml', $plugin->_module_url . 'AddOn/AdvancedTextArea/minified/plugins/xhtml.js');
         //wp_register_style('jobs-advanced-textarea', $plugin->_module_url . 'AddOn/AdvancedTextArea/bootstrap3-wysihtml5.min.css');
         //wp_register_script('jobs-advanced-textarea', $plugin->_module_url . 'AddOn/AdvancedTextArea/bootstrap3-wysihtml5.all.min.js');
     }

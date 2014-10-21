@@ -371,3 +371,9 @@ div.wysiwyg > textarea {
 .wysiwyg {
     width: 100% !important;
 }
+
+.wysiwyg iframe {
+    padding: 10px;
+    box-sizing: border-box;
+    width: 100% !important;
+}

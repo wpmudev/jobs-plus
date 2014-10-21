@@ -22,6 +22,8 @@ class JobsExpert_Compnents_MoveToNormalPage extends JobsExperts_AddOn
 
         $this->_add_action('jbp_after_save_settings', 'save_setting');
 
+        $this->_add_filter('jbp_page_factory_get_page', 'page_id', 10, 2);
+
         if (!is_admin()) {
             $this->_add_filter('jbp_button_url', 'update_button_link', 10, 2);
             //update archive link
@@ -33,7 +35,7 @@ class JobsExpert_Compnents_MoveToNormalPage extends JobsExperts_AddOn
             //
             $this->_add_filter('get_edit_post_link', 'hide_edit_post_link');
             //update ocntact link
-            $this->_add_filter('jbp_job_contact_link', 'job_contact_link', 10, 2);
+            /*$this->_add_filter('jbp_job_contact_link', 'job_contact_link', 10, 2);
             $this->_add_filter('job_edit_button_link', 'job_edit_button_link');
             $this->_add_filter('jbp_is_job_edit', 'jbp_is_job_edit');
             $this->_add_filter('jbp_my_jobs_url', 'jbp_my_jobs_url');
@@ -43,11 +45,42 @@ class JobsExpert_Compnents_MoveToNormalPage extends JobsExperts_AddOn
             $this->_add_filter('expert_edit_button_link', 'expert_edit_button_link');
             $this->_add_filter('jbp_is_expert_edit', 'jbp_is_expert_edit');
             $this->_add_filter('jbp_my_experts_url', 'jbp_my_profiles_url');
-            $this->_add_filter('jbp_add_new_expert_url', 'jbp_add_new_expert_url');
+            $this->_add_filter('jbp_add_new_expert_url', 'jbp_add_new_expert_url');*/
         }
     }
 
-    function jbp_add_new_job_url($url){
+    function page_id($page_id, $page)
+    {
+        $model = new JobsExpert_AddOn_MoveToNormalPage_Model();
+        $model->load();
+        switch ($page) {
+            case 'job_add':
+                return $model->add_new_job;
+            case 'my_job':
+                return $model->my_jobs;
+            case 'job_edit':
+                return $model->edit_job;
+            case 'job_listing':
+                return $model->list_jobs;
+            case 'job_contact':
+                return $model->contact_job;
+
+            case 'expert_add':
+                return $model->add_new_expert;
+            case 'my_expert':
+                return $model->my_profiles;
+            case 'expert_edit':
+                return $model->edit_expert;
+            case 'expert_listing':
+                return $model->list_experts;
+            case 'expert_contact':
+                return $model->contact_expert;
+        }
+        return $page_id;
+    }
+
+    function jbp_add_new_job_url($url)
+    {
         $model = new JobsExpert_AddOn_MoveToNormalPage_Model();
         $model->load();
         if ($model->add_new_job) {
@@ -270,7 +303,7 @@ class JobsExpert_Compnents_MoveToNormalPage extends JobsExperts_AddOn
             $model->load();
             switch ($_POST['type']) {
                 case 'add_new_job':
-                    $vid = $page_module->page($page_module::JOB_ADD);
+                    $vid = $page_module->page($page_module::JOB_ADD, true);
                     $vpage = get_post($vid);
                     //reset the post data
                     $page = $this->reset_page($vpage)->to_array();
@@ -283,7 +316,7 @@ class JobsExpert_Compnents_MoveToNormalPage extends JobsExperts_AddOn
                     echo $new_id;
                     break;
                 case 'edit_job':
-                    $vid = $page_module->page($page_module::JOB_EDIT);
+                    $vid = $page_module->page($page_module::JOB_EDIT, true);
                     $vpage = get_post($vid);
                     //reset the post data
                     $page = $this->reset_page($vpage)->to_array();
@@ -293,7 +326,7 @@ class JobsExpert_Compnents_MoveToNormalPage extends JobsExperts_AddOn
                     $model->save();
                     break;
                 case 'contact_job':
-                    $vid = $page_module->page($page_module::JOB_CONTACT);
+                    $vid = $page_module->page($page_module::JOB_CONTACT, true);
                     $vpage = get_post($vid);
                     //reset the post data
                     $page = $this->reset_page($vpage)->to_array();
@@ -303,7 +336,7 @@ class JobsExpert_Compnents_MoveToNormalPage extends JobsExperts_AddOn
                     $model->save();
                     break;
                 case 'list_jobs':
-                    $vid = $page_module->page($page_module::JOB_LISTING);
+                    $vid = $page_module->page($page_module::JOB_LISTING, true);
                     $vpage = get_post($vid);
                     //reset the post data
                     $page = $this->reset_page($vpage)->to_array();
@@ -314,7 +347,7 @@ class JobsExpert_Compnents_MoveToNormalPage extends JobsExperts_AddOn
                     echo $new_id;
                     break;
                 case 'my_jobs':
-                    $vid = $page_module->page($page_module::MY_JOB);
+                    $vid = $page_module->page($page_module::MY_JOB, true);
                     $vpage = get_post($vid);
                     //reset the post data
                     $page = $this->reset_page($vpage)->to_array();
@@ -325,7 +358,7 @@ class JobsExpert_Compnents_MoveToNormalPage extends JobsExperts_AddOn
                     echo $new_id;
                     break;
                 case 'add_new_expert':
-                    $vid = $page_module->page($page_module::EXPERT_ADD);
+                    $vid = $page_module->page($page_module::EXPERT_ADD, true);
                     $vpage = get_post($vid);
                     //reset the post data
                     $page = $this->reset_page($vpage)->to_array();
@@ -336,7 +369,7 @@ class JobsExpert_Compnents_MoveToNormalPage extends JobsExperts_AddOn
                     echo $new_id;
                     break;
                 case 'edit_expert':
-                    $vid = $page_module->page($page_module::EXPERT_EDIT);
+                    $vid = $page_module->page($page_module::EXPERT_EDIT, true);
                     $vpage = get_post($vid);
                     //reset the post data
                     $page = $this->reset_page($vpage)->to_array();
@@ -347,7 +380,7 @@ class JobsExpert_Compnents_MoveToNormalPage extends JobsExperts_AddOn
                     echo $new_id;
                     break;
                 case 'contact_expert':
-                    $vid = $page_module->page($page_module::EXPERT_CONTACT);
+                    $vid = $page_module->page($page_module::EXPERT_CONTACT, true);
                     $vpage = get_post($vid);
                     //reset the post data
                     $page = $this->reset_page($vpage)->to_array();
@@ -358,7 +391,7 @@ class JobsExpert_Compnents_MoveToNormalPage extends JobsExperts_AddOn
                     echo $new_id;
                     break;
                 case 'list_experts':
-                    $vid = $page_module->page($page_module::EXPERT_LISTING);
+                    $vid = $page_module->page($page_module::EXPERT_LISTING, true);
                     $vpage = get_post($vid);
                     //reset the post data
                     $page = $this->reset_page($vpage)->to_array();
@@ -369,7 +402,7 @@ class JobsExpert_Compnents_MoveToNormalPage extends JobsExperts_AddOn
                     echo $new_id;
                     break;
                 case 'my_profiles':
-                    $vid = $page_module->page($page_module::MY_EXPERT);
+                    $vid = $page_module->page($page_module::MY_EXPERT, true);
                     $vpage = get_post($vid);
                     //reset the post data
                     $page = $this->reset_page($vpage)->to_array();

@@ -88,7 +88,7 @@ class JobsExperts_Core_Shortcode_JobSingle extends JobsExperts_Shortcode
                         </div>
                         <div class="col-md-3">
                             <?php if (strtolower($model->get_due_day()) != 'expired'): ?>
-                                <a class="btn btn-info btn-sm" href="<?php echo add_query_arg(array(
+                                <a class="btn btn-info btn-sm jbp_contact_job" href="<?php echo add_query_arg(array(
                                     'contact' => get_post()->post_name
                                 ), apply_filters('jbp_job_contact_link', get_permalink($page_module->page($page_module::JOB_CONTACT)), get_the_ID())) ?>"><?php _e('Contact', JBP_TEXT_DOMAIN) ?></a>
                             <?php else: ?>
@@ -165,6 +165,7 @@ class JobsExperts_Core_Shortcode_JobSingle extends JobsExperts_Shortcode
                         </div>
                     </div>
                 </div>
+                <?php do_action('jbp_after_single_job') ?>
             </div>
             <?php
             return ob_get_clean();

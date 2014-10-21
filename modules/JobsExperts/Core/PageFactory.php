@@ -123,12 +123,14 @@ class JobsExperts_Core_PageFactory
      *
      * @return mixed
      */
-    public function page($page)
+    public function page($page, $no_filter = false)
     {
         //$page = self::$page();
-        $page = $this->$page();
-
-        return $page;
+        $page_id = $this->$page();
+        if ($no_filter == true) {
+            return $page_id;
+        }
+        return apply_filters('jbp_page_factory_get_page', $page_id, $page);
     }
 
     protected function job_add()

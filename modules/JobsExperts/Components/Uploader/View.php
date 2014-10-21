@@ -29,7 +29,7 @@ class JobsExperts_Components_Uploader_View extends JobsExperts_Framework_Render
         <?php $form->hiddenField($model, $attribute, array('class' => 'sample_file_fields')) ?>
         <div class="panel panel-default">
             <div class="panel-heading">
-                <strong><?php _e('Attach specs examples or extra information', JBP_TEXT_DOMAIN) ?></strong>
+                <strong><?php _e('Attach spec examples or extra information', JBP_TEXT_DOMAIN) ?></strong>
                 <button type="button"
                         class="btn btn-primary btn-xs pull-right add-file"><?php _e('Add') ?> <i
                         class="glyphicon glyphicon-plus"></i></button>
@@ -375,7 +375,7 @@ class JobsExperts_Components_Uploader_View extends JobsExperts_Framework_Render
         <?php $form->hiddenField($model, $attribute, array('class' => 'sample_file_fields')) ?>
         <div class="panel panel-default">
             <div class="panel-heading">
-                <strong><?php _e('Attach specs examples or extra information', JBP_TEXT_DOMAIN) ?></strong>
+                <strong><?php _e('Attach spec examples or extra information', JBP_TEXT_DOMAIN) ?></strong>
                 <button type="button"
                         class="btn btn-primary btn-xs pull-right add-file"><?php _e('Add') ?> <i
                         class="glyphicon glyphicon-plus"></i></button>

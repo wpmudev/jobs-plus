@@ -180,7 +180,8 @@ class JobsExperts_AddOn_Message_Views_Inbox extends JobsExperts_Framework_Render
                             <div class="modal-body">
                                 <div class="form-group">
                                     <label style="font-weight: normal"><?php _e("Message", JBP_TEXT_DOMAIN) ?></label>
-                                    <textarea style="box-sizing: border-box;height:150px" class="form-control"
+                                    <textarea style="box-sizing: border-box;height:150px"
+                                              class="form-control jbp_wysiwyg"
                                               name="message"
                                               placeholder="<?php esc_attr_e("Write your message", JBP_TEXT_DOMAIN) ?>"></textarea>
                                 </div>
@@ -287,10 +288,21 @@ class JobsExperts_AddOn_Message_Views_Inbox extends JobsExperts_Framework_Render
                             that.find('button').attr('disabled', 'disabled');
                         },
                         success: function (data) {
+                            data = $.parseJSON(data);
                             that.find('button[type="submit"]').removeAttr('disabled');
-                            that.find('textarea').val('');
-                            $.cookie('message_sent', '1');
-                            location.reload();
+                            if (data.status == 'success') {
+                                that.find('textarea').val('');
+                                $.cookie('message_sent', '1');
+                                location.reload();
+                            } else {
+                                $.each(data.data, function (i, v) {
+                                    var element = $(':input[name="message"]');
+                                    var parent = element.parent();
+                                    parent.append('<p class="help-block">' + v + '</p>');
+                                })
+                            }
+
+
                             /*$('#message-display').html(data);
                              that.find('button[type="submit"]').removeAttr('disabled');
                              $('#reply-form').modal('hide');*/
@@ -305,6 +317,7 @@ class JobsExperts_AddOn_Message_Views_Inbox extends JobsExperts_Framework_Render
                 }
             })
         </script>
-    <?php
+        <?php
+        do_action('jbp_after_inbox_message');
     }
 }

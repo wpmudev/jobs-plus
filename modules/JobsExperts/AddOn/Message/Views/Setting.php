@@ -14,6 +14,7 @@ class JobsExperts_AddOn_Message_Views_Setting extends JobsExperts_Framework_Rend
     {
         global $jbp_message;
         $abs = JobsExperts_AddOn_Message_Models_Message::instance();
+        $type = isset($_GET['box']) ? $_GET['box'] : 'inbox';
         $messages = $abs->get_messages();
         $read = $abs->get_read();
         $unread = $abs->get_unread();
@@ -21,6 +22,7 @@ class JobsExperts_AddOn_Message_Views_Setting extends JobsExperts_Framework_Rend
         $setting->load();
 
         $user_setting = get_user_meta(get_current_user_id(), '_messages_setting', true);
+
         if (!$user_setting) {
             $user_setting = array(
                 'enable_receipt' => false,
@@ -29,7 +31,7 @@ class JobsExperts_AddOn_Message_Views_Setting extends JobsExperts_Framework_Rend
         }
 
         if ($setting->user_receipt == false) {
-             _e("This feature has been disabled by admin", JBP_TEXT_DOMAIN);
+            _e("This feature has been disabled by admin", JBP_TEXT_DOMAIN);
             return;
         }
         ?>
@@ -38,7 +40,7 @@ class JobsExperts_AddOn_Message_Views_Setting extends JobsExperts_Framework_Rend
                 <div class="row">
                     <div class="col-md-12 no-padding">
                         <div class="alert alert-success hide">
-                            <?php _e("Your settings has been saved!", JBP_TEXT_DOMAIN) ?>
+                            <?php _e("Your changes were successfully saved!", JBP_TEXT_DOMAIN) ?>
                         </div>
                     </div>
                     <div class="col-md-9 col-xs-12 col-sm-12 no-padding">
@@ -111,11 +113,11 @@ class JobsExperts_AddOn_Message_Views_Setting extends JobsExperts_Framework_Rend
                                         </div>
                                         <div class="checkbox">
                                             <label>
-                                                <input <?php echo checked(true, $user_setting['prevent_receipt']) ?>
+                                                <input <?php echo checked('true', $user_setting['prevent_receipt']) ?>
                                                     type="checkbox"
                                                     class="prevent_receipt"> <?php _e("Prevent others tracking my message", JBP_TEXT_DOMAIN) ?>
                                                 <span
-                                                    class="help-block"><?php _e("When you open an message, there will no email back to the sender to information you has read it", JBP_TEXT_DOMAIN) ?></span>
+                                                    class="help-block"><?php _e("When you open a message, there won't be an email back to the send to inform them you've read it.", JBP_TEXT_DOMAIN) ?></span>
                                             </label>
                                         </div>
                                     </div>
