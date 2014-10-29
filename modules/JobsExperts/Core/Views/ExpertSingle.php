@@ -28,10 +28,14 @@ class JobsExperts_Core_Views_ExpertSingle extends JobsExperts_Framework_Render
                                 <?php echo $model->get_avatar(420) ?>
                             </div>
                             <div class="panel-footer">
+                                <?php ob_start(); ?>
                                 <a class="btn btn-sm btn-primary jbp_contact_expert"
                                    href="<?php echo add_query_arg(array(
                                        'contact' => get_post()->post_name
                                    ), apply_filters('jbp_expert_contact_link', get_permalink($page_module->page($page_module::EXPERT_CONTACT)))) ?>"><?php _e('Contact Me', JBP_TEXT_DOMAIN) ?></a>
+                                <?php $content = ob_get_clean();
+                                echo apply_filters('jbp_expert_contact_btn', $content, $model);
+                                ?>
                             </div>
                         </div>
                     </div>
@@ -158,7 +162,7 @@ class JobsExperts_Core_Views_ExpertSingle extends JobsExperts_Framework_Render
                     <!-- Tab panes -->
                     <div class="tab-content">
                         <div class="tab-pane active" id="biograhy">
-                            <?php echo wpautop($model->biography) ?>
+                            <?php echo JobsExperts_Helper::jbp_html_beautifier(wpautop($model->biography)) ?>
                         </div>
                         <div class="tab-pane social-skill" id="profile">
 

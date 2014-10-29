@@ -9,7 +9,16 @@ class JobsExperts_AddOn_Message extends JobsExperts_AddOn
 {
     public function __construct()
     {
-        $this->_add_action('init', 'on_init');
+        //$this->_add_action('init', 'on_init');
+        //$this->_add_action('wp_loaded', 'load_files');
+    }
+
+    function load_files()
+    {
+        if (!function_exists('mmg')) {
+            include_once __DIR__ . '/Message/lib/messaging.php';
+        }
+
         $this->_add_action('jbp_setting_menu', 'menu');
         $this->_add_action('jbp_setting_content', 'content', 10, 2);
         $this->_add_action('jbp_after_save_settings', 'save_setting');
@@ -28,7 +37,7 @@ class JobsExperts_AddOn_Message extends JobsExperts_AddOn
         //scripts
         $this->_add_action('wp_enqueue_scripts', 'scripts');
 
-        $this->_add_ajax_action('jbp_create_message_page', 'create_page');
+        //$this->_add_ajax_action('jbp_create_message_page', 'create_page');
         $this->_add_ajax_action('jbp_load_message', 'load_message');
         $this->_add_ajax_action('jbp_reply_message', 'reply_message');
         $this->_add_ajax_action('jbp_remove_message', 'remove_message');
@@ -39,8 +48,8 @@ class JobsExperts_AddOn_Message extends JobsExperts_AddOn
         $this->_add_action('message_message_read', 'read_message_notification');
 
         //admin page
-        $this->_add_action('admin_menu', 'custom_admin_menu');
-        $this->_add_filter('menu_order', 'reorder_menu', 20);
+        //$this->_add_action('admin_menu', 'custom_admin_menu');
+        //$this->_add_filter('menu_order', 'reorder_menu', 20);
 
 
         $this->_add_filter('jbp_contact_validate_rules', 'contact_validate_rules');
@@ -50,13 +59,18 @@ class JobsExperts_AddOn_Message extends JobsExperts_AddOn
         //contact popup
         $this->_add_action('jbp_after_single_expert', 'contact_in_popup');
         $this->_add_action('jbp_after_single_job', 'contact_in_popup');
+
+        $this->_add_filter('mm_create_inbox_page', 'create_page');
     }
 
     function contact_in_popup()
     {
+        global $wp_scripts;
+        $wp_scripts->dequeue('hn_uploaderiframe_transport');
         $render = new JobsExperts_AddOn_Message_Views_PopupContact(array());
         $render->render();
     }
+
 
     function contact_validate_rules()
     {
@@ -220,10 +234,10 @@ class JobsExperts_AddOn_Message extends JobsExperts_AddOn
     {
         global $jbp_component_uploader;
         $jbp_component_uploader->load_scripts();
-        $model = new JobsExperts_AddOn_Message_Models_Message();
+        $model = new MM_Message_Model();
         $uploader = new JobsExperts_Components_Uploader_View(array(
             'model' => $model,
-            'attribute' => 'attachments',
+            'attribute' => 'attachment',
             'form' => $form
         ));
         $uploader->render();
@@ -231,74 +245,13 @@ class JobsExperts_AddOn_Message extends JobsExperts_AddOn
 
     function message_inbox($atts)
     {
-        if (!is_user_logged_in()) {
-            return sprintf(__("Please <a href=\"%s\">Login</a>", JBP_TEXT_DOMAIN), wp_login_url());
-        }
-        $setting = new JobsExperts_AddOn_Message_Models_Setting();
-        $setting->load();
-        wp_enqueue_style('jbp_message-scrollbar');
-        wp_enqueue_script('jbp_message-scrollbar');
-        wp_enqueue_script('jbp_message-cookie');
-        $query = isset($_GET['query']) ? $_GET['query'] : null;
-        $id = isset($_GET['message_id']) ? $_GET['message_id'] : null;
-        $type = isset($_GET['box']) ? $_GET['box'] : 'inbox';
-        if ($type == 'setting') {
-            $view = new JobsExperts_AddOn_Message_Views_Setting();
-            return $view;
-        }
-        if (!empty($query)) {
-            $type = 'inbox';
-            $models = JobsExperts_AddOn_Message_Models_Message::instance()->get_all(array(
-                's' => $query,
-                'status' => 'publish',
-                'posts_per_page' => $setting->message_per_page,
-                'paged' => get_query_var('paged') != 0 ? get_query_var('paged') : 1,
-                'meta_query' => array(
-                    array(
-                        'key' => '_send_to',
-                        'value' => get_current_user_id(),
-                        'compare' => '=',
-                    ),
-                ),
-            ));
-        } elseif (!empty($id)) {
-            $type = 'inbox';
-            $models = JobsExperts_AddOn_Message_Models_Message::instance()->get_all(array(
-                'status' => 'publish',
-                'posts_per_page' => $setting->message_per_page,
-                'paged' => get_query_var('paged') != 0 ? get_query_var('paged') : 1,
-                'post__in' => array($id),
-                'meta_query' => array(
-                    array(
-                        'key' => '_send_to',
-                        'value' => get_current_user_id(),
-                        'compare' => '=',
-                    ),
-                ),
-            ));
-        } else {
-            $abs = JobsExperts_AddOn_Message_Models_Message::instance();
-            switch ($type) {
-                case 'inbox':
-                    $models = $abs->get_messages();
-                    break;
-                case 'read':
-                    $models = $abs->get_read();
-                    break;
-                case 'unread':
-                    $models = $abs->get_unread();
-                    break;
-                case 'sent':
-                    $models = $abs->get_sent();
-                    break;
-            }
-        }
-        $view = new JobsExperts_AddOn_Message_Views_Inbox(array(
-            'models' => $models,
-            'type' => $type,
-            'query' => $query
-        ));
-        return $view;
+        wp_enqueue_script('ig-bootstrap');
+        wp_enqueue_style('ig-bootstrap');
+        wp_enqueue_style('ig-fontawesome');
+        ob_start();
+        echo do_shortcode('[message_inbox]');
+        $content = ob_get_clean();
+        return $content;
     }
 
     function scripts()
@@ -358,22 +311,26 @@ class JobsExperts_AddOn_Message extends JobsExperts_AddOn
         }
         //save message
         if (is_object($model)) {
-            $message = new JobsExperts_AddOn_Message_Models_Message();
+            $conv = new MM_Conversation_Model();
+            $conv->save();
+
+            $message = new MM_Message_Model();
             $message->status = 'unread';
             $message->send_from = $user_id;
             $message->send_to = $to;
             $message->content = jbp_filter_text($contact->content);
             $message->subject = $subject;
-            $message->contact_type = $type;
-            $message->ref_id = $id;
+            $message->conversation_id = $conv->id;
+
             foreach ($_POST['data'] as $key => $val) {
-                if ($val['name'] == (get_class($message) . '[attachments]')) {
-                    $message->attachments = $val['value'];
+                if ($val['name'] == (get_class($message) . '[attachment]')) {
+                    $message->attachment = $val['value'];
                 }
             }
             $message->save();
-            //update all the attachment link to this
-            foreach (explode(',', $message->attachments) as $id) {
+            $conv->update_index($message->id);
+            /*//update all the attachment link to this
+            foreach (explode(',', $message->attachment) as $id) {
                 if (filter_var($id, FILTER_VALIDATE_INT)) {
                     $u = JobsExperts_Components_Uploader_Model::instance()->get_one($id);
                     if (is_object($u)) {
@@ -381,7 +338,7 @@ class JobsExperts_AddOn_Message extends JobsExperts_AddOn
                         $u->save();
                     }
                 }
-            }
+            }*/
 
             $link = (add_query_arg(array('status' => 'success', 'contact' => get_post($model->id)->post_name), get_permalink($contact_id)));
             echo json_encode(array(
@@ -402,31 +359,14 @@ class JobsExperts_AddOn_Message extends JobsExperts_AddOn
         return false;
     }
 
-    function create_page()
+    function create_page($args)
     {
-        if (isset($_POST['m_type'])) {
-            $page_module = JobsExperts_Plugin::instance()->page_module();
-            $model = new JobsExperts_AddOn_Message_Models_Setting();
-            $model->load();
-            switch ($_POST['m_type']) {
-                case 'inbox':
-                    $vid = $page_module->page($page_module::JOB_ADD);
-                    $vpage = get_post($vid);
-                    $vpage->post_title = "Inbox";
-                    $vpage->post_content = str_replace('[jbp-job-update-page]', '[jbp-message-inbox]', $vpage->post_content);
-                    //reset the post data
-                    $page = $this->reset_page($vpage)->to_array();
-                    //insert page
-                    $new_id = wp_insert_post($page);
-                    $model->inbox_page = $new_id;
-                    $model->save();
-                    //update
+        $page_module = JobsExperts_Plugin::instance()->page_module();
+        $vid = $page_module->page($page_module::JOB_ADD);
+        $vpage = get_post($vid);
+        $args['post_content'] = str_replace('[jbp-job-update-page]', '[jbp-message-inbox]', $vpage->post_content);
+        return $args;
 
-                    echo $new_id;
-                    break;
-            }
-        }
-        exit;
     }
 
     function reset_page($vpage)
@@ -458,7 +398,7 @@ class JobsExperts_AddOn_Message extends JobsExperts_AddOn
         $plugin = JobsExperts_Plugin::instance();
         ?>
         <li <?php echo $this->active_tab('job_message') ?>>
-            <a href="<?php echo admin_url('edit.php?post_type=jbp_job&page=jobs-plus-menu&tab=job_message') ?>">
+            <a href="<?php echo admin_url('admin.php?page=mm_setting') ?>">
                 <i class="glyphicon glyphicon-envelope"></i> <?php _e('Message', JBP_TEXT_DOMAIN) ?>
             </a></li>
     <?php
@@ -471,17 +411,17 @@ class JobsExperts_AddOn_Message extends JobsExperts_AddOn
         if ($this->is_current_tab('job_message')) {
             ?>
             <fieldset style="min-height: 300px">
-                <div class="page-header" style="margin-top: 0">
-                    <h4><?php _e('Message', JBP_TEXT_DOMAIN) ?></h4>
+                <!--<div class="page-header" style="margin-top: 0">
+                    <h4><?php /*_e('Message', JBP_TEXT_DOMAIN) */ ?></h4>
                 </div>
                 <div class="form-group">
-                    <label class="col-md-3 label-control"><?php _e('Enable Receipt', JBP_TEXT_DOMAIN) ?></label>
+                    <label class="col-md-3 label-control"><?php /*_e('Enable Receipt', JBP_TEXT_DOMAIN) */ ?></label>
 
                     <div class="col-md-9">
-                        <?php $form->hiddenField($model, 'global_receipt', array('value' => 0)) ?>
-                        <label><?php $form->checkBox($model, "global_receipt", array("value" => 1)) ?></label>
+                        <?php /*$form->hiddenField($model, 'global_receipt', array('value' => 0)) */ ?>
+                        <label><?php /*$form->checkBox($model, "global_receipt", array("value" => 1)) */ ?></label>
                         <span
-                            class="help-inline"><?php _e('This will enable the receipt globally', JBP_TEXT_DOMAIN) ?></span>
+                            class="help-inline"><?php /*_e('This will enable the receipt globally', JBP_TEXT_DOMAIN) */ ?></span>
 
 
                     </div>
@@ -489,17 +429,17 @@ class JobsExperts_AddOn_Message extends JobsExperts_AddOn
                 </div>
                 <div class="form-group">
                     <label
-                        class="col-md-3 label-control"><?php _e('User can on/off receipt', JBP_TEXT_DOMAIN) ?></label>
+                        class="col-md-3 label-control"><?php /*_e('User can on/off receipt', JBP_TEXT_DOMAIN) */ ?></label>
 
                     <div class="col-md-9">
-                        <?php $form->hiddenField($model, 'user_receipt', array('value' => 0)) ?>
-                        <label><?php $form->checkBox($model, "user_receipt", array("value" => 1)) ?></label>
+                        <?php /*$form->hiddenField($model, 'user_receipt', array('value' => 0)) */ ?>
+                        <label><?php /*$form->checkBox($model, "user_receipt", array("value" => 1)) */ ?></label>
                         <span
-                            class="help-inline"><?php _e('This will let the user turn off or on', JBP_TEXT_DOMAIN) ?></span>
+                            class="help-inline"><?php /*_e('This will let the user turn off or on', JBP_TEXT_DOMAIN) */ ?></span>
 
                     </div>
                     <div class="clearfix"></div>
-                </div>
+                </div>-->
                 <div class="page-header" style="margin-top: 0">
                     <h4><?php _e('Create Page', JBP_TEXT_DOMAIN) ?></h4>
                 </div>
@@ -660,7 +600,7 @@ class JobsExperts_AddOn_Message extends JobsExperts_AddOn
             </div>
             <hr/>
             <div class="inbox-message-display-body">
-                <?php echo wpautop($model->content) ?>
+                <?php echo JobsExperts_Helper::jbp_html_beautifier(wpautop($model->content)) ?>
             </div>
             <?php
             if (!empty($model->attachments)) {
@@ -734,7 +674,7 @@ class JobsExperts_AddOn_Message extends JobsExperts_AddOn
                                                         </ul>
                                                     <?php
                                                     }
-                                                    echo $upload->description
+                                                    echo JobsExperts_Helper::jbp_html_beautifier($upload->description);
                                                     ?>
                                                 </div>
                                                 <div class="modal-footer">

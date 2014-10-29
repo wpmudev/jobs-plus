@@ -433,7 +433,8 @@ class JobsExperts_Components_Uploader extends JobsExperts_Components
                                     </div>
                                     <div class="modal-footer">
                                         <?php if ($model->url): ?>
-                                            <a class="btn btn-info" rel="nofollow" href="<?php echo $model->url ?>" target="_blank">Visit
+                                            <a class="btn btn-info" rel="nofollow" href="<?php echo $model->url ?>"
+                                               target="_blank">Visit
                                                 Link</a>
                                         <?php endif; ?>
                                         <?php if ($file): ?>
@@ -490,9 +491,17 @@ class JobsExperts_Components_Uploader extends JobsExperts_Components
 
     function load_scripts()
     {
+        $scripts = apply_filters('jbp_uploader_scripts', array(
+            $this->id . 'iframe_transport',
+            $this->id . 'bootstrap_js'
+        ));
+        foreach($scripts as $script){
+            wp_enqueue_script($script);
+        }
+
         //wp_enqueue_script($this->id . 'file_uploader');
-        wp_enqueue_script($this->id . 'iframe_transport');
-        wp_enqueue_script($this->id . 'bootstrap_js');
+        //wp_enqueue_script($this->id . 'iframe_transport');
+        //wp_enqueue_script($this->id . 'bootstrap_js');
         wp_enqueue_style('jbp_uploader');
     }
 }

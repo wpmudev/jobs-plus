@@ -294,7 +294,7 @@ function truncate_html($maxLength, $html, $isUtf8 = true)
 
 function jbp_filter_text($text)
 {
-    $allowed_tags = wp_kses_allowed_html('pre_user_description');
+    $allowed_tags = wp_kses_allowed_html('post');
 
     return wp_kses($text, $allowed_tags);
 }

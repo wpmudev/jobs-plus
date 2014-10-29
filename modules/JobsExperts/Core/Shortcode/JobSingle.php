@@ -88,9 +88,18 @@ class JobsExperts_Core_Shortcode_JobSingle extends JobsExperts_Shortcode
                         </div>
                         <div class="col-md-3">
                             <?php if (strtolower($model->get_due_day()) != 'expired'): ?>
-                                <a class="btn btn-info btn-sm jbp_contact_job" href="<?php echo add_query_arg(array(
-                                    'contact' => get_post()->post_name
-                                ), apply_filters('jbp_job_contact_link', get_permalink($page_module->page($page_module::JOB_CONTACT)), get_the_ID())) ?>"><?php _e('Contact', JBP_TEXT_DOMAIN) ?></a>
+                                <?php if (JobsExperts_Helper::is_user_pro(get_current_user_id())): ?>
+                                    <?php ob_start(); ?>
+                                    <a class="btn btn-info btn-sm jbp_contact_job" href="<?php echo add_query_arg(array(
+                                        'contact' => get_post()->post_name
+                                    ), apply_filters('jbp_job_contact_link', get_permalink($page_module->page($page_module::JOB_CONTACT)), get_the_ID())) ?>"><?php _e('Contact', JBP_TEXT_DOMAIN) ?></a>
+                                    <?php $content = ob_get_clean();
+                                    echo apply_filters('jbp_job_contact_btn', $content, $model);
+                                    ?>
+                                <?php else: ?>
+                                    <a class="btn btn-info btn-sm jbp_contact_job"
+                                       href="<?php echo get_permalink($page_module->page($page_module::EXPERT_ADD)) ?>"><?php _e('Become Expert', JBP_TEXT_DOMAIN) ?></a>
+                                <?php endif; ?>
                             <?php else: ?>
                                 <a disabled class="btn btn-info btn-sm"
                                    href="#"><?php _e('Contact', JBP_TEXT_DOMAIN) ?></a>
@@ -100,7 +109,7 @@ class JobsExperts_Core_Shortcode_JobSingle extends JobsExperts_Shortcode
                     </div>
                     <div class="row job-content">
                         <div class="col-md-12">
-                            <?php echo($model->description) ?>
+                            <?php echo(JobsExperts_Helper::jbp_html_beautifier($model->description)) ?>
                         </div>
                         <div class="col-md-12">
                             <?php

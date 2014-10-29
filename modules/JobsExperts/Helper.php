@@ -86,4 +86,22 @@ class JobsExperts_Helper
         }
         return null;
     }
+
+    static function jbp_html_beautifier($html)
+    {
+        $plugin = JobsExperts_Plugin::instance();
+        require_once $plugin->_module_path . 'Vendors/SmartDOMDocument.class.php';
+        $x = new SmartDOMDocument();
+        $x->loadHTML($html);
+        $clean = $x->saveHTMLExact();
+        return $clean;
+    }
+
+    static function is_user_pro($user_id)
+    {
+        $model = JobsExperts_Core_Models_Pro::instance()->get_all(array(
+            'author' => $user_id
+        ));
+        return $model['total'] > 0;
+    }
 }

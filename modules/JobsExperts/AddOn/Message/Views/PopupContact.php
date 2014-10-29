@@ -10,43 +10,50 @@ class JobsExperts_AddOn_Message_Views_PopupContact extends JobsExperts_Framework
     public function _to_html()
     {
         global $jbp_message;
-        $model = new JobsExperts_AddOn_Message_Models_Message();
+        $model = new MM_Message_Model();
         wp_enqueue_style('jobs-contact');
         wp_enqueue_script('jobs-noty');
         ?>
-        <div class="modal fade" id="send-contact-modal" style="top:5%;">
+        <div class="modal fade" id="send-contact-modal" style="top:1%;">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <?php if (is_user_logged_in()): ?>
-                        <div class="modal-header">
-                            <h4 class="modal-title"><?php _e("Compose Message", JBP_TEXT_DOMAIN) ?></h4>
-                        </div>
-                        <form method="post" id="send-contact-form">
-                            <div class="modal-body">
-                                <div class="form-group">
-                                    <label style="font-weight: normal"><?php _e("Message", JBP_TEXT_DOMAIN) ?></label>
-                                    <textarea style="box-sizing: border-box;height:150px" class="form-control jbp_wysiwyg"
-                                              name="content"
-                                              placeholder="<?php esc_attr_e("Write your message", JBP_TEXT_DOMAIN) ?>"></textarea>
-                                </div>
-                                <?php
-                                $form = JobsExperts_Framework_ActiveForm::generateForm($model);
-                                $jbp_message->inject_uploader($form); ?>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-default"
-                                            data-dismiss="modal"><?php _e("Cancel", JBP_TEXT_DOMAIN) ?></button>
-                                    <button type="submit"
-                                            class="btn btn-primary"><?php _e("Send", JBP_TEXT_DOMAIN) ?></button>
-                                </div>
+                    <div class="modal-header">
+                        <h4 class="modal-title"><?php _e("Compose Message", JBP_TEXT_DOMAIN) ?></h4>
+                    </div>
+                    <form method="post" id="send-contact-form">
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label style="font-weight: normal"><?php _e("Message", JBP_TEXT_DOMAIN) ?></label>
+                                <textarea style="box-sizing: border-box;height:150px" class="form-control jbp_wysiwyg"
+                                          name="content"
+                                          placeholder="<?php esc_attr_e("Write your message", JBP_TEXT_DOMAIN) ?>"></textarea>
                             </div>
-                        </form>
-                    <?php else: ?>
-                        <?php $this->load_login_form() ?>
-                    <?php endif; ?>
+                            <?php $form = new IG_Active_Form($model);
+                            $form->hidden('attachment')?>
+                    </form>
+                    <?php
+                    /*$form = JobsExperts_Framework_ActiveForm::generateForm($model);
+                    $jbp_message->inject_uploader($form);*/
+                    ig_uploader()->show_upload_control($model, 'attachment', 'send-contact-form');
+                    ?>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default"
+                                data-dismiss="modal"><?php _e("Cancel", JBP_TEXT_DOMAIN) ?></button>
+                        <button type="submit"
+                                class="btn btn-primary"><?php _e("Send", JBP_TEXT_DOMAIN) ?></button>
+                    </div>
                 </div>
-                <!-- /.modal-content -->
+
+                <?php else: ?>
+                    <?php $this->load_login_form() ?>
+                <?php
+                endif;
+                ?>
             </div>
-            <!-- /.modal-dialog -->
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
         </div>
         <script type="text/javascript">
             jQuery(document).ready(function ($) {
@@ -113,7 +120,7 @@ class JobsExperts_AddOn_Message_Views_PopupContact extends JobsExperts_Framework
                                 //display noty
                                 var n = noty({
                                     text: '<?php echo esc_js(__('Error happen, please check the form data',JBP_TEXT_DOMAIN)) ?>',
-                                    layout: 'centerRight',
+                                    layout: 'center',
                                     type: 'error',
                                     timeout: 5000
                                 });

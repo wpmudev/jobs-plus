@@ -48,6 +48,7 @@ class JobsExperts_Core_Views_JobList extends JobsExperts_Framework_Render
                                         if (isset($col['text_length'])) {
                                             $sub = $col['text_length'];
                                         }
+                                        $content = strip_tags($content);
                                         $charlength = 200 / $sub;
                                         echo apply_filters('jbp_job_list_content', esc_html(jbp_shorten_text($content, $charlength)), $content, $charlength);
 
