@@ -10,7 +10,7 @@ class JobsExperts_AddOn_Message extends JobsExperts_AddOn
     public function __construct()
     {
         //$this->_add_action('init', 'on_init');
-        //$this->_add_action('wp_loaded', 'load_files');
+        $this->_add_action('wp_loaded', 'load_files');
     }
 
     function load_files()
