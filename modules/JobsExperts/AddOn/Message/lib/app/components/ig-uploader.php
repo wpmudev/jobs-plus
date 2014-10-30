@@ -24,7 +24,7 @@ if (!class_exists('ig-uploader')) {
 
             spl_autoload_register(array(&$this, 'loader'));
 
-            add_action('wp_loaded', array(&$this, 'custom_content'));
+            add_action('init', array(&$this, 'custom_content'));
             add_action('wp_enqueue_scripts', array(&$this, 'scripts'));
             $this->controller = new IG_Uploader_Controller();
         }
