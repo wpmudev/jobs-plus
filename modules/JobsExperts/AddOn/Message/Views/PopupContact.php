@@ -16,7 +16,7 @@ class JobsExperts_AddOn_Message_Views_PopupContact extends JobsExperts_Framework
         ?>
         <div class="modal fade" id="send-contact-modal" style="top:1%;">
             <div class="modal-dialog">
-                <div class="modal-content">
+                <div class="modal-content" id="contact-modal-content">
                     <?php if (is_user_logged_in()): ?>
                     <div class="modal-header">
                         <h4 class="modal-title"><?php _e("Compose Message", JBP_TEXT_DOMAIN) ?></h4>
@@ -31,18 +31,20 @@ class JobsExperts_AddOn_Message_Views_PopupContact extends JobsExperts_Framework
                             </div>
                             <?php $form = new IG_Active_Form($model);
                             $form->hidden('attachment')?>
+
+                            <?php
+                            /*$form = JobsExperts_Framework_ActiveForm::generateForm($model);
+                            $jbp_message->inject_uploader($form);*/
+                            ig_uploader()->show_upload_control($model, 'attachment', 'contact-modal-content');
+                            ?>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default"
+                                    data-dismiss="modal"><?php _e("Cancel", JBP_TEXT_DOMAIN) ?></button>
+                            <button type="submit"
+                                    class="btn btn-primary"><?php _e("Send", JBP_TEXT_DOMAIN) ?></button>
+                        </div>
                     </form>
-                    <?php
-                    /*$form = JobsExperts_Framework_ActiveForm::generateForm($model);
-                    $jbp_message->inject_uploader($form);*/
-                    ig_uploader()->show_upload_control($model, 'attachment', 'send-contact-form');
-                    ?>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default"
-                                data-dismiss="modal"><?php _e("Cancel", JBP_TEXT_DOMAIN) ?></button>
-                        <button type="submit"
-                                class="btn btn-primary"><?php _e("Send", JBP_TEXT_DOMAIN) ?></button>
-                    </div>
                 </div>
 
                 <?php else: ?>
