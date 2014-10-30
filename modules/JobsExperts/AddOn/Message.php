@@ -10,7 +10,7 @@ class JobsExperts_AddOn_Message extends JobsExperts_AddOn
     public function __construct()
     {
         //$this->_add_action('init', 'on_init');
-        $this->_add_action('wp_loaded', 'load_files');
+        $this->_add_action('plugins_loaded', 'load_files');
     }
 
     function load_files()
@@ -20,14 +20,9 @@ class JobsExperts_AddOn_Message extends JobsExperts_AddOn
         }
 
         $this->_add_action('jbp_setting_menu', 'menu');
-        $this->_add_action('jbp_setting_content', 'content', 10, 2);
-        $this->_add_action('jbp_after_save_settings', 'save_setting');
 
         //send contact
         $this->_add_filter('jbp_contact_send_email', 'save_message', 10, 5);
-
-        $this->_add_action('jbp_middle_expert_contact_form', 'inject_uploader');
-        $this->_add_action('jbp_middle_job_contact_form', 'inject_uploader');
 
         //shortcode
         $this->_add_filter('the_content', 'append_inbox_button');
@@ -37,30 +32,12 @@ class JobsExperts_AddOn_Message extends JobsExperts_AddOn
         //scripts
         $this->_add_action('wp_enqueue_scripts', 'scripts');
 
-        //$this->_add_ajax_action('jbp_create_message_page', 'create_page');
-        $this->_add_ajax_action('jbp_load_message', 'load_message');
-        $this->_add_ajax_action('jbp_reply_message', 'reply_message');
-        $this->_add_ajax_action('jbp_remove_message', 'remove_message');
-        $this->_add_ajax_action('messages_user_setting', 'messages_user_setting');
-
-        //noti
-        $this->_add_action('message_after_message_save', 'new_message_notification');
-        $this->_add_action('message_message_read', 'read_message_notification');
-
-        //admin page
-        //$this->_add_action('admin_menu', 'custom_admin_menu');
-        //$this->_add_filter('menu_order', 'reorder_menu', 20);
-
-
-        $this->_add_filter('jbp_contact_validate_rules', 'contact_validate_rules');
-        $this->_add_filter('jbp_expert_contact', 'jbp_expert_contact', 10, 2);
-        $this->_add_filter('jbp_job_contact', 'jbp_job_contact', 10, 2);
-
         //contact popup
         $this->_add_action('jbp_after_single_expert', 'contact_in_popup');
         $this->_add_action('jbp_after_single_job', 'contact_in_popup');
 
         $this->_add_filter('mm_create_inbox_page', 'create_page');
+        $this->_add_filter('jbp_contact_validate_rules', 'contact_validate_rules');
     }
 
     function contact_in_popup()
