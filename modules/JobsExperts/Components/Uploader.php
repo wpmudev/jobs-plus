@@ -365,7 +365,7 @@ class JobsExperts_Components_Uploader extends JobsExperts_Components
                             'hn-marine',
                         ); ?>
                         <div class="hn-widget <?php echo $colors[array_rand($colors)] ?>">
-                            <a href="#" data-toggle="modal" data-target="#<?php echo $id ?>"> <i
+                            <a class="trigger-modal " href="#" data-target="#<?php echo $id ?>"> <i
                                     class="glyphicon glyphicon-info-sign"></i></a>
 
                             <div class="hn-widget-body">
@@ -459,6 +459,11 @@ class JobsExperts_Components_Uploader extends JobsExperts_Components
             jQuery(document).ready(function ($) {
                 //determine width
                 var width = $('.hn-sample-files').outerWidth();
+                $('.trigger-modal').click(function(e){
+                    e.preventDefault();
+                    var id = $(this).data('target');
+                    $($(this).data('target')).modal();
+                });
                 var css = 'col-md-3';
                 var data = [
                     {

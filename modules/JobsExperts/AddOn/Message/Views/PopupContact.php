@@ -25,7 +25,7 @@ class JobsExperts_AddOn_Message_Views_PopupContact extends JobsExperts_Framework
                         <div class="modal-body">
                             <div class="form-group">
                                 <label style="font-weight: normal"><?php _e("Message", JBP_TEXT_DOMAIN) ?></label>
-                                <textarea style="box-sizing: border-box;height:150px" class="form-control jbp_wysiwyg"
+                                <textarea style="box-sizing: border-box;height:150px" class="form-control mm_wsysiwyg"
                                           name="content"
                                           placeholder="<?php esc_attr_e("Write your message", JBP_TEXT_DOMAIN) ?>"></textarea>
                             </div>
