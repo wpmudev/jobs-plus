@@ -230,7 +230,7 @@ class JobsExperts_Core_CustomContent extends JobsExperts_Framework_Module
                 'hierarchical' => true,
                 'has_archive' => apply_filters('jbp_job_archive_slug', 'jobs'),
                 'rewrite' => array(
-                    'slug' => 'job',
+                    'slug' => apply_filters('jbp_job_single_slug', 'job'),
                     'with_front' => false,
                     'feeds' => true,
                     'pages' => true,
@@ -259,11 +259,11 @@ class JobsExperts_Core_CustomContent extends JobsExperts_Framework_Module
                         'add_new' => __('Add New', JBP_TEXT_DOMAIN),
                         'add_new_item' => __('Add New Expert', JBP_TEXT_DOMAIN),
                         'edit_item' => __('Edit Expert', JBP_TEXT_DOMAIN),
-                        'new_item' =>__( 'New Expert', JBP_TEXT_DOMAIN),
+                        'new_item' => __('New Expert', JBP_TEXT_DOMAIN),
                         'view_item' => __('View Expert', JBP_TEXT_DOMAIN),
                         'search_items' => __('Search Expert', JBP_TEXT_DOMAIN),
                         'not_found' => __('No experts found', JBP_TEXT_DOMAIN),
-                        'not_found_in_trash' =>__( 'No experts found in Trash', JBP_TEXT_DOMAIN),
+                        'not_found_in_trash' => __('No experts found in Trash', JBP_TEXT_DOMAIN),
                         'custom_fields_block' => __('Expert fields', JBP_TEXT_DOMAIN),
                     ),
                 'supports' =>
@@ -291,7 +291,7 @@ class JobsExperts_Core_CustomContent extends JobsExperts_Framework_Module
                 'has_archive' => apply_filters('jbp_pro_archive_slug', 'experts'),
                 'rewrite' =>
                     array(
-                        'slug' => 'expert',
+                        'slug' => apply_filters('jbp_expert_single_slug', 'expert'),
                         'with_front' => false,
                         'feeds' => true,
                         'pages' => true,
