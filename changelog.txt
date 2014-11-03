@@ -8,3 +8,5 @@ Fix bug require to refresh permalink
 Ability to change currency in setting
 ==1.0.1.2
 Add Message Add-On
+Fix currency issue in post job page
+Fix some translate issue
