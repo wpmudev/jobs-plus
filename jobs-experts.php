@@ -14,7 +14,7 @@
  */
 
 // Define plugin version
-define('JBP_VERSION', '1.0.1.2');
+define('JBP_VERSION', '1.0.1.3');
 
 // define the plugin file signature
 $pinfo = pathinfo(__FILE__);
