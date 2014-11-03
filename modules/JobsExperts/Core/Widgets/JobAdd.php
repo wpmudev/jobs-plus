@@ -69,6 +69,7 @@ class JobsExperts_Core_Widgets_JobAdd extends WP_Widget
 
     function update($new_instance, $old_instance)
     {
+        var_dump($new_instance);
         $instance = $old_instance;
         $instance['title'] = strip_tags($new_instance['title']);
         $instance['view'] = $new_instance['view'];
@@ -91,7 +92,7 @@ class JobsExperts_Core_Widgets_JobAdd extends WP_Widget
             <label
                 for="<?php echo esc_attr($this->get_field_id('title')); ?>"><?php _e('Title: ', JBP_TEXT_DOMAIN); ?></label>
             <input class="widefat" id="<?php echo esc_attr($this->get_field_id('title')); ?>"
-                   name="<?php esc_attr($this->get_field_name('title')); ?>" type="text"
+                   name="<?php echo esc_attr($this->get_field_name('title')); ?>" type="text"
                    value="<?php echo esc_attr($title); ?>"/>
         </p>
         <p>
