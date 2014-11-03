@@ -10,3 +10,5 @@ Ability to change currency in setting
 Add Message Add-On
 Fix currency issue in post job page
 Fix some translate issue
+Fix bug widget title not save
+Fix native contact page go 404 after send contact

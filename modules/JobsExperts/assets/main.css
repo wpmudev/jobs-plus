@@ -278,6 +278,7 @@
     width: 100%;
     display: block;
     margin-bottom: 5px;
+    color: #000000;
 }
 
 .hn-editable input[type="text"] {
@@ -285,6 +286,7 @@
     box-sizing: border-box;
     border: solid 1px #c0c2c7;
     border-radius: 2px;
+    color: #000000;
 }
 
 .hn-editable .actions {
