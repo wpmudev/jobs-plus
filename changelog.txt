@@ -12,3 +12,5 @@ Fix currency issue in post job page
 Fix some translate issue
 Fix bug widget title not save
 Fix native contact page go 404 after send contact
+==1.0.1.3
+Fix security issues for my jobs/my profiles page
