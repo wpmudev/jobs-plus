@@ -694,7 +694,11 @@ class JobsExpert_Compnents_MoveToNormalPage extends JobsExperts_AddOn
                                 that.attr('disabled', 'disabled').text('<?php echo esc_js(__('Creating...',JBP_TEXT_DOMAIN)) ?>');
                             },
                             success: function (data) {
-                                $('#page-creator').load("<?php echo "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]" ?> #page-creator", function (html) {
+                                var element = that.parent().parent().find('select').first();
+                                $.get('<?php echo "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]" ?>',function(html){
+                                    html = $(html);
+                                    var clone = html.find('select[name="' + element.attr('name') + '"]');
+                                    element.replaceWith(clone);
                                     that.removeAttr('disabled').text('<?php echo esc_js(__('Create Page',JBP_TEXT_DOMAIN)) ?>');
                                 });
                             }

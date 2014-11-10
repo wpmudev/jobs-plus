@@ -358,6 +358,9 @@ class JobsExpert_Compnents_AdvancedSearch extends JobsExperts_AddOn
                 $job_max_price = $_GET['max_price'];
             } else {
                 $range_max = $wpdb->get_var("select meta_value from wp_postmeta where meta_key='_jbp_job_budget_max' ORDER BY ABS(meta_value) DESC LIMIT 1; ");;
+                if (empty($range_max)) {
+                    $range_max = 5000;
+                }
                 $job_max_price = $range_max;
             }
 
@@ -600,10 +603,13 @@ INNER JOIN wp_postmeta max_price ON max_price.post_id = posts.ID AND max_price.m
                 $skill = $_GET['skill'];
                 foreach ($data as $key => $val) {
                     //get the skill of this expert
-                    $expert_skill = get_post_meta($val, '_expert_skill');
+
+                    $expert_skill = get_post_meta($val, '_ct_jbp_pro_Skills',true);
                     $has_skill = false;
+                    $expert_skill = explode(',', $expert_skill);
+                    $expert_skill = array_filter($expert_skill);
                     foreach ($expert_skill as $s) {
-                        $compare = strcmp(trim(strtolower($s['name'])), trim(strtolower($skill)));
+                        $compare = strcmp(trim(strtolower($s)), trim(strtolower($skill)));
                         if ($compare === 0) {
                             $has_skill = true;
                             break;
@@ -613,10 +619,13 @@ INNER JOIN wp_postmeta max_price ON max_price.post_id = posts.ID AND max_price.m
                         unset($data[$key]);
                     }
                 }
+                if (empty($data)) {
+                    $args['post__in'] = array(-1);
+                } else {
+                    $args['post__in'] = $data;
+                }
             }
-            //var_dump($data);
 
-            $args['post__in'] = $data;
         }
         $args['orderby'] = 'post__in';
         return $args;
