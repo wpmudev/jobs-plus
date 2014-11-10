@@ -480,8 +480,7 @@ div.sceditor-group {
     -moz-background-clip: padding;
     -webkit-background-clip: padding-box;
     background-clip: padding-box;
-    text-indent: -9999px;
-    box-sizing: content-box !important;
+    text-indent: -9999px
 }
 
 .ie .sceditor-button {
