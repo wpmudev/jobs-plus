@@ -66,7 +66,7 @@ class JobsExpert_Compnents_AdvancedSearch extends JobsExperts_AddOn
 
         $plugin = JobsExperts_Plugin::instance();
         global $wpdb;
-        $range_max = $wpdb->get_var("select meta_value from wp_postmeta where meta_key='_jbp_job_budget_max' ORDER BY ABS(meta_value) DESC LIMIT 1; ");;
+        $range_max = $wpdb->get_var("select meta_value from ".$wpdb->prefix."postmeta where meta_key='_jbp_job_budget_max' ORDER BY ABS(meta_value) DESC LIMIT 1; ");;
 
         $job_min_price = $plugin->settings()->job_min_search_budget;
         $job_max_price = $range_max + 100;
@@ -150,7 +150,7 @@ class JobsExpert_Compnents_AdvancedSearch extends JobsExperts_AddOn
         wp_enqueue_style('jobs-advanced-search');
 
         global $wpdb;
-        $range_max = $wpdb->get_var("select meta_value from wp_postmeta where meta_key='_jbp_job_budget_max' ORDER BY ABS(meta_value) DESC LIMIT 1; ");;
+        $range_max = $wpdb->get_var("select meta_value from ".$wpdb->prefix."postmeta where meta_key='_jbp_job_budget_max' ORDER BY ABS(meta_value) DESC LIMIT 1; ");;
 
         $job_min_price = $plugin->settings()->job_min_search_budget;
         $job_max_price = $range_max + 100;
@@ -161,6 +161,7 @@ class JobsExpert_Compnents_AdvancedSearch extends JobsExperts_AddOn
         if (isset($_GET['max_price']) && !empty($_GET['max_price'])) {
             $job_max_price = $_GET['max_price'];
         }
+
         $order_by = isset($_GET['order_by']) ? $_GET['order_by'] : 'latest';
         $cat = (isset($_GET['job_cat']) && $_GET['job_cat'] > 0) ? $_GET['job_cat'] : null;
 
@@ -226,7 +227,7 @@ class JobsExpert_Compnents_AdvancedSearch extends JobsExperts_AddOn
                         min: <?php echo $plugin->settings()->job_min_search_budget ?>,
                         max: '<?php echo $range_max+100 ?>',
                         type: "double",
-                        <?php echo $pos ?>: "<?php echo JobsExperts_Helper::format_currency($setting->currency,'') ?>",
+                        <?php echo $pos ?>: "<?php echo JobsExperts_Helper::format_currency($setting->currency,false) ?>",
                         maxPostfix: "+",
                         prettify: false,
                         hasGrid: true,
@@ -330,8 +331,8 @@ class JobsExpert_Compnents_AdvancedSearch extends JobsExperts_AddOn
         $cat = (isset($_GET['job_cat']) && $_GET['job_cat'] > 0) ? $_GET['job_cat'] : null;
         if (!empty($cat)) {
             $join[] = '
-            INNER JOIN wp_term_relationships tr ON posts.ID = tr.object_id
-            INNER JOIN wp_term_taxonomy tt ON tr.term_taxonomy_id = tt.term_taxonomy_id
+            INNER JOIN '.$wpdb->prefix.'term_relationships tr ON posts.ID = tr.object_id
+            INNER JOIN '.$wpdb->prefix.'term_taxonomy tt ON tr.term_taxonomy_id = tt.term_taxonomy_id
 ';
 
             $where[] = $wpdb->prepare(" tt.term_id=%d", $cat);
@@ -341,7 +342,7 @@ class JobsExpert_Compnents_AdvancedSearch extends JobsExperts_AddOn
             $order[] = 'ORDER BY posts.ID DESC';
         } elseif ($order_by == 'ending') {
             $order[] = 'ORDER BY deadline.meta_value ASC';
-            $join[] = $wpdb->prepare('INNER JOIN wp_postmeta deadline ON deadline.post_id = posts.ID AND deadline.meta_key=%s', '_ct_jbp_job_Due');
+            $join[] = $wpdb->prepare('INNER JOIN '.$wpdb->prefix.'postmeta deadline ON deadline.post_id = posts.ID AND deadline.meta_key=%s', '_ct_jbp_job_Due');
         } elseif ($order_by == 'name') {
             $order[] = 'ORDER BY posts.post_title ASC';
         }
@@ -357,7 +358,7 @@ class JobsExpert_Compnents_AdvancedSearch extends JobsExperts_AddOn
             if (isset($_GET['max_price']) && !empty($_GET['max_price'])) {
                 $job_max_price = $_GET['max_price'];
             } else {
-                $range_max = $wpdb->get_var("select meta_value from wp_postmeta where meta_key='_jbp_job_budget_max' ORDER BY ABS(meta_value) DESC LIMIT 1; ");;
+                $range_max = $wpdb->get_var("select meta_value from ".$wpdb->prefix."postmeta where meta_key='_jbp_job_budget_max' ORDER BY ABS(meta_value) DESC LIMIT 1; ");;
                 if (empty($range_max)) {
                     $range_max = 5000;
                 }
@@ -365,8 +366,8 @@ class JobsExpert_Compnents_AdvancedSearch extends JobsExperts_AddOn
             }
 
             $join[] = $wpdb->prepare('
-            INNER JOIN wp_postmeta min_price ON min_price.post_id = posts.ID AND min_price.meta_key=%s
-INNER JOIN wp_postmeta max_price ON max_price.post_id = posts.ID AND max_price.meta_key=%s
+            INNER JOIN '.$wpdb->prefix.'postmeta min_price ON min_price.post_id = posts.ID AND min_price.meta_key=%s
+INNER JOIN '.$wpdb->prefix.'postmeta max_price ON max_price.post_id = posts.ID AND max_price.meta_key=%s
             ', '_jbp_job_budget_min', '_jbp_job_budget_max');
 
             $where[] = $wpdb->prepare('
@@ -381,13 +382,13 @@ INNER JOIN wp_postmeta max_price ON max_price.post_id = posts.ID AND max_price.m
             }
             if (isset($_GET['max_price']) && !empty($_GET['max_price'])) {
                 $job_max_price = $_GET['max_price'];
-            } else {
-                $range_max = $wpdb->get_var("select meta_value from wp_postmeta where meta_key='_jbp_job_budget' ORDER BY ABS(meta_value) DESC LIMIT 1; ");;
+            }else {
+                $range_max = $wpdb->get_var("select meta_value from ".$wpdb->prefix."postmeta where meta_key='_ct_jbp_job_Budget' ORDER BY ABS(meta_value) DESC LIMIT 1; ");;
                 $job_max_price = $range_max;
             }
 
             $join[] = $wpdb->prepare('
-            INNER JOIN wp_postmeta price ON price.post_id = posts.ID AND price.meta_key=%s
+            INNER JOIN '.$wpdb->prefix.'postmeta price ON price.post_id = posts.ID AND price.meta_key=%s
             ', '_ct_jbp_job_Budget');
 
             $where[] = $wpdb->prepare('
@@ -413,7 +414,6 @@ INNER JOIN wp_postmeta max_price ON max_price.post_id = posts.ID AND max_price.m
             $args['post__in'] = $data;
         }
         $args['orderby'] = 'post__in';
-        return $args;
 
         $meta_query = array();
         if ($order_by == 'latest') {
@@ -473,7 +473,6 @@ INNER JOIN wp_postmeta max_price ON max_price.post_id = posts.ID AND max_price.m
                 'compare' => 'BETWEEN'
             );
         }
-
         $args['meta_query'] = $meta_query;
 
         return $args;
@@ -568,11 +567,11 @@ INNER JOIN wp_postmeta max_price ON max_price.post_id = posts.ID AND max_price.m
                     $order[] = 'ORDER BY posts.post_title ASC';
                     break;
                 case 'popular':
-                    $join[] = $wpdb->prepare("INNER JOIN wp_postmeta view_count ON posts.ID = view_count.post_id AND view_count.meta_key=%s", 'jbp_pro_view_count');
+                    $join[] = $wpdb->prepare("INNER JOIN '.$wpdb->prefix.'postmeta view_count ON posts.ID = view_count.post_id AND view_count.meta_key=%s", 'jbp_pro_view_count');
                     $order[] = 'ORDER BY ABS(view_count.meta_value) DESC';
                     break;
                 case 'like':
-                    $join[] = $wpdb->prepare("INNER JOIN wp_postmeta like_count ON posts.ID = like_count.post_id AND like_count.meta_key=%s", 'jbp_pro_like_count');
+                    $join[] = $wpdb->prepare("INNER JOIN '.$wpdb->prefix.'postmeta like_count ON posts.ID = like_count.post_id AND like_count.meta_key=%s", 'jbp_pro_like_count');
                     $order[] = 'ORDER BY ABS(like_count.meta_value) DESC';
                     break;
             }
@@ -580,7 +579,7 @@ INNER JOIN wp_postmeta max_price ON max_price.post_id = posts.ID AND max_price.m
         }
 
         if (isset($_GET['country']) && !empty($_GET['country'])) {
-            $join[] = $wpdb->prepare("INNER JOIN wp_postmeta location ON posts.ID = location.post_id AND location.meta_key=%s", '_ct_jbp_pro_Location');
+            $join[] = $wpdb->prepare("INNER JOIN '.$wpdb->prefix.'postmeta location ON posts.ID = location.post_id AND location.meta_key=%s", '_ct_jbp_pro_Location');
             $where[] = $wpdb->prepare('location.meta_value = %s', $_GET['country']);
         }
 

@@ -16,4 +16,4 @@ Fix native contact page go 404 after send contact
 Fix security issues for my jobs/my profiles page
 ==1.0.1.4
 Fix bug jobs page show no jobs when active Advanced Search
-Add some filters
+Add helper filters
