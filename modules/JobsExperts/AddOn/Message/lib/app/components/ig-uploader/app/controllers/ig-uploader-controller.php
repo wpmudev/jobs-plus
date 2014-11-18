@@ -16,8 +16,11 @@ if (!class_exists('IG_Uploader_Controller')) {
         {
             if (!wp_verify_nonce(fRequest::get('_wpnonce'), 'iup_load_upload_form'))
                 return;
-            $id = fRequest::get('id', 'int', 0);
-            $model = IG_Uploader_Model::find($id);
+            $id = fRequest::get('id', 'int', null);
+            $model = null;
+            if ($id != null) {
+                $model = IG_Uploader_Model::find($id);
+            }
             if (!is_object($model)) {
                 $model = new IG_Uploader_Model();
             }

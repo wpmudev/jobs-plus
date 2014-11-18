@@ -16,9 +16,7 @@ class JobsExperts_AddOn_Message extends JobsExperts_AddOn
 
     function load_files()
     {
-        if (!function_exists('mmg')) {
-            include_once __DIR__ . '/Message/lib/messaging.php';
-        }
+        include_once __DIR__ . '/Message/lib/messaging.php';
 
         $this->_add_action('jbp_setting_menu', 'menu');
 
@@ -133,8 +131,19 @@ class JobsExperts_AddOn_Message extends JobsExperts_AddOn
 
     function append_inbox_button($content)
     {
-        $new_content = str_replace('[jbp-expert-profile-btn]', '[jbp-expert-profile-btn][jbp-message-inbox-btn]', $content);
-        return $new_content;
+        $pattern = get_shortcode_regex();
+        if (preg_match_all('/' . $pattern . '/s', $content, $matches)
+            && array_key_exists(2, $matches)
+            && in_array('jbp-expert-profile-btn', $matches[2])
+        ) {
+            //getting the raw shortcode
+            $key = array_search('jbp-expert-profile-btn', $matches[2]);
+            $sc = $matches[0][$key];
+            $new_content = str_replace($sc, $sc.'[jbp-message-inbox-btn]', $content);
+            return $new_content;
+        }
+
+        return $content;
     }
 
     function inbox_btn($atts)

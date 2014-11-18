@@ -97,7 +97,7 @@ class JobsExperts_Core_Shortcode_JobSingle extends JobsExperts_Shortcode
                                     echo apply_filters('jbp_job_contact_btn', $content, $model);
                                     ?>
                                 <?php else: ?>
-                                    <a class="btn btn-info btn-sm jbp_contact_job"
+                                    <a class="btn btn-info btn-sm"
                                        href="<?php echo get_permalink($page_module->page($page_module::EXPERT_ADD)) ?>"><?php _e('Become Expert', JBP_TEXT_DOMAIN) ?></a>
                                 <?php endif; ?>
                             <?php else: ?>
