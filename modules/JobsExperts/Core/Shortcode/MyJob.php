@@ -66,7 +66,7 @@ class JobsExpert_Core_Shortcode_MyJob extends JobsExperts_Shortcode {
 							<td style="width: 120px">
 								<a class="btn btn-primary btn-sm" href="<?php echo add_query_arg( array(
 									'job' => $model->get_raw_post()->ID
-								), get_permalink( $page_module->page( $page_module::JOB_EDIT ) ) ) ?>"><?php _e( 'Edit', JBP_TEXT_DOMAIN ) ?></a>
+								), get_permalink( $page_module->page( JobsExperts_Core_PageFactory::JOB_EDIT ) ) ) ?>"><?php _e( 'Edit', JBP_TEXT_DOMAIN ) ?></a>
 
 								<form class="frm-delete" method="post" style="display: inline-block">
 									<input name="job_id" type="hidden" value="<?php echo $model->id ?>">

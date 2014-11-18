@@ -120,7 +120,7 @@ class JobsExperts_Core_Frontend extends JobsExperts_Framework_Module
                 $data['status'] = $_POST['status'];
                 $result = JobsExperts_Core_Controllers_Job::save($data);
                 if ($result === true) {
-                    wp_redirect(add_query_arg(array('post_status' => 1), get_permalink($page_module->page($page_module::MY_JOB))));
+                    wp_redirect(add_query_arg(array('post_status' => 1), get_permalink($page_module->page(JobsExperts_Core_PageFactory::MY_JOB))));
                 } else {
                     JobsExperts_Plugin::instance()->global['jbp_job'] = $result;
                 }
@@ -180,7 +180,7 @@ class JobsExperts_Core_Frontend extends JobsExperts_Framework_Module
                 if ($result === true) {
                     wp_redirect(add_query_arg(array(
                         'post_status' => 1
-                    ), get_permalink($page_module->page($page_module::MY_EXPERT))));
+                    ), get_permalink($page_module->page(JobsExperts_Core_PageFactory::MY_EXPERT))));
                 } else {
                     JobsExperts_Plugin::instance()->global['jbp_pro'] = $result;
                 }
@@ -201,7 +201,7 @@ class JobsExperts_Core_Frontend extends JobsExperts_Framework_Module
                     JobsExperts_Core_Controllers_Job::delete_job($_POST['job_id']);
                     wp_redirect(add_query_arg(array(
                         'post_status' => '2'
-                    ), get_permalink(apply_filters('jbp_my_jobs_url', $page_module->page($page_module::MY_JOB)))));
+                    ), get_permalink(apply_filters('jbp_my_jobs_url', $page_module->page(JobsExperts_Core_PageFactory::MY_JOB)))));
                     exit;
                 }
             } elseif (isset($_POST['delete_expert']) && isset($_POST['expert_id'])) {
@@ -209,7 +209,7 @@ class JobsExperts_Core_Frontend extends JobsExperts_Framework_Module
                     JobsExperts_Core_Controllers_Pro::delete_expert($_POST['expert_id']);
                     wp_redirect(add_query_arg(array(
                         'post_status' => '2'
-                    ), get_permalink(apply_filters('jbp_my_experts_url', $page_module->page($page_module::MY_EXPERT)))));
+                    ), get_permalink(apply_filters('jbp_my_experts_url', $page_module->page(JobsExperts_Core_PageFactory::MY_EXPERT)))));
                     exit;
                 }
             }
@@ -253,7 +253,7 @@ class JobsExperts_Core_Frontend extends JobsExperts_Framework_Module
             global $wp_query;
             $template = array('single-jbp_job.php', 'page.php', 'index.php');
             if (is_archive('jbp_job')) {
-                $vpost = get_post($page_factory->page($page_factory::JOB_LISTING));
+                $vpost = get_post($page_factory->page(JobsExperts_Core_PageFactory::JOB_LISTING));
                 $wp_query->posts = array($vpost);
                 $wp_query->post_count = 1;
                 $template = array_merge(array($vpost->post_name . '-page.php'), $template);
@@ -265,9 +265,9 @@ class JobsExperts_Core_Frontend extends JobsExperts_Framework_Module
             $template = locate_template(array('page.php', 'index.php'));
             $template = array('single-jbp_pro.php', 'page.php', 'index.php');
             if (is_archive('jbp_job')) {
-                $vpost = get_post($page_factory->page($page_factory::JOB_LISTING));
+                $vpost = get_post($page_factory->page(JobsExperts_Core_PageFactory::JOB_LISTING));
                 global $wp_query;
-                $wp_query->posts = array(get_post($page_factory->page($page_factory::EXPERT_LISTING)));
+                $wp_query->posts = array(get_post($page_factory->page(JobsExperts_Core_PageFactory::EXPERT_LISTING)));
                 $wp_query->post_count = 1;
                 $template = array_merge(array($vpost->post_name . '-page.php'), $template);
             }
@@ -278,7 +278,7 @@ class JobsExperts_Core_Frontend extends JobsExperts_Framework_Module
             global $wp_query;
             $template = array('page.php', 'index.php');
             if (is_archive('jbp_job')) {
-                $vpost = get_post($page_factory->page($page_factory::JOB_LISTING));
+                $vpost = get_post($page_factory->page(JobsExperts_Core_PageFactory::JOB_LISTING));
                 $wp_query->posts = array($vpost);
                 $wp_query->post_count = 1;
                 $template = array_merge(array($vpost->post_name . '-page.php'), $template);
@@ -293,7 +293,7 @@ class JobsExperts_Core_Frontend extends JobsExperts_Framework_Module
     function job_single_content($content)
     {
         $page_factory = JobsExperts_Plugin::instance()->page_module();
-        if (is_singular('jbp_job') && !$page_factory::is_core_page(get_the_ID()) && !is_404()) {
+        if (is_singular('jbp_job') && !JobsExperts_Core_PageFactory::is_core_page(get_the_ID()) && !is_404()) {
             return do_shortcode('[jbp-job-single-page]');
         }
 
@@ -303,7 +303,7 @@ class JobsExperts_Core_Frontend extends JobsExperts_Framework_Module
     function pro_single_content($content)
     {
         $page_factory = JobsExperts_Plugin::instance()->page_module();
-        if (is_singular('jbp_pro') && !$page_factory::is_core_page(get_the_ID()) && !is_404()) {
+        if (is_singular('jbp_pro') && !JobsExperts_Core_PageFactory::is_core_page(get_the_ID()) && !is_404()) {
             return do_shortcode('[jbp-pro-single-page]');
         }
 
@@ -330,7 +330,7 @@ class JobsExperts_Core_Frontend extends JobsExperts_Framework_Module
     private function is_current_core_page()
     {
         $page_factory = JobsExperts_Plugin::instance()->page_module();
-        $v_id = $page_factory::find_core_page_by_name(get_query_var('jbp_job'));
+        $v_id = JobsExperts_Core_PageFactory::find_core_page_by_name(get_query_var('jbp_job'));
         if ($v_id !== false) {
             return get_post($v_id);
         }

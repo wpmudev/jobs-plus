@@ -46,7 +46,7 @@ class JobsExperts_Core_Widgets_ExpertAdd extends WP_Widget
                     <div class="col-md-12">
                         <div class="well well-sm">
                             <form class="search-form" method="GET"
-                                  action="<?php echo get_permalink($page_module::instance()->page($page_module::EXPERT_ADD)); ?>">
+                                  action="<?php echo get_permalink(JobsExperts_Core_PageFactory::instance()->page(JobsExperts_Core_PageFactory::EXPERT_ADD)); ?>">
                                 <div class="row">
                                     <div class="col-md-12">
                                         <label><?php _e('First name', JBP_TEXT_DOMAIN) ?></label>

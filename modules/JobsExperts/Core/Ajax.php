@@ -100,7 +100,7 @@ class JobsExperts_Core_Ajax extends JobsExperts_Framework_Module
             $id = $_POST['id'];
             $page_module = JobsExperts_Plugin::instance()->page_module();
             if (class_exists($class)) {
-                $model = $class::instance()->get_one($id);
+                $model = get_model_instance($class)->get_one($id);
                 if (is_object($model)) {
                     $status = $_POST['status'];
                     $data = $_POST['data'];
@@ -115,9 +115,9 @@ class JobsExperts_Core_Ajax extends JobsExperts_Framework_Module
                         $model->status = $status;
                         $model->save();
                         if ($model instanceof JobsExperts_Core_Models_Job) {
-                            $link = $model->status == 'publish' ? get_permalink($model->id) : get_permalink($page_module->page($page_module::MY_JOB));
+                            $link = $model->status == 'publish' ? get_permalink($model->id) : get_permalink($page_module->page(JobsExperts_Core_PageFactory::MY_JOB));
                         } else {
-                            $link = $model->status == 'publish' ? get_permalink($model->id) : get_permalink($page_module->page($page_module::MY_EXPERT));
+                            $link = $model->status == 'publish' ? get_permalink($model->id) : get_permalink($page_module->page(JobsExperts_Core_PageFactory::MY_EXPERT));
                         }
                         echo json_encode(array(
                             'status' => 1,
@@ -144,7 +144,7 @@ class JobsExperts_Core_Ajax extends JobsExperts_Framework_Module
             if (class_exists($class)) {
 
                 if (!empty($id)) {
-                    $model = $class::instance()->get_one($id);
+                    $model =get_model_instance($class)->get_one($id);
                     if (is_object($model)) {
                         $attribute = str_replace(array(
                             $class, '[', ']'

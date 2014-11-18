@@ -60,9 +60,13 @@ class JobsExperts_Framework_Model
     /**
      * @return mixed
      */
-    public static function instance()
+    public static function instance($class = '')
     {
-        $class = get_called_class();
+        if (function_exists('get_class_call')) {
+            $class = get_called_class();
+        } elseif (empty($class)) {
+            $class = get_class();
+        }
 
         return new $class;
     }

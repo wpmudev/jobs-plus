@@ -52,7 +52,7 @@ class JobsExpert_Core_Shortcode_Buttons extends JobsExperts_Shortcode
             'view' => 'both', //loggedin, loggedout, both
             'class' => $plugin->settings()->theme,
             'template' => '',
-            'url' => get_permalink($page_module->page($page_module::EXPERT_ADD))
+            'url' => get_permalink($page_module->page(JobsExperts_Core_PageFactory::EXPERT_ADD))
         ), $atts));
         //check does this can view
         if (!$this->can_view($view)) {
@@ -96,7 +96,7 @@ class JobsExpert_Core_Shortcode_Buttons extends JobsExperts_Shortcode
             'view' => 'both', //loggedin, loggedout, both
             'class' => $plugin->settings()->theme,
             'template' => '',
-            'url' => get_permalink($page_module->page($page_module::JOB_ADD))
+            'url' => get_permalink($page_module->page(JobsExperts_Core_PageFactory::JOB_ADD))
         ), $atts));
         //check does this can view
         if (!$this->can_view($view)) {
@@ -209,7 +209,7 @@ class JobsExpert_Core_Shortcode_Buttons extends JobsExperts_Shortcode
             'view' => 'both', //loggedin, loggedout, both
             'class' => $plugin->settings()->theme,
             'template' => '',
-            'url' => get_permalink($page_module->page($page_module::MY_EXPERT))
+            'url' => get_permalink($page_module->page(JobsExperts_Core_PageFactory::MY_EXPERT))
         ), $atts));
         //check does this can view
         if (!$this->can_view($view)) {
@@ -241,7 +241,7 @@ class JobsExpert_Core_Shortcode_Buttons extends JobsExperts_Shortcode
             'view' => 'both', //loggedin, loggedout, both
             'class' => $plugin->settings()->theme,
             'template' => '',
-            'url' => get_permalink($page_module->page($page_module::MY_JOB))
+            'url' => get_permalink($page_module->page(JobsExperts_Core_PageFactory::MY_JOB))
         ), $atts));
         //check does this can view
         if (!$this->can_view($view)) {

@@ -104,7 +104,7 @@ class JobsExperts_Core_Controllers_Job extends JobsExperts_Framework_Module
                 $message_headers[] = "Cc: $from";
             }
 
-            $contact_id = $page_module->page($page_module::JOB_CONTACT);
+            $contact_id = $page_module->page(JobsExperts_Core_PageFactory::JOB_CONTACT);
             if (wp_mail($model->contact_email, $subject, $content, $message_headers)) {
                 return (add_query_arg(array('status' => 'success', 'contact' => get_post($model->id)->post_name), get_permalink($contact_id)));
             } else {
@@ -119,7 +119,7 @@ class JobsExperts_Core_Controllers_Job extends JobsExperts_Framework_Module
         wp_delete_post($id);
         $plugin = JobsExperts_Plugin::instance();
         $page_module = $plugin->page_module();
-        wp_redirect(get_permalink($page_module->page($page_module::MY_JOB)));
+        wp_redirect(get_permalink($page_module->page(JobsExperts_Core_PageFactory::MY_JOB)));
     }
 
     static function email_replace($content = '', $post, $user_name, $data)

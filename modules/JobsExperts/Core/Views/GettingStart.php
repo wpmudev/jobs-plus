@@ -66,23 +66,23 @@ class JobsExperts_Core_Views_GettingStart extends JobsExperts_Framework_Render
                     </p>
 
                     <p class="text-center">
-                        <a href="<?php echo get_edit_post_link($page_module->page($page_module::JOB_LISTING)) ?>"><?php _e('Edit', JBP_TEXT_DOMAIN) ?></a><?php _e(' this virtual page', JBP_TEXT_DOMAIN) ?>
+                        <a href="<?php echo get_edit_post_link($page_module->page(JobsExperts_Core_PageFactory::JOB_LISTING)) ?>"><?php _e('Edit', JBP_TEXT_DOMAIN) ?></a><?php _e(' this virtual page', JBP_TEXT_DOMAIN) ?>
                     </p>
 
                     <p class="text-center">
-                        <a href="<?php echo get_permalink($page_module->page($page_module::JOB_ADD)) ?>"><?php _e('Add', JBP_TEXT_DOMAIN) ?></a> <?php echo esc_html(sprintf(__('a new %s', JBP_TEXT_DOMAIN), $job_labels->singular_name)); ?>
+                        <a href="<?php echo get_permalink($page_module->page(JobsExperts_Core_PageFactory::JOB_ADD)) ?>"><?php _e('Add', JBP_TEXT_DOMAIN) ?></a> <?php echo esc_html(sprintf(__('a new %s', JBP_TEXT_DOMAIN), $job_labels->singular_name)); ?>
                     </p>
                 </div>
                 <hr/>
                 <div class="col-xs-12 col-sm-12">
                     <p class="first text-center">
-                        <a href="<?php echo get_permalink($page_module->page($page_module::LANDING_PAGE)) ?>"
+                        <a href="<?php echo get_permalink($page_module->page(JobsExperts_Core_PageFactory::LANDING_PAGE)) ?>"
                            target="landing"
                            class="jbp_button jbp_landing_page"><?php _e('Jobs & Experts Overview', JBP_TEXT_DOMAIN); ?></a>
                     </p>
 
                     <p class="text-center">
-                        <a href="<?php echo get_edit_post_link($page_module->page($page_module::LANDING_PAGE)) ?>"><?php _e('Edit', JBP_TEXT_DOMAIN); ?></a> <?php _e(' this virtual page', JBP_TEXT_DOMAIN) ?>
+                        <a href="<?php echo get_edit_post_link($page_module->page(JobsExperts_Core_PageFactory::LANDING_PAGE)) ?>"><?php _e('Edit', JBP_TEXT_DOMAIN); ?></a> <?php _e(' this virtual page', JBP_TEXT_DOMAIN) ?>
                     </p>
                 </div>
                 <hr/>
@@ -93,11 +93,11 @@ class JobsExperts_Core_Views_GettingStart extends JobsExperts_Framework_Render
                     </p>
 
                     <p class="text-center">
-                        <a href="<?php echo get_edit_post_link($page_module->page($page_module::EXPERT_LISTING)) ?>"><?php _e('Edit', JBP_TEXT_DOMAIN) ?></a> <?php _e(' this virtual page', JBP_TEXT_DOMAIN) ?>
+                        <a href="<?php echo get_edit_post_link($page_module->page(JobsExperts_Core_PageFactory::EXPERT_LISTING)) ?>"><?php _e('Edit', JBP_TEXT_DOMAIN) ?></a> <?php _e(' this virtual page', JBP_TEXT_DOMAIN) ?>
                     </p>
 
                     <p class="text-center">
-                        <a href="<?php echo get_permalink($page_module->page($page_module::EXPERT_ADD)) ?>"><?php _e('Add', JBP_TEXT_DOMAIN) ?></a> <?php echo esc_html(sprintf(__('a new %s', JBP_TEXT_DOMAIN), $pro_labels->singular_name)); ?>
+                        <a href="<?php echo get_permalink($page_module->page(JobsExperts_Core_PageFactory::EXPERT_ADD)) ?>"><?php _e('Add', JBP_TEXT_DOMAIN) ?></a> <?php echo esc_html(sprintf(__('a new %s', JBP_TEXT_DOMAIN), $pro_labels->singular_name)); ?>
                     </p>
                 </div>
             </div>
@@ -131,7 +131,7 @@ class JobsExperts_Core_Views_GettingStart extends JobsExperts_Framework_Render
                             </p>
 
                             <p>
-                                <a href="<?php echo get_edit_post_link($page_module->page($page_module::JOB_LISTING)) ?>"><?php _e('Edit', JBP_TEXT_DOMAIN) ?></a><?php _e(' this virtual page', JBP_TEXT_DOMAIN) ?>
+                                <a href="<?php echo get_edit_post_link($page_module->page(JobsExperts_Core_PageFactory::JOB_LISTING)) ?>"><?php _e('Edit', JBP_TEXT_DOMAIN) ?></a><?php _e(' this virtual page', JBP_TEXT_DOMAIN) ?>
                             </p>
                             <p>
                                 <a href="<?php echo admin_url('edit.php?post_type=jbp_job') ?>"><?php _e('Manage', JBP_TEXT_DOMAIN) ?></a> <?php echo esc_html(sprintf(__('%s', JBP_TEXT_DOMAIN), $job_labels->name)); ?>
@@ -146,13 +146,13 @@ class JobsExperts_Core_Views_GettingStart extends JobsExperts_Framework_Render
                         </div>
                         <div class="jbp_plan">
                             <p class="first">
-                                <a href="<?php echo get_permalink($page_module->page($page_module::LANDING_PAGE)) ?>"
+                                <a href="<?php echo get_permalink($page_module->page(JobsExperts_Core_PageFactory::LANDING_PAGE)) ?>"
                                    target="landing"
                                    class="jbp_button jbp_landing_page"><?php _e('Jobs & Experts Overview', JBP_TEXT_DOMAIN); ?></a>
                             </p>
 
                             <p>
-                                <a href="<?php echo get_edit_post_link($page_module->page($page_module::LANDING_PAGE)) ?>"><?php _e('Edit', JBP_TEXT_DOMAIN); ?></a> <?php _e(' this virtual page', JBP_TEXT_DOMAIN) ?>
+                                <a href="<?php echo get_edit_post_link($page_module->page(JobsExperts_Core_PageFactory::LANDING_PAGE)) ?>"><?php _e('Edit', JBP_TEXT_DOMAIN); ?></a> <?php _e(' this virtual page', JBP_TEXT_DOMAIN) ?>
                             </p>
                         </div>
                         <div class="jbp_plan">
@@ -162,7 +162,7 @@ class JobsExperts_Core_Views_GettingStart extends JobsExperts_Framework_Render
                             </p>
 
                             <p>
-                                <a href="<?php echo get_edit_post_link($page_module->page($page_module::EXPERT_LISTING)) ?>"><?php _e('Edit', JBP_TEXT_DOMAIN) ?></a> <?php _e(' this virtual page', JBP_TEXT_DOMAIN) ?>
+                                <a href="<?php echo get_edit_post_link($page_module->page(JobsExperts_Core_PageFactory::EXPERT_LISTING)) ?>"><?php _e('Edit', JBP_TEXT_DOMAIN) ?></a> <?php _e(' this virtual page', JBP_TEXT_DOMAIN) ?>
                             </p>
                             <p>
                                 <a href="<?php echo admin_url('edit.php?post_type=jbp_pro') ?>"><?php _e('Manage', JBP_TEXT_DOMAIN) ?></a> <?php echo esc_html(sprintf(__('%s', JBP_TEXT_DOMAIN), $pro_labels->name)); ?>

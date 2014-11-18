@@ -57,7 +57,7 @@ class JobsExperts_Components_Uploader extends JobsExperts_Components
             $attribute = $_POST['attribute'];
             //find parent
             $class = $_POST['class'];
-            $model = $class::instance()->get_one($parent_id);
+            $model = get_model_instance($class)->get_one($parent_id);
             if (is_object($model)) {
                 //remove the file
                 wp_delete_post($id);

@@ -23,7 +23,7 @@ class JobsExperts_Core_Shortcode_LandingPage extends JobsExperts_Shortcode
         $plugin = JobsExperts_Plugin::instance();
         $page_module = $plugin->page_module();
 
-        $jobs_query = JobsExperts_Core_Models_Job::instance()->get_all(array(
+        $jobs_query = JobsExperts_Core_Models_Job::instance('JobsExperts_Core_Models_Job')->get_all(array(
             'posts_per_page' => $a['job_show_count'],
             'post_status' => 'publish',
             'orderby' => 'date',
@@ -32,7 +32,7 @@ class JobsExperts_Core_Shortcode_LandingPage extends JobsExperts_Shortcode
 
         $jobs = $jobs_query['data'];
         /////epxert
-        $expert_query = JobsExperts_Core_Models_Pro::instance()->get_all(array(
+        $expert_query = JobsExperts_Core_Models_Pro::instance('JobsExperts_Core_Models_Pro')->get_all(array(
             'posts_per_page' => $a['expert_show_count'],
             'post_status' => 'publish',
             'orderby' => 'date',
@@ -98,7 +98,7 @@ class JobsExperts_Core_Shortcode_LandingPage extends JobsExperts_Shortcode
                         <?php endif; ?>
                         <div class="add-record">
                             <a class="btn btn-primary"
-                               href="<?php echo apply_filters('jbp_add_new_job_url',get_permalink($page_module->page($page_module::JOB_ADD))) ?>"><?php _e('Add a Job', JBP_TEXT_DOMAIN) ?></a>
+                               href="<?php echo apply_filters('jbp_add_new_job_url',get_permalink($page_module->page(JobsExperts_Core_PageFactory::JOB_ADD))) ?>"><?php _e('Add a Job', JBP_TEXT_DOMAIN) ?></a>
                         </div>
 
                     </div>
@@ -185,7 +185,7 @@ class JobsExperts_Core_Shortcode_LandingPage extends JobsExperts_Shortcode
                             ?>
                             <div class="add-record">
                                 <a class="btn btn-primary"
-                                   href="<?php echo apply_filters('jbp_add_new_expert_url', get_permalink($page_module->page($page_module::EXPERT_ADD))) ?>"><?php _e('Become Expert', JBP_TEXT_DOMAIN) ?></a>
+                                   href="<?php echo apply_filters('jbp_add_new_expert_url', get_permalink($page_module->page(JobsExperts_Core_PageFactory::EXPERT_ADD))) ?>"><?php _e('Become Expert', JBP_TEXT_DOMAIN) ?></a>
                             </div>
 
                         </div>

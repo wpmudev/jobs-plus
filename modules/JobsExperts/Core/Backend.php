@@ -130,7 +130,7 @@ class JobsExperts_Core_Backend extends JobsExperts_Framework_Module
         $page_module = $this->page_module;
         parse_str(parse_url($url, PHP_URL_QUERY), $params);
         if (is_array($params) && isset($params['post_type']) && $params['post_type'] == 'jbp_job') {
-            return get_permalink($page_module->page($page_module::JOB_ADD));
+            return get_permalink($page_module->page(JobsExperts_Core_PageFactory::JOB_ADD));
         }
 
         return $url;

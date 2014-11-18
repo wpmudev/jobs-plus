@@ -46,7 +46,7 @@ class JobsExperts_Core_Widgets_JobAdd extends WP_Widget
                     <div class="col-md-12">
                         <div class="well well-sm">
                             <form class="search-form" method="GET"
-                                  action="<?php echo get_permalink($page_module::instance()->page($page_module::JOB_ADD)); ?>">
+                                  action="<?php echo get_permalink(JobsExperts_Core_PageFactory::instance()->page(JobsExperts_Core_PageFactory::JOB_ADD)); ?>">
                                 <div class="jbp-search-box-container">
                                     <input type="text" name="job_title" class="input-sm" value="" autocomplete="off"
                                            placeholder="<?php echo esc_attr(sprintf(__('%s title', JBP_TEXT_DOMAIN), $plugin->get_job_type()->labels->singular_name)); ?>"/>

@@ -89,7 +89,7 @@ class JobsExperts_Core_Shortcode_JobForm extends JobsExperts_Shortcode
             if (isset($plugin->global['jbp_job'])) {
                 $model = $plugin->global['jbp_job'];
             } else {
-                $is_edit = apply_filters('jbp_is_job_edit', $page_module->page($page_module::JOB_EDIT) == get_the_ID());
+                $is_edit = apply_filters('jbp_is_job_edit', $page_module->page(JobsExperts_Core_PageFactory::JOB_EDIT) == get_the_ID());
                 if ($is_edit && isset($_GET['job']) && !empty($_GET['job'])) {
                     $model = JobsExperts_Core_Models_Job::instance()->get_one($_GET['job'], array('publish', 'draft', 'pending'));
                 }

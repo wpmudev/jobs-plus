@@ -92,13 +92,13 @@ class JobsExperts_Core_Shortcode_JobSingle extends JobsExperts_Shortcode
                                     <?php ob_start(); ?>
                                     <a class="btn btn-info btn-sm jbp_contact_job" href="<?php echo add_query_arg(array(
                                         'contact' => get_post()->post_name
-                                    ), apply_filters('jbp_job_contact_link', get_permalink($page_module->page($page_module::JOB_CONTACT)), get_the_ID())) ?>"><?php _e('Contact', JBP_TEXT_DOMAIN) ?></a>
+                                    ), apply_filters('jbp_job_contact_link', get_permalink($page_module->page(JobsExperts_Core_PageFactory::JOB_CONTACT)), get_the_ID())) ?>"><?php _e('Contact', JBP_TEXT_DOMAIN) ?></a>
                                     <?php $content = ob_get_clean();
                                     echo apply_filters('jbp_job_contact_btn', $content, $model);
                                     ?>
                                 <?php else: ?>
                                     <a class="btn btn-info btn-sm"
-                                       href="<?php echo get_permalink($page_module->page($page_module::EXPERT_ADD)) ?>"><?php _e('Become Expert', JBP_TEXT_DOMAIN) ?></a>
+                                       href="<?php echo get_permalink($page_module->page(JobsExperts_Core_PageFactory::EXPERT_ADD)) ?>"><?php _e('Become Expert', JBP_TEXT_DOMAIN) ?></a>
                                 <?php endif; ?>
                             <?php else: ?>
                                 <a disabled class="btn btn-info btn-sm"
@@ -150,7 +150,7 @@ class JobsExperts_Core_Shortcode_JobSingle extends JobsExperts_Shortcode
                             $var = $post->post_status == 'publish' ? $post->post_name : $post->ID;
                             ?>
                                 <a class="btn btn-primary"
-                                   href="<?php echo add_query_arg(array('job' => $var), apply_filters('job_edit_button_link', get_permalink($page_module->page($page_module::JOB_EDIT)))) ?>">
+                                   href="<?php echo add_query_arg(array('job' => $var), apply_filters('job_edit_button_link', get_permalink($page_module->page(JobsExperts_Core_PageFactory::JOB_EDIT)))) ?>">
                                     <?php _e('Edit', JBP_TEXT_DOMAIN) ?>
                                 </a>
                                 <form class="frm-delete" method="post" style="display: inline-block">
