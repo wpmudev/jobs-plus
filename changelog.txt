@@ -17,7 +17,6 @@ Fix security issues for my jobs/my profiles page
 ==1.0.1.4
 Fix bug jobs page show no jobs when active Advanced Search
 Add helper filters
-==1.0.1.5
 Fix WYISWYG button styling
 Fix bug can contact job poster when no expert profile
 

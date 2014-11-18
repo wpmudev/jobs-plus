@@ -73,6 +73,7 @@ class JobsExperts_Core_Models_Settings extends JobsExperts_Framework_OptionModel
 
     public function __construct()
     {
+        parent::__construct();
         $can_load = $this->load();
         //$can_load=false;
         if ($can_load == false) {

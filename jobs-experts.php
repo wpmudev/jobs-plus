@@ -227,6 +227,12 @@ if (!function_exists('money_format')) {
     }
 }
 
+function get_model_instance($class)
+{
+    $instance = call_user_func($class, 'instance');
+    return $instance;
+}
+
 function truncate_html($maxLength, $html, $isUtf8 = true)
 {
     ob_start();

@@ -24,6 +24,9 @@ class JobsExperts_Core_Models_Job extends JobsExperts_Framework_PostModel
     public $max_budget;
     public $owner;
 
+    public function __construct(){
+        parent::__construct();
+    }
 
     public function storage_name()
     {

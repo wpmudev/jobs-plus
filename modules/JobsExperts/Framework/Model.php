@@ -5,6 +5,12 @@
  */
 class JobsExperts_Framework_Model
 {
+    private $class;
+
+    public function __construct()
+    {
+        $this->class = get_class($this);
+    }
 
     /**
      * @var array
@@ -127,9 +133,16 @@ class JobsExperts_Framework_Model
     public function export()
     {
         $data = array();
-        $ref_class = new ReflectionClass(get_called_class());
+
+        if (function_exists('get_called_class')) {
+            $class_name = get_called_class();;
+            $ref_class = new ReflectionClass($class_name);
+        } else {
+            $class_name = $this->class;
+            $ref_class = new ReflectionClass($class_name);
+        }
         foreach ($ref_class->getProperties() as $prop) {
-            if ($prop->class == get_called_class()) {
+            if ($prop->class == $class_name) {
                 $data[$prop->name] = $this->{$prop->name};
             }
         }

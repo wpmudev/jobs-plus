@@ -7,6 +7,10 @@ class JobsExperts_Core_Models_Logger extends JobsExperts_Framework_OptionModel
 {
     public $data = array();
 
+    public function __construct(){
+        parent::__construct();
+    }
+
     public function storage_name()
     {
         return 'jbp_log';

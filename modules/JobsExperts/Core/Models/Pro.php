@@ -25,6 +25,12 @@ class JobsExperts_Core_Models_Pro extends JobsExperts_Framework_PostModel
 
     public $status;
 
+    public function __construct()
+    {
+        parent::__construct();
+    }
+
+
     public function storage_name()
     {
         return 'jbp_pro';
@@ -265,7 +271,7 @@ class JobsExperts_Core_Models_Pro extends JobsExperts_Framework_PostModel
             $skills = array_filter(array_unique($skills));
             sort($skills);
             $skills = array_map('trim', $skills);
-            wp_cache_set('jbp_pro_skill', $skills,null,3600);
+            wp_cache_set('jbp_pro_skill', $skills, null, 3600);
 
             return $skills;
         }
