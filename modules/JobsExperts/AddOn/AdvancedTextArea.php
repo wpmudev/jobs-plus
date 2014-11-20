@@ -71,10 +71,10 @@ class JobsExpert_Compnents_AdvancedTextArea extends JobsExperts_AddOn
         $plugin = JobsExperts_Plugin::instance();
         $page_module = $plugin->page_module();
         if (!is_home() && in_array(get_the_ID(), array(
-                $page_module->page($page_module::EXPERT_ADD),
-                $page_module->page($page_module::EXPERT_EDIT),
-                $page_module->page($page_module::JOB_ADD),
-                $page_module->page($page_module::JOB_EDIT)
+                $page_module->page(JobsExperts_Core_PageFactory::EXPERT_ADD),
+                $page_module->page(JobsExperts_Core_PageFactory::EXPERT_EDIT),
+                $page_module->page(JobsExperts_Core_PageFactory::JOB_ADD),
+                $page_module->page(JobsExperts_Core_PageFactory::JOB_EDIT)
             ))
         ) {
             wp_enqueue_style('jbp_jquery_te');

@@ -191,4 +191,8 @@ class JobsExperts_Components_Uploader_Model extends JobsExperts_Framework_PostMo
 
         return $image;
     }
+
+	public static function instance( $class = __CLASS__ ) {
+		return parent::instance( $class );
+	}
 }

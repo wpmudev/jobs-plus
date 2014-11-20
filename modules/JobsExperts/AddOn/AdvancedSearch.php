@@ -567,11 +567,11 @@ INNER JOIN '.$wpdb->prefix.'postmeta max_price ON max_price.post_id = posts.ID A
                     $order[] = 'ORDER BY posts.post_title ASC';
                     break;
                 case 'popular':
-                    $join[] = $wpdb->prepare("INNER JOIN '.$wpdb->prefix.'postmeta view_count ON posts.ID = view_count.post_id AND view_count.meta_key=%s", 'jbp_pro_view_count');
+                    $join[] = $wpdb->prepare("INNER JOIN ".$wpdb->prefix."postmeta view_count ON posts.ID = view_count.post_id AND view_count.meta_key=%s", 'jbp_pro_view_count');
                     $order[] = 'ORDER BY ABS(view_count.meta_value) DESC';
                     break;
                 case 'like':
-                    $join[] = $wpdb->prepare("INNER JOIN '.$wpdb->prefix.'postmeta like_count ON posts.ID = like_count.post_id AND like_count.meta_key=%s", 'jbp_pro_like_count');
+                    $join[] = $wpdb->prepare("INNER JOIN ".$wpdb->prefix."postmeta like_count ON posts.ID = like_count.post_id AND like_count.meta_key=%s", 'jbp_pro_like_count');
                     $order[] = 'ORDER BY ABS(like_count.meta_value) DESC';
                     break;
             }
@@ -579,7 +579,7 @@ INNER JOIN '.$wpdb->prefix.'postmeta max_price ON max_price.post_id = posts.ID A
         }
 
         if (isset($_GET['country']) && !empty($_GET['country'])) {
-            $join[] = $wpdb->prepare("INNER JOIN '.$wpdb->prefix.'postmeta location ON posts.ID = location.post_id AND location.meta_key=%s", '_ct_jbp_pro_Location');
+            $join[] = $wpdb->prepare("INNER JOIN ".$wpdb->prefix."postmeta location ON posts.ID = location.post_id AND location.meta_key=%s", '_ct_jbp_pro_Location');
             $where[] = $wpdb->prepare('location.meta_value = %s', $_GET['country']);
         }
 
@@ -623,6 +623,8 @@ INNER JOIN '.$wpdb->prefix.'postmeta max_price ON max_price.post_id = posts.ID A
                 } else {
                     $args['post__in'] = $data;
                 }
+            }else{
+	            $args['post__in'] = $data;
             }
 
         }

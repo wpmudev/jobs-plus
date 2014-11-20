@@ -19,14 +19,14 @@ class MM_Upgrade_Controller extends IG_Request
             return;
         }
 
-        $messages = MM_Message_Model::all_with_condition(array(
+        $messages = MM_Message_Model::model()->all_with_condition(array(
             'nopaging' => true
         ));
         foreach ($messages as $m) {
             $m->delete();
         }
 
-        $convs = MM_Conversation_Model::all_with_condition();
+        $convs = MM_Conversation_Model::model()->all_with_condition();
         foreach ($convs as $conv) {
             $conv->delete();
         }
@@ -38,8 +38,8 @@ class MM_Upgrade_Controller extends IG_Request
     function backup()
     {
         $data = array();
-        $convs = MM_Conversation_Model::all_with_condition();
-        $messages = MM_Message_Model::all_with_condition(array(
+        $convs = MM_Conversation_Model::model()->all_with_condition();
+        $messages = MM_Message_Model::model()->all_with_condition(array(
             'nopaging' => true
         ));
         $data['conversations'] = $convs;

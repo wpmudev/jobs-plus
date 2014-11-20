@@ -305,5 +305,9 @@ class JobsExperts_Core_Models_Job extends JobsExperts_Framework_PostModel
         update_post_meta($this->id, 'jbp_job_view_count', $view + 1);
     }
 
+	public static function instance( $class = __CLASS__ ) {
+		return parent::instance( $class );
+	}
+
 
 }

@@ -60,7 +60,7 @@ class JobsExperts_Framework_Model
     /**
      * @return mixed
      */
-    public static function instance($class = '')
+    public static function instance($class = __CLASS__)
     {
         if (function_exists('get_class_call')) {
             $class = get_called_class();
@@ -137,14 +137,8 @@ class JobsExperts_Framework_Model
     public function export()
     {
         $data = array();
-
-        if (function_exists('get_called_class')) {
-            $class_name = get_called_class();;
-            $ref_class = new ReflectionClass($class_name);
-        } else {
-            $class_name = $this->class;
-            $ref_class = new ReflectionClass($class_name);
-        }
+	    $class_name = get_class($this);;
+	    $ref_class = new ReflectionClass($class_name);
         foreach ($ref_class->getProperties() as $prop) {
             if ($prop->class == $class_name) {
                 $data[$prop->name] = $this->{$prop->name};

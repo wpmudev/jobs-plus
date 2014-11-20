@@ -31,11 +31,7 @@ class JobsExpert_Compnents_ExpertDemoData extends JobsExperts_AddOn
             //prepare data
             if ($qty > 0) {
                 for ($i = 1; $i <= $qty; $i++) {
-                    if (version_compare(phpversion(), '5.3.3') >= 0) {
-                        $this->faker_generator($socials, $skills, $have_sample);
-                    } else {
-                        $this->normal_generator($socials, $skills, $have_sample);
-                    }
+                    $this->normal_generator($socials, $skills, $have_sample);
                     //cal percent
                     $percent = ($i / $qty) * 100;
                     update_option('experts_demo_status', $percent);
@@ -51,131 +47,6 @@ class JobsExpert_Compnents_ExpertDemoData extends JobsExperts_AddOn
         $status = get_option('experts_demo_status');
         echo round($status);
         exit;
-    }
-
-    function faker_generator($socials, $skills, $have_file)
-    {
-        $plugin = JobsExperts_Plugin::instance();
-        include_once $plugin->_module_path . 'AddOn/DemoData/faker/autoload.php';
-        $faker = Faker\Factory::create();
-
-        $model = new JobsExperts_Core_Models_Pro();
-        $model->first_name = $faker->firstName;
-        $model->last_name = $faker->lastName;
-        $model->biography = $faker->realText(500, 4);
-        $model->short_description = $faker->text();
-        $model->location = $faker->country;
-        $model->contact_email = $faker->safeEmail;
-        $model->user_id = get_current_user_id();
-        $model->status = 'publish';
-        $model->company = 'WPMUDEV';
-        $model->company_url = 'http://wpmudev.org';
-        $model->views_count = rand(0, 100);
-        $model->likes_count = rand(0, 100);
-        $model->save();
-        //if empty social
-        global $jbp_component_social;
-        if (empty($socials)) {
-            $st = $jbp_component_social->get_social_list();
-            $t = array_rand($st, 5);
-            foreach ($t as $v) {
-                $v = $jbp_component_social->social($v);
-                $socials[] = $v['key'];
-            }
-        }
-        $s_data = array();
-        foreach ($socials as $s) {
-            $smodel = new JobsExperts_Components_Social_Model();
-            $smodel->name = $s;
-            $smodel->value = 'http://wpmudev.org';
-            $smodel->parent_id = $model->id;
-
-            $social = $jbp_component_social->social($s);
-            $smodel->type = $social['type'];
-            $smodel->save();
-            $s_data[] = $smodel->name;
-        }
-        $model->social = implode(',', $s_data);
-        //skill
-        $skills = explode(',', $skills);
-        $skills = array_filter($skills);
-        $t = array_rand($skills, 3);
-        $s_data = array();
-        foreach ($t as $v) {
-            //now skill
-            $mskill = new JobsExperts_Components_Skill_Model();
-            $mskill->value = rand(0, 100);
-            $mskill->name = $skills[$v];
-            $mskill->parent_id = $model->id;
-            $csss = array(
-                'progress-bar progress-bar-warning',
-                'progress-bar',
-                'progress-bar progress-bar-info',
-                'progress-bar progress-bar-success',
-                'progress-bar progress-bar-danger',
-
-                'progress-bar progress-bar-warning progress-bar-striped active',
-                'progress-bar progress-bar-striped active',
-                'progress-bar progress-bar-info progress-bar-striped active',
-                'progress-bar progress-bar-success progress-bar-striped active',
-                'progress-bar progress-bar-danger progress-bar-striped active',
-            );
-            $mskill->css = $csss[array_rand($csss)];
-            $mskill->save();
-
-
-            $s_data[] = $mskill->name;
-        }
-        $model->skills = implode(',', $s_data);
-        $model->save();
-
-        if ($have_file) {
-            //random generate 3 files
-            $ids = array();
-            for ($i = 0; $i < 3; $i++) {
-                //get the random image
-                $upload_dir = wp_upload_dir();
-                $path = $upload_dir['path'] . '/' . uniqid() . '.jpg';
-                $image_url = \Faker\Provider\Image::imageUrl(640, 480, $this->get_image_category());
-                //download the image
-                $this->download_image($image_url, $path);
-                //now handler the file
-                $att_id = $this->handler_upload($model->id, $path);
-
-                //create media post type
-                $media = new JobsExperts_Components_Uploader_Model();
-                $media->description = jbp_filter_text($faker->realText(300));
-                $media->file = $att_id;
-                $media->url = 'http://wpmudev.org';
-                $media->parent_id = $model->id;
-                $media->save();
-                update_post_meta($media->id, '_file', $att_id);
-
-                $ids[] = $media->id;
-            }
-            $model->portfolios = implode(',', $ids);
-            $model->save();
-        }
-
-        $upload_dir = wp_upload_dir();
-        $name = uniqid() . '.jpg';
-        $path = $upload_dir['path'] . '/' . $name;
-        $image_url = \Faker\Provider\Image::imageUrl(640, 480, $this->get_image_category());
-        //avatar
-        $this->download_image($image_url, $path);
-        //update avatar
-        update_post_meta($model->id, '_expert_avatar', $upload_dir['url'] . '/' . $name);
-
-        //now add some fake view count
-        for ($i = 0; $i < $model->views_count; $i++) {
-            $faker = Faker\Factory::create();
-            $view = array(
-                'ip' => $faker->ipv4,
-                'user_id' => 0,
-                'date_view' => date('Y-m-d H:i:s', strtotime($faker->date()))
-            );
-            add_post_meta($model->id, '_jbp_pro_view_count', $view);
-        }
     }
 
     function get_image_category()
@@ -301,7 +172,6 @@ class JobsExpert_Compnents_ExpertDemoData extends JobsExperts_AddOn
 
         //now add some fake view count
         for ($i = 0; $i < $model->views_count; $i++) {
-            $faker = Faker\Factory::create();
             $view = array(
                 'ip' => '0.0.0.0',
                 'user_id' => 0,

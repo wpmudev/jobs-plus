@@ -229,7 +229,7 @@ if (!function_exists('money_format')) {
 
 function get_model_instance($class)
 {
-    $instance = call_user_func($class, 'instance');
+    $instance = call_user_func(array($class,'instance'));
     return $instance;
 }
 

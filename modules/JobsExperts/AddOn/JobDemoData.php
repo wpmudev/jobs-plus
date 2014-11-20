@@ -30,11 +30,7 @@ class JobsExpert_Compnents_JobDemoData extends JobsExperts_AddOn
             $sample = isset($data['have_sample']) ? true : false;
 
             for ($i = 1; $i <= $qty; $i++) {
-                if (version_compare(phpversion(), '5.3.3') >= 0) {
-                    $this->faker_generator(explode('-', $prices), $categories, $skills, $sample);
-                } else {
-                    $this->normal_generator(explode('-', $prices), $categories, $skills, $sample);
-                }
+	            $this->normal_generator(explode('-', $prices), $categories, $skills, $sample);
 
                 //cal percent
                 $percent = ($i / $qty) * 100;
@@ -82,69 +78,6 @@ class JobsExpert_Compnents_JobDemoData extends JobsExperts_AddOn
             }
         }*/
         exit;
-    }
-
-    function faker_generator($budgets, $categories, $skills, $have_file)
-    {
-        $plugin = JobsExperts_Plugin::instance();
-        include_once $plugin->_module_path . 'AddOn/DemoData/faker/autoload.php';
-        $faker = Faker\Factory::create();
-        $open_for = array(3, 7, 14, 21);
-        $weeks = array(1, 2, 3, 4);
-
-        $model = new JobsExperts_Core_Models_Job();
-        $model->job_title = $faker->sentence();
-        $model->description = $faker->realText(500, 4);
-        $model->budget = rand($budgets[0], $budgets[1]);
-        $model->min_budget = rand($budgets[0], $budgets[1]);
-        $model->max_budget = rand($model->min_budget, $budgets[1]);
-        $model->status = 'publish';
-        $model->contact_email = $faker->safeEmail;
-        $model->open_for = $open_for[array_rand($open_for)];
-        $model->dead_line = date('Y-m-d', strtotime('+' . $weeks[array_rand($weeks)] . ' week'));
-        $model->owner = get_current_user_id();
-        //save dummy data
-        $model->save();
-        //categories
-        $categories = explode(',', $categories);
-        $categories = array_filter($categories);
-        $model->assign_categories($categories[array_rand($categories)]);
-        $skills = explode(',', $skills);
-        $skills = array_filter($skills);
-        $tmp = array_rand($skills, 3);
-        $rand_skills = array();
-        foreach ($tmp as $t) {
-            $rand_skills[] = $skills[$t];
-        }
-
-        $model->assign_skill_tag($rand_skills);
-        if ($have_file) {
-            //random generate 3 files
-            $ids = array();
-            for ($i = 0; $i < 3; $i++) {
-                //get the random image
-                $upload_dir = wp_upload_dir();
-                $path = $upload_dir['path'] . '/' . uniqid() . '.jpg';
-                $image_url = \Faker\Provider\Image::imageUrl();
-                //download the image
-                $this->download_image($image_url, $path);
-                //now handler the file
-                $att_id = $this->handler_upload($model->id, $path);
-
-                //create media post type
-                $media = new JobsExperts_Components_Uploader_Model();
-                $media->description = jbp_filter_text($faker->realText(300));
-                $media->file = $att_id;
-                $media->url = 'http://wpmudev.org';
-                $media->parent_id = $model->id;
-                $media->save();
-                update_post_meta($media->id, '_file', $att_id);
-
-                $ids[] = $media->id;
-            }
-            $model->portfolios = implode(',', $ids);
-            $model->save();
-        }
     }
 
     function normal_generator($budgets, $categories, $skills, $have_file)

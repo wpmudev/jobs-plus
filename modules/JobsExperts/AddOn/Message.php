@@ -16,7 +16,7 @@ class JobsExperts_AddOn_Message extends JobsExperts_AddOn
 
     function load_files()
     {
-        include_once __DIR__ . '/Message/lib/messaging.php';
+        include_once dirname(__FILE__) . '/Message/lib/messaging.php';
 
         $this->_add_action('jbp_setting_menu', 'menu');
 
@@ -175,13 +175,13 @@ class JobsExperts_AddOn_Message extends JobsExperts_AddOn
         $user = null;
         $page_module = $plugin->page_module();
         if ($type == 'job') {
-            $contact_id = $plugin->page_module()->page($page_module::JOB_CONTACT);
+            $contact_id = $plugin->page_module()->page(JobsExperts_Core_PageFactory::JOB_CONTACT);
             $model = JobsExperts_Core_Models_Job::instance()->get_one($id);
             $to = $model->owner;
             $user = get_userdata($model->owner);
             $subject = $subject = JobsExperts_Core_Controllers_Job::email_replace($plugin->settings()->job_email_subject, get_post($model->id), $user->user_login, $contact->export());
         } else {
-            $contact_id = $plugin->page_module()->page($page_module::EXPERT_CONTACT);
+            $contact_id = $plugin->page_module()->page(JobsExperts_Core_PageFactory::EXPERT_CONTACT);
             $model = JobsExperts_Core_Models_Pro::instance()->get_one($id);
             $to = $model->user_id;
             $user = get_userdata($to);
@@ -240,7 +240,7 @@ class JobsExperts_AddOn_Message extends JobsExperts_AddOn
     function create_page($args)
     {
         $page_module = JobsExperts_Plugin::instance()->page_module();
-        $vid = $page_module->page($page_module::JOB_ADD);
+        $vid = $page_module->page(JobsExperts_Core_PageFactory::JOB_ADD);
         $vpage = get_post($vid);
         $args['post_content'] = str_replace('[jbp-job-update-page]', '[jbp-message-inbox]', $vpage->post_content);
         return $args;

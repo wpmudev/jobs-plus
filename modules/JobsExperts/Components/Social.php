@@ -38,6 +38,7 @@ class JobsExpert_Components_Social extends JobsExperts_Components
     {
         if (wp_verify_nonce($_POST['_nonce'], 'jbp_social_add')) {
             $model = JobsExperts_Components_Social_Model::instance()->get_one($_POST['name'], $_POST['parent_id']);
+
             if (!is_object($model)) {
                 $model = new JobsExperts_Components_Social_Model();
             }
@@ -47,8 +48,10 @@ class JobsExpert_Components_Social extends JobsExperts_Components
             $model->type = $social['type'];
             $model->parent_id = $_POST['parent_id'];
             $model->status = 0;
+
             if ($model->validate()) {
                 $model->save();
+
                 echo json_encode(array(
                     'status' => 1,
                     'html' => $this->template_social_display($model->export())

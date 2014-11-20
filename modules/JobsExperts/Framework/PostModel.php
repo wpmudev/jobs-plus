@@ -90,7 +90,7 @@ abstract class JobsExperts_Framework_PostModel extends JobsExperts_Framework_Mod
      */
     public function get_one($id_or_slug, $status = 'publish')
     {
-        $class_name = get_called_class();
+        $class_name = get_class($this);
         if (!empty($id_or_slug)) {
             if (filter_var($id_or_slug, FILTER_VALIDATE_INT)) {
                 $post = get_post($id_or_slug);

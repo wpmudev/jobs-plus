@@ -100,4 +100,7 @@ class JobsExperts_Components_Social_Model extends JobsExperts_Framework_Model
         return $rules;
 
     }
+	public static function instance( $class = __CLASS__ ) {
+		return parent::instance( $class );
+	}
 }

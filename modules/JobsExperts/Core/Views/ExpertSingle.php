@@ -28,11 +28,11 @@ class JobsExperts_Core_Views_ExpertSingle extends JobsExperts_Framework_Render
                                 <?php echo $model->get_avatar(420) ?>
                             </div>
                             <div class="panel-footer">
-                                <?php ob_start(); ?>
+                                <?php ob_start();  ?>
                                 <a class="btn btn-sm btn-primary jbp_contact_expert"
                                    href="<?php echo add_query_arg(array(
                                        'contact' => get_post()->post_name
-                                   ), apply_filters('jbp_expert_contact_link', get_permalink($page_module->page($page_module::EXPERT_CONTACT)))) ?>"><?php _e('Contact Me', JBP_TEXT_DOMAIN) ?></a>
+                                   ), apply_filters('jbp_expert_contact_link', get_permalink($page_module->page(JobsExperts_Core_PageFactory::EXPERT_CONTACT)))) ?>"><?php _e('Contact Me', JBP_TEXT_DOMAIN) ?></a>
                                 <?php $content = ob_get_clean();
                                 echo apply_filters('jbp_expert_contact_btn', $content, $model);
                                 ?>
@@ -248,7 +248,7 @@ class JobsExperts_Core_Views_ExpertSingle extends JobsExperts_Framework_Render
                 <div class="row" style="margin-top: 40px">
                     <div class="col-md-12" style="margin-left: 0">
                         <a class="btn btn-primary"
-                           href="<?php echo add_query_arg(array('pro' => $var), apply_filters('expert_edit_button_link', get_permalink($page_module->page($page_module::EXPERT_EDIT)))) ?>">
+                           href="<?php echo add_query_arg(array('pro' => $var), apply_filters('expert_edit_button_link', get_permalink($page_module->page(JobsExperts_Core_PageFactory::EXPERT_EDIT)))) ?>">
                             <?php _e('Edit', JBP_TEXT_DOMAIN) ?>
                         </a>
 

@@ -93,7 +93,7 @@ if (!class_exists('IG_Uploader_Controller')) {
                 $ids = array_filter(array_unique($ids));
             }
             if (!empty($ids)) {
-                $models = IG_Uploader_Model::all_with_condition(array(
+                $models = IG_Uploader_Model::model()->all_with_condition(array(
                     'status' => 'publish',
                     'post__in' => $ids
                 ));
