@@ -83,7 +83,7 @@ class JobsExperts_Core_Views_ExpertForm extends JobsExperts_Framework_Render
                     );
                     echo $fullname->render();
                     ?>
-                    <h4><?php echo sprintf(__('Member since %s', JBP_TEXT_DOMAIN), date("M Y", strtotime(get_the_author_meta('user_registered')))) ?></h4>
+                    <h4><?php echo sprintf(__('Member since %s', JBP_TEXT_DOMAIN), date("M Y", strtotime(get_the_author_meta('user_registered',get_current_user_id())))) ?></h4>
                 </div>
                 <div class="row">
                     <div class="col-md-5">

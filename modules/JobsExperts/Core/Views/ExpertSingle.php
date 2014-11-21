@@ -118,7 +118,7 @@ class JobsExperts_Core_Views_ExpertSingle extends JobsExperts_Framework_Render
         <div class="col-md-8">
             <div class="page-header">
                 <h2><?php echo $model->first_name . ' ' . $model->last_name ?></h2>
-                <h4><?php echo sprintf(__('Member since %s', JBP_TEXT_DOMAIN), date("M Y", strtotime(get_the_author_meta('user_registered')))) ?></h4>
+                <h4><?php echo sprintf(__('Member since %s', JBP_TEXT_DOMAIN), date("M Y", strtotime(get_the_author_meta('user_registered',$model->user_id)))) ?></h4>
             </div>
             <?php if (!empty($model->company)): ?>
                 <div class="row">
