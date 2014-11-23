@@ -174,6 +174,7 @@ class JobsExperts_Framework_EditableForm
     private function _build_script()
     {
         $form_id = 'form_' . $this->id;
+
         ob_start();
         ?>
         <script type="text/javascript">
@@ -183,13 +184,14 @@ class JobsExperts_Framework_EditableForm
                 var container = $('#<?php echo $this->id ?>');
                 //enable validate
                 var popover_element = container.find('.editable_content');
+
                 //load popover
                 popover_element.popover({
                     content: '<?php echo preg_replace('/^\s+|\n|\r|\s+$/m', '', $this->_build_dialog_form()); ?>',
                     html: true,
                     trigger: 'click',
                     container: '.hn-container',
-                    placement: 'auto',
+                    placement: '<?php echo esc_js(apply_filters('jbp_editable_form_placement','auto')) ?>',
                     title: '<?php echo $this->title ?>'
                 }).on('shown.bs.popover', function () {
                     //init the form
