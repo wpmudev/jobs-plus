@@ -106,6 +106,17 @@ class JobsExpert_Compnents_AdvancedSearch extends JobsExperts_AddOn
         <label style="display: inline"><input type="radio" value="ending" name="order_by">&nbsp;
             <?php _e('About to End', JBP_TEXT_DOMAIN) ?>
         </label>
+        <?php
+        //build the format
+        $setting = JobsExperts_Plugin::instance()->settings();
+
+        $pos = $setting->curr_symbol_position;
+        if($pos==1 || $pos==2){
+            $pos='prefix';
+        }else{
+            $pos = 'postfix';
+        }
+        ?>
         <script type="text/javascript">
             jQuery(document).ready(function ($) {
                 var price_data = {
@@ -118,7 +129,7 @@ class JobsExpert_Compnents_AdvancedSearch extends JobsExperts_AddOn
                     min: <?php echo $plugin->settings()->job_min_search_budget ?>,
                     max: '<?php echo $range_max+100 ?>',
                     type: "double",
-                    prefix: "$",
+                <?php echo $pos ?>: "<?php echo JobsExperts_Helper::format_currency($setting->currency,false) ?>",
                     maxPostfix: "+",
                     prettify: false,
                     hasGrid: true,
@@ -151,7 +162,9 @@ class JobsExpert_Compnents_AdvancedSearch extends JobsExperts_AddOn
 
         global $wpdb;
         $range_max = $wpdb->get_var("select meta_value from ".$wpdb->prefix."postmeta where meta_key='_jbp_job_budget_max' ORDER BY ABS(meta_value) DESC LIMIT 1; ");;
-
+        if($range_max<1000){
+            $range_max=1000;
+        }
         $job_min_price = $plugin->settings()->job_min_search_budget;
         $job_max_price = $range_max + 100;
         if (isset($_GET['min_price']) && !empty($_GET['min_price'])) {
