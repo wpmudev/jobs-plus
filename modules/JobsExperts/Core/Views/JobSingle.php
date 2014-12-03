@@ -122,6 +122,7 @@ class JobsExperts_Core_Views_JobSingle extends JobsExperts_Framework_Render
                         </script>
                     <?php endif; ?>
                 </div>
+                <div class="clearfix"></div>
             </div>
         </div>
     <?php
