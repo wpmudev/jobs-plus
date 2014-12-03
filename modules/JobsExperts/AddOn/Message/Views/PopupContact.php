@@ -56,7 +56,6 @@ class JobsExperts_AddOn_Message_Views_PopupContact extends JobsExperts_Framework
             <!-- /.modal-content -->
         </div>
         <!-- /.modal-dialog -->
-        </div>
         <script type="text/javascript">
             jQuery(document).ready(function ($) {
                 var type;
