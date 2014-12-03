@@ -16,7 +16,10 @@ class JobsExperts_AddOn_Message extends JobsExperts_AddOn
 
     function load_files()
     {
-        include_once dirname(__FILE__) . '/Message/lib/messaging.php';
+        include_once(ABSPATH . 'wp-admin/includes/plugin.php');
+        if (!is_plugin_active('messaging/messaging.php')) {
+            include_once dirname(__FILE__) . '/Message/lib/messaging.php';
+        }
 
         $this->_add_action('jbp_setting_menu', 'menu');
 
@@ -139,7 +142,7 @@ class JobsExperts_AddOn_Message extends JobsExperts_AddOn
             //getting the raw shortcode
             $key = array_search('jbp-expert-profile-btn', $matches[2]);
             $sc = $matches[0][$key];
-            $new_content = str_replace($sc, $sc.'[jbp-message-inbox-btn]', $content);
+            $new_content = str_replace($sc, $sc . '[jbp-message-inbox-btn]', $content);
             return $new_content;
         }
 
