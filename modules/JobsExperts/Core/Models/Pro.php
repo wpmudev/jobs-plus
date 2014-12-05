@@ -99,6 +99,7 @@ class JobsExperts_Core_Models_Pro extends JobsExperts_Framework_PostModel
         $this->name = $post->post_title;
         $this->biography = $post->post_content;
         $full_name = get_post_meta($this->id, '_ct_jbp_pro_First_Last', true);
+
         //meta
         $this->first_name = utf8_decode($full_name['first']);
         $this->last_name = utf8_decode($full_name['last']);
