@@ -65,8 +65,6 @@ class JobsExperts_Core_Shortcode_JobSingle extends JobsExperts_Shortcode
             ob_start();
             ?>
             <div class="hn-container">
-                <?php //echo do_shortcode('<p style="text-align: center">[jbp-expert-post-btn][jbp-job-post-btn][jbp-expert-browse-btn][jbp-job-browse-btn][jbp-expert-profile-btn][jbp-my-job-btn]</p>'); ?>
-
                 <?php $template = new JobsExperts_Core_Views_JobSingle(array(
                     'model' => $model
                 ));

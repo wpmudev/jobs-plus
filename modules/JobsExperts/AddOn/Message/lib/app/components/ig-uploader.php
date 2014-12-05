@@ -26,13 +26,14 @@ if (!class_exists('ig-uploader')) {
 
             add_action('init', array(&$this, 'custom_content'));
             add_action('wp_enqueue_scripts', array(&$this, 'scripts'));
+            add_action('admin_enqueue_scripts', array(&$this, 'scripts'));
             $this->controller = new IG_Uploader_Controller();
         }
 
         function scripts()
         {
             wp_register_style('igu-uploader', $this->plugin_url . 'assets/style.css');
-	        wp_enqueue_script('popoverasync', $this->plugin_url . 'assets/popover/popoverasync.js',array('jquery','ig-bootstrap'));
+            wp_enqueue_script('popoverasync', $this->plugin_url . 'assets/popover/popoverasync.js',array('jquery','ig-bootstrap'));
 
             wp_register_script('jquery-frame-transport', $this->plugin_url . 'assets/iframe-transport/jquery.iframe-transport.js');
         }

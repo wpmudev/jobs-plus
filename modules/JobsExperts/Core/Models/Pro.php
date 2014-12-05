@@ -41,7 +41,7 @@ class JobsExperts_Core_Models_Pro extends JobsExperts_Framework_PostModel
         return array(
             array('required', 'first_name,last_name,location,contact_email,biography'),
             array('url', 'company_url'),
-            array('length', 'biography', 'min' => 200),
+            array('length', 'biography', 'min' => 50),
             array('length', 'short_description', 'max' => 100),
             array('email', 'contact_email')
         );

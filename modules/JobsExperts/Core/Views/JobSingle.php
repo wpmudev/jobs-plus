@@ -19,15 +19,15 @@ class JobsExperts_Core_Views_JobSingle extends JobsExperts_Framework_Render
         ?>
         <div class="jbp-job-single">
             <div class="row hn-border hn-border-round jobs-meta">
-                <div class="col-md-3">
+                <div class="col-md-3 jobs-meta-row">
                     <h5><?php _e('Job Budget', JBP_TEXT_DOMAIN); ?></h5>
                     <small class="text-warning"><?php $model->render_prices() ?></small>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-3 jobs-meta-row">
                     <h5><?php _e('This job open for', JBP_TEXT_DOMAIN) ?></h5>
                     <small class="text-warning"><?php echo $model->get_due_day() ?></small>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-3 jobs-meta-row">
                     <h5><?php _e('Must be completed by', JBP_TEXT_DOMAIN) ?></h5>
                     <?php if (strtotime($model->dead_line)): ?>
                         <small
@@ -36,7 +36,7 @@ class JobsExperts_Core_Views_JobSingle extends JobsExperts_Framework_Render
                         <small class="text-warning"><?php _e('N/A', JBP_TEXT_DOMAIN) ?></small>
                     <?php endif; ?>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-3 jobs-meta-row">
                     <?php if (strtolower($model->get_due_day()) != 'expired'): ?>
                         <?php if (JobsExperts_Helper::is_user_pro(get_current_user_id())): ?>
                             <?php ob_start(); ?>

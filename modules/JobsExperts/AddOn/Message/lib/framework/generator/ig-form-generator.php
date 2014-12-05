@@ -32,7 +32,7 @@ if (!class_exists('IG_Form_Generator')) {
             $form .= '<?php $form->close();?>';
 
             //store the form
-            file_put_contents(dirname(dirname(__FILE__)) . '/runtime/' . array_pop(explode('\\', get_class($this->model))) . '_form.php', $form);
+            file_put_contents(dirname(__DIR__) . '/runtime/' . array_pop(explode('\\', get_class($this->model))) . '_form.php', $form);
         }
 
         public function generate()
@@ -108,7 +108,7 @@ if (!class_exists('IG_Form_Generator')) {
             $form .= '<?php $form->close();?>';
 
             //store the form
-            file_put_contents(dirname(dirname(__FILE__)) . '/runtime/' . array_pop(explode('\\', get_class($this->model))) . '_form.php', $form);
+            file_put_contents(dirname(__DIR__) . '/runtime/' . array_pop(explode('\\', get_class($this->model))) . '_form.php', $form);
         }
     }
 }

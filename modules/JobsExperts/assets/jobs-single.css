@@ -18,7 +18,7 @@
 }
 
 @media (min-width: 991px) {
-    .jbp-job-single .jobs-meta .col-md-3 a {
+    .jbp-job-single .jobs-meta .jobs-meta-row a {
         position: absolute;
         top: 50%;
         margin-top: -15px;

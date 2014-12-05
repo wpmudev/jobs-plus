@@ -43,7 +43,7 @@ class MMessage_Backend_Controller extends IG_Request
             $setting->save();
             fJSON::output(array(
                 'noty' => __("The add on <strong>{$meta['Name']}</strong> deactivate", mmg()->domain),
-                'text' => __("Deactivate", mmg()->domain)
+                'text' => __("Activate", mmg()->domain)
             ));
             exit;
         }
@@ -78,6 +78,8 @@ class MMessage_Backend_Controller extends IG_Request
 
     function view()
     {
+        wp_enqueue_script('popoverasync', ig_uploader()->plugin_url . 'assets/popover/popoverasync.js', array(
+            'jquery', 'ig-bootstrap', 'jquery-frame-transport'));
         wp_enqueue_style('mm_style');
 
         $id = fRequest::get('id', 'int', 0);

@@ -17,12 +17,15 @@ class JobsExperts_AddOn_Message extends JobsExperts_AddOn
     function load_files()
     {
         include_once(ABSPATH . 'wp-admin/includes/plugin.php');
+
         if (!is_plugin_active('messaging/messaging.php')) {
             include_once dirname(__FILE__) . '/Message/lib/messaging.php';
         }
 
         $this->_add_action('jbp_setting_menu', 'menu');
 
+        $this->_add_filter('jbp_job_contact_btn', 'contact_job_poster_btn', 10, 2);
+        $this->_add_filter('jbp_expert_contact_btn', 'contact_expert_poster_btn', 10, 2);
         //send contact
         $this->_add_filter('jbp_contact_send_email', 'save_message', 10, 5);
 
@@ -41,6 +44,21 @@ class JobsExperts_AddOn_Message extends JobsExperts_AddOn
         $this->_add_filter('mm_create_inbox_page', 'create_page');
         $this->_add_filter('jbp_contact_validate_rules', 'contact_validate_rules');
     }
+
+    function contact_job_poster_btn($content, JobsExperts_Core_Models_Job $model)
+    {
+        $user_id = $model->owner;
+        $content = do_shortcode('[pm_user user_id="' . $user_id . '" text="' . __('Contact', JBP_TEXT_DOMAIN) . '"]');
+        return $content;
+    }
+
+    function contact_expert_poster_btn($content, JobsExperts_Core_Models_Pro $model)
+    {
+        $user_id = $model->user_id;
+        $content = do_shortcode('[pm_user user_id="' . $user_id . '" text="' . __('Contact Me', JBP_TEXT_DOMAIN) . '"]');
+        return $content;
+    }
+
 
     function contact_in_popup()
     {

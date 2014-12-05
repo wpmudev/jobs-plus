@@ -360,8 +360,7 @@ div.sceditor-dropdown .button {
     -webkit-background-clip: padding-box;
     background-clip: padding-box;
     cursor: pointer;
-    margin: .3em 0 0;
-    box-sizing: content-box !important;
+    margin: .3em 0 0
 }
 
 div.sceditor-dropdown .button:hover {

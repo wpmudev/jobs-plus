@@ -1,10 +1,10 @@
 <?php
 /*
 Plugin Name: Private Messaging
-Plugin URI:
+Plugin URI: https://premium.wpmudev.org/project/XXXXXXX/
 Description:
 Author: WPMU DEV
-Version: 1.0
+Version: 1.0 RC 6
 Author URI: http://premium.wpmudev.org
 WDP ID: ***
 Text Domain: private_messaging
@@ -25,10 +25,10 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
-Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 */
 if (!class_exists('MMessaging')) {
-    include_once dirname(__FILE__) . '/framework/loader.php';
+    require_once(dirname(__FILE__) . '/framework/loader.php');
 
     class MMessaging
     {
@@ -37,7 +37,9 @@ if (!class_exists('MMessaging')) {
         public $domain;
         public $prefix;
 
-        public $version = "1.2";
+        public $version = "1.0 RC6";
+
+        public $global = array();
 
         private static $_instance;
 
@@ -57,11 +59,100 @@ if (!class_exists('MMessaging')) {
             add_action('wp_enqueue_scripts', array(&$this, 'scripts'));
             add_action('admin_enqueue_scripts', array(&$this, 'scripts'));
 
-            $this->check_upgrade();
-            add_action('init', array(&$this, 'dispatch'));
+
+            if ($this->ready_to_use()) {
+                $this->upgrade();
+                add_action('init', array(&$this, 'dispatch'));
+            } else {
+                new MM_Upgrade_Controller();
+            }
         }
 
-        function check_upgrade()
+        function ready_to_use()
+        {
+            global $wpdb;
+            if ($wpdb->get_var("SHOW TABLES LIKE '" . $wpdb->base_prefix . "mm_conversation'") !== $wpdb->base_prefix . 'mm_conversation'
+                || $wpdb->get_var("SHOW TABLES LIKE '" . $wpdb->base_prefix . "mm_status'") !== $wpdb->base_prefix . 'mm_status'
+            ) {
+                return false;
+            }
+
+            return true;
+        }
+
+        function upgrade()
+        {
+            if (get_option('mm_upgrade_' . $this->version) == 1) {
+                return;
+            }
+            global $wpdb;
+            //upgrade script
+            //check does column status exist
+            $sql = "SELECT COLUMN_NAME
+FROM INFORMATION_SCHEMA.COLUMNS
+WHERE table_name = '{$wpdb->prefix}mm_conversation'
+AND table_schema = '" . DB_NAME . "'
+AND column_name = 'status'";
+            $exist = $wpdb->get_var($sql);
+            if (is_null($exist)) {
+                $sql = "ALTER TABLE {$wpdb->prefix}mm_conversation ADD COLUMN `status` INT(11) DEFAULT 1;";
+                $wpdb->query($sql);
+            }
+            //rename column
+            $sql = "SELECT COLUMN_NAME
+FROM INFORMATION_SCHEMA.COLUMNS
+WHERE table_name = '{$wpdb->prefix}mm_conversation'
+AND table_schema = '" . DB_NAME . "'
+AND column_name = 'date'";
+            $exist = $wpdb->get_var($sql);
+            if (!is_null($exist)) {
+                //change date name
+                $sql = "ALTER TABLE {$wpdb->prefix}mm_conversation CHANGE `date` `date_created` DATETIME";
+                $wpdb->query($sql);
+            }
+
+            //rename column
+            $sql = "SELECT COLUMN_NAME
+FROM INFORMATION_SCHEMA.COLUMNS
+WHERE table_name = '{$wpdb->prefix}mm_conversation'
+AND table_schema = '" . DB_NAME . "'
+AND column_name = 'count'";
+            $exist = $wpdb->get_var($sql);
+            if (!is_null($exist)) {
+                //change date name
+                $sql = "ALTER TABLE {$wpdb->prefix}mm_conversation CHANGE `count` `message_count` TINYINT;";
+                $wpdb->query($sql);
+            }
+
+            //rename column
+            $sql = "SELECT COLUMN_NAME
+FROM INFORMATION_SCHEMA.COLUMNS
+WHERE table_name = '{$wpdb->prefix}mm_conversation'
+AND table_schema = '" . DB_NAME . "'
+AND column_name = 'index'";
+            $exist = $wpdb->get_var($sql);
+            if (!is_null($exist)) {
+                //change date name
+                $sql = "ALTER TABLE {$wpdb->prefix}mm_conversation CHANGE `index` `message_index` VARCHAR(255);";
+                $wpdb->query($sql);
+            }
+
+            //rename column
+            $sql = "SELECT COLUMN_NAME
+FROM INFORMATION_SCHEMA.COLUMNS
+WHERE table_name = '{$wpdb->prefix}mm_conversation'
+AND table_schema = '" . DB_NAME . "'
+AND column_name = 'from'";
+            $exist = $wpdb->get_var($sql);
+            if (!is_null($exist)) {
+                //change date name
+                $sql = "ALTER TABLE {$wpdb->prefix}mm_conversation CHANGE `from` `send_from` TINYINT;";
+                $wpdb->query($sql);
+            }
+            update_option('mm_upgrade_' . $this->version, 1);
+        }
+
+        function install()
         {
             global $wpdb;
 
@@ -74,24 +165,34 @@ if (!class_exists('MMessaging')) {
             if (!empty($wpdb->collate)) {
                 $charset_collate .= " COLLATE {$wpdb->collate}";
             }
-
+            require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
             $sql = "-- ----------------------------;
-CREATE TABLE `{$wpdb->base_prefix}mm_conversation` (
+CREATE TABLE IF NOT EXISTS `{$wpdb->base_prefix}mm_conversation` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `date` datetime DEFAULT NULL,
-  `count` tinyint(3) unsigned DEFAULT NULL,
-  `index` varchar(255) DEFAULT NULL,
+  `date_created` datetime DEFAULT NULL,
+  `message_count` tinyint(3) DEFAULT NULL,
+  `message_index` varchar(255) DEFAULT NULL,
   `user_index` varchar(255) DEFAULT NULL,
-  `from` tinyint(3) DEFAULT NULL,
+  `send_from` tinyint(3) DEFAULT NULL,
   `site_id` tinyint(1) DEFAULT NULL,
+  `status` tinyint(1) DEFAULT 1,
   UNIQUE KEY id (id)
 ) $charset_collate;";
 
-            if ($wpdb->get_var("SHOW TABLES LIKE '" . $wpdb->base_prefix . "mm_conversation'") !== $wpdb->base_prefix . 'mm_conversation') {
-                //do upgrade
-                require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
-                dbDelta($sql);
-            }
+            dbDelta($sql);
+            $sql = "CREATE TABLE IF NOT EXISTS `{$wpdb->base_prefix}mm_status` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `conversation_id` int(11) DEFAULT NULL,
+  `message_id` int(11) DEFAULT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `status` int(11) DEFAULT NULL,
+  `date_created` datetime DEFAULT NULL,
+  `type` tinyint(4) DEFAULT NULL,
+  UNIQUE KEY id (id)
+) $charset_collate;
+";
+
+            dbDelta($sql);
         }
 
         function scripts()
@@ -107,7 +208,7 @@ CREATE TABLE `{$wpdb->base_prefix}mm_conversation` (
 
             wp_register_style('mm_style', $this->plugin_url . 'assets/main.css', array(), $this->version);
             wp_register_style('mm_scroll', $this->plugin_url . 'assets/perfect-scrollbar.min.css', array(), $this->version);
-            wp_register_script('mm_scroll', $this->plugin_url . 'assets/perfect-scrollbar.min.js', array('jquery'), $this->version);
+            wp_enqueue_script('mm_scroll', $this->plugin_url . 'assets/perfect-scrollbar.min.js', array('jquery'), $this->version);
 
             wp_register_script('selectivejs', $this->plugin_url . 'assets/selectivejs/js/standalone/selectize.js', array('jquery'), $this->version);
             wp_register_style('selectivejs', $this->plugin_url . 'assets/selectivejs/css/selectize.bootstrap3.css', array(), $this->version);
@@ -129,17 +230,19 @@ CREATE TABLE `{$wpdb->base_prefix}mm_conversation` (
             include $this->plugin_path . 'app/components/mm-addon-table.php';
             //load add on
             $addons = $this->setting()->plugins;
-            if (!is_array($addons))
+            if (!is_array($addons)) {
                 $addons = array();
+            }
             foreach ($addons as $addon) {
-                if (file_exists($addon))
+                if (file_exists($addon)) {
                     include_once $addon;
+                }
             }
             //loading add on & components
             new MAjax();
-            $inbox_sc = new Inbox_Shortcode_Controller();
-            $messge_me_sc = new Message_Me_Shortcode_Controller();
-
+            $this->global['inbox_sc'] = new Inbox_Shortcode_Controller();
+            $this->global['messge_me_sc'] = new Message_Me_Shortcode_Controller();
+            //$this->global['admin_bar_notification'] = new Admin_Bar_Notification_Controller();
         }
 
         function load_post_type()
@@ -195,6 +298,7 @@ CREATE TABLE `{$wpdb->base_prefix}mm_conversation` (
             if (!self::$_instance instanceof MMessaging) {
                 self::$_instance = new MMessaging();
             }
+
             return self::$_instance;
         }
 
@@ -210,10 +314,12 @@ CREATE TABLE `{$wpdb->base_prefix}mm_conversation` (
                             $list[] = $dir . '/' . $ff;
                         }
                     }
-                    if (is_dir($dir . '/' . $ff))
+                    if (is_dir($dir . '/' . $ff)) {
                         $list = array_merge($list, $this->listFolderFiles($dir . '/' . $ff));
+                    }
                 }
             }
+
             return $list;
         }
 
@@ -221,9 +327,11 @@ CREATE TABLE `{$wpdb->base_prefix}mm_conversation` (
         {
             if (preg_match("/src='(.*?)'/i", $get_avatar, $matches)) {
                 preg_match("/src='(.*?)'/i", $get_avatar, $matches);
+
                 return $matches[1];
             } else {
                 preg_match("/src=\"(.*?)\"/i", $get_avatar, $matches);
+
                 return $matches[1];
             }
         }
@@ -231,27 +339,38 @@ CREATE TABLE `{$wpdb->base_prefix}mm_conversation` (
         function mb_word_wrap($string, $max_length = 100, $end_substitute = null, $html_linebreaks = false)
         {
 
-            if ($html_linebreaks) $string = preg_replace('/\<br(\s*)?\/?\>/i', "\n", $string);
+            if ($html_linebreaks) {
+                $string = preg_replace('/\<br(\s*)?\/?\>/i', "\n", $string);
+            }
             $string = strip_tags($string); //gets rid of the HTML
 
             if (empty($string) || mb_strlen($string) <= $max_length) {
-                if ($html_linebreaks) $string = nl2br($string);
+                if ($html_linebreaks) {
+                    $string = nl2br($string);
+                }
+
                 return $string;
             }
 
-            if ($end_substitute) $max_length -= mb_strlen($end_substitute, 'UTF-8');
+            if ($end_substitute) {
+                $max_length -= mb_strlen($end_substitute, 'UTF-8');
+            }
 
             $stack_count = 0;
             while ($max_length > 0) {
                 $char = mb_substr($string, --$max_length, 1, 'UTF-8');
-                if (preg_match('#[^\p{L}\p{N}]#iu', $char)) $stack_count++; //only alnum characters
+                if (preg_match('#[^\p{L}\p{N}]#iu', $char)) {
+                    $stack_count++;
+                } //only alnum characters
                 elseif ($stack_count > 0) {
                     $max_length++;
                     break;
                 }
             }
             $string = mb_substr($string, 0, $max_length, 'UTF-8') . $end_substitute;
-            if ($html_linebreaks) $string = nl2br($string);
+            if ($html_linebreaks) {
+                $string = nl2br($string);
+            }
 
             return $string;
         }
@@ -269,10 +388,35 @@ CREATE TABLE `{$wpdb->base_prefix}mm_conversation` (
         {
             if (function_exists('mcrypt_encrypt')) {
                 $text = 'fCryptography::symmetric' . $text;
+
                 return fCryptography::symmetricKeyDecrypt($text, SECURE_AUTH_KEY);
             } else {
                 return $text;
             }
+        }
+
+        function trim_text($input, $length, $ellipses = true, $strip_html = true)
+        {
+            //strip tags, if desired
+            if ($strip_html) {
+                $input = strip_tags($input);
+            }
+
+            //no need to trim, already shorter than trim length
+            if (strlen($input) <= $length) {
+                return $input;
+            }
+
+            //find last space within length
+            $last_space = strrpos(substr($input, 0, $length), ' ');
+            $trimmed_text = substr($input, 0, $last_space);
+
+            //add ellipses (...)
+            if ($ellipses) {
+                $trimmed_text .= '...';
+            }
+
+            return $trimmed_text;
         }
 
         function get_available_addon()
@@ -295,6 +439,7 @@ CREATE TABLE `{$wpdb->base_prefix}mm_conversation` (
                     }
                 }
             }
+
             return $data;
         }
 
@@ -302,6 +447,7 @@ CREATE TABLE `{$wpdb->base_prefix}mm_conversation` (
         {
             $setting = new MM_Setting_Model();
             $setting->load();
+
             return $setting;
         }
 
@@ -311,14 +457,20 @@ CREATE TABLE `{$wpdb->base_prefix}mm_conversation` (
             $x = new SmartDOMDocument();
             $x->loadHTML($html);
             $clean = $x->saveHTMLExact();
+
             return $clean;
         }
-    }
 
-//include dashboard
-    global $wpmudev_notices;
-    $wpmudev_notices[] = array('id' => 68, 'name' => 'Messaging', 'screens' => array('toplevel_page_messaging', 'inbox_page_messaging_new', 'inbox_page_messaging_sent', 'inbox_page_messaging_message-notifications'));
-    include_once(plugin_dir_path(__FILE__) . 'lib/dash-notices/wpmudev-dash-notification.php');
+        function get_logger($type = 'file', $location = '')
+        {
+            if (empty($location)) {
+                $location = $this->domain;
+            }
+            $logger = new IG_Logger($type, $location);
+
+            return $logger;
+        }
+    }
 
     function mmg()
     {
@@ -326,5 +478,7 @@ CREATE TABLE `{$wpdb->base_prefix}mm_conversation` (
     }
 
 //init once
-    mmg();
+    register_activation_hook(__FILE__, array(mmg(), 'install'));
+    include_once mmg()->plugin_path . 'functions.php';
+
 }

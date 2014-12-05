@@ -635,12 +635,12 @@ class fTemplating
 				$part = str_replace('<?=', '<?php echo', $part);
 				$part = preg_replace('#<\?(?!php)#i', '<?php', $part);
 				
-				// This makes sure that __FILE__ and dirname(__FILE__) stay as the
+				// This makes sure that __FILE__ and __DIR__ stay as the
 				// original value since the cached file will be in a different
 				// place with a different filename
 				$part = preg_replace('#(?<=[^a-zA-Z0-9]|^)__FILE__(?=[^a-zA-Z0-9]|$)#iD', "'" . $real_value . "'", $part);
 				if (fCore::checkVersion('5.3')) {
-					$part = preg_replace('#(?<=[^a-zA-Z0-9]|^)dirname(__FILE__)(?=[^a-zA-Z0-9]|$)#iD', "'" . dirname($real_value) . "'", $part);
+					$part = preg_replace('#(?<=[^a-zA-Z0-9]|^)__DIR__(?=[^a-zA-Z0-9]|$)#iD', "'" . dirname($real_value) . "'", $part);
 				}
 				
 				$output .= $part;
