@@ -19,6 +19,7 @@ Fix bug jobs page show no jobs when active Advanced Search
 Add helper filters
 Fix WYISWYG button styling
 Fix bug can contact job poster when no expert profile
+Fix bug can not assign job owner in backend
 
 
 

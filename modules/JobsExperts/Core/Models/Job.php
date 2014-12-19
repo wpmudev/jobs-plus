@@ -24,7 +24,8 @@ class JobsExperts_Core_Models_Job extends JobsExperts_Framework_PostModel
     public $max_budget;
     public $owner;
 
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct();
     }
 
@@ -86,6 +87,7 @@ class JobsExperts_Core_Models_Job extends JobsExperts_Framework_PostModel
                 'post_type' => 'jbp_job',
                 'ping_status' => 'closed',
                 'comment_status' => 'closed',
+                'post_author' => $this->owner
             ),
             'categories' => $this->categories,
             'tags' => $this->skills,
@@ -191,16 +193,16 @@ class JobsExperts_Core_Models_Job extends JobsExperts_Framework_PostModel
         if (is_array($prices)) {
             ?>
             <?php if (empty($return)): ?>
-                <?php echo JobsExperts_Helper::format_currency($currency,$this->min_budget) ?> -
-                <?php echo JobsExperts_Helper::format_currency($currency,$this->max_budget) ?>
+                <?php echo JobsExperts_Helper::format_currency($currency, $this->min_budget) ?> -
+                <?php echo JobsExperts_Helper::format_currency($currency, $this->max_budget) ?>
             <?php else: ?>
-                <?php echo JobsExperts_Helper::format_currency($currency,$this->max_budget) ?>
+                <?php echo JobsExperts_Helper::format_currency($currency, $this->max_budget) ?>
             <?php endif; ?>
         <?php
         } else {
 
             ?>
-            <?php echo JobsExperts_Helper::format_currency($currency,$this->budget) ?>
+            <?php echo JobsExperts_Helper::format_currency($currency, $this->budget) ?>
         <?php
         }
     }
@@ -305,9 +307,10 @@ class JobsExperts_Core_Models_Job extends JobsExperts_Framework_PostModel
         update_post_meta($this->id, 'jbp_job_view_count', $view + 1);
     }
 
-	public static function instance( $class = __CLASS__ ) {
-		return parent::instance( $class );
-	}
+    public static function instance($class = __CLASS__)
+    {
+        return parent::instance($class);
+    }
 
 
 }

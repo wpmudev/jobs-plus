@@ -65,7 +65,8 @@ class JobsExperts_Core_Views_Backend_JobForm extends JobsExperts_Framework_Rende
 
                             <div class="col-sm-8">
                                 <?php wp_dropdown_users(array(
-                                    'name' => $this->buildFormElementName($model, 'owner')
+                                    'name' => $this->buildFormElementName($model, 'owner'),
+                                    'selected' => $model->owner
                                 )) ?>
                             </div>
                             <div class="clearfix"></div>
