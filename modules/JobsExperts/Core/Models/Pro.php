@@ -99,9 +99,17 @@ class JobsExperts_Core_Models_Pro extends JobsExperts_Framework_PostModel
         $this->name = $post->post_title;
         $this->biography = $post->post_content;
         $full_name = get_post_meta($this->id, '_ct_jbp_pro_First_Last', true);
-        //meta
-        $this->first_name = utf8_decode($full_name['first']);
-        $this->last_name = utf8_decode($full_name['last']);
+        if (!is_array($full_name)) {
+            $full_name = maybe_unserialize($full_name);
+        }
+        if (!is_array($full_name)) {
+            $full_name = json_decode($full_name, true);
+        }
+        if(is_array($full_name)) {
+            //meta
+            $this->first_name = utf8_decode($full_name['first']);
+            $this->last_name = utf8_decode($full_name['last']);
+        }
         $company = json_decode(get_post_meta($this->id, '_ct_jbp_pro_Company_URL', true), true);
         $this->company_url = $company['url'];
         $this->company = $company['link'];
