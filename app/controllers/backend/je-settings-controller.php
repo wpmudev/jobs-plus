@@ -12,6 +12,7 @@ class JE_Settings_Controller extends IG_Request
         add_action('je_settings_content_general', array(&$this, 'general'));
         add_action('je_settings_content_job', array(&$this, 'job'));
         add_action('je_settings_content_expert', array(&$this, 'expert'));
+        add_action('je_settings_content_uploader', array(&$this, 'uploader'));
         add_action('wp_loaded', array(&$this, 'save_settings'));
     }
 
@@ -22,6 +23,7 @@ class JE_Settings_Controller extends IG_Request
         }
         $model = new JE_Settings_Model();
         $model->import(je()->post('JE_Settings_Model'));
+        $model->allow_attachment = array_filter($model->allow_attachment);
         $model->save();
         $this->set_flash('je_settings', __('Your settings have been successfully updated.', je()->domain));
         do_action('je_saved_setting');
@@ -54,6 +56,14 @@ class JE_Settings_Controller extends IG_Request
             'model' => $model,
             'job_labels' => get_post_type_object('jbp_job')->labels,
             'pro_labels' => get_post_type_object('jbp_pro')->labels
+        ));
+    }
+
+    function uploader()
+    {
+        $model = new JE_Settings_Model();
+        $this->render('backend/settings/uploader', array(
+            'model' => $model
         ));
     }
 }

@@ -6,19 +6,24 @@ if (!class_exists('IG_Uploader_Controller')) {
     class IG_Uploader_Controller extends IG_Request
     {
         public $is_admin = false;
+        public $can_upload = false;
         /**
          * @var array IG_Uploader_Model
          */
         public $footer_model;
 
-        public function __construct()
+        public function __construct($can_upload)
         {
+            $this->can_upload = $can_upload;
             if (is_user_logged_in()) {
-                add_action('wp_loaded', array(&$this, 'handler_upload'));
-                add_action('wp_ajax_igu_file_delete', array(&$this, 'delete_file'));
-                add_action('wp_ajax_iup_load_upload_form', array(&$this, 'load_upload_form'));
+                if ($can_upload) {
+                    add_action('wp_loaded', array(&$this, 'handler_upload'));
+                    add_action('wp_ajax_igu_file_delete', array(&$this, 'delete_file'));
+                    add_action('wp_ajax_iup_load_upload_form', array(&$this, 'load_upload_form'));
+                } else {
+                    add_filter('igu_single_file_template', array(&$this, 'single_file_template'));
+                }
             }
-            add_filter('igu_single_file_template', array(&$this, 'single_file_template'));
         }
 
         function single_file_template()
@@ -101,34 +106,36 @@ if (!class_exists('IG_Uploader_Controller')) {
 
         public function upload_form($attribute, $target_model, $is_admin = false, $attributes = array())
         {
-            wp_enqueue_style('igu-uploader');
-            wp_enqueue_script('webuipopover');
-            wp_enqueue_style('webuipopover');
-            wp_enqueue_script('jquery-frame-transport');
-            if (is_admin()) {
-                wp_enqueue_media();
-            }
-            $ids = $target_model->$attribute;
-            $models = array();
-            if (!is_array($ids)) {
-                $ids = explode(',', $ids);
-                $ids = array_filter(array_unique($ids));
-            }
-            if (!empty($ids)) {
-                $models = IG_Uploader_Model::model()->all_with_condition(array(
-                    'status' => 'publish',
-                    'post__in' => $ids
-                ));
-            }
+            if ($this->can_upload) {
+                wp_enqueue_style('igu-uploader');
+                wp_enqueue_script('webuipopover');
+                wp_enqueue_style('webuipopover');
+                wp_enqueue_script('jquery-frame-transport');
+                if (is_admin()) {
+                    wp_enqueue_media();
+                }
+                $ids = $target_model->$attribute;
+                $models = array();
+                if (!is_array($ids)) {
+                    $ids = explode(',', $ids);
+                    $ids = array_filter(array_unique($ids));
+                }
+                if (!empty($ids)) {
+                    $models = IG_Uploader_Model::model()->all_with_condition(array(
+                        'status' => 'publish',
+                        'post__in' => $ids
+                    ));
+                }
 
-            //$models[]=IG_Uploader_Model::model()->find(8);
+                //$models[]=IG_Uploader_Model::model()->find(8);
 
-            $mode = IG_Uploader_Model::MODE_EXTEND;
+                $mode = IG_Uploader_Model::MODE_EXTEND;
 
-            if ($mode == IG_Uploader_Model::MODE_LITE) {
-                $this->_lite_form();
-            } else {
-                $this->_extend_form($models, $attribute, $target_model, $is_admin, $attributes);
+                if ($mode == IG_Uploader_Model::MODE_LITE) {
+                    $this->_lite_form();
+                } else {
+                    $this->_extend_form($models, $attribute, $target_model, $is_admin, $attributes);
+                }
             }
         }
 

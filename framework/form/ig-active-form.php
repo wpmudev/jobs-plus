@@ -108,8 +108,9 @@ if (!class_exists('IG_Active_Form')) {
 
         public function checkbox($field, $args = array())
         {
-            $args['name'] = $this->build_name($field);
-            $args['checked'] = $args['attributes']['value'] == $this->model->$field;
+            $args['name'] = (isset($args['multiple']) && $args['multiple'] == true) ? $this->build_name($field) . '[]' : $this->build_name($field);
+
+            $args['checked'] = !isset($args['checked']) ? $args['attributes']['value'] == $this->model->$field : $args['checked'];
             $args['value'] = $args['attributes']['value'];
             $args['attributes']['id'] = isset($args['attributes']['id']) ? $args['attributes']['id'] : $this->build_id($field);
 

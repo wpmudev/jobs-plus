@@ -65,6 +65,8 @@ class JE_Settings_Model extends IG_Option_Model
     public $curr_decimal = 1;
     public $curr_symbol_position = 1;
 
+    public $allow_attachment = array();
+
     protected $table = 'jobs_experts_settings';
 
     public function __construct()

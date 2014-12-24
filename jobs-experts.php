@@ -130,8 +130,8 @@ class Jobs_Experts
                     break;
                 case 'job-form':
                     wp_enqueue_style('jobs-form-shortcode');
-                    wp_enqueue_script('jbp_select2');
-                    wp_enqueue_style('jbp_select2');
+                    wp_enqueue_script('jobs-select2');
+                    wp_enqueue_style('jobs-select2');
                     wp_enqueue_script('jquery-ui-datepicker');
                     break;
                 case 'contact':
@@ -299,6 +299,7 @@ class Jobs_Experts
         $this->pages->init();
         //uploader
         include_once($this->plugin_path . 'app/components/ig-uploader.php');
+        ig_uploader()->init_uploader($this->can_upload());
         //social-walll
         include_once($this->plugin_path . 'app/components/ig-social-wall.php');
         include_once($this->plugin_path . 'app/components/ig-skill.php');
@@ -336,6 +337,26 @@ class Jobs_Experts
             }
         }
 
+    }
+
+    function can_upload()
+    {
+        if (!is_user_logged_in()) {
+            return false;
+        }
+
+        $allowed = $this->settings()->allow_attachment;
+        if (!is_array($allowed)) {
+            $allowed = array();
+        }
+        $allowed = array_filter($allowed);
+        $user = new WP_User(get_current_user_id());
+        foreach ($user->roles as $role) {
+            if (in_array($role, $allowed)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     function autoload($class)

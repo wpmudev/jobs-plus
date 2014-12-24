@@ -28,6 +28,11 @@
                         <i class="fa fa-info"></i>
                         <?php _e('Shortcodes', je()->domain) ?>
                     </a></li>
+                <li <?php echo je()->get('tab') == 'uploader' ? 'class="active"' : null  ?>>
+                    <a href="<?php echo admin_url('edit.php?post_type=jbp_job&page=jobs-plus-menu&tab=uploader') ?>">
+                        <i class="glyphicon glyphicon-paperclip"></i>
+                        <?php _e(' Attachments', je()->domain) ?>
+                    </a></li>
                 <?php do_action('jbp_setting_menu') ?>
             </ul>
             <div class="tab-content col-md-9 no-padding">
