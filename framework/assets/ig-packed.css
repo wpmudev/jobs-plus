@@ -16450,3 +16450,9 @@ Copyright (c) 2014 Daniel Eden
 .ig-error-field{
     font-weight: bold;
 }
+.no-margin{
+    margin: 0;
+}
+.no-padding{
+    padding:0;
+}

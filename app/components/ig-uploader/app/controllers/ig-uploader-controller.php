@@ -20,10 +20,9 @@ if (!class_exists('IG_Uploader_Controller')) {
                     add_action('wp_loaded', array(&$this, 'handler_upload'));
                     add_action('wp_ajax_igu_file_delete', array(&$this, 'delete_file'));
                     add_action('wp_ajax_iup_load_upload_form', array(&$this, 'load_upload_form'));
-                } else {
-                    add_filter('igu_single_file_template', array(&$this, 'single_file_template'));
                 }
             }
+            add_filter('igu_single_file_template', array(&$this, 'single_file_template'));
         }
 
         function single_file_template()
