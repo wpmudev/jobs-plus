@@ -1,0 +1,63 @@
+.social-add-form {
+    /* min-width: 400px;*/
+}
+
+.social-add-form select, .social-add-form input {
+    display: block;
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+.social-add-form .social-preview {
+    text-align: center;
+}
+
+.social-add-form .social-preview img {
+    width: 120px;
+    height: auto;
+    box-shadow: none;
+}
+
+.social-add-form .social-preview h4, .jbp-socials li h4 {
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.social-add-form .social-preview p {
+    font-weight: 600;
+}
+
+.social-add-form button:first-child {
+    margin-right: 5px;
+}
+
+.jbp-socials {
+    list-style-type: none !important;
+    overflow: hidden;
+    padding-left: 0;
+    margin-left: 0;
+}
+
+.hn-container .jbp-socials li {
+    display: inline-block;
+    margin: 0 10px 10px 10px;
+    float: left;
+}
+
+.jbp-socials li .jbp-social {
+    display: block;
+    width: 50px;
+    height: 50px;
+}
+
+.jbp-socials li img {
+    width: 50px;
+    text-align: center;
+    height: auto;
+    box-shadow: none;
+}
+
+.webui-popover-inner label{
+    font-weight: normal;
+    font-size: 10pt;
+}
