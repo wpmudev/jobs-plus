@@ -1,0 +1,133 @@
+.jbp-job-single .jobs-meta .col-md-3 {
+    padding: 5px 0;
+    text-align: center;
+    border-right: solid 1px #ddd;
+    position: relative;
+    height: 50px;
+}
+
+.jbp-job-single .jobs-meta .col-md-3 h5 {
+    font-weight: normal;
+    margin:0 0 5px 0;
+    font-size: 13px;
+    line-height: 13px;
+}
+
+.jbp-job-single .jobs-meta .col-md-3 small {
+    font-weight: bold;
+}
+
+@media (min-width: 991px) {
+    .jbp-job-single .jobs-meta .jobs-meta-row a {
+        position: absolute;
+        top: 50%;
+        margin-top: -15px;
+        right: 5px
+    }
+}
+
+.jbp-job-single .job-content {
+    margin-top: 20px;
+}
+
+.jbp-job-single .job-meta .panel-body, .jbp-job-single .job-contact .panel-body {
+    padding: 0;
+}
+
+.jbp-job-single .job-meta .panel-body ul {
+    padding: 0;
+    margin: 0;
+    list-style-type: none !important;
+    overflow: hidden;
+}
+
+.jbp-job-single .job-meta .panel-body ul li {
+    float: left;
+    margin: 0;
+    text-align: center;
+    padding: 5px 0;
+    width: 23%;
+    height: 48px;
+    border-right: solid 1px #ddd;
+}
+
+.jbp-job-single .job-meta .panel-body ul li:last-child {
+    border: none;
+    width: 30%;
+    float: right;
+    text-align: right;
+    position: relative;
+    vertical-align: middle;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    .jbp-job-single .job-meta .panel-body ul li {
+        width: 100%;
+        float: none;
+        text-align: center;
+    }
+}
+
+@media (max-width: 767px) {
+    .jbp-job-single .job-meta .panel-body ul li, .jbp-job-single .job-meta .panel-body ul li:last-child {
+        width: 100%;
+        float: none;
+        text-align: center;
+    }
+}
+
+.jbp-job-single .job-meta .panel-body ul li a {
+    right: 10px;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.jbp-job-single .job-meta .panel-body ul li span {
+    font-size: 12px;
+    display: block;
+}
+
+.jbp-job-single .job-meta .panel-body ul li p {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.job_skills {
+    padding: 15px 0;
+    margin: 15px 0;
+    border-top: 1px solid #dcdcdc;
+    border-bottom: 1px solid #dcdcdc;
+}
+
+.job_skills h4 {
+    padding: 0 !important;
+    margin: 0 !important;
+    font-weight: 600;
+}
+
+.job_skills ul {
+    list-style-type: none !important;
+    margin: 10px 0 0 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.job_skills ul li {
+    padding: 0;
+    margin: 0 10px 10px 0;
+    float: left;
+}
+
+.job_skills ul li a {
+    text-decoration: none !important;
+    background-color: #0c0;
+    color: white;
+    text-align: center;
+    font-size: 14px;
+    border: 1px solid #0c0;
+    height: 36px;
+    padding: 0 15px;
+    display: inline-block;
+    line-height: 36px;
+}

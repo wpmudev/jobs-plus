@@ -1,0 +1,101 @@
+.jobs-expert-form {
+
+}
+
+.jobs-expert-form .expert-avatar .panel-body {
+    padding: 5px 0 0 0;
+    text-align: center;
+}
+
+.jobs-expert-form .expert-avatar .panel-footer {
+    text-align: center;
+}
+
+.jobs-expert-form .tag-line .panel-body {
+    padding: 10px;
+}
+
+.jobs-expert-form .tag-line .panel-heading {
+    margin-bottom: 10px;
+    border: none;
+}
+
+.jobs-expert-form .can-edit {
+    display: inline;
+    margin-left: 5px;
+    border-bottom: dashed #ddd 1px;
+    cursor: pointer;
+    font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+}
+
+.jobs-expert-form .expert-avatar {
+    background: #f1f1f1;
+}
+
+.jobs-expert-form .expert-avatar .panel {
+    background: #f1f1f1;
+}
+
+.jobs-expert-form .expert-avatar .panel-body {
+    text-align: center;
+    height: 140px;
+    width: 100%;
+    vertical-align: middle;
+    overflow: hidden;
+}
+
+.jobs-expert-form .expert-avatar .panel-footer {
+    background: white;
+}
+
+.jobs-expert-form .expert-avatar img {
+    width: 100%;
+    max-width: 125px;
+    max-height: 130px;
+    height: auto;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    display: block;
+    border: solid 5px white;
+    margin: 0 auto;
+}
+
+.jobs-expert-form .page-header {
+    text-align: left;
+    padding-left: 0;
+}
+
+.jobs-expert-form .page-header h2 {
+    font-size: 24px;
+}
+
+.jobs-expert-form .page-header h4 {
+    font-size: 15px;
+}
+
+.jobs-expert-form label {
+    font-size: 13px;
+    font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 600;
+}
+
+.jobs-expert-form .social-container .panel {
+    box-shadow: none;
+}
+
+.jobs-expert-form .has-error {
+    color: #a94442;
+}
+
+.can-edit-form label {
+    font-weight: normal !important;
+    font-size: 10pt;
+    padding-right: 0;
+}
+
+.jobs-expert-form .social-skill .panel {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}

@@ -1,0 +1,25 @@
+.jobs-form {
+    font-family: "Open Sans", sans-serif;
+    font-size: 13px;
+}
+
+.jobs-form label {
+    font-weight: 600;
+    font-size: 13px;
+}
+
+.jobs-form input, .jobs-form textarea, .jobs-form select {
+    width: 100%;
+}
+
+.jobs-form hr {
+    background: none;
+    border-top: solid 1px #ddd;
+}
+
+.jobs-form .can-edit {
+    display: inline-block;
+    margin-left: 5px;
+    border-bottom: dashed #ddd 1px;
+    cursor: pointer;
+}

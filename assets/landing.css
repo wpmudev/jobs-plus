@@ -1,0 +1,19 @@
+.jbp-landing-page {
+
+}
+
+.jbp-landing-page .jbp_job_except {
+    height: 150px;
+}
+
+.jbp-pro-list .expert-avatar.on-landing img {
+    width: 100%;
+    height: auto;
+}
+
+@media (min-width: 992px) {
+    .jbp-landing-page .jbp-pro-list .col-md-6 .expert-avatar.on-landing img {
+        width: auto;
+        height: 100%;
+    }
+}

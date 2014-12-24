@@ -1,0 +1,396 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800);
+
+.hn-container ol {
+    margin-left: 0;
+}
+
+.hn-container ol li {
+    margin-left: 0;
+}
+
+.hn-container {
+
+}
+
+.hn-container .no-margin {
+    margin: 0;
+}
+
+.hn-container .no-padding {
+    padding: 0;
+}
+
+/* override */
+.hn-container .breadcrumb a {
+    text-decoration: none;
+}
+
+.hn-container .breadcrumb a:hover {
+    color: #333;
+}
+
+.hn-container .panel {
+    border: none;
+    -webkit-box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.09);
+    box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.09);
+    box-sizing: border-box;
+    z-index: 2;
+    position: relative;
+}
+
+.hn-container .panel .panel-heading {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+    background: transparent;
+}
+
+.hn-container .panel-success .panel-heading {
+    color: white;
+    font-weight: 600;
+    background: #82b964;
+
+}
+
+.hn-container .panel .panel-body.no-padding {
+    padding: 0;
+}
+
+.hn-container .page-header {
+    margin-top: 0;
+    padding: 0 !important;
+
+}
+
+.hn-container .nav-tabs {
+    margin: 0 !important;
+}
+
+.hn-container .tab-pane{
+    margin: 0!important;
+}
+.hn-container .tab-content{
+    margin-bottom: 5px;
+
+}
+.hn-container .nav-tabs li {
+    margin-left: 0;
+}
+
+.hn-container .nav-tabs li a {
+    text-decoration: none;
+    color: #222;
+    font-size: 13px;
+    font-family: "Open Sans", Helvetia, Arial, sans-serif;
+}
+
+.hn-container .nav-tabs li.active {
+    background-color: white;
+}
+
+.hn-container .nav-tabs li.active:after {
+    border-bottom: solid 2px transparent;
+    position: absolute;
+    content: "";
+}
+
+
+/*colors*/
+.hn-pink {
+    background: #f87aa0;
+}
+
+.hn-blue {
+    background: #5bc0de;
+}
+
+.hn-dark-blue {
+    background: #3b8dbd;
+}
+
+.hn-green {
+    background: #82b964;
+}
+
+.hn-green-alt {
+    background: #58b868;
+}
+
+.hn-yellow {
+    background: #f4cc13;
+}
+
+.hn-grey {
+    background: #888888;
+}
+
+.hn-grey-alt {
+    background: #595f66;
+}
+
+.hn-red {
+    background: #d24d33;
+}
+
+.hn-dark-red {
+    background: #993838;
+}
+
+.hn-marine {
+    background: #00a9ae;
+}
+
+.hn-green-alt2 {
+    background: #ccd600;
+}
+
+.hn-orange {
+    background: #f0ad4e;
+}
+
+.hn-black {
+    background: #000000;
+}
+
+.hn-purple {
+    background: #a7609a;
+}
+
+.hn-container .hn-widget {
+    width: 100%;
+    height: 150px;
+    color: white;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    overflow: hidden;
+    font-family: "Open Sans", sans-serif;
+}
+
+.hn-container .hn-widget .hn-widget-body {
+    text-align: center;
+    height: 70%;
+    vertical-align: middle;
+}
+
+.hn-container .hn-widget .hn-widget-footer {
+    border-top: solid 3px #f0f0ed;
+    height: 30%
+}
+
+.hn-container .hn-widget .hn-widget-footer .hn-widget-cell {
+    height: 100%;
+    min-height: 40px;
+    text-align: center;
+    font-size: 75%;
+    position: relative;
+    box-sizing: border-box;
+    padding: 0 2px;
+    font-family: "Open Sans", sans-serif;
+}
+
+.hn-container .hn-widget .hn-widget-footer .hn-widget-cell.border {
+    border-right: solid 3px #f0f0ed;
+}
+
+.hn-container .hn-widget .hn-widget-footer .hn-widget-cell:before {
+    content: '';
+    position: absolute;
+    border-style: solid;
+    border-width: 0 9px 9px;
+    border-color: #f0f0ed transparent;
+    display: block;
+    width: 0;
+    z-index: 0;
+    margin-left: -9px;
+    top: -9px;
+    left: 50%;
+}
+
+.hn-container .hn-widget .hn-widget-footer .hn-widget-cell p {
+    padding: 0;
+    margin: 0;
+    line-height: 40px;
+}
+
+.hn-container .hn-widget .hn-widget-footer .hn-widget-cell span {
+    position: relative;
+    top: 5px;
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 1px;
+}
+
+.hn-container .hn-widget .hn-widget-footer .hn-widget-cell {
+
+}
+
+.hn-container .hn-widget .hn-widget-footer .hn-widget-cell small {
+    display: block;
+    font-size: 11px;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    bottom: 0;
+    text-align: center;
+}
+
+.hn-container .hn-widget .hn-widget-body i {
+    color: white;
+}
+
+.hn-border {
+    border: solid 1px #ddd;
+}
+
+.hn-border.hn-border-round {
+    border-radius: 4px;
+}
+
+.hn-container .popover-title {
+    font-family: "Open Sans", sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    color: #555;
+}
+
+.hn-editable {
+    padding: 0 10px;
+    box-sizing: border-box;
+    font-family: "Open Sans", sans-serif;
+    font-size: 12px;
+    min-width: 310px;
+}
+
+.hn-editable label {
+    display: block;
+    font-weight: bold;
+    color: #555;
+}
+
+.hn-editable input, .hn-editable textarea, .hn-editable select {
+    width: 100%;
+    display: block;
+    margin-bottom: 5px;
+    color: #000000;
+}
+
+.hn-editable input[type="text"] {
+    padding: 5px 10px;
+    box-sizing: border-box;
+    border: solid 1px #c0c2c7;
+    border-radius: 2px;
+    color: #000000;
+}
+
+.hn-editable .actions {
+    display: block;
+    margin-top: 10px;
+    padding-top: 5px;
+    border-top: solid 1px #ddd;
+}
+
+.hn-container hr {
+    background: none;
+    border-top: solid 1px #ddd;
+}
+
+/*custom */
+
+.jbp-pagination {
+    clear: both;
+    font-size: 90%;
+    line-height: 0.9em;
+    padding: 0;
+    position: relative;
+    z-index: 99;
+    float: right;
+    font-size: 12px;
+}
+
+.jbp-pagination .current {
+    background: #3ebae8;
+    color: #fff;
+    padding: 0.3em 0.5em 0.3em;
+}
+
+.jbp-pagination a:hover {
+    background: #aaa;
+    color: #fff;
+}
+
+.jbp-pagination span, .jbp-pagination a {
+    background: transparent;
+    color: #444;
+    display: block;
+    float: left;
+    margin: 0.1em 0.1em 0.1em 0;
+    padding: 0.3em 0.5em 0.3em;
+    text-decoration: none;
+    width: auto;
+}
+
+.jbp_login_form p {
+    margin: 20px 0 0;
+}
+
+.jbp_login_form p:first-child {
+    margin-top: 0;
+}
+
+.jbp_login_form input[type=text], .jbp_login_form input[type=password] {
+    width: 98%;
+    padding: 6px 0 6px 2% !important;
+}
+
+.jbp_login_form p.login-remember {
+    float: left;
+    line-height: 31px;
+}
+
+.jbp_login_form p.login-remember label {
+    font-size: 12px;
+    color: #777;
+    cursor: pointer;
+}
+
+.jbp_login_form p.login-remember input {
+    position: relative;
+    bottom: 1px;
+    margin-right: 4px;
+    vertical-align: middle;
+}
+
+.jbp_login_form p.login-submit {
+    text-align: right;
+}
+
+.jbp_login_form p.login-submit input[type="submit"] {
+    padding: 6px;
+}
+
+.mm_login_form, .mm_sign_up {
+    padding: 0 10px;
+}
+
+.mm_login_form .page-header {
+    text-align: center;
+}
+
+.mm_login_form label {
+    font-weight: normal;
+}
+
+.mm_sign_up {
+    border-left: solid 1px #ddd;
+    text-align: center;
+    min-height: 300px;
+}
+
+.mm_signup_btn {
+    display: block;
+    margin: 30px auto;
+    text-align: center;
+}
+.hn-container .page-header{
+    background: none;
+}
