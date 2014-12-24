@@ -76,6 +76,8 @@ class Jobs_Experts
 
     private static $_instance;
 
+    private $dev = false;
+
     /**
      * @vars
      * Short hand for pages factory
@@ -172,18 +174,19 @@ class Jobs_Experts
             wp_register_style('jbp_select2', $this->plugin_url . 'assets/select2/select2.css', array('ig-packed'), $this->version);
             wp_register_script('jbp_select2', $this->plugin_url . 'assets/select2/select2.min.js', array('jquery'), $this->version);
         } else {
+            $min = $this->dev == true ? null : '.min';
             //style
-            wp_register_style('jobs-main', $this->plugin_url . 'assets/main.css', array('ig-packed'), $this->version);
-            wp_register_style('jobs-buttons-shortcode', $this->plugin_url . 'assets/buttons.css', array('jobs-main'), $this->version);
-            wp_register_style('jobs-single-shortcode', $this->plugin_url . 'assets/jobs-single.css', array('jobs-main'), $this->version);
-            wp_register_style('jobs-form-shortcode', $this->plugin_url . 'assets/jobs-form.css', array('jobs-main'), $this->version);
-            wp_register_style('expert-form-shortcode', $this->plugin_url . 'assets/expert-form.css', array('jobs-main'), $this->version);
-            wp_register_style('expert-single-shortcode', $this->plugin_url . 'assets/expert-single.css', array('jobs-main'), $this->version);
-            wp_register_style('jobs-list-shortcode', $this->plugin_url . 'assets/jobs-list.css', array('jobs-main'), $this->version);
-            wp_register_style('expert-list-shortcode', $this->plugin_url . 'assets/expert-list.css', array('jobs-main'), $this->version);
-            wp_register_style('jobs-contact', $this->plugin_url . 'assets/contact.css', array('jobs-main'), $this->version);
-            wp_register_style('jobs-landing-shortcode', $this->plugin_url . 'assets/landing.css', array('jobs-main'), $this->version);
-            wp_register_style('job-plus-widgets', $this->plugin_url . 'assets/widget.css', array('jobs-main'), $this->version);
+            wp_register_style('jobs-main', $this->plugin_url . 'assets/main' . $min . '.css', array('ig-packed'), $this->version);
+            wp_register_style('jobs-buttons-shortcode', $this->plugin_url . 'assets/buttons' . $min . '.css', array('jobs-main'), $this->version);
+            wp_register_style('jobs-single-shortcode', $this->plugin_url . 'assets/jobs-single' . $min . '.css', array('jobs-main'), $this->version);
+            wp_register_style('jobs-form-shortcode', $this->plugin_url . 'assets/jobs-form' . $min . '.css', array('jobs-main'), $this->version);
+            wp_register_style('expert-form-shortcode', $this->plugin_url . 'assets/expert-form' . $min . '.css', array('jobs-main'), $this->version);
+            wp_register_style('expert-single-shortcode', $this->plugin_url . 'assets/expert-single' . $min . '.css', array('jobs-main'), $this->version);
+            wp_register_style('jobs-list-shortcode', $this->plugin_url . 'assets/jobs-list' . $min . '.css', array('jobs-main'), $this->version);
+            wp_register_style('expert-list-shortcode', $this->plugin_url . 'assets/expert-list' . $min . '.css', array('jobs-main'), $this->version);
+            wp_register_style('jobs-contact', $this->plugin_url . 'assets/contact' . $min . '.css', array('jobs-main'), $this->version);
+            wp_register_style('jobs-landing-shortcode', $this->plugin_url . 'assets/landing' . $min . '.css', array('jobs-main'), $this->version);
+            wp_register_style('job-plus-widgets', $this->plugin_url . 'assets/widget' . $min . '.css', array('jobs-main'), $this->version);
             wp_register_script('webuipopover', $this->plugin_url . 'assets/popover/webuipopover.js', array('jquery'));
             wp_register_style('webuipopover', $this->plugin_url . 'assets/popover/webuipopover.css');
 
