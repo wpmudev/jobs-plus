@@ -211,6 +211,7 @@ $form->open(array("attributes" => array("class" => "form-horizontal"))); ?>
                     $('.plugin-status').html(data.noty);
                     $('.plugin-status').removeClass('hide');
                     that.text(data.text);
+                    $('#jbp_setting_nav').load("<?php echo "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]" ?> #jbp_setting_nav li");
                 }
             })
         });

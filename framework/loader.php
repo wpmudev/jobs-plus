@@ -40,6 +40,7 @@ if (!function_exists('ig_loader')) {
                 wp_register_script('ig-packed', $url . 'assets/main.js');
             } else {
                 wp_register_style('ig-packed', $url . 'assets/ig-packed.min.css');
+                wp_register_script('ig-packed', $url . 'assets/main.js');
             }
         }
     }

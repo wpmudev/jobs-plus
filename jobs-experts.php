@@ -192,7 +192,7 @@ class Jobs_Experts
             wp_register_style('webuipopover', $this->plugin_url . 'assets/popover/webuipopover.css');
 
             //js
-            wp_register_script('jobs-main', $this->plugin_url . 'assets/main.js', array('jquery'), $this->version);
+            wp_register_script('jobs-main', $this->plugin_url . 'assets/main.js', array('jquery','ig-packed'), $this->version);
             wp_register_script('jobs-validation', $this->plugin_url . 'assets/jquery-validation-engine/js/jquery.validationEngine.js', array('jquery'), $this->version, true);
             wp_register_script('jobs-validation-en', $this->plugin_url . 'assets/jquery-validation-engine/js/languages/jquery.validationEngine-en.js', array('jquery'), $this->version, true);
             wp_register_style('jobs-validation', $this->plugin_url . 'assets/jquery-validation-engine/css/validationEngine.jquery.css', array(), $this->version);

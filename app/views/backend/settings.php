@@ -35,7 +35,7 @@
                     </a></li>
                 <?php do_action('jbp_setting_menu') ?>
             </ul>
-            <div class="tab-content col-md-9 no-padding">
+            <div class="tab-content col-md-9">
                 <div class="jbp-setting-content tab-pane active">
                     <?php do_action('je_settings_content_'.je()->get('tab','general')) ?>
                 </div>

@@ -103,9 +103,8 @@ class JobsExperts_Helper
         }
 
         $model = JE_Expert_Model::model()->find_one_by_attributes(array(
-            'author' => $user_id
+            'user_id' => $user_id
         ));
-
-        return is_object($model);
+        return apply_filters('je_pro_can_contact', is_object($model));
     }
 }
