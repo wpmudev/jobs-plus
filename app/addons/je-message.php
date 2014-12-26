@@ -25,8 +25,10 @@ class JE_Message
         //$this->_add_filter('jbp_contact_send_email', 'save_message', 10, 5);
 
         //shortcode
-        ///$this->_add_filter('the_content', 'append_inbox_button');
-        //$this->_add_shortcode('jbp-message-inbox-btn', 'inbox_btn');
+        add_filter('the_content', array(&$this, 'append_inbox_button'));
+        add_shortcode('jbp-message-inbox-btn', array(&$this, 'inbox_btn'));
+        add_filter('je_buttons_on_single_page', array(&$this, 'append_inbox_button'));
+        add_action('mm_before_layout', array(&$this, 'je_buttons_for_mm'));
         //$this->_add_shortcode('jbp-message-inbox', 'message_inbox');
 
         //scripts
@@ -38,6 +40,49 @@ class JE_Message
 
         //$this->_add_filter('mm_create_inbox_page', 'create_page');
         //$this->_add_filter('jbp_contact_validate_rules', 'contact_validate_rules');
+    }
+
+    function je_buttons_for_mm()
+    {
+        $shortcodes = apply_filters('je_buttons_on_single_page', '[jbp-job-browse-btn][jbp-expert-browse-btn][jbp-job-post-btn][jbp-expert-post-btn][jbp-my-job-btn][jbp-expert-profile-btn]');
+        echo '<p style="text-align: center">' . do_shortcode($shortcodes) . '</p>';
+    }
+
+    function inbox_btn($atts)
+    {
+        wp_enqueue_style('jbp_message');
+        $setting = new MM_Setting_Model();
+        $setting->load();
+        $link = !empty($setting->inbox_page) ? get_permalink($setting->inbox_page) : null;
+        extract(shortcode_atts(array(
+            'text' => __('Inbox', je()->domain),
+            'view' => 'both', //loggedin, loggedout, both
+            'class' => je()->settings()->theme,
+            'template' => '',
+            'url' => $link
+        ), $atts));
+        $ob = sprintf('<a class="ig-container jbp-shortcode-button jbp-message-inbox %s" href="%s">
+			<i style="display: block" class="fa fa-inbox fa-2x"></i>%s
+		</a>', esc_attr($class), $url, esc_html($text));
+
+        return $ob;
+    }
+
+    function append_inbox_button($content)
+    {
+        $pattern = get_shortcode_regex();
+        if (preg_match_all('/' . $pattern . '/s', $content, $matches)
+            && array_key_exists(2, $matches)
+            && in_array('jbp-expert-profile-btn', $matches[2])
+        ) {
+            //getting the raw shortcode
+            $key = array_search('jbp-expert-profile-btn', $matches[2]);
+            $sc = $matches[0][$key];
+            $new_content = str_replace($sc, $sc . '[jbp-message-inbox-btn]', $content);
+            return $new_content;
+        }
+
+        return $content;
     }
 
     function contact_job_poster_btn($content, JE_Job_Model $model)
@@ -54,4 +99,5 @@ class JE_Message
         return $content;
     }
 }
+
 new JE_Message();

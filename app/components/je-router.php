@@ -27,6 +27,7 @@ class JE_Router
 
     function je_single_title($title)
     {
+        $shortcodes = apply_filters('je_buttons_on_single_page', '[jbp-job-browse-btn][jbp-expert-browse-btn][jbp-job-post-btn][jbp-expert-post-btn][jbp-my-job-btn][jbp-expert-profile-btn]');
         if (is_tax('jbp_category')) {
             $term = get_term_by('slug', get_query_var('jbp_category'), 'jbp_category');
 
@@ -34,12 +35,12 @@ class JE_Router
         } elseif (is_singular('jbp_job') && in_the_loop() && !JE_Page_Factory::is_core_page(get_the_ID())) {
             global $wp_query;
             if ($wp_query->is_main_query()) {
-                $title = do_shortcode('<p style="text-align: center">[jbp-job-browse-btn][jbp-expert-browse-btn][jbp-job-post-btn][jbp-expert-post-btn][jbp-my-job-btn][jbp-expert-profile-btn]</p>') . $title;
+                $title = do_shortcode('<p style="text-align: center">' . $shortcodes . '</p>') . $title;
             }
-        }elseif (is_singular('jbp_pro') && in_the_loop() && !JE_Page_Factory::is_core_page(get_the_ID())) {
+        } elseif (is_singular('jbp_pro') && in_the_loop() && !JE_Page_Factory::is_core_page(get_the_ID())) {
             global $wp_query;
             if ($wp_query->is_main_query()) {
-                $title = do_shortcode('<p style="text-align: center">[jbp-job-browse-btn][jbp-expert-browse-btn][jbp-job-post-btn][jbp-expert-post-btn][jbp-my-job-btn][jbp-expert-profile-btn]</p>') . $title;
+                $title = do_shortcode('<p style="text-align: center">' . $shortcodes . '</p>') . $title;
             }
         }
         return $title;
