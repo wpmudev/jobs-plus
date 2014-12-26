@@ -1,10 +1,10 @@
 <div class="ig-container">
     <div class="hn-container">
+        <?php $form = new IG_Active_Form($model);
+        $form->open(array("attributes" => array("class" => "form-horizontal")));
+        ?>
         <div class="jobs-expert-form">
             <div class="row">
-                <?php $form = new IG_Active_Form($model);
-                $form->open(array("attributes" => array("class" => "form-horizontal")));
-                ?>
                 <div class="col-md-4">
                     <div class="row">
                         <div class="col-md-12">
@@ -82,6 +82,7 @@
                         <div class="col-md-12">
                             <!-- Nav tabs -->
                             <br/>
+
                             <div id="expert-content-tabs">
                                 <ul class="nav nav-tabs" role="tablist">
                                     <li>
@@ -161,9 +162,9 @@
             $form->hidden('contact_email');
             $form->hidden('social', array('attributes' => array('id' => 'social-input')));
             $form->hidden('skills', array('attributes' => array('id' => 'skill-input')));
-            $form->hidden('portfolios');
-            $form->close() ?>
+            $form->hidden('portfolios'); ?>
         </div>
+        <?php $form->close() ?>
         <?php
         $this->render_partial('expert-form/_name_popup', array(
             'model' => $model

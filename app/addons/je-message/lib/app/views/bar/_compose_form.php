@@ -65,7 +65,7 @@
                             <?php echo $form->hidden('attachment') ?>
                             <input type="hidden" name="action" value="mm_send_message">
                             <?php if (mmg()->can_upload() == true) {
-                                ig_uploader()->show_upload_control($model, 'attachment',false, array(
+                                ig_uploader()->show_upload_control($model, 'attachment',is_admin(), array(
                                     'title' => __("Attach media or other files.", mmg()->domain)
                                 ));
                             } ?>
