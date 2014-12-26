@@ -3,7 +3,7 @@
     </div>
     <div class="skill-add-form">
         <div class="row">
-            <div class="col-md-6" style="box-sizing: border-box">
+            <div class="col-md-6 hidden-xs hidden-sm" style="box-sizing: border-box">
                 <div class="skill-preview">
                     <div class="page-header">
                         <h5>Preview</h5>

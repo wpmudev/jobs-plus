@@ -8,7 +8,7 @@
     text-align:      center;
 }
 
-.jbp-shortcode-button.dark, jbp-shortcode-button.dark:visited {
+.jbp-shortcode-button.dark, .jbp-shortcode-button.dark:visited {
     color: #000000 !important;
 }
 
@@ -16,7 +16,7 @@
     color: #5e5e5e !important;
 }
 
-.jbp-shortcode-button.bright, jbp-shortcode-button.bright:visited {
+.jbp-shortcode-button.bright, .jbp-shortcode-button.bright:visited {
     color: white !important;
 }
 
@@ -26,7 +26,7 @@
     width:      32px;
     height:     32px;
     margin:     0 auto;
-    background: url("../modules/JobsExperts/assets/image/icons/Post_a_Job/Post_a_Job_Hover.svg") no-repeat;
+    background: url("image/icons/Post_a_Job/Post_a_Job_Hover.svg") no-repeat;
 }
 
 .jbp-add-job.dark:before {
@@ -35,7 +35,7 @@
     width:      32px;
     height:     32px;
     margin:     0 auto;
-    background: url("../modules/JobsExperts/assets/image/icons/Post_a_Job/Post_a_Job_Dark.svg") no-repeat;
+    background: url("image/icons/Post_a_Job/Post_a_Job_Dark.svg") no-repeat;
 }
 
 .jbp-add-job.bright:before {
@@ -44,7 +44,7 @@
     width:      32px;
     height:     32px;
     margin:     0 auto;
-    background: url("../modules/JobsExperts/assets/image/icons/Post_a_Job/Post_a_Job_Bright.svg") no-repeat;
+    background: url("image/icons/Post_a_Job/Post_a_Job_Bright.svg") no-repeat;
 }
 
 .jbp-browse-job.dark:hover:before, .jbp-browse-job.bright:hover:before {
@@ -53,7 +53,7 @@
     width:      32px;
     height:     32px;
     margin:     0 auto;
-    background: url("../modules/JobsExperts/assets/image/icons/Browse_Jobs/Browse_Jobs_Hover.svg") no-repeat;
+    background: url("image/icons/Browse_Jobs/Browse_Jobs_Hover.svg") no-repeat;
 }
 
 .jbp-browse-job.dark:before {
@@ -62,7 +62,7 @@
     width:      32px;
     height:     32px;
     margin:     0 auto;
-    background: url("../modules/JobsExperts/assets/image/icons/Browse_Jobs/Browse_Jobs_Dark.svg") no-repeat;
+    background: url("image/icons/Browse_Jobs/Browse_Jobs_Dark.svg") no-repeat;
 }
 
 .jbp-browse-job.bright:before {
@@ -71,7 +71,7 @@
     width:      32px;
     height:     32px;
     margin:     0 auto;
-    background: url("../modules/JobsExperts/assets/image/icons/Browse_Jobs/Browse_Jobs_Bright.svg") no-repeat;
+    background: url("image/icons/Browse_Jobs/Browse_Jobs_Bright.svg") no-repeat;
 }
 
 .jbp-add-pro.dark:hover:before, .jbp-add-pro.bright:hover:before {
@@ -80,7 +80,7 @@
     width:      32px;
     height:     32px;
     margin:     0 auto;
-    background: url("../modules/JobsExperts/assets/image/icons/Add_an_Expert/Add_an_Expert_Hover.svg") no-repeat;
+    background: url("image/icons/Add_an_Expert/Add_an_Expert_Hover.svg") no-repeat;
 }
 
 .jbp-add-pro.dark:before {
@@ -89,7 +89,7 @@
     width:      32px;
     height:     32px;
     margin:     0 auto;
-    background: url("../modules/JobsExperts/assets/image/icons/Add_an_Expert/Add_an_Experts_Dark.svg") no-repeat;
+    background: url("image/icons/Add_an_Expert/Add_an_Experts_Dark.svg") no-repeat;
 }
 
 .jbp-add-pro.bright:before {
@@ -98,7 +98,7 @@
     width:      32px;
     height:     32px;
     margin:     0 auto;
-    background: url("../modules/JobsExperts/assets/image/icons/Add_an_Expert/Add_an_Expert_Bright.svg") no-repeat;
+    background: url("image/icons/Add_an_Expert/Add_an_Expert_Bright.svg") no-repeat;
 }
 
 .jbp-browse-pro.dark:hover:before, .jbp-browse-pro.bright:hover:before {
@@ -107,7 +107,7 @@
     width:      32px;
     height:     32px;
     margin:     0 auto;
-    background: url("../modules/JobsExperts/assets/image/icons/Browse_Experts/Browse_Experts_Hover.svg") no-repeat;
+    background: url("image/icons/Browse_Experts/Browse_Experts_Hover.svg") no-repeat;
 }
 
 .jbp-browse-pro.dark:before {
@@ -116,7 +116,7 @@
     width:      32px;
     height:     32px;
     margin:     0 auto;
-    background: url("../modules/JobsExperts/assets/image/icons/Browse_Experts/Browse_Experts_Dark.svg") no-repeat;
+    background: url("image/icons/Browse_Experts/Browse_Experts_Dark.svg") no-repeat;
 }
 
 .jbp-browse-pro.bright:before {
@@ -125,7 +125,7 @@
     width:      32px;
     height:     32px;
     margin:     0 auto;
-    background: url("../modules/JobsExperts/assets/image/icons/Browse_Experts/Browse_Experts_Bright.svg") no-repeat;
+    background: url("image/icons/Browse_Experts/Browse_Experts_Bright.svg") no-repeat;
 }
 
 .jbp-profile-pro.dark:hover:before, .jbp-browse-pro.bright:hover:before {
@@ -134,7 +134,7 @@
     width:      32px;
     height:     32px;
     margin:     0 auto;
-    background: url("../modules/JobsExperts/assets/image/icons/My_Profile/My_Profile_Hover.svg") no-repeat;
+    background: url("image/icons/My_Profile/My_Profile_Hover.svg") no-repeat;
 }
 
 .jbp-profile-pro.dark:before {
@@ -143,7 +143,7 @@
     width:      32px;
     height:     32px;
     margin:     0 auto;
-    background: url("../modules/JobsExperts/assets/image/icons/My_Profile/My_Profile_Dark.svg") no-repeat;
+    background: url("image/icons/My_Profile/My_Profile_Dark.svg") no-repeat;
 }
 
 .jbp-profile-pro.bright:before {
@@ -152,7 +152,7 @@
     width:      32px;
     height:     32px;
     margin:     0 auto;
-    background: url("../modules/JobsExperts/assets/image/icons/My_Profile/My_Profile_Bright.svg") no-repeat;
+    background: url("image/icons/My_Profile/My_Profile_Bright.svg") no-repeat;
 }
 
 jbp-list-job.dark:hover:before, .jbp-list-job.bright:hover:before {
@@ -161,7 +161,7 @@ jbp-list-job.dark:hover:before, .jbp-list-job.bright:hover:before {
     width:      32px;
     height:     32px;
     margin:     0 auto;
-    background: url("../modules/JobsExperts/assets/image/icons/My_Job/My_Job_Hover.svg") no-repeat;
+    background: url("image/icons/My_Job/My_Job_Hover.svg") no-repeat;
 }
 
 .jbp-list-job.dark:before {
@@ -170,7 +170,7 @@ jbp-list-job.dark:hover:before, .jbp-list-job.bright:hover:before {
     width:      32px;
     height:     32px;
     margin:     0 auto;
-    background: url("../modules/JobsExperts/assets/image/icons/My_Job/My_Job_Dark.svg") no-repeat;
+    background: url("image/icons/My_Job/My_Job_Dark.svg") no-repeat;
 }
 
 .jbp-list-job.bright:before {
@@ -179,5 +179,5 @@ jbp-list-job.dark:hover:before, .jbp-list-job.bright:hover:before {
     width:      32px;
     height:     32px;
     margin:     0 auto;
-    background: url("../modules/JobsExperts/assets/image/icons/My_Job/My_Job_Bright.svg") no-repeat;
+    background: url("image/icons/My_Job/My_Job_Bright.svg") no-repeat;
 }

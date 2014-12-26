@@ -1,5 +1,11 @@
 .skill-add-form {
-    min-width: 500px;
+    min-width: 265px;
+}
+
+@media (min-width: 992px) {
+    .skill-add-form {
+        min-width: 500px;
+    }
 }
 
 .skill-add-form label {
