@@ -19,6 +19,13 @@ Fix bug jobs page show no jobs when active Advanced Search
 Add helper filters
 Fix WYISWYG button styling
 Fix bug can contact job poster when no expert profile
+Fix various bug
+Update PM to latest release
 
+Add ability for developer can add additions fields, CRUD and validation support for additions fields
+Separate view file, can replace native view and custom theme
+Ability for update field name, example job_title=>Job Name
+Attachment now need permission for upload
+Improve assets processing
 
 

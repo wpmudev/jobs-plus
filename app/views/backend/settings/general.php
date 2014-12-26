@@ -39,7 +39,7 @@ $form->open(array("attributes" => array("class" => "form-horizontal"))); ?>
     <label class="col-md-2 control-label"><?php _e('Currency', je()->domain); ?></label>
 
     <div class="col-sm-10">
-        <select id="jbp-currency-select" name="JobsExperts_Core_Models_Settings[currency]">
+        <select id="jbp-currency-select" name="<?php echo $form->build_name('currency') ?>">
             <?php
             foreach ($model->currency_list() as $key => $value) {
                 ?>
