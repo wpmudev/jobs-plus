@@ -43,6 +43,7 @@ if (!class_exists('IG_Uploader')) {
 
             wp_register_script('jquery-frame-transport', $this->plugin_url . 'assets/iframe-transport/jquery.iframe-transport.js');
             wp_register_script('ig-leanmodal', $this->plugin_url . 'assets/jquery.leanModal.min.js');
+            wp_register_script('igu-uploader', $this->plugin_url . 'assets/uploader.js');
         }
 
         function custom_content()

@@ -37,6 +37,7 @@ if (!function_exists('ig_loader')) {
             $url = plugin_dir_url(__FILE__);
             if (defined('SCRIPT_DEBUG') && SCRIPT_DEBUG == true) {
                 wp_register_style('ig-packed', $url . 'assets/ig-packed.css');
+                wp_register_script('ig-packed', $url . 'assets/main.js');
             } else {
                 wp_register_style('ig-packed', $url . 'assets/ig-packed.min.css');
             }

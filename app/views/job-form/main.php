@@ -6,7 +6,10 @@
     <div class="form-group <?php echo $model->has_error("categories") ? "has-error" : null ?>">
         <?php $form->label("categories", array("text" => __("Choose a category", je()->domain), "attributes" => array("class" => "col-lg-3 control-label"))) ?>
         <div class="col-lg-9">
-            <?php $form->select("categories", array("attributes" => array("class" => "form-control"), "data" => array_combine(wp_list_pluck(get_terms("jbp_category", array("hide_empty" => "false")), "term_id"), wp_list_pluck(get_terms("jbp_category", array("hide_empty" => "false")), "name")))) ?>
+            <?php
+            $cats = get_terms("jbp_category", array("hide_empty" => false));
+            ?>
+            <?php $form->select("categories", array("attributes" => array("class" => "form-control"), "data" => array_combine(wp_list_pluck($cats, "term_id"), wp_list_pluck($cats, "name")))) ?>
             <span class="help-block m-b-none error-categories"><?php $form->error("categories") ?></span>
         </div>
         <div class="clearfix"></div>

@@ -178,7 +178,20 @@ if (!class_exists('IG_Uploader_Controller')) {
 
         public function _extend_form($models, $attribute, $target_model, $is_admin, $attributes = array())
         {
-            $cid = uniqid();
+            $c_id = uniqid();
+            wp_localize_script('igu-uploader', 'igu_uploader', array(
+                'title' => __("Upload Attachment", ig_uploader()->domain),
+                'add_url' => admin_url('admin-ajax.php?action=iup_load_upload_form&is_admin=' . $is_admin . '&_wpnonce=' . wp_create_nonce('iup_load_upload_form')),
+                'edit_url' => admin_url('admin-ajax.php?action=iup_load_upload_form&is_admin=' . $is_admin . '&_wpnonce=' . wp_create_nonce('iup_load_upload_form')) . '&id=',
+                'instance' => '',
+                'is_admin' => $is_admin,
+                'form_submit_url' => add_query_arg('igu_uploading', 1),
+                'target_id' => $this->build_id($target_model, $attribute),
+                'c_id' => $c_id,
+                'ajax_url' => admin_url('admin-ajax.php'),
+                'delete_nonce' => wp_create_nonce('igu_file_delete')
+            ));
+            wp_enqueue_script('igu-uploader');
 
             $this->render('_extend_form', array(
                 'models' => $models,
@@ -186,7 +199,9 @@ if (!class_exists('IG_Uploader_Controller')) {
                 'attribute' => $attribute,
                 'target_id' => $this->build_id($target_model, $attribute),
                 'is_admin' => $is_admin,
-                'attributes' => $attributes
+                'attributes' => $attributes,
+                'c_id' => $c_id,
+                'file_frame_title' => __('Please select a file', ig_uploader()->domain)
             ));
         }
 

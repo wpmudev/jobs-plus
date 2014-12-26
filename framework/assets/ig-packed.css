@@ -1516,6 +1516,7 @@ a.ig-container .bg-danger:hover {
     padding-bottom: 9px;
     margin: 40px 0 20px;
     border-bottom: 1px solid #eeeeee;
+    background: none;
 }
 
 .ig-container ul,
@@ -16450,9 +16451,9 @@ Copyright (c) 2014 Daniel Eden
 .ig-error-field{
     font-weight: bold;
 }
-.no-margin{
+.ig-container .row.no-margin{
     margin: 0;
 }
-.no-padding{
+.ig-container .row .no-padding{
     padding:0;
 }
