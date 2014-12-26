@@ -123,6 +123,7 @@ class Jobs_Experts
                 wp_enqueue_style('jobs-buttons-shortcode');
                 break;
             case 'jobs':
+                wp_enqueue_script('jobs-main');
                 wp_enqueue_style('jobs-list-shortcode');
                 break;
             case 'job':
@@ -138,6 +139,7 @@ class Jobs_Experts
                 wp_enqueue_style('jobs-contact');
                 break;
             case 'experts':
+                wp_enqueue_script('jobs-main');
                 wp_enqueue_style('expert-list-shortcode');
                 wp_enqueue_script('jobs-main');
                 break;
