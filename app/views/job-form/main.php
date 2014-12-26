@@ -3,6 +3,7 @@
     $form->open(array("attributes" => array("class" => "form-horizontal")));
     $form->hidden('id');
     ?>
+    <?php do_action('je_job_before_form', $model, $form) ?>
     <div class="form-group <?php echo $model->has_error("categories") ? "has-error" : null ?>">
         <?php $form->label("categories", array("text" => __("Choose a category", je()->domain), "attributes" => array("class" => "col-lg-3 control-label"))) ?>
         <div class="col-lg-9">
@@ -119,13 +120,14 @@
                 'attributes' => array(
                     'class' => 'form-control'
                 )
-            ));?>
+            )); ?>
             <span class="help-block m-b-none error-open_for"><?php $form->error("open_for") ?></span>
         </div>
         <div class="clearfix"></div>
     </div>
+    <?php do_action('je_job_after_form', $model, $form) ?>
     <?php $form->hidden('portfolios');
-    wp_nonce_field('je_job_form')?>
+    wp_nonce_field('je_job_form') ?>
     <div class="row">
         <div class="col-md-12">
             <?php ig_uploader()->show_upload_control($model, 'portfolios', false, array(

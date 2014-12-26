@@ -83,6 +83,14 @@ class JE_Job_Model extends IG_Post_Model
         ),
     );
 
+    public function __construct()
+    {
+        $this->virtual_attributes = apply_filters('je_job_additions_field', $this->virtual_attributes);
+        $this->relations = apply_filters('je_job_relations', $this->relations);
+        $this->mapped = apply_filters('je_job_fields_mapped', $this->mapped);
+        $this->defaults = apply_filters('je_job_default_fields', $this->defaults);
+    }
+
     public function before_validate()
     {
         $rules = array(
@@ -101,6 +109,15 @@ class JE_Job_Model extends IG_Post_Model
 
         $rules = apply_filters('je_job_validation_rules', $rules);
         $this->rules = $rules;
+
+        $fields_text = array(
+            'dead_line' => __('Completion Date', je()->domain),
+            'open_for' => __('Job open for', je()->domain)
+        );
+        $fields_text = apply_filters('je_job_field_name', $fields_text);
+        foreach ($fields_text as $key => $text) {
+            GUMP::set_field_name($key, $text);
+        }
     }
 
     public function after_validate()

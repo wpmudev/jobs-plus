@@ -83,6 +83,47 @@ if (!class_exists('IG_Model')) {
         protected $mapped = array();
 
         /**
+         * This variable is virtual attributes, you can still use for validate, set/get/bind, store to db.
+         * Store to db is only for post type
+         *
+         * @var array
+         */
+        protected $virtual_attributes = array();
+
+        /**
+         * This variable use by system only, to assign value to vattribute key
+         * @var array
+         */
+        protected $virtual_data = array();
+
+        /**
+         * Getting the property value from model
+         * Priority native property, virtual property
+         * @param $key
+         */
+        public function __get($key)
+        {
+            if (property_exists(get_class($this), $key)) {
+                return $this->$key;
+            } elseif (in_array($key, $this->virtual_attributes)) {
+                return isset($this->virtual_data[$key]) ? $this->virtual_data[$key] : null;
+            }
+        }
+
+        /**
+         * Setting property value, priority similar with __get
+         * @param $key
+         */
+        public function __set($key, $value = null)
+        {
+            if (property_exists(get_class($this), $key)) {
+                $this->$key = $value;
+            } elseif (in_array($key, $this->virtual_attributes)) {
+                $this->virtual_data[$key] = $value;
+            }
+        }
+
+        /**
          * This function will validate the modal, and return a bool,
          * also, variable $errors will be fetched.
          * @return bool
@@ -90,7 +131,6 @@ if (!class_exists('IG_Model')) {
         public function validate()
         {
             $this->before_validate();
-            require_once dirname(dirname(__FILE__)) . '/vendors/gump.class.php';
             $validator = new GUMP();
             $validated = $validator->is_valid($this->export(), $this->rules);
             if ($validated === true) {
@@ -176,6 +216,8 @@ if (!class_exists('IG_Model')) {
             foreach ($data as $key => $val) {
                 if (property_exists($this, $key)) {
                     $this->$key = $val;
+                } elseif (in_array($key, $this->virtual_attributes)) {
+                    $this->virtual_data[$key] = $val;
                 }
             }
         }
@@ -193,6 +235,10 @@ if (!class_exists('IG_Model')) {
                 if ($prop->class == get_class($this) && !in_array($prop->name, $system_prop)) {
                     $data[$prop->name] = $this->{$prop->name};
                 }
+            }
+            //virtual attribute
+            foreach ($this->virtual_attributes as $key) {
+                $data[$key] = $this->$key;
             }
 
             return $data;

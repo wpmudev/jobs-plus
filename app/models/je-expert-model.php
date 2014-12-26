@@ -99,6 +99,14 @@ class JE_Expert_Model extends IG_Post_Model
         ),
     );
 
+    public function __construct()
+    {
+        $this->virtual_attributes = apply_filters('je_expert_additions_field', $this->virtual_attributes);
+        $this->relations = apply_filters('je_expert_relations', $this->relations);
+        $this->mapped = apply_filters('je_expert_fields_mapped', $this->mapped);
+        $this->defaults = apply_filters('je_expert_default_fields', $this->defaults);
+    }
+
     public function before_validate()
     {
         $rules = array(
@@ -110,6 +118,11 @@ class JE_Expert_Model extends IG_Post_Model
             'company_url' => 'valid_url',
         );
         $this->rules = apply_filters('je_expert_validation_rules', $rules);
+        $fields_text = array();
+        $fields_text = apply_filters('je_expert_field_name', $fields_text);
+        foreach ($fields_text as $key => $text) {
+            GUMP::set_field_name($key, $text);
+        }
     }
 
     public function get_view_count()
