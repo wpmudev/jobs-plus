@@ -55,24 +55,24 @@
                         <div class="clearfix"></div>
                     </div>
                     <div class="row">
-                        <div class="col-md-5">
+                        <div class="col-md-5 col-xs-5 col-sm-5">
                             <label>
                                 <i class="glyphicon glyphicon-map-marker"></i> <?php _e('Location:', je()->domain) ?>
                             </label>
                         </div>
-                        <div class="col-md-7">
+                        <div class="col-md-7 col-xs-7 col-sm-7">
                         <span class="can-edit" data-placement="top-left"
                               data-type="location"><?php echo !empty($model->location) ? $model->get_location() : __("Your Location", je()->domain) ?></span>
                         </div>
                         <div class="clearfix"></div>
                     </div>
                     <div class="row">
-                        <div class="col-md-5">
+                        <div class="col-md-5 col-xs-5 col-sm-5">
                             <label>
                                 <i class="fa fa-envelope"></i> <?php _e('Contact Email:', je()->domain) ?>
                             </label>
                         </div>
-                        <div class="col-md-7">
+                        <div class="col-md-7 col-xs-7 col-sm-7">
                         <span class="can-edit" data-placement="top-left"
                               data-type="email"><?php echo !empty($model->email) ? $model->email : __("Your Contact Email", je()->domain) ?></span>
                         </div>
