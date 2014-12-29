@@ -701,7 +701,7 @@ je();
 
 /* -------------------- WPMU DEV Dashboard Notice -------------------- */
 global $wpmudev_notices;
-$wpmudev_notices[] = array('id' => 'xxx',
+$wpmudev_notices[] = array('id' => '912971',
     'name' => 'Jobs +',
     'screens' => array(
         'plugins',
