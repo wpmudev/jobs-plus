@@ -233,7 +233,7 @@ if (!class_exists('MMessaging')) {
             $runtime_path = $this->plugin_path . 'framework/runtime';
             if (!is_dir($runtime_path)) {
                 //try to create
-                mkdir($runtime_path);
+                @mkdir($runtime_path);
             }
             if (!is_dir($runtime_path))
                 return false;
