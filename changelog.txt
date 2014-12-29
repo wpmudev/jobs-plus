@@ -27,5 +27,6 @@ Ability for update field name, example job_title=>Job Name
 Attachment now need permission for upload
 Improve assets processing
 Grunt Support
-
+==1.0.1.5
+Fix Private Message add-on not store db version properly
 
