@@ -1,0 +1,46 @@
+.skill-add-form {
+    min-width: 265px;
+}
+
+@media (min-width: 992px) {
+    .skill-add-form {
+        min-width: 500px;
+    }
+}
+
+.skill-add-form label {
+    display: block;
+}
+
+.skill-add-form input[type="text"], .skill-add-form select {
+    display: block;
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+.skill-preview .page-header {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+.ig-container .skill-preview h5 {
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.ig-container .skill-bar h5 {
+    color: #000;
+    font-family: "Open Sans", sans-serif;
+    font-weight: 500;
+    font-size: 13px;
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+
+.ig-container .social-preview h4 {
+    margin: 0 0 5px 0;
+}
+
+.ig-container .progress-bar {
+   /* line-height: 26px*/;
+}

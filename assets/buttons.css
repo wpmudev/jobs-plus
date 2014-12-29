@@ -1,0 +1,183 @@
+.jbp-shortcode-button, .jbp-shortcode-button:visited {
+    position:        relative;
+    display:         inline-block;
+    text-decoration: none !important;
+    font-size:       16px;
+    font-weight:     400;
+    padding:         0.5em 1em;
+    text-align:      center;
+}
+
+.jbp-shortcode-button.dark, .jbp-shortcode-button.dark:visited {
+    color: #000000 !important;
+}
+
+.jbp-shortcode-button.dark:hover {
+    color: #5e5e5e !important;
+}
+
+.jbp-shortcode-button.bright, .jbp-shortcode-button.bright:visited {
+    color: white !important;
+}
+
+.jbp-add-job.dark:hover:before, .jbp-add-job.bright:hover:before {
+    content:    "";
+    display:    block;
+    width:      32px;
+    height:     32px;
+    margin:     0 auto;
+    background: url("image/icons/Post_a_Job/Post_a_Job_Hover.svg") no-repeat;
+}
+
+.jbp-add-job.dark:before {
+    content:    "";
+    display:    block;
+    width:      32px;
+    height:     32px;
+    margin:     0 auto;
+    background: url("image/icons/Post_a_Job/Post_a_Job_Dark.svg") no-repeat;
+}
+
+.jbp-add-job.bright:before {
+    content:    "";
+    display:    block;
+    width:      32px;
+    height:     32px;
+    margin:     0 auto;
+    background: url("image/icons/Post_a_Job/Post_a_Job_Bright.svg") no-repeat;
+}
+
+.jbp-browse-job.dark:hover:before, .jbp-browse-job.bright:hover:before {
+    content:    "";
+    display:    block;
+    width:      32px;
+    height:     32px;
+    margin:     0 auto;
+    background: url("image/icons/Browse_Jobs/Browse_Jobs_Hover.svg") no-repeat;
+}
+
+.jbp-browse-job.dark:before {
+    content:    "";
+    display:    block;
+    width:      32px;
+    height:     32px;
+    margin:     0 auto;
+    background: url("image/icons/Browse_Jobs/Browse_Jobs_Dark.svg") no-repeat;
+}
+
+.jbp-browse-job.bright:before {
+    content:    "";
+    display:    block;
+    width:      32px;
+    height:     32px;
+    margin:     0 auto;
+    background: url("image/icons/Browse_Jobs/Browse_Jobs_Bright.svg") no-repeat;
+}
+
+.jbp-add-pro.dark:hover:before, .jbp-add-pro.bright:hover:before {
+    content:    "";
+    display:    block;
+    width:      32px;
+    height:     32px;
+    margin:     0 auto;
+    background: url("image/icons/Add_an_Expert/Add_an_Expert_Hover.svg") no-repeat;
+}
+
+.jbp-add-pro.dark:before {
+    content:    "";
+    display:    block;
+    width:      32px;
+    height:     32px;
+    margin:     0 auto;
+    background: url("image/icons/Add_an_Expert/Add_an_Experts_Dark.svg") no-repeat;
+}
+
+.jbp-add-pro.bright:before {
+    content:    "";
+    display:    block;
+    width:      32px;
+    height:     32px;
+    margin:     0 auto;
+    background: url("image/icons/Add_an_Expert/Add_an_Expert_Bright.svg") no-repeat;
+}
+
+.jbp-browse-pro.dark:hover:before, .jbp-browse-pro.bright:hover:before {
+    content:    "";
+    display:    block;
+    width:      32px;
+    height:     32px;
+    margin:     0 auto;
+    background: url("image/icons/Browse_Experts/Browse_Experts_Hover.svg") no-repeat;
+}
+
+.jbp-browse-pro.dark:before {
+    content:    "";
+    display:    block;
+    width:      32px;
+    height:     32px;
+    margin:     0 auto;
+    background: url("image/icons/Browse_Experts/Browse_Experts_Dark.svg") no-repeat;
+}
+
+.jbp-browse-pro.bright:before {
+    content:    "";
+    display:    block;
+    width:      32px;
+    height:     32px;
+    margin:     0 auto;
+    background: url("image/icons/Browse_Experts/Browse_Experts_Bright.svg") no-repeat;
+}
+
+.jbp-profile-pro.dark:hover:before, .jbp-browse-pro.bright:hover:before {
+    content:    "";
+    display:    block;
+    width:      32px;
+    height:     32px;
+    margin:     0 auto;
+    background: url("image/icons/My_Profile/My_Profile_Hover.svg") no-repeat;
+}
+
+.jbp-profile-pro.dark:before {
+    content:    "";
+    display:    block;
+    width:      32px;
+    height:     32px;
+    margin:     0 auto;
+    background: url("image/icons/My_Profile/My_Profile_Dark.svg") no-repeat;
+}
+
+.jbp-profile-pro.bright:before {
+    content:    "";
+    display:    block;
+    width:      32px;
+    height:     32px;
+    margin:     0 auto;
+    background: url("image/icons/My_Profile/My_Profile_Bright.svg") no-repeat;
+}
+
+jbp-list-job.dark:hover:before, .jbp-list-job.bright:hover:before {
+    content:    "";
+    display:    block;
+    width:      32px;
+    height:     32px;
+    margin:     0 auto;
+    background: url("image/icons/My_Job/My_Job_Hover.svg") no-repeat;
+}
+
+.jbp-list-job.dark:before {
+    content:    "";
+    display:    block;
+    width:      32px;
+    height:     32px;
+    margin:     0 auto;
+    background: url("image/icons/My_Job/My_Job_Dark.svg") no-repeat;
+}
+
+.jbp-list-job.bright:before {
+    content:    "";
+    display:    block;
+    width:      32px;
+    height:     32px;
+    margin:     0 auto;
+    background: url("image/icons/My_Job/My_Job_Bright.svg") no-repeat;
+}
