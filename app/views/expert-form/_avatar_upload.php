@@ -33,7 +33,7 @@
                     processData: false,
                     iframe: true,
                     method: 'POST',
-                    url: '<?php echo add_query_arg(array('upload_file_nonce'=>wp_create_nonce('hn_upload_avatar')),home_url()) ?>'
+                    url: '<?php echo add_query_arg(array('upload_file_nonce'=>wp_create_nonce('hn_upload_avatar'))) ?>'
                 };
                 var file = $(":file", form);
 

@@ -4,7 +4,8 @@
             <form method="get"
                   action="<?php echo is_singular() ? get_permalink(get_the_ID()) : get_post_type_archive_link('jbp_job') ?>">
                 <div class="search input-group input-group-lg has-feedback" role="search" id="mySearch">
-                    <input style="border-radius: 0;box-sizing: border-box" name="query" value="<?php echo $search ?>" type="search"
+                    <input style="border-radius: 0;box-sizing: border-box" name="query" value="<?php echo $search ?>"
+                           type="search"
                            class="form-control job-query"
                            placeholder="<?php echo __('Search For Job', je()->domain) ?>"/>
 <span class="input-group-btn">
@@ -41,20 +42,24 @@
                                         <h4>
                                             <a href="<?php echo get_permalink($model->id) ?>"><?php echo wp_trim_words($model->job_title, 10) ?></a>
                                         </h4>
-                                        <?php if (!isset($lite) || $lite == false): ?>
-                                            <div class="ellipsis">
-                                                <?php
-                                                $content = get_the_content();
-                                                //cal the except words count base on element width
-                                                $sub = count($chunk);
-                                                if (isset($col['text_length'])) {
-                                                    $sub = $col['text_length'];
-                                                }
-                                                $content = strip_tags($content);
-                                                $charlength = 48 / $sub;
-                                                echo apply_filters('jbp_job_list_content', wp_trim_words($content, $charlength), $content, $charlength);
-                                                ?>
-                                            </div>
+                                        <?php if ($model->is_expired()): ?>
+                                            <?php _e("This job expired", je()->domain) ?>
+                                        <?php else: ?>
+                                            <?php if (!isset($lite) || $lite == false): ?>
+                                                <div class="ellipsis">
+                                                    <?php
+                                                    $content = get_the_content();
+                                                    //cal the except words count base on element width
+                                                    $sub = count($chunk);
+                                                    if (isset($col['text_length'])) {
+                                                        $sub = $col['text_length'];
+                                                    }
+                                                    $content = strip_tags($content);
+                                                    $charlength = 48 / $sub;
+                                                    echo apply_filters('jbp_job_list_content', wp_trim_words($content, $charlength), $content, $charlength);
+                                                    ?>
+                                                </div>
+                                            <?php endif; ?>
                                         <?php endif; ?>
                                         <div class="jbp_job_bottom">
                                             <div class="jbp_terms">

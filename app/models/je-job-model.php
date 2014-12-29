@@ -212,6 +212,14 @@ class JE_Job_Model extends IG_Post_Model
         return apply_filters('get_usernumposts', $count, $user_id);
     }
 
+    function is_expired()
+    {
+        if ($this->get_due_day() == __('Expired', je()->domain)) {
+            return true;
+        }
+        return false;
+    }
+
     function is_current_owner()
     {
         if (current_user_can('manage_options')) {

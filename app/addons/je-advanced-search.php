@@ -237,7 +237,7 @@ INNER JOIN ' . $wpdb->prefix . 'postmeta max_price ON max_price.post_id = posts.
 
         $meta_query = array();
         if ($order_by == 'latest') {
-            $args['orderby'] = 'ID';
+            $args['orderby'] = 'post_date';
             $args['order'] = 'DESC';
         } elseif ($order_by == 'ending') {
             $args['orderby'] = 'meta_value';
