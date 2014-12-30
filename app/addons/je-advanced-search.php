@@ -15,6 +15,105 @@ class JE_Advanced_Search
         add_action('jbp_expert_listing_after_search_form', array(&$this, 'expert_search_form'));
         add_action('jbp_expert_search_params', array(&$this, 'addition_expert_search_params'));
         add_filter('jbp_job_search_params', array(&$this, 'addition_search_params'));
+
+        add_action('jobs_search_widget_form_after', array(&$this, 'extend_job_search_widget'));
+    }
+
+    function extend_job_search_widget($form_id){
+        wp_enqueue_script('jbp_ion_slider');
+        wp_enqueue_style('jbp_ion_slider_style');
+        wp_enqueue_style('jbp_ion_slider_flat');
+
+        wp_enqueue_style('jobs-advanced-search');
+
+        global $wpdb;
+        $range_max = $wpdb->get_var("select meta_value from ".$wpdb->prefix."postmeta where meta_key='_jbp_job_budget_max' ORDER BY ABS(meta_value) DESC LIMIT 1; ");;
+
+        $job_min_price = je()->settings()->job_min_search_budget;
+        $job_max_price = $range_max + 100;
+        if (isset($_GET['min_price']) && !empty($_GET['min_price'])) {
+            $job_min_price = $_GET['min_price'];
+        }
+
+        if (isset($_GET['max_price']) && !empty($_GET['max_price'])) {
+            $job_max_price = $_GET['max_price'];
+        }
+        $order_by = isset($_GET['order_by']) ? $_GET['order_by'] : 'latest';
+        $cat = (isset($_GET['job_cat']) && $_GET['job_cat'] > 0) ? $_GET['job_cat'] : null;
+
+        ?>
+        <label><?php _e('Price Range', je()->domain) ?></label>
+        <input class="job-price-range" type="text"/>
+        <input type="hidden" name="min_price">
+        <input type="hidden" name="max_price">
+        <br/>
+        <label><?php _e('Category', je()->domain) ?></label>
+        <?php
+        $data = array_combine(wp_list_pluck(get_terms('jbp_category', 'hide_empty=0'), 'term_id'), wp_list_pluck(get_terms('jbp_category', 'hide_empty=0'), 'name'));
+        echo IG_Form::select(array(
+            'name'=>'job_cat',
+            'data'=>$data,
+            'selected'=>$cat,
+            'attributes'=>array(
+                'class'=>'input-sm',
+                'style'=>'width:100%'
+            ),
+            'nameless'=> __('--SELECT--', je()->domain)
+        ));
+        ?>
+        <label><?php _e('Order By', je()->domain) ?></label>
+        <label style="display: inline"><input type="radio" value="name" name="order_by">&nbsp;
+            <?php _e('Name', je()->domain) ?>
+        </label>&nbsp;&nbsp;
+        <label style="display: inline">
+            <input type="radio" value="latest" name="order_by"> <?php _e('Latest', je()->domain) ?>
+        </label> &nbsp;&nbsp;
+        <label style="display: inline"><input type="radio" value="ending" name="order_by">&nbsp;
+            <?php _e('About to End', je()->domain) ?>
+        </label>
+        <?php
+        //build the format
+        $setting = je()->settings();
+
+        $pos = $setting->curr_symbol_position;
+        if($pos==1 || $pos==2){
+            $pos='prefix';
+        }else{
+            $pos = 'postfix';
+        }
+        ?>
+        <script type="text/javascript">
+            jQuery(document).ready(function ($) {
+                var price_data = {
+                    from:<?php echo $job_min_price ?>,
+                    to:<?php echo $job_max_price ?>
+                };
+                var form = $('#<?php echo $form_id ?>');
+                var order_by = '<?php echo $order_by ?>';
+                $(".job-price-range").ionRangeSlider({
+                    min: <?php echo $setting->job_min_search_budget ?>,
+                    max: '<?php echo $range_max+100 ?>',
+                    type: "double",
+                <?php echo $pos ?>: "<?php echo JobsExperts_Helper::format_currency() ?>",
+                    maxPostfix: "+",
+                    prettify: false,
+                    hasGrid: true,
+                    from: price_data.from,
+                    to: price_data.to,
+                    gridMargin: 7,
+                    onChange: function (obj) {      // callback is called on every slider change
+                    price_data = {
+                        from: obj.from,
+                        to: obj.to
+                    };
+                    form.find('input[name="min_price"]').val(price_data.from);
+                    form.find('input[name="max_price"]').val(price_data.to);
+                }
+            });
+            form.find('input[name="order_by"][value="' + order_by + '"]').prop('checked', true);
+            })
+        </script>
+    <?php
     }
 
     function expert_search_form()
