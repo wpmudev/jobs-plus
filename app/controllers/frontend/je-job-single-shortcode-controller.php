@@ -9,6 +9,19 @@ class JE_Job_Single_Shortcode_Controller extends IG_Request
     {
         add_shortcode('jbp-job-single-page', array(&$this, 'main'));
         add_action('wp_loaded', array(&$this, 'process'));
+        if (je()->settings()->job_allow_discussion == 1) {
+            add_post_type_support('jbp_job', 'comments');
+            add_filter('comments_open', array(&$this, 'enable_comment_jobs'));
+        }
+    }
+
+    function enable_comment_jobs($open)
+    {
+        global $post;
+        if ($post->post_type == 'jbp_job') {
+            $open = 'open';
+        }
+        return $open;
     }
 
     function process()

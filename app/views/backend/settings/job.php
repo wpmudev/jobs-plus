@@ -1,5 +1,5 @@
 <?php $form = new IG_Active_Form($model);
-$form->open(array("attributes" => array("class" => "form-horizontal")));?>
+$form->open(array("attributes" => array("class" => "form-horizontal"))); ?>
     <div class="page-header">
         <h3 class="hndle">
             <span><?php printf(__('%s Status Options', je()->domain), $job_labels->singular_name); ?></span>
@@ -34,9 +34,21 @@ $form->open(array("attributes" => array("class" => "form-horizontal")));?>
 
         <div class="col-md-9">
             <?php $form->hidden('job_budget_range', array('value' => 0)) ?>
-            <?php $form->checkBox('job_budget_range', array('attributes'=>array('value'=>1))) ?>
+            <?php $form->checkBox('job_budget_range', array('attributes' => array('value' => 1))) ?>
             <?php _e('Use Min and Max budget fields', je()->domain); ?>
             <p class="help-block"><?php _e('Displays both minimum and maximum budget fields.', je()->domain); ?></p>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label">
+            <?php _e("Allow job comment", je()->domain); ?>
+        </label>
+
+        <div class="col-md-9">
+            <?php $form->hidden('job_allow_discussion', array('value' => 0)) ?>
+            <?php $form->checkBox('job_allow_discussion', array('attributes' => array('value' => 1))) ?>
+            <?php _e('This will allow users can discuss via comments on a job page', je()->domain); ?>
         </div>
         <div class="clearfix"></div>
     </div>
@@ -55,7 +67,7 @@ $form->open(array("attributes" => array("class" => "form-horizontal")));?>
             <p class="help-block">
                 <?php printf(esc_html__('Allow members to publish %s themselves.', je()->domain), $job_labels->name); ?>
             </p>
-            <label> <?php  $form->radio('job_new_job_status', array(
+            <label> <?php $form->radio('job_new_job_status', array(
                     'value' => 'pending'
                 )) ?>
                 <?php _e('Pending Review', je()->domain); ?></label>
@@ -65,7 +77,7 @@ $form->open(array("attributes" => array("class" => "form-horizontal")));?>
             </p>
             <label>
                 <?php $form->hidden('job_allow_draft', array('value' => 0)) ?>
-                <?php $form->checkbox('job_allow_draft', array('attributes'=>array('value'=>1))) ?>
+                <?php $form->checkbox('job_allow_draft', array('attributes' => array('value' => 1))) ?>
                 <?php _e('Draft', je()->domain); ?>
             </label>
 
@@ -103,7 +115,7 @@ $form->open(array("attributes" => array("class" => "form-horizontal")));?>
         <div class="col-md-9">
             <label class="text-muted" style="font-weight: normal">
                 <?php $form->hidden('job_contact_form', array('value' => 0)) ?>
-                <?php $form->hidden('job_contact_form', array('attributes'=>array('value'=>1))) ?>
+                <?php $form->hidden('job_contact_form', array('attributes' => array('value' => 1))) ?>
                 <?php _e('disable contact form', je()->domain); ?>
             </label>
         </div>
@@ -117,7 +129,7 @@ $form->open(array("attributes" => array("class" => "form-horizontal")));?>
         <div class="col-md-9">
             <label class="text-muted" style="font-weight: normal">
                 <?php $form->hidden('job_cc_admin', array('value' => 0)) ?>
-                <?php $form->checkbox('job_cc_admin', array('attributes'=>array('value'=>1))) ?>
+                <?php $form->checkbox('job_cc_admin', array('attributes' => array('value' => 1))) ?>
                 <?php _e('cc the administrator', je()->domain); ?>
             </label>
         </div>
