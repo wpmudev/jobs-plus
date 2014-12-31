@@ -13,7 +13,12 @@ class JE_Settings_Controller extends IG_Request
         add_action('je_settings_content_job', array(&$this, 'job'));
         add_action('je_settings_content_expert', array(&$this, 'expert'));
         add_action('je_settings_content_uploader', array(&$this, 'uploader'));
+        add_action('je_settings_content_shortcode',array(&$this,'shortcode'));
         add_action('wp_loaded', array(&$this, 'save_settings'));
+    }
+
+    function shortcode(){
+        $this->render('backend/settings/shortcode');
     }
 
     function save_settings()
