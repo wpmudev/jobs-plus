@@ -32,4 +32,5 @@ Fix Private Message add-on not store db version properly
 ==1.0.1.6
 Fix search job widget price slider
 Add ability for admin can on/off job discussion
-Fix blank shortcode instruction in setting
+Fix blank shortcode instruction in settings
+==1.0.1.7

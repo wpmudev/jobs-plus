@@ -108,6 +108,7 @@ class JE_Expert_Form_Shortcode_Controller extends IG_Request
             }
 
             if (is_object($model)) {
+                $model->name = trim($model->name);
                 $this->model = $model;
                 //add avatar form
                 add_action('wp_footer', array(&$this, 'avatar_form'));

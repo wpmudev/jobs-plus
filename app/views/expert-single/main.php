@@ -105,25 +105,25 @@
                     </div>
                     <?php if (!empty($model->company)): ?>
                         <div class="row">
-                            <div class="col-md-5 col-xs-5 col-sm-5">
+                            <div class="col-md-4 col-xs-4 col-sm-4">
                                 <label>
                                     <i class="glyphicon glyphicon-briefcase"></i>
                                     <?php _e('Company:', je()->domain) ?>
                                 </label>
                             </div>
-                            <div class="col-md-7 col-md-7 col-sm-7">
+                            <div class="col-md-8 col-md-8 col-sm-8">
                                 <a href="<?php echo $model->company_url ?>"><?php echo $model->company ?></a>
                             </div>
                             <div class="clearfix"></div>
                         </div>
                     <?php endif; ?>
                     <div class="row">
-                        <div class="col-md-5 col-xs-5 col-sm-5">
+                        <div class="col-md-4 col-xs-4 col-sm-4">
                             <label>
                                 <i class="glyphicon glyphicon-map-marker"></i> <?php _e('Location:', je()->domain) ?>
                             </label>
                         </div>
-                        <div class="col-md-7 col-md-7 col-sm-7">
+                        <div class="col-md-8 col-md-8 col-sm-8">
                             <?php echo $model->get_location(); ?>
                         </div>
                         <div class="clearfix"></div>

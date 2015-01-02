@@ -13,6 +13,8 @@ class JE_Job_Admin_Controller extends IG_Request
             add_filter('get_edit_post_link', array(&$this, 'update_edit_link'), 10, 3);
             add_action('wp_loaded', array(&$this, 'process_request'));
             add_action('admin_menu', array(&$this, 'admin_menu'));
+            add_filter('manage_jbp_job_posts_columns', array(&$this, 'table_columns'));
+            add_filter('manage_jbp_job_posts_custom_column', array(&$this, 'table_columns_content'), 10, 2);
         }
     }
 
@@ -25,6 +27,35 @@ class JE_Job_Admin_Controller extends IG_Request
             'jobs-plus-edit-job',
             array(&$this, 'edit_job')
         );
+    }
+
+    function table_columns_content($column_name, $post_id)
+    {
+        $model = JE_Job_Model::model()->find($post_id);
+        switch ($column_name) {
+            case 'price':
+                echo $model->render_prices();
+                break;
+            case 'expire_date':
+                echo $model->get_due_day();
+                break;
+            case 'status':
+                echo ucfirst($model->status);
+                break;
+        }
+    }
+
+    function table_columns($columns)
+    {
+        $columns['author'] = __("Job Owner", je()->domain);
+        unset($columns['comments']);
+        $new_cols = array(
+            'price' => __("Price", je()->domain),
+            'expire_date' => __("Open For", je()->domain),
+            'status' => __("Status", je()->domain)
+        );
+        $columns = array_merge(array_slice($columns, 1, 1), $new_cols, array_slice($columns, 1, count($columns) - 1));
+        return $columns;
     }
 
     function process_request()

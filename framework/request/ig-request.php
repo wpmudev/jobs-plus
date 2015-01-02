@@ -49,8 +49,9 @@ if (!class_exists('IG_Request')) {
             $reflector = new ReflectionClass(get_class($this));
 
             $base_path = substr($reflector->getFileName(), 0, stripos($reflector->getFileName(), 'controllers'));
-            $view_path = $base_path . '/views/' . $view . '.php';
+            $view_path = $base_path . 'views/' . $view . '.php';
             $view_path = apply_filters('ig_view_file', $view_path, $view);
+
             if (file_exists($view_path)) {
                 extract($params);
                 ob_start();
@@ -61,7 +62,7 @@ if (!class_exists('IG_Request')) {
                 }
                 return $content;
             } else {
-                echo __("View not found!");
+                echo __("View " . $view_path . " not found!");
             }
         }
 

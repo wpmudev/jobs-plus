@@ -42,37 +42,37 @@
                         <h4><?php echo sprintf(__('Member since %s', je()->domain), date("M Y", strtotime(get_the_author_meta('user_registered', $model->user_id)))) ?></h4>
                     </div>
                     <div class="row">
-                        <div class="col-md-5 col-xs-5 col-sm-5">
+                        <div class="col-md-4 col-xs-4 col-sm-4">
                             <label>
                                 <i class="glyphicon glyphicon-briefcase"></i>
                                 <?php _e('Company:', je()->domain) ?>
                             </label>
                         </div>
-                        <div class="col-md-7 col-xs-7 col-sm-7">
+                        <div class="col-md-8 col-xs-8 col-sm-8">
                             <a class="can-edit" data-placement="top-left" data-type="company"
                                href="#"><?php echo !empty($model->company) ? $model->company : __("Your Company", je()->domain) ?></a>
                         </div>
                         <div class="clearfix"></div>
                     </div>
                     <div class="row">
-                        <div class="col-md-5 col-xs-5 col-sm-5">
+                        <div class="col-md-4 col-xs-4 col-sm-4">
                             <label>
                                 <i class="glyphicon glyphicon-map-marker"></i> <?php _e('Location:', je()->domain) ?>
                             </label>
                         </div>
-                        <div class="col-md-7 col-xs-7 col-sm-7">
-                        <span class="can-edit" data-placement="top-left"
-                              data-type="location"><?php echo !empty($model->location) ? $model->get_location() : __("Your Location", je()->domain) ?></span>
+                        <div class="col-md-8 col-xs-8 col-sm-8">
+                            <?php echo apply_filters('je_expert_form_location_field', '<span class="can-edit" data-placement="top-left"
+                              data-type="location">' . (!empty($model->location) ? $model->get_location() : __("Your Location", je()->domain)) . '</span>', $model) ?>
                         </div>
                         <div class="clearfix"></div>
                     </div>
                     <div class="row">
-                        <div class="col-md-5 col-xs-5 col-sm-5">
+                        <div class="col-md-4 col-xs-4 col-sm-4">
                             <label>
                                 <i class="fa fa-envelope"></i> <?php _e('Contact Email:', je()->domain) ?>
                             </label>
                         </div>
-                        <div class="col-md-7 col-xs-7 col-sm-7">
+                        <div class="col-md-8 col-xs-8 col-sm-8">
                         <span class="can-edit" data-placement="top-left"
                               data-type="email"><?php echo !empty($model->email) ? $model->email : __("Your Contact Email", je()->domain) ?></span>
                         </div>
@@ -290,6 +290,7 @@
                         case 'location':
                             instance.text($(this).find('select option:selected').text());
                             $('#je_expert_model-location').val(data.location);
+                            $(this).trigger('je_expert_popup_form_location', [instance, $(this), data]);
                             break;
                         case 'biography':
                             instance.html(data.biography);
@@ -304,7 +305,6 @@
                             instance.text(data.email);
                             $('#je_expert_model-contact_email').val(data.email)
                             break;
-
                     }
                     instance.webuiPopover('hide');
                 }
