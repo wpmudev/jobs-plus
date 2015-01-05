@@ -9,7 +9,7 @@
                     <?php _e("Change Avatar", je()->domain) ?>
                 </button>
             <?php else: ?>
-                <?php _e("You don't have enough permission for upload avatar", je()->domain) ?>
+                <?php _e("You don't have permission to upload an avatar", je()->domain) ?>
             <?php endif; ?>
         </div>
     </div>
@@ -29,12 +29,16 @@
                 var form = $(this);
                 var parent = form.closest('div');
                 var args = {
-                    data: form.serializeArray(),
-                    processData: false,
+                    data: {
+                        parent_id: form.find('input[name="parent_id"]').first().val()
+                    },
+                    //processData: false,
                     iframe: true,
-                    method: 'POST',
+                    cache: false,
+                    type: 'POST',
                     url: '<?php echo add_query_arg(array('upload_file_nonce'=>wp_create_nonce('hn_upload_avatar'))) ?>'
                 };
+
                 var file = $(":file", form);
 
                 if (!file.val()) {

@@ -13,20 +13,22 @@ $form->open(array("attributes" => array("class" => "form-horizontal")));?>
     <?php
     $roles = get_editable_roles();
     foreach ($roles as $key => $role): ?>
-        <?php $is = in_array($key, $model->allow_attachment); ?>
-        <tr>
-            <td><?php echo $role['name'] ?></td>
-            <td>
-                <?php
-                $form->checkbox('allow_attachment', array(
-                    'multiple' => true,
-                    'checked' => $is,
-                    'attributes' => array(
-                        'value' => $key
-                    )
-                )) ?>
-            </td>
-        </tr>
+        <?php if (isset($role['capabilities']['upload_files']) && $role['capabilities']['upload_files'] == false || !isset($role['capabilities']['upload_files'])): ?>
+            <?php $is = in_array($key, $model->allow_attachment); ?>
+            <tr>
+                <td><?php echo $role['name'] ?></td>
+                <td>
+                    <?php
+                    $form->checkbox('allow_attachment', array(
+                        'multiple' => true,
+                        'checked' => $is,
+                        'attributes' => array(
+                            'value' => $key
+                        )
+                    )) ?>
+                </td>
+            </tr>
+        <?php endif; ?>
     <?php endforeach; ?>
     </tbody>
 </table>

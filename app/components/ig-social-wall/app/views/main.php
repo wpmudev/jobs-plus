@@ -36,25 +36,30 @@
             width = $(window).width() * 80 / 100;
             //height = 162;
         }
-        $('.add-social').webuiPopover({
-            type: 'async',
-            width: width,
-            height: height,
-            placement: 'top-left',
-            url: '<?php echo admin_url('admin-ajax.php?action=social_wall_form&_wpnonce='.wp_create_nonce('social_wall_form')) ?>',
-            content: function (data) {
-                return data;
+        $('body').on('mouseenter', '.add-social', function () {
+            if ($(this).data('plugin_webuiPopover') == undefined) {
+                $(this).webuiPopover({
+                    type: 'async',
+                    width: width,
+                    height: height,
+                    placement: 'top-left',
+                    url: '<?php echo admin_url('admin-ajax.php?action=social_wall_form&_wpnonce='.wp_create_nonce('social_wall_form')) ?>',
+                    content: function (data) {
+                        return data;
+                    }
+                }).on('show.webui.popover', function () {
+                    $('select[name="social"]').trigger('change');
+                    var that = $(this);
+                    var pop = that.data('plugin_webuiPopover');
+                    var container = pop.$target;
+                    $('body').on('click', '.hn-cancel-social', function () {
+                        pop.hide();
+                    });
+                    instance = that;
+                });
             }
-        }).on('show.webui.popover', function () {
-            $('select[name="social"]').trigger('change');
-            var that = $(this);
-            var pop = that.data('plugin_webuiPopover');
-            var container = pop.$target;
-            $('body').on('click', '.hn-cancel-social', function () {
-                pop.hide();
-            });
-            instance = that;
         });
+
         $('body').on('mouseenter', '.jbp-social', function () {
             if ($(this).data('plugin_webuiPopover') == undefined) {
                 $(this).webuiPopover({

@@ -152,6 +152,7 @@ class Jobs_Experts
                 wp_enqueue_style('expert-form-shortcode');
                 wp_enqueue_script('jobs-main');
                 wp_enqueue_script('jquery-ui-tabs');
+                wp_enqueue_script('jquery-frame-transport');
                 wp_enqueue_style('jobs-validation');
                 wp_enqueue_script('jobs-validation');
                 wp_enqueue_script('jobs-validation-en');
@@ -194,7 +195,7 @@ class Jobs_Experts
             wp_register_style('webuipopover', $this->plugin_url . 'assets/popover/webuipopover.css');
 
             //js
-            wp_register_script('jobs-main', $this->plugin_url . 'assets/main.js', array('jquery','ig-packed'), $this->version);
+            wp_register_script('jobs-main', $this->plugin_url . 'assets/main.js', array('jquery', 'ig-packed'), $this->version);
             wp_register_script('jobs-validation', $this->plugin_url . 'assets/jquery-validation-engine/js/jquery.validationEngine.js', array('jquery'), $this->version, true);
             wp_register_script('jobs-validation-en', $this->plugin_url . 'assets/jquery-validation-engine/js/languages/jquery.validationEngine-en.js', array('jquery'), $this->version, true);
             wp_register_style('jobs-validation', $this->plugin_url . 'assets/jquery-validation-engine/css/validationEngine.jquery.css', array(), $this->version);
@@ -342,7 +343,8 @@ class Jobs_Experts
         }
     }
 
-    function init_widget(){
+    function init_widget()
+    {
         //widget
         register_widget('JE_Job_Add_Widget_Controller');
         register_widget('JE_Job_Recent_Widget_Controller');
@@ -355,6 +357,9 @@ class Jobs_Experts
         if (!is_user_logged_in()) {
             return false;
         }
+
+        if (current_user_can('upload_files'))
+            return true;
 
         $allowed = $this->settings()->allow_attachment;
         if (!is_array($allowed)) {

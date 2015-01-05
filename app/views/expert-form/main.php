@@ -155,7 +155,11 @@
                     'style' => 'width:0;height:0;opacity:0;position:relative;top:-100px;left:-100px'
                 )
             ));
-            $form->hidden('user_id', array('value' => get_current_user_id()));
+            if(empty($model->user_id)) {
+                $form->hidden('user_id', array('value' => get_current_user_id()));
+            }else{
+                $form->hidden('user_id');
+            }
             $form->hidden('company');
             $form->hidden('company_url');
             $form->hidden('location');

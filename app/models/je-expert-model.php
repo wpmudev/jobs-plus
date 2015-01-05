@@ -125,6 +125,13 @@ class JE_Expert_Model extends IG_Post_Model
         }
     }
 
+    public function before_save()
+    {
+        $this->defaults = array_merge($this->defaults, array(
+            'post_name' => sanitize_title($this->name)
+        ));
+    }
+
     public function get_view_count()
     {
         return intval(get_post_meta($this->id, 'jbp_pro_view_count', true));

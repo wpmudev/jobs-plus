@@ -169,16 +169,23 @@ class JE_Custom_Location
         $api = $api = get_option('je_custom_location_google_api');
         $url = "https://maps.googleapis.com/maps/api/geocode/json?latlng=$lat,$long&key=$api";
         $result = wp_remote_get($url);
-        $result = json_decode($result['body'], true);
-        if (isset($result['error_message'])) {
+        if (!is_wp_error($result)) {
+            $result = json_decode($result['body'], true);
+            if (isset($result['error_message'])) {
+                return array(
+                    'status' => false,
+                    'error' => $result['error_message']
+                );
+            } else {
+                return array(
+                    'status' => true,
+                    'result' => $result['results']
+                );
+            }
+        }else{
             return array(
                 'status' => false,
-                'error' => $result['error_message']
-            );
-        } else {
-            return array(
-                'status' => true,
-                'result' => $result['results']
+                'error' => $result->get_error_message()
             );
         }
     }

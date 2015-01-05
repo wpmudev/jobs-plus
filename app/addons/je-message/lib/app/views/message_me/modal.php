@@ -58,8 +58,8 @@
                             } ?>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-default"
-                                    data-dismiss="modal"><?php _e("Close", mmg()->domain) ?></button>
+                            <button type="button"
+                                    class="btn btn-default compose-close"><?php _e("Close", mmg()->domain) ?></button>
                             <button type="submit"
                                     class="btn btn-primary reply-submit"><?php _e("Send", mmg()->domain) ?></button>
                         </div>

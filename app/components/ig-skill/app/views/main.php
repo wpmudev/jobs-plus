@@ -35,22 +35,26 @@
             enable_tootip();
         }
         var instance = null;
-        $('.add-skill').webuiPopover({
-            type: 'async',
-            placement: 'top-left',
-            url: '<?php echo admin_url('admin-ajax.php?action=social_skill_form&_wpnonce='.wp_create_nonce('social_skill_form')) ?>',
-            content: function (data) {
-                return data;
+        $('body').on('mouseenter', '.add-skill', function () {
+            if ($(this).data('plugin_webuiPopover') == undefined) {
+            $(this).webuiPopover({
+                    type: 'async',
+                    placement: 'top-left',
+                    url: '<?php echo admin_url('admin-ajax.php?action=social_skill_form&_wpnonce='.wp_create_nonce('social_skill_form')) ?>',
+                    content: function (data) {
+                        return data;
+                    }
+                }).on('show.webui.popover', function () {
+                    var that = $(this);
+                    var pop = that.data('plugin_webuiPopover');
+                    $('body').on('click', '.hn-cancel-skill', function () {
+                        pop.hide();
+                    });
+                    instance = that;
+                    pop.$target.find('form').find('input[name="score"]').trigger('change');
+                });
             }
-        }).on('show.webui.popover', function () {
-            var that = $(this);
-            var pop = that.data('plugin_webuiPopover');
-            $('body').on('click', '.hn-cancel-skill', function () {
-                pop.hide();
-            });
-            instance = that;
-            pop.$target.find('form').find('input[name="score"]').trigger('change');
-        });
+        })
 
         $('body').on('mouseenter', '.edit-skill', function () {
             if ($(this).data('plugin_webuiPopover') == undefined) {
