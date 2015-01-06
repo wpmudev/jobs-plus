@@ -89,7 +89,7 @@ class JE_Admin_Controller extends IG_Request
                         );
                         unset($nav[$key]);
                     } elseif ($item[0] == $job->labels->name) {
-                        $item[0] = sprintf(__('Manager %s', je()->domain), $job->labels->name);
+                        $item[0] = sprintf(__('Manage %s', je()->domain), $job->labels->name);
                     } elseif ($item[0] == __('Add New', je()->domain)) {
                         //unset($nav[$key]);
                         //finding the New Job and fix it to this posiston
@@ -116,7 +116,7 @@ class JE_Admin_Controller extends IG_Request
             foreach ($nav as $key => &$item) {
                 if (is_array($item)) {
                     if ($item[0] == $pro->labels->name) {
-                        $item[0] = sprintf(__('Manager %s', je()->domain), $pro->labels->name);
+                        $item[0] = sprintf(__('Manage %s', je()->domain), $pro->labels->name);
                     } elseif ($item[0] == __('Add New', je()->domain)) {
                        unset($nav[$key]);
                     }
@@ -158,7 +158,7 @@ class JE_Admin_Controller extends IG_Request
             $setting->plugins = $addons;
             $setting->save();
             wp_send_json(array(
-                'noty' => __("The add on <strong>{$meta['Name']}</strong> activated", je()->domain),
+                'noty' => __("The Add-on <strong>{$meta['Name']}</strong> has been activated.", je()->domain),
                 'text' => __("Deactivate", je()->domain)
             ));
             exit;
@@ -167,7 +167,7 @@ class JE_Admin_Controller extends IG_Request
             $setting->plugins = $addons;
             $setting->save();
             wp_send_json(array(
-                'noty' => __("The add on <strong>{$meta['Name']}</strong> deactivate", je()->domain),
+                'noty' => __("The Add-on <strong>{$meta['Name']}</strong> has been deactivated.", je()->domain),
                 'text' => __("Activate", je()->domain)
             ));
             exit;

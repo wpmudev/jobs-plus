@@ -2,7 +2,7 @@
 
 /**
  * Name: Advanced textarea
- * Description: Use WYSIWYG for jobs/experts detail field, the value will be filtered by kses for security
+ * Description: Use WYSIWYG for Jobs/Experts detail field
  * Author: WPMU DEV
  */
 class JE_WYSIWYG

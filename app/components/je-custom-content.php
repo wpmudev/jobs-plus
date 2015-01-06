@@ -241,5 +241,10 @@ class JE_Custom_Content
             'show_in_admin_all_list' => false,
             'show_in_admin_status_list' => false,
         ));
+
+        if (get_option('je_rewrite') != 1) {
+            flush_rewrite_rules();
+            update_option('je_rewrite', 1);
+        }
     }
 }

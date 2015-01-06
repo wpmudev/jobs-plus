@@ -42,13 +42,13 @@ $form->open(array("attributes" => array("class" => "form-horizontal"))); ?>
     </div>
     <div class="form-group">
         <label class="col-md-3 control-label">
-            <?php _e("Allow job comment", je()->domain); ?>
+            <?php _e("Allow commenting on Jobs", je()->domain); ?>
         </label>
 
         <div class="col-md-9">
             <?php $form->hidden('job_allow_discussion', array('value' => 0)) ?>
             <?php $form->checkBox('job_allow_discussion', array('attributes' => array('value' => 1))) ?>
-            <?php _e('This will allow users can discuss via comments on a job page', je()->domain); ?>
+            <?php _e('This will allow users to comment on jobs.', je()->domain); ?>
         </div>
         <div class="clearfix"></div>
     </div>

@@ -1,11 +1,11 @@
 <?php
 
 /**
- * Name: Custom Expert Location
+ * Name: CExpert Geo-location
  * Description: Let experts define their location.
  * Author: WPMU DEV
  */
-class JE_Custom_Location
+class JE_Custom_Location extends IG_Request
 {
     public function __construct()
     {
@@ -37,6 +37,7 @@ class JE_Custom_Location
             if ($geo['status'] == true) {
                 je()->get_logger()->log(var_export($geo, true));
                 update_option('je_custom_location_google_api', je()->post('api'));;
+                $this->set_flash('key', __("The API KEY has been saved successful!"));
                 wp_redirect($_SERVER['REQUEST_URI']);
                 exit;
             } else {
@@ -59,16 +60,22 @@ class JE_Custom_Location
     {
         $api = get_option('je_custom_location_google_api');
         ?>
+
         <form method="post">
             <div class="page-header" style="margin-top: 0">
                 <h3><?php _e('Custom expert location', je()->domain) ?></h3>
             </div>
+            <?php if ($this->has_flash('key')): ?>
+                <div class="alert alert-success">
+                    <?php echo $this->get_flash('key') ?>
+                </div>
+            <?php endif; ?>
             <?php if (isset(je()->global['geo_error'])): ?>
                 <div class="alert alert-danger">
                     <?php echo je()->global['geo_error'] ?>
                 </div>
             <?php endif; ?>
-            <p><?php echo sprintf(__("For enable the <strong>Reverse Geocoding</strong>, you will need to input a valid <a href=\"%s\">API key</a> from Google."),
+            <p><?php echo sprintf(__("To enable <strong>reverse geocoding</strong>, you'll need to input a valid <a href=\"%s\">API key</a> from Google."),
                     "https://developers.google.com/console/help/#generatingdevkeys") ?></p>
             <label><?php _e("API Key ", je()->domain) ?></label>&nbsp;
             <input value="<?php echo $api ?>" type="text" name="api"/>
@@ -182,7 +189,7 @@ class JE_Custom_Location
                     'result' => $result['results']
                 );
             }
-        }else{
+        } else {
             return array(
                 'status' => false,
                 'error' => $result->get_error_message()

@@ -77,14 +77,14 @@ class JE_Custom_Layout
             <div class="page-header" style="margin-top: 0">
                 <h3><?php _e('Jobs listing page custom layout', je()->domain) ?></h3>
             </div>
-            <p><?php _e("We have 4 size:", je()->domain) ?></p>
+            <p><?php _e("We have 4 sizes:", je()->domain) ?></p>
             <ul>
-                <li><strong>lg</strong> <?php _e('mean the job block will have 100% width', je()->domain) ?></li>
-                <li><strong>md</strong> <?php _e('mean the job block will have 1/2 width', je()->domain) ?></li>
-                <li><strong>sm</strong> <?php _e('mean the job block will have 1/3 width', je()->domain) ?></li>
-                <li><strong>xs</strong> <?php _e('mean the job block will have 1/4 width', je()->domain) ?></li>
+                <li><strong>lg</strong> <?php _e('means the job block will have 100% width', je()->domain) ?></li>
+                <li><strong>md</strong> <?php _e('means the job block will have 1/2 width', je()->domain) ?></li>
+                <li><strong>sm</strong> <?php _e('means the job block will have 1/3 width', je()->domain) ?></li>
+                <li><strong>xs</strong> <?php _e('means the job block will have 1/4 width', je()->domain) ?></li>
             </ul>
-            <p><?php _e('You can customize the layout, each row should have 100% score, and the default is sm', je()->domain) ?></p>
+            <p><?php _e('You can customise the layout using the above, each row should equal 100%. For example sm, sm, sm is 100%.', je()->domain) ?></p>
 
             <p><?php _e('Example for default layout', je()->domain) ?></p>
 

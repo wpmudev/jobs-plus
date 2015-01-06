@@ -1,4 +1,4 @@
-<h4><?php _e("Which roles can upload sample files & avatar", je()->domain) ?></h4>
+<h4><?php _e("Choose which user roles can upload files", je()->domain) ?></h4>
 <?php $form = new IG_Active_Form($model);
 $form->open(array("attributes" => array("class" => "form-horizontal"))); ?>
 <input type="hidden" name="<?php echo $form->build_name('allow_attachment') ?>[]" value="">

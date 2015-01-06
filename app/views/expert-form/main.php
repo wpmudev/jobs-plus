@@ -266,7 +266,7 @@
                         }
                     }
                 }).on('hidden.webui.popover', function () {
-                    if ($.fn.sceditor != undefined) {
+                    if (window.jetextarea != undefined) {
                         window.jetextarea.destroy();
                     }
                 });
@@ -305,7 +305,6 @@
                             $('#je_expert_model-short_description').val(data.tagline);
                             break;
                         case 'email':
-                            console.log(data.email);
                             instance.text(data.email);
                             $('#je_expert_model-contact_email').val(data.email)
                             break;

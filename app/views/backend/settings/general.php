@@ -112,7 +112,7 @@ $form->open(array("attributes" => array("class" => "form-horizontal"))); ?>
 </div>
 
 <div class="page-header">
-    <h3 class="hndle"><span><?php _e('Addons', je()->domain) ?></span></h3>
+    <h3 class="hndle"><span><?php _e('Add-ons', je()->domain) ?></span></h3>
 </div>
 <div class="">
     <div class="alert alert-success plugin-status hide">

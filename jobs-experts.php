@@ -115,7 +115,6 @@ class Jobs_Experts
         }
     }
 
-
     function load_script($scenario = '')
     {
         switch ($scenario) {
@@ -721,3 +720,7 @@ $wpmudev_notices[] = array('id' => '912971',
     ));
 
 include_once(je()->plugin_path . 'ext/wpmudev-dash-notification.php');
+register_deactivation_hook(__FILE__, 'je_remove_rewrite');
+function je_remove_rewrite(){
+    delete_option('je_rewrite');
+}
