@@ -128,7 +128,7 @@ $form->open(array("attributes" => array("class" => "form-horizontal"))); ?>
 <div class="form-group">
     <div class="col-sm-10">
         <?php wp_nonce_field('je_settings', '_je_setting_nonce') ?>
-        <button type="submit" class="btn btn-primary"><?php _e("Submit", je()->domain) ?></button>
+        <button type="submit" class="btn btn-primary"><?php _e("Save Changes", je()->domain) ?></button>
     </div>
 </div>
 <?php $form->close() ?>

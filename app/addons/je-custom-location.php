@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Name: CExpert Geo-location
+ * Name: Expert Geo Location
  * Description: Let experts define their location.
  * Author: WPMU DEV
  */

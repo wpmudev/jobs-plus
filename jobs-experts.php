@@ -298,9 +298,7 @@ class Jobs_Experts
     {
         //load post type
         new JE_Custom_Content();
-        //after post type, we need page factory in ready
-        $this->pages = new JE_Page_Factory();
-        $this->pages->init();
+        add_action('wp_loaded', array(&$this, 'init_pages'));
         //uploader
         include_once($this->plugin_path . 'app/components/ig-uploader.php');
         ig_uploader()->init_uploader($this->can_upload());
@@ -340,6 +338,11 @@ class Jobs_Experts
                 include_once $addon;
             }
         }
+    }
+
+    function init_pages(){
+        $this->pages = new JE_Page_Factory();
+        $this->pages->init();
     }
 
     function init_widget()
@@ -721,6 +724,7 @@ $wpmudev_notices[] = array('id' => '912971',
 
 include_once(je()->plugin_path . 'ext/wpmudev-dash-notification.php');
 register_deactivation_hook(__FILE__, 'je_remove_rewrite');
-function je_remove_rewrite(){
+function je_remove_rewrite()
+{
     delete_option('je_rewrite');
 }

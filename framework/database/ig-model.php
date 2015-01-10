@@ -213,7 +213,7 @@ if (!class_exists('IG_Model')) {
          */
         public function import($data = array())
         {
-            foreach ($data as $key => $val) {
+            foreach ((array)$data as $key => $val) {
                 if (property_exists($this, $key)) {
                     $this->$key = $val;
                 } elseif (in_array($key, $this->virtual_attributes)) {

@@ -2,7 +2,7 @@
 
 /**
  * Name: Jobs & Experts Pages
- * Description: Instead of using virtual pages, using your wordpress page
+ * Description: Use standard pages rather than virtual pages
  * Author: WPMU DEV
  */
 class JE_Pages_Manager

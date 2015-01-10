@@ -113,6 +113,7 @@
             foreach ($days as $day) {
                 $data[$day] = $day . ' ' . __('Days', je()->domain);
             }
+            $data = apply_filters('je_open_days_limit', $data);
 
             $form->select('open_for', array(
                 'data' => $data,
