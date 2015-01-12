@@ -30,7 +30,7 @@ if (!class_exists('IG_Uploader')) {
 
         }
 
-        public function init_uploader($can_upload=false)
+        public function init_uploader($can_upload = false)
         {
             $this->controller = new IG_Uploader_Controller($can_upload);
         }
