@@ -315,7 +315,8 @@ class JE_Expert_Model extends IG_Post_Model
     function get_location()
     {
         $country = IG_Form::country();
-        return apply_filters('je_expert_get_location', $country, $this);
+        $location = isset($country[$this->location]) ? $country[$this->location] : $this->location;
+        return apply_filters('je_expert_get_location', $location, $this);
     }
 
     public static function model($class_name = __CLASS__)

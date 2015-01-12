@@ -9,6 +9,15 @@ class JE_Shared_Controller extends IG_Request
     {
         add_action('query_vars', array(&$this, 'add_my_var'));
         add_filter('user_has_cap', array(&$this, 'update_cap'), 10, 4);
+        add_filter('ajax_query_attachments_args', array(&$this, 'restrict_user'));
+    }
+
+    function restrict_user($args)
+    {
+        if (!current_user_can('manage_options')) {
+            $args['author'] = get_current_user_id();
+        }
+        return $args;
     }
 
     function add_my_var($public_query_vars)

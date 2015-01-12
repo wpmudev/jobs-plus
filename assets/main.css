@@ -394,3 +394,6 @@
 .hn-container .page-header{
     background: none;
 }
+.ui-helper-hidden-accessible{
+    display: none;
+}
