@@ -56,6 +56,7 @@
                     <?php endif; ?>
                 </div>
             </div>
+            <?php do_action('je_job_single_before_attachments', $model) ?>
             <div class="row">
                 <div class="col-md-12">
                     <?php

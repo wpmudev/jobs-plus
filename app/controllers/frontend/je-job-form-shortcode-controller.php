@@ -60,7 +60,7 @@ class JE_Job_Form_Shortcode_Controller extends IG_Request
                 }
             }
 
-            if(!$model->exist || $model->owner == get_current_user_id()){
+            if(!$model->exist || $model->is_current_owner()){
                 return $this->render('job-form/main', array(
                     'model' => $model
                 ), false);
