@@ -52,8 +52,9 @@
                             <?php $form->hidden('attachment') ?>
                             <?php
                             if (mmg()->can_upload()) {
-                                ig_uploader()->show_upload_control($model, 'attachment',false, array(
-                                    'title' => __("Attach media or other files.", mmg()->domain)
+                                ig_uploader()->show_upload_control($model, 'attachment', false, array(
+                                    'title' => __("Attach media or other files.", mmg()->domain),
+                                    'c_id' => 'message_me_modal_container'
                                 ));
                             } ?>
                         </div>

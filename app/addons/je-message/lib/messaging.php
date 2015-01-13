@@ -274,8 +274,6 @@ if (!class_exists('MMessaging')) {
             } else {
                 $front = new MM_Frontend();
             }
-            //include components we need to use
-            include($this->plugin_path . 'app/components/ig-uploader.php');
             //init uploader controller, if user can not upload, we only let it display attachment files
             ig_uploader()->init_uploader($this->can_upload());
 
