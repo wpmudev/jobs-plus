@@ -61,11 +61,32 @@ class JE_Message
             'template' => '',
             'url' => $link
         ), $atts));
+
+        if (!$this->can_view($view)) {
+            return '';
+        }
+
         $ob = sprintf('<a class="ig-container jbp-shortcode-button jbp-message-inbox %s" href="%s">
 			<i style="display: block" class="fa fa-inbox fa-2x"></i>%s
 		</a>', esc_attr($class), $url, esc_html($text));
 
         return $ob;
+    }
+
+    public function can_view($view = 'both')
+    {
+        $view = strtolower($view);
+        if (is_user_logged_in()) {
+            if ($view == 'loggedout') {
+                return false;
+            }
+        } else {
+            if ($view == 'loggedin') {
+                return false;
+            }
+        }
+
+        return true;
     }
 
     function append_inbox_button($content)
