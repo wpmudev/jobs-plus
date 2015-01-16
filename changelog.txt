@@ -34,3 +34,8 @@ Fix search job widget price slider
 Add ability for admin can on/off job discussion
 Fix blank shortcode instruction in settings
 ==1.0.1.7
+New addon - Exert Location
+Use WP Media for uploader
+Fix: conflict with Advanced Custom Field
+Fix: Social & Skill js bug
+
