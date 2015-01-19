@@ -38,4 +38,5 @@ New addon - Exert Location
 Use WP Media for uploader
 Fix: conflict with Advanced Custom Field
 Fix: Social & Skill js bug
-
+==1.0.1.8
+some more hooks & filters
