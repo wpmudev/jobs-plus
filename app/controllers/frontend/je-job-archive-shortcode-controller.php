@@ -32,6 +32,11 @@ class JE_Job_Archive_Shortcode_Controller extends IG_Request
         if (is_tax('jbp_category')) {
             $current_cat = get_term_by('slug', get_query_var('jbp_category'), 'jbp_category');
             $cat = $current_cat->term_id;
+            $tax_query[] = array(
+                'taxonomy' => 'jbp_category',
+                'field' => 'term_id',
+                'terms' => $cat
+            );
         }
         if (is_tax('jbp_skills_tag')) {
             $current_skill = get_term_by('slug', get_query_var('jbp_skills_tag'), 'jbp_skills_tag');
@@ -46,7 +51,7 @@ class JE_Job_Archive_Shortcode_Controller extends IG_Request
         if (isset($_GET['query'])) {
             $search = $args['s'] = $_GET['query'];
         }
-
+        $args['tax_query'] = $tax_query;
         $args = apply_filters('jbp_job_search_params', $args);
         $instance = je();
 

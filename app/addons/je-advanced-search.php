@@ -19,7 +19,8 @@ class JE_Advanced_Search
         add_action('jobs_search_widget_form_after', array(&$this, 'extend_job_search_widget'));
     }
 
-    function extend_job_search_widget($form_id){
+    function extend_job_search_widget($form_id)
+    {
         wp_enqueue_script('jbp_ion_slider');
         wp_enqueue_style('jbp_ion_slider_style');
         wp_enqueue_style('jbp_ion_slider_flat');
@@ -27,7 +28,7 @@ class JE_Advanced_Search
         wp_enqueue_style('jobs-advanced-search');
 
         global $wpdb;
-        $range_max = $wpdb->get_var("select meta_value from ".$wpdb->prefix."postmeta where meta_key='_jbp_job_budget_max' ORDER BY ABS(meta_value) DESC LIMIT 1; ");;
+        $range_max = $wpdb->get_var("select meta_value from " . $wpdb->prefix . "postmeta where meta_key='_jbp_job_budget_max' ORDER BY ABS(meta_value) DESC LIMIT 1; ");;
 
         $job_min_price = je()->settings()->job_min_search_budget;
         $job_max_price = $range_max + 100;
@@ -51,14 +52,14 @@ class JE_Advanced_Search
         <?php
         $data = array_combine(wp_list_pluck(get_terms('jbp_category', 'hide_empty=0'), 'term_id'), wp_list_pluck(get_terms('jbp_category', 'hide_empty=0'), 'name'));
         echo IG_Form::select(array(
-            'name'=>'job_cat',
-            'data'=>$data,
-            'selected'=>$cat,
-            'attributes'=>array(
-                'class'=>'input-sm',
-                'style'=>'width:100%'
+            'name' => 'job_cat',
+            'data' => $data,
+            'selected' => $cat,
+            'attributes' => array(
+                'class' => 'input-sm',
+                'style' => 'width:100%'
             ),
-            'nameless'=> __('--SELECT--', je()->domain)
+            'nameless' => __('--SELECT--', je()->domain)
         ));
         ?>
         <label><?php _e('Order By', je()->domain) ?></label>
@@ -76,9 +77,9 @@ class JE_Advanced_Search
         $setting = je()->settings();
 
         $pos = $setting->curr_symbol_position;
-        if($pos==1 || $pos==2){
-            $pos='prefix';
-        }else{
+        if ($pos == 1 || $pos == 2) {
+            $pos = 'prefix';
+        } else {
             $pos = 'postfix';
         }
         ?>
@@ -94,14 +95,29 @@ class JE_Advanced_Search
                     min: <?php echo $setting->job_min_search_budget ?>,
                     max: '<?php echo $range_max+100 ?>',
                     type: "double",
-                <?php echo $pos ?>: "<?php echo JobsExperts_Helper::format_currency() ?>",
-                    maxPostfix: "+",
-                    prettify: false,
-                    hasGrid: true,
-                    from: price_data.from,
-                    to: price_data.to,
-                    gridMargin: 7,
-                    onChange: function (obj) {      // callback is called on every slider change
+                <?php echo $pos ?>:
+                "<?php echo JobsExperts_Helper::format_currency() ?>",
+                    maxPostfix
+                :
+                "+",
+                    prettify
+                :
+                false,
+                    hasGrid
+                :
+                true,
+                    from
+                :
+                price_data.from,
+                    to
+                :
+                price_data.to,
+                    gridMargin
+                :
+                7,
+                    onChange
+                :
+                function (obj) {      // callback is called on every slider change
                     price_data = {
                         from: obj.from,
                         to: obj.to
@@ -356,7 +372,7 @@ INNER JOIN ' . $wpdb->prefix . 'postmeta max_price ON max_price.post_id = posts.
             );
         }
 
-        $args['tax_query'] = $tax_query;
+        $args['tax_query'] = array_merge($args['tax_query'], $tax_query);
 
         $job_min_price = $plugin->settings()->job_min_search_budget;
         //get the max price
