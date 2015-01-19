@@ -186,7 +186,7 @@ if (!class_exists('IG_Uploader_Model')) {
                 }
             }
 
-            return $image;
+            return apply_filters('ig_uploader_file_mime_icon', $image);
         }
 
         public static function model($class_name = __CLASS__)
