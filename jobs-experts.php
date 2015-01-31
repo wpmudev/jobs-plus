@@ -69,7 +69,7 @@ class Jobs_Experts
     public $domain;
     public $prefix;
 
-    public $version = "1.0.1.4";
+    public $version = "1.0.1.8";
     public $db_version = "1.0";
 
     public $global = array();
