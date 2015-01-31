@@ -1,0 +1,24 @@
+.je-dd-list {
+
+}
+
+.je-dd-item {
+    display: block;
+    margin: 5px 0;
+    padding: 5px 10px;
+    color: #333;
+    text-decoration: none;
+    font-weight: 700;
+    border: 2px solid #ddd !important;
+    background: #fafafa;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    z-index: 20;
+    width: 100%;
+}
+
+.je-fields-list {
+    min-height: 20px;
+}
