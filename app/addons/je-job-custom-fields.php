@@ -1,10 +1,6 @@
 <?php
 
-/**
- * Name: Custom fields for job
- * Description: Create random expert records, for testing purposes.
- * Author: WPMU DEV
- */
+
 class JE_Job_Custom_Fields extends IG_Request
 {
     protected $base_path;
