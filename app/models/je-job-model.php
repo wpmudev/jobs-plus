@@ -120,6 +120,13 @@ class JE_Job_Model extends IG_Post_Model
         }
     }
 
+    public function before_save()
+    {
+        if ($this->is_expired()) {
+            update_post_meta($this->id, 'jbp_job_post_day', date('Y-m-d H:i:s'));
+        }
+    }
+
     public function after_validate()
     {
         if (je()->settings()->job_budget_range == 1 && $this->min_budget > $this->max_budget) {
@@ -178,6 +185,7 @@ class JE_Job_Model extends IG_Post_Model
         }
         //return $this->days_hours();
     }
+
 
     private function days_hours($expires)
     {

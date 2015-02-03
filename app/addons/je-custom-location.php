@@ -49,7 +49,7 @@ class JE_Custom_Location extends IG_Request
     function menu()
     {
         ?>
-        <li <?php echo je()->get('tab') == 'pages_manager' ? 'class="active"' : null ?>>
+        <li <?php echo je()->get('tab') == 'custom_location' ? 'class="active"' : null ?>>
             <a href="<?php echo admin_url('edit.php?post_type=jbp_job&page=jobs-plus-menu&tab=custom_location') ?>">
                 <i class="fa fa-crosshairs"></i> <?php _e('Custom Expert Location', je()->domain) ?>
             </a></li>
