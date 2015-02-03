@@ -19,6 +19,165 @@ class JE_Job_Custom_Fields extends IG_Request
         add_action('je_settings_content_job_custom_fields', array(&$this, 'content'));
         add_action('admin_enqueue_scripts', array(&$this, 'script'));
         add_action('wp_ajax_job_assign_to_block', array(&$this, 'assign_to_block'));
+        //build form
+        add_action('je_before_cat_field', array(&$this, 'before_cat_field'), 10, 2);
+        add_action('je_after_cat_field', array(&$this, 'after_cat_field'), 10, 2);
+        add_action('je_before_job_title_field', array(&$this, 'before_job_title_field'), 10, 2);
+        add_action('je_after_job_title_field', array(&$this, 'after_job_title_field'), 10, 2);
+        add_action('je_before_description_field', array(&$this, 'before_description_field'), 10, 2);
+        add_action('je_after_description_field', array(&$this, 'after_description_field'), 10, 2);
+        add_action('je_before_skill_field', array(&$this, 'before_skill_field'), 10, 2);
+        add_action('je_after_skill_field', array(&$this, 'after_skill_field'), 10, 2);
+        add_action('je_before_price_field', array(&$this, 'before_price_field'), 10, 2);
+        add_action('je_after_price_field', array(&$this, 'after_price_field'), 10, 2);
+        add_action('je_before_complete_date_field', array(&$this, 'before_complete_date_field'), 10, 2);
+        add_action('je_after_complete_date_field', array(&$this, 'after_complete_date_field'), 10, 2);
+        add_action('je_before_email_field', array(&$this, 'before_email_field'), 10, 2);
+        add_action('je_after_email_field', array(&$this, 'after_email_field'), 10, 2);
+        add_action('je_before_open_for_field', array(&$this, 'before_open_for_field'), 10, 2);
+        add_action('je_after_open_for_field', array(&$this, 'after_open_for_field'), 10, 2);
+        //addition fields
+        add_filter('je_job_additions_field', array(&$this, 'addition_jobs_field'));
+        add_filter('je_job_relations', array(&$this, 'job_relations'));
+    }
+
+    function job_relations($relations)
+    {
+        $models = JE_Job_Field_Model::model()->all();
+        foreach ($models as $model) {
+            $relations[] = array(
+                'type' => 'meta',
+                'key' => $model->cp_id,
+                'map' => $model->cp_id
+            );
+        }
+        return $relations;
+    }
+
+    function addition_jobs_field($fields)
+    {
+        $models = JE_Job_Field_Model::model()->all();
+        foreach ($models as $model) {
+            $fields[] = $model->cp_id;
+        }
+        return $fields;
+    }
+
+    function before_cat_field(JE_Job_Model $model, IG_Active_Form $form)
+    {
+        $fields = JE_Job_Field_Model::model()->find_by_attributes(array(
+            'position' => 'before-cat'
+        ));
+        foreach ($fields as $field) {
+            ?>
+            <div class="form-group <?php echo $model->has_error($field->cp_id) ? "has-error" : null ?>">
+                <?php $form->label($field->cp_id, array("text" => __($field->title, je()->domain), "attributes" => array("class" => "col-lg-3 control-label"))) ?>
+                <div class="col-lg-9">
+                    <?php
+                    switch ($field->type) {
+                        case 'text':
+                            $form->text($field->cp_id, array("attributes" => array("class" => "form-control")));
+                            break;
+                        case 'radio':
+                            foreach ($field->options as $option) {
+                                ?>
+                                <div class="radio">
+                                    <label>
+                                        <?php
+                                        $form->radio($field->cp_id, array(
+                                            'value' => sanitize_title($option)
+                                        ));
+                                        ?>
+                                        <?php echo $option ?>
+                                    </label>
+                                </div>
+
+                            <?php
+                            }
+                            break;
+                    }
+                    ?>
+                    <span class="help-block m-b-none error-job_title"><?php $form->error($field->cp_id) ?></span>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        <?php
+        }
+    }
+
+    function after_cat_field(JE_Job_Model $model, IG_Active_Form $form)
+    {
+
+    }
+
+    function before_job_title_field(JE_Job_Model $model, IG_Active_Form $form)
+    {
+
+    }
+
+    function after_job_title_field(JE_Job_Model $model, IG_Active_Form $form)
+    {
+
+    }
+
+    function before_description_field(JE_Job_Model $model, IG_Active_Form $form)
+    {
+
+    }
+
+    function after_description_field(JE_Job_Model $model, IG_Active_Form $form)
+    {
+
+    }
+
+    function before_skill_field(JE_Job_Model $model, IG_Active_Form $form)
+    {
+
+    }
+
+    function after_skill_field(JE_Job_Model $model, IG_Active_Form $form)
+    {
+
+    }
+
+    function before_price_field(JE_Job_Model $model, IG_Active_Form $form)
+    {
+
+    }
+
+    function after_price_field(JE_Job_Model $model, IG_Active_Form $form)
+    {
+
+    }
+
+    function before_email_field(JE_Job_Model $model, IG_Active_Form $form)
+    {
+
+    }
+
+    function after_email_field(JE_Job_Model $model, IG_Active_Form $form)
+    {
+
+    }
+
+    function before_complete_date_field(JE_Job_Model $model, IG_Active_Form $form)
+    {
+
+    }
+
+    function after_complete_date_field(JE_Job_Model $model, IG_Active_Form $form)
+    {
+
+    }
+
+    function before_open_for_field(JE_Job_Model $model, IG_Active_Form $form)
+    {
+
+    }
+
+    function after_open_for_field(JE_Job_Model $model, IG_Active_Form $form)
+    {
+
     }
 
     function assign_to_block()
@@ -115,6 +274,17 @@ class JE_Job_Custom_Fields extends IG_Request
                 $model->save();
             }
         }
+    }
+
+    public function validation_rules()
+    {
+        return array(
+            'required' => __("Required", je()->domain),
+            'valid_email' => __("Valid Email", je()->domain),
+            'max_len' => __("Max Length", je()->domain),
+            'min_len' => __("Min Length", je()->domain),
+            'exact_len' => __("Exactly Length", je()->domain)
+        );
     }
 }
 

@@ -4,6 +4,7 @@
     $form->hidden('id');
     ?>
     <?php do_action('je_job_before_form', $model, $form) ?>
+    <?php do_action('je_before_cat_field', $model, $form) ?>
     <div class="form-group <?php echo $model->has_error("categories") ? "has-error" : null ?>">
         <?php $form->label("categories", array("text" => __("Choose a category", je()->domain), "attributes" => array("class" => "col-lg-3 control-label"))) ?>
         <div class="col-lg-9">
@@ -15,7 +16,8 @@
         </div>
         <div class="clearfix"></div>
     </div>
-
+    <?php do_action('je_after_cat_field', $model, $form) ?>
+    <?php do_action('je_before_job_title_field', $model, $form) ?>
     <div class="form-group <?php echo $model->has_error("job_title") ? "has-error" : null ?>">
         <?php $form->label("job_title", array("text" => __("Give your job a title", je()->domain), "attributes" => array("class" => "col-lg-3 control-label"))) ?>
         <div class="col-lg-9">
@@ -24,6 +26,8 @@
         </div>
         <div class="clearfix"></div>
     </div>
+    <?php do_action('je_after_job_title_field', $model, $form) ?>
+    <?php do_action('je_before_description_field', $model, $form) ?>
     <?php $form->hidden('owner', array('value' => get_current_user_id())) ?>
     <div class="form-group <?php echo $model->has_error("description") ? "has-error" : null ?>">
         <?php $form->label("description", array("text" => __("Describe the work to be done", je()->domain), "attributes" => array("class" => "col-lg-3 control-label"))) ?>
@@ -33,6 +37,8 @@
         </div>
         <div class="clearfix"></div>
     </div>
+    <?php do_action('je_after_description_field', $model, $form) ?>
+    <?php do_action('je_before_skill_field', $model, $form) ?>
     <div class="form-group <?php echo $model->has_error("skills") ? "has-error" : null ?>">
         <?php $form->label("skills", array("text" => __("What skills are needed?", je()->domain), "attributes" => array("class" => "col-lg-3 control-label"))) ?>
         <div class="col-lg-9">
@@ -42,6 +48,8 @@
         </div>
         <div class="clearfix"></div>
     </div>
+    <?php do_action('je_after_skill_field', $model, $form) ?>
+    <?php do_action('je_before_price_field', $model, $form) ?>
     <?php if (je()->settings()->job_budget_range == 1): ?>
         <div class="form-group <?php echo $model->has_error("min_budget") ? "has-error" : null ?>">
             <?php $form->label("min_budget", array("text" => "Min Budget", "attributes" => array("class" => "col-lg-3 control-label"))) ?>
@@ -81,6 +89,8 @@
             <div class="clearfix"></div>
         </div>
     <?php endif; ?>
+    <?php do_action('je_after_price_field', $model, $form) ?>
+    <?php do_action('je_before_email_field', $model, $form) ?>
 
     <div class="form-group <?php echo $model->has_error("contact_email") ? "has-error" : null ?>">
         <?php $form->label("contact_email", array("text" => "Contact Email", "attributes" => array("class" => "col-lg-3 control-label"))) ?>
@@ -93,6 +103,8 @@
         </div>
         <div class="clearfix"></div>
     </div>
+    <?php do_action('je_after_email_field', $model, $form) ?>
+    <?php do_action('je_before_complete_date_field', $model, $form) ?>
     <div class="form-group <?php echo $model->has_error("dead_line") ? "has-error" : null ?>">
         <?php $form->label("dead_line", array("text" => __("Completion Date", je()->domain), "attributes" => array("class" => "col-lg-3 control-label"))) ?>
         <div class="col-lg-9">
@@ -104,6 +116,8 @@
         </div>
         <div class="clearfix"></div>
     </div>
+    <?php do_action('je_after_complete_date_field', $model, $form) ?>
+    <?php do_action('je_before_open_for_field', $model, $form) ?>
     <div class="form-group <?php echo $model->has_error("open_for") ? "has-error" : null ?>">
         <?php $form->label("open_for", array("text" => "Job Open for", "attributes" => array("class" => "col-lg-3 control-label"))) ?>
         <div class="col-lg-9">
@@ -126,6 +140,7 @@
         </div>
         <div class="clearfix"></div>
     </div>
+    <?php do_action('je_after_open_for_field', $model, $form) ?>
     <?php do_action('je_job_after_form', $model, $form) ?>
     <?php $form->hidden('portfolios');
     wp_nonce_field('je_job_form') ?>

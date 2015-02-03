@@ -1,11 +1,9 @@
 <div class="row">
     <div class="col-md-4">
         <ul id="main-list" data-id="free" class="dd-list je-fields-list">
-            <?php foreach ($this->find_free_fields() as $model): ?>
-                <li class="je-dd-item" data-id="<?php echo $model->id ?>">
-                    <?php echo $model->title ?> - <?php echo $model->type ?>
-                </li>
-            <?php endforeach; ?>
+            <?php $this->render_partial('_item', array(
+                'models' => $this->find_free_fields()
+            )) ?>
         </ul>
     </div>
     <div class="col-md-8">
@@ -15,11 +13,9 @@
             </div>
             <div class="panel-body field-drop-place dd">
                 <ul data-id="before-cat" class="dd-list je-fields-list">
-                    <?php foreach ($this->find_before_cat_fields() as $model): ?>
-                        <li class="je-dd-item" data-id="<?php echo $model->id ?>">
-                            <?php echo $model->title ?> - <?php echo $model->type ?>
-                        </li>
-                    <?php endforeach; ?>
+                    <?php $this->render_partial('_item', array(
+                        'models' => $this->find_before_cat_fields()
+                    )) ?>
                 </ul>
             </div>
         </div>
@@ -29,11 +25,9 @@
             </div>
             <div class="panel-body field-drop-place dd">
                 <ul data-id="after-cat" class="dd-list je-fields-list">
-                    <?php foreach ($this->find_after_cat_fields() as $model): ?>
-                        <li class="je-dd-item" data-id="<?php echo $model->id ?>">
-                            <?php echo $model->title ?> - <?php echo $model->type ?>
-                        </li>
-                    <?php endforeach; ?>
+                    <?php $this->render_partial('_item', array(
+                        'models' => $this->find_after_cat_fields()
+                    )) ?>
                 </ul>
             </div>
         </div>
@@ -43,6 +37,7 @@
             </div>
             <div class="panel-body field-drop-place dd">
                 <ul data-id="before-job-title" class="dd-list je-fields-list">
+
                 </ul>
             </div>
         </div>
