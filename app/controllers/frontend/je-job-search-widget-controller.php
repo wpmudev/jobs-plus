@@ -52,7 +52,7 @@ class JE_Job_Search_Widget_Controller extends WP_Widget
                                       action="<?php echo get_post_type_archive_link('jbp_job'); ?>">
                                     <label><?php _e('Keywords', je()->domain) ?></label>
                                     <input class="input-sm" type="text"
-                                           value="<?php echo isset($_GET['s']) ? $_GET['s'] : null ?>" name="s">
+                                           value="<?php echo isset($_GET['query']) ? $_GET['query'] : null ?>" name="query">
                                     <?php do_action('jobs_search_widget_form_after', $form_id) ?>
                                     <div class="clearfix"></div>
                                     <button type="submit"
