@@ -41,3 +41,4 @@ Fix: Social & Skill js bug
 ==1.0.1.8
 some more hooks & filters
 fix bug extend jobs expired date
+fix bug job search widget wrong parameter

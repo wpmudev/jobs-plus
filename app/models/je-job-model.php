@@ -101,7 +101,7 @@ class JE_Job_Model extends IG_Post_Model
             'description' => 'required',
         );
         if (je()->settings()->job_budget_range == 1) {
-            $rules['min_budget'] = 'required|numeric';
+            $rules['min_budget'] = 'required|numeric|min_numeric,0';
             $rules['max_budget'] = 'required|numeric';
         } else {
             $rules['budget'] = 'required|numeric';
@@ -140,7 +140,7 @@ class JE_Job_Model extends IG_Post_Model
     {
         if (je()->settings()->job_budget_range == 1) {
             //use range
-            if (!empty($this->min_budget) && !empty($this->max_budget)) {
+            if (strlen($this->min_budget) && strlen($this->max_budget)) {
                 return array($this->min_budget, $this->max_budget);
             } else {
                 //fallback to normal budget

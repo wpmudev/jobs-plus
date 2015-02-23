@@ -80,7 +80,7 @@ class JE_Job_Recent_Widget_Controller extends WP_Widget
         <?php
         }
         echo $after_widget;
-        ob_get_flush();
+        echo ob_get_clean();
     }
 
     function update($new_instance, $old_instance)

@@ -305,6 +305,7 @@ class Jobs_Experts
         //social-walll
         include_once($this->plugin_path . 'app/components/ig-social-wall.php');
         include_once($this->plugin_path . 'app/components/ig-skill.php');
+        include_once($this->plugin_path . 'app/components/ig-wallet.php');
         if (is_admin()) {
             $this->global['admin'] = new JE_Admin_Controller();
             new JE_Settings_Controller();
@@ -327,6 +328,7 @@ class Jobs_Experts
         $contact = new JE_Contact_Shortcode_Controller();
         $landing = new JE_Landing_Shortcode_Controller();
         $shared = new JE_Shared_Controller();
+
         //load addon
         //load add on
         $addons = $this->settings()->plugins;

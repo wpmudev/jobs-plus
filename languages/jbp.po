@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Jobs Plus\n"
-"POT-Creation-Date: 2015-01-16 14:33+0700\n"
-"PO-Revision-Date: 2015-01-16 14:33+0700\n"
+"POT-Creation-Date: 2015-02-12 20:00+0700\n"
+"PO-Revision-Date: 2015-02-12 20:01+0700\n"
 "Last-Translator: \n"
 "Language-Team: WPMU DEV\n"
 "Language: en\n"
@@ -16,70 +16,71 @@ msgstr ""
 "X-Poedit-SearchPath-0: jobs-plus\n"
 "X-Poedit-SearchPathExcluded-0: app/addons/je-message\n"
 
-#: jobs-plus/app/addons/je-advanced-search.php:45
-#: jobs-plus/app/addons/je-advanced-search.php:530
+#: jobs-plus/app/addons/je-advanced-search.php:46
+#: jobs-plus/app/addons/je-advanced-search.php:546
 #: jobs-plus/app/addons/je-job-demo-data.php:210
 msgid "Price Range"
 msgstr ""
 
-#: jobs-plus/app/addons/je-advanced-search.php:50
-#: jobs-plus/app/addons/je-advanced-search.php:540
-#: jobs-plus/app/views/backend/jobs/_form.php:173
+#: jobs-plus/app/addons/je-advanced-search.php:51
+#: jobs-plus/app/addons/je-advanced-search.php:556
+#: jobs-plus/app/views/backend/jobs/_form.php:174
 msgid "Category"
 msgstr ""
 
-#: jobs-plus/app/addons/je-advanced-search.php:61
-#: jobs-plus/app/addons/je-advanced-search.php:551
+#: jobs-plus/app/addons/je-advanced-search.php:62
+#: jobs-plus/app/addons/je-advanced-search.php:567
 msgid "--SELECT--"
 msgstr ""
 
-#: jobs-plus/app/addons/je-advanced-search.php:64
-#: jobs-plus/app/addons/je-advanced-search.php:557
-#: jobs-plus/app/addons/je-advanced-search.php:621
+#: jobs-plus/app/addons/je-advanced-search.php:65
+#: jobs-plus/app/addons/je-advanced-search.php:573
+#: jobs-plus/app/addons/je-advanced-search.php:637
 msgid "Order By"
 msgstr ""
 
-#: jobs-plus/app/addons/je-advanced-search.php:66
-#: jobs-plus/app/addons/je-advanced-search.php:561
-#: jobs-plus/app/addons/je-advanced-search.php:625
+#: jobs-plus/app/addons/je-advanced-search.php:67
+#: jobs-plus/app/addons/je-advanced-search.php:577
+#: jobs-plus/app/addons/je-advanced-search.php:641
 #: jobs-plus/app/addons/je-message/lib/app/components/mm-addon-table.php:35
+#: jobs-plus/app/components/ig-wallet/app/views/credit/main.php:15
 #: jobs-plus/app/components/je-addon-table.php:35
 #: jobs-plus/app/controllers/backend/je-expert-admin-controller.php:22
 #: jobs-plus/app/views/my-expert/main.php:9
 msgid "Name"
 msgstr ""
 
-#: jobs-plus/app/addons/je-advanced-search.php:69
-#: jobs-plus/app/addons/je-advanced-search.php:565
+#: jobs-plus/app/addons/je-advanced-search.php:70
+#: jobs-plus/app/addons/je-advanced-search.php:581
 #: jobs-plus/app/controllers/frontend/je-job-recent-widget-controller.php:150
 msgid "Latest"
 msgstr ""
 
-#: jobs-plus/app/addons/je-advanced-search.php:72
-#: jobs-plus/app/addons/je-advanced-search.php:569
+#: jobs-plus/app/addons/je-advanced-search.php:73
+#: jobs-plus/app/addons/je-advanced-search.php:585
 msgid "About to End"
 msgstr ""
 
-#: jobs-plus/app/addons/je-advanced-search.php:127
-#: jobs-plus/app/addons/je-advanced-search.php:421
+#: jobs-plus/app/addons/je-advanced-search.php:143
+#: jobs-plus/app/addons/je-advanced-search.php:437
 msgid "Advance Search Form"
 msgstr ""
 
-#: jobs-plus/app/addons/je-advanced-search.php:132
-#: jobs-plus/app/addons/je-advanced-search.php:447
+#: jobs-plus/app/addons/je-advanced-search.php:148
+#: jobs-plus/app/addons/je-advanced-search.php:463
 msgid "Advanced Search"
 msgstr ""
 
-#: jobs-plus/app/addons/je-advanced-search.php:577
-#: jobs-plus/app/addons/je-advanced-search.php:641
+#: jobs-plus/app/addons/je-advanced-search.php:593
+#: jobs-plus/app/addons/je-advanced-search.php:657
 #: jobs-plus/app/addons/je-message/lib/app/components/mm-messages-table.php:130
 #: jobs-plus/app/addons/je-message/lib/app/views/shortcode/inbox.php:23
 #: jobs-plus/app/controllers/frontend/je-job-search-widget-controller.php:59
 msgid "Search"
 msgstr ""
 
-#: jobs-plus/app/addons/je-advanced-search.php:580
-#: jobs-plus/app/addons/je-advanced-search.php:644
+#: jobs-plus/app/addons/je-advanced-search.php:596
+#: jobs-plus/app/addons/je-advanced-search.php:660
 #: jobs-plus/app/addons/je-custom-location/_location_popup.php:31
 #: jobs-plus/app/components/ig-skill/app/views/_form.php:64
 #: jobs-plus/app/components/ig-social-wall/app/views/form.php:35
@@ -95,26 +96,26 @@ msgstr ""
 msgid "Cancel"
 msgstr ""
 
-#: jobs-plus/app/addons/je-advanced-search.php:592
+#: jobs-plus/app/addons/je-advanced-search.php:608
 #: jobs-plus/app/addons/je-custom-location/_location_popup.php:4
 #: jobs-plus/app/views/expert-form/_location_popup.php:4
 msgid "Location"
 msgstr ""
 
-#: jobs-plus/app/addons/je-advanced-search.php:599
 #: jobs-plus/app/addons/je-advanced-search.php:615
+#: jobs-plus/app/addons/je-advanced-search.php:631
 msgid "--Select--"
 msgstr ""
 
-#: jobs-plus/app/addons/je-advanced-search.php:605
+#: jobs-plus/app/addons/je-advanced-search.php:621
 msgid "Skill"
 msgstr ""
 
-#: jobs-plus/app/addons/je-advanced-search.php:629
+#: jobs-plus/app/addons/je-advanced-search.php:645
 msgid "Most Popular"
 msgstr ""
 
-#: jobs-plus/app/addons/je-advanced-search.php:633
+#: jobs-plus/app/addons/je-advanced-search.php:649
 msgid "Most Likes"
 msgstr ""
 
@@ -193,7 +194,7 @@ msgstr ""
 #: jobs-plus/app/addons/je-message/lib/app/views/shortcode/setting.php:53
 #: jobs-plus/app/addons/je-pages-manager.php:512
 #: jobs-plus/app/views/backend/experts/_form.php:142
-#: jobs-plus/app/views/backend/jobs/_form.php:216
+#: jobs-plus/app/views/backend/jobs/_form.php:217
 #: jobs-plus/app/views/backend/settings/general.php:131
 #: jobs-plus/app/views/backend/settings/uploader.php:36
 msgid "Save Changes"
@@ -228,6 +229,8 @@ msgid "Your Location"
 msgstr ""
 
 #: jobs-plus/app/addons/je-custom-location/_location_popup.php:29
+#: jobs-plus/app/components/ig-wallet/app/views/credit/main.php:36
+#: jobs-plus/app/components/ig-wallet/app/views/credit/main.php:101
 #: jobs-plus/app/views/expert-form/_biography_popup.php:11
 #: jobs-plus/app/views/expert-form/_company_popup.php:22
 #: jobs-plus/app/views/expert-form/_email_popup.php:13
@@ -264,7 +267,7 @@ msgstr ""
 
 #: jobs-plus/app/addons/je-expert-demo-data.php:301
 #: jobs-plus/app/components/ig-skill/app/views/main.php:3
-#: jobs-plus/app/views/backend/jobs/_form.php:196
+#: jobs-plus/app/views/backend/jobs/_form.php:197
 #: jobs-plus/app/views/expert-single/main.php:150
 msgid "Skills"
 msgstr ""
@@ -295,6 +298,94 @@ msgstr ""
 #: jobs-plus/app/views/backend/settings/expert.php:142
 #: jobs-plus/app/views/backend/settings/job.php:173
 msgid "Submit"
+msgstr ""
+
+#: jobs-plus/app/addons/je-job-custom-fields.php:205
+msgid "Customize Job Fields"
+msgstr ""
+
+#: jobs-plus/app/addons/je-job-custom-fields.php:278
+msgid "Required"
+msgstr ""
+
+#: jobs-plus/app/addons/je-job-custom-fields.php:279
+msgid "Valid Email"
+msgstr ""
+
+#: jobs-plus/app/addons/je-job-custom-fields.php:280
+msgid "Max Length"
+msgstr ""
+
+#: jobs-plus/app/addons/je-job-custom-fields.php:281
+msgid "Min Length"
+msgstr ""
+
+#: jobs-plus/app/addons/je-job-custom-fields.php:282
+msgid "Exactly Length"
+msgstr ""
+
+#: jobs-plus/app/addons/je-job-custom-fields/app/views/composer.php:12
+msgid "Before Category Field"
+msgstr ""
+
+#: jobs-plus/app/addons/je-job-custom-fields/app/views/composer.php:24
+msgid "After Category Field"
+msgstr ""
+
+#: jobs-plus/app/addons/je-job-custom-fields/app/views/composer.php:36
+msgid "Before Job Title Field"
+msgstr ""
+
+#: jobs-plus/app/addons/je-job-custom-fields/app/views/composer.php:46
+msgid "After Job Title Field"
+msgstr ""
+
+#: jobs-plus/app/addons/je-job-custom-fields/app/views/composer.php:55
+msgid "Before Description Field"
+msgstr ""
+
+#: jobs-plus/app/addons/je-job-custom-fields/app/views/composer.php:64
+msgid "After Description Field"
+msgstr ""
+
+#: jobs-plus/app/addons/je-job-custom-fields/app/views/composer.php:73
+msgid "Before Skill Field"
+msgstr ""
+
+#: jobs-plus/app/addons/je-job-custom-fields/app/views/composer.php:82
+msgid "After Skills Field"
+msgstr ""
+
+#: jobs-plus/app/addons/je-job-custom-fields/app/views/composer.php:91
+msgid "Before Price Field(s)"
+msgstr ""
+
+#: jobs-plus/app/addons/je-job-custom-fields/app/views/composer.php:100
+msgid "After Price Field(s)"
+msgstr ""
+
+#: jobs-plus/app/addons/je-job-custom-fields/app/views/composer.php:109
+msgid "Before Email Field"
+msgstr ""
+
+#: jobs-plus/app/addons/je-job-custom-fields/app/views/composer.php:118
+msgid "After Email Field"
+msgstr ""
+
+#: jobs-plus/app/addons/je-job-custom-fields/app/views/composer.php:127
+msgid "Before Complete Date Field"
+msgstr ""
+
+#: jobs-plus/app/addons/je-job-custom-fields/app/views/composer.php:136
+msgid "After Complete Date Field"
+msgstr ""
+
+#: jobs-plus/app/addons/je-job-custom-fields/app/views/composer.php:145
+msgid "Before Open For Field"
+msgstr ""
+
+#: jobs-plus/app/addons/je-job-custom-fields/app/views/composer.php:154
+msgid "After Open For Field"
 msgstr ""
 
 #: jobs-plus/app/addons/je-job-demo-data.php:186
@@ -795,6 +886,7 @@ msgstr ""
 #: jobs-plus/app/addons/je-message/lib/app/views/shortcode/_inbox_message.php:21
 #: jobs-plus/app/components/ig-skill/app/views/_form.php:68
 #: jobs-plus/app/components/ig-social-wall/app/views/form.php:39
+#: jobs-plus/app/components/ig-wallet/app/views/credit/main.php:39
 #: jobs-plus/app/views/my-expert/main.php:34
 #: jobs-plus/app/views/my-job/main.php:31
 #: jobs-plus/framework/database/ig-grid.php:42
@@ -914,27 +1006,27 @@ msgid ""
 msgstr ""
 
 #: jobs-plus/app/addons/je-message/lib/functions.php:94
-#: jobs-plus/jobs-experts.php:611
+#: jobs-plus/jobs-experts.php:614
 msgid "Username"
 msgstr ""
 
 #: jobs-plus/app/addons/je-message/lib/functions.php:95
-#: jobs-plus/jobs-experts.php:612
+#: jobs-plus/jobs-experts.php:615
 msgid "Password"
 msgstr ""
 
 #: jobs-plus/app/addons/je-message/lib/functions.php:96
-#: jobs-plus/jobs-experts.php:613
+#: jobs-plus/jobs-experts.php:616
 msgid "Remember Me"
 msgstr ""
 
 #: jobs-plus/app/addons/je-message/lib/functions.php:97
-#: jobs-plus/jobs-experts.php:614
+#: jobs-plus/jobs-experts.php:617
 msgid "Sign In"
 msgstr ""
 
 #: jobs-plus/app/addons/je-message/lib/functions.php:169
-#: jobs-plus/jobs-experts.php:686
+#: jobs-plus/jobs-experts.php:689
 msgid "Forgot password?"
 msgstr ""
 
@@ -1102,6 +1194,85 @@ msgstr ""
 msgid "Content"
 msgstr ""
 
+#: jobs-plus/app/components/ig-wallet.php:39
+#: jobs-plus/app/components/ig-wallet.php:45
+#: jobs-plus/app/components/ig-wallet.php:47
+#: jobs-plus/app/components/ig-wallet/app/views/credit/main.php:2
+msgid "Credit Plans"
+msgstr ""
+
+#: jobs-plus/app/components/ig-wallet.php:46
+msgid "Credit Plan"
+msgstr ""
+
+#: jobs-plus/app/components/ig-wallet.php:48
+msgid "Parent Item:"
+msgstr ""
+
+#: jobs-plus/app/components/ig-wallet.php:49
+msgid "All Items"
+msgstr ""
+
+#: jobs-plus/app/components/ig-wallet.php:50
+msgid "View Item"
+msgstr ""
+
+#: jobs-plus/app/components/ig-wallet.php:51
+msgid "Add New Item"
+msgstr ""
+
+#: jobs-plus/app/components/ig-wallet.php:52
+#: jobs-plus/app/components/je-custom-content.php:18
+#: jobs-plus/app/components/je-custom-content.php:77
+#: jobs-plus/app/controllers/backend/je-admin-controller.php:93
+#: jobs-plus/app/controllers/backend/je-admin-controller.php:120
+msgid "Add New"
+msgstr ""
+
+#: jobs-plus/app/components/ig-wallet.php:53
+msgid "Edit Item"
+msgstr ""
+
+#: jobs-plus/app/components/ig-wallet.php:54
+msgid "Update Item"
+msgstr ""
+
+#: jobs-plus/app/components/ig-wallet.php:55
+msgid "Search Item"
+msgstr ""
+
+#: jobs-plus/app/components/ig-wallet.php:56
+msgid "Not found"
+msgstr ""
+
+#: jobs-plus/app/components/ig-wallet.php:57
+msgid "Not found in Trash"
+msgstr ""
+
+#: jobs-plus/app/components/ig-wallet.php:60
+msgid "ig_credit_plan"
+msgstr ""
+
+#: jobs-plus/app/components/ig-wallet/app/views/credit/main.php:3
+msgid "Add new"
+msgstr ""
+
+#: jobs-plus/app/components/ig-wallet/app/views/credit/main.php:16
+msgid "Credits"
+msgstr ""
+
+#: jobs-plus/app/components/ig-wallet/app/views/credit/main.php:17
+msgid "Cost"
+msgstr ""
+
+#: jobs-plus/app/components/ig-wallet/app/views/credit/main.php:47
+msgid "No data available"
+msgstr ""
+
+#: jobs-plus/app/components/ig-wallet/app/views/credit/main.php:103
+msgid "Reset form"
+msgstr ""
+
 #: jobs-plus/app/components/je-custom-content.php:16
 #: jobs-plus/app/views/contact/job.php:6
 msgid "Jobs"
@@ -1109,13 +1280,6 @@ msgstr ""
 
 #: jobs-plus/app/components/je-custom-content.php:17
 msgid "Job"
-msgstr ""
-
-#: jobs-plus/app/components/je-custom-content.php:18
-#: jobs-plus/app/components/je-custom-content.php:77
-#: jobs-plus/app/controllers/backend/je-admin-controller.php:93
-#: jobs-plus/app/controllers/backend/je-admin-controller.php:120
-msgid "Add New"
 msgstr ""
 
 #: jobs-plus/app/components/je-custom-content.php:19
@@ -1440,11 +1604,11 @@ msgstr ""
 
 #: jobs-plus/app/controllers/frontend/je-buttons-shortcode-controller.php:129
 msgid "Browse Experts"
-msgstr ""
+msgstr "Tim Chuyen Gia"
 
 #: jobs-plus/app/controllers/frontend/je-buttons-shortcode-controller.php:172
 msgid "Browse Jobs"
-msgstr ""
+msgstr "Tim Viec"
 
 #: jobs-plus/app/controllers/frontend/je-buttons-shortcode-controller.php:199
 msgid "My Profile"
@@ -1627,7 +1791,7 @@ msgstr ""
 
 #: jobs-plus/app/models/je-job-model.php:114
 #: jobs-plus/app/views/backend/jobs/_form.php:123
-#: jobs-plus/app/views/job-form/main.php:97
+#: jobs-plus/app/views/job-form/main.php:109
 msgid "Completion Date"
 msgstr ""
 
@@ -1635,17 +1799,17 @@ msgstr ""
 msgid "Job open for"
 msgstr ""
 
-#: jobs-plus/app/models/je-job-model.php:126
+#: jobs-plus/app/models/je-job-model.php:133
 msgid "Min Budget should less than Max Budget"
 msgstr ""
 
-#: jobs-plus/app/models/je-job-model.php:190
+#: jobs-plus/app/models/je-job-model.php:198
 #, php-format
 msgid "%d Days %dhrs"
 msgstr ""
 
-#: jobs-plus/app/models/je-job-model.php:192
-#: jobs-plus/app/models/je-job-model.php:217
+#: jobs-plus/app/models/je-job-model.php:200
+#: jobs-plus/app/models/je-job-model.php:225
 msgid "Expired"
 msgstr ""
 
@@ -1659,9 +1823,9 @@ msgid "Addition Information"
 msgstr ""
 
 #: jobs-plus/app/views/backend/experts/_form.php:139
-#: jobs-plus/app/views/backend/jobs/_form.php:211
+#: jobs-plus/app/views/backend/jobs/_form.php:212
 #: jobs-plus/app/views/expert-form/main.php:117
-#: jobs-plus/app/views/job-form/main.php:135
+#: jobs-plus/app/views/job-form/main.php:150
 msgid "Attach specs examples or extra information"
 msgstr ""
 
@@ -1740,11 +1904,11 @@ msgid "Job Open for"
 msgstr ""
 
 #: jobs-plus/app/views/backend/jobs/_form.php:147
-#: jobs-plus/app/views/job-form/main.php:114
+#: jobs-plus/app/views/job-form/main.php:128
 msgid "Days"
 msgstr ""
 
-#: jobs-plus/app/views/backend/jobs/_form.php:168
+#: jobs-plus/app/views/backend/jobs/_form.php:169
 msgid "Category & Skill"
 msgstr ""
 
@@ -2254,17 +2418,17 @@ msgid "Tell us about yourself (required, at least 200 characters)"
 msgstr ""
 
 #: jobs-plus/app/views/expert-form/main.php:129
-#: jobs-plus/app/views/job-form/main.php:144
+#: jobs-plus/app/views/job-form/main.php:159
 msgid "Publish"
 msgstr ""
 
 #: jobs-plus/app/views/expert-form/main.php:132
-#: jobs-plus/app/views/job-form/main.php:147
+#: jobs-plus/app/views/job-form/main.php:162
 msgid "Submit for review"
 msgstr ""
 
 #: jobs-plus/app/views/expert-form/main.php:136
-#: jobs-plus/app/views/job-form/main.php:151
+#: jobs-plus/app/views/job-form/main.php:166
 msgid "Save Draft"
 msgstr ""
 
@@ -2321,23 +2485,23 @@ msgstr ""
 msgid "Budget: "
 msgstr ""
 
-#: jobs-plus/app/views/job-form/main.php:8
+#: jobs-plus/app/views/job-form/main.php:9
 msgid "Choose a category"
 msgstr ""
 
-#: jobs-plus/app/views/job-form/main.php:20
+#: jobs-plus/app/views/job-form/main.php:22
 msgid "Give your job a title"
 msgstr ""
 
-#: jobs-plus/app/views/job-form/main.php:29
+#: jobs-plus/app/views/job-form/main.php:33
 msgid "Describe the work to be done"
 msgstr ""
 
-#: jobs-plus/app/views/job-form/main.php:37
+#: jobs-plus/app/views/job-form/main.php:43
 msgid "What skills are needed?"
 msgstr ""
 
-#: jobs-plus/app/views/job-form/main.php:172
+#: jobs-plus/app/views/job-form/main.php:187
 msgid "Submitting..."
 msgstr ""
 
@@ -2389,6 +2553,6 @@ msgstr ""
 msgid "You don't have any job."
 msgstr ""
 
-#: jobs-plus/framework/request/ig-request.php:64
+#: jobs-plus/framework/request/ig-request.php:74
 msgid "View not found!"
 msgstr ""

@@ -159,6 +159,7 @@ $form->hidden('id')?>
                 </div>
                 <div class="clearfix"></div>
             </div>
+            <?php do_action('je_job_after_form', $model, $form) ?>
         </div>
     </div>
 </div>
