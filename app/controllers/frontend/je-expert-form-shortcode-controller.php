@@ -47,11 +47,13 @@ class JE_Expert_Form_Shortcode_Controller extends IG_Request
         $data = je()->post('JE_Expert_Model');
         //the model should already stored
         $model = JE_Expert_Model::model()->find($data['id']);
+
         if (is_object($model)) {
             $model->import($data);
             $model->status = je()->post('status');
             $model->name = $model->first_name . ' ' . $model->last_name;
             if ($model->validate()) {
+                do_action('je_expert_saving_process', $model);
                 $model->save();
                 if ($model->status == 'publish') {
                     $this->redirect(get_permalink($model->id));

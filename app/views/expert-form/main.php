@@ -94,12 +94,12 @@
 
                                 <!-- Tab panes -->
                                 <div class="tab-content">
-                                    <div class="tab-pane" id="biograhy">
+                                    <div id="biograhy">
                                         <div class="can-edit" data-type="biography">
                                             <?php echo !empty($model->biography) ? $model->biography : __("Tell us about yourself (required, at least 200 characters)", je()->domain) ?>
                                         </div>
                                     </div>
-                                    <div class="tab-pane social-skill" id="profile">
+                                    <div class="social-skill" id="profile">
                                         <?php ig_skill()->display($model, 'skills', 'skill-input') ?>
                                         <?php ig_social_wall()->display($model, 'social', 'social-input') ?>
                                     </div>

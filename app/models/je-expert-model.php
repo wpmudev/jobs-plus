@@ -127,6 +127,7 @@ class JE_Expert_Model extends IG_Post_Model
 
     public function before_save()
     {
+        do_action('je_expert_before_save', $this);
         $this->defaults = array_merge($this->defaults, array(
             'post_name' => sanitize_title($this->name)
         ));

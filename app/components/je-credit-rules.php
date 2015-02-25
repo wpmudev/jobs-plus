@@ -3,8 +3,8 @@
  * @author:Hoang Ngo
  */
 
-if (!class_exists('IG_Wallet')) {
-    class IG_Wallet
+if (!class_exists('JE_Credit_Rules')) {
+    class JE_Credit_Rules
     {
         private static $_instance;
 
@@ -20,67 +20,18 @@ if (!class_exists('IG_Wallet')) {
         private function __construct()
         {
             //variables init
-            $this->plugin_url = plugin_dir_url(__FILE__) . 'ig-wallet/';
-            $this->plugin_path = plugin_dir_path(__FILE__) . 'ig-wallet/';
+            $this->plugin_url = plugin_dir_url(__FILE__) . 'je-credit-rules/';
+            $this->plugin_path = plugin_dir_path(__FILE__) . 'je-credit-rules/';
             $this->domain = je()->domain;
-            $this->prefix = 'iwl_';
 
             spl_autoload_register(array(&$this, 'loader'));
 
             add_action('wp_enqueue_scripts', array(&$this, 'scripts'));
             add_action('admin_enqueue_scripts', array(&$this, 'scripts'));
-            add_action('admin_menu', array(&$this, 'admin_menu'));
-            //$this->custom_post_type();
-            $this->controller = new Credit_Plan_Controller();
+            //load rules
+            new Expert_Saved_Controller();
         }
 
-        function admin_menu()
-        {
-            add_menu_page(__('Credit Plans', $this->domain), __('Credit Plans', $this->domain), 'manage_options', 'ig-credit-plans', array($this->controller, 'main'), 'dashicons-products', 35);
-            add_submenu_page('ig-credit-plans', __("Rules", $this->domain), __("Rules", $this->domain), 'manage_options', 'ig-credit-rules', array($this->controller, 'rules'));
-            add_submenu_page('ig-credit-plans', __("Settings", $this->domain), __("Settings", $this->domain), 'manage_options', 'ig-credits-setting', array($this->controller, 'settings'));
-        }
-
-        function custom_post_type()
-        {
-            $labels = array(
-                'name' => __('Credit Plans', $this->domain),
-                'singular_name' => __('Credit Plan', $this->domain),
-                'menu_name' => __('Credit Plans', $this->domain),
-                'parent_item_colon' => __('Parent Item:', $this->domain),
-                'all_items' => __('All Items', $this->domain),
-                'view_item' => __('View Item', $this->domain),
-                'add_new_item' => __('Add New Item', $this->domain),
-                'add_new' => __('Add New', $this->domain),
-                'edit_item' => __('Edit Item', $this->domain),
-                'update_item' => __('Update Item', $this->domain),
-                'search_items' => __('Search Item', $this->domain),
-                'not_found' => __('Not found', $this->domain),
-                'not_found_in_trash' => __('Not found in Trash', $this->domain),
-            );
-            $args = array(
-                'label' => __('ig_credit_plan', $this->domain),
-                'labels' => $labels,
-                'supports' => array(
-                    'title', //'custom-fields'
-                ),
-                'hierarchical' => false,
-                'public' => true,
-                'show_ui' => true,
-                'show_in_menu' => true,
-                'show_in_nav_menus' => true,
-                'show_in_admin_bar' => true,
-                //'menu_position' => 5,
-                'can_export' => true,
-                'has_archive' => true,
-                'exclude_from_search' => false,
-                'publicly_queryable' => true,
-                'capability_type' => 'page',
-                'menu_icon' => 'dashicons-products',
-                'register_meta_box_cb' => array(new Credit_Plan_Controller(), 'metabox')
-            );
-            register_post_type('ig_credit_plan', $args);
-        }
 
         function scripts()
         {
@@ -138,7 +89,7 @@ if (!class_exists('IG_Wallet')) {
         static function get_instance()
         {
             if (!is_object(self::$_instance)) {
-                self::$_instance = new IG_Wallet();
+                self::$_instance = new JE_Credit_Rules();
             }
             return self::$_instance;
         }
@@ -146,7 +97,7 @@ if (!class_exists('IG_Wallet')) {
         function get($key, $default = NULL)
         {
             $value = isset($_GET[$key]) ? $_GET[$key] : $default;
-            return apply_filters('igu_wallet_get_' . $key, $value);
+            return apply_filters('je_credit_rule_get_' . $key, $value);
         }
 
         function post($key, $default = NULL)
@@ -169,19 +120,19 @@ if (!class_exists('IG_Wallet')) {
                     $value = $value[$array_key];
                 }
             }
-            return apply_filters('igu_wallet_get_' . $key, $value);
+            return apply_filters('je_credit_rule_post_' . $key, $value);
         }
 
         function settings()
         {
-            return new Credit_Plan_Settings_Model();
+
         }
     }
 
-    function ig_wallet()
+    function je_credit_rules()
     {
-        return IG_Wallet::get_instance();
+        return JE_Credit_Rules::get_instance();
     }
 
-    ig_wallet();
+    je_credit_rules();
 }

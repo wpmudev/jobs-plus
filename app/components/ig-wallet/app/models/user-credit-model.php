@@ -54,6 +54,25 @@ class User_Credit_Model
         update_user_meta(get_current_user_id(), 'je_credit_logs', $logs);
     }
 
+    public static function check_balance($required, $user_id = '')
+    {
+        if (!is_user_logged_in() || empty($user_id)) {
+            return;
+        }
+
+        if (empty($user_id)) {
+            $user_id = get_current_user_id();
+        }
+
+        $balance = self::get_balance($user_id);
+        return $balance > $required;
+    }
+
+    public static function go_to_plans_page()
+    {
+        wp_redirect(get_permalink(ig_wallet()->settings()->plans_page));
+    }
+
     public static function get_logs()
     {
         if (!is_user_logged_in()) {

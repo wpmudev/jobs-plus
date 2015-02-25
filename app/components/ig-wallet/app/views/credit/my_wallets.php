@@ -34,7 +34,7 @@
                     <?php foreach ($logs as $log): ?>
                         <tr>
                             <td><?php echo $log['date'] ?></td>
-                            <td><?php echo $log['price'] ?></td>
+                            <td><?php echo JobsExperts_Helper::format_currency('',$log['price']) ?></td>
                             <td><?php echo $log['credits'] ?></td>
                             <td></td>
                         </tr>

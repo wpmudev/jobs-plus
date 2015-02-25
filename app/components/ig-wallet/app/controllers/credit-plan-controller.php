@@ -115,8 +115,9 @@ class Credit_Plan_Controller extends IG_Request
         $cart = $order->mp_cart_info;
         foreach ($cart as $id => $item) {
             $model = Credit_Plan_Model::find($id);
+            je()->get_logger()->log(var_export($item, true));
             if (is_object($model)) {
-                User_Credit_Model::update_balance($model->credits, $order->post_author, $item->price,true);
+                User_Credit_Model::update_balance($model->credits, $order->post_author, $item[0]['price'], true);
             }
         }
     }
@@ -153,6 +154,12 @@ class Credit_Plan_Controller extends IG_Request
             $this->redirect(admin_url('admin.php?page=ig-credit-plans'));
         }
         ig_wallet()->global['model'] = $model;
+    }
+
+    function rules()
+    {
+        wp_enqueue_script('jquery-ui-accordion');
+        $this->render('credit/hook');
     }
 
     function main()

@@ -35,7 +35,7 @@
                                             <?php echo $row->credits ?>
                                         </td>
                                         <td>
-                                            <?php echo $row->cost ?>
+                                            <?php echo JobsExperts_Helper::format_currency('',$row->cost) ?>
                                         </td>
                                         <td>
                                             <?php echo $row->sale_price ?>

@@ -141,11 +141,11 @@
                                 </ul>
 
                                 <!-- Tab panes -->
-                                <div class="tab-content">
-                                    <div class="tab-pane" id="biograhy">
+                                <div class="tab-content" style="padding: 0 10px">
+                                    <div class="" id="biograhy">
                                         <?php echo JobsExperts_Helper::jbp_html_beautifier(wpautop($model->biography)) ?>
                                     </div>
-                                    <div class="tab-pane social-skill" id="profile">
+                                    <div class=" social-skill" id="profile">
                                         <div class="page-header">
                                             <label><i class="fa fa-flask"></i> <?php _e('Skills', je()->domain) ?></label>
                                         </div>

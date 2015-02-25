@@ -305,7 +305,11 @@ class Jobs_Experts
         //social-walll
         include_once($this->plugin_path . 'app/components/ig-social-wall.php');
         include_once($this->plugin_path . 'app/components/ig-skill.php');
-        include_once($this->plugin_path . 'app/components/ig-wallet.php');
+        global $mp;
+        if(is_object($mp) && $mp instanceof MarketPress) {
+            include_once($this->plugin_path . 'app/components/ig-wallet.php');
+            include_once($this->plugin_path . 'app/components/je-credit-rules.php');
+        }
         if (is_admin()) {
             $this->global['admin'] = new JE_Admin_Controller();
             new JE_Settings_Controller();
