@@ -48,7 +48,7 @@ class JE_Custom_Content
                 'hierarchical' => true,
                 'has_archive' => apply_filters('jbp_job_archive_slug', 'jobs'),
                 'rewrite' => array(
-                    'slug' => 'job',
+                    'slug' => apply_filters('jbp_job_single_slug', 'job'),
                     'with_front' => false,
                     'feeds' => true,
                     'pages' => true,
@@ -109,7 +109,7 @@ class JE_Custom_Content
                 'has_archive' => apply_filters('jbp_pro_archive_slug', 'experts'),
                 'rewrite' =>
                     array(
-                        'slug' => 'expert',
+                        'slug' => apply_filters('jbp_expert_single_slug', 'expert'),
                         'with_front' => false,
                         'feeds' => true,
                         'pages' => true,

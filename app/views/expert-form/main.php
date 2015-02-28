@@ -1,5 +1,6 @@
 <div class="ig-container">
     <div class="hn-container">
+        <?php do_action('je_begin_expert_form') ?>
         <?php $form = new IG_Active_Form($model);
         $form->open(array("attributes" => array("class" => "form-horizontal")));
         ?>
@@ -189,6 +190,7 @@
             'model' => $model
         ));
         ?>
+        <?php do_action('je_end_expert_form') ?>
     </div>
 </div>
 <script type="text/javascript">

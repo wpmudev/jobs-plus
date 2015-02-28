@@ -125,6 +125,10 @@ class JE_Job_Model extends IG_Post_Model
         if ($this->is_expired()) {
             update_post_meta($this->id, 'jbp_job_post_day', date('Y-m-d H:i:s'));
         }
+
+        $this->defaults = array_merge($this->defaults, array(
+            'post_name' => sanitize_title($this->job_title)
+        ));
     }
 
     public function after_validate()

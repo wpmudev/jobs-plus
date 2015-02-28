@@ -30,6 +30,7 @@ if (!class_exists('JE_Credit_Rules')) {
             add_action('admin_enqueue_scripts', array(&$this, 'scripts'));
             //load rules
             new Expert_Saved_Controller();
+            new Job_Saved_Controller();
         }
 
 

@@ -71,6 +71,7 @@ class User_Credit_Model
     public static function go_to_plans_page()
     {
         wp_redirect(get_permalink(ig_wallet()->settings()->plans_page));
+        exit;
     }
 
     public static function get_logs()

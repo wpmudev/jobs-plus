@@ -1,12 +1,12 @@
 <div class="panel panel-default">
     <div class="panel-heading">
-        <strong><?php _e("Expert profile saved", je()->domain) ?></strong>
+        <strong><?php _e("Job saved", je()->domain) ?></strong>
     </div>
     <div class="panel-body">
-        <p><?php _e("Credits use for create new expert profile", je()->domain) ?></p>
+        <p><?php _e("Credits use for create new job", je()->domain) ?></p>
 
         <?php $form = new IG_Active_Form($model);
-        $form->open(array("attributes" => array("class" => "form-horizontal", "id" => "expert-saved-setting"))); ?>
+        $form->open(array("attributes" => array("class" => "form-horizontal", "id" => "job-saved-setting"))); ?>
         <div class="form-group <?php echo $model->has_error("status") ? "has-error" : null ?>">
             <?php $form->label("status", array("text" => "Enable", "attributes" => array("class" => "col-lg-2 control-label"))) ?>
             <div class="col-lg-10">
@@ -32,7 +32,7 @@
                 ))) ?>
                 <span class="help-block m-b-none error-credit_use"><?php $form->error("credit_use") ?></span>
                 <span class="help-block">
-                    <?php _e("How many credits spend for each profile", je()->domain) ?>
+                    <?php _e("How many credits spend for each job", je()->domain) ?>
                 </span>
             </div>
             <div class="clearfix"></div>
@@ -43,7 +43,7 @@
                 <?php $form->number("free_from", array("attributes" => array("class" => "form-control", "min" => 0))) ?>
                 <span class="help-block m-b-none error-free_from"><?php $form->error("free_from") ?></span>
                 <span class="help-block">
-                    <?php _e("How many profiles user need to pay before free submit", je()->domain) ?>
+                    <?php _e("How many job user need to pay before free submit", je()->domain) ?>
                 </span>
             </div>
             <div class="clearfix"></div>
@@ -78,14 +78,14 @@
             </div>
             <div class="clearfix"></div>
         </div>
-        <input type="hidden" name="action" value="expert_saved_setting">
+        <input type="hidden" name="action" value="job_saved_setting">
         <?php $form->close(); ?>
     </div>
 </div>
 
 <script type="text/javascript">
     jQuery(document).ready(function ($) {
-        $("#expert-saved-setting").on('submit', function () {
+        $("#job-saved-setting").on('submit', function () {
             var that = $(this);
             $.ajax({
                 type: 'POST',
