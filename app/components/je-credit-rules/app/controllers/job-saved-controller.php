@@ -10,7 +10,7 @@ class Job_Saved_Controller extends IG_Request
         add_action('je_credit_rules', array(&$this, 'settings'));
         add_action('wp_ajax_job_saved_setting', array(&$this, 'save_settings'));
         add_action('je_job_saving_process', array($this, 'check_user_can_post'));
-        //add_action('je_begin_expert_form', array(&$this, 'display_alert'));
+        add_action('je_job_before_form', array(&$this, 'display_alert'));
     }
 
     function display_alert()
@@ -44,7 +44,6 @@ class Job_Saved_Controller extends IG_Request
         } else {
             //remove points
             User_Credit_Model::update_balance(0 - $settings->credit_use, get_current_user_id());
-
         }
     }
 

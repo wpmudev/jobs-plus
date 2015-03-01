@@ -9,12 +9,25 @@ class Credit_Plan_Controller extends IG_Request
     {
         add_action('wp_loaded', array(&$this, 'process_save_plan'));
         add_action('wp_loaded', array(&$this, 'process_delete_plan'));
+        add_action('wp_loaded', array(&$this, 'process_setting_save'));
         add_action('mp_order_paid', array(&$this, 'process_credit_purchased'));
         add_filter('je_buttons_on_single_page', array(&$this, 'append_nav_button'));
         add_filter('the_content', array(&$this, 'append_nav_button'));
         add_shortcode('jbp-my-wallet-btn', array(&$this, 'btn_shortcode'));
         add_action('wp_ajax_jbp_create_credits_page', array(&$this, 'create_pages'));
         add_shortcode('jbp-my-wallet', array(&$this, 'my_wallet'));
+        add_action('je_credit_settings_content_general', array(&$this, 'general'));
+        add_action('je_credit_settings_content_give_credit', array(&$this, 'sending_credit'));
+    }
+
+    function process_setting_save()
+    {
+        if (je()->post('je_credit_setting_save', 0) == 1) {
+            $model = new Credit_Plan_Settings_Model();
+            $model->import(je()->post('Credit_Plan_Settings_Model'));
+            $model->save();
+            $this->refresh();
+        }
     }
 
     function my_wallet()
@@ -115,7 +128,6 @@ class Credit_Plan_Controller extends IG_Request
         $cart = $order->mp_cart_info;
         foreach ($cart as $id => $item) {
             $model = Credit_Plan_Model::find($id);
-            je()->get_logger()->log(var_export($item, true));
             if (is_object($model)) {
                 User_Credit_Model::update_balance($model->credits, $order->post_author, $item[0]['price'], true);
             }
@@ -196,5 +208,22 @@ class Credit_Plan_Controller extends IG_Request
         }
 
         return true;
+    }
+
+    function general()
+    {
+        $model = new Credit_Plan_Settings_Model();
+        $this->render('settings/general', array(
+            'model' => $model
+        ));
+    }
+
+    function sending_credit()
+    {
+        $model = new Sending_Credit_Model();
+
+        $this->render('settings/sending_credit', array(
+            'model' => $model
+        ));
     }
 }
