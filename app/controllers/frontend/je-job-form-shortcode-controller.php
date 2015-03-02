@@ -26,7 +26,7 @@ class JE_Job_Form_Shortcode_Controller extends IG_Request
             $model = new JE_Job_Model();
         }
         $model->import($data);
-        $model->status = je()->post('status');
+        //$model->status = je()->post('status');
         if ($model->validate()) {
             do_action('je_job_saving_process', $model);
             $model->save();

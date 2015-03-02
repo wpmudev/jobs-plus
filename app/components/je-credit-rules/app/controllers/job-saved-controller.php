@@ -35,38 +35,30 @@ class Job_Saved_Controller extends IG_Request
         if ($model->status != 'je-draft') {
             return;
         }
-        $this->is_user_can_post();
 
-        $settings = new Job_Saved_Model();
-
-        if (!$this->is_user_can_post()) {
-            User_Credit_Model::go_to_plans_page();
-        } else {
-            //remove points
-            User_Credit_Model::update_balance(0 - $settings->credit_use, get_current_user_id());
-        }
-    }
-
-    function is_user_can_post()
-    {
         $user = new WP_User(get_current_user_id());
-
-        $settings = new Job_Saved_Model();
-        //first check does this user in the role
+        //check does this user role can post free
         $roles = $settings->free_for;
         foreach ($user->roles as $role) {
             if (in_array($role, $roles)) {
                 return true;
             }
         }
-        //next check if this user already having free profiles
+        //check if this user already reach the free limit
         if ($settings->free_from > 0) {
             if ($this->count_paid() > $settings->free_from) {
                 return true;
             }
         }
-        //finally check like normal
-        return User_Credit_Model::check_balance($settings->credit_use, get_current_user_id());
+
+        if (!User_Credit_Model::check_balance($settings->credit_use, get_current_user_id())) {
+            User_Credit_Model::go_to_plans_page();
+        } else {
+            //remove points
+            User_Credit_Model::update_balance(0 - $settings->credit_use, get_current_user_id(), '',
+                sprintf(__("You have used %s credit(s) for posting the job %s", je()->domain), $settings->credit_use, $model->job_title));
+            update_post_meta($model->id, 'je_job_paid', 1);
+        }
     }
 
     function count_paid()
@@ -84,7 +76,11 @@ class Job_Saved_Controller extends IG_Request
             return;
         }
         $model = new Job_Saved_Model();
-        $model->import(je()->post('Job_Saved_Model'));
+        $data = je()->post('Job_Saved_Model');
+        if (!isset($data['free_for'])) {
+            $data['free_for'] = array();
+        }
+        $model->import($data);
 
         if ($model->validate()) {
             $model->save();

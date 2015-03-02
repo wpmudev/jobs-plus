@@ -25,19 +25,19 @@
                     <thead>
                     <tr>
                         <th><?php _e("Date", je()->domain) ?></th>
-                        <th><?php _e("Cost", je()->domain) ?></th>
-                        <th><?php _e("Credits", je()->domain) ?></th>
                         <th><?php _e("Detail", je()->domain) ?></th>
                     </tr>
                     </thead>
                     <tbody>
                     <?php if (is_array($logs) && count($logs)): ?>
+                        <?php
+                        $date_format = get_option('date_format');
+                        $time_format = get_option('time_format');
+                        ?>
                         <?php foreach ($logs as $log): ?>
                             <tr>
-                                <td><?php echo $log['date'] ?></td>
-                                <td><?php echo JobsExperts_Helper::format_currency('', $log['price']) ?></td>
-                                <td><?php echo $log['credits'] ?></td>
-                                <td></td>
+                                <td><?php echo date($date_format . ' ' . $time_format, $log['date']) ?></td>
+                                <td><?php echo $log['reason'] ?></td>
                             </tr>
                         <?php endforeach; ?>
                     <?php else: ?>

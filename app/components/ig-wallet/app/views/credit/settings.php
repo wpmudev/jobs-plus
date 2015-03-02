@@ -14,7 +14,7 @@
                     </li>
                     <li <?php echo je()->get('tab') == 'give_credit' ? 'class="active"' : null ?>>
                         <a href="<?php echo admin_url('admin.php?page=ig-credits-setting&tab=give_credit') ?>">
-                            <i class="glyphicon glyphicon-cog"></i> <?php _e('Sending Credits', je()->domain) ?>
+                            <i class="fa fa-bank"></i> <?php _e('Sending Credits', je()->domain) ?>
                         </a>
                     </li>
                 </ul>

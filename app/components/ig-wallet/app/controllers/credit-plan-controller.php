@@ -9,7 +9,7 @@ class Credit_Plan_Controller extends IG_Request
     {
         add_action('wp_loaded', array(&$this, 'process_save_plan'));
         add_action('wp_loaded', array(&$this, 'process_delete_plan'));
-        add_action('wp_loaded', array(&$this, 'process_setting_save'));
+        add_action('wp_loaded', array(&$this, 'process_settings'));
         add_action('mp_order_paid', array(&$this, 'process_credit_purchased'));
         add_filter('je_buttons_on_single_page', array(&$this, 'append_nav_button'));
         add_filter('the_content', array(&$this, 'append_nav_button'));
@@ -20,13 +20,28 @@ class Credit_Plan_Controller extends IG_Request
         add_action('je_credit_settings_content_give_credit', array(&$this, 'sending_credit'));
     }
 
-    function process_setting_save()
+    function process_settings()
     {
+        if (!current_user_can('manage_options')) {
+            return '';
+        }
+
         if (je()->post('je_credit_setting_save', 0) == 1) {
             $model = new Credit_Plan_Settings_Model();
             $model->import(je()->post('Credit_Plan_Settings_Model'));
             $model->save();
             $this->refresh();
+        }
+
+        if (je()->post('je-credit-send', 0) == 1) {
+            $model = new Sending_Credit_Model();
+            $model->import(je()->post('Sending_Credit_Model'));
+            if ($model->validate()) {
+                //update users credit
+                User_Credit_Model::update_balance($model->amount, $model->user_id);
+            } else {
+                je()->global['je_credit_send_model'] = $model;
+            }
         }
     }
 
@@ -129,7 +144,10 @@ class Credit_Plan_Controller extends IG_Request
         foreach ($cart as $id => $item) {
             $model = Credit_Plan_Model::find($id);
             if (is_object($model)) {
-                User_Credit_Model::update_balance($model->credits, $order->post_author, $item[0]['price'], true);
+                $log = sprintf(__("You have purchased %s credits for %s through %s", je()->domain),
+                    $model->credits, JobsExperts_Helper::format_currency('', $model->cost), $order->mp_payment_info['gateway_public_name']);
+                je()->get_logger()->log($log);
+                User_Credit_Model::update_balance($model->credits, $order->post_author, $item[0]['price'], $log);
             }
         }
     }
@@ -220,8 +238,11 @@ class Credit_Plan_Controller extends IG_Request
 
     function sending_credit()
     {
-        $model = new Sending_Credit_Model();
-
+        if (isset(je()->global['je_credit_send_model'])) {
+            $model = je()->global['je_credit_send_model'];
+        } else {
+            $model = new Sending_Credit_Model();
+        }
         $this->render('settings/sending_credit', array(
             'model' => $model
         ));

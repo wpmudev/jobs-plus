@@ -35,7 +35,7 @@ $form->open(array("attributes" => array("class" => "form-horizontal"))); ?>
 </div>
 <div class="form-group">
     <div class="col-md-10 col-md-offset-2">
-        <button class="btn btn-primary"><?php _e("Submit", je()->domain) ?></button>
+        <button class="btn btn-primary" name="je-credit-send" value="1"><?php _e("Submit", je()->domain) ?></button>
     </div>
 </div>
 <?php $form->close(); ?>
