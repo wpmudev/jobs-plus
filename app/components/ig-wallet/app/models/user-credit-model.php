@@ -19,7 +19,7 @@ class User_Credit_Model
         $balance = self::get_balance($user_id);
         $balance += $credit;
         update_user_meta($user_id, 'je_credits', $balance);
-        self::log($credit, $price, $reason);
+        self::log($credit, $price, $reason, $user_id);
     }
 
     public static function get_balance($user_id = '')
@@ -39,20 +39,25 @@ class User_Credit_Model
         return $balance;
     }
 
-    public static function log($credits, $price, $reason)
+    public static function log($credits, $price, $reason, $user_id = '')
     {
+
+        if (empty($user_id)) {
+            $user_id = get_current_user_id();
+        }
+
         $data = array(
             'credits' => $credits,
             'date' => time(),
             'reason' => $reason,
             'price' => $price
         );
-        $logs = get_user_meta(get_current_user_id(), 'je_credit_logs', true);
+        $logs = get_user_meta($user_id, 'je_credit_logs', true);
         if (!$logs) {
             $logs = array();
         }
         $logs[] = $data;
-        update_user_meta(get_current_user_id(), 'je_credit_logs', $logs);
+        update_user_meta($user_id, 'je_credit_logs', $logs);
     }
 
     public static function check_balance($required, $user_id = '')

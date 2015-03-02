@@ -38,7 +38,9 @@ class Credit_Plan_Controller extends IG_Request
             $model->import(je()->post('Sending_Credit_Model'));
             if ($model->validate()) {
                 //update users credit
-                User_Credit_Model::update_balance($model->amount, $model->user_id);
+                $log = sprintf(__("You received %s credits from admin for reason: \"%s\"", je()->domain), $model->amount, $model->reason);
+                User_Credit_Model::update_balance($model->amount, $model->user_id, '', $log);
+                $this->refresh();
             } else {
                 je()->global['je_credit_send_model'] = $model;
             }
