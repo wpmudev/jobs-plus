@@ -30,6 +30,7 @@ if (!class_exists('IG_Wallet')) {
             add_action('wp_enqueue_scripts', array(&$this, 'scripts'));
             add_action('admin_enqueue_scripts', array(&$this, 'scripts'));
             add_action('admin_menu', array(&$this, 'admin_menu'));
+            add_filter('menu_order', array(&$this, 'menu_order'));
             //$this->custom_post_type();
             $this->controller = new Credit_Plan_Controller();
         }
@@ -39,6 +40,22 @@ if (!class_exists('IG_Wallet')) {
             add_menu_page(__('Credit Plans', $this->domain), __('Credit Plans', $this->domain), 'manage_options', 'ig-credit-plans', array($this->controller, 'main'), 'dashicons-products', 35);
             add_submenu_page('ig-credit-plans', __("Rules", $this->domain), __("Rules", $this->domain), 'manage_options', 'ig-credit-rules', array($this->controller, 'rules'));
             add_submenu_page('ig-credit-plans', __("Settings", $this->domain), __("Settings", $this->domain), 'manage_options', 'ig-credits-setting', array($this->controller, 'settings'));
+            add_submenu_page('ig-credit-plans', __("Getting Start", $this->domain), __("Getting Start", $this->domain), 'manage_options', 'ig-credit-getting-start', array($this->controller, 'getting_start'));
+        }
+
+        function menu_order($menu_order)
+        {
+            global $submenu;
+
+            if (isset($submenu['ig-credit-plans'])) {
+                $nav = $submenu['ig-credit-plans'];
+                //get the last
+                $start = array_pop($nav);
+                $nav = array_merge(array($start), $nav);
+                $submenu['ig-credit-plans'] = $nav;
+            }
+
+            return $menu_order;
         }
 
         function custom_post_type()

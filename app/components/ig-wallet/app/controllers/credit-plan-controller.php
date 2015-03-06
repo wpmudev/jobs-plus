@@ -287,4 +287,9 @@ class Credit_Plan_Controller extends IG_Request
             'model' => $model
         ));
     }
+
+    function getting_start()
+    {
+        $this->render('credit/getting_start');
+    }
 }
