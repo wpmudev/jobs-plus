@@ -157,18 +157,17 @@ class JE_Admin_Controller extends IG_Request
             $addons[] = $id;
             $setting->plugins = $addons;
             $setting->save();
-            do_action('je_activated_addon', $id, $meta);
+            do_action('je_addon_activated', $id, $meta);
             wp_send_json(array(
                 'noty' => __("The Add-on <strong>{$meta['Name']}</strong> has been activated.", je()->domain),
                 'text' => __("Deactivate", je()->domain)
             ));
-
             exit;
         } else {
             unset($addons[array_search($id, $addons)]);
             $setting->plugins = $addons;
             $setting->save();
-            do_action('je_deactivated_addon', $id, $meta);
+            do_action('je_addon_deactivated', $id, $meta);
             wp_send_json(array(
                 'noty' => __("The Add-on <strong>{$meta['Name']}</strong> has been deactivated.", je()->domain),
                 'text' => __("Activate", je()->domain)

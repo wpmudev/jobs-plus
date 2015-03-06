@@ -26,9 +26,10 @@ class JE_Job_Form_Shortcode_Controller extends IG_Request
             $model = new JE_Job_Model();
         }
         $model->import($data);
-        //$model->status = je()->post('status');
+        //
         if ($model->validate()) {
             do_action('je_job_saving_process', $model);
+            $model->status = je()->post('status');
             $model->save();
             if ($model->status == 'publish') {
                 $this->redirect(get_permalink($model->id));
@@ -60,6 +61,7 @@ class JE_Job_Form_Shortcode_Controller extends IG_Request
                         'status' => 'je-draft',
                         'owner' => get_current_user_id()
                     ));
+
                     if (!is_object($model)) {
                         $model = new JE_Job_Model();
                         $model->status = 'je-draft';
@@ -69,10 +71,12 @@ class JE_Job_Form_Shortcode_Controller extends IG_Request
                 }
             }
 
-            if (!$model->exist || $model->is_current_owner()) {
+            if ($model->is_current_owner()) {
                 return $this->render('job-form/main', array(
                     'model' => $model
                 ), false);
+            } else {
+                var_dump($model->is_current_owner());
             }
         } else {
             return $this->render('login', array(), false);

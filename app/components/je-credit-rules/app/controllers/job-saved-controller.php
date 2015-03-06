@@ -16,23 +16,8 @@ class Job_Saved_Controller extends IG_Request
     function display_alert()
     {
         $settings = new Job_Saved_Model();
-        if (!User_Credit_Model::check_balance($settings->credit_use, get_current_user_id())) {
-            ?>
-            <div class="alert alert-warning">
-                <?php echo sprintf(__('Your balance\'s not enough for posting new profile, please visit <a href="%s">here</a> for purchasing', je()->domain), get_permalink(ig_wallet()->settings()->plans_page)) ?>
-            </div>
-        <?php
-        }
-    }
 
-    function check_user_can_post(JE_Job_Model $model)
-    {
-        $settings = new Job_Saved_Model();
-        if ($settings->status == 0) {
-            return;
-        }
-
-        if ($model->status != 'je-draft') {
+        if ($settings->status != 1) {
             return;
         }
 
@@ -52,6 +37,62 @@ class Job_Saved_Controller extends IG_Request
         }
 
         if (!User_Credit_Model::check_balance($settings->credit_use, get_current_user_id())) {
+            ?>
+            <div class="alert alert-warning">
+                <?php echo sprintf(__('Your balance\'s not enough for posting a new job - require %s credit(s), please visit <a href="%s">here</a> for purchasing', je()->domain), $settings->credit_use, get_permalink(ig_wallet()->settings()->plans_page)) ?>
+            </div>
+        <?php
+        } else {
+            ?>
+            <div class="alert alert-info">
+                <?php echo sprintf(__('It will cost %s credit(s) for posting a new job', je()->domain), $settings->credit_use); ?>
+            </div>
+        <?php
+        }
+    }
+
+    function check_user_can_post(JE_Job_Model $model)
+    {
+        $settings = new Job_Saved_Model();
+
+        if ($settings->status != 1) {
+            return;
+        }
+
+        if ($model->status != 'je-draft') {
+            //we need to check, if this model in pending
+            $is_paid = get_post_meta($model->id, 'je_job_paid', true);
+            if ($is_paid == 1) {
+                return;
+            }
+        }
+
+        $user = new WP_User(get_current_user_id());
+        //check does this user role can post free
+        $roles = $settings->free_for;
+        foreach ($user->roles as $role) {
+            if (in_array($role, $roles)) {
+                return true;
+            }
+        }
+        //check if this user already reach the free limit
+        if ($settings->free_from > 0) {
+            if ($this->count_paid() > $settings->free_from) {
+                return true;
+            }
+        }
+
+        //will check if this is saving for draft or publish
+        if (je()->post('status') == 'draft') {
+            //we will need to add a flag to know this pending paid
+            update_post_meta($model->id, 'je_job_paid', -1);
+            return;
+        }
+
+        if (!User_Credit_Model::check_balance($settings->credit_use, get_current_user_id())) {
+            //store as draft
+            $model->status = 'je-draft';
+            $model->save();
             User_Credit_Model::go_to_plans_page();
         } else {
             //remove points

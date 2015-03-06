@@ -11,15 +11,55 @@ class Expert_Saved_Controller extends IG_Request
         add_action('wp_ajax_expert_saved_setting', array(&$this, 'save_settings'));
         add_action('je_expert_saving_process', array($this, 'check_user_can_post'));
         add_action('je_begin_expert_form', array(&$this, 'display_alert'));
+        //add_action('post_updated', array(&$this, 'charge_in_pending_review_case'), 10, 3);
+    }
+
+    function charge_in_pending_review_case($post_ID, $post_after, $post_before)
+    {
+        //this case is when admin review & publish
+        if ($post_after->post_type == 'jbp_expert' && $post_after->post_status == 'publish') {
+            $is_paid = get_post_meta($post_ID, 'je_expert_paid', true);
+            if ($is_paid == -1) {
+                //this profile still not paid,check the balance
+                $settings = new Expert_Saved_Model();
+                if (!User_Credit_Model::check_balance($settings->credit_use, $post_after->post_author)) {
+                    //switch to draft && sending email
+
+                } else {
+                    User_Credit_Model::update_balance(0 - $settings->credit_use, get_current_user_id(), '',
+                        sprintf(__("You have used %s credit(s) for posting the profile %s", je()->domain), $settings->credit_use, $model->name));
+                    update_post_meta($model->id, 'je_expert_paid', 1);
+                }
+            }
+        }
     }
 
     function display_alert()
     {
         $settings = new Expert_Saved_Model();
+        if ($settings->status == 0) {
+            return;
+        }
+
+        $user = new WP_User(get_current_user_id());
+        //check does this user role can post free
+        $roles = $settings->free_for;
+        foreach ($user->roles as $role) {
+            if (in_array($role, $roles)) {
+                return true;
+            }
+        }
+        //check if this user already reach the free limit
+        if ($settings->free_from > 0) {
+            if ($this->count_paid() > $settings->free_from) {
+                return true;
+            }
+        }
+
         if (!User_Credit_Model::check_balance($settings->credit_use, get_current_user_id())) {
             ?>
             <div class="alert alert-warning">
-                <?php echo sprintf(__('Your balance\'s not enough for posting new profile, please visit <a href="%s">here</a> for purchasing', je()->domain), get_permalink(ig_wallet()->settings()->plans_page)) ?>
+                <?php echo sprintf(__('Your balance\'s not enough for posting new profile (require %s credit(s)), please visit <a href="%s">here</a> for purchasing', je()->domain), $settings->credit_use, get_permalink(ig_wallet()->settings()->plans_page)) ?>
             </div>
         <?php
         }
@@ -33,7 +73,10 @@ class Expert_Saved_Controller extends IG_Request
         }
 
         if (!$model->status == 'je-draft') {
-            return;
+            $is_paid = get_post_meta($model->id, 'je_expert_paid', true);
+            if ($is_paid == 1) {
+                return;
+            }
         }
         $user = new WP_User(get_current_user_id());
         //check does this user role can post free
@@ -49,8 +92,19 @@ class Expert_Saved_Controller extends IG_Request
                 return true;
             }
         }
+
+        //will check if this is saving for draft or publish
+        if (je()->post('status') == 'draft') {
+            //we will need to add a flag to know this pending paid
+            update_post_meta($model->id, 'je_expert_paid', -1);
+            return;
+        }
+
         //finally check the points
         if (!User_Credit_Model::check_balance($settings->credit_use, get_current_user_id())) {
+            //store as draft
+            $model->status = 'je-draft';
+            $model->save();
             User_Credit_Model::go_to_plans_page();
         } else {
             //remove points

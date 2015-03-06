@@ -126,14 +126,14 @@
                 <div class="col-md-12" style="margin-left: 0">
                     <?php echo wp_nonce_field('jbp_add_pro') ?>
                     <?php if (je()->settings()->expert_new_expert_status == 'publish'): ?>
-                        <button class="submit btn btn-small btn-primary" name="status" value="publish"
+                        <button class="submit btn btn-small btn-primary je-expert-submit" name="status" value="publish"
                                 type="submit"><?php _e('Publish', je()->domain) ?></button>
                     <?php else: ?>
-                        <button class="submit btn btn-small btn-primary" name="status"
+                        <button class="submit btn btn-small btn-primary je-expert-submit" name="status"
                                 type="submit" value="pending"><?php _e('Submit for review', je()->domain) ?></button>
                     <?php endif; ?>
                     <?php if (je()->settings()->expert_allow_draft == 1): ?>
-                        <button class="submit btn btn-small btn-info" name="status" value="draft"
+                        <button class="submit btn btn-small btn-info je-expert-submit" name="status" value="draft"
                                 type="submit"><?php _e('Save Draft', je()->domain) ?></button>
                     <?php endif; ?>
                     <button onclick="location.href='<?php echo get_post_type_archive_link('jbp_pro') ?>'"
@@ -156,9 +156,9 @@
                     'style' => 'width:0;height:0;opacity:0;position:relative;top:-100px;left:-100px'
                 )
             ));
-            if(empty($model->user_id)) {
+            if (empty($model->user_id)) {
                 $form->hidden('user_id', array('value' => get_current_user_id()));
-            }else{
+            } else {
                 $form->hidden('user_id');
             }
             $form->hidden('company');
@@ -319,5 +319,8 @@
         $('body').on('click', '.can-edit-cancel', function () {
             instance.webuiPopover('hide');
         });
+        $('.je-expert-submit').click(function () {
+            $(this).addClass('disabled').text('<?php echo esc_js(__("Submitting...")) ?>');
+        })
     })
 </script>
