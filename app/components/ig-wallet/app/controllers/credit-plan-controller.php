@@ -18,6 +18,36 @@ class Credit_Plan_Controller extends IG_Request
         add_shortcode('jbp-my-wallet', array(&$this, 'my_wallet'));
         add_action('je_credit_settings_content_general', array(&$this, 'general'));
         add_action('je_credit_settings_content_give_credit', array(&$this, 'sending_credit'));
+
+        add_filter('mp_product_price_html', array(&$this, 'addition_price_info'), 10, 4);
+        add_filter('mp_product_name_display_in_cart', array(&$this, 'addition_cart_name_info'), 10, 2);
+    }
+
+    function addition_cart_name_info($name, $product_id)
+    {
+        $plan = Credit_Plan_Model::find($product_id);
+        if (is_object($plan) && $plan->append_credits_info == 1) {
+            $name .= ' (' . $plan->credits . ' ' . __("credits", je()->domain) . ')';
+        }
+        return $name;
+    }
+
+    function addition_price_info($price_html, $post_id, $label, $price)
+    {
+        $plan = Credit_Plan_Model::find($post_id);
+        if (is_object($plan) && $plan->append_credits_info == 1) {
+            //we will modify the html, to append credits info
+            $dom = new SmartDOMDocument();
+            $dom->loadHTML($price_html);
+            $xpath = new DOMXPath($dom);
+            $classname = 'mp_current_price';
+            $element = $xpath->query("//*[@class='" . $classname . "']");
+            if ($element->length > 0) {
+                $element->item(0)->nodeValue = $element->item(0)->nodeValue . ' ' . sprintf(__("for %s credit(s)", je()->domain), $plan->credits);
+            }
+            $price_html = $dom->saveHTMLExact();
+        }
+        return $price_html;
     }
 
     function process_settings()
@@ -159,9 +189,11 @@ class Credit_Plan_Controller extends IG_Request
         if (!current_user_can('manage_options')) {
             return;
         }
+
         if (!wp_verify_nonce(je()->post('je_delete_plan_nonce'), 'je_delete_plan')) {
             return;
         }
+
         $model = Credit_Plan_Model::find(je()->post('id'));
         if (is_object($model)) {
             Credit_Plan_Model::delete_plan(je()->post('id'));
@@ -178,10 +210,16 @@ class Credit_Plan_Controller extends IG_Request
         if (je()->post('je_credit_submit', null) == null) {
             return;
         }
+        //check nonce
+        if (!wp_verify_nonce(je()->post('je_credit_submit'), 'ig_wallet_save_plan')) {
+            return;
+        }
+
         $model = new Credit_Plan_Model();
         $model->import(je()->post('Credit_Plan_Model'));
         if ($model->validate()) {
-            $model->add_plan($model->title, $model->description, $model->cost, $model->credits, $model->sale_price, $model->product_id);
+            $model->add_plan($model->title, $model->description, $model->cost, $model->credits, $model->sale_price, $model->product_id, $model->append_credits_info);
+
             $this->set_flash('plan_save', sprintf(__("Plan <strong>%s</strong> has been saved!", je()->domain), $model->title));
             $this->redirect(admin_url('admin.php?page=ig-credit-plans'));
         }

@@ -35,7 +35,7 @@
                                             <?php echo $row->credits ?>
                                         </td>
                                         <td>
-                                            <?php echo JobsExperts_Helper::format_currency('',$row->cost) ?>
+                                            <?php echo JobsExperts_Helper::format_currency('', $row->cost) ?>
                                         </td>
                                         <td>
                                             <?php echo $row->sale_price ?>
@@ -48,7 +48,8 @@
                                             <form style="display: inline;" method="post">
                                                 <?php wp_nonce_field('je_delete_plan', 'je_delete_plan_nonce') ?>
                                                 <input type="hidden" name="id" value="<?php echo $row->product_id ?>">
-                                                <button onclick="return confirm('Are you sure?')" type="submit" class="btn btn-xs btn-danger">
+                                                <button onclick="return confirm('Are you sure?')" type="submit"
+                                                        class="btn btn-xs btn-danger">
                                                     <?php _e("Delete", je()->domain) ?>
                                                 </button>
                                             </form>
@@ -122,9 +123,27 @@
                             <div class="clearfix"></div>
                         </div>
                         <?php $form->hidden('product_id') ?>
+                        <hr class="no-margin">
+                        <div class="form-group">
+                            <div class="checkbox col-md-10 col-md-offset-2">
+                                <label>
+                                    <?php
+                                    $form->hidden('append_credits_info', array(
+                                        'value' => 0
+                                    ));
+                                    $form->checkbox('append_credits_info', array(
+                                        'attributes' => array(
+                                            'value' => 1
+                                        )
+                                    )) ?> <?php _e("Append credit info after product name & price, eg: <em>10$ for 20 credits</em>") ?>
+                                </label>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
                         <div class="form-group">
                             <div class="col-lg-12 text-right">
-                                <button type="submit" name="je_credit_submit" value="1"
+                                <button type="submit" name="je_credit_submit"
+                                        value="<?php echo wp_create_nonce('ig_wallet_save_plan') ?>"
                                         class="btn btn-primary"><?php _e("Save", je()->domain) ?></button>
                                 <a href="<?php echo admin_url('admin.php?page=ig-credit-plans') ?>"
                                    class="btn btn-default"><?php _e("Reset form", je()->domain) ?></a>

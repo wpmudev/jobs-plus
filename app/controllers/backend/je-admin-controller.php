@@ -118,7 +118,7 @@ class JE_Admin_Controller extends IG_Request
                     if ($item[0] == $pro->labels->name) {
                         $item[0] = sprintf(__('Manage %s', je()->domain), $pro->labels->name);
                     } elseif ($item[0] == __('Add New', je()->domain)) {
-                       unset($nav[$key]);
+                        unset($nav[$key]);
                     }
                 }
             }
@@ -157,19 +157,23 @@ class JE_Admin_Controller extends IG_Request
             $addons[] = $id;
             $setting->plugins = $addons;
             $setting->save();
+            do_action('je_activated_addon', $id, $meta);
             wp_send_json(array(
                 'noty' => __("The Add-on <strong>{$meta['Name']}</strong> has been activated.", je()->domain),
                 'text' => __("Deactivate", je()->domain)
             ));
+
             exit;
         } else {
             unset($addons[array_search($id, $addons)]);
             $setting->plugins = $addons;
             $setting->save();
+            do_action('je_deactivated_addon', $id, $meta);
             wp_send_json(array(
                 'noty' => __("The Add-on <strong>{$meta['Name']}</strong> has been deactivated.", je()->domain),
                 'text' => __("Activate", je()->domain)
             ));
+
             exit;
         }
     }

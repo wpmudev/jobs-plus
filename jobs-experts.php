@@ -61,6 +61,9 @@ function jbp_load_languages()
 ///
 require_once(dirname(__FILE__) . '/framework/loader.php');
 require_once(dirname(__FILE__) . '/Helper.php');
+if (!class_exists('SmartDOMDocument')) {
+    include_once(dirname(__FILE__) . '/vendors/SmartDOMDocument.class.php');
+}
 
 class Jobs_Experts
 {
@@ -305,11 +308,6 @@ class Jobs_Experts
         //social-walll
         include_once($this->plugin_path . 'app/components/ig-social-wall.php');
         include_once($this->plugin_path . 'app/components/ig-skill.php');
-        global $mp;
-        if(is_object($mp) && $mp instanceof MarketPress) {
-            include_once($this->plugin_path . 'app/components/ig-wallet.php');
-            include_once($this->plugin_path . 'app/components/je-credit-rules.php');
-        }
         if (is_admin()) {
             $this->global['admin'] = new JE_Admin_Controller();
             new JE_Settings_Controller();
@@ -552,7 +550,8 @@ class Jobs_Experts
                     'Author' => 'Author',
                     'Description' => 'Description',
                     'AuthorURI' => 'Author URI',
-                    'Network' => 'Network'
+                    'Network' => 'Network',
+                    'Required' => 'Required'
                 ), 'component');
 
                 if (strlen(trim($meta['Name'])) > 0) {
