@@ -116,6 +116,7 @@ class JE_Expert_Model extends IG_Post_Model
             'contact_email' => 'required|valid_email',
             'biography' => 'required|min_len,200',
             'company_url' => 'valid_url',
+            'short_description' => 'max_len,100'
         );
         $this->rules = apply_filters('je_expert_validation_rules', $rules);
         $fields_text = array();
