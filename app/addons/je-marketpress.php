@@ -17,7 +17,24 @@ class JE_MarketPress
         }
 
         //disabled all the product
-        add_action('je_deactivated_addon', array(&$this, 'clean_up'), 10, 2);
+        add_action('je_addon_activated', array(&$this, 'active'), 10, 2);
+        add_action('je_addon_deactivated', array(&$this, 'clean_up'), 10, 2);
+    }
+
+    function active($id, $meta)
+    {
+        if ($id != __FILE__) {
+            return;
+        }
+
+        $options = get_option('ig_credit_plan');
+        foreach ($options as $plan) {
+            $post = get_post($plan['product_id']);
+            if (is_object($post)) {
+                $post->post_status = 'publish';
+                wp_update_post($post->to_array());
+            }
+        }
     }
 
     function clean_up($id, $meta)

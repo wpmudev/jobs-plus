@@ -20,8 +20,27 @@
                 </p>
             </div>
             <div id="purcharse-history">
-                <?php $logs = User_Credit_Model::get_logs(); ?>
-                <table class="table">
+                <?php $logs = User_Credit_Model::get_logs();
+                $cats = array();
+                foreach ($logs as $key) {
+                    $cats[] = $key['category'];
+                }
+                $cats = array_unique(array_filter($cats));
+                if (!empty($cats)) {
+                    $cats = array_merge(array(__("All", je()->domain)), $cats);
+                }
+                ?>
+                <div class="log-cats text-right">
+                    <?php
+                    foreach ($cats as $cat) {
+                        ?>
+                        <button type="button" data-category="<?php echo sanitize_title($cat) ?>"
+                                class="btn btn-default btn-xs"><?php echo $cat ?></button>
+                    <?php
+                    }
+                    ?>
+                </div>
+                <table class="table" id="purchase-log-table">
                     <thead>
                     <tr>
                         <th><?php _e("Date", je()->domain) ?></th>
@@ -35,7 +54,7 @@
                         $time_format = get_option('time_format');
                         ?>
                         <?php foreach ($logs as $log): ?>
-                            <tr>
+                            <tr data-cat="<?php echo sanitize_title($log['category']) ?>">
                                 <td><?php echo date($date_format . ' ' . $time_format, $log['date']) ?></td>
                                 <td><?php echo $log['reason'] ?></td>
                             </tr>
@@ -54,5 +73,23 @@
 <script>
     jQuery(function ($) {
         $("#tabs").tabs();
+        $('.log-cats button').click(function () {
+            var cat = $(this).data('category');
+
+            if (cat == '<?php echo sanitize_title(__('All',je()->domain)) ?>') {
+                $('#purchase-log-table').find('tr').show();
+            } else {
+                var trs = $('#purchase-log-table tbody').find('tr');
+                trs.each(function (i, v) {
+                    if ($(this).data('cat') != cat) {
+                        $(this).hide();
+                    }else{
+                        $(this).show();
+                    }
+                })
+            }
+            $('.log-cats button').removeClass('active');
+            $(this).addClass('active');
+        })
     });
 </script>

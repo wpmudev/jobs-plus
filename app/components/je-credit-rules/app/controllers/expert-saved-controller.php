@@ -109,7 +109,7 @@ class Expert_Saved_Controller extends IG_Request
         } else {
             //remove points
             User_Credit_Model::update_balance(0 - $settings->credit_use, get_current_user_id(), '',
-                sprintf(__("You have used %s credit(s) for posting the profile %s", je()->domain), $settings->credit_use, $model->name));
+                sprintf(__("You have used %s credit(s) for posting the profile %s", je()->domain), $settings->credit_use, $model->name), __('Spent Credits', je()->domain));
             update_post_meta($model->id, 'je_expert_paid', 1);
         }
     }
@@ -137,6 +137,7 @@ class Expert_Saved_Controller extends IG_Request
 
         if ($model->validate()) {
             $model->save();
+            $this->set_flash('rule_saved', __("Settings has been saved successfully!", je()->domain));
             wp_send_json(array(
                 'status' => 'success'
             ));

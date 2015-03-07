@@ -60,6 +60,7 @@ class Credit_Plan_Controller extends IG_Request
             $model = new Credit_Plan_Settings_Model();
             $model->import(je()->post('Credit_Plan_Settings_Model'));
             $model->save();
+            $this->set_flash('wallet_settings_saved', __("Your settings have been saved successfully.", je()->domain));
             $this->refresh();
         }
 
@@ -69,7 +70,9 @@ class Credit_Plan_Controller extends IG_Request
             if ($model->validate()) {
                 //update users credit
                 $log = sprintf(__("You received %s credits from admin for reason: \"%s\"", je()->domain), $model->amount, $model->reason);
-                User_Credit_Model::update_balance($model->amount, $model->user_id, '', $log);
+                User_Credit_Model::update_balance($model->amount, $model->user_id, '', $log, __('Purchased Credits', je()->domain));
+                $user = get_userdata($model->user_id);
+                $this->set_flash('wallet_settings_saved', sprintf(__("You have been sent <strong>%s credits</strong> to the user <strong>%s</strong> successfully.", je()->domain), $model->amount, $user->user_login));
                 $this->refresh();
             } else {
                 je()->global['je_credit_send_model'] = $model;
@@ -179,7 +182,7 @@ class Credit_Plan_Controller extends IG_Request
                 $log = sprintf(__("You have purchased %s credits for %s through %s", je()->domain),
                     $model->credits, JobsExperts_Helper::format_currency('', $model->cost), $order->mp_payment_info['gateway_public_name']);
                 je()->get_logger()->log($log);
-                User_Credit_Model::update_balance($model->credits, $order->post_author, $item[0]['price'], $log);
+                User_Credit_Model::update_balance($model->credits, $order->post_author, $item[0]['price'], $log, __('Purchased Credits', je()->domain));
             }
         }
     }

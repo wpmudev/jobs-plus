@@ -3,9 +3,15 @@
     <br/>
     <?php $data = array_combine(wp_list_pluck(get_pages(), 'ID'), wp_list_pluck(get_pages(), 'post_title')); ?>
     <div class="ig-container">
+        <?php if ($this->has_flash('wallet_settings_saved')): ?>
+            <div class="alert alert-success">
+                <?php echo $this->get_flash('wallet_settings_saved') ?>
+            </div>
+        <?php endif; ?>
         <div class="row">
             <div class="col-md-12">
-                <ul id="jbp_setting_nav" style="margin-top: 0;padding-top: 0;margin-right: -1px;z-index:9;padding-right: 0"
+                <ul id="jbp_setting_nav"
+                    style="margin-top: 0;padding-top: 0;margin-right: -1px;z-index:9;padding-right: 0"
                     class="nav nav-tabs tabs-left col-md-2 no-padding hidden-sm hidden-xs">
                     <li <?php echo je()->get('tab', 'general') == 'general' ? 'class="active"' : null ?>>
                         <a href="<?php echo admin_url('admin.php?page=ig-credits-setting') ?>">
@@ -20,7 +26,7 @@
                 </ul>
                 <div class="tab-content col-md-10">
                     <div class="jbp-setting-content tab-pane active">
-                        <?php do_action('je_credit_settings_content_'.je()->get('tab','general')) ?>
+                        <?php do_action('je_credit_settings_content_' . je()->get('tab', 'general')) ?>
                     </div>
                 </div>
             </div>

@@ -6,7 +6,7 @@
 class User_Credit_Model
 {
 
-    public static function update_balance($credit, $user_id = '', $price = '', $reason = '')
+    public static function update_balance($credit, $user_id = '', $price = '', $reason = '', $log_category = '')
     {
         if (!is_user_logged_in() || empty($user_id)) {
             return;
@@ -19,7 +19,7 @@ class User_Credit_Model
         $balance = self::get_balance($user_id);
         $balance += $credit;
         update_user_meta($user_id, 'je_credits', $balance);
-        self::log($credit, $price, $reason, $user_id);
+        self::log($credit, $price, $reason, $user_id, $log_category);
     }
 
     public static function get_balance($user_id = '')
@@ -39,7 +39,7 @@ class User_Credit_Model
         return $balance;
     }
 
-    public static function log($credits, $price, $reason, $user_id = '')
+    public static function log($credits, $price, $reason, $user_id = '', $category = 'General')
     {
 
         if (empty($user_id)) {
@@ -50,7 +50,8 @@ class User_Credit_Model
             'credits' => $credits,
             'date' => time(),
             'reason' => $reason,
-            'price' => $price
+            'price' => $price,
+            'category' => $category
         );
         $logs = get_user_meta($user_id, 'je_credit_logs', true);
         if (!$logs) {
@@ -71,7 +72,7 @@ class User_Credit_Model
         }
 
         $balance = self::get_balance($user_id);
-        return $balance > $required;
+        return $balance >= $required;
     }
 
     public static function go_to_plans_page()
