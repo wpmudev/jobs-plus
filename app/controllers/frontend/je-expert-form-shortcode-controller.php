@@ -102,6 +102,13 @@ class JE_Expert_Form_Shortcode_Controller extends IG_Request
                         $model->user_id = get_current_user_id();
                         $model->save();
                     }
+                    if (je()->get('first_name', null) != null) {
+                        $model->first_name = je()->get('first_name');
+                    }
+                    if (je()->get('last_name', null) != null) {
+                        $model->last_name = je()->get('last_name');
+                    }
+                    $model->name = trim($model->first_name . ' ' . $model->last_name);
                 } elseif (filter_var($slug, FILTER_VALIDATE_INT)) {
                     $model = JE_Expert_Model::model()->find($slug);
                 } else {

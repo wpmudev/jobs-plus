@@ -46,6 +46,7 @@
                                         </div>
                                     </div>
                                 <?php endforeach; ?>
+                                <div class="clearfix"></div>
                             </div>
                         </div>
                     <?php endif; ?>
@@ -102,6 +103,7 @@
                                         </div>
                                     </div>
                                 <?php endforeach; ?>
+                                <div class="clearfix"></div>
                             </div>
                         <?php else: ?>
                             <div class="empty-records">

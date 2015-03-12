@@ -83,7 +83,11 @@ class Credit_Plan_Controller extends IG_Request
     function my_wallet()
     {
         wp_enqueue_script('jquery-ui-tabs');
-        return $this->render('credit/my_wallets', array(), false);
+        if (!is_user_logged_in()) {
+            return $this->render(je()->plugin_path . 'app/views/login.php', array(), false);
+        } else {
+            return $this->render('credit/my_wallets', array(), false);
+        }
     }
 
     function create_pages()
@@ -176,12 +180,13 @@ class Credit_Plan_Controller extends IG_Request
     function process_credit_purchased($order)
     {
         $cart = $order->mp_cart_info;
+        //je()->get_logger()->log(var_export($order, true));
         foreach ($cart as $id => $item) {
             $model = Credit_Plan_Model::find($id);
             if (is_object($model)) {
                 $log = sprintf(__("You have purchased %s credits for %s through %s", je()->domain),
-                    $model->credits, JobsExperts_Helper::format_currency('', $model->cost), $order->mp_payment_info['gateway_public_name']);
-                je()->get_logger()->log($log);
+                    $model->credits, JobsExperts_Helper::format_currency('', $item[0]['price']), $order->mp_payment_info['gateway_public_name']);
+
                 User_Credit_Model::update_balance($model->credits, $order->post_author, $item[0]['price'], $log, __('Purchased Credits', je()->domain));
             }
         }
