@@ -52,7 +52,7 @@
     <?php do_action('je_before_price_field', $model, $form) ?>
     <?php if (je()->settings()->job_budget_range == 1): ?>
         <div class="form-group <?php echo $model->has_error("min_budget") ? "has-error" : null ?>">
-            <?php $form->label("min_budget", array("text" => "Min Budget", "attributes" => array("class" => "col-lg-3 control-label"))) ?>
+            <?php $form->label("min_budget", array("text" => __("Min Budget", je()->domain), "attributes" => array("class" => "col-lg-3 control-label"))) ?>
             <div class="col-lg-9">
                 <div class="input-group">
                     <span
@@ -64,7 +64,7 @@
             <div class="clearfix"></div>
         </div>
         <div class="form-group <?php echo $model->has_error("max_budget") ? "has-error" : null ?>">
-            <?php $form->label("max_budget", array("text" => "Max Budget", "attributes" => array("class" => "col-lg-3 control-label"))) ?>
+            <?php $form->label("max_budget", array("text" => __("Max Budget", je()->domain), "attributes" => array("class" => "col-lg-3 control-label"))) ?>
             <div class="col-lg-9">
                 <div class="input-group">
                     <span
@@ -77,7 +77,7 @@
         </div>
     <?php else: ?>
         <div class="form-group <?php echo $model->has_error("budget") ? "has-error" : null ?>">
-            <?php $form->label("budget", array("text" => "Budget", "attributes" => array("class" => "col-lg-3 control-label"))) ?>
+            <?php $form->label("budget", array("text" => __("Budget", je()->domain), "attributes" => array("class" => "col-lg-3 control-label"))) ?>
             <div class="col-lg-9">
                 <div class="input-group">
                     <span
@@ -93,7 +93,7 @@
     <?php do_action('je_before_email_field', $model, $form) ?>
 
     <div class="form-group <?php echo $model->has_error("contact_email") ? "has-error" : null ?>">
-        <?php $form->label("contact_email", array("text" => "Contact Email", "attributes" => array("class" => "col-lg-3 control-label"))) ?>
+        <?php $form->label("contact_email", array("text" => __("Contact Email", je()->domain), "attributes" => array("class" => "col-lg-3 control-label"))) ?>
         <div class="col-lg-9">
             <div class="input-group">
                 <span class="input-group-addon">@</span>
@@ -119,7 +119,7 @@
     <?php do_action('je_after_complete_date_field', $model, $form) ?>
     <?php do_action('je_before_open_for_field', $model, $form) ?>
     <div class="form-group <?php echo $model->has_error("open_for") ? "has-error" : null ?>">
-        <?php $form->label("open_for", array("text" => "Job Open for", "attributes" => array("class" => "col-lg-3 control-label"))) ?>
+        <?php $form->label("open_for", array("text" => __("Job Open for", je()->domain), "attributes" => array("class" => "col-lg-3 control-label"))) ?>
         <div class="col-lg-9">
             <?php $days = je()->settings()->open_for_days;
             $days = array_filter(explode(',', $days));
@@ -131,7 +131,7 @@
 
             $form->select('open_for', array(
                 'data' => $data,
-                'nameless' => '--Select--',
+                'nameless' => __('--Select--', je()->domain),
                 'attributes' => array(
                     'class' => 'form-control'
                 )
