@@ -304,7 +304,7 @@ class Jobs_Experts
         add_action('wp_loaded', array(&$this, 'init_pages'));
         //uploader
         include_once($this->plugin_path . 'app/components/ig-uploader.php');
-        ig_uploader()->init_uploader($this->can_upload());
+        ig_uploader()->init_uploader($this->can_upload(), $this->domain);
         //social-walll
         include_once($this->plugin_path . 'app/components/ig-social-wall.php');
         include_once($this->plugin_path . 'app/components/ig-skill.php');
