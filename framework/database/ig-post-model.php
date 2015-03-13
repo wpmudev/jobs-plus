@@ -342,7 +342,11 @@ if (!class_exists('IG_Post_Model')) {
 
             foreach ($params as $key => $val) {
                 if (isset($this->mapped[$key])) {
-                    $query[$this->mapped[$key]] = $val;
+                    $post_field = $this->mapped[$key];
+                    if ($post_field == 'post_author') {
+                        $post_field = 'author';
+                    }
+                    $query[$post_field] = $val;
                 } else {
                     $re = $this->_relation($key);
                     if ($re['type'] == 'meta') {
@@ -376,6 +380,7 @@ if (!class_exists('IG_Post_Model')) {
 
             $query['posts_per_page'] = 1;
             $query['paged'] = 1;
+
             $query = new WP_Query(apply_filters($this->table . 'find_one_by_attributes', $query, $params));
 
             wp_reset_query();
