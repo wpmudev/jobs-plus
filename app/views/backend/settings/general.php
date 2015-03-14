@@ -110,7 +110,78 @@ $form->open(array("attributes" => array("class" => "form-horizontal"))); ?>
     </div>
     <div class="clearfix"></div>
 </div>
-
+<div class="page-header">
+    <h3 class="hndle"><span><?php _e('Avatar Upload', je()->domain) ?></span></h3>
+</div>
+<p><?php _e("Which roles can upload custom avatar, please note that role with <strong>upload_files</strong> capability can upload by default", je()->domain) ?></p>
+<table class="table table-condensed table-hover">
+    <thead>
+    <tr>
+        <th><?php _e("Role name", je()->domain) ?></th>
+        <th><?php _e("Can upload", je()->domain) ?></th>
+    </tr>
+    </thead>
+    <tbody>
+    <?php
+    $roles = get_editable_roles();
+    foreach ($roles as $key => $role): ?>
+        <?php if (isset($role['capabilities']['upload_files']) && $role['capabilities']['upload_files'] == false || !isset($role['capabilities']['upload_files'])): ?>
+            <?php $is = in_array($key, $model->allow_avatar); ?>
+            <tr>
+                <td><?php echo $role['name'] ?></td>
+                <td>
+                    <div data-key="<?php echo $key ?>" class="btn-group btn-toggle">
+                        <button data-value="1" type="button"
+                                class="btn btn-xs <?php echo $is == true ? 'btn-primary active' : 'btn-default'; ?>">
+                            <?php _e("Yes", je()->domain) ?></button>
+                        <button data-value="0" type="button"
+                                class="btn btn-xs <?php echo $is == false ? 'btn-primary active' : 'btn-default'; ?>">
+                            <?php _e("No", je()->domain) ?></button>
+                    </div>
+                </td>
+            </tr>
+        <?php endif; ?>
+    <?php endforeach; ?>
+    </tbody>
+</table>
+<script type="text/javascript">
+    jQuery(function ($) {
+        $('.btn-toggle button').click(function () {
+            //get the index
+            var index = $(this).parent().find('button').index(this);
+            var parent = $(this).parent();
+            if (index == 0) {
+                var next = $(this).next();
+            } else {
+                var next = $(this).prev();
+            }
+            if ($(this).hasClass('active')) {
+                $(this).removeClass('active btn-primary').addClass('btn-default');
+                next.addClass('active btn-primary').removeClass('btn-default');
+            } else {
+                next.removeClass('active btn-primary').addClass('btn-default');
+                $(this).addClass('active btn-primary').removeClass('btn-default');
+            }
+            //update value
+            $.ajax({
+                type: 'POST',
+                data: {
+                    action: 'upload_avatar_permission',
+                    _nonce: '<?php echo wp_create_nonce('upload_avatar_permission') ?>',
+                    role: parent.data('key'),
+                    value: $(this).data('value')
+                },
+                url: ajaxurl,
+                beforeSend: function () {
+                    parent.find('button').attr('disabled', 'disabled');
+                },
+                success: function () {
+                    parent.find('button').removeAttr('disabled');
+                }
+            })
+        })
+    })
+</script>
 <div class="page-header">
     <h3 class="hndle"><span><?php _e('Add-ons', je()->domain) ?></span></h3>
 </div>
@@ -203,7 +274,7 @@ $form->open(array("attributes" => array("class" => "form-horizontal"))); ?>
                     action: 'je_plugin_action',
                     id: $(this).data('id')
                 },
-                beforeSend:function(){
+                beforeSend: function () {
                     that.find('.loader-ani').removeClass('hide');
                 },
                 success: function (data) {
