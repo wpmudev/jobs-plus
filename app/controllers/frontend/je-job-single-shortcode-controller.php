@@ -53,9 +53,9 @@ class JE_Job_Single_Shortcode_Controller extends IG_Request
         if (is_object($model)) {
             //add view count
             //$model->add_view_count();
-            $this->render('job-single/main', array(
+            return $this->render('job-single/main', array(
                 'model' => $model
-            ));
+            ), false);
         }
     }
 }
