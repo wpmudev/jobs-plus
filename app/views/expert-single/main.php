@@ -180,7 +180,7 @@
                                             </div>
                                         <?php
                                         } else {
-                                            _e('This member still not add any social profile.', je()->domain);
+                                            _e('This member hasn\'t added any social profiles.', je()->domain);
                                             echo '<br/>';
                                         } ?>
 

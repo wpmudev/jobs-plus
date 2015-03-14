@@ -59,7 +59,7 @@ class Expert_Saved_Controller extends IG_Request
         if (!User_Credit_Model::check_balance($settings->credit_use, get_current_user_id())) {
             ?>
             <div class="alert alert-warning">
-                <?php echo sprintf(__('Your balance\'s not enough for posting new profile (require %s credit(s)), please visit <a href="%s">here</a> for purchasing', je()->domain), $settings->credit_use, get_permalink(ig_wallet()->settings()->plans_page)) ?>
+                <?php echo sprintf(__('Your balance is not enough for creating a new profile (requires %s credit(s)), please click the following  <a href="%s">link</a> to top up your credit balance.', je()->domain), $settings->credit_use, get_permalink(ig_wallet()->settings()->plans_page)) ?>
             </div>
         <?php
         }
