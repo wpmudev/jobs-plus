@@ -250,6 +250,9 @@
                     var holder = pop.$target;
                     if (type == 'biography') {
                         if ($.fn.sceditor != undefined) {
+                            if (window.jetextarea != undefined) {
+                                window.jetextarea.destroy();
+                            }
                             var textarea = holder.find('textarea').first();
                             textarea.sceditor({
                                 plugins: "xhtml",
@@ -269,7 +272,8 @@
                     }
                 }).on('hidden.webui.popover', function () {
                     if (window.jetextarea != undefined) {
-                        window.jetextarea.destroy();
+                        //window.jetextarea.destroy();
+                        //window.jetextarea = undefined;
                     }
                 });
             }
