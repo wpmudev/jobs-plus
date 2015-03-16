@@ -17,7 +17,7 @@ class JE_Router
 
     function je_single_content($content)
     {
-        if (in_the_loop()) {
+        if (in_the_loop() && is_main_query()) {
             if (is_singular('jbp_job') && !JE_Page_Factory::is_core_page(get_the_ID()) && !is_404()) {
                 return do_shortcode('[jbp-job-single-page]');
             } elseif (is_singular('jbp_pro') && !JE_Page_Factory::is_core_page(get_the_ID()) && !is_404()) {

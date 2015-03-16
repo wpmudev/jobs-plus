@@ -19,7 +19,7 @@ $form->open(array("attributes" => array("class" => "form-horizontal"))); ?>
         $form->select('user_id', array(
             'data' => array_combine(wp_list_pluck($users, 'ID'), wp_list_pluck($users, 'user_login')),
             "attributes" => array("class" => "form-control"),
-            'nameless' => __("---Chose---")
+            'nameless' => __("---Choose---")
         )) ?>
         <span class="help-block m-b-none error-user_id"><?php $form->error("user_id") ?></span>
     </div>

@@ -8,7 +8,7 @@
         <?php $form = new IG_Active_Form($model);
         $form->open(array("attributes" => array("class" => "form-horizontal", "id" => "expert-saved-setting"))); ?>
         <div class="form-group <?php echo $model->has_error("status") ? "has-error" : null ?>">
-            <?php $form->label("status", array("text" => "Enable", "attributes" => array("class" => "col-lg-2 control-label"))) ?>
+            <?php $form->label("status", array("text" => __("Enable", je()->domain), "attributes" => array("class" => "col-lg-2 control-label"))) ?>
             <div class="col-lg-10">
                 <div class="checkbox">
                     <label>
@@ -24,7 +24,7 @@
             <div class="clearfix"></div>
         </div>
         <div class="form-group <?php echo $model->has_error("credit_use") ? "has-error" : null ?>">
-            <?php $form->label("credit_use", array("text" => "Credit spend", "attributes" => array("class" => "col-lg-2 control-label"))) ?>
+            <?php $form->label("credit_use", array("text" => __("Credit Cost", je()->domain), "attributes" => array("class" => "col-lg-2 control-label"))) ?>
             <div class="col-lg-5">
                 <?php $form->number("credit_use", array("attributes" => array(
                     "class" => "form-control",
@@ -32,13 +32,13 @@
                 ))) ?>
                 <span class="help-block m-b-none error-credit_use"><?php $form->error("credit_use") ?></span>
                 <span class="help-block">
-                    <?php _e("How many credits spend for each profile", je()->domain) ?>
+                    <?php _e("How many credits it costs per expert profile", je()->domain) ?>
                 </span>
             </div>
             <div class="clearfix"></div>
         </div>
         <div class="form-group <?php echo $model->has_error("free_from") ? "has-error" : null ?>">
-            <?php $form->label("free_from", array("text" => "Free From", "attributes" => array("class" => "col-lg-2 control-label"))) ?>
+            <?php $form->label("free_from", array("text" => __("Free From", je()->domain), "attributes" => array("class" => "col-lg-2 control-label"))) ?>
             <div class="col-lg-5">
                 <?php $form->number("free_from", array("attributes" => array("class" => "form-control", "min" => 0))) ?>
                 <span class="help-block m-b-none error-free_from"><?php $form->error("free_from") ?></span>
@@ -49,7 +49,7 @@
             <div class="clearfix"></div>
         </div>
         <div class="form-group <?php echo $model->has_error("free_for") ? "has-error" : null ?>">
-            <?php $form->label("free_for", array("text" => "Free For", "attributes" => array("class" => "col-lg-2 control-label"))) ?>
+            <?php $form->label("free_for", array("text" => __("Free For", je()->domain), "attributes" => array("class" => "col-lg-2 control-label"))) ?>
             <div class="col-lg-5">
                 <?php
                 $roles = get_editable_roles();

@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Jobs Plus\n"
-"POT-Creation-Date: 2015-03-13 20:16+0700\n"
-"PO-Revision-Date: 2015-03-13 20:17+0700\n"
+"POT-Creation-Date: 2015-03-16 12:18+0700\n"
+"PO-Revision-Date: 2015-03-16 12:19+0700\n"
 "Last-Translator: \n"
 "Language-Team: WPMU DEV\n"
 "Language: en\n"
@@ -91,7 +91,7 @@ msgstr ""
 #: jobs-plus/app/views/expert-form/_email_popup.php:15
 #: jobs-plus/app/views/expert-form/_location_popup.php:21
 #: jobs-plus/app/views/expert-form/_name_popup.php:24
-#: jobs-plus/app/views/expert-form/_tagline_popup.php:13
+#: jobs-plus/app/views/expert-form/_tagline_popup.php:14
 #: jobs-plus/app/views/expert-form/main.php:141
 msgid "Cancel"
 msgstr ""
@@ -197,9 +197,7 @@ msgstr ""
 #: jobs-plus/app/components/ig-wallet/app/views/settings/general.php:45
 #: jobs-plus/app/components/je-credit-rules/app/views/expert-saved/settings.php:76
 #: jobs-plus/app/components/je-credit-rules/app/views/job-saved/settings.php:76
-#: jobs-plus/app/views/backend/experts/_form.php:142
-#: jobs-plus/app/views/backend/jobs/_form.php:217
-#: jobs-plus/app/views/backend/settings/general.php:131
+#: jobs-plus/app/views/backend/settings/general.php:202
 #: jobs-plus/app/views/backend/settings/uploader.php:36
 msgid "Save Changes"
 msgstr ""
@@ -239,7 +237,7 @@ msgstr ""
 #: jobs-plus/app/views/expert-form/_email_popup.php:13
 #: jobs-plus/app/views/expert-form/_location_popup.php:19
 #: jobs-plus/app/views/expert-form/_name_popup.php:22
-#: jobs-plus/app/views/expert-form/_tagline_popup.php:11
+#: jobs-plus/app/views/expert-form/_tagline_popup.php:12
 msgid "Save"
 msgstr ""
 
@@ -299,6 +297,8 @@ msgstr ""
 #: jobs-plus/app/components/ig-uploader/app/views/_uploader_form.php:44
 #: jobs-plus/app/components/ig-wallet/app/views/settings/sending_credit.php:38
 #: jobs-plus/app/controllers/frontend/je-expert-form-shortcode-controller.php:149
+#: jobs-plus/app/views/backend/experts/_form.php:142
+#: jobs-plus/app/views/backend/jobs/_form.php:217
 #: jobs-plus/app/views/backend/settings/expert.php:142
 #: jobs-plus/app/views/backend/settings/job.php:173
 msgid "Submit"
@@ -528,14 +528,14 @@ msgid "View Inbox"
 msgstr ""
 
 #: jobs-plus/app/addons/je-message/lib/app/controllers/backend/mmessage-backend-controller.php:37
-#: jobs-plus/app/controllers/backend/je-admin-controller.php:163
-#: jobs-plus/app/views/backend/settings/general.php:182
+#: jobs-plus/app/controllers/backend/je-admin-controller.php:174
+#: jobs-plus/app/views/backend/settings/general.php:253
 msgid "Deactivate"
 msgstr ""
 
 #: jobs-plus/app/addons/je-message/lib/app/controllers/backend/mmessage-backend-controller.php:46
-#: jobs-plus/app/controllers/backend/je-admin-controller.php:173
-#: jobs-plus/app/views/backend/settings/general.php:160
+#: jobs-plus/app/controllers/backend/je-admin-controller.php:184
+#: jobs-plus/app/views/backend/settings/general.php:231
 msgid "Activate"
 msgstr ""
 
@@ -554,10 +554,10 @@ msgstr ""
 #: jobs-plus/app/addons/je-message/lib/app/views/layout/main.php:51
 #: jobs-plus/app/components/ig-wallet.php:42
 #: jobs-plus/app/components/ig-wallet/app/views/credit/settings.php:2
-#: jobs-plus/app/controllers/backend/je-admin-controller.php:52
-#: jobs-plus/app/controllers/backend/je-admin-controller.php:53
-#: jobs-plus/app/controllers/backend/je-admin-controller.php:66
-#: jobs-plus/app/controllers/backend/je-admin-controller.php:67
+#: jobs-plus/app/controllers/backend/je-admin-controller.php:63
+#: jobs-plus/app/controllers/backend/je-admin-controller.php:64
+#: jobs-plus/app/controllers/backend/je-admin-controller.php:77
+#: jobs-plus/app/controllers/backend/je-admin-controller.php:78
 #: jobs-plus/app/views/backend/getting_start.php:92
 #: jobs-plus/app/views/backend/getting_start.php:124
 #: jobs-plus/app/views/backend/settings.php:2
@@ -565,7 +565,7 @@ msgid "Settings"
 msgstr ""
 
 #: jobs-plus/app/addons/je-message/lib/app/controllers/backend/mmessage-backend-controller.php:76
-#: jobs-plus/app/controllers/backend/je-settings-controller.php:33
+#: jobs-plus/app/controllers/backend/je-settings-controller.php:58
 msgid "Your settings have been successfully updated."
 msgstr ""
 
@@ -625,11 +625,13 @@ msgid "Which roles can upload attachments"
 msgstr ""
 
 #: jobs-plus/app/addons/je-message/lib/app/views/backend/setting/attachment.php:8
+#: jobs-plus/app/views/backend/settings/general.php:120
 #: jobs-plus/app/views/backend/settings/uploader.php:8
 msgid "Role name"
 msgstr ""
 
 #: jobs-plus/app/addons/je-message/lib/app/views/backend/setting/attachment.php:9
+#: jobs-plus/app/views/backend/settings/general.php:121
 #: jobs-plus/app/views/backend/settings/uploader.php:9
 msgid "Can upload"
 msgstr ""
@@ -698,7 +700,7 @@ msgid "--Choose--"
 msgstr ""
 
 #: jobs-plus/app/addons/je-message/lib/app/views/backend/setting/general.php:64
-#: jobs-plus/app/views/backend/settings/general.php:115
+#: jobs-plus/app/views/backend/settings/general.php:186
 msgid "Add-ons"
 msgstr ""
 
@@ -1034,27 +1036,27 @@ msgid ""
 msgstr ""
 
 #: jobs-plus/app/addons/je-message/lib/functions.php:94
-#: jobs-plus/jobs-experts.php:617
+#: jobs-plus/jobs-experts.php:640
 msgid "Username"
 msgstr ""
 
 #: jobs-plus/app/addons/je-message/lib/functions.php:95
-#: jobs-plus/jobs-experts.php:618
+#: jobs-plus/jobs-experts.php:641
 msgid "Password"
 msgstr ""
 
 #: jobs-plus/app/addons/je-message/lib/functions.php:96
-#: jobs-plus/jobs-experts.php:619
+#: jobs-plus/jobs-experts.php:642
 msgid "Remember Me"
 msgstr ""
 
 #: jobs-plus/app/addons/je-message/lib/functions.php:97
-#: jobs-plus/jobs-experts.php:620
+#: jobs-plus/jobs-experts.php:643
 msgid "Sign In"
 msgstr ""
 
 #: jobs-plus/app/addons/je-message/lib/functions.php:169
-#: jobs-plus/jobs-experts.php:692
+#: jobs-plus/jobs-experts.php:715
 msgid "Forgot password?"
 msgstr ""
 
@@ -1259,8 +1261,8 @@ msgstr ""
 #: jobs-plus/app/components/ig-wallet.php:71
 #: jobs-plus/app/components/je-custom-content.php:18
 #: jobs-plus/app/components/je-custom-content.php:77
-#: jobs-plus/app/controllers/backend/je-admin-controller.php:93
-#: jobs-plus/app/controllers/backend/je-admin-controller.php:120
+#: jobs-plus/app/controllers/backend/je-admin-controller.php:104
+#: jobs-plus/app/controllers/backend/je-admin-controller.php:131
 msgid "Add New"
 msgstr ""
 
@@ -1422,7 +1424,7 @@ msgid "Detail"
 msgstr ""
 
 #: jobs-plus/app/components/ig-wallet/app/views/credit/settings.php:23
-msgid "Sending Credits"
+msgid "Send Credits"
 msgstr ""
 
 #: jobs-plus/app/components/ig-wallet/app/views/settings/sending_credit.php:2
@@ -1430,7 +1432,7 @@ msgid "Sending free credit to user"
 msgstr ""
 
 #: jobs-plus/app/components/ig-wallet/app/views/settings/sending_credit.php:22
-msgid "---Chose---"
+msgid "---Choose---"
 msgstr ""
 
 #: jobs-plus/app/components/je-addon-table.php:73
@@ -1448,8 +1450,9 @@ msgstr ""
 #: jobs-plus/app/components/je-credit-rules/app/controllers/expert-saved-controller.php:62
 #, php-format
 msgid ""
-"Your balance's not enough for posting new profile (require %s credit(s)), "
-"please visit <a href=\"%s\">here</a> for purchasing"
+"Your balance is not enough for creating a new profile (requires %s "
+"credit(s)), please click the following  <a href=\"%s\">link</a> to top up "
+"your credit balance."
 msgstr ""
 
 #: jobs-plus/app/components/je-credit-rules/app/controllers/expert-saved-controller.php:112
@@ -1487,16 +1490,35 @@ msgstr ""
 msgid "Credits use for create new expert profile"
 msgstr ""
 
+#: jobs-plus/app/components/je-credit-rules/app/views/expert-saved/settings.php:11
+#: jobs-plus/app/components/je-credit-rules/app/views/job-saved/settings.php:11
+msgid "Enable"
+msgstr ""
+
+#: jobs-plus/app/components/je-credit-rules/app/views/expert-saved/settings.php:27
+#: jobs-plus/app/components/je-credit-rules/app/views/job-saved/settings.php:27
+msgid "Credit Cost"
+msgstr ""
+
 #: jobs-plus/app/components/je-credit-rules/app/views/expert-saved/settings.php:35
-msgid "How many credits spend for each profile"
+msgid "How many credits it costs per expert profile"
+msgstr ""
+
+#: jobs-plus/app/components/je-credit-rules/app/views/expert-saved/settings.php:41
+#: jobs-plus/app/components/je-credit-rules/app/views/job-saved/settings.php:41
+msgid "Free From"
 msgstr ""
 
 #: jobs-plus/app/components/je-credit-rules/app/views/expert-saved/settings.php:46
 msgid "How many profiles user need to pay before free submit"
 msgstr ""
 
+#: jobs-plus/app/components/je-credit-rules/app/views/expert-saved/settings.php:52
+#: jobs-plus/app/components/je-credit-rules/app/views/job-saved/settings.php:52
+msgid "Free For"
+msgstr ""
+
 #: jobs-plus/app/components/je-credit-rules/app/views/expert-saved/settings.php:67
-#: jobs-plus/app/components/je-credit-rules/app/views/job-saved/settings.php:67
 msgid "Free submit for specific roles"
 msgstr ""
 
@@ -1509,11 +1531,15 @@ msgid "Credits use for create new job"
 msgstr ""
 
 #: jobs-plus/app/components/je-credit-rules/app/views/job-saved/settings.php:35
-msgid "How many credits spend for each job"
+msgid "How many credits each job costs"
 msgstr ""
 
 #: jobs-plus/app/components/je-credit-rules/app/views/job-saved/settings.php:46
-msgid "How many job user need to pay before free submit"
+msgid "Job posting after this many is free"
+msgstr ""
+
+#: jobs-plus/app/components/je-credit-rules/app/views/job-saved/settings.php:67
+msgid "Free job posting for specific roles"
 msgstr ""
 
 #: jobs-plus/app/components/je-custom-content.php:16
@@ -1530,8 +1556,8 @@ msgid "Add New Job"
 msgstr ""
 
 #: jobs-plus/app/components/je-custom-content.php:21
-#: jobs-plus/app/controllers/backend/je-admin-controller.php:45
-#: jobs-plus/app/controllers/backend/je-admin-controller.php:46
+#: jobs-plus/app/controllers/backend/je-admin-controller.php:56
+#: jobs-plus/app/controllers/backend/je-admin-controller.php:57
 msgid "New Job"
 msgstr ""
 
@@ -1573,8 +1599,8 @@ msgid "Add New Expert"
 msgstr ""
 
 #: jobs-plus/app/components/je-custom-content.php:80
-#: jobs-plus/app/controllers/backend/je-admin-controller.php:59
-#: jobs-plus/app/controllers/backend/je-admin-controller.php:60
+#: jobs-plus/app/controllers/backend/je-admin-controller.php:70
+#: jobs-plus/app/controllers/backend/je-admin-controller.php:71
 msgid "New Expert"
 msgstr ""
 
@@ -1785,19 +1811,19 @@ msgstr ""
 msgid "Job Category: "
 msgstr ""
 
-#: jobs-plus/app/controllers/backend/je-admin-controller.php:38
-#: jobs-plus/app/controllers/backend/je-admin-controller.php:39
-#: jobs-plus/app/controllers/backend/je-admin-controller.php:86
+#: jobs-plus/app/controllers/backend/je-admin-controller.php:49
+#: jobs-plus/app/controllers/backend/je-admin-controller.php:50
+#: jobs-plus/app/controllers/backend/je-admin-controller.php:97
 msgid "Getting Started"
 msgstr ""
 
-#: jobs-plus/app/controllers/backend/je-admin-controller.php:92
-#: jobs-plus/app/controllers/backend/je-admin-controller.php:119
+#: jobs-plus/app/controllers/backend/je-admin-controller.php:103
+#: jobs-plus/app/controllers/backend/je-admin-controller.php:130
 #, php-format
 msgid "Manage %s"
 msgstr ""
 
-#: jobs-plus/app/controllers/backend/je-admin-controller.php:97
+#: jobs-plus/app/controllers/backend/je-admin-controller.php:108
 #, php-format
 msgid "New %s"
 msgstr ""
@@ -2247,14 +2273,26 @@ msgid "Show Decimal in Prices"
 msgstr ""
 
 #: jobs-plus/app/views/backend/settings/general.php:101
+#: jobs-plus/app/views/backend/settings/general.php:136
 msgid "Yes"
 msgstr ""
 
 #: jobs-plus/app/views/backend/settings/general.php:107
+#: jobs-plus/app/views/backend/settings/general.php:139
 msgid "No"
 msgstr ""
 
-#: jobs-plus/app/views/backend/settings/general.php:221
+#: jobs-plus/app/views/backend/settings/general.php:114
+msgid "Avatar Upload"
+msgstr ""
+
+#: jobs-plus/app/views/backend/settings/general.php:116
+msgid ""
+"Which roles can upload custom avatar, please note that role with "
+"<strong>upload_files</strong> capability can upload by default"
+msgstr ""
+
+#: jobs-plus/app/views/backend/settings/general.php:292
 msgid ""
 "It looks like you have been editing something -- if you leave before "
 "submitting your changes will be lost."
@@ -2663,7 +2701,7 @@ msgstr ""
 msgid "Save Draft"
 msgstr ""
 
-#: jobs-plus/app/views/expert-form/main.php:323
+#: jobs-plus/app/views/expert-form/main.php:327
 #: jobs-plus/app/views/job-form/main.php:187
 msgid "Submitting..."
 msgstr ""
@@ -2681,7 +2719,7 @@ msgid "This member hasn't added any skills yet"
 msgstr ""
 
 #: jobs-plus/app/views/expert-single/main.php:183
-msgid "This member still not add any social profile."
+msgid "This member hasn't added any social profiles."
 msgstr ""
 
 #: jobs-plus/app/views/expert-single/main.php:197

@@ -22,6 +22,17 @@ class JE_Admin_Controller extends IG_Request
 
         add_action('wp_ajax_je_plugin_action', array(&$this, 'plugins_action'));
         add_action('admin_init', array(&$this, 'redirect_pro_setting'));
+        add_filter('admin_url', array(&$this, 'fix_add_new_url'), 10, 3);
+    }
+
+    function fix_add_new_url($url, $path, $blog_id)
+    {
+        if ($path == 'post-new.php?post_type=jbp_job') {
+            $url = admin_url('edit.php?post_type=jbp_job&page=jobs-plus-job-form');
+        } elseif ($path == 'post-new.php?post_type=jbp_pro') {
+            $url = admin_url('edit.php?post_type=jbp_pro&page=jobs-plus-add-pro');
+        }
+        return $url;
     }
 
     function redirect_pro_setting()
