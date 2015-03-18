@@ -21,6 +21,27 @@ class Credit_Plan_Controller extends IG_Request
 
         add_filter('mp_product_price_html', array(&$this, 'addition_price_info'), 10, 4);
         add_filter('mp_product_name_display_in_cart', array(&$this, 'addition_cart_name_info'), 10, 2);
+
+        //add_filter('mp_order_status', array(&$this, 'alter_order_table'), 10, 2);
+        add_filter('get_post_metadata', array(&$this, 'remove_download_link'), 10, 4);
+    }
+
+    function alter_order_table($content, $order)
+    {
+        return $content;
+    }
+
+    function remove_download_link($value, $object_id, $meta_key, $single)
+    {
+        global $wp_query;
+        if ($meta_key == 'mp_file' && isset($wp_query->query['pagename']) && $wp_query->query['pagename']=='orderstatus') {
+            //first we need to check does the product is wallet stuffs
+            $check = get_post_meta($object_id, 'je_wallet_append_info', true);
+            if ($check !== false) {
+                return '';
+            }
+        }
+        return $value;
     }
 
     function addition_cart_name_info($name, $product_id)
@@ -92,6 +113,10 @@ class Credit_Plan_Controller extends IG_Request
 
     function create_pages()
     {
+        if (!current_user_can('manage_options')) {
+            return '';
+        }
+
         $shortcodes = '<p style="text-align: center">[jbp-job-browse-btn][jbp-expert-browse-btn][jbp-job-post-btn][jbp-expert-post-btn][jbp-my-job-btn][jbp-expert-profile-btn]</p>';
         if (isset($_POST['type'])) {
             $model = new Credit_Plan_Settings_Model();

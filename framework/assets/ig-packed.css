@@ -11086,7 +11086,7 @@ button.ig-container .close {
 .ig-container .ig-error-field {
   font-weight: bold;
 }
-.ig-container .row .no-margin {
+.ig-container .row.no-margin {
   margin: 0;
 }
 .ig-container .row .no-padding {
@@ -13224,7 +13224,7 @@ fieldset[disabled] .ig-container .ui-button-error.active {
 .ig-container .ui-tabs .ui-tabs-nav li {
   filter: none;
 }
-.ig-container .ui-tooltip {
+.ig-container.ui-tooltip {
   display: block;
   font-size: 11px;
   opacity: 0.8;
@@ -13259,62 +13259,62 @@ fieldset[disabled] .ig-container .ui-button-error.active {
   border-bottom-right-radius: 4px;
   border-width: 1px;
 }
-.ig-container .ui-tooltip .arrow {
+.ig-container.ui-tooltip .arrow {
   overflow: hidden;
   position: absolute;
   margin-left: 0;
   height: 20px;
   width: 20px;
 }
-.ig-container .ui-tooltip .arrow.bottom {
+.ig-container.ui-tooltip .arrow.bottom {
   top: 100%;
   left: 38%;
 }
-.ig-container .ui-tooltip .arrow.bottom:after {
+.ig-container.ui-tooltip .arrow.bottom:after {
   border-top: 8px solid #000000;
   border-right: 8px solid transparent;
   border-bottom: 8px solid transparent;
   border-left: 8px solid transparent;
 }
-.ig-container .ui-tooltip .arrow.top {
+.ig-container.ui-tooltip .arrow.top {
   top: -50%;
   bottom: 22px;
   left: 42%;
 }
-.ig-container .ui-tooltip .arrow.top:after {
+.ig-container.ui-tooltip .arrow.top:after {
   border-top: 6px solid transparent;
   border-right: 6px solid transparent;
   border-bottom: 6px solid #000000;
   border-left: 6px solid transparent;
 }
-.ig-container .ui-tooltip .arrow.left {
+.ig-container.ui-tooltip .arrow.left {
   top: 25%;
   left: -15%;
   right: 0;
   bottom: -16px;
 }
-.ig-container .ui-tooltip .arrow.left:after {
+.ig-container.ui-tooltip .arrow.left:after {
   width: 0;
   border-top: 6px solid transparent;
   border-right: 6px solid #000000;
   border-bottom: 6px solid transparent;
   border-left: 6px solid transparent;
 }
-.ig-container .ui-tooltip .arrow.right {
+.ig-container.ui-tooltip .arrow.right {
   top: 26%;
   left: 100%;
   right: 0;
   bottom: -16px;
   margin-left: 1px;
 }
-.ig-container .ui-tooltip .arrow.right:after {
+.ig-container.ui-tooltip .arrow.right:after {
   width: 0;
   border-top: 6px solid transparent;
   border-right: 6px solid transparent;
   border-bottom: 6px solid transparent;
   border-left: 6px solid #000000;
 }
-.ig-container .ui-tooltip .arrow:after {
+.ig-container.ui-tooltip .arrow:after {
   content: " ";
   position: absolute ;
   height: 0 ;

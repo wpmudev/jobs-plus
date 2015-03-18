@@ -214,7 +214,7 @@ $form->hidden('id')?>
 </div>
 <?php wp_nonce_field('ig_job_add') ?>
 <div class="col-md-12">
-    <button type="submit" class="btn btn-primary"><?php _e("Save Changes", je()->domain) ?></button>
+    <button type="submit" class="button button-primary"><?php _e("Submit", je()->domain) ?></button>
 </div>
 </div>
 <?php $form->close(); ?>

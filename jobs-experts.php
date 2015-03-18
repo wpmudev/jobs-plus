@@ -105,6 +105,8 @@ class Jobs_Experts
         add_action('init', array(&$this, 'dispatch'));
         add_action('widgets_init', array(&$this, 'init_widget'));
         $this->upgrade();
+        //
+        $this->load_addons();
     }
 
     function upgrade()
@@ -297,6 +299,17 @@ class Jobs_Experts
         return $use_compress;
     }
 
+    function load_addons()
+    {
+        $addons = $this->settings()->plugins;
+        if (!is_array($addons)) {
+            $addons = array();
+        }
+        if (array_search($this->plugin_path . 'app/addons/je-message.php', $addons) !== false) {
+            include $this->plugin_path . 'app/addons/je-message.php';
+        }
+    }
+
     function dispatch()
     {
         //load post type
@@ -334,11 +347,9 @@ class Jobs_Experts
         //load addon
         //load add on
         $addons = $this->settings()->plugins;
-        if (!is_array($addons)) {
-            $addons = array();
-        }
+
         foreach ($addons as $addon) {
-            if (file_exists($addon)) {
+            if (file_exists($addon) && $addon != $this->plugin_path . 'app/addons/je-message.php') {
                 include_once $addon;
             }
         }

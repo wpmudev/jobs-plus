@@ -39,12 +39,15 @@
                         </a>
                     </div>
                 </div>
+                <?php if(is_user_logged_in()): ?>
                 <div class="col-md-2 hidden-xs hidden-sm no-padding text-right">
                     <a class="btn btn-primary btn-sm mm-compose" href="#compose-form-container">
                         <?php _e("Compose", mmg()->domain) ?>
                     </a>
                 </div>
+                <?php endif; ?>
                 <!--For small viewport-->
+                <?php if(is_user_logged_in()): ?>
                 <div class="col-sm-12 col-xs-12 hidden-md hidden-lg no-padding">
                     <br/>
                     <a class="btn btn-default btn-sm" href="<?php echo add_query_arg('box', 'setting') ?>">
@@ -55,11 +58,13 @@
                     </a>
                 </div>
                 <div class="clearfix"></div>
+                <?php endif; ?>
             </div>
         <?php endif; ?>
         <?php echo $content; ?>
-
+        <div class="clearfix"></div>
     </div>
+    <div class="clearfix"></div>
 </div>
 <?php if ($show_nav): ?>
     <script type="text/javascript">
@@ -85,7 +90,6 @@
                     tooltipClass: 'ig-container'
                 });
             }
-            ;
         })
     </script>
 <?php endif; ?>
@@ -114,6 +118,8 @@
                         that.find('.form-control').val('');
                         location.reload();
                     } else {
+                        //clear errors
+                        that.find('.m-b-none').html('');
                         $.each(data.errors, function (i, v) {
                             var element = that.find('.error-' + i);
                             element.parent().parent().addClass('has-error');
@@ -132,5 +138,26 @@
         $('body').on('modal.hidden', function () {
             $('.webui-popover').remove();
         });
+        $('body').on('click', '.load-attachment-info', function (e) {
+            e.preventDefault();
+            $('.attachments-footer').html('');
+            //move the html to footer
+            var html = $('[data-id="' + $(this).data('target') + '"]').first().html();
+            var element = $('<div/>').attr({
+                'class': 'modal',
+                'id': $(this).data('target')
+            });
+            element.html(html);
+            $('.attachments-footer').append(element);
+            var a = $('<a/>').attr('href', '#' + $(this).data('target'));
+            $('.attachments-footer').append(a);
+            a.leanModal({
+                closeButton: '.attachment-close',
+                top: '5%',
+                width: '90%',
+                maxWidth: 659
+            });
+            a.trigger('click');
+        })
     })
 </script>

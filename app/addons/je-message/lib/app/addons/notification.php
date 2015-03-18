@@ -2,7 +2,7 @@
 
 /**
  * Author: WPMU DEV
- * Name: Notification (Beta)
+ * Name: Notification
  * Description: Display a visual notification for users when a new message is received.
  */
 if (!class_exists('MM_Push_Notification')) {
@@ -101,10 +101,15 @@ if (!class_exists('MM_Push_Notification')) {
                                                         {
                                                             addClass: 'btn btn-primary btn-xs',
                                                             text: 'View', onClick: function ($noty) {
-                                                            $noty.close();
                                                             var url = '<?php echo get_permalink(mmg()->setting()->inbox_page) ?>?box=unread';
                                                             location.href = url;
                                                         }
+                                                        },
+                                                        {
+                                                            addClass: 'btn btn-danger btn-xs',
+                                                            text: 'Close', onClick: function ($noty) {
+                                                            $noty.close();
+                                                            }
                                                         }
                                                     ],
                                                     animation: {

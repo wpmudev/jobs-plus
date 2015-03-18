@@ -7,6 +7,8 @@ class Inbox_Shortcode_Controller extends IG_Request
 {
     protected $layout = 'main';
 
+    protected $messages = array();
+
     public function __construct()
     {
         add_shortcode('message_inbox', array(&$this, 'inbox'));
@@ -15,6 +17,14 @@ class Inbox_Shortcode_Controller extends IG_Request
         add_action('wp_ajax_mm_suggest_users', array(&$this, 'suggest_users'));
         add_action('wp_ajax_mm_load_conversation', array(&$this, 'load_conversation'));
         add_action('wp_ajax_mm_status', array(&$this, 'change_status'));
+        add_action('wp_footer', array(&$this, 'footer'));
+    }
+
+    function footer()
+    {
+        ?>
+        <div class="ig-container attachments-footer"></div>
+    <?php
     }
 
     function change_status()
@@ -73,9 +83,15 @@ class Inbox_Shortcode_Controller extends IG_Request
             $model->mark_as_read();
             do_action('mm_conversation_read', $model);
         }
+        $messages = $model->get_messages();
+        //update replace form
+        $reply_form = $this->render_partial('shortcode/_reply_form', array(
+            'message' => array_shift($messages)
+        ), false);
 
         wp_send_json(array(
             'html' => $html,
+            'reply_form' => $reply_form,
             'count_unread' => MM_Conversation_Model::count_unread(true),
             'count_read' => MM_Conversation_Model::count_read(true)
         ));
@@ -89,6 +105,7 @@ class Inbox_Shortcode_Controller extends IG_Request
         ));
 
         if (!is_user_logged_in()) {
+            do_action('mmg_before_load_login_form');
             mmg()->load_script('login');
             return $this->render('shortcode/login', array(
                 'show_nav' => $this->can_show_nav($a['nav_view'])
@@ -124,7 +141,7 @@ class Inbox_Shortcode_Controller extends IG_Request
                 $total_pages = mmg()->global['conversation_total_pages'];
                 break;
             case'setting':
-                return $this->render('shortcode/setting', array(), false);
+                return $this->render('shortcode/setting', array('show_nav' => $this->can_show_nav($a['nav_view'])), false);
                 break;
             case 'search':
                 $models = MM_Conversation_Model::search(mmg()->get('query'));
@@ -143,6 +160,10 @@ class Inbox_Shortcode_Controller extends IG_Request
     function render_compose_form()
     {
         $this->render_partial('shortcode/_compose_form');
+        $messages = array_values($this->messages);
+        $this->render_partial('shortcode/_reply_form', array(
+            'message' => array_shift($messages)
+        ));
     }
 
     function suggest_users()
@@ -150,7 +171,7 @@ class Inbox_Shortcode_Controller extends IG_Request
         if (!wp_verify_nonce(mmg()->get('_wpnonce'), 'mm_suggest_users')) {
             exit;
         }
-
+        $query_string = mmg()->post('query');
         $query = new WP_User_Query(apply_filters('mm_suggest_users_args', array(
             'search' => '*' . mmg()->post('query') . '*',
             'search_columns' => array('user_login'),
@@ -159,12 +180,38 @@ class Inbox_Shortcode_Controller extends IG_Request
             'orderby' => 'user_login',
             'order' => 'ASC'
         )));
+        $name_query = new WP_User_Query(apply_filters('mm_suggest_users_first_last_args', array(
+            'exclude' => array(get_current_user_id()),
+            'number' => 10,
+            'orderby' => 'user_login',
+            'order' => 'ASC',
+            'meta_query' => array(
+                'relation' => 'OR',
+                array(
+                    'key' => 'first_name',
+                    'value' => $query_string,
+                    'compare' => 'LIKE'
+                ),
+                array(
+                    'key' => 'last_name',
+                    'value' => $query_string,
+                    'compare' => 'LIKE'
+                )
+            )
+        )));
+        $results = array_merge($query->get_results(), $name_query->get_results());
 
         $data = array();
-        foreach ($query->get_results() as $user) {
+        foreach ($results as $user) {
+            $userdata = get_userdata($user->ID);
+            $name = $user->user_login;
+            $full_name = trim($userdata->first_name . ' ' . $userdata->last_name);
+            if (strlen($full_name)) {
+                $name = $user->user_login . ' - ' . $full_name;
+            }
             $obj = new stdClass();
             $obj->id = $user->ID;
-            $obj->name = $user->user_login;
+            $obj->name = $name;
             $data[] = $obj;
         }
 
@@ -183,6 +230,7 @@ class Inbox_Shortcode_Controller extends IG_Request
 
         $model = new MM_Message_Model();
         $model->import(mmg()->post('MM_Message_Model'));
+        $model = apply_filters('mm_before_send_message', $model);
 
         if ($model->validate()) {
             if (mmg()->post('is_reply', 0) == 1) {
@@ -194,30 +242,45 @@ class Inbox_Shortcode_Controller extends IG_Request
                 $user_ids = $c_model->user_index;
 
                 $user_ids = $this->logins_to_ids($user_ids);
-
-                foreach ($user_ids as $user_id) {
-                    if ($user_id != get_current_user_id()) {
-                        $this->_reply_message($conv_id, $message_id, $user_id, $model);
-                    }
+                //we will need to explude the sender
+                unset($user_ids[array_search(get_current_user_id(), $user_ids)]);
+                //we will check does any one included
+                $included = mmg()->post('user_include');
+                if (!empty($included)) {
+                    $included = $this->logins_to_ids($included);
                 }
+                if ($included) {
+                    $user_ids = array_merge($user_ids, $included);
+                }
+
+                $user_ids = apply_filters('mm_reply_user_ids', $user_ids);
+
+                $this->_reply_message($conv_id, $message_id, $user_ids, $model);
+
                 $this->set_flash('mm_sent_' . get_current_user_id(), __("Your message has been sent.", mmg()->domain));
                 wp_send_json(array(
                     'status' => 'success'
                 ));
             } else {
-                $users = mmg()->post('MM_Message_Model[send_to]');
-                $user_ids = $this->logins_to_ids($users);
+                $send_to = $model->send_to;
+                $user_ids = $this->logins_to_ids($send_to);
 
-                $is_single = true;
-                if ($is_single) {
+                $cc_list = mmg()->post('cc');
+                $cc_list = explode(',', $cc_list);
+                $cc_list = array_filter($cc_list);
+                if (empty($cc_list)) {
                     //create message
                     foreach ($user_ids as $user_id) {
                         $this->_send_message($user_id, $model);
-                        //check does this is new message or reply
                     }
                 } else {
-                    //todo update group conversation
+                    foreach ($user_ids as $user_id) {
+                        $send_to_lists = array($user_id);
+                        $send_to_lists = array_merge($send_to_lists, $cc_list);
+                        $this->_send_message_group($send_to_lists, $model);
+                    }
                 }
+
                 $this->set_flash('mm_sent_' . get_current_user_id(), __("Your message has been sent.", mmg()->domain));
                 wp_send_json(array(
                     'status' => 'success'
@@ -232,69 +295,44 @@ class Inbox_Shortcode_Controller extends IG_Request
         exit;
     }
 
-    function _reply_message($conv_id, $message_id, $user_id, $model)
+    function _reply_message($conv_id, $message_id, $user_ids, $model)
     {
         //load conversation
         $conversation = MM_Conversation_Model::model()->find($conv_id);
-        $conversation->status = MM_Message_Status_Model::STATUS_UNREAD;
-        //we will add new message to this conversation
-        $conversation->save();
-        //update users from this conversation, now save the message
-        $m = new MM_Message_Model();
-        $m->import($model->export());
-        $m->send_to = $user_id;
-        $m->conversation_id = $conversation->id;
-        $m->status = MM_Message_Model::UNREAD;
-        $mess = MM_Message_Model::model()->find($message_id);
-        $m->subject = __("Re:", mmg()->domain) . ' ' . $mess->subject;
-
-        $m->save();
-        //update status for send to
-        $status = MM_Message_Status_Model::model()->find_one_with_attributes(array(
-            'conversation_id' => $conversation->id,
-            'user_id' => $user_id
-        ));
-        if (is_object($status)) {
-            $status->status = MM_Message_Status_Model::STATUS_UNREAD;
-            $status->save();
+        foreach ($user_ids as $user_id) {
+            MM_Message_Status_Model::model()->status($conversation->id, MM_Message_Status_Model::STATUS_UNREAD, $user_id);
         }
-
+        $id = MM_Message_Model::reply(implode(',', $user_ids), $message_id, $conv_id, $model->export());
         //update index
-        $conversation->update_index($m->id);
-        do_action('mm_message_sent', $m);
+        $conversation->update_index($id);
     }
 
     function _send_message($user_id, $model)
     {
         //create new conservation
         $conservation = new MM_Conversation_Model();
-        $conservation->status = MM_Message_Status_Model::STATUS_UNREAD;
         $conservation->save();
-        //save message
-        $m = new MM_Message_Model();
-        $m->import($model->export());
-        $m->send_to = $user_id;
-        $m->conversation_id = $conservation->id;
-        $m->status = MM_Message_Model::UNREAD;
-        $m->save();
-        //update index
-        $conservation->update_index($m->id);
-        do_action('mm_message_sent', $m);
-        //update status
-        $model = new MM_Message_Status_Model();
-        $model->user_id = $user_id;
-        $model->conversation_id = $conservation->id;
-        $model->status = MM_Message_Status_Model::STATUS_UNREAD;
-        $model->type = MM_Message_Status_Model::TYPE_CONVERSATION;
-        $model->save();
-        //we need both for each sender & reciver
-        $model = new MM_Message_Status_Model();
-        $model->user_id = get_current_user_id();
-        $model->conversation_id = $conservation->id;
-        //because we send so status should be read
-        $model->status = MM_Message_Status_Model::STATUS_READ;
-        $model->type = MM_Message_Status_Model::TYPE_CONVERSATION;
-        $model->save();
+        //apply status of this conversation for sender and receive
+        MM_Message_Status_Model::model()->status($conservation->id, MM_Message_Status_Model::STATUS_READ, get_current_user_id());
+        //apply status for receive
+        MM_Message_Status_Model::model()->status($conservation->id, MM_Message_Status_Model::STATUS_UNREAD, $user_id);
+        $id = MM_Message_Model::send($user_id, $conservation->id, $model->export());
+        $conservation->update_index($id);
+        return $id;
+    }
+
+    function _send_message_group($user_ids, $model)
+    {
+        //create new conservation
+        $conservation = new MM_Conversation_Model();
+        $conservation->save();
+        //apply status of this conversation for sender and receive
+        MM_Message_Status_Model::model()->status($conservation->id, MM_Message_Status_Model::STATUS_READ, get_current_user_id());
+        foreach ($user_ids as $user_id) {
+            MM_Message_Status_Model::model()->status($conservation->id, MM_Message_Status_Model::STATUS_UNREAD, $user_id);
+        }
+        $message_id = MM_Message_Model::send(implode(',', $user_ids), $conservation->id, $model->export());
+        $conservation->update_index($message_id);
     }
 
     function logins_to_ids($users)
@@ -324,7 +362,7 @@ class Inbox_Shortcode_Controller extends IG_Request
     {
         //get all the message from this conversation
         $messages = $model->get_messages();
-
+        $this->messages = $messages;
         return $this->render_partial('shortcode/_inbox_message', array(
             'messages' => $messages
         ), false);
