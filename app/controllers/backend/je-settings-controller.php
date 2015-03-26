@@ -34,7 +34,7 @@ class JE_Settings_Controller extends IG_Request
         if ($value == 1) {
             $model->allow_avatar[] = $role;
         } else {
-            var_dump(array_search($role, $model->allow_avatar));
+            //var_dump(array_search($role, $model->allow_avatar));
             unset($model->allow_avatar[array_search($role, $model->allow_avatar)]);
         }
         $model->allow_avatar = array_unique(array_filter($model->allow_avatar));

@@ -28,7 +28,6 @@
                     <label>Color</label>
                     <?php if (is_object($model)): ?>
                         <select name="color">
-                            <?php var_dump($model->find_css()) ?>
                             <option <?php echo is_object($model) ? selected($model->find_css(), 'primary') : null; ?>
                                 value="primary"><?php _e('Blue', ig_skill()->domain) ?></option>
                             <option <?php echo is_object($model) ? selected($model->find_css(), 'danger') : null; ?>

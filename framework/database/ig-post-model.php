@@ -105,7 +105,7 @@ if (!class_exists('IG_Post_Model')) {
                                 if (is_object($term)) {
                                     $taxs[] = $term->name;
                                 } else {
-                                    var_dump($term);
+                                    //var_dump($term);
                                 }
                             } else {
                                 $taxs[] = $tax;
@@ -192,7 +192,7 @@ if (!class_exists('IG_Post_Model')) {
                                 if (is_object($term)) {
                                     $taxs[] = $term->name;
                                 } else {
-                                    var_dump($term);
+                                    //var_dump($term);
                                 }
                             } else {
                                 $taxs[] = $tax;

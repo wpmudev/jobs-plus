@@ -347,6 +347,9 @@ class Jobs_Experts
         //load addon
         //load add on
         $addons = $this->settings()->plugins;
+        if (!is_array($addons)) {
+            $addons = array();
+        }
 
         foreach ($addons as $addon) {
             if (file_exists($addon) && $addon != $this->plugin_path . 'app/addons/je-message.php') {

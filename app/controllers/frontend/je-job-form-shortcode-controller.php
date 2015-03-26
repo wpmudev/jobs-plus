@@ -76,7 +76,7 @@ class JE_Job_Form_Shortcode_Controller extends IG_Request
                     'model' => $model
                 ), false);
             } else {
-                var_dump($model->is_current_owner());
+                //var_dump($model->is_current_owner());
             }
         } else {
             return $this->render('login', array(), false);
