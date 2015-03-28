@@ -91,16 +91,21 @@ class JE_Expert_Form_Shortcode_Controller extends IG_Request
                 $model = je()->global['expert_model'];
             } else {
                 if (is_null($slug)) {
-                    //check does this user has a undone profile
-                    $model = JE_Expert_Model::model()->find_one_by_attributes(array(
-                        'status' => 'je-draft',
-                        'user_id' => get_current_user_id()
-                    ));
-                    if (!is_object($model)) {
-                        $model = new JE_Expert_Model();
-                        $model->status = 'je-draft';
-                        $model->user_id = get_current_user_id();
-                        $model->save();
+                    //check does this man can post new
+                    if (JE_Expert_Model::model()->count() >= je()->settings()->expert_max_records) {
+                        return $this->render('expert-form/limit', array(), false);
+                    } else {
+                        //check does this user has a undone profile
+                        $model = JE_Expert_Model::model()->find_one_by_attributes(array(
+                            'status' => 'je-draft',
+                            'user_id' => get_current_user_id()
+                        ));
+                        if (!is_object($model)) {
+                            $model = new JE_Expert_Model();
+                            $model->status = 'je-draft';
+                            $model->user_id = get_current_user_id();
+                            $model->save();
+                        }
                     }
                     if (je()->get('first_name', null) != null) {
                         $model->first_name = je()->get('first_name');

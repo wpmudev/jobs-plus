@@ -10,7 +10,47 @@ class JE_Shared_Controller extends IG_Request
         add_action('query_vars', array(&$this, 'add_my_var'));
         add_filter('user_has_cap', array(&$this, 'update_cap'), 10, 4);
         add_filter('ajax_query_attachments_args', array(&$this, 'restrict_user'));
+        add_action('wp_loaded', array(&$this, 'delete_expert'));
+        add_action('wp_loaded', array(&$this, 'delete_job'));
     }
+
+    function delete_expert()
+    {
+        if (!isset($_POST['delete_expert'])) {
+            return;
+        }
+        $id = je()->post('expert_id', 0);
+        if (!wp_verify_nonce(je()->post('_wpnonce'), 'delete_expert_' . $id)) {
+            return '';
+        }
+
+        $model = JE_Expert_Model::model()->find($id);
+        if (is_object($model)) {
+            $model->delete();
+            $this->set_flash('profile_deleted', __("Your expert profile has been deleted."));
+            $this->redirect(get_permalink(je()->pages->page(JE_Page_Factory::MY_EXPERT)));
+        }
+    }
+
+    function delete_job()
+    {
+        if (!isset($_POST['delete_job'])) {
+            return;
+        }
+        $id = je()->post('job_id', 0);
+        if (!wp_verify_nonce(je()->post('_wpnonce'), 'delete_job_' . $id)) {
+            return '';
+        }
+
+        $model = JE_Job_Model::model()->find($id);
+        if (is_object($model)) {
+            $model->delete();
+            $this->set_flash('job_deleted', __("Your job has been deleted."));
+            $this->redirect(get_permalink(je()->pages->page(JE_Page_Factory::MY_JOB)));
+        }
+    }
+
+
 
     function restrict_user($args)
     {

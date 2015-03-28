@@ -57,16 +57,21 @@ class JE_Job_Form_Shortcode_Controller extends IG_Request
                         $model = JE_Job_Model::model()->find_by_slug($slug);
                     }
                 } else {
-                    $model = JE_Job_Model::model()->find_one_by_attributes(array(
-                        'status' => 'je-draft',
-                        'owner' => get_current_user_id()
-                    ));
+                    //check does this man can post new
+                    if (JE_Job_Model::model()->count() >= je()->settings()->job_max_records) {
+                        return $this->render('job-form/limit', array(), false);
+                    } else {
+                        $model = JE_Job_Model::model()->find_one_by_attributes(array(
+                            'status' => 'je-draft',
+                            'owner' => get_current_user_id()
+                        ));
 
-                    if (!is_object($model)) {
-                        $model = new JE_Job_Model();
-                        $model->status = 'je-draft';
-                        $model->owner = get_current_user_id();
-                        $model->save();
+                        if (!is_object($model)) {
+                            $model = new JE_Job_Model();
+                            $model->status = 'je-draft';
+                            $model->owner = get_current_user_id();
+                            $model->save();
+                        }
                     }
                 }
             }

@@ -304,6 +304,14 @@ class JE_Expert_Model extends IG_Post_Model
         }
     }
 
+    function count()
+    {
+        global $wpdb;
+        $sql = "SELECT count(ID) FROM " . $wpdb->posts . " WHERE post_type=%s AND post_status IN (%s,%s) AND post_author=%d";
+        $result = $wpdb->get_var($wpdb->prepare($sql, 'jbp_pro', 'publish', 'draft', get_current_user_id()));
+        return $result;
+    }
+
     function has_avatar()
     {
         $avatar = get_post_meta($this->id, '_expert_avatar', true);

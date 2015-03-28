@@ -190,6 +190,13 @@ class JE_Job_Model extends IG_Post_Model
         //return $this->days_hours();
     }
 
+    function count()
+    {
+        global $wpdb;
+        $sql = "SELECT count(ID) FROM " . $wpdb->posts . " WHERE post_type=%s AND post_status IN (%s,%s) AND post_author=%d";
+        $result = $wpdb->get_var($wpdb->prepare($sql, 'jbp_job', 'publish', 'draft', get_current_user_id()));
+        return $result;
+    }
 
     private function days_hours($expires)
     {
