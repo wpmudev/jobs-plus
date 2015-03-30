@@ -23,7 +23,7 @@ class JE_Job_Recent_Widget_Controller extends WP_Widget
     function widget($args, $instance)
     {
         //we need the shortcode module for reuse can view function
-        $view = apply_filters('widget_search_job_can_view', empty($instance['view']) ? 'both' : $instance['view'], $instance, $this->id_base);
+        $view = apply_filters('widget_job_recent_can_view', empty($instance['view']) ? 'both' : $instance['view'], $instance, $this->id_base);
         if (!$this->can_view($view)) {
             return '';
         }
@@ -33,7 +33,10 @@ class JE_Job_Recent_Widget_Controller extends WP_Widget
         extract($args);
 
         $title = apply_filters('widget_title', empty($instance['title']) ? __('Recent jobs Posts', je()->domain) : $instance['title'], $instance, $this->id_base);
-
+        echo $before_widget;
+        if ($title) {
+            echo $before_title . $title . $after_title;
+        }
         if (empty($instance['number']) || !$number = absint($instance['number'])) {
             $number = 10;
         }
@@ -70,17 +73,40 @@ class JE_Job_Recent_Widget_Controller extends WP_Widget
             );
         }
 
+        $colors = array(
+            'jbp-yellow',
+            'jbp-mint',
+            'jbp-rose',
+            'jbp-blue',
+            'jbp-amber',
+            'jbp-grey'
+        );
 
         $data = JE_Job_Model::model()->all_with_condition($post_args);
         if (count($data)) {
             ?>
-            <div class="hn-container">
-
+            <div class="ig-container">
+                <div class="hn-container">
+                    <div class="jbp-recent-job-widget">
+                        <?php foreach ($data as $job): ?>
+                            <div class="jbp-job-widget <?php echo $colors[array_rand($colors)] ?>">
+                                <a href="<?php echo get_permalink($job->id) ?>">
+                                    <?php echo wp_trim_words($job->job_title, 4) ?>
+                                </a>
+                                <?php if ($show_cat): ?>
+                                    <div class="jbp-recent-job-cat">
+                                        <?php echo the_terms($job->id, 'jbp_category', __('Categories: ', je()->domain), ', ', ''); ?>
+                                    </div>
+                                <?php endif; ?>
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
             </div>
         <?php
         }
         echo $after_widget;
-        echo ob_get_clean();
+        ob_get_flush();
     }
 
     function update($new_instance, $old_instance)

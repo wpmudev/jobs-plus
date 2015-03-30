@@ -46,3 +46,4 @@ fix bug expert widget not assign profile to owner
 add wallets component (marketpress required)
 add charging when saving new expert profile
 add charging when saving new job
+fix bug recent job widget not showing
