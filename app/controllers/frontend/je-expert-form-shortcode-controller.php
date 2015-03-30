@@ -92,7 +92,7 @@ class JE_Expert_Form_Shortcode_Controller extends IG_Request
             } else {
                 if (is_null($slug)) {
                     //check does this man can post new
-                    if (JE_Expert_Model::model()->count() >= je()->settings()->expert_max_records) {
+                    if (JE_Expert_Model::model()->count() >= je()->settings()->expert_max_records && !current_user_can('manage_options')) {
                         return $this->render('expert-form/limit', array(), false);
                     } else {
                         //check does this user has a undone profile

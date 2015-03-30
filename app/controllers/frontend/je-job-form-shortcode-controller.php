@@ -58,7 +58,7 @@ class JE_Job_Form_Shortcode_Controller extends IG_Request
                     }
                 } else {
                     //check does this man can post new
-                    if (JE_Job_Model::model()->count() >= je()->settings()->job_max_records) {
+                    if (JE_Job_Model::model()->count() >= je()->settings()->job_max_records && !current_user_can('mange_options')) {
                         return $this->render('job-form/limit', array(), false);
                     } else {
                         $model = JE_Job_Model::model()->find_one_by_attributes(array(
