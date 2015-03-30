@@ -39,11 +39,12 @@ Use WP Media for uploader
 Fix: conflict with Advanced Custom Field
 Fix: Social & Skill js bug
 ==1.0.1.8
-some more hooks & filters
-fix bug extend jobs expired date
-fix bug job search widget wrong parameter
-fix bug expert widget not assign profile to owner
-add wallets component (marketpress required)
-add charging when saving new expert profile
-add charging when saving new job
-fix bug recent job widget not showing
+Some more hooks & filters
+Fix bug extend jobs expired date
+Fix bug job search widget wrong parameter
+Fix bug expert widget not assign profile to owner
+Add MarketPress integration (wallets)
+Add charging when saving new expert profile
+Add charging when saving new job
+Fix bug recent job widget not showing
+Some other minor bugs fix
