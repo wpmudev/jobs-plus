@@ -13,7 +13,7 @@ $form->open(array("attributes" => array("class" => "form-horizontal"))); ?>
                 </div>
                 <div class="col-md-6">
                     <button type="button" data-id="wallet_page"
-                            class="button button-primary create-page"><?php _e('Create Page', je()->domain) ?></button>
+                            class="button button-primary wallet-create-page"><?php _e('Create Page', je()->domain) ?></button>
                 </div>
             </div>
         </div>
@@ -31,7 +31,7 @@ $form->open(array("attributes" => array("class" => "form-horizontal"))); ?>
                 </div>
                 <div class="col-md-6">
                     <button type="button" data-id="plans_page"
-                            class="button button-primary create-page"><?php _e('Create Page', je()->domain) ?></button>
+                            class="button button-primary wallet-create-page"><?php _e('Create Page', je()->domain) ?></button>
                 </div>
             </div>
                                 <span
@@ -49,7 +49,7 @@ $form->open(array("attributes" => array("class" => "form-horizontal"))); ?>
 <?php $form->close(); ?>
 <script type="text/javascript">
     jQuery(document).ready(function ($) {
-        $('body').on('click', '.create-page', function () {
+        $('body').on('click', '.wallet-create-page', function () {
             var that = $(this);
             $.ajax({
                 type: 'POST',

@@ -3,7 +3,7 @@
         <strong><?php _e("Expert profile saved", je()->domain) ?></strong>
     </div>
     <div class="panel-body">
-        <p><?php _e("Credits use for create new expert profile", je()->domain) ?></p>
+        <p><?php _e("Credits used for creating new expert profile", je()->domain) ?></p>
 
         <?php $form = new IG_Active_Form($model);
         $form->open(array("attributes" => array("class" => "form-horizontal", "id" => "expert-saved-setting"))); ?>

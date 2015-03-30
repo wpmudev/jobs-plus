@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Jobs Plus\n"
-"POT-Creation-Date: 2015-03-30 16:38+0700\n"
-"PO-Revision-Date: 2015-03-30 16:38+0700\n"
+"POT-Creation-Date: 2015-03-30 22:16+0700\n"
+"PO-Revision-Date: 2015-03-30 22:16+0700\n"
 "Last-Translator: \n"
 "Language-Team: WPMU DEV\n"
 "Language: en\n"
@@ -1774,7 +1774,7 @@ msgid "Expert profile saved"
 msgstr ""
 
 #: jobs-plus/app/components/je-credit-rules/app/views/expert-saved/settings.php:6
-msgid "Credits use for create new expert profile"
+msgid "Credits used for creating new expert profile"
 msgstr ""
 
 #: jobs-plus/app/components/je-credit-rules/app/views/expert-saved/settings.php:11
@@ -1814,7 +1814,7 @@ msgid "Job saved"
 msgstr ""
 
 #: jobs-plus/app/components/je-credit-rules/app/views/job-saved/settings.php:6
-msgid "Credits use for create new job"
+msgid "Credits used for creating a new job"
 msgstr ""
 
 #: jobs-plus/app/components/je-credit-rules/app/views/job-saved/settings.php:35
