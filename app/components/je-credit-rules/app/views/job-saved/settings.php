@@ -17,8 +17,8 @@
                         )) ?>
                         <?php $form->checkbox("status", array(
                             "attributes" => array("class" => "", "value" => 1),
-                        )) ?></label>
-
+                        )) ?>
+                    </label>
                 </div>
             </div>
             <div class="clearfix"></div>
