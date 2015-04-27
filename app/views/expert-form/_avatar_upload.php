@@ -36,7 +36,7 @@
                     iframe: true,
                     cache: false,
                     type: 'POST',
-                    url: '<?php echo add_query_arg(array('upload_file_nonce'=>wp_create_nonce('hn_upload_avatar'))) ?>'
+                    url: '<?php echo esc_url(add_query_arg(array('upload_file_nonce'=>wp_create_nonce('hn_upload_avatar')))) ?>'
                 };
 
                 var file = $(":file", form);

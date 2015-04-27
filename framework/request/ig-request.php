@@ -30,7 +30,7 @@ if (!class_exists('IG_Request')) {
 
             $layout_path = '';
             if ($layout != null) {
-                $layout_path = $base_path . '/views/layout/' . $layout. '.php';
+                $layout_path = $base_path . '/views/layout/' . $layout . '.php';
             }
 
             $content = $this->render_partial($view, $ig_request_params_cache, false);
@@ -77,7 +77,7 @@ if (!class_exists('IG_Request')) {
 
         public function redirect($url)
         {
-            wp_redirect($url);
+            wp_redirect(esc_url_raw($url));
             exit;
         }
 

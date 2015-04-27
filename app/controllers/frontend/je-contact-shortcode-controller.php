@@ -85,9 +85,9 @@ class JE_Contact_Shortcode_Controller extends IG_Request
 
             $contact_id = je()->pages->page(JE_Page_Factory::JOB_CONTACT);
             if (wp_mail($model->contact_email, $subject, $content, $message_headers)) {
-                return (add_query_arg(array('status' => 'success', 'contact' => get_post($model->id)->post_name), get_permalink($contact_id)));
+                return (esc_url(add_query_arg(array('status' => 'success', 'contact' => get_post($model->id)->post_name), get_permalink($contact_id))));
             } else {
-                return (add_query_arg(array('status' => 'fail', 'contact' => get_post($model->id)->post_name), get_permalink($contact_id)));
+                return (esc_url(add_query_arg(array('status' => 'fail', 'contact' => get_post($model->id)->post_name), get_permalink($contact_id))));
             }
 
         }
@@ -122,9 +122,9 @@ class JE_Contact_Shortcode_Controller extends IG_Request
 
             $contact_id = je()->pages->page(JE_Page_Factory::EXPERT_CONTACT);
             if (wp_mail($model->contact_email, $subject, $content, $message_headers)) {
-                return (add_query_arg(array('status' => 'success', 'contact' => get_post($model->id)->post_name), get_permalink($contact_id)));
+                return (esc_url(add_query_arg(array('status' => 'success', 'contact' => get_post($model->id)->post_name), get_permalink($contact_id))));
             } else {
-                return (add_query_arg(array('status' => 'fail', 'contact' => get_post($model->id)->post_name), get_permalink($contact_id)));
+                return (esc_url(add_query_arg(array('status' => 'fail', 'contact' => get_post($model->id)->post_name), get_permalink($contact_id))));
             }
 
         }

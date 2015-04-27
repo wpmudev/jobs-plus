@@ -20,9 +20,9 @@
                 <td><?php echo $model->render_prices() ?></td>
                 <td><?php echo ucfirst($model->get_status()) ?></td>
                 <td style="width: 120px">
-                    <a class="btn btn-primary btn-sm" href="<?php echo add_query_arg(array(
+                    <a class="btn btn-primary btn-sm" href="<?php echo esc_url(add_query_arg(array(
                         'job' => $model->id
-                    ), get_permalink(je()->pages->page(JE_Page_Factory::JOB_EDIT))) ?>"><?php _e('Edit', je()->domain) ?></a>
+                    ), get_permalink(je()->pages->page(JE_Page_Factory::JOB_EDIT)))) ?>"><?php _e('Edit', je()->domain) ?></a>
 
                     <form class="frm-delete" method="post" style="display: inline-block">
                         <input name="job_id" type="hidden" value="<?php echo $model->id ?>">

@@ -23,9 +23,9 @@
                     <?php if (strtolower($model->get_due_day()) != 'expired'): ?>
                         <?php if (JobsExperts_Helper::is_user_pro(get_current_user_id())): ?>
                             <?php ob_start(); ?>
-                            <a class="btn btn-info btn-sm jbp_contact_job" href="<?php echo add_query_arg(array(
+                            <a class="btn btn-info btn-sm jbp_contact_job" href="<?php echo esc_url(add_query_arg(array(
                                 'contact' => get_post()->post_name
-                            ), apply_filters('jbp_job_contact_link', get_permalink(je()->pages->page(JE_Page_Factory::JOB_CONTACT)), get_the_ID())) ?>"><?php _e('Contact', je()->domain) ?></a>
+                            ), apply_filters('jbp_job_contact_link', get_permalink(je()->pages->page(JE_Page_Factory::JOB_CONTACT)), get_the_ID()))) ?>"><?php _e('Contact', je()->domain) ?></a>
                             <?php $content = ob_get_clean();
                             echo apply_filters('jbp_job_contact_btn', $content, $model);
                             ?>
@@ -83,7 +83,7 @@
                     $var = $post->post_status == 'publish' ? $post->post_name : $post->ID;
                     ?>
                         <a class="btn btn-primary"
-                           href="<?php echo add_query_arg(array('job' => $var), apply_filters('job_edit_button_link', get_permalink(je()->pages->page(JE_Page_Factory::JOB_EDIT)))) ?>">
+                           href="<?php echo esc_url(add_query_arg(array('job' => $var), apply_filters('job_edit_button_link', get_permalink(je()->pages->page(JE_Page_Factory::JOB_EDIT))))) ?>">
                             <?php _e('Edit', je()->domain) ?>
                         </a>
                         <form class="frm-delete" method="post" style="display: inline-block">

@@ -13,9 +13,9 @@
                                     <div class="panel-footer">
                                         <?php ob_start(); ?>
                                         <a class="btn btn-sm btn-primary jbp_contact_expert"
-                                           href="<?php echo add_query_arg(array(
+                                           href="<?php echo esc_url(add_query_arg(array(
                                                'contact' => get_post()->post_name
-                                           ), apply_filters('jbp_expert_contact_link', get_permalink(je()->pages->page(JE_Page_Factory::EXPERT_CONTACT)))) ?>"><?php _e('Contact Me', je()->domain) ?></a>
+                                           ), apply_filters('jbp_expert_contact_link', get_permalink(je()->pages->page(JE_Page_Factory::EXPERT_CONTACT))))) ?>"><?php _e('Contact Me', je()->domain) ?></a>
                                         <?php $content = ob_get_clean();
                                         echo apply_filters('jbp_expert_contact_btn', $content, $model);
                                         ?>
@@ -40,10 +40,12 @@
                                     <div class="hn-widget-cell">
                                         <p style="line-height: 38px">
                                             <?php if (!is_user_logged_in() || !$model->is_current_user_can_like()): ?>
-                                                <button disabled class="btn btn-primary btn-sm btn-danger" type="button"><i
+                                                <button disabled class="btn btn-primary btn-sm btn-danger"
+                                                        type="button"><i
                                                         class="fa fa-thumbs-up expert-like"></i></button>
                                             <?php else: ?>
-                                                <button class="btn btn-primary btn-sm btn-danger expert-like" type="button"><i
+                                                <button class="btn btn-primary btn-sm btn-danger expert-like"
+                                                        type="button"><i
                                                         class="fa fa-thumbs-up"></i></button>
                                                 <script type="text/javascript">
                                                     jQuery(document).ready(function ($) {
@@ -147,7 +149,8 @@
                                     </div>
                                     <div class="tab-pane social-skill" id="profile">
                                         <div class="page-header">
-                                            <label><i class="fa fa-flask"></i> <?php _e('Skills', je()->domain) ?></label>
+                                            <label><i class="fa fa-flask"></i> <?php _e('Skills', je()->domain) ?>
+                                            </label>
                                         </div>
                                         <?php $skills = array_unique(array_filter(explode(',', $model->skills)));
                                         if (count($skills)) {
@@ -166,7 +169,8 @@
                                         <br/>
 
                                         <div class="page-header">
-                                            <label><i class="fa fa-globe"></i> <?php _e('Social Profile', je()->domain) ?>
+                                            <label><i
+                                                    class="fa fa-globe"></i> <?php _e('Social Profile', je()->domain) ?>
                                             </label>
                                         </div>
                                         <?php $socials = array_unique(array_filter(explode(',', $model->social)));
@@ -216,7 +220,7 @@
                         <div class="row" style="margin-top: 40px">
                             <div class="col-md-12" style="margin-left: 0">
                                 <a class="btn btn-primary"
-                                   href="<?php echo add_query_arg(array('pro' => $var), apply_filters('expert_edit_button_link', get_permalink(je()->pages->page(JE_Page_Factory::EXPERT_EDIT)))) ?>">
+                                   href="<?php echo esc_url(add_query_arg(array('pro' => $var), apply_filters('expert_edit_button_link', get_permalink(je()->pages->page(JE_Page_Factory::EXPERT_EDIT))))) ?>">
                                     <?php _e('Edit', je()->domain) ?>
                                 </a>
 
