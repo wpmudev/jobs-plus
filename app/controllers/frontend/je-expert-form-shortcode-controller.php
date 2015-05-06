@@ -47,11 +47,13 @@ class JE_Expert_Form_Shortcode_Controller extends IG_Request
         $data = je()->post('JE_Expert_Model');
         //the model should already stored
         $model = JE_Expert_Model::model()->find($data['id']);
+
         if (is_object($model)) {
             $model->import($data);
             $model->status = je()->post('status');
             $model->name = $model->first_name . ' ' . $model->last_name;
             if ($model->validate()) {
+                do_action('je_expert_saving_process', $model);
                 $model->save();
                 if ($model->status == 'publish') {
                     $this->redirect(get_permalink($model->id));
@@ -89,17 +91,29 @@ class JE_Expert_Form_Shortcode_Controller extends IG_Request
                 $model = je()->global['expert_model'];
             } else {
                 if (is_null($slug)) {
-                    //check does this user has a undone profile
-                    $model = JE_Expert_Model::model()->find_one_by_attributes(array(
-                        'status' => 'je-draft',
-                        'user_id' => get_current_user_id()
-                    ));
-                    if (!is_object($model)) {
-                        $model = new JE_Expert_Model();
-                        $model->status = 'je-draft';
-                        $model->user_id = get_current_user_id();
-                        $model->save();
+                    //check does this man can post new
+                    if (JE_Expert_Model::model()->count() >= je()->settings()->expert_max_records && !current_user_can('manage_options')) {
+                        return $this->render('expert-form/limit', array(), false);
+                    } else {
+                        //check does this user has a undone profile
+                        $model = JE_Expert_Model::model()->find_one_by_attributes(array(
+                            'status' => 'je-draft',
+                            'user_id' => get_current_user_id()
+                        ));
+                        if (!is_object($model)) {
+                            $model = new JE_Expert_Model();
+                            $model->status = 'je-draft';
+                            $model->user_id = get_current_user_id();
+                            $model->save();
+                        }
                     }
+                    if (je()->get('first_name', null) != null) {
+                        $model->first_name = je()->get('first_name');
+                    }
+                    if (je()->get('last_name', null) != null) {
+                        $model->last_name = je()->get('last_name');
+                    }
+                    $model->name = trim($model->first_name . ' ' . $model->last_name);
                 } elseif (filter_var($slug, FILTER_VALIDATE_INT)) {
                     $model = JE_Expert_Model::model()->find($slug);
                 } else {

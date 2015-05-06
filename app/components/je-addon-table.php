@@ -60,7 +60,25 @@ class JE_AddOn_Table extends WP_List_Table
         if (in_array($item['col_id'], $components)) {
             $html .= '<br><a class="mm-plugin" data-type="deactive" data-id="' . esc_attr($item['col_id']) . '" href="#">' . __('Deactivate <i class="fa fa-circle-o-notch fa-spin loader-ani hide"></i>', je()->domain) . '</a>';
         } else {
-            $html .= '<br><a class="mm-plugin" data-type="active" data-id="' . esc_attr($item['col_id']) . '"  href="#">' . __('Activate <i class="fa fa-circle-o-notch fa-spin loader-ani hide"></i>', je()->domain) . '</a>';
+            //check the requirement
+            if (!empty($item['required'])) {
+                if (is_plugin_active($item['required'])) {
+                    $html .= '<br><a class="mm-plugin" data-type="active" data-id="' . esc_attr($item['col_id']) . '"  href="#">' . __('Activate <i class="fa fa-circle-o-notch fa-spin loader-ani hide"></i>', je()->domain) . '</a>';
+                } else {
+                    //find the required plugin data
+                    $plugin_path = ABSPATH . 'wp-content/plugins/' . $item['required'];
+                    $plugin_data = get_plugin_data($plugin_path);
+                    $text = '';
+                    if (is_array($plugin_data) && count($plugin_data)) {
+                        $text = sprintf(__("Plugin <strong>%s</strong> required", je()->domain), $plugin_data['Name']);
+                    } else {
+                        $text = sprintf(__("Plugin <strong>%s</strong> required", je()->domain), $item['required']);
+                    }
+                    $html .= '<br/>' . $text;
+                }
+            } else {
+                $html .= '<br><a class="mm-plugin" data-type="active" data-id="' . esc_attr($item['col_id']) . '"  href="#">' . __('Activate <i class="fa fa-circle-o-notch fa-spin loader-ani hide"></i>', je()->domain) . '</a>';
+            }
         }
 
         return $html;
@@ -76,11 +94,12 @@ class JE_AddOn_Table extends WP_List_Table
 
     }
 
-    public function display() {
+    public function display()
+    {
         $singular = $this->_args['singular'];
 
         ?>
-        <table class="wp-list-table <?php echo implode( ' ', $this->get_table_classes() ); ?>">
+        <table class="wp-list-table <?php echo implode(' ', $this->get_table_classes()); ?>">
             <thead>
             <tr>
                 <?php $this->print_column_headers(); ?>
@@ -89,20 +108,21 @@ class JE_AddOn_Table extends WP_List_Table
 
             <tfoot>
             <tr>
-                <?php $this->print_column_headers( false ); ?>
+                <?php $this->print_column_headers(false); ?>
             </tr>
             </tfoot>
 
             <tbody id="the-list"<?php
-            if ( $singular ) {
+            if ($singular) {
                 echo " data-wp-lists='list:$singular'";
             } ?>>
             <?php $this->display_rows_or_placeholder(); ?>
             </tbody>
         </table>
         <?php
-        $this->display_tablenav( 'bottom' );
+        $this->display_tablenav('bottom');
     }
+
     function prepare_items()
     {
         $data = je()->get_available_addon();
@@ -112,7 +132,8 @@ class JE_AddOn_Table extends WP_List_Table
                 'col_id' => $key,
                 'col_name' => $val['Name'],
                 'col_description' => $val['Description'],
-                'col_author' => $val['Author']
+                'col_author' => $val['Author'],
+                'required' => $val['Required']
             );
         }
 

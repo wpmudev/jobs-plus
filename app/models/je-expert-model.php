@@ -116,6 +116,7 @@ class JE_Expert_Model extends IG_Post_Model
             'contact_email' => 'required|valid_email',
             'biography' => 'required|min_len,200',
             'company_url' => 'valid_url',
+            'short_description' => 'max_len,100'
         );
         $this->rules = apply_filters('je_expert_validation_rules', $rules);
         $fields_text = array();
@@ -127,6 +128,7 @@ class JE_Expert_Model extends IG_Post_Model
 
     public function before_save()
     {
+        do_action('je_expert_before_save', $this);
         $this->defaults = array_merge($this->defaults, array(
             'post_name' => sanitize_title($this->name)
         ));
@@ -300,6 +302,14 @@ class JE_Expert_Model extends IG_Post_Model
 
             return $skills;
         }
+    }
+
+    function count()
+    {
+        global $wpdb;
+        $sql = "SELECT count(ID) FROM " . $wpdb->posts . " WHERE post_type=%s AND post_status IN (%s,%s) AND post_author=%d";
+        $result = $wpdb->get_var($wpdb->prepare($sql, 'jbp_pro', 'publish', 'draft', get_current_user_id()));
+        return $result;
     }
 
     function has_avatar()

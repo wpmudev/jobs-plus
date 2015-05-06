@@ -1,12 +1,11 @@
 <?php
 /*
 Plugin Name: Private Messaging
-Plugin URI: https://premium.wpmudev.org/project/XXXXXXX/
-Description:
+Plugin URI: https://premium.wpmudev.org/project/private-messaging
+Description: Private user-to-user communication for placing bids, sharing project specs and hidden internal communication. Complete with front end integration, guarded contact information and protected file sharing.
 Author: WPMU DEV
-Version: 1.0 RC 8
+Version: 1.0.1.2
 Author URI: http://premium.wpmudev.org
-WDP ID: ***
 Text Domain: private_messaging
 */
 
@@ -36,7 +35,7 @@ if (!class_exists('MMessaging')) {
         public $domain;
         public $prefix;
 
-        public $version = "1.0 RC6";
+        public $version = "1.0.1.2";
         public $db_version = '1.0';
 
         public $global = array();
@@ -58,8 +57,10 @@ if (!class_exists('MMessaging')) {
             //enqueue scripts, use it here so both frontend and backend can use
             add_action('wp_enqueue_scripts', array(&$this, 'scripts'), 20);
             add_action('admin_enqueue_scripts', array(&$this, 'scripts'), 20);
+
             if ($this->ready_to_use()) {
-                $this->dispatch();
+                //$this->dispatch();
+                add_action('init', array(&$this, 'dispatch'));
             } else {
                 new MM_Upgrade_Controller();
             }
@@ -105,7 +106,7 @@ if (!class_exists('MMessaging')) {
                                 $jses = array_merge($jses, array('popoverasync', 'jquery-frame-transport'));
                             }
                             if (wp_script_is('mm_sceditor', 'registered') && wp_script_is('mm_sceditor_xhtml', 'registered')) {
-                                $jses = array_merge($jses, array('mm_sceditor', 'mm_sceditor_xhtml'));
+                                $jses = array_merge($jses, array('mm_sceditor', 'mm_sceditor_translate', 'mm_sceditor_xhtml'));
                             }
 
                             $this->compress_assets($csses, $jses, $runtime_path);
@@ -119,6 +120,7 @@ if (!class_exists('MMessaging')) {
                             //wysiwyg
                             if (wp_script_is('mm_sceditor', 'registered') && wp_script_is('mm_sceditor_xhtml', 'registered')) {
                                 wp_enqueue_script('mm_sceditor');
+                                wp_enqueue_script('mm_sceditor_translate');
                                 wp_enqueue_script('mm_sceditor_xhtml');
                             }
 
@@ -284,7 +286,7 @@ if (!class_exists('MMessaging')) {
                 $addons = array();
             }
             foreach ($addons as $addon) {
-                if (file_exists($addon)) {
+                if (file_exists($addon) && stristr($addon, $this->plugin_path)) {
                     include_once $addon;
                 }
             }
@@ -335,11 +337,10 @@ if (!class_exists('MMessaging')) {
                         break;
                     }
                 }
-            } else {
-                //include normal file inside app folder
-                if (file_exists($this->plugin_path . 'app/' . $filename)) {
-                    include_once $this->plugin_path . 'app/' . $filename;
-                }
+            } elseif (file_exists($this->plugin_path . 'app/' . $filename)) {
+                include_once $this->plugin_path . 'app/' . $filename;
+            } elseif (file_exists($this->plugin_path . 'app/components/' . $filename)) {
+                include_once $this->plugin_path . 'app/components/' . $filename;
             }
         }
 
@@ -598,19 +599,6 @@ CREATE TABLE IF NOT EXISTS `{$wpdb->base_prefix}mm_conversation` (
         }
     }
 
-//include dashboard
-    global $wpmudev_notices;
-    $wpmudev_notices[] = array(
-        'id' => '',
-        'name' => 'Private Messaging',
-        'screens' => array(
-            'toplevel_page_mm_main',
-            'messaging_page_mm_setting',
-            'admin_page_mm_view'
-        )
-    );
-    include_once(plugin_dir_path(__FILE__) . 'lib/dash-notices/wpmudev-dash-notification.php');
-
     function mmg()
     {
         return MMessaging::get_instance();
@@ -619,5 +607,11 @@ CREATE TABLE IF NOT EXISTS `{$wpdb->base_prefix}mm_conversation` (
 //init once
     register_activation_hook(__FILE__, array(mmg(), 'install'));
     include_once mmg()->plugin_path . 'functions.php';
+    //add action to load language
+    add_action('plugins_loaded', 'mmg_load_languages');
+    function mmg_load_languages()
+    {
+        load_plugin_textdomain(mmg()->domain, false, plugin_basename(mmg()->plugin_path . 'languages/'));
+    }
 
 }

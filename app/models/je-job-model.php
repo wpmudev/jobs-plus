@@ -101,7 +101,7 @@ class JE_Job_Model extends IG_Post_Model
             'description' => 'required',
         );
         if (je()->settings()->job_budget_range == 1) {
-            $rules['min_budget'] = 'required|numeric';
+            $rules['min_budget'] = 'required|numeric|min_numeric,0';
             $rules['max_budget'] = 'required|numeric';
         } else {
             $rules['budget'] = 'required|numeric';
@@ -125,6 +125,10 @@ class JE_Job_Model extends IG_Post_Model
         if ($this->is_expired()) {
             update_post_meta($this->id, 'jbp_job_post_day', date('Y-m-d H:i:s'));
         }
+
+        $this->defaults = array_merge($this->defaults, array(
+            'post_name' => sanitize_title($this->job_title)
+        ));
     }
 
     public function after_validate()
@@ -140,7 +144,7 @@ class JE_Job_Model extends IG_Post_Model
     {
         if (je()->settings()->job_budget_range == 1) {
             //use range
-            if (!empty($this->min_budget) && !empty($this->max_budget)) {
+            if (strlen($this->min_budget) && strlen($this->max_budget)) {
                 return array($this->min_budget, $this->max_budget);
             } else {
                 //fallback to normal budget
@@ -186,6 +190,13 @@ class JE_Job_Model extends IG_Post_Model
         //return $this->days_hours();
     }
 
+    function count()
+    {
+        global $wpdb;
+        $sql = "SELECT count(ID) FROM " . $wpdb->posts . " WHERE post_type=%s AND post_status IN (%s,%s) AND post_author=%d";
+        $result = $wpdb->get_var($wpdb->prepare($sql, 'jbp_job', 'publish', 'draft', get_current_user_id()));
+        return $result;
+    }
 
     private function days_hours($expires)
     {

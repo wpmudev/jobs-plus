@@ -16,7 +16,12 @@ class JE_Message
     {
         include_once(ABSPATH . 'wp-admin/includes/plugin.php');
         if (!is_plugin_active('messaging/messaging.php')) {
+            $plugin = dirname(__FILE__) . '/je-message/lib/messaging.php';
             include_once dirname(__FILE__) . '/je-message/lib/messaging.php';
+            //active bundler
+            /*var_dump(file_exists($plugin));
+            var_dump(validate_plugin($plugin));
+            var_dump(activate_plugin(dirname(__FILE__) . '/je-message/lib/messaging.php'));*/
         }
 
         add_filter('jbp_job_contact_btn', array(&$this, 'contact_job_poster_btn'), 10, 2);

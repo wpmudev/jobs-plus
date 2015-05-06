@@ -4,7 +4,7 @@
             <?php echo $model->get_avatar(420) ?>
         </div>
         <div class="panel-footer">
-            <?php if (je()->can_upload()): ?>
+            <?php if (je()->can_upload_avatar()): ?>
                 <button type="button" class="btn btn-primary btn-sm change-avatar">
                     <?php _e("Change Avatar", je()->domain) ?>
                 </button>

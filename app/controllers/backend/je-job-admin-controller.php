@@ -54,7 +54,8 @@ class JE_Job_Admin_Controller extends IG_Request
             'expire_date' => __("Open For", je()->domain),
             'status' => __("Status", je()->domain)
         );
-        $columns = array_merge(array_slice($columns, 1, 1), $new_cols, array_slice($columns, 1, count($columns) - 1));
+
+        $columns = array_merge(array_slice($columns, 0, 1), array_slice($columns, 1, 1), $new_cols, array_slice($columns, 1, count($columns) - 1));
         return $columns;
     }
 

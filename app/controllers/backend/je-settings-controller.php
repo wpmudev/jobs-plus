@@ -13,11 +13,36 @@ class JE_Settings_Controller extends IG_Request
         add_action('je_settings_content_job', array(&$this, 'job'));
         add_action('je_settings_content_expert', array(&$this, 'expert'));
         add_action('je_settings_content_uploader', array(&$this, 'uploader'));
-        add_action('je_settings_content_shortcode',array(&$this,'shortcode'));
+        add_action('je_settings_content_shortcode', array(&$this, 'shortcode'));
         add_action('wp_loaded', array(&$this, 'save_settings'));
+        add_action('wp_ajax_upload_avatar_permission', array(&$this, 'upload_avatar_permission'));
     }
 
-    function shortcode(){
+    function upload_avatar_permission()
+    {
+        if (!current_user_can('manage_options')) {
+            return '';
+        }
+
+        if (!wp_verify_nonce(je()->post('_nonce'), 'upload_avatar_permission')) {
+            return '';
+        }
+
+        $value = je()->post('value');
+        $role = je()->post('role');
+        $model = je()->settings();
+        if ($value == 1) {
+            $model->allow_avatar[] = $role;
+        } else {
+            //var_dump(array_search($role, $model->allow_avatar));
+            unset($model->allow_avatar[array_search($role, $model->allow_avatar)]);
+        }
+        $model->allow_avatar = array_unique(array_filter($model->allow_avatar));
+        $model->save();
+    }
+
+    function shortcode()
+    {
         $this->render('backend/settings/shortcode');
     }
 

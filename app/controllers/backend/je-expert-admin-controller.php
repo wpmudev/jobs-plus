@@ -24,7 +24,7 @@ class JE_Expert_Admin_Controller extends IG_Request
         $new_cols = array(
             'status' => __("Status", je()->domain)
         );
-        $columns = array_merge(array_slice($columns, 1, 2), $new_cols, array_slice($columns, 1, count($columns) - 1));
+        $columns = array_merge(array_slice($columns, 0, 1), array_slice($columns, 1, 2), $new_cols, array_slice($columns, 1, count($columns) - 1));
         return $columns;
     }
 

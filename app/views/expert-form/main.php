@@ -1,5 +1,6 @@
 <div class="ig-container">
     <div class="hn-container">
+        <?php do_action('je_begin_expert_form') ?>
         <?php $form = new IG_Active_Form($model);
         $form->open(array("attributes" => array("class" => "form-horizontal")));
         ?>
@@ -94,12 +95,12 @@
 
                                 <!-- Tab panes -->
                                 <div class="tab-content">
-                                    <div class="tab-pane" id="biograhy">
+                                    <div id="biograhy">
                                         <div class="can-edit" data-type="biography">
                                             <?php echo !empty($model->biography) ? $model->biography : __("Tell us about yourself (required, at least 200 characters)", je()->domain) ?>
                                         </div>
                                     </div>
-                                    <div class="tab-pane social-skill" id="profile">
+                                    <div class="social-skill" id="profile">
                                         <?php ig_skill()->display($model, 'skills', 'skill-input') ?>
                                         <?php ig_social_wall()->display($model, 'social', 'social-input') ?>
                                     </div>
@@ -125,14 +126,14 @@
                 <div class="col-md-12" style="margin-left: 0">
                     <?php echo wp_nonce_field('jbp_add_pro') ?>
                     <?php if (je()->settings()->expert_new_expert_status == 'publish'): ?>
-                        <button class="submit btn btn-small btn-primary" name="status" value="publish"
+                        <button class="submit btn btn-small btn-primary je-expert-submit" name="status" value="publish"
                                 type="submit"><?php _e('Publish', je()->domain) ?></button>
                     <?php else: ?>
-                        <button class="submit btn btn-small btn-primary" name="status"
+                        <button class="submit btn btn-small btn-primary je-expert-submit" name="status"
                                 type="submit" value="pending"><?php _e('Submit for review', je()->domain) ?></button>
                     <?php endif; ?>
                     <?php if (je()->settings()->expert_allow_draft == 1): ?>
-                        <button class="submit btn btn-small btn-info" name="status" value="draft"
+                        <button class="submit btn btn-small btn-info je-expert-submit" name="status" value="draft"
                                 type="submit"><?php _e('Save Draft', je()->domain) ?></button>
                     <?php endif; ?>
                     <button onclick="location.href='<?php echo get_post_type_archive_link('jbp_pro') ?>'"
@@ -155,9 +156,9 @@
                     'style' => 'width:0;height:0;opacity:0;position:relative;top:-100px;left:-100px'
                 )
             ));
-            if(empty($model->user_id)) {
+            if (empty($model->user_id)) {
                 $form->hidden('user_id', array('value' => get_current_user_id()));
-            }else{
+            } else {
                 $form->hidden('user_id');
             }
             $form->hidden('company');
@@ -189,6 +190,7 @@
             'model' => $model
         ));
         ?>
+        <?php do_action('je_end_expert_form') ?>
     </div>
 </div>
 <script type="text/javascript">
@@ -248,17 +250,21 @@
                     var holder = pop.$target;
                     if (type == 'biography') {
                         if ($.fn.sceditor != undefined) {
+                            if (window.jetextarea != undefined) {
+                                window.jetextarea.destroy();
+                            }
                             var textarea = holder.find('textarea').first();
                             textarea.sceditor({
                                 plugins: "xhtml",
                                 autoUpdate: true,
                                 width: '98%',
                                 resizeMinWidth: '-1',
-                                resizeMaxWidth: '100%',
+                                resizeMaxWidth: '99%',
                                 resizeMaxHeight: '100%',
                                 resizeMinHeight: '-1',
                                 readOnly: false,
                                 emoticonsEnabled: false,
+                                resizeWidth:false,
                                 toolbar: "bold,italic,underline,strike|left,center,right,justify|font,size,color,removeformat|cut,copy,paste,pastetext|bulletlist,orderedlist,indent,outdent|link,unlink|date,time",
                                 style: '<?php echo je()->plugin_url . 'app/addons/je-wysiwyg/sceditor/minified/jquery.sceditor.default.min.css'?>'
                             });
@@ -267,7 +273,8 @@
                     }
                 }).on('hidden.webui.popover', function () {
                     if (window.jetextarea != undefined) {
-                        window.jetextarea.destroy();
+                        //window.jetextarea.destroy();
+                        //window.jetextarea = undefined;
                     }
                 });
             }
@@ -317,5 +324,8 @@
         $('body').on('click', '.can-edit-cancel', function () {
             instance.webuiPopover('hide');
         });
+        $('.je-expert-submit').click(function () {
+            $(this).addClass('disabled').text('<?php echo esc_js(__("Submitting...")) ?>');
+        })
     })
 </script>

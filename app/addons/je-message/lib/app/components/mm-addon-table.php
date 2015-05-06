@@ -2,11 +2,10 @@
 if (!class_exists('WP_List_Table')) {
     require_once(ABSPATH . 'wp-admin/includes/class-wp-list-table.php');
 }
-
-/**
- * Author: hoangngo
- */
-if (!class_exists('MM_AddOn_Table')) {
+if(!class_exists('MM_AddOn_Table')) {
+    /**
+     * Author: hoangngo
+     */
     class MM_AddOn_Table extends WP_List_Table
     {
         /**

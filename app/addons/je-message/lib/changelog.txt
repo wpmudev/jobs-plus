@@ -12,4 +12,11 @@ Change Log:
 
 1.0.1.0
 - Bug fixes
-1.0.1.
+- Add: Broadcast add-on
+- Add: smarter user suggestion
+
+1.0.1.1
+- Fix bug: email notification link always go to last conversation
+- Fix bug: wrong message attachment file name
+- Fix bug: Capability add-on not sending message same role
+- New add-on: group conversation

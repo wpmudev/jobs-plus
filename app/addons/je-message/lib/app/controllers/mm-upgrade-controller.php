@@ -30,7 +30,6 @@ class MM_Upgrade_Controller extends IG_Request
             //create new table
             $this->create_c_table();
         }
-
         //status table
         if ($wpdb->get_var("SHOW TABLES LIKE '" . $wpdb->base_prefix . "mm_status'") !== $wpdb->base_prefix . 'mm_status') {
             $this->create_s_table();

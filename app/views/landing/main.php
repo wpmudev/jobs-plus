@@ -18,7 +18,8 @@
                                         <div class="jbp_job_except <?php echo $colors[array_rand($colors)] ?>">
                                             <div class="jbp_inside">
                                                 <h4>
-                                                    <a href="<?php echo get_permalink($job->id) ?>">
+                                                    <a href="<?php
+                                                    echo get_permalink($job->id) ?>">
                                                         <?php echo wp_trim_words($job->job_title, 4) ?>
                                                     </a>
                                                 </h4>
@@ -46,6 +47,7 @@
                                         </div>
                                     </div>
                                 <?php endforeach; ?>
+                                <div class="clearfix"></div>
                             </div>
                         </div>
                     <?php endif; ?>
@@ -102,6 +104,7 @@
                                         </div>
                                     </div>
                                 <?php endforeach; ?>
+                                <div class="clearfix"></div>
                             </div>
                         <?php else: ?>
                             <div class="empty-records">

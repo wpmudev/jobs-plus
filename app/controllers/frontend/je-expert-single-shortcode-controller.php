@@ -36,8 +36,8 @@ class JE_Expert_Single_Shortcode_Controller extends IG_Request
         je()->load_script('expert');
         $model = JE_Expert_Model::model()->find(get_the_ID());
         $model->add_view_count();
-        $this->render('expert-single/main', array(
+        return $this->render('expert-single/main', array(
             'model' => $model
-        ));
+        ), false);
     }
 }

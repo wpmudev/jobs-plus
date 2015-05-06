@@ -18,3 +18,27 @@
     width: auto;
     display: inline;
 }
+
+.hn-container .jbp-recent-job-widget .jbp-job-widget {
+    background: white;
+    padding: 5px;
+}
+
+.hn-container .jbp-recent-job-widget .jbp-job-widget {
+    color: #000000;
+    margin-bottom: 10px;
+    border-left: 1px solid #dcdcdc;
+    border-right: 1px solid #dcdcdc;
+    border-bottom: 1px solid #dcdcdc;
+}
+
+.hn-container .jbp-recent-job-widget .jbp-job-widget h4 a {
+    font-size: 11pt;
+    font-weight: bold;
+}
+
+.hn-container .jbp-recent-job-widget .jbp-job-widget .jbp-recent-job-cat {
+    font-size: 9pt;
+    display: block;
+    margin-top: 5px;
+}

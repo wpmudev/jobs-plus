@@ -1,6 +1,6 @@
 <h4><?php _e("Which roles can upload attachments", mmg()->domain) ?></h4>
 <?php $form = new IG_Active_Form($model);
-$form->open(array("attributes" => array("class" => "form-horizontal")));?>
+$form->open(array("attributes" => array("class" => "form-horizontal"))); ?>
 <input type="hidden" name="<?php echo $form->build_name('allow_attachment') ?>[]" value="">
 <table class="table table-condensed table-hover">
     <thead>

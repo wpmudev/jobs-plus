@@ -164,6 +164,7 @@
                     </div>
                 </div>
             </div>
+            <?php do_action('je_job_after_form', $model, $form) ?>
         </div>
         <div class="col-md-6">
             <div class="panel panel-default">

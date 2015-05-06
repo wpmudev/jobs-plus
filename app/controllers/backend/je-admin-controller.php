@@ -22,6 +22,17 @@ class JE_Admin_Controller extends IG_Request
 
         add_action('wp_ajax_je_plugin_action', array(&$this, 'plugins_action'));
         add_action('admin_init', array(&$this, 'redirect_pro_setting'));
+        add_filter('admin_url', array(&$this, 'fix_add_new_url'), 10, 3);
+    }
+
+    function fix_add_new_url($url, $path, $blog_id)
+    {
+        if ($path == 'post-new.php?post_type=jbp_job') {
+            $url = admin_url('edit.php?post_type=jbp_job&page=jobs-plus-job-form');
+        } elseif ($path == 'post-new.php?post_type=jbp_pro') {
+            $url = admin_url('edit.php?post_type=jbp_pro&page=jobs-plus-add-pro');
+        }
+        return $url;
     }
 
     function redirect_pro_setting()
@@ -118,7 +129,7 @@ class JE_Admin_Controller extends IG_Request
                     if ($item[0] == $pro->labels->name) {
                         $item[0] = sprintf(__('Manage %s', je()->domain), $pro->labels->name);
                     } elseif ($item[0] == __('Add New', je()->domain)) {
-                       unset($nav[$key]);
+                        unset($nav[$key]);
                     }
                 }
             }
@@ -157,6 +168,7 @@ class JE_Admin_Controller extends IG_Request
             $addons[] = $id;
             $setting->plugins = $addons;
             $setting->save();
+            do_action('je_addon_activated', $id, $meta);
             wp_send_json(array(
                 'noty' => __("The Add-on <strong>{$meta['Name']}</strong> has been activated.", je()->domain),
                 'text' => __("Deactivate", je()->domain)
@@ -166,10 +178,12 @@ class JE_Admin_Controller extends IG_Request
             unset($addons[array_search($id, $addons)]);
             $setting->plugins = $addons;
             $setting->save();
+            do_action('je_addon_deactivated', $id, $meta);
             wp_send_json(array(
                 'noty' => __("The Add-on <strong>{$meta['Name']}</strong> has been deactivated.", je()->domain),
                 'text' => __("Activate", je()->domain)
             ));
+
             exit;
         }
     }

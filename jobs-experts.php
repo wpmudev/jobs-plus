@@ -3,7 +3,7 @@
  * Plugin Name: Jobs and Experts
  * Plugin URI: http://premium.wpmudev.org/jobs-plus/
  * Description: Match people with projects to industry professionals – it’s more than your average WordPress jobs board.
- * Version: 1.0.1.8-beta
+ * Version: 1.0.1.9
  * Author:WPMU DEV
  * Author URI: http://premium.wpmudev.org
  * Text Domain: jbp
@@ -61,6 +61,9 @@ function jbp_load_languages()
 ///
 require_once(dirname(__FILE__) . '/framework/loader.php');
 require_once(dirname(__FILE__) . '/Helper.php');
+if (!class_exists('SmartDOMDocument')) {
+    include_once(dirname(__FILE__) . '/vendors/SmartDOMDocument.class.php');
+}
 
 class Jobs_Experts
 {
@@ -102,6 +105,8 @@ class Jobs_Experts
         add_action('init', array(&$this, 'dispatch'));
         add_action('widgets_init', array(&$this, 'init_widget'));
         $this->upgrade();
+        //
+        $this->load_addons();
     }
 
     function upgrade()
@@ -294,6 +299,17 @@ class Jobs_Experts
         return $use_compress;
     }
 
+    function load_addons()
+    {
+        $addons = $this->settings()->plugins;
+        if (!is_array($addons)) {
+            $addons = array();
+        }
+        if (array_search($this->plugin_path . 'app/addons/je-message.php', $addons) !== false) {
+            include $this->plugin_path . 'app/addons/je-message.php';
+        }
+    }
+
     function dispatch()
     {
         //load post type
@@ -301,7 +317,7 @@ class Jobs_Experts
         add_action('wp_loaded', array(&$this, 'init_pages'));
         //uploader
         include_once($this->plugin_path . 'app/components/ig-uploader.php');
-        ig_uploader()->init_uploader($this->can_upload());
+        ig_uploader()->init_uploader($this->can_upload(), $this->domain);
         //social-walll
         include_once($this->plugin_path . 'app/components/ig-social-wall.php');
         include_once($this->plugin_path . 'app/components/ig-skill.php');
@@ -327,14 +343,16 @@ class Jobs_Experts
         $contact = new JE_Contact_Shortcode_Controller();
         $landing = new JE_Landing_Shortcode_Controller();
         $shared = new JE_Shared_Controller();
+
         //load addon
         //load add on
         $addons = $this->settings()->plugins;
         if (!is_array($addons)) {
             $addons = array();
         }
+
         foreach ($addons as $addon) {
-            if (file_exists($addon)) {
+            if (file_exists($addon) && $addon != $this->plugin_path . 'app/addons/je-message.php') {
                 include_once $addon;
             }
         }
@@ -365,6 +383,29 @@ class Jobs_Experts
             return true;
 
         $allowed = $this->settings()->allow_attachment;
+        if (!is_array($allowed)) {
+            $allowed = array();
+        }
+        $allowed = array_filter($allowed);
+        $user = new WP_User(get_current_user_id());
+        foreach ($user->roles as $role) {
+            if (in_array($role, $allowed)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    function can_upload_avatar()
+    {
+        if (!is_user_logged_in()) {
+            return false;
+        }
+
+        if (current_user_can('upload_files'))
+            return true;
+
+        $allowed = $this->settings()->allow_avatar;
         if (!is_array($allowed)) {
             $allowed = array();
         }
@@ -546,7 +587,8 @@ class Jobs_Experts
                     'Author' => 'Author',
                     'Description' => 'Description',
                     'AuthorURI' => 'Author URI',
-                    'Network' => 'Network'
+                    'Network' => 'Network',
+                    'Required' => 'Required'
                 ), 'component');
 
                 if (strlen(trim($meta['Name'])) > 0) {

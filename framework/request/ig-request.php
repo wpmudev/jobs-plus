@@ -58,7 +58,12 @@ if (!class_exists('IG_Request')) {
             } else {
                 $base_path = $this->base_path;
             }
-            $view_path = $base_path . 'views/' . $view . '.php';
+            $view_path = $base_path . '/views/' . $view . '.php';
+
+            if (file_exists($view)) {
+                $view_path = $view;
+            }
+
             $view_path = apply_filters('ig_view_file', $view_path, $view);
 
             if (file_exists($view_path)) {
@@ -115,6 +120,11 @@ if (!class_exists('IG_Request')) {
         public function log($message)
         {
 
+        }
+
+        public function refresh()
+        {
+            $this->redirect($_SERVER['REQUEST_URI']);
         }
     }
 }

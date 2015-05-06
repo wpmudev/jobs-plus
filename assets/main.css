@@ -66,13 +66,15 @@
     margin: 0 !important;
 }
 
-.hn-container .tab-pane{
-    margin: 0!important;
+.hn-container .tab-pane {
+    margin: 0 !important;
 }
-.hn-container .tab-content{
+
+.hn-container .tab-content {
     margin-bottom: 5px;
 
 }
+
 .hn-container .nav-tabs li {
     margin-left: 0;
 }
@@ -93,7 +95,6 @@
     position: absolute;
     content: "";
 }
-
 
 /*colors*/
 .hn-pink {
@@ -391,9 +392,15 @@
     margin: 30px auto;
     text-align: center;
 }
-.hn-container .page-header{
+
+.hn-container .page-header {
     background: none;
 }
-.ui-helper-hidden-accessible{
+
+.ui-helper-hidden-accessible {
     display: none;
+}
+
+.ig-container .page-header {
+    background-color: transparent !important;
 }

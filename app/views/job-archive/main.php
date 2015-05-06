@@ -33,7 +33,7 @@
                             $model = $col['item'];
                             $size = $col['class'];
 
-                            setup_postdata(get_post($model->id));
+                            setup_postdata($model->wp_post);
                             ?>
                             <div <?php echo $key == 0 ? 'style="margin-left:0"' : null ?>
                                 class="jbp_job_item <?php echo $size; ?> no-padding">

@@ -1,7 +1,7 @@
 <div class="ig-container">
-    <?php if ($this->has_flash('job_deleted')): ?>
+    <?php if ($this->has_flash('profile_deleted')): ?>
         <div class="alert alert-success">
-            <?php echo $this->get_flash('job_deleted') ?>
+            <?php echo $this->get_flash('profile_deleted') ?>
         </div>
     <?php endif; ?>
     <table class="table table-hover table-striped table-bordered">

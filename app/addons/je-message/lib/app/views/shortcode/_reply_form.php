@@ -1,4 +1,13 @@
-<?php $c_id = uniqid(); ?>
+<?php $c_id = uniqid();
+if (!isset($message)) {
+    //get the current
+    $messages = $this->messages;
+    $message = array_shift($messages);
+    if (!is_object($message)) {
+        return;
+    }
+}
+?>
 <div class="ig-container">
     <div class="mmessage-container">
         <div class="modal" id="reply-form-c">
@@ -17,8 +26,8 @@
                         )
                     )); ?>
                     <div class="modal-body">
+                        <?php do_action('mm_before_reply_form', $message, $form) ?>
                         <div class="form-group <?php echo $model->has_error("content") ? "has-error" : null ?>">
-                            <?php /*$form->label("content", array("text" => "Content", "attributes" => array("class" => "col-lg-2 control-label"))) */ ?>
                             <div class="col-lg-12">
                                 <?php $form->text_area("content", array(
                                     "attributes" => array(

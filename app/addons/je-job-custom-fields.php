@@ -1,6 +1,5 @@
 <?php
 
-
 class JE_Job_Custom_Fields extends IG_Request
 {
     protected $base_path;
@@ -81,6 +80,40 @@ class JE_Job_Custom_Fields extends IG_Request
                                     <label>
                                         <?php
                                         $form->radio($field->cp_id, array(
+                                            'value' => sanitize_title($option)
+                                        ));
+                                        ?>
+                                        <?php echo $option ?>
+                                    </label>
+                                </div>
+
+                            <?php
+                            }
+                            break;
+                        case 'selectbox':
+                            $form->select($field->cp_id, array(
+                                'data' => $field->options,
+                                'attributes' => array(
+                                    'class' => 'form-control'
+                                )
+                            ));
+                            break;
+                        case 'multiselectbox':
+                            $form->select($field->cp_id, array(
+                                'data' => $field->options,
+                                'attributes' => array(
+                                    'class' => 'form-control',
+                                    'multiple' => 'multiple'
+                                )
+                            ));
+                            break;
+                        case 'checkbox':
+                            foreach ($field->options as $option) {
+                                ?>
+                                <div class="checkbox">
+                                    <label>
+                                        <?php
+                                        $form->checkbox($field->cp_id, array(
                                             'value' => sanitize_title($option)
                                         ));
                                         ?>

@@ -108,10 +108,10 @@ class JE_Page_Factory
             //update setting
             $this->save_setting(self::JOB_ADD, $id);
         } else {
-            wp_update_post(array(
+            /*wp_update_post(array(
                 'post_status' => 'virtual',
                 'ID' => $id
-            ));
+            ));*/
         }
 
         return $id;
@@ -135,10 +135,10 @@ class JE_Page_Factory
             //update setting
             $this->save_setting(self::JOB_EDIT, $id);
         } else {
-            wp_update_post(array(
+            /*wp_update_post(array(
                 'post_status' => 'virtual',
                 'ID' => $id
-            ));
+            ));*/
         }
 
         return $id;
@@ -163,10 +163,10 @@ class JE_Page_Factory
             //update setting
             $this->save_setting(self::JOB_LISTING, $id);
         } else {
-            wp_update_post(array(
+            /*wp_update_post(array(
                 'post_status' => 'virtual',
                 'ID' => $id
-            ));
+            ));*/
         }
 
 
@@ -193,10 +193,10 @@ class JE_Page_Factory
             //update setting
             $this->save_setting(self::JOB_CONTACT, $id);
         } else {
-            wp_update_post(array(
+           /* wp_update_post(array(
                 'post_status' => 'virtual',
                 'ID' => $id
-            ));
+            ));*/
         }
 
         return $id;
@@ -221,10 +221,10 @@ class JE_Page_Factory
             //update setting
             $this->save_setting(self::MY_JOB, $id);
         } else {
-            wp_update_post(array(
+            /*wp_update_post(array(
                 'post_status' => 'virtual',
                 'ID' => $id
-            ));
+            ));*/
         }
 
         return $id;
@@ -249,10 +249,10 @@ class JE_Page_Factory
             //update setting
             $this->save_setting(self::EXPERT_ADD, $id);
         } else {
-            wp_update_post(array(
+            /*wp_update_post(array(
                 'post_status' => 'virtual',
                 'ID' => $id
-            ));
+            ));*/
         }
 
         return $id;
@@ -277,10 +277,10 @@ class JE_Page_Factory
             //update setting
             $this->save_setting(self::EXPERT_EDIT, $id);
         } else {
-            wp_update_post(array(
+            /*wp_update_post(array(
                 'post_status' => 'virtual',
                 'ID' => $id
-            ));
+            ));*/
         }
 
         return $id;
@@ -305,10 +305,10 @@ class JE_Page_Factory
             //update setting
             $this->save_setting(self::EXPERT_LISTING, $id);
         } else {
-            wp_update_post(array(
+            /*wp_update_post(array(
                 'post_status' => 'virtual',
                 'ID' => $id
-            ));
+            ));*/
         }
 
         return $id;
@@ -334,10 +334,10 @@ class JE_Page_Factory
             //update setting
             $this->save_setting(self::EXPERT_CONTACT, $id);
         } else {
-            wp_update_post(array(
+            /*wp_update_post(array(
                 'post_status' => 'virtual',
                 'ID' => $id
-            ));
+            ));*/
         }
 
         return $id;
@@ -362,10 +362,10 @@ class JE_Page_Factory
             //update setting
             $this->save_setting(self::MY_EXPERT, $id);
         } else {
-            wp_update_post(array(
+            /*wp_update_post(array(
                 'post_status' => 'virtual',
                 'ID' => $id
-            ));
+            ));*/
         }
 
         return $id;
@@ -373,12 +373,15 @@ class JE_Page_Factory
 
     private function page_exist($id)
     {
-        $page = get_post($id);
-        if ($page instanceof WP_Post && ($page->post_status == 'virtual' || $page->post_status == 'publish')) {
+        global $wpdb;
+        $exist = $wpdb->get_var(
+            $wpdb->prepare("SELECT ID FROM " . $wpdb->posts . " WHERE id=%d AND post_status IN ('virtual','publish')", $id)
+        );
+        if ($exist) {
             return true;
         }
-
         return false;
+
     }
 
     public static function is_core_page($id)

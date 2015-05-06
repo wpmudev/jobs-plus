@@ -17,7 +17,7 @@ class JE_Router
 
     function je_single_content($content)
     {
-        if(in_the_loop()) {
+        if (in_the_loop() && is_main_query()) {
             if (is_singular('jbp_job') && !JE_Page_Factory::is_core_page(get_the_ID()) && !is_404()) {
                 return do_shortcode('[jbp-job-single-page]');
             } elseif (is_singular('jbp_pro') && !JE_Page_Factory::is_core_page(get_the_ID()) && !is_404()) {
@@ -29,7 +29,7 @@ class JE_Router
 
     function je_single_title($title)
     {
-        if(in_the_loop()) {
+        if (in_the_loop()) {
             $shortcodes = apply_filters('je_buttons_on_single_page', '[jbp-job-browse-btn][jbp-expert-browse-btn][jbp-job-post-btn][jbp-expert-post-btn][jbp-my-job-btn][jbp-expert-profile-btn]');
             if (is_tax('jbp_category')) {
                 $term = get_term_by('slug', get_query_var('jbp_category'), 'jbp_category');
@@ -39,20 +39,26 @@ class JE_Router
                 global $wp_query;
                 if ($wp_query->is_main_query()) {
                     $title = do_shortcode('<p style="text-align: center">' . $shortcodes . '</p>') . $title;
+                    remove_filter('the_title', array(&$this, 'je_single_title'));
                 }
             } elseif (is_singular('jbp_pro') && in_the_loop() && !JE_Page_Factory::is_core_page(get_the_ID())) {
                 global $wp_query;
                 if ($wp_query->is_main_query()) {
-                    $title = do_shortcode('<p style="text-align: center">' . $shortcodes . '</p>') ;
+                    $title = do_shortcode('<p style="text-align: center">' . $shortcodes . '</p>');
+                    remove_filter('the_title', array(&$this, 'je_single_title'));
                 }
             }
         }
         return $title;
     }
 
-    function hide_edit_post_link()
+    function hide_edit_post_link($link)
     {
-
+        global $post;
+        if ($post->post_type == 'jbp_job' || $post->post_type == 'jbp_pro') {
+            return null;
+        }
+        return $link;
     }
 
     function determine_page($template)
