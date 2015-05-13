@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: Jobs and Experts
- * Plugin URI: http://premium.wpmudev.org/jobs-plus/
+ * Plugin URI: https://premium.wpmudev.org/project/jobs-and-experts/
  * Description: Match people with projects to industry professionals – it’s more than your average WordPress jobs board.
  * Version: 1.0.1.9
  * Author:WPMU DEV
