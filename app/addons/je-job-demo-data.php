@@ -78,9 +78,10 @@ class JE_Job_Demo_Data
                 //get the random image
                 $upload_dir = wp_upload_dir();
                 $path = $upload_dir['path'] . '/' . uniqid() . '.jpg';
-                $image_url = $this->content_bank('image');
+                $image_path = $this->content_bank('image');
                 //download the image
-                $this->download_image($image_url, $path);
+                //$this->download_image($image_url, $path);
+	            copy($image_path,$path);
                 //now handler the file
                 $att_id = $this->handler_upload($model->id, $path);
                 //create media post type
@@ -164,9 +165,8 @@ class JE_Job_Demo_Data
 
                 return $c[array_rand($c)];
             case 'image':
-                $c = $data['image_urls'];
-
-                return $c[array_rand($c)];
+	            $c = rand( 1, 10 );
+	            return dirname( __FILE__ ) . '/je-job-demo/demo_images/' . $c . '.jpg';
         }
     }
 
