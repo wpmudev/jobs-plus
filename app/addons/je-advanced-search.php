@@ -43,6 +43,7 @@ class JE_Advanced_Search
         $cat = (isset($_GET['job_cat']) && $_GET['job_cat'] > 0) ? $_GET['job_cat'] : null;
 
         ?>
+        <input type="hidden" name="advance_search" value="1">
         <label><?php _e('Price Range', je()->domain) ?></label>
         <input class="job-price-range" type="text"/>
         <input type="hidden" name="min_price">
