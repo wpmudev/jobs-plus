@@ -91,33 +91,19 @@ class JE_Advanced_Search
                 };
                 var form = $('#<?php echo $form_id ?>');
                 var order_by = '<?php echo $order_by ?>';
-                $(".job-price-range").ionRangeSlider({
+
+                form.find(".job-price-range").ionRangeSlider({
                     min: <?php echo $setting->job_min_search_budget ?>,
                     max: '<?php echo $range_max+100 ?>',
                     type: "double",
-                <?php echo $pos ?>:
-                "<?php echo JobsExperts_Helper::format_currency() ?>",
-                    maxPostfix
-                :
-                "+",
-                    prettify
-                :
-                false,
-                    hasGrid
-                :
-                true,
-                    from
-                :
-                price_data.from,
-                    to
-                :
-                price_data.to,
-                    gridMargin
-                :
-                7,
-                    onChange
-                :
-                function (obj) {      // callback is called on every slider change
+                <?php echo $pos ?>: "<?php echo JobsExperts_Helper::format_currency() ?>",
+                    maxPostfix: "+",
+                    prettify: false,
+                    hasGrid: true,
+                    from: price_data.from,
+                    to: price_data.to,
+                    gridMargin: 7,
+                    onChange: function (obj) {      // callback is called on every slider change
                     price_data = {
                         from: obj.from,
                         to: obj.to
@@ -480,7 +466,7 @@ INNER JOIN ' . $wpdb->prefix . 'postmeta max_price ON max_price.post_id = posts.
                     var pop = $(this).data('plugin_webuiPopover');
                     var holder = pop.$target;
                     var form = holder.find('form').first();
-                    var element = form.find('.job-price-range').first();
+                    var element = form.find('input.job-price-range').first();
                     if (element.hasClass('turn') == false) {
                         element.ionRangeSlider({
                             min: <?php echo je()->settings()->job_min_search_budget ?>,
