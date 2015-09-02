@@ -170,7 +170,9 @@ if (!class_exists('IG_DB_Model_Ex')) {
             foreach ($params as $key => $val) {
                 $where[] = "$key = '" . esc_sql($val) . "'";
             }
-            $sql .= " WHERE " . implode(' AND ', $where);
+            if ($where) {
+                $sql .= " WHERE " . implode(' AND ', $where);
+            }
 
             if ($order) {
                 $sql .= " ORDER BY " . $order;

@@ -228,7 +228,7 @@ if (!class_exists('IG_Social_Wall')) {
         public function get_social_list()
         {
             $list = array();
-            foreach (glob($this->plugin_url . 'assets/social_icon/*.png') as $file) {
+            foreach ((array)glob($this->plugin_url . 'assets/social_icon/*.png') as $file) {
                 $list[pathinfo($file, PATHINFO_FILENAME)] = array(
                     'key' => pathinfo($file, PATHINFO_FILENAME),
                     'name' => ucfirst(pathinfo($file, PATHINFO_FILENAME)),

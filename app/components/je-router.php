@@ -80,7 +80,7 @@ class JE_Router
         if (get_query_var('post_type') == 'jbp_pro') {
             $template = locate_template(array('page.php', 'index.php'));
             $template = array('single-jbp_pro.php', 'page.php', 'index.php');
-            if (is_archive('jbp_job')) {
+            if (is_archive('jbp_expert')) {
                 $vpost = get_post(je()->pages->page(JE_Page_Factory::JOB_LISTING));
                 global $wp_query;
                 $wp_query->posts = array(get_post(je()->pages->page(JE_Page_Factory::EXPERT_LISTING)));
