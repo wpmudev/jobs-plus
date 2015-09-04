@@ -65,9 +65,8 @@ class Credit_Plan_Model extends IG_Model {
 	}
 
 	public function add_plan( $name, $detail, $cost, $credits, $sale_price, $product_id = '', $append_info = '' ) {
-		$mp_version = get_option( 'mp_version' );
-
-		if ( version_compare( $mp_version, 3 ) >= 0 ) {
+		
+		if ( defined('MP_VERSION')) {
 			$this->_mp3_add_plan( $name, $detail, $cost, $credits, $sale_price, $product_id, $append_info );
 		} else {
 			$this->_mp2_add_plan( $name, $detail, $cost, $credits, $sale_price, $product_id, $append_info );
