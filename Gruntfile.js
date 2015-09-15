@@ -30,11 +30,12 @@ module.exports = function (grunt) {
                     domainPath: 'languages',                   // Where to save the POT file.
                     exclude: [],                      // List of files or directories to ignore.
                     include: [
-                        'app/.*'
+                        'app/.*',
+                        'framework/.*'
                     ],                      // List of files or directories to include.
                     mainFile: 'jobs-experts.php',                     // Main project file.
                     potComments: '',                  // The copyright at the beginning of the POT file.
-                    potFilename: 'jbp',                  // Name of the POT file.
+                    potFilename: 'jbp.po',                  // Name of the POT file.
                     potHeaders: {
                         poedit: true,                 // Includes common Poedit headers.
                         'x-poedit-keywordslist': true // Include a list of all possible gettext functions.

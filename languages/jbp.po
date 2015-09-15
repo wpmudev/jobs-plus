@@ -1,3230 +1,3318 @@
+# Copyright (C) 2015 WPMU DEV
+# This file is distributed under the GPLv2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Jobs Plus\n"
-"POT-Creation-Date: 2015-03-30 22:16+0700\n"
-"PO-Revision-Date: 2015-03-30 22:16+0700\n"
-"Last-Translator: \n"
-"Language-Team: WPMU DEV\n"
-"Language: en\n"
+"Project-Id-Version: Jobs and Experts 1.0.2.1\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/jobs-experts\n"
+"POT-Creation-Date: 2015-09-15 15:09:47+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.6.9\n"
-"X-Poedit-Basepath: /Users/hoangngo/Work/WPMUDEV/wp-content/plugins/\n"
+"PO-Revision-Date: 2015-09-15 22:10+0700\n"
+"X-Generator: Poedit 1.8.1\n"
+"X-Poedit-KeywordsList: __;_e;_x:1,2c;_ex:1,2c;_n:1,2;_nx:1,2,4c;_n_noop:1,2;"
+"_nx_noop:1,2,3c;esc_attr__;esc_html__;esc_attr_e;esc_html_e;esc_attr_x:1,2c;"
+"esc_html_x:1,2c\n"
+"Language: en\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Poedit-KeywordsList: __;_e;esc_attr__;esc_attr_e;esc_attr_x;esc_html__;"
-"esc_html_e;esc_html_x\n"
-"X-Poedit-SearchPath-0: jobs-plus\n"
-"X-Poedit-SearchPathExcluded-0: app/addons/je-message\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-Basepath: ../\n"
+"X-Textdomain-Support: yes\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"X-Poedit-SearchPath-0: .\n"
 
-#: jobs-plus/app/addons/je-advanced-search.php:46
-#: jobs-plus/app/addons/je-advanced-search.php:546
-#: jobs-plus/app/addons/je-job-demo-data.php:210
+#: app/addons/je-advanced-search.php:47 app/addons/je-advanced-search.php:533
+#: app/addons/je-job-demo-data.php:210
 msgid "Price Range"
 msgstr ""
 
-#: jobs-plus/app/addons/je-advanced-search.php:51
-#: jobs-plus/app/addons/je-advanced-search.php:556
-#: jobs-plus/app/views/backend/jobs/_form.php:174
+#: app/addons/je-advanced-search.php:52 app/addons/je-advanced-search.php:543
+#: app/views/backend/jobs/_form.php:177
 msgid "Category"
 msgstr ""
 
-#: jobs-plus/app/addons/je-advanced-search.php:62
-#: jobs-plus/app/addons/je-advanced-search.php:567
+#: app/addons/je-advanced-search.php:63 app/addons/je-advanced-search.php:554
 msgid "--SELECT--"
 msgstr ""
 
-#: jobs-plus/app/addons/je-advanced-search.php:65
-#: jobs-plus/app/addons/je-advanced-search.php:573
-#: jobs-plus/app/addons/je-advanced-search.php:637
+#: app/addons/je-advanced-search.php:66 app/addons/je-advanced-search.php:560
+#: app/addons/je-advanced-search.php:624
 msgid "Order By"
 msgstr ""
 
-#: jobs-plus/app/addons/je-advanced-search.php:67
-#: jobs-plus/app/addons/je-advanced-search.php:577
-#: jobs-plus/app/addons/je-advanced-search.php:641
-#: jobs-plus/app/addons/je-message/lib/app/components/mm-addon-table.php:35
-#: jobs-plus/app/components/ig-wallet/app/views/credit/main.php:20
-#: jobs-plus/app/components/je-addon-table.php:35
-#: jobs-plus/app/controllers/backend/je-expert-admin-controller.php:22
-#: jobs-plus/app/views/my-expert/main.php:9
+#: app/addons/je-advanced-search.php:68 app/addons/je-advanced-search.php:564
+#: app/addons/je-advanced-search.php:628
+#: app/addons/je-message/lib/app/components/mm-addon-table.php:35
+#: app/components/ig-wallet/app/views/credit/main.php:20
+#: app/components/je-addon-table.php:35 app/components/je-fields-table.php:23
+#: app/controllers/backend/je-expert-admin-controller.php:22
+#: app/views/my-expert/main.php:9
 msgid "Name"
 msgstr ""
 
-#: jobs-plus/app/addons/je-advanced-search.php:70
-#: jobs-plus/app/addons/je-advanced-search.php:581
-#: jobs-plus/app/controllers/frontend/je-job-recent-widget-controller.php:176
+#: app/addons/je-advanced-search.php:71 app/addons/je-advanced-search.php:568
+#: app/controllers/frontend/je-job-recent-widget-controller.php:176
 msgid "Latest"
 msgstr ""
 
-#: jobs-plus/app/addons/je-advanced-search.php:73
-#: jobs-plus/app/addons/je-advanced-search.php:585
+#: app/addons/je-advanced-search.php:74 app/addons/je-advanced-search.php:572
 msgid "About to End"
 msgstr ""
 
-#: jobs-plus/app/addons/je-advanced-search.php:143
-#: jobs-plus/app/addons/je-advanced-search.php:437
+#: app/addons/je-advanced-search.php:130 app/addons/je-advanced-search.php:424
 msgid "Advance Search Form"
 msgstr ""
 
-#: jobs-plus/app/addons/je-advanced-search.php:148
-#: jobs-plus/app/addons/je-advanced-search.php:463
+#: app/addons/je-advanced-search.php:135 app/addons/je-advanced-search.php:450
 msgid "Advanced Search"
 msgstr ""
 
-#: jobs-plus/app/addons/je-advanced-search.php:593
-#: jobs-plus/app/addons/je-advanced-search.php:657
-#: jobs-plus/app/addons/je-message/lib/app/components/mm-messages-table.php:132
-#: jobs-plus/app/addons/je-message/lib/app/views/shortcode/inbox.php:24
-#: jobs-plus/app/controllers/frontend/je-job-search-widget-controller.php:59
+#: app/addons/je-advanced-search.php:580 app/addons/je-advanced-search.php:644
+#: app/addons/je-message/lib/app/components/mm-messages-table.php:132
+#: app/addons/je-message/lib/app/views/shortcode/inbox.php:24
+#: app/controllers/frontend/je-job-search-widget-controller.php:59
 msgid "Search"
 msgstr ""
 
-#: jobs-plus/app/addons/je-advanced-search.php:596
-#: jobs-plus/app/addons/je-advanced-search.php:660
-#: jobs-plus/app/addons/je-custom-location/_location_popup.php:31
-#: jobs-plus/app/components/ig-skill/app/views/_form.php:63
-#: jobs-plus/app/components/ig-social-wall/app/views/form.php:35
-#: jobs-plus/app/components/ig-uploader/app/views/_uploader_form.php:43
-#: jobs-plus/app/controllers/frontend/je-expert-form-shortcode-controller.php:163
-#: jobs-plus/app/views/expert-form/_biography_popup.php:13
-#: jobs-plus/app/views/expert-form/_company_popup.php:24
-#: jobs-plus/app/views/expert-form/_email_popup.php:15
-#: jobs-plus/app/views/expert-form/_location_popup.php:21
-#: jobs-plus/app/views/expert-form/_name_popup.php:24
-#: jobs-plus/app/views/expert-form/_tagline_popup.php:14
-#: jobs-plus/app/views/expert-form/main.php:141
+#: app/addons/je-advanced-search.php:583 app/addons/je-advanced-search.php:647
+#: app/addons/je-custom-location/_location_popup.php:31
+#: app/components/ig-skill/app/views/_form.php:63
+#: app/components/ig-social-wall/app/views/form.php:35
+#: app/components/ig-uploader/app/views/_uploader_form.php:43
+#: app/controllers/frontend/je-expert-form-shortcode-controller.php:163
+#: app/views/expert-form/_biography_popup.php:13
+#: app/views/expert-form/_company_popup.php:24
+#: app/views/expert-form/_email_popup.php:15
+#: app/views/expert-form/_location_popup.php:21
+#: app/views/expert-form/_name_popup.php:24
+#: app/views/expert-form/_tagline_popup.php:14 app/views/expert-form/main.php:141
 msgid "Cancel"
 msgstr ""
 
-#: jobs-plus/app/addons/je-advanced-search.php:608
-#: jobs-plus/app/addons/je-custom-location/_location_popup.php:4
-#: jobs-plus/app/views/expert-form/_location_popup.php:4
+#: app/addons/je-advanced-search.php:595
+#: app/addons/je-custom-location/_location_popup.php:4
+#: app/views/expert-form/_location_popup.php:4
 msgid "Location"
 msgstr ""
 
-#: jobs-plus/app/addons/je-advanced-search.php:615
-#: jobs-plus/app/addons/je-advanced-search.php:631
-#: jobs-plus/app/views/job-form/main.php:134
+#: app/addons/je-advanced-search.php:602 app/addons/je-advanced-search.php:618
+#: app/views/job-form/main.php:134
 msgid "--Select--"
 msgstr ""
 
-#: jobs-plus/app/addons/je-advanced-search.php:621
+#: app/addons/je-advanced-search.php:608
 msgid "Skill"
 msgstr ""
 
-#: jobs-plus/app/addons/je-advanced-search.php:645
+#: app/addons/je-advanced-search.php:632
 msgid "Most Popular"
 msgstr ""
 
-#: jobs-plus/app/addons/je-advanced-search.php:649
+#: app/addons/je-advanced-search.php:636
 msgid "Most Likes"
 msgstr ""
 
-#: jobs-plus/app/addons/je-custom-layout.php:68
+#: app/addons/je-custom-layout.php:68
 msgid "Custom Layout"
 msgstr ""
 
-#: jobs-plus/app/addons/je-custom-layout.php:78
+#: app/addons/je-custom-layout.php:78
 msgid "Jobs listing page custom layout"
 msgstr ""
 
-#: jobs-plus/app/addons/je-custom-layout.php:80
+#: app/addons/je-custom-layout.php:80
 msgid "We have 4 sizes:"
 msgstr ""
 
-#: jobs-plus/app/addons/je-custom-layout.php:82
+#: app/addons/je-custom-layout.php:82
 msgid "means the job block will have 100% width"
 msgstr ""
 
-#: jobs-plus/app/addons/je-custom-layout.php:83
+#: app/addons/je-custom-layout.php:83
 msgid "means the job block will have 1/2 width"
 msgstr ""
 
-#: jobs-plus/app/addons/je-custom-layout.php:84
+#: app/addons/je-custom-layout.php:84
 msgid "means the job block will have 1/3 width"
 msgstr ""
 
-#: jobs-plus/app/addons/je-custom-layout.php:85
+#: app/addons/je-custom-layout.php:85
 msgid "means the job block will have 1/4 width"
 msgstr ""
 
-#: jobs-plus/app/addons/je-custom-layout.php:87
+#: app/addons/je-custom-layout.php:87
 msgid ""
-"You can customise the layout using the above, each row should equal 100%. "
-"For example sm, sm, sm is 100%."
+"You can customise the layout using the above, each row should equal 100%. For "
+"example sm, sm, sm is 100%."
 msgstr ""
 
-#: jobs-plus/app/addons/je-custom-layout.php:89
-#: jobs-plus/app/addons/je-custom-layout.php:121
+#: app/addons/je-custom-layout.php:89 app/addons/je-custom-layout.php:121
 msgid "Example for default layout"
 msgstr ""
 
-#: jobs-plus/app/addons/je-custom-layout.php:109
+#: app/addons/je-custom-layout.php:109
 msgid "Expert listing page custom layout"
 msgstr ""
 
-#: jobs-plus/app/addons/je-custom-layout.php:113
+#: app/addons/je-custom-layout.php:113
 msgid "mean the expert block will have 100% width"
 msgstr ""
 
-#: jobs-plus/app/addons/je-custom-layout.php:115
+#: app/addons/je-custom-layout.php:115
 msgid "mean the expert block will have 1/2 width"
 msgstr ""
 
-#: jobs-plus/app/addons/je-custom-layout.php:116
+#: app/addons/je-custom-layout.php:116
 msgid "mean the expert block will have 1/3 width"
 msgstr ""
 
-#: jobs-plus/app/addons/je-custom-layout.php:117
+#: app/addons/je-custom-layout.php:117
 msgid "mean the expert block will have 1/4 width"
 msgstr ""
 
-#: jobs-plus/app/addons/je-custom-layout.php:119
-#, php-format
+#: app/addons/je-custom-layout.php:119
 msgid ""
-"You can customize the layout, each row should have 100% score, and the "
-"default is xs"
+"You can customize the layout, each row should have 100% score, and the default is "
+"xs"
 msgstr ""
 
-#: jobs-plus/app/addons/je-custom-layout.php:137
-#: jobs-plus/app/addons/je-custom-location.php:88
-#: jobs-plus/app/addons/je-message/lib/app/addons/capatibility.php:195
-#: jobs-plus/app/addons/je-message/lib/app/views/backend/setting/attachment.php:36
-#: jobs-plus/app/addons/je-message/lib/app/views/backend/setting/email.php:60
-#: jobs-plus/app/addons/je-message/lib/app/views/backend/setting/general.php:75
-#: jobs-plus/app/addons/je-message/lib/app/views/shortcode/setting.php:59
-#: jobs-plus/app/addons/je-pages-manager.php:512
-#: jobs-plus/app/components/ig-wallet/app/views/settings/general.php:45
-#: jobs-plus/app/components/je-credit-rules/app/views/expert-saved/settings.php:76
-#: jobs-plus/app/components/je-credit-rules/app/views/job-saved/settings.php:76
-#: jobs-plus/app/views/backend/settings/general.php:202
-#: jobs-plus/app/views/backend/settings/uploader.php:36
+#: app/addons/je-custom-layout.php:137 app/addons/je-custom-location.php:88
+#: app/addons/je-message/lib/app/addons/capatibility.php:195
+#: app/addons/je-message/lib/app/addons/words-filter.php:178
+#: app/addons/je-message/lib/app/views/backend/setting/attachment.php:36
+#: app/addons/je-message/lib/app/views/backend/setting/email.php:60
+#: app/addons/je-message/lib/app/views/backend/setting/general.php:75
+#: app/addons/je-message/lib/app/views/shortcode/setting.php:59
+#: app/addons/je-pages-manager.php:512
+#: app/components/ig-wallet/app/views/settings/general.php:45
+#: app/components/je-credit-rules/app/views/expert-saved/settings.php:76
+#: app/components/je-credit-rules/app/views/job-saved/settings.php:76
+#: app/views/backend/jobs/_form.php:220 app/views/backend/settings/general.php:202
+#: app/views/backend/settings/uploader.php:36
 msgid "Save Changes"
 msgstr ""
 
-#: jobs-plus/app/addons/je-custom-location.php:40
-msgid "The API KEY has been saved successful!"
-msgstr ""
-
-#: jobs-plus/app/addons/je-custom-location.php:54
-msgid "Custom Expert Location"
-msgstr ""
-
-#: jobs-plus/app/addons/je-custom-location.php:66
-msgid "Custom expert location"
-msgstr ""
-
-#: jobs-plus/app/addons/je-custom-location.php:78
-#, php-format
-msgid ""
-"To enable <strong>reverse geocoding</strong>, you'll need to input a valid "
-"<a href=\"%s\">API key</a> from Google."
-msgstr ""
-
-#: jobs-plus/app/addons/je-custom-location.php:80
-msgid "API Key "
-msgstr ""
-
-#: jobs-plus/app/addons/je-custom-location.php:99
-#: jobs-plus/app/views/expert-form/main.php:66
-msgid "Your Location"
-msgstr ""
-
-#: jobs-plus/app/addons/je-custom-location/_location_popup.php:29
-#: jobs-plus/app/components/ig-wallet/app/views/credit/main.php:147
-#: jobs-plus/app/views/expert-form/_biography_popup.php:11
-#: jobs-plus/app/views/expert-form/_company_popup.php:22
-#: jobs-plus/app/views/expert-form/_email_popup.php:13
-#: jobs-plus/app/views/expert-form/_location_popup.php:19
-#: jobs-plus/app/views/expert-form/_name_popup.php:22
-#: jobs-plus/app/views/expert-form/_tagline_popup.php:12
+#: app/addons/je-custom-location/_location_popup.php:29
+#: app/addons/je-message/lib/app/addons/words-filter.php:249
+#: app/components/ig-wallet/app/views/credit/main.php:147
+#: app/views/expert-form/_biography_popup.php:11
+#: app/views/expert-form/_company_popup.php:22
+#: app/views/expert-form/_email_popup.php:13
+#: app/views/expert-form/_location_popup.php:19
+#: app/views/expert-form/_name_popup.php:22
+#: app/views/expert-form/_tagline_popup.php:12
 msgid "Save"
 msgstr ""
 
-#: jobs-plus/app/addons/je-expert-demo-data.php:262
+#: app/addons/je-custom-location.php:40
+msgid "The API KEY has been saved successful!"
+msgstr ""
+
+#: app/addons/je-custom-location.php:54
+msgid "Custom Expert Location"
+msgstr ""
+
+#: app/addons/je-custom-location.php:66
+msgid "Custom expert location"
+msgstr ""
+
+#: app/addons/je-custom-location.php:78
+msgid ""
+"To enable <strong>reverse geocoding</strong>, you'll need to input a valid <a "
+"href=\"%s\">API key</a> from Google."
+msgstr ""
+
+#: app/addons/je-custom-location.php:80
+msgid "API Key "
+msgstr ""
+
+#: app/addons/je-custom-location.php:99 app/views/expert-form/main.php:66
+msgid "Your Location"
+msgstr ""
+
+#: app/addons/je-expert-demo-data.php:263
 msgid "Experts Demo Data"
 msgstr ""
 
-#: jobs-plus/app/addons/je-expert-demo-data.php:273
+#: app/addons/je-expert-demo-data.php:273
 msgid "Create dummy data for experts"
 msgstr ""
 
-#: jobs-plus/app/addons/je-expert-demo-data.php:277
+#: app/addons/je-expert-demo-data.php:277
 msgid "Dummy experts amount"
 msgstr ""
 
-#: jobs-plus/app/addons/je-expert-demo-data.php:282
+#: app/addons/je-expert-demo-data.php:282
 msgid "Number of dummy experts to create"
 msgstr ""
 
-#: jobs-plus/app/addons/je-expert-demo-data.php:287
+#: app/addons/je-expert-demo-data.php:287
 msgid "Socials"
 msgstr ""
 
-#: jobs-plus/app/addons/je-expert-demo-data.php:296
-msgid ""
-"Social profile for experts. If empty, 3-5 profiles will be randomly added"
+#: app/addons/je-expert-demo-data.php:296
+msgid "Social profile for experts. If empty, 3-5 profiles will be randomly added"
 msgstr ""
 
-#: jobs-plus/app/addons/je-expert-demo-data.php:301
-#: jobs-plus/app/components/ig-skill/app/views/main.php:3
-#: jobs-plus/app/views/backend/jobs/_form.php:197
-#: jobs-plus/app/views/expert-single/main.php:150
+#: app/addons/je-expert-demo-data.php:301
+#: app/components/ig-skill/app/views/main.php:3
+#: app/views/backend/jobs/_form.php:200 app/views/expert-single/main.php:152
 msgid "Skills"
 msgstr ""
 
-#: jobs-plus/app/addons/je-expert-demo-data.php:307
+#: app/addons/je-expert-demo-data.php:307
 msgid "Experts skills. Score will be random from 0-100."
 msgstr ""
 
-#: jobs-plus/app/addons/je-expert-demo-data.php:312
+#: app/addons/je-expert-demo-data.php:312
 msgid "Sample files?"
 msgstr ""
 
-#: jobs-plus/app/addons/je-expert-demo-data.php:317
+#: app/addons/je-expert-demo-data.php:317
 msgid "If you want the demo experts to have sample files, check this box."
 msgstr ""
 
-#: jobs-plus/app/addons/je-expert-demo-data.php:323
-#: jobs-plus/app/addons/je-job-demo-data.php:253
+#: app/addons/je-expert-demo-data.php:323 app/addons/je-job-demo-data.php:253
 msgid "Creating demo data,please wait...."
 msgstr ""
 
-#: jobs-plus/app/addons/je-expert-demo-data.php:334
-#: jobs-plus/app/addons/je-job-demo-data.php:264
-#: jobs-plus/app/components/ig-skill/app/views/_form.php:60
-#: jobs-plus/app/components/ig-social-wall/app/views/form.php:32
-#: jobs-plus/app/components/ig-uploader/app/views/_uploader_form.php:44
-#: jobs-plus/app/components/ig-wallet/app/views/settings/sending_credit.php:38
-#: jobs-plus/app/controllers/frontend/je-expert-form-shortcode-controller.php:154
-#: jobs-plus/app/views/backend/experts/_form.php:142
-#: jobs-plus/app/views/backend/jobs/_form.php:217
-#: jobs-plus/app/views/backend/settings/expert.php:142
-#: jobs-plus/app/views/backend/settings/job.php:173
+#: app/addons/je-expert-demo-data.php:334
+#: app/addons/je-job-custom-fields/app/views/fields.php:71
+#: app/addons/je-job-demo-data.php:264
+#: app/components/ig-skill/app/views/_form.php:60
+#: app/components/ig-social-wall/app/views/form.php:32
+#: app/components/ig-uploader/app/views/_uploader_form.php:44
+#: app/components/ig-wallet/app/views/settings/sending_credit.php:38
+#: app/controllers/frontend/je-expert-form-shortcode-controller.php:154
+#: app/views/backend/experts/_form.php:142
+#: app/views/backend/settings/expert.php:142 app/views/backend/settings/job.php:173
 msgid "Submit"
 msgstr ""
 
-#: jobs-plus/app/addons/je-job-custom-fields.php:243
-msgid "Customize Job Fields"
+#: app/addons/je-job-custom-field.php:25 app/addons/je-job-custom-field.php:26
+msgid "Customize Job Field"
 msgstr ""
 
-#: jobs-plus/app/addons/je-job-custom-fields.php:316
-msgid "Required"
-msgstr ""
-
-#: jobs-plus/app/addons/je-job-custom-fields.php:317
-msgid "Valid Email"
-msgstr ""
-
-#: jobs-plus/app/addons/je-job-custom-fields.php:318
-msgid "Max Length"
-msgstr ""
-
-#: jobs-plus/app/addons/je-job-custom-fields.php:319
-msgid "Min Length"
-msgstr ""
-
-#: jobs-plus/app/addons/je-job-custom-fields.php:320
-msgid "Exactly Length"
-msgstr ""
-
-#: jobs-plus/app/addons/je-job-custom-fields/app/views/composer.php:4
-msgid "Form Arrange"
-msgstr ""
-
-#: jobs-plus/app/addons/je-job-custom-fields/app/views/composer.php:5
-msgid "Display Arrange"
-msgstr ""
-
-#: jobs-plus/app/addons/je-job-custom-fields/app/views/composer.php:19
+#: app/addons/je-job-custom-fields/app/views/composer.php:12
 msgid "Before Category Field"
 msgstr ""
 
-#: jobs-plus/app/addons/je-job-custom-fields/app/views/composer.php:31
+#: app/addons/je-job-custom-fields/app/views/composer.php:24
 msgid "After Category Field"
 msgstr ""
 
-#: jobs-plus/app/addons/je-job-custom-fields/app/views/composer.php:43
+#: app/addons/je-job-custom-fields/app/views/composer.php:36
 msgid "Before Job Title Field"
 msgstr ""
 
-#: jobs-plus/app/addons/je-job-custom-fields/app/views/composer.php:53
+#: app/addons/je-job-custom-fields/app/views/composer.php:46
 msgid "After Job Title Field"
 msgstr ""
 
-#: jobs-plus/app/addons/je-job-custom-fields/app/views/composer.php:62
+#: app/addons/je-job-custom-fields/app/views/composer.php:55
 msgid "Before Description Field"
 msgstr ""
 
-#: jobs-plus/app/addons/je-job-custom-fields/app/views/composer.php:71
+#: app/addons/je-job-custom-fields/app/views/composer.php:64
 msgid "After Description Field"
 msgstr ""
 
-#: jobs-plus/app/addons/je-job-custom-fields/app/views/composer.php:80
+#: app/addons/je-job-custom-fields/app/views/composer.php:73
 msgid "Before Skill Field"
 msgstr ""
 
-#: jobs-plus/app/addons/je-job-custom-fields/app/views/composer.php:89
+#: app/addons/je-job-custom-fields/app/views/composer.php:82
 msgid "After Skills Field"
 msgstr ""
 
-#: jobs-plus/app/addons/je-job-custom-fields/app/views/composer.php:98
+#: app/addons/je-job-custom-fields/app/views/composer.php:91
 msgid "Before Price Field(s)"
 msgstr ""
 
-#: jobs-plus/app/addons/je-job-custom-fields/app/views/composer.php:107
+#: app/addons/je-job-custom-fields/app/views/composer.php:100
 msgid "After Price Field(s)"
 msgstr ""
 
-#: jobs-plus/app/addons/je-job-custom-fields/app/views/composer.php:116
+#: app/addons/je-job-custom-fields/app/views/composer.php:109
 msgid "Before Email Field"
 msgstr ""
 
-#: jobs-plus/app/addons/je-job-custom-fields/app/views/composer.php:125
+#: app/addons/je-job-custom-fields/app/views/composer.php:118
 msgid "After Email Field"
 msgstr ""
 
-#: jobs-plus/app/addons/je-job-custom-fields/app/views/composer.php:134
+#: app/addons/je-job-custom-fields/app/views/composer.php:127
 msgid "Before Complete Date Field"
 msgstr ""
 
-#: jobs-plus/app/addons/je-job-custom-fields/app/views/composer.php:143
+#: app/addons/je-job-custom-fields/app/views/composer.php:136
 msgid "After Complete Date Field"
 msgstr ""
 
-#: jobs-plus/app/addons/je-job-custom-fields/app/views/composer.php:152
+#: app/addons/je-job-custom-fields/app/views/composer.php:145
 msgid "Before Open For Field"
 msgstr ""
 
-#: jobs-plus/app/addons/je-job-custom-fields/app/views/composer.php:161
+#: app/addons/je-job-custom-fields/app/views/composer.php:154
 msgid "After Open For Field"
 msgstr ""
 
-#: jobs-plus/app/addons/je-job-demo-data.php:186
-msgid "Jobs Demo Data"
+#: app/addons/je-job-custom-fields/app/views/dashboard.php:2
+msgid "Job Fields"
 msgstr ""
 
-#: jobs-plus/app/addons/je-job-demo-data.php:197
-msgid "Create dummy data for jobs"
+#: app/addons/je-job-custom-fields/app/views/dashboard.php:10
+msgid "Fields"
 msgstr ""
 
-#: jobs-plus/app/addons/je-job-demo-data.php:200
-msgid "Dummy jobs amount"
+#: app/addons/je-job-custom-fields/app/views/dashboard.php:16
+#: app/views/backend/settings.php:18
+msgid "Jobs Settings"
 msgstr ""
 
-#: jobs-plus/app/addons/je-job-demo-data.php:205
-msgid "Number of dummy jobs to create"
+#: app/addons/je-job-custom-fields/app/views/fields.php:7
+#: app/views/my-job/main.php:9
+msgid "Title"
 msgstr ""
 
-#: jobs-plus/app/addons/je-job-demo-data.php:215
-msgid "Range of price"
+#: app/addons/je-job-custom-fields/app/views/fields.php:18
+#: app/addons/je-message/lib/app/views/shortcode/_inbox_message.php:144
+#: app/addons/je-message/lib/app/views/shortcode/_inbox_message.php:282
+#: app/components/ig-uploader/app/views/footer_modal.php:46
+#: app/components/je-fields-table.php:24
+msgid "Type"
 msgstr ""
 
-#: jobs-plus/app/addons/je-job-demo-data.php:220
-#: jobs-plus/app/controllers/frontend/je-job-recent-widget-controller.php:180
-msgid "Categories"
+#: app/addons/je-job-custom-fields/app/views/fields.php:32
+msgid "Options"
 msgstr ""
 
-#: jobs-plus/app/addons/je-job-demo-data.php:226
-msgid "Demo job categories, separated by commas. Will be randomly assigned."
+#: app/addons/je-job-custom-fields/app/views/fields.php:43
+msgid "Validation Rule"
 msgstr ""
 
-#: jobs-plus/app/addons/je-job-demo-data.php:231
-msgid "Skill tags"
-msgstr ""
-
-#: jobs-plus/app/addons/je-job-demo-data.php:237
-msgid "Demo job skills, separated by commas. Will be randomly assigned."
-msgstr ""
-
-#: jobs-plus/app/addons/je-job-demo-data.php:242
-msgid "Have Sample Files"
-msgstr ""
-
-#: jobs-plus/app/addons/je-job-demo-data.php:247
-msgid "If you want these demo jobs to have sample files, check this box."
-msgstr ""
-
-#: jobs-plus/app/addons/je-message.php:63
-#: jobs-plus/app/addons/je-message/lib/app/views/layout/main.php:11
-msgid "Inbox"
-msgstr ""
-
-#: jobs-plus/app/addons/je-message.php:117
-#: jobs-plus/app/views/job-single/main.php:28
-#: jobs-plus/app/views/job-single/main.php:38
-msgid "Contact"
-msgstr ""
-
-#: jobs-plus/app/addons/je-message.php:124
-#: jobs-plus/app/views/expert-single/main.php:18
-msgid "Contact Me"
-msgstr ""
-
-#: jobs-plus/app/addons/je-message/lib/app/addons/block-list.php:102
-msgid "Block users list, separate by commas"
-msgstr ""
-
-#: jobs-plus/app/addons/je-message/lib/app/addons/capatibility.php:109
-msgid "Settings saved!"
-msgstr ""
-
-#: jobs-plus/app/addons/je-message/lib/app/addons/capatibility.php:129
-#: jobs-plus/app/addons/je-message/lib/app/addons/capatibility.php:230
-msgid "Capability Settings"
-msgstr ""
-
-#: jobs-plus/app/addons/je-message/lib/app/addons/mm-broadcast-messages.php:55
-msgid "Send this message to all users"
-msgstr ""
-
-#: jobs-plus/app/addons/je-message/lib/app/addons/mm-group-conversation.php:31
-msgid "You can't drop your self!"
-msgstr ""
-
-#: jobs-plus/app/addons/je-message/lib/app/addons/mm-group-conversation.php:48
-#, php-format
-msgid "You has dropped user %s out of this conversation."
-msgstr ""
-
-#: jobs-plus/app/addons/je-message/lib/app/addons/mm-group-conversation.php:99
-#: jobs-plus/app/addons/je-message/lib/app/addons/mm-group-conversation.php:144
-msgid "Cc"
-msgstr ""
-
-#: jobs-plus/app/addons/je-message/lib/app/addons/mm-group-conversation.php:103
-#: jobs-plus/app/addons/je-message/lib/app/addons/mm-group-conversation.php:148
-msgid "Cc users"
-msgstr ""
-
-#: jobs-plus/app/addons/je-message/lib/app/addons/mm-group-conversation.php:249
-msgid "Cc Users:"
-msgstr ""
-
-#: jobs-plus/app/addons/je-message/lib/app/addons/mm-group-conversation.php:292
-#: jobs-plus/app/addons/je-message/lib/app/views/shortcode/inbox.php:151
-#: jobs-plus/app/views/expert-single/main.php:235
-#: jobs-plus/app/views/job-single/main.php:98
-#: jobs-plus/app/views/my-expert/main.php:52
-#: jobs-plus/app/views/my-job/main.php:41
-msgid "Are you sure?"
-msgstr ""
-
-#: jobs-plus/app/addons/je-message/lib/app/addons/wysiwyg.php:22
-msgid "Bold"
-msgstr ""
-
-#: jobs-plus/app/addons/je-message/lib/app/addons/wysiwyg.php:23
-msgid "Italic"
-msgstr ""
-
-#: jobs-plus/app/addons/je-message/lib/app/addons/wysiwyg.php:24
-msgid "Underline"
-msgstr ""
-
-#: jobs-plus/app/addons/je-message/lib/app/addons/wysiwyg.php:25
-msgid "Strikethrough"
-msgstr ""
-
-#: jobs-plus/app/addons/je-message/lib/app/addons/wysiwyg.php:26
-msgid "Subscript"
-msgstr ""
-
-#: jobs-plus/app/addons/je-message/lib/app/addons/wysiwyg.php:27
-msgid "Superscript"
-msgstr ""
-
-#: jobs-plus/app/addons/je-message/lib/app/addons/wysiwyg.php:28
-msgid "Align left"
-msgstr ""
-
-#: jobs-plus/app/addons/je-message/lib/app/addons/wysiwyg.php:29
-msgid "Center"
-msgstr ""
-
-#: jobs-plus/app/addons/je-message/lib/app/addons/wysiwyg.php:30
-msgid "Align right"
-msgstr ""
-
-#: jobs-plus/app/addons/je-message/lib/app/addons/wysiwyg.php:31
-msgid "Justify"
-msgstr ""
-
-#: jobs-plus/app/addons/je-message/lib/app/addons/wysiwyg.php:32
-msgid "Font Name"
-msgstr ""
-
-#: jobs-plus/app/addons/je-message/lib/app/addons/wysiwyg.php:33
-msgid "Font Size"
-msgstr ""
-
-#: jobs-plus/app/addons/je-message/lib/app/addons/wysiwyg.php:34
-msgid "Font Color"
-msgstr ""
-
-#: jobs-plus/app/addons/je-message/lib/app/addons/wysiwyg.php:35
-msgid "Remove Formatting"
-msgstr ""
-
-#: jobs-plus/app/addons/je-message/lib/app/addons/wysiwyg.php:36
-msgid "Cut"
-msgstr ""
-
-#: jobs-plus/app/addons/je-message/lib/app/addons/wysiwyg.php:37
-msgid ""
-"Your browser does not allow the cut command. Please use the keyboard "
-"shortcut Ctrl/Cmd-X"
-msgstr ""
-
-#: jobs-plus/app/addons/je-message/lib/app/addons/wysiwyg.php:38
-msgid "Copy"
-msgstr ""
-
-#: jobs-plus/app/addons/je-message/lib/app/addons/wysiwyg.php:39
-msgid ""
-"Your browser does not allow the copy command. Please use the keyboard "
-"shortcut Ctrl/Cmd-C"
-msgstr ""
-
-#: jobs-plus/app/addons/je-message/lib/app/addons/wysiwyg.php:40
-msgid "Paste"
-msgstr ""
-
-#: jobs-plus/app/addons/je-message/lib/app/addons/wysiwyg.php:41
-msgid ""
-"Your browser does not allow the paste command. Please use the keyboard "
-"shortcut Ctrl/Cmd-V"
-msgstr ""
-
-#: jobs-plus/app/addons/je-message/lib/app/addons/wysiwyg.php:42
-msgid "Paste your text inside the following box"
-msgstr ""
-
-#: jobs-plus/app/addons/je-message/lib/app/addons/wysiwyg.php:43
-msgid "Paste Text"
-msgstr ""
-
-#: jobs-plus/app/addons/je-message/lib/app/addons/wysiwyg.php:44
-msgid "Bullet list"
-msgstr ""
-
-#: jobs-plus/app/addons/je-message/lib/app/addons/wysiwyg.php:45
-msgid "Numbered list"
-msgstr ""
-
-#: jobs-plus/app/addons/je-message/lib/app/addons/wysiwyg.php:46
-msgid "Undo"
-msgstr ""
-
-#: jobs-plus/app/addons/je-message/lib/app/addons/wysiwyg.php:47
-msgid "Redo"
-msgstr ""
-
-#: jobs-plus/app/addons/je-message/lib/app/addons/wysiwyg.php:48
-msgid "Rows"
-msgstr ""
-
-#: jobs-plus/app/addons/je-message/lib/app/addons/wysiwyg.php:49
-msgid "Cols"
-msgstr ""
-
-#: jobs-plus/app/addons/je-message/lib/app/addons/wysiwyg.php:50
-msgid "Insert a table"
-msgstr ""
-
-#: jobs-plus/app/addons/je-message/lib/app/addons/wysiwyg.php:51
-msgid "Insert a horizontal rule"
-msgstr ""
-
-#: jobs-plus/app/addons/je-message/lib/app/addons/wysiwyg.php:52
-msgid "Code"
-msgstr ""
-
-#: jobs-plus/app/addons/je-message/lib/app/addons/wysiwyg.php:53
-msgid "Width (optional)"
-msgstr ""
-
-#: jobs-plus/app/addons/je-message/lib/app/addons/wysiwyg.php:54
-msgid "Height (optional)"
-msgstr ""
-
-#: jobs-plus/app/addons/je-message/lib/app/addons/wysiwyg.php:55
-msgid "Insert an image"
-msgstr ""
-
-#: jobs-plus/app/addons/je-message/lib/app/addons/wysiwyg.php:56
-msgid "E-mail"
-msgstr ""
-
-#: jobs-plus/app/addons/je-message/lib/app/addons/wysiwyg.php:57
-msgid "Insert an email"
-msgstr ""
-
-#: jobs-plus/app/addons/je-message/lib/app/addons/wysiwyg.php:58
-msgid "URL"
-msgstr ""
-
-#: jobs-plus/app/addons/je-message/lib/app/addons/wysiwyg.php:59
-msgid "Insert a link"
-msgstr ""
-
-#: jobs-plus/app/addons/je-message/lib/app/addons/wysiwyg.php:60
-msgid "Unlink"
-msgstr ""
-
-#: jobs-plus/app/addons/je-message/lib/app/addons/wysiwyg.php:61
-msgid "More"
-msgstr ""
-
-#: jobs-plus/app/addons/je-message/lib/app/addons/wysiwyg.php:62
-msgid "Insert an emoticon"
-msgstr ""
-
-#: jobs-plus/app/addons/je-message/lib/app/addons/wysiwyg.php:63
-msgid "Video URL"
-msgstr ""
-
-#: jobs-plus/app/addons/je-message/lib/app/addons/wysiwyg.php:64
-msgid "Insert"
-msgstr ""
-
-#: jobs-plus/app/addons/je-message/lib/app/addons/wysiwyg.php:65
-msgid "Insert a YouTube video"
-msgstr ""
-
-#: jobs-plus/app/addons/je-message/lib/app/addons/wysiwyg.php:66
-msgid "Insert current date"
-msgstr ""
-
-#: jobs-plus/app/addons/je-message/lib/app/addons/wysiwyg.php:67
-msgid "Insert current time"
-msgstr ""
-
-#: jobs-plus/app/addons/je-message/lib/app/addons/wysiwyg.php:68
-msgid "Print"
-msgstr ""
-
-#: jobs-plus/app/addons/je-message/lib/app/addons/wysiwyg.php:69
-msgid "View source"
-msgstr ""
-
-#: jobs-plus/app/addons/je-message/lib/app/addons/wysiwyg.php:70
-msgid "Description (optional)"
-msgstr ""
-
-#: jobs-plus/app/addons/je-message/lib/app/addons/wysiwyg.php:71
-msgid "Enter the image URL"
-msgstr ""
-
-#: jobs-plus/app/addons/je-message/lib/app/addons/wysiwyg.php:72
-msgid "Enter the e-mail address"
-msgstr ""
-
-#: jobs-plus/app/addons/je-message/lib/app/addons/wysiwyg.php:73
-msgid "Enter the displayed text"
-msgstr ""
-
-#: jobs-plus/app/addons/je-message/lib/app/addons/wysiwyg.php:74
-msgid "Enter URL"
-msgstr ""
-
-#: jobs-plus/app/addons/je-message/lib/app/addons/wysiwyg.php:75
-msgid "Enter the YouTube video URL or ID"
-msgstr ""
-
-#: jobs-plus/app/addons/je-message/lib/app/addons/wysiwyg.php:76
-msgid "Insert a Quote"
-msgstr ""
-
-#: jobs-plus/app/addons/je-message/lib/app/addons/wysiwyg.php:77
-msgid "Invalid YouTube video"
-msgstr ""
-
-#: jobs-plus/app/addons/je-message/lib/app/addons/wysiwyg.php:78
-msgid "dateFormat"
-msgstr ""
-
-#: jobs-plus/app/addons/je-message/lib/app/components/mm-addon-table.php:36
-#: jobs-plus/app/components/je-addon-table.php:36
-#: jobs-plus/app/views/backend/jobs/_form.php:29
+#: app/addons/je-job-custom-fields/app/views/fields.php:55
+#: app/addons/je-message/lib/app/components/mm-addon-table.php:36
+#: app/components/je-addon-table.php:36 app/views/backend/jobs/_form.php:29
 msgid "Description"
 msgstr ""
 
-#: jobs-plus/app/addons/je-message/lib/app/components/mm-addon-table.php:61
-#: jobs-plus/app/components/je-addon-table.php:61
+#: app/addons/je-job-custom-fields1.php:219
+msgid "Customize Job Fields"
+msgstr ""
+
+#: app/addons/je-job-custom-fields1.php:286
+msgid "Required"
+msgstr ""
+
+#: app/addons/je-job-custom-fields1.php:287
+msgid "Valid Email"
+msgstr ""
+
+#: app/addons/je-job-custom-fields1.php:288
+msgid "Max Length"
+msgstr ""
+
+#: app/addons/je-job-custom-fields1.php:289
+msgid "Min Length"
+msgstr ""
+
+#: app/addons/je-job-custom-fields1.php:290
+msgid "Exactly Length"
+msgstr ""
+
+#: app/addons/je-job-demo-data.php:186
+msgid "Jobs Demo Data"
+msgstr ""
+
+#: app/addons/je-job-demo-data.php:197
+msgid "Create dummy data for jobs"
+msgstr ""
+
+#: app/addons/je-job-demo-data.php:200
+msgid "Dummy jobs amount"
+msgstr ""
+
+#: app/addons/je-job-demo-data.php:205
+msgid "Number of dummy jobs to create"
+msgstr ""
+
+#: app/addons/je-job-demo-data.php:215
+msgid "Range of price"
+msgstr ""
+
+#: app/addons/je-job-demo-data.php:220
+#: app/controllers/frontend/je-job-recent-widget-controller.php:180
+msgid "Categories"
+msgstr ""
+
+#: app/addons/je-job-demo-data.php:226
+msgid "Demo job categories, separated by commas. Will be randomly assigned."
+msgstr ""
+
+#: app/addons/je-job-demo-data.php:231
+msgid "Skill tags"
+msgstr ""
+
+#: app/addons/je-job-demo-data.php:237
+msgid "Demo job skills, separated by commas. Will be randomly assigned."
+msgstr ""
+
+#: app/addons/je-job-demo-data.php:242
+msgid "Have Sample Files"
+msgstr ""
+
+#: app/addons/je-job-demo-data.php:247
+msgid "If you want these demo jobs to have sample files, check this box."
+msgstr ""
+
+#: app/addons/je-marketpress.php:42
 msgid ""
-"Deactivate <i class=\"fa fa-circle-o-notch fa-spin loader-ani hide\"></i>"
+"The add-on <strong>MarketPress integration</strong> of <strong>Jobs&Experts</"
+"strong> required <strong>MarketPress</strong>"
 msgstr ""
 
-#: jobs-plus/app/addons/je-message/lib/app/components/mm-addon-table.php:63
-#: jobs-plus/app/components/je-addon-table.php:66
-#: jobs-plus/app/components/je-addon-table.php:80
-msgid "Activate <i class=\"fa fa-circle-o-notch fa-spin loader-ani hide\"></i>"
+#: app/addons/je-message/lib/app/addons/block-list.php:102
+msgid "Block users list, separate by commas"
 msgstr ""
 
-#: jobs-plus/app/addons/je-message/lib/app/components/mm-addon-table.php:71
-#: jobs-plus/app/components/je-addon-table.php:89
-msgid "Created by: "
+#: app/addons/je-message/lib/app/addons/capatibility.php:109
+msgid "Settings saved!"
 msgstr ""
 
-#: jobs-plus/app/addons/je-message/lib/app/components/mm-messages-table.php:35
-msgid "Last Message"
+#: app/addons/je-message/lib/app/addons/capatibility.php:129
+#: app/addons/je-message/lib/app/addons/capatibility.php:230
+msgid "Capability Settings"
 msgstr ""
 
-#: jobs-plus/app/addons/je-message/lib/app/components/mm-messages-table.php:36
-msgid "Users"
+#: app/addons/je-message/lib/app/addons/mm-broadcast-messages.php:55
+msgid "Send this message to all users"
 msgstr ""
 
-#: jobs-plus/app/addons/je-message/lib/app/components/mm-messages-table.php:37
-msgid "Total Messages"
+#: app/addons/je-message/lib/app/addons/mm-group-conversation.php:31
+msgid "You can't drop your self!"
 msgstr ""
 
-#: jobs-plus/app/addons/je-message/lib/app/controllers/admin-bar-notification-controller.php:28
-msgid ""
-"<div class=\"ig-container mm-admin-bar\"><i class=\"fa fa-envelope\"></"
-"i>&nbsp;<span>"
+#: app/addons/je-message/lib/app/addons/mm-group-conversation.php:48
+msgid "You has dropped user %s out of this conversation."
 msgstr ""
 
-#: jobs-plus/app/addons/je-message/lib/app/controllers/admin-bar-notification-controller.php:43
-msgid "Send New Message"
+#: app/addons/je-message/lib/app/addons/mm-group-conversation.php:99
+#: app/addons/je-message/lib/app/addons/mm-group-conversation.php:144
+msgid "Cc"
 msgstr ""
 
-#: jobs-plus/app/addons/je-message/lib/app/controllers/admin-bar-notification-controller.php:54
-msgid "View Inbox"
+#: app/addons/je-message/lib/app/addons/mm-group-conversation.php:103
+#: app/addons/je-message/lib/app/addons/mm-group-conversation.php:148
+msgid "Cc users"
 msgstr ""
 
-#: jobs-plus/app/addons/je-message/lib/app/controllers/backend/mmessage-backend-controller.php:22
-msgid ""
-"Please visit settings > messaging to choose your inbox page and complete "
-"setup"
+#: app/addons/je-message/lib/app/addons/mm-group-conversation.php:249
+msgid "Cc Users:"
 msgstr ""
 
-#: jobs-plus/app/addons/je-message/lib/app/controllers/backend/mmessage-backend-controller.php:76
-#: jobs-plus/app/controllers/backend/je-admin-controller.php:174
-#: jobs-plus/app/views/backend/settings/general.php:253
-msgid "Deactivate"
+#: app/addons/je-message/lib/app/addons/mm-group-conversation.php:292
+#: app/addons/je-message/lib/app/views/shortcode/inbox.php:151
+#: app/views/expert-single/main.php:239 app/views/job-single/main.php:98
+#: app/views/my-expert/main.php:52 app/views/my-job/main.php:41
+msgid "Are you sure?"
 msgstr ""
 
-#: jobs-plus/app/addons/je-message/lib/app/controllers/backend/mmessage-backend-controller.php:85
-#: jobs-plus/app/controllers/backend/je-admin-controller.php:184
-#: jobs-plus/app/views/backend/settings/general.php:231
-msgid "Activate"
+#: app/addons/je-message/lib/app/addons/words-filter.php:68
+msgid "Pattern and Subject can't be empty"
 msgstr ""
 
-#: jobs-plus/app/addons/je-message/lib/app/controllers/backend/mmessage-backend-controller.php:93
-#: jobs-plus/app/addons/je-message/lib/app/controllers/mm-upgrade-controller.php:211
-msgid "Messaging"
+#: app/addons/je-message/lib/app/addons/words-filter.php:73
+msgid "Your pattern matched the subject"
 msgstr ""
 
-#: jobs-plus/app/addons/je-message/lib/app/controllers/backend/mmessage-backend-controller.php:94
-msgid "View Messages"
+#: app/addons/je-message/lib/app/addons/words-filter.php:75
+msgid "Your pattern mismatched the subject"
 msgstr ""
 
-#: jobs-plus/app/addons/je-message/lib/app/controllers/backend/mmessage-backend-controller.php:95
-#: jobs-plus/app/addons/je-message/lib/app/views/backend/setting.php:4
-#: jobs-plus/app/addons/je-message/lib/app/views/layout/main.php:38
-#: jobs-plus/app/addons/je-message/lib/app/views/layout/main.php:54
-#: jobs-plus/app/components/ig-wallet.php:42
-#: jobs-plus/app/components/ig-wallet/app/views/credit/settings.php:2
-#: jobs-plus/app/controllers/backend/je-admin-controller.php:63
-#: jobs-plus/app/controllers/backend/je-admin-controller.php:64
-#: jobs-plus/app/controllers/backend/je-admin-controller.php:77
-#: jobs-plus/app/controllers/backend/je-admin-controller.php:78
-#: jobs-plus/app/views/backend/getting_start.php:92
-#: jobs-plus/app/views/backend/getting_start.php:124
-#: jobs-plus/app/views/backend/settings.php:2
-msgid "Settings"
+#: app/addons/je-message/lib/app/addons/words-filter.php:112
+msgid "The word <strong>%s</strong> has been added to the block list"
 msgstr ""
 
-#: jobs-plus/app/addons/je-message/lib/app/controllers/backend/mmessage-backend-controller.php:115
-#: jobs-plus/app/controllers/backend/je-settings-controller.php:58
+#: app/addons/je-message/lib/app/addons/words-filter.php:144
+#: app/addons/je-message/lib/app/controllers/backend/mmessage-backend-controller.php:115
+#: app/controllers/backend/je-settings-controller.php:58
 msgid "Your settings have been successfully updated."
 msgstr ""
 
-#: jobs-plus/app/addons/je-message/lib/app/controllers/backend/mmessage-backend-controller.php:130
-msgid "Conversation not found!"
+#: app/addons/je-message/lib/app/addons/words-filter.php:153
+msgid "Words Filter"
 msgstr ""
 
-#: jobs-plus/app/addons/je-message/lib/app/controllers/inbox-shortcode-controller.php:66
-msgid "Your settings have been successfully updated"
-msgstr ""
-
-#: jobs-plus/app/addons/je-message/lib/app/controllers/inbox-shortcode-controller.php:260
-#: jobs-plus/app/addons/je-message/lib/app/controllers/inbox-shortcode-controller.php:284
-msgid "Your message has been sent."
-msgstr ""
-
-#: jobs-plus/app/addons/je-message/lib/app/controllers/message-me-shortcode-controller.php:21
-msgid "Message me"
-msgstr ""
-
-#: jobs-plus/app/addons/je-message/lib/app/controllers/message-me-shortcode-controller.php:23
-msgid "You have new message!"
-msgstr ""
-
-#: jobs-plus/app/addons/je-message/lib/app/models/mm-message-model.php:118
-msgid "Re:"
-msgstr ""
-
-#: jobs-plus/app/addons/je-message/lib/app/views/backend/main.php:8
-msgid "Messages"
-msgstr ""
-
-#: jobs-plus/app/addons/je-message/lib/app/views/backend/setting.php:17
-#: jobs-plus/app/components/ig-wallet/app/views/credit/settings.php:18
-#: jobs-plus/app/views/backend/settings.php:12
+#: app/addons/je-message/lib/app/addons/words-filter.php:165
+#: app/addons/je-message/lib/app/views/backend/setting.php:17
+#: app/components/ig-wallet/app/views/credit/settings.php:18
+#: app/views/backend/settings.php:12
 msgid "General Settings"
 msgstr ""
 
-#: jobs-plus/app/addons/je-message/lib/app/views/backend/setting.php:22
-#: jobs-plus/app/addons/je-message/lib/app/views/backend/setting/email.php:3
-#: jobs-plus/app/addons/je-message/lib/app/views/shortcode/setting.php:29
-msgid "Email Settings"
+#: app/addons/je-message/lib/app/addons/words-filter.php:185
+msgid "Add new word"
 msgstr ""
 
-#: jobs-plus/app/addons/je-message/lib/app/views/backend/setting.php:27
-#: jobs-plus/app/addons/je-message/lib/app/views/backend/setting/shortcode.php:2
-#: jobs-plus/app/views/backend/settings.php:29
-msgid "Shortcodes"
+#: app/addons/je-message/lib/app/addons/words-filter.php:194
+msgid "Word"
 msgstr ""
 
-#: jobs-plus/app/addons/je-message/lib/app/views/backend/setting.php:31
-msgid "Attachments"
+#: app/addons/je-message/lib/app/addons/words-filter.php:199
+msgid "Word to block, you can use regex for this"
 msgstr ""
 
-#: jobs-plus/app/addons/je-message/lib/app/views/backend/setting/attachment.php:1
+#: app/addons/je-message/lib/app/addons/words-filter.php:206
+msgid "Replacer"
+msgstr ""
+
+#: app/addons/je-message/lib/app/addons/words-filter.php:211
+msgid "Replacer for this word, if empty, use the global instead"
+msgstr ""
+
+#: app/addons/je-message/lib/app/addons/words-filter.php:218
+#: app/addons/je-message/lib/app/addons/words-filter.php:261
+msgid "Is Regex"
+msgstr ""
+
+#: app/addons/je-message/lib/app/addons/words-filter.php:232
+msgid "Regex Subject"
+msgstr ""
+
+#: app/addons/je-message/lib/app/addons/words-filter.php:240
+msgid "Test Regex"
+msgstr ""
+
+#: app/addons/je-message/lib/app/addons/words-filter.php:255
+msgid "Block list"
+msgstr ""
+
+#: app/addons/je-message/lib/app/addons/words-filter.php:260
+msgid "Block word"
+msgstr ""
+
+#: app/addons/je-message/lib/app/addons/words-filter.php:271
+#: app/views/backend/settings/general.php:101
+#: app/views/backend/settings/general.php:136
+msgid "Yes"
+msgstr ""
+
+#: app/addons/je-message/lib/app/addons/words-filter.php:271
+#: app/views/backend/settings/general.php:107
+#: app/views/backend/settings/general.php:139
+msgid "No"
+msgstr ""
+
+#: app/addons/je-message/lib/app/addons/words-filter.php:273
+#: app/components/ig-wallet/app/views/credit/main.php:46
+#: app/views/backend/getting_start.php:17 app/views/backend/getting_start.php:33
+#: app/views/backend/getting_start.php:44 app/views/backend/getting_start.php:82
+#: app/views/backend/getting_start.php:103 app/views/backend/getting_start.php:113
+#: app/views/expert-single/main.php:224 app/views/job-single/main.php:87
+#: app/views/my-expert/main.php:28 app/views/my-job/main.php:25
+#: framework/database/ig-grid.php:116
+msgid "Edit"
+msgstr ""
+
+#: app/addons/je-message/lib/app/addons/words-filter.php:275
+msgid "Remove"
+msgstr ""
+
+#: app/addons/je-message/lib/app/addons/wysiwyg.php:22
+msgid "Bold"
+msgstr ""
+
+#: app/addons/je-message/lib/app/addons/wysiwyg.php:23
+msgid "Italic"
+msgstr ""
+
+#: app/addons/je-message/lib/app/addons/wysiwyg.php:24
+msgid "Underline"
+msgstr ""
+
+#: app/addons/je-message/lib/app/addons/wysiwyg.php:25
+msgid "Strikethrough"
+msgstr ""
+
+#: app/addons/je-message/lib/app/addons/wysiwyg.php:26
+msgid "Subscript"
+msgstr ""
+
+#: app/addons/je-message/lib/app/addons/wysiwyg.php:27
+msgid "Superscript"
+msgstr ""
+
+#: app/addons/je-message/lib/app/addons/wysiwyg.php:28
+msgid "Align left"
+msgstr ""
+
+#: app/addons/je-message/lib/app/addons/wysiwyg.php:29
+msgid "Center"
+msgstr ""
+
+#: app/addons/je-message/lib/app/addons/wysiwyg.php:30
+msgid "Align right"
+msgstr ""
+
+#: app/addons/je-message/lib/app/addons/wysiwyg.php:31
+msgid "Justify"
+msgstr ""
+
+#: app/addons/je-message/lib/app/addons/wysiwyg.php:32
+msgid "Font Name"
+msgstr ""
+
+#: app/addons/je-message/lib/app/addons/wysiwyg.php:33
+msgid "Font Size"
+msgstr ""
+
+#: app/addons/je-message/lib/app/addons/wysiwyg.php:34
+msgid "Font Color"
+msgstr ""
+
+#: app/addons/je-message/lib/app/addons/wysiwyg.php:35
+msgid "Remove Formatting"
+msgstr ""
+
+#: app/addons/je-message/lib/app/addons/wysiwyg.php:36
+msgid "Cut"
+msgstr ""
+
+#: app/addons/je-message/lib/app/addons/wysiwyg.php:37
+msgid ""
+"Your browser does not allow the cut command. Please use the keyboard shortcut "
+"Ctrl/Cmd-X"
+msgstr ""
+
+#: app/addons/je-message/lib/app/addons/wysiwyg.php:38
+msgid "Copy"
+msgstr ""
+
+#: app/addons/je-message/lib/app/addons/wysiwyg.php:39
+msgid ""
+"Your browser does not allow the copy command. Please use the keyboard shortcut "
+"Ctrl/Cmd-C"
+msgstr ""
+
+#: app/addons/je-message/lib/app/addons/wysiwyg.php:40
+msgid "Paste"
+msgstr ""
+
+#: app/addons/je-message/lib/app/addons/wysiwyg.php:41
+msgid ""
+"Your browser does not allow the paste command. Please use the keyboard shortcut "
+"Ctrl/Cmd-V"
+msgstr ""
+
+#: app/addons/je-message/lib/app/addons/wysiwyg.php:42
+msgid "Paste your text inside the following box"
+msgstr ""
+
+#: app/addons/je-message/lib/app/addons/wysiwyg.php:43
+msgid "Paste Text"
+msgstr ""
+
+#: app/addons/je-message/lib/app/addons/wysiwyg.php:44
+msgid "Bullet list"
+msgstr ""
+
+#: app/addons/je-message/lib/app/addons/wysiwyg.php:45
+msgid "Numbered list"
+msgstr ""
+
+#: app/addons/je-message/lib/app/addons/wysiwyg.php:46
+msgid "Undo"
+msgstr ""
+
+#: app/addons/je-message/lib/app/addons/wysiwyg.php:47
+msgid "Redo"
+msgstr ""
+
+#: app/addons/je-message/lib/app/addons/wysiwyg.php:48
+msgid "Rows"
+msgstr ""
+
+#: app/addons/je-message/lib/app/addons/wysiwyg.php:49
+msgid "Cols"
+msgstr ""
+
+#: app/addons/je-message/lib/app/addons/wysiwyg.php:50
+msgid "Insert a table"
+msgstr ""
+
+#: app/addons/je-message/lib/app/addons/wysiwyg.php:51
+msgid "Insert a horizontal rule"
+msgstr ""
+
+#: app/addons/je-message/lib/app/addons/wysiwyg.php:52
+msgid "Code"
+msgstr ""
+
+#: app/addons/je-message/lib/app/addons/wysiwyg.php:53
+msgid "Width (optional)"
+msgstr ""
+
+#: app/addons/je-message/lib/app/addons/wysiwyg.php:54
+msgid "Height (optional)"
+msgstr ""
+
+#: app/addons/je-message/lib/app/addons/wysiwyg.php:55
+msgid "Insert an image"
+msgstr ""
+
+#: app/addons/je-message/lib/app/addons/wysiwyg.php:56
+msgid "E-mail"
+msgstr ""
+
+#: app/addons/je-message/lib/app/addons/wysiwyg.php:57
+msgid "Insert an email"
+msgstr ""
+
+#: app/addons/je-message/lib/app/addons/wysiwyg.php:58
+msgid "URL"
+msgstr ""
+
+#: app/addons/je-message/lib/app/addons/wysiwyg.php:59
+msgid "Insert a link"
+msgstr ""
+
+#: app/addons/je-message/lib/app/addons/wysiwyg.php:60
+msgid "Unlink"
+msgstr ""
+
+#: app/addons/je-message/lib/app/addons/wysiwyg.php:61
+msgid "More"
+msgstr ""
+
+#: app/addons/je-message/lib/app/addons/wysiwyg.php:62
+msgid "Insert an emoticon"
+msgstr ""
+
+#: app/addons/je-message/lib/app/addons/wysiwyg.php:63
+msgid "Video URL"
+msgstr ""
+
+#: app/addons/je-message/lib/app/addons/wysiwyg.php:64
+msgid "Insert"
+msgstr ""
+
+#: app/addons/je-message/lib/app/addons/wysiwyg.php:65
+msgid "Insert a YouTube video"
+msgstr ""
+
+#: app/addons/je-message/lib/app/addons/wysiwyg.php:66
+msgid "Insert current date"
+msgstr ""
+
+#: app/addons/je-message/lib/app/addons/wysiwyg.php:67
+msgid "Insert current time"
+msgstr ""
+
+#: app/addons/je-message/lib/app/addons/wysiwyg.php:68
+msgid "Print"
+msgstr ""
+
+#: app/addons/je-message/lib/app/addons/wysiwyg.php:69
+msgid "View source"
+msgstr ""
+
+#: app/addons/je-message/lib/app/addons/wysiwyg.php:70
+msgid "Description (optional)"
+msgstr ""
+
+#: app/addons/je-message/lib/app/addons/wysiwyg.php:71
+msgid "Enter the image URL"
+msgstr ""
+
+#: app/addons/je-message/lib/app/addons/wysiwyg.php:72
+msgid "Enter the e-mail address"
+msgstr ""
+
+#: app/addons/je-message/lib/app/addons/wysiwyg.php:73
+msgid "Enter the displayed text"
+msgstr ""
+
+#: app/addons/je-message/lib/app/addons/wysiwyg.php:74
+msgid "Enter URL"
+msgstr ""
+
+#: app/addons/je-message/lib/app/addons/wysiwyg.php:75
+msgid "Enter the YouTube video URL or ID"
+msgstr ""
+
+#: app/addons/je-message/lib/app/addons/wysiwyg.php:76
+msgid "Insert a Quote"
+msgstr ""
+
+#: app/addons/je-message/lib/app/addons/wysiwyg.php:77
+msgid "Invalid YouTube video"
+msgstr ""
+
+#: app/addons/je-message/lib/app/addons/wysiwyg.php:78
+msgid "dateFormat"
+msgstr ""
+
+#: app/addons/je-message/lib/app/components/mm-addon-table.php:61
+#: app/components/je-addon-table.php:61
+msgid "Deactivate <i class=\"fa fa-circle-o-notch fa-spin loader-ani hide\"></i>"
+msgstr ""
+
+#: app/addons/je-message/lib/app/components/mm-addon-table.php:63
+#: app/components/je-addon-table.php:66 app/components/je-addon-table.php:80
+msgid "Activate <i class=\"fa fa-circle-o-notch fa-spin loader-ani hide\"></i>"
+msgstr ""
+
+#: app/addons/je-message/lib/app/components/mm-addon-table.php:71
+#: app/components/je-addon-table.php:89
+msgid "Created by: "
+msgstr ""
+
+#: app/addons/je-message/lib/app/components/mm-messages-table.php:35
+msgid "Last Message"
+msgstr ""
+
+#: app/addons/je-message/lib/app/components/mm-messages-table.php:36
+msgid "Users"
+msgstr ""
+
+#: app/addons/je-message/lib/app/components/mm-messages-table.php:37
+msgid "Total Messages"
+msgstr ""
+
+#: app/addons/je-message/lib/app/controllers/admin-bar-notification-controller.php:43
+msgid "Send New Message"
+msgstr ""
+
+#: app/addons/je-message/lib/app/controllers/admin-bar-notification-controller.php:54
+msgid "View Inbox"
+msgstr ""
+
+#: app/addons/je-message/lib/app/controllers/backend/mmessage-backend-controller.php:22
+msgid ""
+"Please visit settings > messaging to choose your inbox page and complete setup"
+msgstr ""
+
+#: app/addons/je-message/lib/app/controllers/backend/mmessage-backend-controller.php:76
+#: app/controllers/backend/je-admin-controller.php:174
+#: app/views/backend/settings/general.php:253
+msgid "Deactivate"
+msgstr ""
+
+#: app/addons/je-message/lib/app/controllers/backend/mmessage-backend-controller.php:85
+#: app/controllers/backend/je-admin-controller.php:184
+#: app/views/backend/settings/general.php:231
+msgid "Activate"
+msgstr ""
+
+#: app/addons/je-message/lib/app/controllers/backend/mmessage-backend-controller.php:93
+#: app/addons/je-message/lib/app/controllers/mm-upgrade-controller.php:210
+msgid "Messaging"
+msgstr ""
+
+#: app/addons/je-message/lib/app/controllers/backend/mmessage-backend-controller.php:94
+msgid "View Messages"
+msgstr ""
+
+#: app/addons/je-message/lib/app/controllers/backend/mmessage-backend-controller.php:95
+#: app/addons/je-message/lib/app/views/backend/setting.php:4
+#: app/addons/je-message/lib/app/views/layout/main.php:38
+#: app/addons/je-message/lib/app/views/layout/main.php:54
+#: app/components/ig-wallet/app/views/credit/settings.php:2
+#: app/components/ig-wallet.php:42
+#: app/controllers/backend/je-admin-controller.php:63
+#: app/controllers/backend/je-admin-controller.php:64
+#: app/controllers/backend/je-admin-controller.php:77
+#: app/controllers/backend/je-admin-controller.php:78
+#: app/views/backend/getting_start.php:92 app/views/backend/getting_start.php:124
+#: app/views/backend/settings.php:2
+msgid "Settings"
+msgstr ""
+
+#: app/addons/je-message/lib/app/controllers/backend/mmessage-backend-controller.php:130
+msgid "Conversation not found!"
+msgstr ""
+
+#: app/addons/je-message/lib/app/controllers/inbox-shortcode-controller.php:66
+msgid "Your settings have been successfully updated"
+msgstr ""
+
+#: app/addons/je-message/lib/app/controllers/inbox-shortcode-controller.php:260
+#: app/addons/je-message/lib/app/controllers/inbox-shortcode-controller.php:284
+msgid "Your message has been sent."
+msgstr ""
+
+#: app/addons/je-message/lib/app/controllers/message-me-shortcode-controller.php:21
+msgid "Message me"
+msgstr ""
+
+#: app/addons/je-message/lib/app/controllers/message-me-shortcode-controller.php:23
+msgid "You have new message!"
+msgstr ""
+
+#: app/addons/je-message/lib/app/models/mm-message-model.php:118
+msgid "Re:"
+msgstr ""
+
+#: app/addons/je-message/lib/app/views/backend/main.php:8
+msgid "Messages"
+msgstr ""
+
+#: app/addons/je-message/lib/app/views/backend/setting/attachment.php:1
 msgid "Which roles can upload attachments"
 msgstr ""
 
-#: jobs-plus/app/addons/je-message/lib/app/views/backend/setting/attachment.php:8
-#: jobs-plus/app/views/backend/settings/general.php:120
-#: jobs-plus/app/views/backend/settings/uploader.php:8
+#: app/addons/je-message/lib/app/views/backend/setting/attachment.php:8
+#: app/views/backend/settings/general.php:120
+#: app/views/backend/settings/uploader.php:8
 msgid "Role name"
 msgstr ""
 
-#: jobs-plus/app/addons/je-message/lib/app/views/backend/setting/attachment.php:9
-#: jobs-plus/app/views/backend/settings/general.php:121
-#: jobs-plus/app/views/backend/settings/uploader.php:9
+#: app/addons/je-message/lib/app/views/backend/setting/attachment.php:9
+#: app/views/backend/settings/general.php:121
+#: app/views/backend/settings/uploader.php:9
 msgid "Can upload"
 msgstr ""
 
-#: jobs-plus/app/addons/je-message/lib/app/views/backend/setting/general.php:3
-#: jobs-plus/app/views/backend/settings/general.php:2
+#: app/addons/je-message/lib/app/views/backend/setting/email.php:3
+#: app/addons/je-message/lib/app/views/backend/setting.php:22
+#: app/addons/je-message/lib/app/views/shortcode/setting.php:29
+msgid "Email Settings"
+msgstr ""
+
+#: app/addons/je-message/lib/app/views/backend/setting/general.php:3
+#: app/views/backend/settings/general.php:2
 msgid "General Options"
 msgstr ""
 
-#: jobs-plus/app/addons/je-message/lib/app/views/backend/setting/general.php:9
+#: app/addons/je-message/lib/app/views/backend/setting/general.php:9
 msgid "Enable Message Receipt"
 msgstr ""
 
-#: jobs-plus/app/addons/je-message/lib/app/views/backend/setting/general.php:16
+#: app/addons/je-message/lib/app/views/backend/setting/general.php:16
 msgid "Tick this box to enable email notifications of read messages."
 msgstr ""
 
-#: jobs-plus/app/addons/je-message/lib/app/views/backend/setting/general.php:23
+#: app/addons/je-message/lib/app/views/backend/setting/general.php:23
 msgid "Allow the user to disable read message receipts?"
 msgstr ""
 
-#: jobs-plus/app/addons/je-message/lib/app/views/backend/setting/general.php:30
+#: app/addons/je-message/lib/app/views/backend/setting/general.php:30
 msgid "This will allow the user to enable or disable read receipts."
 msgstr ""
 
-#: jobs-plus/app/addons/je-message/lib/app/views/backend/setting/general.php:37
-#: jobs-plus/app/addons/je-message/lib/app/views/backend/setting/general.php:55
-#: jobs-plus/app/addons/je-message/lib/app/views/backend/setting/general.php:121
-#: jobs-plus/app/addons/je-pages-manager.php:259
-#: jobs-plus/app/addons/je-pages-manager.php:285
-#: jobs-plus/app/addons/je-pages-manager.php:312
-#: jobs-plus/app/addons/je-pages-manager.php:338
-#: jobs-plus/app/addons/je-pages-manager.php:364
-#: jobs-plus/app/addons/je-pages-manager.php:394
-#: jobs-plus/app/addons/je-pages-manager.php:420
-#: jobs-plus/app/addons/je-pages-manager.php:447
-#: jobs-plus/app/addons/je-pages-manager.php:473
-#: jobs-plus/app/addons/je-pages-manager.php:499
-#: jobs-plus/app/addons/je-pages-manager.php:538
-#: jobs-plus/app/components/ig-wallet/app/views/credit/settings.php:57
-#: jobs-plus/app/components/ig-wallet/app/views/settings/general.php:16
-#: jobs-plus/app/components/ig-wallet/app/views/settings/general.php:34
-#: jobs-plus/app/components/ig-wallet/app/views/settings/general.php:70
+#: app/addons/je-message/lib/app/views/backend/setting/general.php:37
+#: app/addons/je-message/lib/app/views/backend/setting/general.php:55
+#: app/addons/je-message/lib/app/views/backend/setting/general.php:121
+#: app/addons/je-pages-manager.php:259 app/addons/je-pages-manager.php:285
+#: app/addons/je-pages-manager.php:312 app/addons/je-pages-manager.php:338
+#: app/addons/je-pages-manager.php:364 app/addons/je-pages-manager.php:394
+#: app/addons/je-pages-manager.php:420 app/addons/je-pages-manager.php:447
+#: app/addons/je-pages-manager.php:473 app/addons/je-pages-manager.php:499
+#: app/addons/je-pages-manager.php:538
+#: app/components/ig-wallet/app/views/credit/settings.php:57
+#: app/components/ig-wallet/app/views/settings/general.php:16
+#: app/components/ig-wallet/app/views/settings/general.php:34
+#: app/components/ig-wallet/app/views/settings/general.php:70
 msgid "Create Page"
 msgstr ""
 
-#: jobs-plus/app/addons/je-message/lib/app/views/backend/setting/general.php:40
-#: jobs-plus/app/addons/je-message/lib/app/views/backend/setting/shortcode.php:6
+#: app/addons/je-message/lib/app/views/backend/setting/general.php:40
+#: app/addons/je-message/lib/app/views/backend/setting/shortcode.php:6
 msgid "Inbox Page"
 msgstr ""
 
-#: jobs-plus/app/addons/je-message/lib/app/views/backend/setting/general.php:49
-#: jobs-plus/app/addons/je-pages-manager.php:253
-#: jobs-plus/app/addons/je-pages-manager.php:279
-#: jobs-plus/app/addons/je-pages-manager.php:306
-#: jobs-plus/app/addons/je-pages-manager.php:332
-#: jobs-plus/app/addons/je-pages-manager.php:358
-#: jobs-plus/app/addons/je-pages-manager.php:388
-#: jobs-plus/app/addons/je-pages-manager.php:414
-#: jobs-plus/app/addons/je-pages-manager.php:441
-#: jobs-plus/app/addons/je-pages-manager.php:467
-#: jobs-plus/app/addons/je-pages-manager.php:493
-#: jobs-plus/app/components/ig-wallet/app/views/settings/general.php:12
-#: jobs-plus/app/components/ig-wallet/app/views/settings/general.php:30
+#: app/addons/je-message/lib/app/views/backend/setting/general.php:49
+#: app/addons/je-pages-manager.php:253 app/addons/je-pages-manager.php:279
+#: app/addons/je-pages-manager.php:306 app/addons/je-pages-manager.php:332
+#: app/addons/je-pages-manager.php:358 app/addons/je-pages-manager.php:388
+#: app/addons/je-pages-manager.php:414 app/addons/je-pages-manager.php:441
+#: app/addons/je-pages-manager.php:467 app/addons/je-pages-manager.php:493
+#: app/components/ig-wallet/app/views/settings/general.php:12
+#: app/components/ig-wallet/app/views/settings/general.php:30
 msgid "--Choose--"
 msgstr ""
 
-#: jobs-plus/app/addons/je-message/lib/app/views/backend/setting/general.php:64
-#: jobs-plus/app/views/backend/settings/general.php:186
+#: app/addons/je-message/lib/app/views/backend/setting/general.php:64
+#: app/views/backend/settings/general.php:186
 msgid "Add-ons"
 msgstr ""
 
-#: jobs-plus/app/addons/je-message/lib/app/views/backend/setting/general.php:113
-#: jobs-plus/app/addons/je-pages-manager.php:530
-#: jobs-plus/app/components/ig-wallet/app/views/credit/settings.php:49
-#: jobs-plus/app/components/ig-wallet/app/views/settings/general.php:62
+#: app/addons/je-message/lib/app/views/backend/setting/general.php:113
+#: app/addons/je-pages-manager.php:530
+#: app/components/ig-wallet/app/views/credit/settings.php:49
+#: app/components/ig-wallet/app/views/settings/general.php:62
 msgid "Creating..."
 msgstr ""
 
-#: jobs-plus/app/addons/je-message/lib/app/views/backend/setting/shortcode.php:14
-msgid ""
-"This shortcode will display the private message interface.There are no "
-"parameters for this shortcode."
+#: app/addons/je-message/lib/app/views/backend/setting/shortcode.php:2
+#: app/addons/je-message/lib/app/views/backend/setting.php:27
+#: app/views/backend/settings.php:29
+msgid "Shortcodes"
 msgstr ""
 
-#: jobs-plus/app/addons/je-message/lib/app/views/backend/setting/shortcode.php:20
+#: app/addons/je-message/lib/app/views/backend/setting/shortcode.php:14
+msgid ""
+"This shortcode will display the private message interface.There are no parameters "
+"for this shortcode."
+msgstr ""
+
+#: app/addons/je-message/lib/app/views/backend/setting/shortcode.php:20
 msgid "PM User"
 msgstr ""
 
-#: jobs-plus/app/addons/je-message/lib/app/views/backend/setting/shortcode.php:28
+#: app/addons/je-message/lib/app/views/backend/setting/shortcode.php:28
 msgid "user_id"
 msgstr ""
 
-#: jobs-plus/app/addons/je-message/lib/app/views/backend/setting/shortcode.php:29
+#: app/addons/je-message/lib/app/views/backend/setting/shortcode.php:29
 msgid "The id of the user who is the message recipient."
 msgstr ""
 
-#: jobs-plus/app/addons/je-message/lib/app/views/backend/setting/shortcode.php:32
+#: app/addons/je-message/lib/app/views/backend/setting/shortcode.php:32
 msgid "user_name"
 msgstr ""
 
-#: jobs-plus/app/addons/je-message/lib/app/views/backend/setting/shortcode.php:33
+#: app/addons/je-message/lib/app/views/backend/setting/shortcode.php:33
 msgid ""
-"The user name of the message recipient. User ID will be given higher "
-"priority than user_name."
+"The user name of the message recipient. User ID will be given higher priority "
+"than user_name."
 msgstr ""
 
-#: jobs-plus/app/addons/je-message/lib/app/views/backend/setting/shortcode.php:36
+#: app/addons/je-message/lib/app/views/backend/setting/shortcode.php:36
 msgid "in_the_loop"
 msgstr ""
 
-#: jobs-plus/app/addons/je-message/lib/app/views/backend/setting/shortcode.php:37
+#: app/addons/je-message/lib/app/views/backend/setting/shortcode.php:37
 msgid ""
-"Use 1 for true, 0 for false. This shortcode is used for case when there is "
-"no user ID or user_name. This shortcode will pull the author user_ID if the "
+"Use 1 for true, 0 for false. This shortcode is used for case when there is no "
+"user ID or user_name. This shortcode will pull the author user_ID if the "
 "shortcode is inside the loop."
 msgstr ""
 
-#: jobs-plus/app/addons/je-message/lib/app/views/backend/setting/shortcode.php:40
-#: jobs-plus/app/views/backend/settings/shortcode.php:16
-#: jobs-plus/app/views/backend/settings/shortcode.php:43
-#: jobs-plus/app/views/backend/settings/shortcode.php:71
-#: jobs-plus/app/views/backend/settings/shortcode.php:99
-#: jobs-plus/app/views/backend/settings/shortcode.php:127
-#: jobs-plus/app/views/backend/settings/shortcode.php:155
+#: app/addons/je-message/lib/app/views/backend/setting/shortcode.php:40
+#: app/views/backend/settings/shortcode.php:16
+#: app/views/backend/settings/shortcode.php:43
+#: app/views/backend/settings/shortcode.php:71
+#: app/views/backend/settings/shortcode.php:99
+#: app/views/backend/settings/shortcode.php:127
+#: app/views/backend/settings/shortcode.php:155
 msgid "text"
 msgstr ""
 
-#: jobs-plus/app/addons/je-message/lib/app/views/backend/setting/shortcode.php:41
+#: app/addons/je-message/lib/app/views/backend/setting/shortcode.php:41
 msgid "The button text to display, default is \"Message me.\""
 msgstr ""
 
-#: jobs-plus/app/addons/je-message/lib/app/views/backend/setting/shortcode.php:44
-#: jobs-plus/app/views/backend/settings/shortcode.php:24
-#: jobs-plus/app/views/backend/settings/shortcode.php:51
-#: jobs-plus/app/views/backend/settings/shortcode.php:79
-#: jobs-plus/app/views/backend/settings/shortcode.php:107
-#: jobs-plus/app/views/backend/settings/shortcode.php:135
-#: jobs-plus/app/views/backend/settings/shortcode.php:163
+#: app/addons/je-message/lib/app/views/backend/setting/shortcode.php:44
+#: app/views/backend/settings/shortcode.php:24
+#: app/views/backend/settings/shortcode.php:51
+#: app/views/backend/settings/shortcode.php:79
+#: app/views/backend/settings/shortcode.php:107
+#: app/views/backend/settings/shortcode.php:135
+#: app/views/backend/settings/shortcode.php:163
 msgid "class"
 msgstr ""
 
-#: jobs-plus/app/addons/je-message/lib/app/views/backend/setting/shortcode.php:45
+#: app/addons/je-message/lib/app/views/backend/setting/shortcode.php:45
 msgid ""
-"If you want to style the message button, use this shortcodes parameter to "
-"define the class of the message button. "
+"If you want to style the message button, use this shortcodes parameter to define "
+"the class of the message button. "
 msgstr ""
 
-#: jobs-plus/app/addons/je-message/lib/app/views/backend/setting/shortcode.php:48
+#: app/addons/je-message/lib/app/views/backend/setting/shortcode.php:48
 msgid "subject"
 msgstr ""
 
-#: jobs-plus/app/addons/je-message/lib/app/views/backend/setting/shortcode.php:49
+#: app/addons/je-message/lib/app/views/backend/setting/shortcode.php:49
 msgid ""
 "This will define the subject of the message sent, if one is not added by the "
 "user. "
 msgstr ""
 
-#: jobs-plus/app/addons/je-message/lib/app/views/backend/setting/shortcode.php:52
+#: app/addons/je-message/lib/app/views/backend/setting/shortcode.php:52
 msgid ""
 "Please note that <strong>user_id</strong> or <strong>user_name</strong> or "
 "<strong>in_the_loop</strong> must be defined."
 msgstr ""
 
-#: jobs-plus/app/addons/je-message/lib/app/views/backend/upgrade.php:8
+#: app/addons/je-message/lib/app/views/backend/setting.php:31
+msgid "Attachments"
+msgstr ""
+
+#: app/addons/je-message/lib/app/views/backend/upgrade.php:8
 msgid "Diagnose Center"
 msgstr ""
 
-#: jobs-plus/app/addons/je-message/lib/app/views/backend/upgrade.php:20
+#: app/addons/je-message/lib/app/views/backend/upgrade.php:20
 msgid "Table"
 msgstr ""
 
-#: jobs-plus/app/addons/je-message/lib/app/views/backend/upgrade.php:21
-#: jobs-plus/app/controllers/backend/je-expert-admin-controller.php:25
-#: jobs-plus/app/controllers/backend/je-job-admin-controller.php:55
-#: jobs-plus/app/views/my-expert/main.php:12
-#: jobs-plus/app/views/my-job/main.php:11
+#: app/addons/je-message/lib/app/views/backend/upgrade.php:21
+#: app/controllers/backend/je-expert-admin-controller.php:25
+#: app/controllers/backend/je-job-admin-controller.php:55
+#: app/views/my-expert/main.php:12 app/views/my-job/main.php:11
 msgid "Status"
 msgstr ""
 
-#: jobs-plus/app/addons/je-message/lib/app/views/backend/upgrade.php:31
-#: jobs-plus/app/addons/je-message/lib/app/views/backend/upgrade.php:51
+#: app/addons/je-message/lib/app/views/backend/upgrade.php:31
+#: app/addons/je-message/lib/app/views/backend/upgrade.php:51
 msgid "Healthy"
 msgstr ""
 
-#: jobs-plus/app/addons/je-message/lib/app/views/backend/upgrade.php:35
-#: jobs-plus/app/addons/je-message/lib/app/views/backend/upgrade.php:55
+#: app/addons/je-message/lib/app/views/backend/upgrade.php:35
+#: app/addons/je-message/lib/app/views/backend/upgrade.php:55
 msgid "Fail"
 msgstr ""
 
-#: jobs-plus/app/addons/je-message/lib/app/views/backend/upgrade.php:42
-#: jobs-plus/app/addons/je-message/lib/app/views/backend/upgrade.php:62
+#: app/addons/je-message/lib/app/views/backend/upgrade.php:42
+#: app/addons/je-message/lib/app/views/backend/upgrade.php:62
 msgid "Fix"
 msgstr ""
 
-#: jobs-plus/app/addons/je-message/lib/app/views/backend/upgrade.php:73
+#: app/addons/je-message/lib/app/views/backend/upgrade.php:73
 msgid "Note:"
 msgstr ""
 
-#: jobs-plus/app/addons/je-message/lib/app/views/backend/upgrade.php:79
+#: app/addons/je-message/lib/app/views/backend/upgrade.php:79
 msgid ""
-"If the diagnose tool cannot create table, that means the database user "
-"doesn't have enough permission to do that, you will need to copy the below "
-"sql code to create the tables."
+"If the diagnose tool cannot create table, that means the database user doesn't "
+"have enough permission to do that, you will need to copy the below sql code to "
+"create the tables."
 msgstr ""
 
-#: jobs-plus/app/addons/je-message/lib/app/views/backend/view.php:6
-msgid "Message #"
-msgstr ""
-
-#: jobs-plus/app/addons/je-message/lib/app/views/bar/_compose_form.php:10
-#: jobs-plus/app/addons/je-message/lib/app/views/message_me/modal.php:21
-#: jobs-plus/app/addons/je-message/lib/app/views/shortcode/_compose_form.php:10
-#: jobs-plus/app/addons/je-message/lib/app/views/shortcode/message_me.php:51
+#: app/addons/je-message/lib/app/views/bar/_compose_form.php:10
+#: app/addons/je-message/lib/app/views/message_me/modal.php:23
+#: app/addons/je-message/lib/app/views/shortcode/_compose_form.php:10
+#: app/addons/je-message/lib/app/views/shortcode/message_me.php:51
 msgid "Compose Message"
 msgstr ""
 
-#: jobs-plus/app/addons/je-message/lib/app/views/bar/_compose_form.php:19
-#: jobs-plus/app/addons/je-message/lib/app/views/shortcode/_compose_form.php:18
+#: app/addons/je-message/lib/app/views/bar/_compose_form.php:19
+#: app/addons/je-message/lib/app/views/shortcode/_compose_form.php:18
 msgid "Send To"
 msgstr ""
 
-#: jobs-plus/app/addons/je-message/lib/app/views/bar/_compose_form.php:35
-#: jobs-plus/app/addons/je-message/lib/app/views/shortcode/_compose_form.php:34
+#: app/addons/je-message/lib/app/views/bar/_compose_form.php:23
+#: app/addons/je-message/lib/app/views/shortcode/_compose_form.php:22
+msgid "Send to"
+msgstr ""
+
+#: app/addons/je-message/lib/app/views/bar/_compose_form.php:35
+#: app/addons/je-message/lib/app/views/bar/_compose_form.php:39
+#: app/addons/je-message/lib/app/views/message_me/modal.php:34
+#: app/addons/je-message/lib/app/views/shortcode/_compose_form.php:34
+#: app/addons/je-message/lib/app/views/shortcode/_compose_form.php:38
 msgid "Subject"
 msgstr ""
 
-#: jobs-plus/app/addons/je-message/lib/app/views/bar/_compose_form.php:48
-#: jobs-plus/app/addons/je-message/lib/app/views/shortcode/_compose_form.php:48
-#: jobs-plus/app/components/ig-uploader/app/views/_uploader_form.php:33
-#: jobs-plus/app/components/ig-uploader/app/views/_uploader_form.php:34
-#: jobs-plus/app/views/contact/expert.php:44
-#: jobs-plus/app/views/contact/job.php:44
+#: app/addons/je-message/lib/app/views/bar/_compose_form.php:48
+#: app/addons/je-message/lib/app/views/bar/_compose_form.php:55
+#: app/addons/je-message/lib/app/views/shortcode/_compose_form.php:48
+#: app/addons/je-message/lib/app/views/shortcode/_compose_form.php:55
+#: app/components/ig-uploader/app/views/_uploader_form.php:33
+#: app/components/ig-uploader/app/views/_uploader_form.php:34
+#: app/views/contact/expert.php:44 app/views/contact/job.php:44
 msgid "Content"
 msgstr ""
 
-#: jobs-plus/app/addons/je-message/lib/app/views/bar/_compose_form.php:70
-#: jobs-plus/app/addons/je-message/lib/app/views/message_me/modal.php:57
-#: jobs-plus/app/addons/je-message/lib/app/views/shortcode/_compose_form.php:71
-#: jobs-plus/app/addons/je-message/lib/app/views/shortcode/_reply_form.php:55
-#: jobs-plus/app/components/ig-uploader/app/views/_extend_form_bak.php:9
-#: jobs-plus/app/components/ig-uploader/app/views/_extend_form_bak.php:10
+#: app/addons/je-message/lib/app/views/bar/_compose_form.php:70
+#: app/addons/je-message/lib/app/views/message_me/modal.php:59
+#: app/addons/je-message/lib/app/views/shortcode/_compose_form.php:71
+#: app/addons/je-message/lib/app/views/shortcode/_reply_form.php:55
+#: app/components/ig-uploader/app/views/_extend_form_bak.php:9
+#: app/components/ig-uploader/app/views/_extend_form_bak.php:10
 msgid "Attach media or other files."
 msgstr ""
 
-#: jobs-plus/app/addons/je-message/lib/app/views/bar/_compose_form.php:76
-#: jobs-plus/app/addons/je-message/lib/app/views/message_me/modal.php:64
-#: jobs-plus/app/addons/je-message/lib/app/views/shortcode/_compose_form.php:77
-#: jobs-plus/app/addons/je-message/lib/app/views/shortcode/_reply_form.php:62
-#: jobs-plus/app/addons/je-message/lib/app/views/shortcode/message_me.php:87
+#: app/addons/je-message/lib/app/views/bar/_compose_form.php:76
+#: app/addons/je-message/lib/app/views/message_me/modal.php:66
+#: app/addons/je-message/lib/app/views/shortcode/_compose_form.php:77
+#: app/addons/je-message/lib/app/views/shortcode/_reply_form.php:62
+#: app/addons/je-message/lib/app/views/shortcode/message_me.php:87
 msgid "Close"
 msgstr ""
 
-#: jobs-plus/app/addons/je-message/lib/app/views/bar/_compose_form.php:78
-#: jobs-plus/app/addons/je-message/lib/app/views/message_me/modal.php:66
-#: jobs-plus/app/addons/je-message/lib/app/views/shortcode/_compose_form.php:79
-#: jobs-plus/app/addons/je-message/lib/app/views/shortcode/_reply_form.php:64
-#: jobs-plus/app/addons/je-message/lib/app/views/shortcode/message_me.php:89
+#: app/addons/je-message/lib/app/views/bar/_compose_form.php:78
+#: app/addons/je-message/lib/app/views/message_me/modal.php:68
+#: app/addons/je-message/lib/app/views/shortcode/_compose_form.php:79
+#: app/addons/je-message/lib/app/views/shortcode/_reply_form.php:64
+#: app/addons/je-message/lib/app/views/shortcode/message_me.php:89
 msgid "Send"
 msgstr ""
 
-#: jobs-plus/app/addons/je-message/lib/app/views/layout/main.php:10
-#: jobs-plus/app/addons/je-message/lib/app/views/layout/main.php:16
-#: jobs-plus/app/addons/je-message/lib/app/views/layout/main.php:17
-#: jobs-plus/app/addons/je-message/lib/app/views/layout/main.php:23
-#: jobs-plus/app/addons/je-message/lib/app/views/layout/main.php:24
+#: app/addons/je-message/lib/app/views/layout/main.php:10
+#: app/addons/je-message/lib/app/views/layout/main.php:16
+#: app/addons/je-message/lib/app/views/layout/main.php:17
+#: app/addons/je-message/lib/app/views/layout/main.php:23
+#: app/addons/je-message/lib/app/views/layout/main.php:24
 msgid "message(s)"
 msgstr ""
 
-#: jobs-plus/app/addons/je-message/lib/app/views/layout/main.php:18
+#: app/addons/je-message/lib/app/views/layout/main.php:11
+#: app/addons/je-message.php:63
+msgid "Inbox"
+msgstr ""
+
+#: app/addons/je-message/lib/app/views/layout/main.php:18
 msgid "Unread"
 msgstr ""
 
-#: jobs-plus/app/addons/je-message/lib/app/views/layout/main.php:25
+#: app/addons/je-message/lib/app/views/layout/main.php:25
 msgid "Read"
 msgstr ""
 
-#: jobs-plus/app/addons/je-message/lib/app/views/layout/main.php:30
+#: app/addons/je-message/lib/app/views/layout/main.php:30
 msgid "Sent"
 msgstr ""
 
-#: jobs-plus/app/addons/je-message/lib/app/views/layout/main.php:34
-#: jobs-plus/app/addons/je-message/lib/app/views/shortcode/_inbox_message.php:36
+#: app/addons/je-message/lib/app/views/layout/main.php:34
+#: app/addons/je-message/lib/app/views/shortcode/_inbox_message.php:36
 msgid "Archive"
 msgstr ""
 
-#: jobs-plus/app/addons/je-message/lib/app/views/layout/main.php:45
-#: jobs-plus/app/addons/je-message/lib/app/views/layout/main.php:57
+#: app/addons/je-message/lib/app/views/layout/main.php:45
+#: app/addons/je-message/lib/app/views/layout/main.php:57
 msgid "Compose"
 msgstr ""
 
-#: jobs-plus/app/addons/je-message/lib/app/views/message_me/modal.php:25
-#: jobs-plus/app/addons/je-message/lib/app/views/shortcode/message_me.php:55
+#: app/addons/je-message/lib/app/views/message_me/modal.php:27
+#: app/addons/je-message/lib/app/views/shortcode/message_me.php:55
 msgid "Your message has been sent"
 msgstr ""
 
-#: jobs-plus/app/addons/je-message/lib/app/views/shortcode/_inbox_message.php:20
+#: app/addons/je-message/lib/app/views/shortcode/_inbox_message.php:20
 msgid "Unarchive"
 msgstr ""
 
-#: jobs-plus/app/addons/je-message/lib/app/views/shortcode/_inbox_message.php:24
-#: jobs-plus/app/components/ig-skill/app/views/_form.php:67
-#: jobs-plus/app/components/ig-social-wall/app/views/form.php:39
-#: jobs-plus/app/components/ig-wallet/app/views/credit/main.php:53
-#: jobs-plus/app/views/my-expert/main.php:34
-#: jobs-plus/app/views/my-job/main.php:31
-#: jobs-plus/framework/database/ig-grid.php:42
-#: jobs-plus/framework/database/ig-grid.php:116
+#: app/addons/je-message/lib/app/views/shortcode/_inbox_message.php:24
+#: app/components/ig-skill/app/views/_form.php:67
+#: app/components/ig-social-wall/app/views/form.php:39
+#: app/components/ig-wallet/app/views/credit/main.php:53
+#: app/views/my-expert/main.php:34 app/views/my-job/main.php:31
+#: framework/database/ig-grid.php:42 framework/database/ig-grid.php:116
 msgid "Delete"
 msgstr ""
 
-#: jobs-plus/app/addons/je-message/lib/app/views/shortcode/_inbox_message.php:65
+#: app/addons/je-message/lib/app/views/shortcode/_inbox_message.php:65
 msgid "me"
 msgstr ""
 
-#: jobs-plus/app/addons/je-message/lib/app/views/shortcode/_inbox_message.php:124
-#: jobs-plus/app/addons/je-message/lib/app/views/shortcode/_inbox_message.php:256
-#: jobs-plus/app/components/ig-uploader/app/views/footer_modal.php:32
+#: app/addons/je-message/lib/app/views/shortcode/_inbox_message.php:75
+#: app/addons/je-message/lib/app/views/shortcode/_inbox_message.php:212
+msgid "To:"
+msgstr ""
+
+#: app/addons/je-message/lib/app/views/shortcode/_inbox_message.php:130
+#: app/addons/je-message/lib/app/views/shortcode/_inbox_message.php:268
+#: app/components/ig-uploader/app/views/footer_modal.php:32
 msgid "Size"
 msgstr ""
 
-#: jobs-plus/app/addons/je-message/lib/app/views/shortcode/_inbox_message.php:132
-#: jobs-plus/app/addons/je-message/lib/app/views/shortcode/_inbox_message.php:264
-#: jobs-plus/app/components/ig-uploader/app/views/footer_modal.php:40
-#: jobs-plus/app/views/job-single/main.php:19
+#: app/addons/je-message/lib/app/views/shortcode/_inbox_message.php:138
+#: app/addons/je-message/lib/app/views/shortcode/_inbox_message.php:276
+#: app/components/ig-uploader/app/views/footer_modal.php:40
+#: app/views/job-single/main.php:19
 msgid "N/A"
 msgstr ""
 
-#: jobs-plus/app/addons/je-message/lib/app/views/shortcode/_inbox_message.php:138
-#: jobs-plus/app/addons/je-message/lib/app/views/shortcode/_inbox_message.php:270
-#: jobs-plus/app/components/ig-uploader/app/views/footer_modal.php:46
-msgid "Type"
-msgstr ""
-
-#: jobs-plus/app/addons/je-message/lib/app/views/shortcode/_inbox_message.php:148
-#: jobs-plus/app/addons/je-message/lib/app/views/shortcode/_inbox_message.php:280
-#: jobs-plus/app/components/ig-uploader/app/models/ig-uploader-model.php:123
-#: jobs-plus/app/components/ig-uploader/app/views/footer_modal.php:56
+#: app/addons/je-message/lib/app/views/shortcode/_inbox_message.php:154
+#: app/addons/je-message/lib/app/views/shortcode/_inbox_message.php:292
+#: app/components/ig-uploader/app/models/ig-uploader-model.php:123
+#: app/components/ig-uploader/app/views/footer_modal.php:56
 msgid "Link"
 msgstr ""
 
-#: jobs-plus/app/addons/je-message/lib/app/views/shortcode/_inbox_message.php:160
-#: jobs-plus/app/addons/je-message/lib/app/views/shortcode/_inbox_message.php:292
-#: jobs-plus/app/components/ig-uploader/app/views/footer_modal.php:68
+#: app/addons/je-message/lib/app/views/shortcode/_inbox_message.php:166
+#: app/addons/je-message/lib/app/views/shortcode/_inbox_message.php:304
+#: app/components/ig-uploader/app/views/footer_modal.php:68
 msgid "Visit Link"
 msgstr ""
 
-#: jobs-plus/app/addons/je-message/lib/app/views/shortcode/_inbox_message.php:165
-#: jobs-plus/app/addons/je-message/lib/app/views/shortcode/_inbox_message.php:297
-#: jobs-plus/app/components/ig-uploader/app/views/footer_modal.php:73
+#: app/addons/je-message/lib/app/views/shortcode/_inbox_message.php:171
+#: app/addons/je-message/lib/app/views/shortcode/_inbox_message.php:309
+#: app/components/ig-uploader/app/views/footer_modal.php:73
 msgid "Download File"
 msgstr ""
 
-#: jobs-plus/app/addons/je-message/lib/app/views/shortcode/_reply_form.php:20
+#: app/addons/je-message/lib/app/views/shortcode/_reply_form.php:20
 msgid "Reply"
 msgstr ""
 
-#: jobs-plus/app/addons/je-message/lib/app/views/shortcode/inbox.php:94
-#: jobs-plus/app/addons/je-message/lib/app/views/shortcode/inbox.php:97
-#: jobs-plus/app/views/expert-archive/_paging.php:28
-#: jobs-plus/app/views/job-archive/_paging.php:28
+#: app/addons/je-message/lib/app/views/shortcode/inbox.php:94
+#: app/addons/je-message/lib/app/views/shortcode/inbox.php:97
+#: app/views/expert-archive/_paging.php:28 app/views/job-archive/_paging.php:28
 msgid "Previous"
 msgstr ""
 
-#: jobs-plus/app/addons/je-message/lib/app/views/shortcode/inbox.php:101
-#: jobs-plus/app/addons/je-message/lib/app/views/shortcode/inbox.php:104
-#: jobs-plus/app/views/expert-archive/_paging.php:38
-#: jobs-plus/app/views/job-archive/_paging.php:38
+#: app/addons/je-message/lib/app/views/shortcode/inbox.php:101
+#: app/addons/je-message/lib/app/views/shortcode/inbox.php:104
+#: app/views/expert-archive/_paging.php:38 app/views/job-archive/_paging.php:38
 msgid "Next"
 msgstr ""
 
-#: jobs-plus/app/addons/je-message/lib/app/views/shortcode/inbox.php:208
+#: app/addons/je-message/lib/app/views/shortcode/inbox.php:208
 msgid "No message found!"
 msgstr ""
 
-#: jobs-plus/app/addons/je-message/lib/app/views/shortcode/login.php:6
-#: jobs-plus/app/views/login.php:7 jobs-plus/app/views/login.php:26
+#: app/addons/je-message/lib/app/views/shortcode/login.php:6 app/views/login.php:7
+#: app/views/login.php:26
 msgid "Sign in"
 msgstr ""
 
-#: jobs-plus/app/addons/je-message/lib/app/views/shortcode/login.php:14
-#: jobs-plus/app/views/login.php:15
+#: app/addons/je-message/lib/app/views/shortcode/login.php:14
+#: app/views/login.php:15
 msgid "Sign Up"
 msgstr ""
 
-#: jobs-plus/app/addons/je-message/lib/app/views/shortcode/login.php:16
-#: jobs-plus/app/views/login.php:17
+#: app/addons/je-message/lib/app/views/shortcode/login.php:16
+#: app/views/login.php:17
 msgid "Sign up to become a registered member of the site"
 msgstr ""
 
-#: jobs-plus/app/addons/je-message/lib/app/views/shortcode/login.php:17
-#: jobs-plus/app/views/login.php:19
+#: app/addons/je-message/lib/app/views/shortcode/login.php:17
+#: app/views/login.php:19
 msgid "Create Account"
 msgstr ""
 
-#: jobs-plus/app/addons/je-message/lib/app/views/shortcode/setting.php:17
+#: app/addons/je-message/lib/app/views/shortcode/setting.php:17
 msgid "This feature has been disabled by admin"
 msgstr ""
 
-#: jobs-plus/app/addons/je-message/lib/app/views/shortcode/setting.php:37
+#: app/addons/je-message/lib/app/views/shortcode/setting.php:37
 msgid "Email me when my sent messages are read"
 msgstr ""
 
-#: jobs-plus/app/addons/je-message/lib/app/views/shortcode/setting.php:39
+#: app/addons/je-message/lib/app/views/shortcode/setting.php:39
 msgid ""
-"An email will be sent to you when a user reads your message, this "
-"functionality won?t work, if they have disabled tracking within their "
-"account."
+"An email will be sent to you when a user reads your message, this functionality "
+"won?t work, if they have disabled tracking within their account."
 msgstr ""
 
-#: jobs-plus/app/addons/je-message/lib/app/views/shortcode/setting.php:47
+#: app/addons/je-message/lib/app/views/shortcode/setting.php:47
 msgid "Prevent others tracking my message"
 msgstr ""
 
-#: jobs-plus/app/addons/je-message/lib/app/views/shortcode/setting.php:49
+#: app/addons/je-message/lib/app/views/shortcode/setting.php:49
 msgid ""
-"When you open a message, there won't be an email back to the sender to "
-"inform them you've read the message."
+"When you open a message, there won't be an email back to the sender to inform "
+"them you've read the message."
 msgstr ""
 
-#: jobs-plus/app/addons/je-message/lib/functions.php:94
-#: jobs-plus/jobs-experts.php:654
+#: app/addons/je-message/lib/functions.php:94
 msgid "Username"
 msgstr ""
 
-#: jobs-plus/app/addons/je-message/lib/functions.php:95
-#: jobs-plus/jobs-experts.php:655
+#: app/addons/je-message/lib/functions.php:95
 msgid "Password"
 msgstr ""
 
-#: jobs-plus/app/addons/je-message/lib/functions.php:96
-#: jobs-plus/jobs-experts.php:656
+#: app/addons/je-message/lib/functions.php:96
 msgid "Remember Me"
 msgstr ""
 
-#: jobs-plus/app/addons/je-message/lib/functions.php:97
-#: jobs-plus/jobs-experts.php:657
+#: app/addons/je-message/lib/functions.php:97
 msgid "Sign In"
 msgstr ""
 
-#: jobs-plus/app/addons/je-message/lib/functions.php:169
-#: jobs-plus/jobs-experts.php:729
+#: app/addons/je-message/lib/functions.php:169
 msgid "Forgot password?"
 msgstr ""
 
-#: jobs-plus/app/addons/je-pages-manager.php:89
+#: app/addons/je-message.php:117 app/views/job-single/main.php:28
+#: app/views/job-single/main.php:38
+msgid "Contact"
+msgstr ""
+
+#: app/addons/je-message.php:124 app/views/expert-single/main.php:18
+msgid "Contact Me"
+msgstr ""
+
+#: app/addons/je-pages-manager.php:89
 msgid "Pages Manager"
 msgstr ""
 
-#: jobs-plus/app/addons/je-pages-manager.php:238
+#: app/addons/je-pages-manager.php:238
 msgid "Job Pages"
 msgstr ""
 
-#: jobs-plus/app/addons/je-pages-manager.php:241
-#: jobs-plus/app/views/backend/jobs/add.php:4
-#: jobs-plus/app/views/backend/jobs/edit.php:4
+#: app/addons/je-pages-manager.php:241 app/views/backend/jobs/add.php:4
+#: app/views/backend/jobs/edit.php:4
 msgid "Add new Job"
 msgstr ""
 
-#: jobs-plus/app/addons/je-pages-manager.php:267
-#: jobs-plus/app/components/je-custom-content.php:20
-#: jobs-plus/app/controllers/backend/je-job-admin-controller.php:24
-#: jobs-plus/app/controllers/backend/je-job-admin-controller.php:25
+#: app/addons/je-pages-manager.php:267 app/components/je-custom-content.php:20
+#: app/controllers/backend/je-job-admin-controller.php:24
+#: app/controllers/backend/je-job-admin-controller.php:25
 msgid "Edit Job"
 msgstr ""
 
-#: jobs-plus/app/addons/je-pages-manager.php:294
+#: app/addons/je-pages-manager.php:294
 msgid "Job Listing"
 msgstr ""
 
-#: jobs-plus/app/addons/je-pages-manager.php:320
-#: jobs-plus/app/controllers/frontend/je-buttons-shortcode-controller.php:230
+#: app/addons/je-pages-manager.php:320
+#: app/controllers/frontend/je-buttons-shortcode-controller.php:230
 msgid "My Jobs"
 msgstr ""
 
-#: jobs-plus/app/addons/je-pages-manager.php:346
+#: app/addons/je-pages-manager.php:346
 msgid "Contact Job"
 msgstr ""
 
-#: jobs-plus/app/addons/je-pages-manager.php:373
+#: app/addons/je-pages-manager.php:373
 msgid "Expert Pages"
 msgstr ""
 
-#: jobs-plus/app/addons/je-pages-manager.php:376
+#: app/addons/je-pages-manager.php:376
 msgid "Add new Expert"
 msgstr ""
 
-#: jobs-plus/app/addons/je-pages-manager.php:402
-#: jobs-plus/app/components/je-custom-content.php:79
-#: jobs-plus/app/controllers/backend/je-expert-admin-controller.php:44
-#: jobs-plus/app/controllers/backend/je-expert-admin-controller.php:45
-#: jobs-plus/app/views/backend/experts/edit.php:4
+#: app/addons/je-pages-manager.php:402 app/components/je-custom-content.php:79
+#: app/controllers/backend/je-expert-admin-controller.php:44
+#: app/controllers/backend/je-expert-admin-controller.php:45
+#: app/views/backend/experts/edit.php:4
 msgid "Edit Expert"
 msgstr ""
 
-#: jobs-plus/app/addons/je-pages-manager.php:429
+#: app/addons/je-pages-manager.php:429
 msgid "Expert Listing"
 msgstr ""
 
-#: jobs-plus/app/addons/je-pages-manager.php:455
+#: app/addons/je-pages-manager.php:455
 msgid "My Profiles"
 msgstr ""
 
-#: jobs-plus/app/addons/je-pages-manager.php:481
+#: app/addons/je-pages-manager.php:481
 msgid "Contact Expert"
 msgstr ""
 
-#: jobs-plus/app/components/ig-skill/app/views/_form.php:11
+#: app/components/ig-skill/app/views/_form.php:11
 msgid "Skill name"
 msgstr ""
 
-#: jobs-plus/app/components/ig-skill/app/views/_form.php:32
-#: jobs-plus/app/components/ig-skill/app/views/_form.php:44
+#: app/components/ig-skill/app/views/_form.php:32
+#: app/components/ig-skill/app/views/_form.php:44
 msgid "Blue"
 msgstr ""
 
-#: jobs-plus/app/components/ig-skill/app/views/_form.php:34
-#: jobs-plus/app/components/ig-skill/app/views/_form.php:45
+#: app/components/ig-skill/app/views/_form.php:34
+#: app/components/ig-skill/app/views/_form.php:45
 msgid "Red"
 msgstr ""
 
-#: jobs-plus/app/components/ig-skill/app/views/_form.php:36
-#: jobs-plus/app/components/ig-skill/app/views/_form.php:46
+#: app/components/ig-skill/app/views/_form.php:36
+#: app/components/ig-skill/app/views/_form.php:46
 msgid "Orange"
 msgstr ""
 
-#: jobs-plus/app/components/ig-skill/app/views/_form.php:38
-#: jobs-plus/app/components/ig-skill/app/views/_form.php:47
+#: app/components/ig-skill/app/views/_form.php:38
+#: app/components/ig-skill/app/views/_form.php:47
 msgid "Light Blue"
 msgstr ""
 
-#: jobs-plus/app/components/ig-skill/app/views/_form.php:40
-#: jobs-plus/app/components/ig-skill/app/views/_form.php:48
+#: app/components/ig-skill/app/views/_form.php:40
+#: app/components/ig-skill/app/views/_form.php:48
 msgid "Green"
 msgstr ""
 
-#: jobs-plus/app/components/ig-skill/app/views/_form.php:51
+#: app/components/ig-skill/app/views/_form.php:51
 msgid "Enable Animated"
 msgstr ""
 
-#: jobs-plus/app/components/ig-skill/app/views/_icon.php:4
+#: app/components/ig-skill/app/views/_icon.php:4
 msgid "Please click here for update data"
 msgstr ""
 
-#: jobs-plus/app/components/ig-skill/app/views/main.php:5
-#: jobs-plus/app/components/ig-social-wall/app/views/main.php:5
-#: jobs-plus/app/components/ig-uploader/app/views/_extend_form.php:13
-#: jobs-plus/app/components/ig-uploader/app/views/_extend_form_bak.php:13
-#: jobs-plus/app/views/backend/getting_start.php:21
-#: jobs-plus/app/views/backend/getting_start.php:48
-#: jobs-plus/app/views/backend/getting_start.php:88
-#: jobs-plus/app/views/backend/getting_start.php:120
+#: app/components/ig-skill/app/views/main.php:5
+#: app/components/ig-social-wall/app/views/main.php:5
+#: app/components/ig-uploader/app/views/_extend_form.php:13
+#: app/components/ig-uploader/app/views/_extend_form_bak.php:13
+#: app/views/backend/getting_start.php:21 app/views/backend/getting_start.php:48
+#: app/views/backend/getting_start.php:88 app/views/backend/getting_start.php:120
 msgid "Add"
 msgstr ""
 
-#: jobs-plus/app/components/ig-social-wall/app/models/social-wall-model.php:89
-#, php-format
+#: app/components/ig-social-wall/app/models/social-wall-model.php:89
 msgid "This url is not from <strong>%s</strong>"
 msgstr ""
 
-#: jobs-plus/app/components/ig-social-wall/app/views/form.php:20
+#: app/components/ig-social-wall/app/views/form.php:20
 msgid "Select Social"
 msgstr ""
 
-#: jobs-plus/app/components/ig-social-wall/app/views/form.php:29
+#: app/components/ig-social-wall/app/views/form.php:29
 msgid "Social information (Url or Username)"
 msgstr ""
 
-#: jobs-plus/app/components/ig-social-wall/app/views/main.php:3
-#: jobs-plus/app/views/expert-single/main.php:169
+#: app/components/ig-social-wall/app/views/main.php:3
+#: app/views/expert-single/main.php:173
 msgid "Social Profile"
 msgstr ""
 
-#: jobs-plus/app/components/ig-uploader/app/controllers/ig-uploader-controller.php:193
-#: jobs-plus/app/components/ig-uploader/app/views/_extend_form_bak.php:47
-#: jobs-plus/app/components/ig-uploader/app/views/_extend_form_bak.php:101
+#: app/components/ig-uploader/app/controllers/ig-uploader-controller.php:193
+#: app/components/ig-uploader/app/views/_extend_form_bak.php:47
+#: app/components/ig-uploader/app/views/_extend_form_bak.php:101
 msgid "Upload Attachment"
 msgstr ""
 
-#: jobs-plus/app/components/ig-uploader/app/controllers/ig-uploader-controller.php:212
-#: jobs-plus/app/controllers/frontend/je-expert-form-shortcode-controller.php:85
+#: app/components/ig-uploader/app/controllers/ig-uploader-controller.php:212
+#: app/controllers/frontend/je-expert-form-shortcode-controller.php:85
 msgid "Please select a file"
 msgstr ""
 
-#: jobs-plus/app/components/ig-uploader/app/models/ig-uploader-model.php:133
-#: jobs-plus/app/components/ig-uploader/app/models/ig-uploader-model.php:134
+#: app/components/ig-uploader/app/models/ig-uploader-model.php:133
+#: app/components/ig-uploader/app/models/ig-uploader-model.php:134
 msgid "Url or File required"
 msgstr ""
 
-#: jobs-plus/app/components/ig-uploader/app/views/_extend_form.php:26
-#: jobs-plus/app/components/ig-uploader/app/views/_extend_form_bak.php:26
-#: jobs-plus/app/components/ig-uploader/app/views/show_media.php:26
+#: app/components/ig-uploader/app/views/_extend_form.php:26
+#: app/components/ig-uploader/app/views/_extend_form_bak.php:26
+#: app/components/ig-uploader/app/views/show_media.php:26
 msgid "No sample file."
 msgstr ""
 
-#: jobs-plus/app/components/ig-uploader/app/views/_uploader_form.php:14
+#: app/components/ig-uploader/app/views/_uploader_form.php:14
 msgid "Choose File"
 msgstr ""
 
-#: jobs-plus/app/components/ig-uploader/app/views/_uploader_form.php:19
+#: app/components/ig-uploader/app/views/_uploader_form.php:19
 msgid "File attached, upload new file will replace the current file."
 msgstr ""
 
-#: jobs-plus/app/components/ig-uploader/app/views/_uploader_form.php:26
-#: jobs-plus/app/components/ig-uploader/app/views/_uploader_form.php:27
+#: app/components/ig-uploader/app/views/_uploader_form.php:26
+#: app/components/ig-uploader/app/views/_uploader_form.php:27
 msgid "Url"
 msgstr ""
 
-#: jobs-plus/app/components/ig-wallet.php:40
-#: jobs-plus/app/components/ig-wallet.php:64
-#: jobs-plus/app/components/ig-wallet.php:66
-#: jobs-plus/app/components/ig-wallet/app/controllers/credit-plan-controller.php:142
-#: jobs-plus/app/components/ig-wallet/app/views/credit/main.php:2
-msgid "Credit Plans"
-msgstr ""
-
-#: jobs-plus/app/components/ig-wallet.php:41
-msgid "Rules"
-msgstr ""
-
-#: jobs-plus/app/components/ig-wallet.php:65
-msgid "Credit Plan"
-msgstr ""
-
-#: jobs-plus/app/components/ig-wallet.php:67
-msgid "Parent Item:"
-msgstr ""
-
-#: jobs-plus/app/components/ig-wallet.php:68
-msgid "All Items"
-msgstr ""
-
-#: jobs-plus/app/components/ig-wallet.php:69
-msgid "View Item"
-msgstr ""
-
-#: jobs-plus/app/components/ig-wallet.php:70
-msgid "Add New Item"
-msgstr ""
-
-#: jobs-plus/app/components/ig-wallet.php:71
-#: jobs-plus/app/components/je-custom-content.php:18
-#: jobs-plus/app/components/je-custom-content.php:77
-#: jobs-plus/app/controllers/backend/je-admin-controller.php:104
-#: jobs-plus/app/controllers/backend/je-admin-controller.php:131
-msgid "Add New"
-msgstr ""
-
-#: jobs-plus/app/components/ig-wallet.php:72
-msgid "Edit Item"
-msgstr ""
-
-#: jobs-plus/app/components/ig-wallet.php:73
-msgid "Update Item"
-msgstr ""
-
-#: jobs-plus/app/components/ig-wallet.php:74
-msgid "Search Item"
-msgstr ""
-
-#: jobs-plus/app/components/ig-wallet.php:75
-msgid "Not found"
-msgstr ""
-
-#: jobs-plus/app/components/ig-wallet.php:76
-msgid "Not found in Trash"
-msgstr ""
-
-#: jobs-plus/app/components/ig-wallet.php:79
-msgid "ig_credit_plan"
-msgstr ""
-
-#: jobs-plus/app/components/ig-wallet/app/controllers/credit-plan-controller.php:51
+#: app/components/ig-wallet/app/controllers/credit-plan-controller.php:48
 msgid "credits"
 msgstr ""
 
-#: jobs-plus/app/components/ig-wallet/app/controllers/credit-plan-controller.php:67
-#, php-format
+#: app/components/ig-wallet/app/controllers/credit-plan-controller.php:64
 msgid "for %s credit(s)"
 msgstr ""
 
-#: jobs-plus/app/components/ig-wallet/app/controllers/credit-plan-controller.php:84
+#: app/components/ig-wallet/app/controllers/credit-plan-controller.php:81
 msgid "Your settings have been saved successfully."
 msgstr ""
 
-#: jobs-plus/app/components/ig-wallet/app/controllers/credit-plan-controller.php:93
-#, php-format
+#: app/components/ig-wallet/app/controllers/credit-plan-controller.php:90
 msgid "You received %s credits from admin for reason: \"%s\""
 msgstr ""
 
-#: jobs-plus/app/components/ig-wallet/app/controllers/credit-plan-controller.php:94
-#: jobs-plus/app/components/ig-wallet/app/controllers/credit-plan-controller.php:215
+#: app/components/ig-wallet/app/controllers/credit-plan-controller.php:91
+#: app/components/ig-wallet/app/controllers/credit-plan-controller.php:208
+#: app/components/ig-wallet/app/controllers/credit-plan-controller.php:222
 msgid "Purchased Credits"
 msgstr ""
 
-#: jobs-plus/app/components/ig-wallet/app/controllers/credit-plan-controller.php:96
-#, php-format
+#: app/components/ig-wallet/app/controllers/credit-plan-controller.php:93
 msgid ""
-"You have been sent <strong>%s credits</strong> to the user <strong>%s</"
-"strong> successfully."
+"You have been sent <strong>%s credits</strong> to the user <strong>%s</strong> "
+"successfully."
 msgstr ""
 
-#: jobs-plus/app/components/ig-wallet/app/controllers/credit-plan-controller.php:127
+#: app/components/ig-wallet/app/controllers/credit-plan-controller.php:122
 msgid "My Wallets"
 msgstr ""
 
-#: jobs-plus/app/components/ig-wallet/app/controllers/credit-plan-controller.php:171
+#: app/components/ig-wallet/app/controllers/credit-plan-controller.php:137
+#: app/components/ig-wallet/app/views/credit/main.php:2
+#: app/components/ig-wallet.php:40 app/components/ig-wallet.php:64
+#: app/components/ig-wallet.php:66
+msgid "Credit Plans"
+msgstr ""
+
+#: app/components/ig-wallet/app/controllers/credit-plan-controller.php:164
 msgid "My wallet"
 msgstr ""
 
-#: jobs-plus/app/components/ig-wallet/app/controllers/credit-plan-controller.php:212
-#, php-format
+#: app/components/ig-wallet/app/controllers/credit-plan-controller.php:205
+#: app/components/ig-wallet/app/controllers/credit-plan-controller.php:219
 msgid "You have purchased %s credits for %s through %s"
 msgstr ""
 
-#: jobs-plus/app/components/ig-wallet/app/controllers/credit-plan-controller.php:233
-#, php-format
+#: app/components/ig-wallet/app/controllers/credit-plan-controller.php:239
 msgid "Plan <strong>%s</strong> has been deleted!"
 msgstr ""
 
-#: jobs-plus/app/components/ig-wallet/app/controllers/credit-plan-controller.php:256
-#, php-format
+#: app/components/ig-wallet/app/controllers/credit-plan-controller.php:261
 msgid "Plan <strong>%s</strong> has been saved!"
 msgstr ""
 
-#: jobs-plus/app/components/ig-wallet/app/views/credit/hook.php:2
+#: app/components/ig-wallet/app/views/credit/hook.php:2
 msgid "Credit Rules"
 msgstr ""
 
-#: jobs-plus/app/components/ig-wallet/app/views/credit/main.php:3
+#: app/components/ig-wallet/app/views/credit/main.php:3
 msgid "Add new"
 msgstr ""
 
-#: jobs-plus/app/components/ig-wallet/app/views/credit/main.php:21
-#: jobs-plus/app/components/ig-wallet/app/views/credit/my_wallets.php:11
+#: app/components/ig-wallet/app/views/credit/main.php:21
+#: app/components/ig-wallet/app/views/credit/my_wallets.php:11
 msgid "Credits"
 msgstr ""
 
-#: jobs-plus/app/components/ig-wallet/app/views/credit/main.php:22
+#: app/components/ig-wallet/app/views/credit/main.php:22
 msgid "Cost"
 msgstr ""
 
-#: jobs-plus/app/components/ig-wallet/app/views/credit/main.php:23
+#: app/components/ig-wallet/app/views/credit/main.php:23
 msgid "Sale price"
 msgstr ""
 
-#: jobs-plus/app/components/ig-wallet/app/views/credit/main.php:46
-#: jobs-plus/app/views/backend/getting_start.php:17
-#: jobs-plus/app/views/backend/getting_start.php:33
-#: jobs-plus/app/views/backend/getting_start.php:44
-#: jobs-plus/app/views/backend/getting_start.php:82
-#: jobs-plus/app/views/backend/getting_start.php:103
-#: jobs-plus/app/views/backend/getting_start.php:113
-#: jobs-plus/app/views/expert-single/main.php:220
-#: jobs-plus/app/views/job-single/main.php:87
-#: jobs-plus/app/views/my-expert/main.php:28
-#: jobs-plus/app/views/my-job/main.php:25
-#: jobs-plus/framework/database/ig-grid.php:116
-msgid "Edit"
-msgstr ""
-
-#: jobs-plus/app/components/ig-wallet/app/views/credit/main.php:62
-#: jobs-plus/app/components/ig-wallet/app/views/credit/my_wallets.php:64
+#: app/components/ig-wallet/app/views/credit/main.php:62
+#: app/components/ig-wallet/app/views/credit/my_wallets.php:64
 msgid "No data available"
 msgstr ""
 
-#: jobs-plus/app/components/ig-wallet/app/views/credit/main.php:138
+#: app/components/ig-wallet/app/views/credit/main.php:138
 msgid ""
-"Append credit info after product name & price, eg: <em>10$ for 20 credits</"
-"em>"
+"Append credit info after product name & price, eg: <em>10$ for 20 credits</em>"
 msgstr ""
 
-#: jobs-plus/app/components/ig-wallet/app/views/credit/main.php:149
+#: app/components/ig-wallet/app/views/credit/main.php:149
 msgid "Reset form"
 msgstr ""
 
-#: jobs-plus/app/components/ig-wallet/app/views/credit/my_wallets.php:4
+#: app/components/ig-wallet/app/views/credit/my_wallets.php:4
 msgid "Wallets"
 msgstr ""
 
-#: jobs-plus/app/components/ig-wallet/app/views/credit/my_wallets.php:5
+#: app/components/ig-wallet/app/views/credit/my_wallets.php:5
 msgid "Purchase History"
 msgstr ""
 
-#: jobs-plus/app/components/ig-wallet/app/views/credit/my_wallets.php:9
+#: app/components/ig-wallet/app/views/credit/my_wallets.php:9
 msgid "Credits Balance"
 msgstr ""
 
-#: jobs-plus/app/components/ig-wallet/app/views/credit/my_wallets.php:18
+#: app/components/ig-wallet/app/views/credit/my_wallets.php:18
 msgid "Purchase Credits"
 msgstr ""
 
-#: jobs-plus/app/components/ig-wallet/app/views/credit/my_wallets.php:30
-#: jobs-plus/app/components/ig-wallet/app/views/credit/my_wallets.php:79
+#: app/components/ig-wallet/app/views/credit/my_wallets.php:30
+#: app/components/ig-wallet/app/views/credit/my_wallets.php:79
 msgid "All"
 msgstr ""
 
-#: jobs-plus/app/components/ig-wallet/app/views/credit/my_wallets.php:46
+#: app/components/ig-wallet/app/views/credit/my_wallets.php:46
 msgid "Date"
 msgstr ""
 
-#: jobs-plus/app/components/ig-wallet/app/views/credit/my_wallets.php:47
+#: app/components/ig-wallet/app/views/credit/my_wallets.php:47
 msgid "Detail"
 msgstr ""
 
-#: jobs-plus/app/components/ig-wallet/app/views/credit/settings.php:23
+#: app/components/ig-wallet/app/views/credit/settings.php:23
 msgid "Send Credits"
 msgstr ""
 
-#: jobs-plus/app/components/ig-wallet/app/views/settings/sending_credit.php:2
+#: app/components/ig-wallet/app/views/settings/sending_credit.php:2
 msgid "Sending free credit to user"
 msgstr ""
 
-#: jobs-plus/app/components/ig-wallet/app/views/settings/sending_credit.php:22
+#: app/components/ig-wallet/app/views/settings/sending_credit.php:22
 msgid "---Choose---"
 msgstr ""
 
-#: jobs-plus/app/components/je-addon-table.php:73
-#: jobs-plus/app/components/je-addon-table.php:75
-#, php-format
+#: app/components/ig-wallet.php:41
+msgid "Rules"
+msgstr ""
+
+#: app/components/ig-wallet.php:65
+msgid "Credit Plan"
+msgstr ""
+
+#: app/components/ig-wallet.php:67
+msgid "Parent Item:"
+msgstr ""
+
+#: app/components/ig-wallet.php:68
+msgid "All Items"
+msgstr ""
+
+#: app/components/ig-wallet.php:69
+msgid "View Item"
+msgstr ""
+
+#: app/components/ig-wallet.php:70
+msgid "Add New Item"
+msgstr ""
+
+#: app/components/ig-wallet.php:71 app/components/je-custom-content.php:18
+#: app/components/je-custom-content.php:77
+#: app/controllers/backend/je-admin-controller.php:104
+#: app/controllers/backend/je-admin-controller.php:131
+msgid "Add New"
+msgstr ""
+
+#: app/components/ig-wallet.php:72
+msgid "Edit Item"
+msgstr ""
+
+#: app/components/ig-wallet.php:73
+msgid "Update Item"
+msgstr ""
+
+#: app/components/ig-wallet.php:74
+msgid "Search Item"
+msgstr ""
+
+#: app/components/ig-wallet.php:75
+msgid "Not found"
+msgstr ""
+
+#: app/components/ig-wallet.php:76
+msgid "Not found in Trash"
+msgstr ""
+
+#: app/components/ig-wallet.php:79
+msgid "ig_credit_plan"
+msgstr ""
+
+#: app/components/je-addon-table.php:73 app/components/je-addon-table.php:75
 msgid "Plugin <strong>%s</strong> required"
 msgstr ""
 
-#: jobs-plus/app/components/je-credit-rules/app/controllers/expert-saved-controller.php:30
-#: jobs-plus/app/components/je-credit-rules/app/controllers/expert-saved-controller.php:112
-#, php-format
+#: app/components/je-credit-rules/app/controllers/expert-saved-controller.php:30
+#: app/components/je-credit-rules/app/controllers/expert-saved-controller.php:112
 msgid "You have used %s credit(s) for posting the profile %s"
 msgstr ""
 
-#: jobs-plus/app/components/je-credit-rules/app/controllers/expert-saved-controller.php:62
-#, php-format
+#: app/components/je-credit-rules/app/controllers/expert-saved-controller.php:62
 msgid ""
-"Your balance is not enough for creating a new profile (requires %s "
-"credit(s)), please click the following  <a href=\"%s\">link</a> to top up "
-"your credit balance."
+"Your balance is not enough for creating a new profile (requires %s credit(s)), "
+"please click the following  <a href=\"%s\">link</a> to top up your credit balance."
 msgstr ""
 
-#: jobs-plus/app/components/je-credit-rules/app/controllers/expert-saved-controller.php:112
-#: jobs-plus/app/components/je-credit-rules/app/controllers/job-saved-controller.php:100
+#: app/components/je-credit-rules/app/controllers/expert-saved-controller.php:112
+#: app/components/je-credit-rules/app/controllers/job-saved-controller.php:100
 msgid "Spent Credits"
 msgstr ""
 
-#: jobs-plus/app/components/je-credit-rules/app/controllers/expert-saved-controller.php:140
-#: jobs-plus/app/components/je-credit-rules/app/controllers/job-saved-controller.php:128
+#: app/components/je-credit-rules/app/controllers/expert-saved-controller.php:140
+#: app/components/je-credit-rules/app/controllers/job-saved-controller.php:128
 msgid "Settings has been saved successfully!"
 msgstr ""
 
-#: jobs-plus/app/components/je-credit-rules/app/controllers/job-saved-controller.php:42
-#, php-format
+#: app/components/je-credit-rules/app/controllers/job-saved-controller.php:42
 msgid ""
-"Your balance's not enough for posting a new job - require %s credit(s), "
-"please visit <a href=\"%s\">here</a> for purchasing"
+"Your balance's not enough for posting a new job - require %s credit(s), please "
+"visit <a href=\"%s\">here</a> for purchasing"
 msgstr ""
 
-#: jobs-plus/app/components/je-credit-rules/app/controllers/job-saved-controller.php:48
-#, php-format
+#: app/components/je-credit-rules/app/controllers/job-saved-controller.php:48
 msgid "It will cost %s credit(s) for posting a new job"
 msgstr ""
 
-#: jobs-plus/app/components/je-credit-rules/app/controllers/job-saved-controller.php:100
-#, php-format
+#: app/components/je-credit-rules/app/controllers/job-saved-controller.php:100
 msgid "You have used %s credit(s) for posting the job %s"
 msgstr ""
 
-#: jobs-plus/app/components/je-credit-rules/app/views/expert-saved/settings.php:3
+#: app/components/je-credit-rules/app/views/expert-saved/settings.php:3
 msgid "Expert profile saved"
 msgstr ""
 
-#: jobs-plus/app/components/je-credit-rules/app/views/expert-saved/settings.php:6
+#: app/components/je-credit-rules/app/views/expert-saved/settings.php:6
 msgid "Credits used for creating new expert profile"
 msgstr ""
 
-#: jobs-plus/app/components/je-credit-rules/app/views/expert-saved/settings.php:11
-#: jobs-plus/app/components/je-credit-rules/app/views/job-saved/settings.php:11
+#: app/components/je-credit-rules/app/views/expert-saved/settings.php:11
+#: app/components/je-credit-rules/app/views/job-saved/settings.php:11
 msgid "Enable"
 msgstr ""
 
-#: jobs-plus/app/components/je-credit-rules/app/views/expert-saved/settings.php:27
-#: jobs-plus/app/components/je-credit-rules/app/views/job-saved/settings.php:27
+#: app/components/je-credit-rules/app/views/expert-saved/settings.php:27
+#: app/components/je-credit-rules/app/views/job-saved/settings.php:27
 msgid "Credit Cost"
 msgstr ""
 
-#: jobs-plus/app/components/je-credit-rules/app/views/expert-saved/settings.php:35
+#: app/components/je-credit-rules/app/views/expert-saved/settings.php:35
 msgid "How many credits it costs per expert profile"
 msgstr ""
 
-#: jobs-plus/app/components/je-credit-rules/app/views/expert-saved/settings.php:41
-#: jobs-plus/app/components/je-credit-rules/app/views/job-saved/settings.php:41
+#: app/components/je-credit-rules/app/views/expert-saved/settings.php:41
+#: app/components/je-credit-rules/app/views/job-saved/settings.php:41
 msgid "Free From"
 msgstr ""
 
-#: jobs-plus/app/components/je-credit-rules/app/views/expert-saved/settings.php:46
+#: app/components/je-credit-rules/app/views/expert-saved/settings.php:46
 msgid "How many profiles user need to pay before free submit"
 msgstr ""
 
-#: jobs-plus/app/components/je-credit-rules/app/views/expert-saved/settings.php:52
-#: jobs-plus/app/components/je-credit-rules/app/views/job-saved/settings.php:52
+#: app/components/je-credit-rules/app/views/expert-saved/settings.php:52
+#: app/components/je-credit-rules/app/views/job-saved/settings.php:52
 msgid "Free For"
 msgstr ""
 
-#: jobs-plus/app/components/je-credit-rules/app/views/expert-saved/settings.php:67
+#: app/components/je-credit-rules/app/views/expert-saved/settings.php:67
 msgid "Free submit for specific roles"
 msgstr ""
 
-#: jobs-plus/app/components/je-credit-rules/app/views/job-saved/settings.php:3
+#: app/components/je-credit-rules/app/views/job-saved/settings.php:3
 msgid "Job saved"
 msgstr ""
 
-#: jobs-plus/app/components/je-credit-rules/app/views/job-saved/settings.php:6
+#: app/components/je-credit-rules/app/views/job-saved/settings.php:6
 msgid "Credits used for creating a new job"
 msgstr ""
 
-#: jobs-plus/app/components/je-credit-rules/app/views/job-saved/settings.php:35
+#: app/components/je-credit-rules/app/views/job-saved/settings.php:35
 msgid "How many credits each job costs"
 msgstr ""
 
-#: jobs-plus/app/components/je-credit-rules/app/views/job-saved/settings.php:46
+#: app/components/je-credit-rules/app/views/job-saved/settings.php:46
 msgid "Job posting after this many is free"
 msgstr ""
 
-#: jobs-plus/app/components/je-credit-rules/app/views/job-saved/settings.php:67
+#: app/components/je-credit-rules/app/views/job-saved/settings.php:67
 msgid "Free job posting for specific roles"
 msgstr ""
 
-#: jobs-plus/app/components/je-custom-content.php:16
-#: jobs-plus/app/views/contact/job.php:6
+#: app/components/je-custom-content.php:16 app/views/contact/job.php:6
 msgid "Jobs"
 msgstr ""
 
-#: jobs-plus/app/components/je-custom-content.php:17
+#: app/components/je-custom-content.php:17
 msgid "Job"
 msgstr ""
 
-#: jobs-plus/app/components/je-custom-content.php:19
+#: app/components/je-custom-content.php:19
 msgid "Add New Job"
 msgstr ""
 
-#: jobs-plus/app/components/je-custom-content.php:21
-#: jobs-plus/app/controllers/backend/je-admin-controller.php:56
-#: jobs-plus/app/controllers/backend/je-admin-controller.php:57
+#: app/components/je-custom-content.php:21
+#: app/controllers/backend/je-admin-controller.php:56
+#: app/controllers/backend/je-admin-controller.php:57
 msgid "New Job"
 msgstr ""
 
-#: jobs-plus/app/components/je-custom-content.php:22
+#: app/components/je-custom-content.php:22
 msgid "View Job"
 msgstr ""
 
-#: jobs-plus/app/components/je-custom-content.php:23
+#: app/components/je-custom-content.php:23
 msgid "Search Jobs"
 msgstr ""
 
-#: jobs-plus/app/components/je-custom-content.php:24
+#: app/components/je-custom-content.php:24
 msgid "No jobs found"
 msgstr ""
 
-#: jobs-plus/app/components/je-custom-content.php:25
+#: app/components/je-custom-content.php:25
 msgid "No jobs found in Trash"
 msgstr ""
 
-#: jobs-plus/app/components/je-custom-content.php:26
+#: app/components/je-custom-content.php:26
 msgid "Jobs Fields"
 msgstr ""
 
-#: jobs-plus/app/components/je-custom-content.php:45
+#: app/components/je-custom-content.php:45
 msgid "Job offerings"
 msgstr ""
 
-#: jobs-plus/app/components/je-custom-content.php:75
-#: jobs-plus/app/views/contact/expert.php:6
+#: app/components/je-custom-content.php:75 app/views/contact/expert.php:6
 msgid "Experts"
 msgstr ""
 
-#: jobs-plus/app/components/je-custom-content.php:76
+#: app/components/je-custom-content.php:76
 msgid "Expert"
 msgstr ""
 
-#: jobs-plus/app/components/je-custom-content.php:78
+#: app/components/je-custom-content.php:78
 msgid "Add New Expert"
 msgstr ""
 
-#: jobs-plus/app/components/je-custom-content.php:80
-#: jobs-plus/app/controllers/backend/je-admin-controller.php:70
-#: jobs-plus/app/controllers/backend/je-admin-controller.php:71
+#: app/components/je-custom-content.php:80
+#: app/controllers/backend/je-admin-controller.php:70
+#: app/controllers/backend/je-admin-controller.php:71
 msgid "New Expert"
 msgstr ""
 
-#: jobs-plus/app/components/je-custom-content.php:81
+#: app/components/je-custom-content.php:81
 msgid "View Expert"
 msgstr ""
 
-#: jobs-plus/app/components/je-custom-content.php:82
+#: app/components/je-custom-content.php:82
 msgid "Search Expert"
 msgstr ""
 
-#: jobs-plus/app/components/je-custom-content.php:83
+#: app/components/je-custom-content.php:83
 msgid "No experts found"
 msgstr ""
 
-#: jobs-plus/app/components/je-custom-content.php:84
+#: app/components/je-custom-content.php:84
 msgid "No experts found in Trash"
 msgstr ""
 
-#: jobs-plus/app/components/je-custom-content.php:85
+#: app/components/je-custom-content.php:85
 msgid "Expert fields"
 msgstr ""
 
-#: jobs-plus/app/components/je-custom-content.php:105
+#: app/components/je-custom-content.php:105
 msgid "Expert and extended profile"
 msgstr ""
 
-#: jobs-plus/app/components/je-custom-content.php:136
-#: jobs-plus/app/components/je-custom-content.php:144
+#: app/components/je-custom-content.php:136
+#: app/components/je-custom-content.php:144
 msgid "Job Categories"
 msgstr ""
 
-#: jobs-plus/app/components/je-custom-content.php:137
+#: app/components/je-custom-content.php:137
 msgid "Job Category"
 msgstr ""
 
-#: jobs-plus/app/components/je-custom-content.php:138
+#: app/components/je-custom-content.php:138
 msgid "Add New Job Categories"
 msgstr ""
 
-#: jobs-plus/app/components/je-custom-content.php:139
+#: app/components/je-custom-content.php:139
 msgid "New Job Category"
 msgstr ""
 
-#: jobs-plus/app/components/je-custom-content.php:140
+#: app/components/je-custom-content.php:140
 msgid "Edit Job Category"
 msgstr ""
 
-#: jobs-plus/app/components/je-custom-content.php:141
+#: app/components/je-custom-content.php:141
 msgid "Update Job Category"
 msgstr ""
 
-#: jobs-plus/app/components/je-custom-content.php:142
+#: app/components/je-custom-content.php:142
 msgid "Search Job Categories"
 msgstr ""
 
-#: jobs-plus/app/components/je-custom-content.php:143
-#: jobs-plus/app/components/je-custom-content.php:147
+#: app/components/je-custom-content.php:143
+#: app/components/je-custom-content.php:147
 msgid "All Job Categories"
 msgstr ""
 
-#: jobs-plus/app/components/je-custom-content.php:145
+#: app/components/je-custom-content.php:145
 msgid "Job Categories: "
 msgstr ""
 
-#: jobs-plus/app/components/je-custom-content.php:146
+#: app/components/je-custom-content.php:146
 msgid "Add or Remove Job Categories"
 msgstr ""
 
-#: jobs-plus/app/components/je-custom-content.php:182
+#: app/components/je-custom-content.php:182
 msgid "Job Skills Tags"
 msgstr ""
 
-#: jobs-plus/app/components/je-custom-content.php:183
+#: app/components/je-custom-content.php:183
 msgid "Job Skills Tag"
 msgstr ""
 
-#: jobs-plus/app/components/je-custom-content.php:184
+#: app/components/je-custom-content.php:184
 msgid "Add New Job Skills Tag"
 msgstr ""
 
-#: jobs-plus/app/components/je-custom-content.php:185
+#: app/components/je-custom-content.php:185
 msgid "New Job Skills Tag"
 msgstr ""
 
-#: jobs-plus/app/components/je-custom-content.php:186
+#: app/components/je-custom-content.php:186
 msgid "Edit Job Skills Tag"
 msgstr ""
 
-#: jobs-plus/app/components/je-custom-content.php:187
+#: app/components/je-custom-content.php:187
 msgid "Update Job Skills Tag"
 msgstr ""
 
-#: jobs-plus/app/components/je-custom-content.php:188
+#: app/components/je-custom-content.php:188
 msgid "Search Job Skills Tags"
 msgstr ""
 
-#: jobs-plus/app/components/je-custom-content.php:189
+#: app/components/je-custom-content.php:189
 msgid "Popular Job Skills Tags"
 msgstr ""
 
-#: jobs-plus/app/components/je-custom-content.php:190
-#: jobs-plus/app/components/je-custom-content.php:193
+#: app/components/je-custom-content.php:190
+#: app/components/je-custom-content.php:193
 msgid "All Job Skills Tags"
 msgstr ""
 
-#: jobs-plus/app/components/je-custom-content.php:191
+#: app/components/je-custom-content.php:191
 msgid "Jobs tags:"
 msgstr ""
 
-#: jobs-plus/app/components/je-custom-content.php:192
+#: app/components/je-custom-content.php:192
 msgid "Add or Remove Job Skills Tags"
 msgstr ""
 
-#: jobs-plus/app/components/je-custom-content.php:219
-#: jobs-plus/app/components/je-custom-content.php:229
+#: app/components/je-custom-content.php:219
+#: app/components/je-custom-content.php:229
 msgid "Virtual"
 msgstr ""
 
-#: jobs-plus/app/components/je-custom-content.php:238
+#: app/components/je-custom-content.php:224
+#: app/components/je-custom-content.php:234
+msgid "Virtual <span class=\"count\">(%s)</span>"
+msgid_plural "Virtual <span class=\"count\">(%s)</span>"
+msgstr[0] ""
+msgstr[1] ""
+
+#: app/components/je-custom-content.php:238
 msgid "Temp"
 msgstr ""
 
-#: jobs-plus/app/components/je-page-factory.php:32
-msgid ""
-"<!-- You may edit this page, the title and the slug, but it requires a "
-"minimum of the correct page shortcode to function. You can recreate the "
-"original default page by deleting this one. -->\n"
+#: app/components/je-fields-table.php:25
+msgid "Validation"
 msgstr ""
 
-#: jobs-plus/app/components/je-page-factory.php:62
+#: app/components/je-page-factory.php:32
+msgid ""
+"<!-- You may edit this page, the title and the slug, but it requires a minimum of "
+"the correct page shortcode to function. You can recreate the original default "
+"page by deleting this one. -->\n"
+msgstr ""
+
+#: app/components/je-page-factory.php:62
 msgid "Jobs & Experts"
 msgstr ""
 
-#: jobs-plus/app/components/je-page-factory.php:63
+#: app/components/je-page-factory.php:63
 msgid "jobs-experts"
 msgstr ""
 
-#: jobs-plus/app/components/je-page-factory.php:98
-#: jobs-plus/app/components/je-page-factory.php:239
-#, php-format
+#: app/components/je-page-factory.php:98 app/components/je-page-factory.php:239
 msgid "Add a %s"
 msgstr ""
 
-#: jobs-plus/app/components/je-page-factory.php:99
-#: jobs-plus/app/components/je-page-factory.php:240
-#, php-format
+#: app/components/je-page-factory.php:99 app/components/je-page-factory.php:240
 msgid "add-a-%s"
 msgstr ""
 
-#: jobs-plus/app/components/je-page-factory.php:125
-#: jobs-plus/app/components/je-page-factory.php:267
-#, php-format
+#: app/components/je-page-factory.php:125 app/components/je-page-factory.php:267
 msgid "Edit %s"
 msgstr ""
 
-#: jobs-plus/app/components/je-page-factory.php:126
-#: jobs-plus/app/components/je-page-factory.php:268
-#, php-format
+#: app/components/je-page-factory.php:126 app/components/je-page-factory.php:268
 msgid "edit-%s"
 msgstr ""
 
-#: jobs-plus/app/components/je-page-factory.php:153
-#: jobs-plus/app/components/je-page-factory.php:154
-#: jobs-plus/app/components/je-page-factory.php:295
-#: jobs-plus/app/components/je-page-factory.php:296
-#: jobs-plus/app/views/backend/getting_start.php:85
-#: jobs-plus/app/views/backend/getting_start.php:92
-#: jobs-plus/app/views/backend/getting_start.php:116
-#: jobs-plus/app/views/backend/getting_start.php:124
-#, php-format
+#: app/components/je-page-factory.php:153 app/components/je-page-factory.php:154
+#: app/components/je-page-factory.php:295 app/components/je-page-factory.php:296
+#: app/views/backend/getting_start.php:85 app/views/backend/getting_start.php:92
+#: app/views/backend/getting_start.php:116 app/views/backend/getting_start.php:124
 msgid "%s"
 msgstr ""
 
-#: jobs-plus/app/components/je-page-factory.php:182
-#: jobs-plus/app/components/je-page-factory.php:323
-#, php-format
+#: app/components/je-page-factory.php:182 app/components/je-page-factory.php:323
 msgid "%s Contact"
 msgstr ""
 
-#: jobs-plus/app/components/je-page-factory.php:183
-#: jobs-plus/app/components/je-page-factory.php:324
-#, php-format
+#: app/components/je-page-factory.php:183 app/components/je-page-factory.php:324
 msgid "%s-contact"
 msgstr ""
 
-#: jobs-plus/app/components/je-page-factory.php:211
-#, php-format
+#: app/components/je-page-factory.php:211
 msgid "My %s"
 msgstr ""
 
-#: jobs-plus/app/components/je-page-factory.php:212
-#, php-format
+#: app/components/je-page-factory.php:212
 msgid "my-%s"
 msgstr ""
 
-#: jobs-plus/app/components/je-page-factory.php:352
-#, php-format
+#: app/components/je-page-factory.php:352
 msgid "My %s Profile"
 msgstr ""
 
-#: jobs-plus/app/components/je-page-factory.php:353
-#, php-format
+#: app/components/je-page-factory.php:353
 msgid "my-%s-profile"
 msgstr ""
 
-#: jobs-plus/app/components/je-router.php:37
+#: app/components/je-router.php:37
 msgid "Job Category: "
 msgstr ""
 
-#: jobs-plus/app/controllers/backend/je-admin-controller.php:49
-#: jobs-plus/app/controllers/backend/je-admin-controller.php:50
-#: jobs-plus/app/controllers/backend/je-admin-controller.php:97
+#: app/controllers/backend/je-admin-controller.php:49
+#: app/controllers/backend/je-admin-controller.php:50
+#: app/controllers/backend/je-admin-controller.php:97
 msgid "Getting Started"
 msgstr ""
 
-#: jobs-plus/app/controllers/backend/je-admin-controller.php:103
-#: jobs-plus/app/controllers/backend/je-admin-controller.php:130
-#, php-format
+#: app/controllers/backend/je-admin-controller.php:103
+#: app/controllers/backend/je-admin-controller.php:130
 msgid "Manage %s"
 msgstr ""
 
-#: jobs-plus/app/controllers/backend/je-admin-controller.php:108
-#, php-format
+#: app/controllers/backend/je-admin-controller.php:108
 msgid "New %s"
 msgstr ""
 
-#: jobs-plus/app/controllers/backend/je-expert-admin-controller.php:21
+#: app/controllers/backend/je-expert-admin-controller.php:21
 msgid "User"
 msgstr ""
 
-#: jobs-plus/app/controllers/backend/je-expert-admin-controller.php:68
+#: app/controllers/backend/je-expert-admin-controller.php:68
 msgid "Expert Profile saved!"
 msgstr ""
 
-#: jobs-plus/app/controllers/backend/je-expert-admin-controller.php:85
+#: app/controllers/backend/je-expert-admin-controller.php:85
 msgid "Expert not found!"
 msgstr ""
 
-#: jobs-plus/app/controllers/backend/je-job-admin-controller.php:50
-#: jobs-plus/app/views/backend/jobs/_form.php:43
+#: app/controllers/backend/je-job-admin-controller.php:50
+#: app/views/backend/jobs/_form.php:43
 msgid "Job Owner"
 msgstr ""
 
-#: jobs-plus/app/controllers/backend/je-job-admin-controller.php:53
-#: jobs-plus/app/views/my-job/main.php:10
+#: app/controllers/backend/je-job-admin-controller.php:53
+#: app/views/my-job/main.php:10
 msgid "Price"
 msgstr ""
 
-#: jobs-plus/app/controllers/backend/je-job-admin-controller.php:54
+#: app/controllers/backend/je-job-admin-controller.php:54
 msgid "Open For"
 msgstr ""
 
-#: jobs-plus/app/controllers/backend/je-job-admin-controller.php:77
+#: app/controllers/backend/je-job-admin-controller.php:77
 msgid "Job saved!"
 msgstr ""
 
-#: jobs-plus/app/controllers/backend/je-job-admin-controller.php:98
+#: app/controllers/backend/je-job-admin-controller.php:98
 msgid "Job not found!"
 msgstr ""
 
-#: jobs-plus/app/controllers/frontend/je-buttons-shortcode-controller.php:46
-#: jobs-plus/app/views/backend/experts/add.php:4
+#: app/controllers/frontend/je-buttons-shortcode-controller.php:46
+#: app/views/backend/experts/add.php:4
 msgid "Add an Expert"
 msgstr ""
 
-#: jobs-plus/app/controllers/frontend/je-buttons-shortcode-controller.php:88
+#: app/controllers/frontend/je-buttons-shortcode-controller.php:88
 msgid "Post a Job"
 msgstr ""
 
-#: jobs-plus/app/controllers/frontend/je-buttons-shortcode-controller.php:129
+#: app/controllers/frontend/je-buttons-shortcode-controller.php:129
 msgid "Browse Experts"
 msgstr ""
 
-#: jobs-plus/app/controllers/frontend/je-buttons-shortcode-controller.php:172
+#: app/controllers/frontend/je-buttons-shortcode-controller.php:172
 msgid "Browse Jobs"
 msgstr ""
 
-#: jobs-plus/app/controllers/frontend/je-buttons-shortcode-controller.php:199
+#: app/controllers/frontend/je-buttons-shortcode-controller.php:199
 msgid "My Profile"
 msgstr ""
 
-#: jobs-plus/app/controllers/frontend/je-contact-shortcode-controller.php:154
-#: jobs-plus/app/controllers/frontend/je-contact-shortcode-controller.php:186
+#: app/controllers/frontend/je-contact-shortcode-controller.php:154
+#: app/controllers/frontend/je-contact-shortcode-controller.php:186
 msgid "Your request has been sent. Thank you!"
 msgstr ""
 
-#: jobs-plus/app/controllers/frontend/je-contact-shortcode-controller.php:155
-#: jobs-plus/app/controllers/frontend/je-contact-shortcode-controller.php:187
+#: app/controllers/frontend/je-contact-shortcode-controller.php:155
+#: app/controllers/frontend/je-contact-shortcode-controller.php:187
 msgid "Some error happened, please try later. Thank you!"
 msgstr ""
 
-#: jobs-plus/app/controllers/frontend/je-expert-add-widget-controller.php:14
-#: jobs-plus/app/controllers/frontend/je-expert-add-widget-controller.php:32
-#: jobs-plus/app/controllers/frontend/je-expert-add-widget-controller.php:63
-#: jobs-plus/app/views/job-single/main.php:34
-#: jobs-plus/app/views/landing/main.php:117
+#: app/controllers/frontend/je-expert-add-widget-controller.php:14
+#: app/controllers/frontend/je-expert-add-widget-controller.php:32
+#: app/controllers/frontend/je-expert-add-widget-controller.php:63
+#: app/views/job-single/main.php:34 app/views/landing/main.php:117
 msgid "Become Expert"
 msgstr ""
 
-#: jobs-plus/app/controllers/frontend/je-expert-add-widget-controller.php:16
+#: app/controllers/frontend/je-expert-add-widget-controller.php:16
 msgid "Jobs + Become Expert"
 msgstr ""
 
-#: jobs-plus/app/controllers/frontend/je-expert-add-widget-controller.php:48
+#: app/controllers/frontend/je-expert-add-widget-controller.php:48
 msgid "First name"
 msgstr ""
 
-#: jobs-plus/app/controllers/frontend/je-expert-add-widget-controller.php:55
+#: app/controllers/frontend/je-expert-add-widget-controller.php:55
 msgid "Last name"
 msgstr ""
 
-#: jobs-plus/app/controllers/frontend/je-expert-add-widget-controller.php:101
-#: jobs-plus/app/controllers/frontend/je-job-add-widget-controller.php:88
-#: jobs-plus/app/controllers/frontend/je-job-search-widget-controller.php:96
+#: app/controllers/frontend/je-expert-add-widget-controller.php:101
+#: app/controllers/frontend/je-job-add-widget-controller.php:88
+#: app/controllers/frontend/je-job-search-widget-controller.php:96
 msgid "Title: "
 msgstr ""
 
-#: jobs-plus/app/controllers/frontend/je-expert-add-widget-controller.php:108
-#: jobs-plus/app/controllers/frontend/je-job-add-widget-controller.php:95
-#: jobs-plus/app/controllers/frontend/je-job-search-widget-controller.php:103
+#: app/controllers/frontend/je-expert-add-widget-controller.php:108
+#: app/controllers/frontend/je-job-add-widget-controller.php:95
+#: app/controllers/frontend/je-job-search-widget-controller.php:103
 msgid "Who can view:"
 msgstr ""
 
-#: jobs-plus/app/controllers/frontend/je-expert-add-widget-controller.php:111
-#: jobs-plus/app/controllers/frontend/je-job-add-widget-controller.php:98
-#: jobs-plus/app/controllers/frontend/je-job-search-widget-controller.php:106
+#: app/controllers/frontend/je-expert-add-widget-controller.php:111
+#: app/controllers/frontend/je-job-add-widget-controller.php:98
+#: app/controllers/frontend/je-job-search-widget-controller.php:106
 msgid "Both"
 msgstr ""
 
-#: jobs-plus/app/controllers/frontend/je-expert-add-widget-controller.php:113
-#: jobs-plus/app/controllers/frontend/je-job-add-widget-controller.php:100
-#: jobs-plus/app/controllers/frontend/je-job-search-widget-controller.php:108
+#: app/controllers/frontend/je-expert-add-widget-controller.php:113
+#: app/controllers/frontend/je-job-add-widget-controller.php:100
+#: app/controllers/frontend/je-job-search-widget-controller.php:108
 msgid "Signed in"
 msgstr ""
 
-#: jobs-plus/app/controllers/frontend/je-expert-add-widget-controller.php:115
-#: jobs-plus/app/controllers/frontend/je-job-add-widget-controller.php:102
-#: jobs-plus/app/controllers/frontend/je-job-search-widget-controller.php:110
+#: app/controllers/frontend/je-expert-add-widget-controller.php:115
+#: app/controllers/frontend/je-job-add-widget-controller.php:102
+#: app/controllers/frontend/je-job-search-widget-controller.php:110
 msgid "Not sign in"
 msgstr ""
 
-#: jobs-plus/app/controllers/frontend/je-expert-form-shortcode-controller.php:77
+#: app/controllers/frontend/je-expert-form-shortcode-controller.php:77
 msgid "Your name"
 msgstr ""
 
-#: jobs-plus/app/controllers/frontend/je-expert-form-shortcode-controller.php:78
-#: jobs-plus/app/views/expert-form/main.php:54
+#: app/controllers/frontend/je-expert-form-shortcode-controller.php:78
+#: app/views/expert-form/main.php:54
 msgid "Your Company"
 msgstr ""
 
-#: jobs-plus/app/controllers/frontend/je-expert-form-shortcode-controller.php:79
+#: app/controllers/frontend/je-expert-form-shortcode-controller.php:79
 msgid "Where are you from?"
 msgstr ""
 
-#: jobs-plus/app/controllers/frontend/je-expert-form-shortcode-controller.php:80
+#: app/controllers/frontend/je-expert-form-shortcode-controller.php:80
 msgid "Your email will not be published over the site"
 msgstr ""
 
-#: jobs-plus/app/controllers/frontend/je-expert-form-shortcode-controller.php:81
+#: app/controllers/frontend/je-expert-form-shortcode-controller.php:81
 msgid "Tell us about yourself"
 msgstr ""
 
-#: jobs-plus/app/controllers/frontend/je-expert-form-shortcode-controller.php:82
+#: app/controllers/frontend/je-expert-form-shortcode-controller.php:82
 msgid "Short description about yourself"
 msgstr ""
 
-#: jobs-plus/app/controllers/frontend/je-expert-form-shortcode-controller.php:83
+#: app/controllers/frontend/je-expert-form-shortcode-controller.php:83
 msgid "Avatar must be an image"
 msgstr ""
 
-#: jobs-plus/app/controllers/frontend/je-expert-form-shortcode-controller.php:84
+#: app/controllers/frontend/je-expert-form-shortcode-controller.php:84
 msgid "File too large."
 msgstr ""
 
-#: jobs-plus/app/controllers/frontend/je-expert-form-shortcode-controller.php:147
+#: app/controllers/frontend/je-expert-form-shortcode-controller.php:147
 msgid "Select image or file"
 msgstr ""
 
-#: jobs-plus/app/controllers/frontend/je-expert-form-shortcode-controller.php:157
-#: jobs-plus/app/controllers/frontend/je-expert-form-shortcode-controller.php:160
+#: app/controllers/frontend/je-expert-form-shortcode-controller.php:157
+#: app/controllers/frontend/je-expert-form-shortcode-controller.php:160
 msgid "Delete Uploaded Avatar"
 msgstr ""
 
-#: jobs-plus/app/controllers/frontend/je-job-add-widget-controller.php:13
+#: app/controllers/frontend/je-job-add-widget-controller.php:13
 msgid "Post a new Job"
 msgstr ""
 
-#: jobs-plus/app/controllers/frontend/je-job-add-widget-controller.php:15
+#: app/controllers/frontend/je-job-add-widget-controller.php:15
 msgid "Jobs + Post New Job"
 msgstr ""
 
-#: jobs-plus/app/controllers/frontend/je-job-add-widget-controller.php:31
+#: app/controllers/frontend/je-job-add-widget-controller.php:31
 msgid "Post new Job"
 msgstr ""
 
-#: jobs-plus/app/controllers/frontend/je-job-add-widget-controller.php:47
-#: jobs-plus/app/views/backend/jobs/_form.php:19
+#: app/controllers/frontend/je-job-add-widget-controller.php:47
+#: app/views/backend/jobs/_form.php:19
 msgid "Job title"
 msgstr ""
 
-#: jobs-plus/app/controllers/frontend/je-job-add-widget-controller.php:51
+#: app/controllers/frontend/je-job-add-widget-controller.php:51
 msgid "Post it"
 msgstr ""
 
-#: jobs-plus/app/controllers/frontend/je-job-recent-widget-controller.php:17
+#: app/controllers/frontend/je-job-recent-widget-controller.php:17
 msgid "The most recent jobs posts on your site"
 msgstr ""
 
-#: jobs-plus/app/controllers/frontend/je-job-recent-widget-controller.php:19
+#: app/controllers/frontend/je-job-recent-widget-controller.php:19
 msgid "Jobs+ The most recent jobs posts on your site"
 msgstr ""
 
-#: jobs-plus/app/controllers/frontend/je-job-recent-widget-controller.php:35
+#: app/controllers/frontend/je-job-recent-widget-controller.php:35
 msgid "Recent jobs Posts"
 msgstr ""
 
-#: jobs-plus/app/controllers/frontend/je-job-recent-widget-controller.php:98
-#: jobs-plus/app/views/job-archive/main.php:66
-#: jobs-plus/app/views/landing/main.php:32
+#: app/controllers/frontend/je-job-recent-widget-controller.php:98
+#: app/views/job-archive/main.php:68 app/views/landing/main.php:32
 msgid "Categories: "
 msgstr ""
 
-#: jobs-plus/app/controllers/frontend/je-job-recent-widget-controller.php:146
+#: app/controllers/frontend/je-job-recent-widget-controller.php:146
 msgid "Title:"
 msgstr ""
 
-#: jobs-plus/app/controllers/frontend/je-job-recent-widget-controller.php:154
+#: app/controllers/frontend/je-job-recent-widget-controller.php:154
 msgid "Number of posts to show:"
 msgstr ""
 
-#: jobs-plus/app/controllers/frontend/je-job-recent-widget-controller.php:165
+#: app/controllers/frontend/je-job-recent-widget-controller.php:165
 msgid "Display job categories?"
 msgstr ""
 
-#: jobs-plus/app/controllers/frontend/je-job-recent-widget-controller.php:169
+#: app/controllers/frontend/je-job-recent-widget-controller.php:169
 msgid "Order by"
 msgstr ""
 
-#: jobs-plus/app/controllers/frontend/je-job-recent-widget-controller.php:174
+#: app/controllers/frontend/je-job-recent-widget-controller.php:174
 msgid "Randomize"
 msgstr ""
 
-#: jobs-plus/app/controllers/frontend/je-job-search-widget-controller.php:16
+#: app/controllers/frontend/je-job-search-widget-controller.php:16
 msgid "Search Jobs Widget"
 msgstr ""
 
-#: jobs-plus/app/controllers/frontend/je-job-search-widget-controller.php:18
+#: app/controllers/frontend/je-job-search-widget-controller.php:18
 msgid "Jobs+ Search Jobs"
 msgstr ""
 
-#: jobs-plus/app/controllers/frontend/je-job-search-widget-controller.php:34
+#: app/controllers/frontend/je-job-search-widget-controller.php:34
 msgid "Search jobs"
 msgstr ""
 
-#: jobs-plus/app/controllers/frontend/je-job-search-widget-controller.php:53
+#: app/controllers/frontend/je-job-search-widget-controller.php:53
 msgid "Keywords"
 msgstr ""
 
-#: jobs-plus/app/controllers/frontend/je-job-single-shortcode-controller.php:40
+#: app/controllers/frontend/je-job-single-shortcode-controller.php:40
 msgid "Job delete successful!"
 msgstr ""
 
-#: jobs-plus/app/controllers/je-shared-controller.php:30
+#: app/controllers/je-shared-controller.php:30
 msgid "Your expert profile has been deleted."
 msgstr ""
 
-#: jobs-plus/app/controllers/je-shared-controller.php:48
+#: app/controllers/je-shared-controller.php:48
 msgid "Your job has been deleted."
 msgstr ""
 
-#: jobs-plus/app/models/je-job-model.php:114
-#: jobs-plus/app/views/backend/jobs/_form.php:123
-#: jobs-plus/app/views/job-form/main.php:109
+#: app/models/je-field-model.php:30
+msgid "Textbox"
+msgstr ""
+
+#: app/models/je-field-model.php:31
+msgid "TextArea"
+msgstr ""
+
+#: app/models/je-field-model.php:32
+msgid "Checkbox"
+msgstr ""
+
+#: app/models/je-field-model.php:33
+msgid "Radio"
+msgstr ""
+
+#: app/models/je-field-model.php:34
+msgid "Select"
+msgstr ""
+
+#: app/models/je-job-model.php:113 app/views/backend/jobs/_form.php:126
+#: app/views/job-form/main.php:109
 msgid "Completion Date"
 msgstr ""
 
-#: jobs-plus/app/models/je-job-model.php:115
+#: app/models/je-job-model.php:114
 msgid "Job open for"
 msgstr ""
 
-#: jobs-plus/app/models/je-job-model.php:137
+#: app/models/je-job-model.php:134
 msgid "Min Budget should less than Max Budget"
 msgstr ""
 
-#: jobs-plus/app/models/je-job-model.php:209
-#, php-format
+#: app/models/je-job-model.php:203
 msgid "%d Days %dhrs"
 msgstr ""
 
-#: jobs-plus/app/models/je-job-model.php:211
-#: jobs-plus/app/models/je-job-model.php:236
+#: app/models/je-job-model.php:205 app/models/je-job-model.php:227
 msgid "Expired"
 msgstr ""
 
-#: jobs-plus/app/views/backend/experts/_form.php:12
-#: jobs-plus/app/views/backend/jobs/_form.php:14
+#: app/views/backend/experts/_form.php:12 app/views/backend/jobs/_form.php:14
 msgid "General Information"
 msgstr ""
 
-#: jobs-plus/app/views/backend/experts/_form.php:74
+#: app/views/backend/experts/_form.php:74
 msgid "Addition Information"
 msgstr ""
 
-#: jobs-plus/app/views/backend/experts/_form.php:139
-#: jobs-plus/app/views/backend/jobs/_form.php:212
-#: jobs-plus/app/views/expert-form/main.php:118
-#: jobs-plus/app/views/job-form/main.php:150
+#: app/views/backend/experts/_form.php:139 app/views/backend/jobs/_form.php:215
+#: app/views/expert-form/main.php:118 app/views/job-form/main.php:150
 msgid "Attach specs examples or extra information"
 msgstr ""
 
-#: jobs-plus/app/views/backend/getting_start.php:5
-#: jobs-plus/app/views/backend/getting_start.php:55
+#: app/views/backend/getting_start.php:5 app/views/backend/getting_start.php:55
 msgid "Get started with Jobs & Experts"
 msgstr ""
 
-#: jobs-plus/app/views/backend/getting_start.php:13
-#: jobs-plus/app/views/backend/getting_start.php:40
-#: jobs-plus/app/views/backend/getting_start.php:78
-#: jobs-plus/app/views/backend/getting_start.php:109
-#, php-format
+#: app/views/backend/getting_start.php:13 app/views/backend/getting_start.php:40
+#: app/views/backend/getting_start.php:78 app/views/backend/getting_start.php:109
 msgid "View %s Listings"
 msgstr ""
 
-#: jobs-plus/app/views/backend/getting_start.php:17
-#: jobs-plus/app/views/backend/getting_start.php:33
-#: jobs-plus/app/views/backend/getting_start.php:44
-#: jobs-plus/app/views/backend/getting_start.php:82
-#: jobs-plus/app/views/backend/getting_start.php:103
-#: jobs-plus/app/views/backend/getting_start.php:113
+#: app/views/backend/getting_start.php:17 app/views/backend/getting_start.php:33
+#: app/views/backend/getting_start.php:44 app/views/backend/getting_start.php:82
+#: app/views/backend/getting_start.php:103 app/views/backend/getting_start.php:113
 msgid " this virtual page"
 msgstr ""
 
-#: jobs-plus/app/views/backend/getting_start.php:21
-#: jobs-plus/app/views/backend/getting_start.php:48
-#: jobs-plus/app/views/backend/getting_start.php:88
-#: jobs-plus/app/views/backend/getting_start.php:120
-#, php-format
+#: app/views/backend/getting_start.php:21 app/views/backend/getting_start.php:48
+#: app/views/backend/getting_start.php:88 app/views/backend/getting_start.php:120
 msgid "a new %s"
 msgstr ""
 
-#: jobs-plus/app/views/backend/getting_start.php:29
-#: jobs-plus/app/views/backend/getting_start.php:99
+#: app/views/backend/getting_start.php:29 app/views/backend/getting_start.php:99
 msgid "Jobs & Experts Overview"
 msgstr ""
 
-#: jobs-plus/app/views/backend/getting_start.php:85
-#: jobs-plus/app/views/backend/getting_start.php:116
+#: app/views/backend/getting_start.php:85 app/views/backend/getting_start.php:116
 msgid "Manage"
 msgstr ""
 
-#: jobs-plus/app/views/backend/jobs/_form.php:57
+#: app/views/backend/jobs/_form.php:57
 msgid "Job Status"
 msgstr ""
 
-#: jobs-plus/app/views/backend/jobs/_form.php:78
+#: app/views/backend/jobs/_form.php:78
 msgid "Job Meta"
 msgstr ""
 
-#: jobs-plus/app/views/backend/jobs/_form.php:84
+#: app/views/backend/jobs/_form.php:84
 msgid "Budget ($)"
 msgstr ""
 
-#: jobs-plus/app/views/backend/jobs/_form.php:108
-#: jobs-plus/app/views/job-form/main.php:96
+#: app/views/backend/jobs/_form.php:110 app/views/job-form/main.php:96
 msgid "Contact Email"
 msgstr ""
 
-#: jobs-plus/app/views/backend/jobs/_form.php:139
-#: jobs-plus/app/views/job-form/main.php:122
+#: app/views/backend/jobs/_form.php:142 app/views/job-form/main.php:122
 msgid "Job Open for"
 msgstr ""
 
-#: jobs-plus/app/views/backend/jobs/_form.php:147
-#: jobs-plus/app/views/job-form/main.php:128
+#: app/views/backend/jobs/_form.php:150 app/views/job-form/main.php:128
 msgid "Days"
 msgstr ""
 
-#: jobs-plus/app/views/backend/jobs/_form.php:169
+#: app/views/backend/jobs/_form.php:172
 msgid "Category & Skill"
 msgstr ""
 
-#: jobs-plus/app/views/backend/jobs/_form.php:233
-#: jobs-plus/app/views/job-form/main.php:183
+#: app/views/backend/jobs/_form.php:236 app/views/job-form/main.php:183
 msgid "Add a tag, use commas to separate"
 msgstr ""
 
-#: jobs-plus/app/views/backend/settings.php:18
-msgid "Jobs Settings"
-msgstr ""
-
-#: jobs-plus/app/views/backend/settings.php:24
-msgid "Experts Settings"
-msgstr ""
-
-#: jobs-plus/app/views/backend/settings.php:34
-msgid " Attachments"
-msgstr ""
-
-#: jobs-plus/app/views/backend/settings/expert.php:3
-#: jobs-plus/app/views/backend/settings/job.php:5
-#, php-format
+#: app/views/backend/settings/expert.php:3 app/views/backend/settings/job.php:5
 msgid "%s Status Options"
 msgstr ""
 
-#: jobs-plus/app/views/backend/settings/expert.php:10
-#: jobs-plus/app/views/backend/settings/job.php:10
-#, php-format
+#: app/views/backend/settings/expert.php:10 app/views/backend/settings/job.php:10
 msgid "Maximum %s Records per User"
 msgstr ""
 
-#: jobs-plus/app/views/backend/settings/expert.php:15
-#: jobs-plus/app/views/backend/settings/job.php:15
-#, php-format
+#: app/views/backend/settings/expert.php:15 app/views/backend/settings/job.php:15
 msgid "Maximum number of %s profiles for each user."
 msgstr ""
 
-#: jobs-plus/app/views/backend/settings/expert.php:21
-#: jobs-plus/app/views/backend/settings/job.php:21
-#, php-format
+#: app/views/backend/settings/expert.php:21 app/views/backend/settings/job.php:21
 msgid "%s Records per Page"
 msgstr ""
 
-#: jobs-plus/app/views/backend/settings/expert.php:26
-#: jobs-plus/app/views/backend/settings/job.php:26
-#, php-format
+#: app/views/backend/settings/expert.php:26 app/views/backend/settings/job.php:26
 msgid "Maximum number of %s profiles for each page."
 msgstr ""
 
-#: jobs-plus/app/views/backend/settings/expert.php:32
-#: jobs-plus/app/views/backend/settings/job.php:57
-#, php-format
+#: app/views/backend/settings/expert.php:32 app/views/backend/settings/job.php:57
 msgid "Newly Created %s Status Options"
 msgstr ""
 
-#: jobs-plus/app/views/backend/settings/expert.php:40
-#: jobs-plus/app/views/backend/settings/job.php:65
+#: app/views/backend/settings/expert.php:40 app/views/backend/settings/job.php:65
 msgid "Published"
 msgstr ""
 
-#: jobs-plus/app/views/backend/settings/expert.php:43
-#: jobs-plus/app/views/backend/settings/job.php:68
-#, php-format
+#: app/views/backend/settings/expert.php:43 app/views/backend/settings/job.php:68
 msgid "Allow members to publish %s themselves."
 msgstr ""
 
-#: jobs-plus/app/views/backend/settings/expert.php:48
-#: jobs-plus/app/views/backend/settings/job.php:73
+#: app/views/backend/settings/expert.php:48 app/views/backend/settings/job.php:73
 msgid "Pending Review"
 msgstr ""
 
-#: jobs-plus/app/views/backend/settings/expert.php:51
-#: jobs-plus/app/views/backend/settings/job.php:76
-#, php-format
+#: app/views/backend/settings/expert.php:51 app/views/backend/settings/job.php:76
 msgid "%s is pending review by an administrator."
 msgstr ""
 
-#: jobs-plus/app/views/backend/settings/expert.php:56
-#: jobs-plus/app/views/backend/settings/job.php:81
+#: app/views/backend/settings/expert.php:56 app/views/backend/settings/job.php:81
 msgid "Draft"
 msgstr ""
 
-#: jobs-plus/app/views/backend/settings/expert.php:60
-#: jobs-plus/app/views/backend/settings/job.php:85
+#: app/views/backend/settings/expert.php:60 app/views/backend/settings/job.php:85
 msgid "Allow members to save Drafts."
 msgstr ""
 
-#: jobs-plus/app/views/backend/settings/expert.php:67
-#: jobs-plus/app/views/backend/settings/job.php:92
-#, php-format
+#: app/views/backend/settings/expert.php:67 app/views/backend/settings/job.php:92
 msgid "%s Image Storage"
 msgstr ""
 
-#: jobs-plus/app/views/backend/settings/expert.php:72
-#: jobs-plus/app/views/backend/settings/job.php:97
+#: app/views/backend/settings/expert.php:72 app/views/backend/settings/job.php:97
 msgid "Maximum Gallery Images"
 msgstr ""
 
-#: jobs-plus/app/views/backend/settings/expert.php:78
-#: jobs-plus/app/views/backend/settings/job.php:103
-#, php-format
+#: app/views/backend/settings/expert.php:78 app/views/backend/settings/job.php:103
 msgid ""
 "Maximum number of images that can be uploaded to the %s portfolio gallery. "
 "Default is 4"
 msgstr ""
 
-#: jobs-plus/app/views/backend/settings/expert.php:83
-#: jobs-plus/app/views/backend/settings/job.php:108
+#: app/views/backend/settings/expert.php:83 app/views/backend/settings/job.php:108
 msgid "Notification Settings"
 msgstr ""
 
-#: jobs-plus/app/views/backend/settings/expert.php:87
-#: jobs-plus/app/views/backend/settings/job.php:112
+#: app/views/backend/settings/expert.php:87 app/views/backend/settings/job.php:112
 msgid "Disable Contact Form:"
 msgstr ""
 
-#: jobs-plus/app/views/backend/settings/expert.php:94
-#: jobs-plus/app/views/backend/settings/job.php:119
+#: app/views/backend/settings/expert.php:94 app/views/backend/settings/job.php:119
 msgid "disable contact form"
 msgstr ""
 
-#: jobs-plus/app/views/backend/settings/expert.php:101
-#: jobs-plus/app/views/backend/settings/job.php:126
+#: app/views/backend/settings/expert.php:101 app/views/backend/settings/job.php:126
 msgid "CC the Administrator:"
 msgstr ""
 
-#: jobs-plus/app/views/backend/settings/expert.php:108
-#: jobs-plus/app/views/backend/settings/job.php:133
+#: app/views/backend/settings/expert.php:108 app/views/backend/settings/job.php:133
 msgid "cc the administrator"
 msgstr ""
 
-#: jobs-plus/app/views/backend/settings/expert.php:115
-#: jobs-plus/app/views/backend/settings/job.php:140
+#: app/views/backend/settings/expert.php:115 app/views/backend/settings/job.php:140
 msgid "Email Subject:"
 msgstr ""
 
-#: jobs-plus/app/views/backend/settings/expert.php:121
-#: jobs-plus/app/views/backend/settings/expert.php:134
-#: jobs-plus/app/views/backend/settings/job.php:148
-#: jobs-plus/app/views/backend/settings/job.php:165
+#: app/views/backend/settings/expert.php:121
+#: app/views/backend/settings/expert.php:134 app/views/backend/settings/job.php:148
+#: app/views/backend/settings/job.php:165
 msgid ""
-"Variables: TO_NAME, FROM_NAME, FROM_EMAIL, FROM_MESSAGE, POST_TITLE, "
-"POST_LINK, SITE_NAME"
+"Variables: TO_NAME, FROM_NAME, FROM_EMAIL, FROM_MESSAGE, POST_TITLE, POST_LINK, "
+"SITE_NAME"
 msgstr ""
 
-#: jobs-plus/app/views/backend/settings/expert.php:128
-#: jobs-plus/app/views/backend/settings/job.php:155
+#: app/views/backend/settings/expert.php:128 app/views/backend/settings/job.php:155
 msgid "Email Content:"
 msgstr ""
 
-#: jobs-plus/app/views/backend/settings/general.php:7
+#: app/views/backend/settings/general.php:7
 msgid "Icon Colors"
 msgstr ""
 
-#: jobs-plus/app/views/backend/settings/general.php:15
+#: app/views/backend/settings/general.php:15
 msgid "Dark Icons"
 msgstr ""
 
-#: jobs-plus/app/views/backend/settings/general.php:15
+#: app/views/backend/settings/general.php:15
 msgid "for light button backgrounds"
 msgstr ""
 
-#: jobs-plus/app/views/backend/settings/general.php:23
+#: app/views/backend/settings/general.php:23
 msgid "Bright Icons"
 msgstr ""
 
-#: jobs-plus/app/views/backend/settings/general.php:23
+#: app/views/backend/settings/general.php:23
 msgid "for dark button backgrounds"
 msgstr ""
 
-#: jobs-plus/app/views/backend/settings/general.php:31
+#: app/views/backend/settings/general.php:31
 msgid "No Icons"
 msgstr ""
 
-#: jobs-plus/app/views/backend/settings/general.php:31
+#: app/views/backend/settings/general.php:31
 msgid "to remove the icons from buttons"
 msgstr ""
 
-#: jobs-plus/app/views/backend/settings/general.php:35
+#: app/views/backend/settings/general.php:35
 msgid ""
 "Sets the default color of the button icons. May be overriden for individual "
 "buttons in the \"class\" attribute of the shortcode."
 msgstr ""
 
-#: jobs-plus/app/views/backend/settings/general.php:39
+#: app/views/backend/settings/general.php:39
 msgid "Currency"
 msgstr ""
 
-#: jobs-plus/app/views/backend/settings/general.php:54
+#: app/views/backend/settings/general.php:54
 msgid "Currency Symbol Position"
 msgstr ""
 
-#: jobs-plus/app/views/backend/settings/general.php:93
+#: app/views/backend/settings/general.php:93
 msgid "Show Decimal in Prices"
 msgstr ""
 
-#: jobs-plus/app/views/backend/settings/general.php:101
-#: jobs-plus/app/views/backend/settings/general.php:136
-msgid "Yes"
-msgstr ""
-
-#: jobs-plus/app/views/backend/settings/general.php:107
-#: jobs-plus/app/views/backend/settings/general.php:139
-msgid "No"
-msgstr ""
-
-#: jobs-plus/app/views/backend/settings/general.php:114
+#: app/views/backend/settings/general.php:114
 msgid "Avatar Upload"
 msgstr ""
 
-#: jobs-plus/app/views/backend/settings/general.php:116
+#: app/views/backend/settings/general.php:116
 msgid ""
 "Which roles can upload custom avatar, please note that role with "
 "<strong>upload_files</strong> capability can upload by default"
 msgstr ""
 
-#: jobs-plus/app/views/backend/settings/general.php:292
+#: app/views/backend/settings/general.php:292
 msgid ""
-"It looks like you have been editing something -- if you leave before "
-"submitting your changes will be lost."
+"It looks like you have been editing something -- if you leave before submitting "
+"your changes will be lost."
 msgstr ""
 
-#: jobs-plus/app/views/backend/settings/job.php:32
+#: app/views/backend/settings/job.php:32
 msgid "Use Budget Range"
 msgstr ""
 
-#: jobs-plus/app/views/backend/settings/job.php:38
+#: app/views/backend/settings/job.php:38
 msgid "Use Min and Max budget fields"
 msgstr ""
 
-#: jobs-plus/app/views/backend/settings/job.php:39
+#: app/views/backend/settings/job.php:39
 msgid "Displays both minimum and maximum budget fields."
 msgstr ""
 
-#: jobs-plus/app/views/backend/settings/job.php:45
+#: app/views/backend/settings/job.php:45
 msgid "Allow commenting on Jobs"
 msgstr ""
 
-#: jobs-plus/app/views/backend/settings/job.php:51
+#: app/views/backend/settings/job.php:51
 msgid "This will allow users to comment on jobs."
 msgstr ""
 
-#: jobs-plus/app/views/backend/settings/shortcode.php:2
+#: app/views/backend/settings/shortcode.php:2
 msgid "Buttons Shortcode"
 msgstr ""
 
-#: jobs-plus/app/views/backend/settings/shortcode.php:8
+#: app/views/backend/settings/shortcode.php:8
 msgid "Become an Expert Button"
 msgstr ""
 
-#: jobs-plus/app/views/backend/settings/shortcode.php:17
-#: jobs-plus/app/views/backend/settings/shortcode.php:44
-#: jobs-plus/app/views/backend/settings/shortcode.php:72
-#: jobs-plus/app/views/backend/settings/shortcode.php:100
-#: jobs-plus/app/views/backend/settings/shortcode.php:128
-#: jobs-plus/app/views/backend/settings/shortcode.php:156
+#: app/views/backend/settings/shortcode.php:17
+#: app/views/backend/settings/shortcode.php:44
+#: app/views/backend/settings/shortcode.php:72
+#: app/views/backend/settings/shortcode.php:100
+#: app/views/backend/settings/shortcode.php:128
+#: app/views/backend/settings/shortcode.php:156
 msgid "The text will show below this button."
 msgstr ""
 
-#: jobs-plus/app/views/backend/settings/shortcode.php:20
-#: jobs-plus/app/views/backend/settings/shortcode.php:47
-#: jobs-plus/app/views/backend/settings/shortcode.php:75
-#: jobs-plus/app/views/backend/settings/shortcode.php:103
-#: jobs-plus/app/views/backend/settings/shortcode.php:131
-#: jobs-plus/app/views/backend/settings/shortcode.php:159
+#: app/views/backend/settings/shortcode.php:20
+#: app/views/backend/settings/shortcode.php:47
+#: app/views/backend/settings/shortcode.php:75
+#: app/views/backend/settings/shortcode.php:103
+#: app/views/backend/settings/shortcode.php:131
+#: app/views/backend/settings/shortcode.php:159
 msgid "view"
 msgstr ""
 
-#: jobs-plus/app/views/backend/settings/shortcode.php:21
-#: jobs-plus/app/views/backend/settings/shortcode.php:48
-#: jobs-plus/app/views/backend/settings/shortcode.php:76
-#: jobs-plus/app/views/backend/settings/shortcode.php:104
-#: jobs-plus/app/views/backend/settings/shortcode.php:132
-#: jobs-plus/app/views/backend/settings/shortcode.php:160
-#, php-format
+#: app/views/backend/settings/shortcode.php:21
+#: app/views/backend/settings/shortcode.php:48
+#: app/views/backend/settings/shortcode.php:76
+#: app/views/backend/settings/shortcode.php:104
+#: app/views/backend/settings/shortcode.php:132
+#: app/views/backend/settings/shortcode.php:160
 msgid "Scenario for people can view this button, we have %s %s %s"
 msgstr ""
 
-#: jobs-plus/app/views/backend/settings/shortcode.php:25
-#: jobs-plus/app/views/backend/settings/shortcode.php:52
-#: jobs-plus/app/views/backend/settings/shortcode.php:80
-#: jobs-plus/app/views/backend/settings/shortcode.php:108
-#: jobs-plus/app/views/backend/settings/shortcode.php:136
-#: jobs-plus/app/views/backend/settings/shortcode.php:164
+#: app/views/backend/settings/shortcode.php:25
+#: app/views/backend/settings/shortcode.php:52
+#: app/views/backend/settings/shortcode.php:80
+#: app/views/backend/settings/shortcode.php:108
+#: app/views/backend/settings/shortcode.php:136
+#: app/views/backend/settings/shortcode.php:164
 msgid "Custom Css Class for this button"
 msgstr ""
 
-#: jobs-plus/app/views/backend/settings/shortcode.php:28
-#: jobs-plus/app/views/backend/settings/shortcode.php:55
-#: jobs-plus/app/views/backend/settings/shortcode.php:83
-#: jobs-plus/app/views/backend/settings/shortcode.php:111
-#: jobs-plus/app/views/backend/settings/shortcode.php:139
-#: jobs-plus/app/views/backend/settings/shortcode.php:167
+#: app/views/backend/settings/shortcode.php:28
+#: app/views/backend/settings/shortcode.php:55
+#: app/views/backend/settings/shortcode.php:83
+#: app/views/backend/settings/shortcode.php:111
+#: app/views/backend/settings/shortcode.php:139
+#: app/views/backend/settings/shortcode.php:167
 msgid "url"
 msgstr ""
 
-#: jobs-plus/app/views/backend/settings/shortcode.php:29
-#: jobs-plus/app/views/backend/settings/shortcode.php:56
-#: jobs-plus/app/views/backend/settings/shortcode.php:84
-#: jobs-plus/app/views/backend/settings/shortcode.php:112
-#: jobs-plus/app/views/backend/settings/shortcode.php:140
-#: jobs-plus/app/views/backend/settings/shortcode.php:168
+#: app/views/backend/settings/shortcode.php:29
+#: app/views/backend/settings/shortcode.php:56
+#: app/views/backend/settings/shortcode.php:84
+#: app/views/backend/settings/shortcode.php:112
+#: app/views/backend/settings/shortcode.php:140
+#: app/views/backend/settings/shortcode.php:168
 msgid "The destination of this button."
 msgstr ""
 
-#: jobs-plus/app/views/backend/settings/shortcode.php:36
+#: app/views/backend/settings/shortcode.php:36
 msgid "Add new Post Button"
 msgstr ""
 
-#: jobs-plus/app/views/backend/settings/shortcode.php:64
+#: app/views/backend/settings/shortcode.php:64
 msgid "Listing Jobs Button"
 msgstr ""
 
-#: jobs-plus/app/views/backend/settings/shortcode.php:92
+#: app/views/backend/settings/shortcode.php:92
 msgid "Listing Experts Button"
 msgstr ""
 
-#: jobs-plus/app/views/backend/settings/shortcode.php:120
+#: app/views/backend/settings/shortcode.php:120
 msgid "Listing My Posted Jobs"
 msgstr ""
 
-#: jobs-plus/app/views/backend/settings/shortcode.php:148
+#: app/views/backend/settings/shortcode.php:148
 msgid "Listing My Expert's profiles"
 msgstr ""
 
-#: jobs-plus/app/views/backend/settings/shortcode.php:176
+#: app/views/backend/settings/shortcode.php:176
 msgid "Listing Page"
 msgstr ""
 
-#: jobs-plus/app/views/backend/settings/shortcode.php:180
+#: app/views/backend/settings/shortcode.php:180
 msgid "Job Archive Page"
 msgstr ""
 
-#: jobs-plus/app/views/backend/settings/shortcode.php:187
-#: jobs-plus/app/views/backend/settings/shortcode.php:201
+#: app/views/backend/settings/shortcode.php:187
+#: app/views/backend/settings/shortcode.php:201
 msgid "post_per_page"
 msgstr ""
 
-#: jobs-plus/app/views/backend/settings/shortcode.php:188
-#: jobs-plus/app/views/backend/settings/shortcode.php:202
+#: app/views/backend/settings/shortcode.php:188
+#: app/views/backend/settings/shortcode.php:202
 msgid ""
-"Number of jobs you want to list on a page. Default is the config from "
-"setting page."
+"Number of jobs you want to list on a page. Default is the config from setting "
+"page."
 msgstr ""
 
-#: jobs-plus/app/views/backend/settings/shortcode.php:194
+#: app/views/backend/settings/shortcode.php:194
 msgid "Expert Archive Page"
 msgstr ""
 
-#: jobs-plus/app/views/backend/settings/shortcode.php:210
+#: app/views/backend/settings/shortcode.php:210
 msgid "Form Page"
 msgstr ""
 
-#: jobs-plus/app/views/backend/settings/shortcode.php:214
+#: app/views/backend/settings/shortcode.php:214
 msgid "Job Add/Update Page"
 msgstr ""
 
-#: jobs-plus/app/views/backend/settings/shortcode.php:221
-#: jobs-plus/app/views/backend/settings/shortcode.php:234
-#: jobs-plus/app/views/backend/settings/shortcode.php:355
-#: jobs-plus/app/views/backend/settings/shortcode.php:369
+#: app/views/backend/settings/shortcode.php:221
+#: app/views/backend/settings/shortcode.php:234
+#: app/views/backend/settings/shortcode.php:355
+#: app/views/backend/settings/shortcode.php:369
 msgid "This shortcode doesn't have any parameters."
 msgstr ""
 
-#: jobs-plus/app/views/backend/settings/shortcode.php:227
+#: app/views/backend/settings/shortcode.php:227
 msgid "Expert Add/Update Page"
 msgstr ""
 
-#: jobs-plus/app/views/backend/settings/shortcode.php:242
+#: app/views/backend/settings/shortcode.php:242
 msgid "Communication Page"
 msgstr ""
 
-#: jobs-plus/app/views/backend/settings/shortcode.php:246
+#: app/views/backend/settings/shortcode.php:246
 msgid "Contact Job Poster Page"
 msgstr ""
 
-#: jobs-plus/app/views/backend/settings/shortcode.php:254
+#: app/views/backend/settings/shortcode.php:254
 msgid "ID of the job you want to send contact to."
 msgstr ""
 
-#: jobs-plus/app/views/backend/settings/shortcode.php:257
-#: jobs-plus/app/views/backend/settings/shortcode.php:279
+#: app/views/backend/settings/shortcode.php:257
+#: app/views/backend/settings/shortcode.php:279
 msgid "success_text"
 msgstr ""
 
-#: jobs-plus/app/views/backend/settings/shortcode.php:258
-#: jobs-plus/app/views/backend/settings/shortcode.php:280
+#: app/views/backend/settings/shortcode.php:258
+#: app/views/backend/settings/shortcode.php:280
 msgid "The text to display after user submission successfully."
 msgstr ""
 
-#: jobs-plus/app/views/backend/settings/shortcode.php:261
-#: jobs-plus/app/views/backend/settings/shortcode.php:283
+#: app/views/backend/settings/shortcode.php:261
+#: app/views/backend/settings/shortcode.php:283
 msgid "error_text"
 msgstr ""
 
-#: jobs-plus/app/views/backend/settings/shortcode.php:262
-#: jobs-plus/app/views/backend/settings/shortcode.php:284
+#: app/views/backend/settings/shortcode.php:262
+#: app/views/backend/settings/shortcode.php:284
 msgid "The text to display when error happen after user submission."
 msgstr ""
 
-#: jobs-plus/app/views/backend/settings/shortcode.php:268
+#: app/views/backend/settings/shortcode.php:268
 msgid "Contact Expert Page"
 msgstr ""
 
-#: jobs-plus/app/views/backend/settings/shortcode.php:276
+#: app/views/backend/settings/shortcode.php:276
 msgid "ID of the expert you want to send contact to."
 msgstr ""
 
-#: jobs-plus/app/views/backend/settings/shortcode.php:292
+#: app/views/backend/settings/shortcode.php:292
 msgid "Single Page"
 msgstr ""
 
-#: jobs-plus/app/views/backend/settings/shortcode.php:296
+#: app/views/backend/settings/shortcode.php:296
 msgid "Job Single Page"
 msgstr ""
 
-#: jobs-plus/app/views/backend/settings/shortcode.php:303
-#: jobs-plus/app/views/backend/settings/shortcode.php:317
+#: app/views/backend/settings/shortcode.php:303
+#: app/views/backend/settings/shortcode.php:317
 msgid "id"
 msgstr ""
 
-#: jobs-plus/app/views/backend/settings/shortcode.php:304
+#: app/views/backend/settings/shortcode.php:304
 msgid "ID of the Job"
 msgstr ""
 
-#: jobs-plus/app/views/backend/settings/shortcode.php:310
+#: app/views/backend/settings/shortcode.php:310
 msgid "Expert Single Page"
 msgstr ""
 
-#: jobs-plus/app/views/backend/settings/shortcode.php:318
+#: app/views/backend/settings/shortcode.php:318
 msgid "ID of the Expert"
 msgstr ""
 
-#: jobs-plus/app/views/backend/settings/shortcode.php:326
+#: app/views/backend/settings/shortcode.php:326
 msgid "Others Page"
 msgstr ""
 
-#: jobs-plus/app/views/backend/settings/shortcode.php:330
+#: app/views/backend/settings/shortcode.php:330
 msgid "Landing Page"
 msgstr ""
 
-#: jobs-plus/app/views/backend/settings/shortcode.php:337
+#: app/views/backend/settings/shortcode.php:337
 msgid "job_show_count"
 msgstr ""
 
-#: jobs-plus/app/views/backend/settings/shortcode.php:338
+#: app/views/backend/settings/shortcode.php:338
 msgid "Number of jobs to show, default 3."
 msgstr ""
 
-#: jobs-plus/app/views/backend/settings/shortcode.php:341
+#: app/views/backend/settings/shortcode.php:341
 msgid "expert_show_count"
 msgstr ""
 
-#: jobs-plus/app/views/backend/settings/shortcode.php:342
+#: app/views/backend/settings/shortcode.php:342
 msgid "Number of experts to show, default 6."
 msgstr ""
 
-#: jobs-plus/app/views/backend/settings/shortcode.php:348
+#: app/views/backend/settings/shortcode.php:348
 msgid "My Jobs Page"
 msgstr ""
 
-#: jobs-plus/app/views/backend/settings/shortcode.php:362
+#: app/views/backend/settings/shortcode.php:362
 msgid "My Experts Page"
 msgstr ""
 
-#: jobs-plus/app/views/backend/settings/uploader.php:1
+#: app/views/backend/settings/uploader.php:1
 msgid "Choose which user roles can upload files"
 msgstr ""
 
-#: jobs-plus/app/views/contact/expert.php:4
-#: jobs-plus/app/views/contact/job.php:4
+#: app/views/backend/settings.php:24
+msgid "Experts Settings"
+msgstr ""
+
+#: app/views/backend/settings.php:34
+msgid " Attachments"
+msgstr ""
+
+#: app/views/contact/expert.php:4 app/views/contact/job.php:4
 msgid "Home"
 msgstr ""
 
-#: jobs-plus/app/views/contact/expert.php:28
-#: jobs-plus/app/views/contact/job.php:28
+#: app/views/contact/expert.php:28 app/views/contact/job.php:28
 msgid "Your Name:"
 msgstr ""
 
-#: jobs-plus/app/views/contact/expert.php:36
-#: jobs-plus/app/views/contact/job.php:36
+#: app/views/contact/expert.php:36 app/views/contact/job.php:36
 msgid "Contact email:"
 msgstr ""
 
-#: jobs-plus/app/views/contact/expert.php:55
-#: jobs-plus/app/views/contact/job.php:55
+#: app/views/contact/expert.php:55 app/views/contact/job.php:55
 msgid "Send Message"
 msgstr ""
 
-#: jobs-plus/app/views/expert-archive/_paging.php:21
-#: jobs-plus/app/views/job-archive/_paging.php:21
-#, php-format
+#: app/views/expert-archive/_paging.php:21 app/views/job-archive/_paging.php:21
 msgid "Page %1$d of %2$d"
 msgstr ""
 
-#: jobs-plus/app/views/expert-archive/_paging.php:24
-#: jobs-plus/app/views/job-archive/_paging.php:24
+#: app/views/expert-archive/_paging.php:24 app/views/job-archive/_paging.php:24
 msgid "First"
 msgstr ""
 
-#: jobs-plus/app/views/expert-archive/_paging.php:42
-#: jobs-plus/app/views/job-archive/_paging.php:42
+#: app/views/expert-archive/_paging.php:42 app/views/job-archive/_paging.php:42
 msgid "Last"
 msgstr ""
 
-#: jobs-plus/app/views/expert-archive/main.php:10
+#: app/views/expert-archive/main.php:10
 msgid "Search For Expert"
 msgstr ""
 
-#: jobs-plus/app/views/expert-archive/main.php:24
+#: app/views/expert-archive/main.php:24
 msgid "No Expert Found"
 msgstr ""
 
-#: jobs-plus/app/views/expert-archive/main.php:66
-#: jobs-plus/app/views/landing/main.php:89
-#: jobs-plus/app/views/my-expert/main.php:10
+#: app/views/expert-archive/main.php:66 app/views/landing/main.php:89
+#: app/views/my-expert/main.php:10
 msgid "Views"
 msgstr ""
 
-#: jobs-plus/app/views/expert-archive/main.php:71
-#: jobs-plus/app/views/landing/main.php:94
-#: jobs-plus/app/views/my-expert/main.php:11
+#: app/views/expert-archive/main.php:71 app/views/landing/main.php:94
+#: app/views/my-expert/main.php:11
 msgid "Likes"
 msgstr ""
 
-#: jobs-plus/app/views/expert-form/_avatar_upload.php:9
+#: app/views/expert-form/_avatar_upload.php:9
 msgid "Change Avatar"
 msgstr ""
 
-#: jobs-plus/app/views/expert-form/_avatar_upload.php:12
+#: app/views/expert-form/_avatar_upload.php:12
 msgid "You don't have permission to upload an avatar"
 msgstr ""
 
-#: jobs-plus/app/views/expert-form/_company_popup.php:4
+#: app/views/expert-form/_company_popup.php:4
 msgid "Company"
 msgstr ""
 
-#: jobs-plus/app/views/expert-form/_company_popup.php:13
+#: app/views/expert-form/_company_popup.php:13
 msgid "Company Url"
 msgstr ""
 
-#: jobs-plus/app/views/expert-form/_email_popup.php:4
+#: app/views/expert-form/_email_popup.php:4
 msgid "Email"
 msgstr ""
 
-#: jobs-plus/app/views/expert-form/_name_popup.php:4
+#: app/views/expert-form/_name_popup.php:4
 msgid "First Name"
 msgstr ""
 
-#: jobs-plus/app/views/expert-form/_name_popup.php:13
+#: app/views/expert-form/_name_popup.php:13
 msgid "Last Name"
 msgstr ""
 
-#: jobs-plus/app/views/expert-form/limit.php:3
+#: app/views/expert-form/limit.php:3
 msgid "You've reached the limit of how many Expert Profiles you can post."
 msgstr ""
 
-#: jobs-plus/app/views/expert-form/main.php:22
+#: app/views/expert-form/main.php:22
 msgid "Tag line"
 msgstr ""
 
-#: jobs-plus/app/views/expert-form/main.php:26
+#: app/views/expert-form/main.php:26
 msgid ""
-"Short version of yourself, maximum 100 characters. This will be use to "
-"display at listing page"
+"Short version of yourself, maximum 100 characters. This will be use to display at "
+"listing page"
 msgstr ""
 
-#: jobs-plus/app/views/expert-form/main.php:42
+#: app/views/expert-form/main.php:42
 msgid "Your Name (required)"
 msgstr ""
 
-#: jobs-plus/app/views/expert-form/main.php:43
-#: jobs-plus/app/views/expert-single/main.php:104
-#, php-format
+#: app/views/expert-form/main.php:43 app/views/expert-single/main.php:106
 msgid "Member since %s"
 msgstr ""
 
-#: jobs-plus/app/views/expert-form/main.php:49
-#: jobs-plus/app/views/expert-single/main.php:111
+#: app/views/expert-form/main.php:49 app/views/expert-single/main.php:113
 msgid "Company:"
 msgstr ""
 
-#: jobs-plus/app/views/expert-form/main.php:61
-#: jobs-plus/app/views/expert-single/main.php:123
+#: app/views/expert-form/main.php:61 app/views/expert-single/main.php:125
 msgid "Location:"
 msgstr ""
 
-#: jobs-plus/app/views/expert-form/main.php:73
+#: app/views/expert-form/main.php:73
 msgid "Contact Email:"
 msgstr ""
 
-#: jobs-plus/app/views/expert-form/main.php:78
+#: app/views/expert-form/main.php:78
 msgid "Your Contact Email"
 msgstr ""
 
-#: jobs-plus/app/views/expert-form/main.php:90
-#: jobs-plus/app/views/expert-single/main.php:137
+#: app/views/expert-form/main.php:90 app/views/expert-single/main.php:139
 msgid "Biography"
 msgstr ""
 
-#: jobs-plus/app/views/expert-form/main.php:92
-#: jobs-plus/app/views/expert-single/main.php:139
+#: app/views/expert-form/main.php:92 app/views/expert-single/main.php:141
 msgid "Social & Skill"
 msgstr ""
 
-#: jobs-plus/app/views/expert-form/main.php:100
+#: app/views/expert-form/main.php:100
 msgid "Tell us about yourself (required, at least 200 characters)"
 msgstr ""
 
-#: jobs-plus/app/views/expert-form/main.php:130
-#: jobs-plus/app/views/job-form/main.php:159
+#: app/views/expert-form/main.php:130 app/views/job-form/main.php:159
 msgid "Publish"
 msgstr ""
 
-#: jobs-plus/app/views/expert-form/main.php:133
-#: jobs-plus/app/views/job-form/main.php:162
+#: app/views/expert-form/main.php:133 app/views/job-form/main.php:162
 msgid "Submit for review"
 msgstr ""
 
-#: jobs-plus/app/views/expert-form/main.php:137
-#: jobs-plus/app/views/job-form/main.php:166
+#: app/views/expert-form/main.php:137 app/views/job-form/main.php:166
 msgid "Save Draft"
 msgstr ""
 
-#: jobs-plus/app/views/expert-form/main.php:328
-#: jobs-plus/app/views/job-form/main.php:187
+#: app/views/expert-form/main.php:328 app/views/job-form/main.php:187
 msgid "Submitting..."
 msgstr ""
 
-#: jobs-plus/app/views/expert-single/main.php:36
+#: app/views/expert-single/main.php:36
 msgid "likes"
 msgstr ""
 
-#: jobs-plus/app/views/expert-single/main.php:88
+#: app/views/expert-single/main.php:90
 msgid "views"
 msgstr ""
 
-#: jobs-plus/app/views/expert-single/main.php:164
+#: app/views/expert-single/main.php:167
 msgid "This member hasn't added any skills yet"
 msgstr ""
 
-#: jobs-plus/app/views/expert-single/main.php:183
+#: app/views/expert-single/main.php:187
 msgid "This member hasn't added any social profiles."
 msgstr ""
 
-#: jobs-plus/app/views/expert-single/main.php:197
-#: jobs-plus/app/views/job-single/main.php:67
+#: app/views/expert-single/main.php:201 app/views/job-single/main.php:67
 msgid "Sample Files"
 msgstr ""
 
-#: jobs-plus/app/views/expert-single/main.php:227
-#: jobs-plus/app/views/job-single/main.php:93
+#: app/views/expert-single/main.php:231 app/views/job-single/main.php:93
 msgid "Trash"
 msgstr ""
 
-#: jobs-plus/app/views/job-archive/main.php:10
+#: app/views/job-archive/main.php:10
 msgid "Search For Job"
 msgstr ""
 
-#: jobs-plus/app/views/job-archive/main.php:22
+#: app/views/job-archive/main.php:22
 msgid "No Job Found"
 msgstr ""
 
-#: jobs-plus/app/views/job-archive/main.php:46
+#: app/views/job-archive/main.php:46
 msgid "This job expired"
 msgstr ""
 
-#: jobs-plus/app/views/job-archive/main.php:70
-#: jobs-plus/app/views/landing/main.php:35
+#: app/views/job-archive/main.php:72 app/views/landing/main.php:35
 msgid "Due: "
 msgstr ""
 
-#: jobs-plus/app/views/job-archive/main.php:73
-#: jobs-plus/app/views/landing/main.php:38
+#: app/views/job-archive/main.php:75 app/views/landing/main.php:38
 msgid "Budget: "
 msgstr ""
 
-#: jobs-plus/app/views/job-form/limit.php:3
+#: app/views/job-form/limit.php:3
 msgid "You've reached the limit of how many Jobs you can post."
 msgstr ""
 
-#: jobs-plus/app/views/job-form/main.php:9
+#: app/views/job-form/main.php:9
 msgid "Choose a category"
 msgstr ""
 
-#: jobs-plus/app/views/job-form/main.php:22
+#: app/views/job-form/main.php:22
 msgid "Give your job a title"
 msgstr ""
 
-#: jobs-plus/app/views/job-form/main.php:33
+#: app/views/job-form/main.php:33
 msgid "Describe the work to be done"
 msgstr ""
 
-#: jobs-plus/app/views/job-form/main.php:43
+#: app/views/job-form/main.php:43
 msgid "What skills are needed?"
 msgstr ""
 
-#: jobs-plus/app/views/job-form/main.php:55
+#: app/views/job-form/main.php:55
 msgid "Min Budget"
 msgstr ""
 
-#: jobs-plus/app/views/job-form/main.php:67
+#: app/views/job-form/main.php:67
 msgid "Max Budget"
 msgstr ""
 
-#: jobs-plus/app/views/job-form/main.php:80
+#: app/views/job-form/main.php:80
 msgid "Budget"
 msgstr ""
 
-#: jobs-plus/app/views/job-single/main.php:6
+#: app/views/job-single/main.php:6
 msgid "Job Budget"
 msgstr ""
 
-#: jobs-plus/app/views/job-single/main.php:10
+#: app/views/job-single/main.php:10
 msgid "This job open for"
 msgstr ""
 
-#: jobs-plus/app/views/job-single/main.php:14
+#: app/views/job-single/main.php:14
 msgid "Must be completed by"
 msgstr ""
 
-#: jobs-plus/app/views/job-single/main.php:53
+#: app/views/job-single/main.php:53
 msgid "<h4>You will need to have these skills:"
 msgstr ""
 
-#: jobs-plus/app/views/landing/main.php:7
+#: app/views/landing/main.php:7
 msgid "Recently posted Jobs"
 msgstr ""
 
-#: jobs-plus/app/views/landing/main.php:11
+#: app/views/landing/main.php:11
 msgid "No Jobs Found"
 msgstr ""
 
-#: jobs-plus/app/views/landing/main.php:56
+#: app/views/landing/main.php:56
 msgid "Add a Job"
 msgstr ""
 
-#: jobs-plus/app/views/landing/main.php:61
+#: app/views/landing/main.php:61
 msgid "Recent Experts"
 msgstr ""
 
-#: jobs-plus/app/views/landing/main.php:111
+#: app/views/landing/main.php:111
 msgid "No Expert found"
 msgstr ""
 
-#: jobs-plus/app/views/my-expert/main.php:43
+#: app/views/my-expert/main.php:43
 msgid "You don't have any profile."
 msgstr ""
 
-#: jobs-plus/app/views/my-job/main.php:9
-msgid "Title"
-msgstr ""
-
-#: jobs-plus/app/views/my-job/main.php:51
+#: app/views/my-job/main.php:51
 msgid "You don't have any job."
 msgstr ""
 
-#: jobs-plus/framework/request/ig-request.php:79
+#: framework/request/ig-request.php:79
 msgid "View not found!"
+msgstr ""
+
+#: framework/vendors/gump.class.php:417
+msgid "There is no validation rule for <span class=\"%s\">%s</span>"
+msgstr ""
+
+#: framework/vendors/gump.class.php:420
+msgid "The <span class=\"%s\">%s</span> field is required"
+msgstr ""
+
+#: framework/vendors/gump.class.php:423
+msgid ""
+"The <span class=\"%s\">%s</span> field is required to be a valid email address"
+msgstr ""
+
+#: framework/vendors/gump.class.php:427
+msgid "The <span class=\"%s\">%s</span> field needs to be shorter than %d character"
+msgstr ""
+
+#: framework/vendors/gump.class.php:429
+msgid ""
+"The <span class=\"%s\">%s</span> field needs to be shorter than %d characters"
+msgstr ""
+
+#: framework/vendors/gump.class.php:434
+msgid "The <span class=\"%s\">%s</span> field needs to be longer than %d character"
+msgstr ""
+
+#: framework/vendors/gump.class.php:436
+msgid "The <span class=\"%s\">%s</span> field needs to be longer than %d characters"
+msgstr ""
+
+#: framework/vendors/gump.class.php:441
+msgid ""
+"The <span class=\"%s\">%s</span> field needs to be exactly %d character in length"
+msgstr ""
+
+#: framework/vendors/gump.class.php:443
+msgid ""
+"The <span class=\"%s\">%s</span> field needs to be exactly %d characters in length"
+msgstr ""
+
+#: framework/vendors/gump.class.php:447
+msgid ""
+"The <span class=\"%s\">%s</span> field may only contain alpha characters(a-z)"
+msgstr ""
+
+#: framework/vendors/gump.class.php:450
+msgid ""
+"The <span class=\"%s\">%s</span> field may only contain alpha-numeric characters"
+msgstr ""
+
+#: framework/vendors/gump.class.php:453
+msgid ""
+"The <span class=\"%s\">%s</span> field may only contain alpha characters &amp; "
+"dashes"
+msgstr ""
+
+#: framework/vendors/gump.class.php:456
+msgid "The <span class=\"%s\">%s</span> field may only contain numeric characters"
+msgstr ""
+
+#: framework/vendors/gump.class.php:459
+msgid "The <span class=\"%s\">%s</span> field may only contain a numeric value"
+msgstr ""
+
+#: framework/vendors/gump.class.php:462
+msgid ""
+"The <span class=\"%s\">%s</span> field may only contain a true or false value"
+msgstr ""
+
+#: framework/vendors/gump.class.php:465
+msgid "The <span class=\"%s\">%s</span> field may only contain a float value"
+msgstr ""
+
+#: framework/vendors/gump.class.php:468
+msgid "The <span class=\"%s\">%s</span> field is required to be a valid URL"
+msgstr ""
+
+#: framework/vendors/gump.class.php:471
+msgid "The <span class=\"%s\">%s</span> URL does not exist"
+msgstr ""
+
+#: framework/vendors/gump.class.php:474
+msgid "The <span class=\"%s\">%s</span> field needs to contain a valid IP address"
+msgstr ""
+
+#: framework/vendors/gump.class.php:477
+msgid ""
+"The <span class=\"%s\">%s</span> field needs to contain a valid credit card number"
+msgstr ""
+
+#: framework/vendors/gump.class.php:480
+msgid "The <span class=\"%s\">%s</span> field needs to contain a valid human name"
+msgstr ""
+
+#: framework/vendors/gump.class.php:483
+msgid ""
+"The <span class=\"%s\">%s</span> field needs to contain one of these values: %s"
+msgstr ""
+
+#: framework/vendors/gump.class.php:486
+msgid "The <span class=\"%s\">%s</span> field needs to be a valid street address"
+msgstr ""
+
+#: framework/vendors/gump.class.php:489
+msgid "The <span class=\"%s\">%s</span> field needs to be a valid date"
+msgstr ""
+
+#: framework/vendors/gump.class.php:492
+msgid ""
+"The <span class=\"%s\">%s</span> field needs to be a numeric value, equal to, or "
+"higher than %s"
+msgstr ""
+
+#: framework/vendors/gump.class.php:498
+msgid "The <span class=\"%s\">%s</span> field is invalid"
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "Jobs and Experts"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "https://premium.wpmudev.org/project/jobs-and-experts/"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid ""
+"Match people with projects to industry professionals – it’s more than your "
+"average WordPress jobs board."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "WPMU DEV"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://premium.wpmudev.org"
 msgstr ""
