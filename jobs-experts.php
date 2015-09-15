@@ -3,7 +3,7 @@
  * Plugin Name: Jobs and Experts
  * Plugin URI: https://premium.wpmudev.org/project/jobs-and-experts/
  * Description: Match people with projects to industry professionals – it’s more than your average WordPress jobs board.
- * Version: 1.0.2.1
+ * Version: 1.0.2.2-beta
  * Author:WPMU DEV
  * Author URI: http://premium.wpmudev.org
  * Text Domain: jbp
@@ -72,7 +72,7 @@ class Jobs_Experts
     public $domain;
     public $prefix;
 
-    public $version = "1.0.2.0";
+    public $version = "1.0.2.2";
     public $db_version = "1.0";
 
     public $global = array();
