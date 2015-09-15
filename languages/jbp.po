@@ -4,23 +4,25 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Jobs and Experts 1.0.2.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/jobs-experts\n"
-"POT-Creation-Date: 2015-09-15 15:09:47+00:00\n"
+"POT-Creation-Date: 2015-09-15 15:35:56+00:00\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2015-09-15 22:10+0700\n"
-"X-Generator: Poedit 1.8.1\n"
-"X-Poedit-KeywordsList: __;_e;_x:1,2c;_ex:1,2c;_n:1,2;_nx:1,2,4c;_n_noop:1,2;"
-"_nx_noop:1,2,3c;esc_attr__;esc_html__;esc_attr_e;esc_html_e;esc_attr_x:1,2c;"
-"esc_html_x:1,2c\n"
+"PO-Revision-Date: 2015-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"X-Generator: grunt-wp-i18n 0.5.3\n"
+"X-Poedit-KeywordsList: "
+"__;_e;_x:1,2c;_ex:1,2c;_n:1,2;_nx:1,2,4c;_n_noop:1,2;_nx_noop:1,2,3c;esc_"
+"attr__;esc_html__;esc_attr_e;esc_html_e;esc_attr_x:1,2c;esc_html_x:1,2c;\n"
 "Language: en\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-Country: United States\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-Basepath: ../\n"
-"X-Textdomain-Support: yes\n"
-"Last-Translator: \n"
-"Language-Team: \n"
 "X-Poedit-SearchPath-0: .\n"
+"X-Poedit-Bookmarks: \n"
+"X-Textdomain-Support: yes\n"
 
 #: app/addons/je-advanced-search.php:47 app/addons/je-advanced-search.php:533
 #: app/addons/je-job-demo-data.php:210
@@ -86,7 +88,8 @@ msgstr ""
 #: app/views/expert-form/_email_popup.php:15
 #: app/views/expert-form/_location_popup.php:21
 #: app/views/expert-form/_name_popup.php:24
-#: app/views/expert-form/_tagline_popup.php:14 app/views/expert-form/main.php:141
+#: app/views/expert-form/_tagline_popup.php:14
+#: app/views/expert-form/main.php:141
 msgid "Cancel"
 msgstr ""
 
@@ -97,7 +100,7 @@ msgid "Location"
 msgstr ""
 
 #: app/addons/je-advanced-search.php:602 app/addons/je-advanced-search.php:618
-#: app/views/job-form/main.php:134
+#: app/views/job-form/main.php:177
 msgid "--Select--"
 msgstr ""
 
@@ -143,8 +146,8 @@ msgstr ""
 
 #: app/addons/je-custom-layout.php:87
 msgid ""
-"You can customise the layout using the above, each row should equal 100%. For "
-"example sm, sm, sm is 100%."
+"You can customise the layout using the above, each row should equal 100%. "
+"For example sm, sm, sm is 100%."
 msgstr ""
 
 #: app/addons/je-custom-layout.php:89 app/addons/je-custom-layout.php:121
@@ -173,8 +176,8 @@ msgstr ""
 
 #: app/addons/je-custom-layout.php:119
 msgid ""
-"You can customize the layout, each row should have 100% score, and the default is "
-"xs"
+"You can customize the layout, each row should have 100% score, and the "
+"default is xs"
 msgstr ""
 
 #: app/addons/je-custom-layout.php:137 app/addons/je-custom-location.php:88
@@ -188,7 +191,8 @@ msgstr ""
 #: app/components/ig-wallet/app/views/settings/general.php:45
 #: app/components/je-credit-rules/app/views/expert-saved/settings.php:76
 #: app/components/je-credit-rules/app/views/job-saved/settings.php:76
-#: app/views/backend/jobs/_form.php:220 app/views/backend/settings/general.php:202
+#: app/views/backend/jobs/_form.php:220
+#: app/views/backend/settings/general.php:202
 #: app/views/backend/settings/uploader.php:36
 msgid "Save Changes"
 msgstr ""
@@ -219,8 +223,8 @@ msgstr ""
 
 #: app/addons/je-custom-location.php:78
 msgid ""
-"To enable <strong>reverse geocoding</strong>, you'll need to input a valid <a "
-"href=\"%s\">API key</a> from Google."
+"To enable <strong>reverse geocoding</strong>, you'll need to input a valid "
+"<a href=\"%s\">API key</a> from Google."
 msgstr ""
 
 #: app/addons/je-custom-location.php:80
@@ -286,7 +290,8 @@ msgstr ""
 #: app/components/ig-wallet/app/views/settings/sending_credit.php:38
 #: app/controllers/frontend/je-expert-form-shortcode-controller.php:154
 #: app/views/backend/experts/_form.php:142
-#: app/views/backend/settings/expert.php:142 app/views/backend/settings/job.php:173
+#: app/views/backend/settings/expert.php:142
+#: app/views/backend/settings/job.php:173
 msgid "Submit"
 msgstr ""
 
@@ -469,8 +474,8 @@ msgstr ""
 
 #: app/addons/je-marketpress.php:42
 msgid ""
-"The add-on <strong>MarketPress integration</strong> of <strong>Jobs&Experts</"
-"strong> required <strong>MarketPress</strong>"
+"The add-on <strong>MarketPress integration</strong> of "
+"<strong>Jobs&Experts</strong> required <strong>MarketPress</strong>"
 msgstr ""
 
 #: app/addons/je-message/lib/app/addons/block-list.php:102
@@ -607,12 +612,14 @@ msgstr ""
 
 #: app/addons/je-message/lib/app/addons/words-filter.php:273
 #: app/components/ig-wallet/app/views/credit/main.php:46
-#: app/views/backend/getting_start.php:17 app/views/backend/getting_start.php:33
-#: app/views/backend/getting_start.php:44 app/views/backend/getting_start.php:82
-#: app/views/backend/getting_start.php:103 app/views/backend/getting_start.php:113
-#: app/views/expert-single/main.php:224 app/views/job-single/main.php:87
-#: app/views/my-expert/main.php:28 app/views/my-job/main.php:25
-#: framework/database/ig-grid.php:116
+#: app/views/backend/getting_start.php:17
+#: app/views/backend/getting_start.php:33
+#: app/views/backend/getting_start.php:44
+#: app/views/backend/getting_start.php:82
+#: app/views/backend/getting_start.php:103
+#: app/views/backend/getting_start.php:113 app/views/expert-single/main.php:224
+#: app/views/job-single/main.php:87 app/views/my-expert/main.php:28
+#: app/views/my-job/main.php:25 framework/database/ig-grid.php:116
 msgid "Edit"
 msgstr ""
 
@@ -682,8 +689,8 @@ msgstr ""
 
 #: app/addons/je-message/lib/app/addons/wysiwyg.php:37
 msgid ""
-"Your browser does not allow the cut command. Please use the keyboard shortcut "
-"Ctrl/Cmd-X"
+"Your browser does not allow the cut command. Please use the keyboard "
+"shortcut Ctrl/Cmd-X"
 msgstr ""
 
 #: app/addons/je-message/lib/app/addons/wysiwyg.php:38
@@ -692,8 +699,8 @@ msgstr ""
 
 #: app/addons/je-message/lib/app/addons/wysiwyg.php:39
 msgid ""
-"Your browser does not allow the copy command. Please use the keyboard shortcut "
-"Ctrl/Cmd-C"
+"Your browser does not allow the copy command. Please use the keyboard "
+"shortcut Ctrl/Cmd-C"
 msgstr ""
 
 #: app/addons/je-message/lib/app/addons/wysiwyg.php:40
@@ -702,8 +709,8 @@ msgstr ""
 
 #: app/addons/je-message/lib/app/addons/wysiwyg.php:41
 msgid ""
-"Your browser does not allow the paste command. Please use the keyboard shortcut "
-"Ctrl/Cmd-V"
+"Your browser does not allow the paste command. Please use the keyboard "
+"shortcut Ctrl/Cmd-V"
 msgstr ""
 
 #: app/addons/je-message/lib/app/addons/wysiwyg.php:42
@@ -891,7 +898,8 @@ msgstr ""
 
 #: app/addons/je-message/lib/app/controllers/backend/mmessage-backend-controller.php:22
 msgid ""
-"Please visit settings > messaging to choose your inbox page and complete setup"
+"Please visit settings > messaging to choose your inbox page and complete "
+"setup"
 msgstr ""
 
 #: app/addons/je-message/lib/app/controllers/backend/mmessage-backend-controller.php:76
@@ -925,8 +933,8 @@ msgstr ""
 #: app/controllers/backend/je-admin-controller.php:64
 #: app/controllers/backend/je-admin-controller.php:77
 #: app/controllers/backend/je-admin-controller.php:78
-#: app/views/backend/getting_start.php:92 app/views/backend/getting_start.php:124
-#: app/views/backend/settings.php:2
+#: app/views/backend/getting_start.php:92
+#: app/views/backend/getting_start.php:124 app/views/backend/settings.php:2
 msgid "Settings"
 msgstr ""
 
@@ -1054,8 +1062,8 @@ msgstr ""
 
 #: app/addons/je-message/lib/app/views/backend/setting/shortcode.php:14
 msgid ""
-"This shortcode will display the private message interface.There are no parameters "
-"for this shortcode."
+"This shortcode will display the private message interface.There are no "
+"parameters for this shortcode."
 msgstr ""
 
 #: app/addons/je-message/lib/app/views/backend/setting/shortcode.php:20
@@ -1076,8 +1084,8 @@ msgstr ""
 
 #: app/addons/je-message/lib/app/views/backend/setting/shortcode.php:33
 msgid ""
-"The user name of the message recipient. User ID will be given higher priority "
-"than user_name."
+"The user name of the message recipient. User ID will be given higher "
+"priority than user_name."
 msgstr ""
 
 #: app/addons/je-message/lib/app/views/backend/setting/shortcode.php:36
@@ -1086,8 +1094,8 @@ msgstr ""
 
 #: app/addons/je-message/lib/app/views/backend/setting/shortcode.php:37
 msgid ""
-"Use 1 for true, 0 for false. This shortcode is used for case when there is no "
-"user ID or user_name. This shortcode will pull the author user_ID if the "
+"Use 1 for true, 0 for false. This shortcode is used for case when there is "
+"no user ID or user_name. This shortcode will pull the author user_ID if the "
 "shortcode is inside the loop."
 msgstr ""
 
@@ -1117,8 +1125,8 @@ msgstr ""
 
 #: app/addons/je-message/lib/app/views/backend/setting/shortcode.php:45
 msgid ""
-"If you want to style the message button, use this shortcodes parameter to define "
-"the class of the message button. "
+"If you want to style the message button, use this shortcodes parameter to "
+"define the class of the message button. "
 msgstr ""
 
 #: app/addons/je-message/lib/app/views/backend/setting/shortcode.php:48
@@ -1127,8 +1135,8 @@ msgstr ""
 
 #: app/addons/je-message/lib/app/views/backend/setting/shortcode.php:49
 msgid ""
-"This will define the subject of the message sent, if one is not added by the "
-"user. "
+"This will define the subject of the message sent, if one is not added by "
+"the user. "
 msgstr ""
 
 #: app/addons/je-message/lib/app/views/backend/setting/shortcode.php:52
@@ -1177,9 +1185,9 @@ msgstr ""
 
 #: app/addons/je-message/lib/app/views/backend/upgrade.php:79
 msgid ""
-"If the diagnose tool cannot create table, that means the database user doesn't "
-"have enough permission to do that, you will need to copy the below sql code to "
-"create the tables."
+"If the diagnose tool cannot create table, that means the database user "
+"doesn't have enough permission to do that, you will need to copy the below "
+"sql code to create the tables."
 msgstr ""
 
 #: app/addons/je-message/lib/app/views/bar/_compose_form.php:10
@@ -1356,8 +1364,8 @@ msgstr ""
 msgid "No message found!"
 msgstr ""
 
-#: app/addons/je-message/lib/app/views/shortcode/login.php:6 app/views/login.php:7
-#: app/views/login.php:26
+#: app/addons/je-message/lib/app/views/shortcode/login.php:6
+#: app/views/login.php:7 app/views/login.php:26
 msgid "Sign in"
 msgstr ""
 
@@ -1386,8 +1394,9 @@ msgstr ""
 
 #: app/addons/je-message/lib/app/views/shortcode/setting.php:39
 msgid ""
-"An email will be sent to you when a user reads your message, this functionality "
-"won?t work, if they have disabled tracking within their account."
+"An email will be sent to you when a user reads your message, this "
+"functionality won?t work, if they have disabled tracking within their "
+"account."
 msgstr ""
 
 #: app/addons/je-message/lib/app/views/shortcode/setting.php:47
@@ -1396,8 +1405,8 @@ msgstr ""
 
 #: app/addons/je-message/lib/app/views/shortcode/setting.php:49
 msgid ""
-"When you open a message, there won't be an email back to the sender to inform "
-"them you've read the message."
+"When you open a message, there won't be an email back to the sender to "
+"inform them you've read the message."
 msgstr ""
 
 #: app/addons/je-message/lib/functions.php:94
@@ -1529,8 +1538,10 @@ msgstr ""
 #: app/components/ig-social-wall/app/views/main.php:5
 #: app/components/ig-uploader/app/views/_extend_form.php:13
 #: app/components/ig-uploader/app/views/_extend_form_bak.php:13
-#: app/views/backend/getting_start.php:21 app/views/backend/getting_start.php:48
-#: app/views/backend/getting_start.php:88 app/views/backend/getting_start.php:120
+#: app/views/backend/getting_start.php:21
+#: app/views/backend/getting_start.php:48
+#: app/views/backend/getting_start.php:88
+#: app/views/backend/getting_start.php:120
 msgid "Add"
 msgstr ""
 
@@ -1610,8 +1621,8 @@ msgstr ""
 
 #: app/components/ig-wallet/app/controllers/credit-plan-controller.php:93
 msgid ""
-"You have been sent <strong>%s credits</strong> to the user <strong>%s</strong> "
-"successfully."
+"You have been sent <strong>%s credits</strong> to the user "
+"<strong>%s</strong> successfully."
 msgstr ""
 
 #: app/components/ig-wallet/app/controllers/credit-plan-controller.php:122
@@ -1670,7 +1681,8 @@ msgstr ""
 
 #: app/components/ig-wallet/app/views/credit/main.php:138
 msgid ""
-"Append credit info after product name & price, eg: <em>10$ for 20 credits</em>"
+"Append credit info after product name & price, eg: <em>10$ for 20 "
+"credits</em>"
 msgstr ""
 
 #: app/components/ig-wallet/app/views/credit/main.php:149
@@ -1784,8 +1796,9 @@ msgstr ""
 
 #: app/components/je-credit-rules/app/controllers/expert-saved-controller.php:62
 msgid ""
-"Your balance is not enough for creating a new profile (requires %s credit(s)), "
-"please click the following  <a href=\"%s\">link</a> to top up your credit balance."
+"Your balance is not enough for creating a new profile (requires %s "
+"credit(s)), please click the following  <a href=\"%s\">link</a> to top up "
+"your credit balance."
 msgstr ""
 
 #: app/components/je-credit-rules/app/controllers/expert-saved-controller.php:112
@@ -1800,8 +1813,8 @@ msgstr ""
 
 #: app/components/je-credit-rules/app/controllers/job-saved-controller.php:42
 msgid ""
-"Your balance's not enough for posting a new job - require %s credit(s), please "
-"visit <a href=\"%s\">here</a> for purchasing"
+"Your balance's not enough for posting a new job - require %s credit(s), "
+"please visit <a href=\"%s\">here</a> for purchasing"
 msgstr ""
 
 #: app/components/je-credit-rules/app/controllers/job-saved-controller.php:48
@@ -2065,9 +2078,9 @@ msgstr ""
 
 #: app/components/je-page-factory.php:32
 msgid ""
-"<!-- You may edit this page, the title and the slug, but it requires a minimum of "
-"the correct page shortcode to function. You can recreate the original default "
-"page by deleting this one. -->\n"
+"<!-- You may edit this page, the title and the slug, but it requires a "
+"minimum of the correct page shortcode to function. You can recreate the "
+"original default page by deleting this one. -->\n"
 msgstr ""
 
 #: app/components/je-page-factory.php:62
@@ -2086,26 +2099,34 @@ msgstr ""
 msgid "add-a-%s"
 msgstr ""
 
-#: app/components/je-page-factory.php:125 app/components/je-page-factory.php:267
+#: app/components/je-page-factory.php:125
+#: app/components/je-page-factory.php:267
 msgid "Edit %s"
 msgstr ""
 
-#: app/components/je-page-factory.php:126 app/components/je-page-factory.php:268
+#: app/components/je-page-factory.php:126
+#: app/components/je-page-factory.php:268
 msgid "edit-%s"
 msgstr ""
 
-#: app/components/je-page-factory.php:153 app/components/je-page-factory.php:154
-#: app/components/je-page-factory.php:295 app/components/je-page-factory.php:296
-#: app/views/backend/getting_start.php:85 app/views/backend/getting_start.php:92
-#: app/views/backend/getting_start.php:116 app/views/backend/getting_start.php:124
+#: app/components/je-page-factory.php:153
+#: app/components/je-page-factory.php:154
+#: app/components/je-page-factory.php:295
+#: app/components/je-page-factory.php:296
+#: app/views/backend/getting_start.php:85
+#: app/views/backend/getting_start.php:92
+#: app/views/backend/getting_start.php:116
+#: app/views/backend/getting_start.php:124
 msgid "%s"
 msgstr ""
 
-#: app/components/je-page-factory.php:182 app/components/je-page-factory.php:323
+#: app/components/je-page-factory.php:182
+#: app/components/je-page-factory.php:323
 msgid "%s Contact"
 msgstr ""
 
-#: app/components/je-page-factory.php:183 app/components/je-page-factory.php:324
+#: app/components/je-page-factory.php:183
+#: app/components/je-page-factory.php:324
 msgid "%s-contact"
 msgstr ""
 
@@ -2407,7 +2428,7 @@ msgid "Select"
 msgstr ""
 
 #: app/models/je-job-model.php:113 app/views/backend/jobs/_form.php:126
-#: app/views/job-form/main.php:109
+#: app/views/job-form/main.php:147
 msgid "Completion Date"
 msgstr ""
 
@@ -2436,7 +2457,7 @@ msgid "Addition Information"
 msgstr ""
 
 #: app/views/backend/experts/_form.php:139 app/views/backend/jobs/_form.php:215
-#: app/views/expert-form/main.php:118 app/views/job-form/main.php:150
+#: app/views/expert-form/main.php:118 app/views/job-form/main.php:193
 msgid "Attach specs examples or extra information"
 msgstr ""
 
@@ -2444,27 +2465,36 @@ msgstr ""
 msgid "Get started with Jobs & Experts"
 msgstr ""
 
-#: app/views/backend/getting_start.php:13 app/views/backend/getting_start.php:40
-#: app/views/backend/getting_start.php:78 app/views/backend/getting_start.php:109
+#: app/views/backend/getting_start.php:13
+#: app/views/backend/getting_start.php:40
+#: app/views/backend/getting_start.php:78
+#: app/views/backend/getting_start.php:109
 msgid "View %s Listings"
 msgstr ""
 
-#: app/views/backend/getting_start.php:17 app/views/backend/getting_start.php:33
-#: app/views/backend/getting_start.php:44 app/views/backend/getting_start.php:82
-#: app/views/backend/getting_start.php:103 app/views/backend/getting_start.php:113
+#: app/views/backend/getting_start.php:17
+#: app/views/backend/getting_start.php:33
+#: app/views/backend/getting_start.php:44
+#: app/views/backend/getting_start.php:82
+#: app/views/backend/getting_start.php:103
+#: app/views/backend/getting_start.php:113
 msgid " this virtual page"
 msgstr ""
 
-#: app/views/backend/getting_start.php:21 app/views/backend/getting_start.php:48
-#: app/views/backend/getting_start.php:88 app/views/backend/getting_start.php:120
+#: app/views/backend/getting_start.php:21
+#: app/views/backend/getting_start.php:48
+#: app/views/backend/getting_start.php:88
+#: app/views/backend/getting_start.php:120
 msgid "a new %s"
 msgstr ""
 
-#: app/views/backend/getting_start.php:29 app/views/backend/getting_start.php:99
+#: app/views/backend/getting_start.php:29
+#: app/views/backend/getting_start.php:99
 msgid "Jobs & Experts Overview"
 msgstr ""
 
-#: app/views/backend/getting_start.php:85 app/views/backend/getting_start.php:116
+#: app/views/backend/getting_start.php:85
+#: app/views/backend/getting_start.php:116
 msgid "Manage"
 msgstr ""
 
@@ -2480,15 +2510,15 @@ msgstr ""
 msgid "Budget ($)"
 msgstr ""
 
-#: app/views/backend/jobs/_form.php:110 app/views/job-form/main.php:96
+#: app/views/backend/jobs/_form.php:110 app/views/job-form/main.php:131
 msgid "Contact Email"
 msgstr ""
 
-#: app/views/backend/jobs/_form.php:142 app/views/job-form/main.php:122
+#: app/views/backend/jobs/_form.php:142 app/views/job-form/main.php:163
 msgid "Job Open for"
 msgstr ""
 
-#: app/views/backend/jobs/_form.php:150 app/views/job-form/main.php:128
+#: app/views/backend/jobs/_form.php:150 app/views/job-form/main.php:171
 msgid "Days"
 msgstr ""
 
@@ -2496,7 +2526,7 @@ msgstr ""
 msgid "Category & Skill"
 msgstr ""
 
-#: app/views/backend/jobs/_form.php:236 app/views/job-form/main.php:183
+#: app/views/backend/jobs/_form.php:236 app/views/job-form/main.php:226
 msgid "Add a tag, use commas to separate"
 msgstr ""
 
@@ -2504,97 +2534,119 @@ msgstr ""
 msgid "%s Status Options"
 msgstr ""
 
-#: app/views/backend/settings/expert.php:10 app/views/backend/settings/job.php:10
+#: app/views/backend/settings/expert.php:10
+#: app/views/backend/settings/job.php:10
 msgid "Maximum %s Records per User"
 msgstr ""
 
-#: app/views/backend/settings/expert.php:15 app/views/backend/settings/job.php:15
+#: app/views/backend/settings/expert.php:15
+#: app/views/backend/settings/job.php:15
 msgid "Maximum number of %s profiles for each user."
 msgstr ""
 
-#: app/views/backend/settings/expert.php:21 app/views/backend/settings/job.php:21
+#: app/views/backend/settings/expert.php:21
+#: app/views/backend/settings/job.php:21
 msgid "%s Records per Page"
 msgstr ""
 
-#: app/views/backend/settings/expert.php:26 app/views/backend/settings/job.php:26
+#: app/views/backend/settings/expert.php:26
+#: app/views/backend/settings/job.php:26
 msgid "Maximum number of %s profiles for each page."
 msgstr ""
 
-#: app/views/backend/settings/expert.php:32 app/views/backend/settings/job.php:57
+#: app/views/backend/settings/expert.php:32
+#: app/views/backend/settings/job.php:57
 msgid "Newly Created %s Status Options"
 msgstr ""
 
-#: app/views/backend/settings/expert.php:40 app/views/backend/settings/job.php:65
+#: app/views/backend/settings/expert.php:40
+#: app/views/backend/settings/job.php:65
 msgid "Published"
 msgstr ""
 
-#: app/views/backend/settings/expert.php:43 app/views/backend/settings/job.php:68
+#: app/views/backend/settings/expert.php:43
+#: app/views/backend/settings/job.php:68
 msgid "Allow members to publish %s themselves."
 msgstr ""
 
-#: app/views/backend/settings/expert.php:48 app/views/backend/settings/job.php:73
+#: app/views/backend/settings/expert.php:48
+#: app/views/backend/settings/job.php:73
 msgid "Pending Review"
 msgstr ""
 
-#: app/views/backend/settings/expert.php:51 app/views/backend/settings/job.php:76
+#: app/views/backend/settings/expert.php:51
+#: app/views/backend/settings/job.php:76
 msgid "%s is pending review by an administrator."
 msgstr ""
 
-#: app/views/backend/settings/expert.php:56 app/views/backend/settings/job.php:81
+#: app/views/backend/settings/expert.php:56
+#: app/views/backend/settings/job.php:81
 msgid "Draft"
 msgstr ""
 
-#: app/views/backend/settings/expert.php:60 app/views/backend/settings/job.php:85
+#: app/views/backend/settings/expert.php:60
+#: app/views/backend/settings/job.php:85
 msgid "Allow members to save Drafts."
 msgstr ""
 
-#: app/views/backend/settings/expert.php:67 app/views/backend/settings/job.php:92
+#: app/views/backend/settings/expert.php:67
+#: app/views/backend/settings/job.php:92
 msgid "%s Image Storage"
 msgstr ""
 
-#: app/views/backend/settings/expert.php:72 app/views/backend/settings/job.php:97
+#: app/views/backend/settings/expert.php:72
+#: app/views/backend/settings/job.php:97
 msgid "Maximum Gallery Images"
 msgstr ""
 
-#: app/views/backend/settings/expert.php:78 app/views/backend/settings/job.php:103
+#: app/views/backend/settings/expert.php:78
+#: app/views/backend/settings/job.php:103
 msgid ""
 "Maximum number of images that can be uploaded to the %s portfolio gallery. "
 "Default is 4"
 msgstr ""
 
-#: app/views/backend/settings/expert.php:83 app/views/backend/settings/job.php:108
+#: app/views/backend/settings/expert.php:83
+#: app/views/backend/settings/job.php:108
 msgid "Notification Settings"
 msgstr ""
 
-#: app/views/backend/settings/expert.php:87 app/views/backend/settings/job.php:112
+#: app/views/backend/settings/expert.php:87
+#: app/views/backend/settings/job.php:112
 msgid "Disable Contact Form:"
 msgstr ""
 
-#: app/views/backend/settings/expert.php:94 app/views/backend/settings/job.php:119
+#: app/views/backend/settings/expert.php:94
+#: app/views/backend/settings/job.php:119
 msgid "disable contact form"
 msgstr ""
 
-#: app/views/backend/settings/expert.php:101 app/views/backend/settings/job.php:126
+#: app/views/backend/settings/expert.php:101
+#: app/views/backend/settings/job.php:126
 msgid "CC the Administrator:"
 msgstr ""
 
-#: app/views/backend/settings/expert.php:108 app/views/backend/settings/job.php:133
+#: app/views/backend/settings/expert.php:108
+#: app/views/backend/settings/job.php:133
 msgid "cc the administrator"
 msgstr ""
 
-#: app/views/backend/settings/expert.php:115 app/views/backend/settings/job.php:140
+#: app/views/backend/settings/expert.php:115
+#: app/views/backend/settings/job.php:140
 msgid "Email Subject:"
 msgstr ""
 
 #: app/views/backend/settings/expert.php:121
-#: app/views/backend/settings/expert.php:134 app/views/backend/settings/job.php:148
+#: app/views/backend/settings/expert.php:134
+#: app/views/backend/settings/job.php:148
 #: app/views/backend/settings/job.php:165
 msgid ""
-"Variables: TO_NAME, FROM_NAME, FROM_EMAIL, FROM_MESSAGE, POST_TITLE, POST_LINK, "
-"SITE_NAME"
+"Variables: TO_NAME, FROM_NAME, FROM_EMAIL, FROM_MESSAGE, POST_TITLE, "
+"POST_LINK, SITE_NAME"
 msgstr ""
 
-#: app/views/backend/settings/expert.php:128 app/views/backend/settings/job.php:155
+#: app/views/backend/settings/expert.php:128
+#: app/views/backend/settings/job.php:155
 msgid "Email Content:"
 msgstr ""
 
@@ -2656,8 +2708,8 @@ msgstr ""
 
 #: app/views/backend/settings/general.php:292
 msgid ""
-"It looks like you have been editing something -- if you leave before submitting "
-"your changes will be lost."
+"It looks like you have been editing something -- if you leave before "
+"submitting your changes will be lost."
 msgstr ""
 
 #: app/views/backend/settings/job.php:32
@@ -2778,8 +2830,8 @@ msgstr ""
 #: app/views/backend/settings/shortcode.php:188
 #: app/views/backend/settings/shortcode.php:202
 msgid ""
-"Number of jobs you want to list on a page. Default is the config from setting "
-"page."
+"Number of jobs you want to list on a page. Default is the config from "
+"setting page."
 msgstr ""
 
 #: app/views/backend/settings/shortcode.php:194
@@ -2998,8 +3050,8 @@ msgstr ""
 
 #: app/views/expert-form/main.php:26
 msgid ""
-"Short version of yourself, maximum 100 characters. This will be use to display at "
-"listing page"
+"Short version of yourself, maximum 100 characters. This will be use to "
+"display at listing page"
 msgstr ""
 
 #: app/views/expert-form/main.php:42
@@ -3038,19 +3090,19 @@ msgstr ""
 msgid "Tell us about yourself (required, at least 200 characters)"
 msgstr ""
 
-#: app/views/expert-form/main.php:130 app/views/job-form/main.php:159
+#: app/views/expert-form/main.php:130 app/views/job-form/main.php:202
 msgid "Publish"
 msgstr ""
 
-#: app/views/expert-form/main.php:133 app/views/job-form/main.php:162
+#: app/views/expert-form/main.php:133 app/views/job-form/main.php:205
 msgid "Submit for review"
 msgstr ""
 
-#: app/views/expert-form/main.php:137 app/views/job-form/main.php:166
+#: app/views/expert-form/main.php:137 app/views/job-form/main.php:209
 msgid "Save Draft"
 msgstr ""
 
-#: app/views/expert-form/main.php:328 app/views/job-form/main.php:187
+#: app/views/expert-form/main.php:328 app/views/job-form/main.php:233
 msgid "Submitting..."
 msgstr ""
 
@@ -3102,32 +3154,36 @@ msgstr ""
 msgid "You've reached the limit of how many Jobs you can post."
 msgstr ""
 
-#: app/views/job-form/main.php:9
+#: app/views/job-form/main.php:10
 msgid "Choose a category"
 msgstr ""
 
-#: app/views/job-form/main.php:22
+#: app/views/job-form/main.php:29
 msgid "Give your job a title"
 msgstr ""
 
-#: app/views/job-form/main.php:33
+#: app/views/job-form/main.php:43
 msgid "Describe the work to be done"
 msgstr ""
 
-#: app/views/job-form/main.php:43
+#: app/views/job-form/main.php:61
 msgid "What skills are needed?"
 msgstr ""
 
-#: app/views/job-form/main.php:55
+#: app/views/job-form/main.php:81
 msgid "Min Budget"
 msgstr ""
 
-#: app/views/job-form/main.php:67
+#: app/views/job-form/main.php:96
 msgid "Max Budget"
 msgstr ""
 
-#: app/views/job-form/main.php:80
+#: app/views/job-form/main.php:112
 msgid "Budget"
+msgstr ""
+
+#: app/views/job-form/main.php:229
+msgid "No matches found"
 msgstr ""
 
 #: app/views/job-single/main.php:6
@@ -3188,7 +3244,8 @@ msgstr ""
 
 #: framework/vendors/gump.class.php:423
 msgid ""
-"The <span class=\"%s\">%s</span> field is required to be a valid email address"
+"The <span class=\"%s\">%s</span> field is required to be a valid email "
+"address"
 msgstr ""
 
 #: framework/vendors/gump.class.php:427
@@ -3197,7 +3254,8 @@ msgstr ""
 
 #: framework/vendors/gump.class.php:429
 msgid ""
-"The <span class=\"%s\">%s</span> field needs to be shorter than %d characters"
+"The <span class=\"%s\">%s</span> field needs to be shorter than %d "
+"characters"
 msgstr ""
 
 #: framework/vendors/gump.class.php:434
@@ -3210,28 +3268,32 @@ msgstr ""
 
 #: framework/vendors/gump.class.php:441
 msgid ""
-"The <span class=\"%s\">%s</span> field needs to be exactly %d character in length"
+"The <span class=\"%s\">%s</span> field needs to be exactly %d character in "
+"length"
 msgstr ""
 
 #: framework/vendors/gump.class.php:443
 msgid ""
-"The <span class=\"%s\">%s</span> field needs to be exactly %d characters in length"
+"The <span class=\"%s\">%s</span> field needs to be exactly %d characters in "
+"length"
 msgstr ""
 
 #: framework/vendors/gump.class.php:447
 msgid ""
-"The <span class=\"%s\">%s</span> field may only contain alpha characters(a-z)"
+"The <span class=\"%s\">%s</span> field may only contain alpha "
+"characters(a-z)"
 msgstr ""
 
 #: framework/vendors/gump.class.php:450
 msgid ""
-"The <span class=\"%s\">%s</span> field may only contain alpha-numeric characters"
+"The <span class=\"%s\">%s</span> field may only contain alpha-numeric "
+"characters"
 msgstr ""
 
 #: framework/vendors/gump.class.php:453
 msgid ""
-"The <span class=\"%s\">%s</span> field may only contain alpha characters &amp; "
-"dashes"
+"The <span class=\"%s\">%s</span> field may only contain alpha characters "
+"&amp; dashes"
 msgstr ""
 
 #: framework/vendors/gump.class.php:456
@@ -3244,7 +3306,8 @@ msgstr ""
 
 #: framework/vendors/gump.class.php:462
 msgid ""
-"The <span class=\"%s\">%s</span> field may only contain a true or false value"
+"The <span class=\"%s\">%s</span> field may only contain a true or false "
+"value"
 msgstr ""
 
 #: framework/vendors/gump.class.php:465
@@ -3265,7 +3328,8 @@ msgstr ""
 
 #: framework/vendors/gump.class.php:477
 msgid ""
-"The <span class=\"%s\">%s</span> field needs to contain a valid credit card number"
+"The <span class=\"%s\">%s</span> field needs to contain a valid credit card "
+"number"
 msgstr ""
 
 #: framework/vendors/gump.class.php:480
@@ -3274,7 +3338,8 @@ msgstr ""
 
 #: framework/vendors/gump.class.php:483
 msgid ""
-"The <span class=\"%s\">%s</span> field needs to contain one of these values: %s"
+"The <span class=\"%s\">%s</span> field needs to contain one of these "
+"values: %s"
 msgstr ""
 
 #: framework/vendors/gump.class.php:486
@@ -3287,8 +3352,8 @@ msgstr ""
 
 #: framework/vendors/gump.class.php:492
 msgid ""
-"The <span class=\"%s\">%s</span> field needs to be a numeric value, equal to, or "
-"higher than %s"
+"The <span class=\"%s\">%s</span> field needs to be a numeric value, equal "
+"to, or higher than %s"
 msgstr ""
 
 #: framework/vendors/gump.class.php:498

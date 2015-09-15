@@ -26,7 +26,7 @@ class JE_Expert_Model extends IG_Post_Model
     public $portfolios;
 
     public $status;
-
+    public $text_domain = 'jbp';
     protected $table = 'jbp_pro';
 
     protected $defaults = array(
