@@ -14,7 +14,7 @@
         </div>
     </div>
 </div>
-<?php if (je()->can_upload()): ?>
+<?php if (je()->can_upload_avatar()): ?>
     <script type="text/javascript">
         jQuery(function ($) {
             $('.change-avatar').webuiPopover({
