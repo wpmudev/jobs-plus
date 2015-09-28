@@ -2,9 +2,9 @@
 # This file is distributed under the GPLv2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Jobs and Experts 1.0.2.1\n"
+"Project-Id-Version: Jobs and Experts 1.0.2.2-beta\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/jobs-experts\n"
-"POT-Creation-Date: 2015-09-15 15:35:56+00:00\n"
+"POT-Creation-Date: 2015-09-28 07:20:49+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -46,6 +46,8 @@ msgstr ""
 #: app/addons/je-advanced-search.php:68 app/addons/je-advanced-search.php:564
 #: app/addons/je-advanced-search.php:628
 #: app/addons/je-message/lib/app/components/mm-addon-table.php:35
+#: app/components/ig-skill/app/views/_form.php:23
+#: app/components/ig-social-wall/app/views/form.php:13
 #: app/components/ig-wallet/app/views/credit/main.php:20
 #: app/components/je-addon-table.php:35 app/components/je-fields-table.php:23
 #: app/controllers/backend/je-expert-admin-controller.php:22
@@ -80,7 +82,7 @@ msgstr ""
 #: app/addons/je-advanced-search.php:583 app/addons/je-advanced-search.php:647
 #: app/addons/je-custom-location/_location_popup.php:31
 #: app/components/ig-skill/app/views/_form.php:63
-#: app/components/ig-social-wall/app/views/form.php:35
+#: app/components/ig-social-wall/app/views/form.php:36
 #: app/components/ig-uploader/app/views/_uploader_form.php:43
 #: app/controllers/frontend/je-expert-form-shortcode-controller.php:163
 #: app/views/expert-form/_biography_popup.php:13
@@ -285,7 +287,7 @@ msgstr ""
 #: app/addons/je-job-custom-fields/app/views/fields.php:71
 #: app/addons/je-job-demo-data.php:264
 #: app/components/ig-skill/app/views/_form.php:60
-#: app/components/ig-social-wall/app/views/form.php:32
+#: app/components/ig-social-wall/app/views/form.php:33
 #: app/components/ig-uploader/app/views/_uploader_form.php:44
 #: app/components/ig-wallet/app/views/settings/sending_credit.php:38
 #: app/controllers/frontend/je-expert-form-shortcode-controller.php:154
@@ -1296,7 +1298,7 @@ msgstr ""
 
 #: app/addons/je-message/lib/app/views/shortcode/_inbox_message.php:24
 #: app/components/ig-skill/app/views/_form.php:67
-#: app/components/ig-social-wall/app/views/form.php:39
+#: app/components/ig-social-wall/app/views/form.php:40
 #: app/components/ig-wallet/app/views/credit/main.php:53
 #: app/views/my-expert/main.php:34 app/views/my-job/main.php:31
 #: framework/database/ig-grid.php:42 framework/database/ig-grid.php:116
@@ -1497,8 +1499,20 @@ msgstr ""
 msgid "Contact Expert"
 msgstr ""
 
+#: app/components/ig-skill/app/views/_form.php:9
+msgid "Preview"
+msgstr ""
+
 #: app/components/ig-skill/app/views/_form.php:11
 msgid "Skill name"
+msgstr ""
+
+#: app/components/ig-skill/app/views/_form.php:25
+msgid "Score"
+msgstr ""
+
+#: app/components/ig-skill/app/views/_form.php:28
+msgid "Color"
 msgstr ""
 
 #: app/components/ig-skill/app/views/_form.php:32
@@ -1553,7 +1567,7 @@ msgstr ""
 msgid "Select Social"
 msgstr ""
 
-#: app/components/ig-social-wall/app/views/form.php:29
+#: app/components/ig-social-wall/app/views/form.php:30
 msgid "Social information (Url or Username)"
 msgstr ""
 

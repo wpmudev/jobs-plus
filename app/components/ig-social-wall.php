@@ -20,7 +20,7 @@ if (!class_exists('IG_Social_Wall')) {
             //variables init
             $this->plugin_url = plugin_dir_url(__FILE__) . 'ig-social-wall/';
             $this->plugin_path = plugin_dir_path(__FILE__) . 'ig-social-wall/';
-            $this->domain = 'ig_social_wall';
+            $this->domain = 'jbp';
             $this->prefix = 'icw';
 
             spl_autoload_register(array(&$this, 'loader'));

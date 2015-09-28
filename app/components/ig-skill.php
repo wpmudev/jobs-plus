@@ -20,7 +20,7 @@ if (!class_exists('IG_Skill')) {
             //variables init
             $this->plugin_url = plugin_dir_url(__FILE__) . 'ig-skill/';
             $this->plugin_path = plugin_dir_path(__FILE__) . 'ig-skill/';
-            $this->domain = 'je';
+            $this->domain = 'jbp';
             $this->prefix = 'isk';
 
             spl_autoload_register(array(&$this, 'loader'));
