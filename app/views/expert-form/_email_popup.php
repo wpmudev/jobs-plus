@@ -4,7 +4,7 @@
             <label class="col-md-3 control-label"><?php _e("Email", je()->domain) ?></label>
 
             <div class="col-lg-9">
-                <input type="text" value="<?php echo $model->contact_email ?>" name="email" class="form-control input-sm validate[custom[email]]">
+                <input type="text" value="<?php echo $model->contact_email ?>" name="email" class="form-control input-sm">
             </div>
             <div class="clearfix"></div>
         </div>

@@ -54,5 +54,6 @@ Show notification when user deactivate MarketPress plugin while MarketPress inte
 Integration with MarketPress 3.0
 ==1.0.2.1
 Fix backward issue with MarketPress 2.9
-==1.0.2.1
+==1.0.2.2
 Add missing text for translation
+Fix bugs avatar not upload

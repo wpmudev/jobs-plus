@@ -212,6 +212,9 @@
 	</div>
 	<?php $form->close(); ?>
 </div>
+<?php $lang = defined( 'WPLANG' ) ? WPLANG : 'en_US';
+$lang       = str_replace( '_', '-', $lang );
+?>
 <script type="text/javascript">
 	jQuery(function ($) {
 		$(".datepicker").datepicker({
@@ -219,8 +222,19 @@
 			minDate: "<?php echo date('Y-m-d') ?>",
 			beforeShow: function (input, inst) {
 				inst.dpDiv.wrap('<div class="ig-container"></div>');
-			}
+			},
+			closeText: jeL10n.closeText,
+			currentText: jeL10n.currentText,
+			monthNames: jeL10n.monthNames,
+			monthNamesShort: jeL10n.monthNamesShort,
+			dayNames: jeL10n.dayNames,
+			dayNamesShort: jeL10n.dayNamesShort,
+			dayNamesMin: jeL10n.dayNamesMin,
+			//dateFormat: jeL10n.dateFormat,
+			firstDay: jeL10n.firstDay,
+			isRTL: jeL10n.isRTL,
 		});
+		$(".datepicker").datepicker( $.datepicker.regional[ "fr" ] );
 		$('#jbp_skill_tag').select2({
 			tags: <?php echo json_encode(get_terms('jbp_skills_tag', array('fields'=>'names', 'get' => 'all' ) ) ); ?>,
 			placeholder: "<?php esc_attr_e('Add a tag, use commas to separate',je()->domain); ?>",

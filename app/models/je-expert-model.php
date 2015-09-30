@@ -329,6 +329,19 @@ class JE_Expert_Model extends IG_Post_Model
         return apply_filters('je_expert_get_location', $location, $this);
     }
 
+    function get_status() {
+        $status = $this->status;
+        if ( $status == 'publish' ) {
+            $status = __( 'published', je()->domain );
+        } elseif ( $status == 'pending' ) {
+            $status = __( 'pending', je()->domain );
+        } elseif ( $status == 'draft' ) {
+            $status = __( "draft", je()->domain );
+        }
+
+        return $status;
+    }
+
     public static function model($class_name = __CLASS__)
     {
         return parent::model($class_name);

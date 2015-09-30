@@ -21,7 +21,7 @@
                     </td>
                     <td><?php echo $model->get_view_count() ?></td>
                     <td><?php echo $model->get_like_count() ?></td>
-                    <td><?php echo ucfirst($model->status) ?></td>
+                    <td><?php echo ucfirst($model->get_status()) ?></td>
                     <td style="width: 120px">
                         <a class="btn btn-primary btn-sm" href="<?php echo esc_url(add_query_arg(array(
                             'pro' => $model->id

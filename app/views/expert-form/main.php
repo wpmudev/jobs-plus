@@ -299,9 +299,11 @@
                             }
                             break;
                         case 'location':
-                            instance.text($(this).find('select option:selected').text());
-                            $('#je_expert_model-location').val(data.location);
-                            $(this).trigger('je_expert_popup_form_location', [instance, $(this), data]);
+                            if ($.trim(data.location).length > 0) {
+                                instance.text($(this).find('select option:selected').text());
+                                $('#je_expert_model-location').val(data.location);
+                                $(this).trigger('je_expert_popup_form_location', [instance, $(this), data]);
+                            }
                             break;
                         case 'biography':
                             instance.html(data.biography);

@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Jobs and Experts 1.0.2.2-beta\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/jobs-experts\n"
-"POT-Creation-Date: 2015-09-28 07:20:49+00:00\n"
+"POT-Creation-Date: 2015-09-30 13:45:32+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -2413,12 +2413,24 @@ msgstr ""
 msgid "Job delete successful!"
 msgstr ""
 
-#: app/controllers/je-shared-controller.php:30
+#: app/controllers/je-shared-controller.php:27
 msgid "Your expert profile has been deleted."
 msgstr ""
 
-#: app/controllers/je-shared-controller.php:48
+#: app/controllers/je-shared-controller.php:44
 msgid "Your job has been deleted."
+msgstr ""
+
+#: app/models/je-expert-model.php:335 app/models/je-job-model.php:249
+msgid "published"
+msgstr ""
+
+#: app/models/je-expert-model.php:337 app/models/je-job-model.php:251
+msgid "pending"
+msgstr ""
+
+#: app/models/je-expert-model.php:339 app/models/je-job-model.php:253
+msgid "draft"
 msgstr ""
 
 #: app/models/je-field-model.php:30
@@ -2540,7 +2552,7 @@ msgstr ""
 msgid "Category & Skill"
 msgstr ""
 
-#: app/views/backend/jobs/_form.php:236 app/views/job-form/main.php:226
+#: app/views/backend/jobs/_form.php:236 app/views/job-form/main.php:240
 msgid "Add a tag, use commas to separate"
 msgstr ""
 
@@ -3116,7 +3128,7 @@ msgstr ""
 msgid "Save Draft"
 msgstr ""
 
-#: app/views/expert-form/main.php:328 app/views/job-form/main.php:233
+#: app/views/expert-form/main.php:330 app/views/job-form/main.php:247
 msgid "Submitting..."
 msgstr ""
 
@@ -3196,7 +3208,7 @@ msgstr ""
 msgid "Budget"
 msgstr ""
 
-#: app/views/job-form/main.php:229
+#: app/views/job-form/main.php:243
 msgid "No matches found"
 msgstr ""
 

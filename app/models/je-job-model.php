@@ -246,7 +246,11 @@ class JE_Job_Model extends IG_Post_Model {
 	function get_status() {
 		$status = $this->status;
 		if ( $status == 'publish' ) {
-			$status = 'published';
+			$status = __( 'published', je()->domain );
+		} elseif ( $status == 'pending' ) {
+			$status = __( 'pending', je()->domain );
+		} elseif ( $status == 'draft' ) {
+			$status = __( "draft", je()->domain );
 		}
 
 		return $status;
