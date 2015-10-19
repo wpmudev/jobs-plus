@@ -56,4 +56,5 @@ Integration with MarketPress 3.0
 Fix backward issue with MarketPress 2.9
 ==1.0.2.2
 Add missing text for translation
-Fix bugs avatar not upload
+Fix bug avatar not upload
+Fix bug disable contact form doesn't work
