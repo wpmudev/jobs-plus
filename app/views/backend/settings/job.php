@@ -115,7 +115,7 @@ $form->open(array("attributes" => array("class" => "form-horizontal"))); ?>
         <div class="col-md-9">
             <label class="text-muted" style="font-weight: normal">
                 <?php $form->hidden('job_contact_form', array('value' => 0)) ?>
-                <?php $form->hidden('job_contact_form', array('attributes' => array('value' => 1))) ?>
+                <?php $form->checkbox('job_contact_form', array('attributes' => array('value' => 1))) ?>
                 <?php _e('disable contact form', je()->domain); ?>
             </label>
         </div>

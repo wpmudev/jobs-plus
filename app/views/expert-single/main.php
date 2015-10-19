@@ -11,11 +11,15 @@
 										<?php echo $model->get_avatar( 420 ) ?>
 									</div>
 									<div class="panel-footer">
-										<?php ob_start(); ?>
-										<a class="btn btn-sm btn-primary jbp_contact_expert"
-										   href="<?php echo esc_url( add_query_arg( array(
-											   'contact' => get_post()->post_name
-										   ), apply_filters( 'jbp_expert_contact_link', get_permalink( je()->pages->page( JE_Page_Factory::EXPERT_CONTACT ) ) ) ) ) ?>"><?php _e( 'Contact Me', je()->domain ) ?></a>
+										<?php if ( je()->settings()->expert_contact_form == 0 ): ?>
+											<?php ob_start(); ?>
+											<a class="btn btn-sm btn-primary jbp_contact_expert"
+											   href="<?php echo esc_url( add_query_arg( array(
+												   'contact' => get_post()->post_name
+											   ), apply_filters( 'jbp_expert_contact_link', get_permalink( je()->pages->page( JE_Page_Factory::EXPERT_CONTACT ) ) ) ) ) ?>"><?php _e( 'Contact Me', je()->domain ) ?></a>
+										<?php else: ?>
+											<a class="btn btn-sm btn-primary disabled" href="#"><?php _e( 'Contact Me', je()->domain ) ?></a>
+										<?php endif; ?>
 										<?php $content = ob_get_clean();
 										echo apply_filters( 'jbp_expert_contact_btn', $content, $model );
 										?>
@@ -162,7 +166,7 @@
 												</div>
 												<div class="clearfix"></div>
 											</div>
-										<?php
+											<?php
 										} else {
 											_e( 'This member hasn\'t added any skills yet', je()->domain );
 										} ?>
@@ -182,7 +186,7 @@
 												</div>
 												<div class="clearfix"></div>
 											</div>
-										<?php
+											<?php
 										} else {
 											_e( 'This member hasn\'t added any social profiles.', je()->domain );
 											echo '<br/>';
