@@ -9,6 +9,8 @@ Fixed: Disable contact form doesn't work
 Fixed: Database error in add new expert page (admin)
 Fixed: Data insertion problem in add expert front page
 Fixed: Cannot properly save skills from the back end
+Fixed: Cannot upload avatar image from front end
+Fixed: Credit can't be sent to any user
 
 
 

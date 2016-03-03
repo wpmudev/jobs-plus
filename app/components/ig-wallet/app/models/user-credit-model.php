@@ -11,7 +11,7 @@ class User_Credit_Model
         if (!is_user_logged_in() || empty($user_id)) {
             return;
         }
-var_dump(get_current_user_id());
+//var_dump(get_current_user_id());
         if (empty($user_id)) {
             $user_id = get_current_user_id();
         }
