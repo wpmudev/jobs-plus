@@ -13,6 +13,8 @@ Fixed: Cannot properly save skills from the back end
 Fixed: Cannot upload avatar image from front end
 Fixed: Credit can't be sent to any user
 Fixed: Post type error for jbp_expert, changed into jbp_pro
+Fixed: Message that keeps popping up to ask to complete the Messaging setup even though the options are set
+
 
 
 

@@ -19,6 +19,9 @@ class MMessage_Backend_Controller extends IG_Request
 
     function footer_scripts()
     {
+        $model = new MM_Setting_Model();
+        $model->load();
+        if( ( int ) $model->inbox_page < 1 ) {
         $pointer_content = "<p>" . __("Please visit settings > messaging to choose your inbox page and complete setup", mmg()->domain) . "</p>";
         ?>
         <script type="text/javascript">
@@ -43,6 +46,7 @@ class MMessage_Backend_Controller extends IG_Request
             //]]>
         </script>
     <?php
+        }
     }
 
     function scripts()
