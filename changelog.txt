@@ -1,4 +1,19 @@
 Jobs+ Change Log
+Developers: Hoang NGO, Ashok Kumar Nath
+
+
+== 1.0.2.2 ==
+Added: Missing text for translation
+Fixed: Avatar was not uploading
+Fixed: Disable contact form doesn't work
+Fixed: Database error in add new expert page (admin)
+Fixed: Data insertion problem in add expert front page
+Fixed: Cannot properly save skills from the back end
+
+
+
+
+
 
 ==1.0==
 Initial Release
@@ -54,7 +69,3 @@ Show notification when user deactivate MarketPress plugin while MarketPress inte
 Integration with MarketPress 3.0
 ==1.0.2.1
 Fix backward issue with MarketPress 2.9
-==1.0.2.2
-Add missing text for translation
-Fix bug avatar not upload
-Fix bug disable contact form doesn't work
