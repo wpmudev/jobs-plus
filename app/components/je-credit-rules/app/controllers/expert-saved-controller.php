@@ -17,7 +17,7 @@ class Expert_Saved_Controller extends IG_Request
     function charge_in_pending_review_case($post_ID, $post_after, $post_before)
     {
         //this case is when admin review & publish
-        if ($post_after->post_type == 'jbp_expert' && $post_after->post_status == 'publish') {
+        if ($post_after->post_type == 'jbp_pro' && $post_after->post_status == 'publish') {
             $is_paid = get_post_meta($post_ID, 'je_expert_paid', true);
             if ($is_paid == -1) {
                 //this profile still not paid,check the balance
