@@ -170,6 +170,22 @@
             </ul>
         </div>
     </div>
+    <div class="col-md-6 col-xs-6 col-sm-6 text-center">
+        <img class=""
+             src="<?php echo je()->plugin_url ?>assets/image/icons/My_Profile/My_Profile_Dark.svg">
+        <p><strong><?php _e("Expert search form", je()->domain) ?></strong></p>
+        <div class="clearfix"></div>
+
+        <div class="text-left">
+            <p><code>[jbp-expert-search]</code></p>
+            <ul>
+                <li>
+                    <mark><?php _e("search_placeholder", je()->domain) ?></mark>
+                    : <?php _e( 'Search form placeholder text', je()->domain ); ?>
+                </li>
+            </ul>
+        </div>
+    </div>
     <div class="clearfix"></div>
 </div>
 <div class="page-header">

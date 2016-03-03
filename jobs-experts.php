@@ -382,6 +382,7 @@ class Jobs_Experts {
 		$expert_single  = new JE_Expert_Single_Shortcode_Controller();
 		$my_expert      = new JE_My_Expert_Shortcode_Controller();
 		$expert_form    = new JE_Expert_Form_Shortcode_Controller();
+                $expert_search = new JE_Expert_Search_Shortcode_Controller();
 
 		$contact = new JE_Contact_Shortcode_Controller();
 		$landing = new JE_Landing_Shortcode_Controller();
