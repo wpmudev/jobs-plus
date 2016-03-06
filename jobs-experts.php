@@ -98,6 +98,10 @@ class Jobs_Experts {
 
 		add_action( 'init', array( &$this, 'dispatch' ) );
 		add_action( 'widgets_init', array( &$this, 'init_widget' ) );
+                
+                add_action( 'wp_trash_post', array( &$this, 'delete_je_cache' ) );
+                add_action( 'save_post', array( &$this, 'delete_je_cache' ) );
+                
 		$this->upgrade();
 		//
 		$this->load_addons();
@@ -226,6 +230,15 @@ class Jobs_Experts {
 			wp_register_script( 'jobs-noty', $this->plugin_url . 'assets/vendors/noty/packaged/jquery.noty.packaged.min.js', array(), $this->version, true );
 		}
 	}
+        
+        function delete_je_cache( $post_id ) {
+            
+            if( get_post_type( $post_id ) != 'jbp_job' ) return;
+            
+            global $wpdb;
+            $query = $wpdb->prepare( "DELETE from `{$wpdb->options}` WHERE option_name LIKE %s;", '%' . $wpdb->esc_like( JE_Job_Model::model()->cache_prefix() ) . '%');
+            $wpdb->query( $query );
+        }
 
 	function date_format_php_to_js( $sFormat ) {
 		switch ( $sFormat ) {
