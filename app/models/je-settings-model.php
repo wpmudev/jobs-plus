@@ -21,6 +21,7 @@ class JE_Settings_Model extends IG_Option_Model
     public $job_allow_draft;
     public $job_sample_size;
     public $job_allow_discussion;
+    public $hide_expired_from_archive;
 
     public $job_min_search_budget;
     public $job_max_search_budget;

@@ -5,6 +5,7 @@ Developers: Hoang NGO, Ashok Kumar Nath
 == 1.0.2.2 ==
 Added: Missing text for translation
 Added: Expert search form shortcode - "[jbp-expert-search]"
+Added: Option to exclude expired jobs from archive
 Fixed: Avatar was not uploading
 Fixed: Disable contact form doesn't work
 Fixed: Database error in add new expert page (admin)
