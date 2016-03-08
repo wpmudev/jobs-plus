@@ -9,6 +9,7 @@ class JE_Expert_Single_Shortcode_Controller extends IG_Request
     {
         add_action('wp_ajax_expert_like', array(&$this, 'expert_like'));
         add_shortcode('jbp-job-pro-page', array(&$this, 'main'));
+        add_action( 'template_redirect', array( &$this, 'add_view_count' ) );
     }
 
     function expert_like()
@@ -34,10 +35,17 @@ class JE_Expert_Single_Shortcode_Controller extends IG_Request
     function main($atts)
     {
         je()->load_script('expert');
-        $model = JE_Expert_Model::model()->find(get_the_ID());
-        $model->add_view_count();
+        $model = JE_Expert_Model::model()->find( get_the_ID() );
         return $this->render('expert-single/main', array(
             'model' => $model
         ), false);
+    }
+    
+    function add_view_count() {
+        global $post;
+        if( isset( $post->ID ) && 'jbp_pro' == $post->post_type ) {
+            $model = JE_Expert_Model::model()->find( $post->ID );
+            $model->add_view_count();
+        }
     }
 }
