@@ -6,6 +6,7 @@ Developers: Hoang NGO, Ashok Kumar Nath
 Added: Missing text for translation
 Added: Expert search form shortcode - "[jbp-expert-search]"
 Added: Option to exclude expired jobs from archive
+Added: Constant 'JS_ALTERNATE_VIEW_COUNT' to use alternate method for exper view count
 Fixed: Avatar was not uploading
 Fixed: Disable contact form doesn't work
 Fixed: Database error in add new expert page (admin)
