@@ -43,7 +43,7 @@
                                             <a href="<?php echo get_permalink($model->id) ?>"><?php echo wp_trim_words($model->job_title, 10) ?></a>
                                         </h4>
                                         <?php if ($model->is_expired()): ?>
-                                            <?php _e("This job expired", je()->domain) ?>
+                                            <?php _e( "This job is expired", je()->domain ) ?>
                                         <?php else: ?>
                                             <?php if (!isset($lite) || $lite == false): ?>
                                                 <div class="ellipsis">
