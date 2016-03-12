@@ -173,6 +173,8 @@ class Jobs_Experts {
 
 	function scripts() {
 		wp_enqueue_script( 'jquery' );
+                wp_register_script( 'jobs-uploader', $this->plugin_url . 'assets/uploader.js', array( 'jquery' ), $this->version );
+                wp_enqueue_script( 'jobs-uploader' );
 
 		if ( is_admin() ) {
 			wp_enqueue_style( 'jbp_admin', $this->plugin_url . 'assets/css/admin.css', array( 'ig-packed' ), $this->version );

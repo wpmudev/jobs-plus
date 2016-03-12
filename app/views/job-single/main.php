@@ -1,6 +1,16 @@
 <div class="ig-container">
 	<div class="hn-container">
 		<div class="jbp-job-single">
+                        <?php
+                            if( isset( $model->job_img ) && $model->job_img != '' && is_numeric( $model->job_img ) ) {
+                                $image = wp_get_attachment_url( $model->job_img );
+                        ?>
+                        <div class="row">
+                            <div style="margin-bottom: 20px;">
+                                <img src="<?php echo $image ?>">
+                            </div>
+                        </div>
+                        <?php } ?>
 			<div class="row hn-border hn-border-round jobs-meta">
 				<div class="col-md-3 jobs-meta-row">
 					<h5><?php _e( 'Job Budget', je()->domain ); ?></h5>

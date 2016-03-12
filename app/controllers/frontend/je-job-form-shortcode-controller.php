@@ -69,6 +69,7 @@ class JE_Job_Form_Shortcode_Controller extends IG_Request
                         if (!is_object($model)) {
                             $model = new JE_Job_Model();
                             $model->status = 'je-draft';
+                            $model->description = '';
                             $model->owner = get_current_user_id();
                             $model->save();
                         }

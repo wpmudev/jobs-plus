@@ -169,6 +169,38 @@
         <div class="col-md-6">
             <div class="panel panel-default">
                 <div class="panel-heading">
+                    <strong><?php _e( 'Featured Image', je()->domain ) ?></strong>
+                </div>
+                <div class="panel-body">
+                    <div class="form-group <?php echo $model->has_error("id") ? "has-error" : null ?>">
+                        <label class="col-sm-5 control-label">
+                            <?php _e( 'Uplaod or select an image', je()->domain ) ?>
+                        </label>
+                        <div class="col-sm-7">
+                            <?php
+                                $class = 'hidden';
+                                if( isset( $model->job_img ) && $model->job_img != '' && is_numeric( $model->job_img ) ) {
+                                    $class = '';
+                                }
+                            ?>
+                            <p class="hide-if-no-js">
+                                <?php $form->hidden( 'job_img', array( 'attributes' => array( 'id' => 'job_img' ) ) ) ?>
+                                <a title="Set Featured Image" href="javascript:;" id="je_ftr_img" class="button button-secondary"><?php _e( 'Set image', je()->domain ) ?></a>
+                                <a title="Remove Featured Image" href="javascript:;" id="je_ftr_img_rmv" class="button button-secondary <?php echo $class; ?>"><?php _e( 'Remove image', je()->domain ) ?></a>
+                            </p>
+                            <?php
+                                $image = wp_get_attachment_url( $model->job_img );
+                            ?>
+                            <div id="je_ftr_img_container" class="<?php echo $class ?>">
+                                <img src="<?php echo $image; ?>" alt="" title="" width="100" />
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
                     <strong><?php _e('Category & Skill', je()->domain) ?></strong>
                 </div>
                 <div class="panel-body">
