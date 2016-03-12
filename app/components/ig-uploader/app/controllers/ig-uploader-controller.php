@@ -127,7 +127,8 @@ if (!class_exists('IG_Uploader_Controller')) {
                 if (!empty($ids)) {
                     $models = IG_Uploader_Model::model()->all_with_condition(array(
                         'status' => 'publish',
-                        'post__in' => $ids
+                        'post__in' => $ids,
+                        'posts_per_page' => -1
                     ));
                 }
 
@@ -156,7 +157,8 @@ if (!class_exists('IG_Uploader_Controller')) {
             if (!empty($ids)) {
                 $models = IG_Uploader_Model::model()->all_with_condition(array(
                     'status' => 'publish',
-                    'post__in' => $ids
+                    'post__in' => $ids,
+                    'posts_per_page' => -1
                 ));
             }
             $this->render('show_media', array(
