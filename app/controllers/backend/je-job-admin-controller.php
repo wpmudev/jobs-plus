@@ -108,6 +108,9 @@ class JE_Job_Admin_Controller extends IG_Request
         wp_enqueue_script('jbp_select2');
         wp_enqueue_style('jbp_select2');
         wp_enqueue_script('jquery-ui-datepicker');
+        
+        wp_enqueue_media();
+        
         if (isset(je()->global['job_model'])) {
             $model = je()->global['job_model'];
         } else {

@@ -17,16 +17,25 @@
                                     <div class="jbp_job_item no-padding">
                                         <div class="jbp_job_except <?php echo $colors[array_rand($colors)] ?>">
                                             <div class="jbp_inside">
-                                                <h4>
-                                                    <a href="<?php
-                                                    echo get_permalink($job->id) ?>">
-                                                        <?php echo wp_trim_words($job->job_title, 4) ?>
-                                                    </a>
-                                                </h4>
-
-                                                <div class="ellipsis">
-                                                    <?php echo wp_trim_words($job->description, 15) ?>
+                                                <?php if( isset( $job->job_img ) && $job->job_img != '' ) { ?>
+                                                <div class="col-sm-3 no-padding">
+                                                    <?php $image = wp_get_attachment_url( $job->job_img ); ?>
+                                                    <img src="<?php echo $image ?>" alt="<?php echo wp_trim_words($job->job_title, 10) ?>">
                                                 </div>
+                                                <?php } ?>
+                                                <div style="padding-right: 0" class="col-sm-<?php echo isset( $job->job_img ) && $job->job_img != '' ? 9 : 12; ?>">
+                                                    <h4>
+                                                        <a href="<?php
+                                                        echo get_permalink($job->id) ?>">
+                                                            <?php echo wp_trim_words($job->job_title, 4) ?>
+                                                        </a>
+                                                    </h4>
+    
+                                                    <div class="ellipsis">
+                                                        <?php echo wp_trim_words($job->description, 10) ?>
+                                                    </div>
+                                                </div>
+                                                <div style="clear: both"></div>
                                                 <div class="jbp_job_bottom">
                                                     <div class="jbp_terms">
                                                         <?php echo the_terms($job->id, 'jbp_category', __('Categories: ', je()->domain), ', ', ''); ?>

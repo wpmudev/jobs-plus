@@ -49,6 +49,16 @@ class JE_Job_Archive_Shortcode_Controller extends IG_Request {
 			$search = $args['s'] = $_GET['query'];
 		}
 		$args['tax_query'] = $tax_query;
+                
+                if (je()->settings()->hide_expired_from_archive == 1) {
+                    $jobs = JE_Job_Model::model()->all();
+                    foreach ( $jobs as $job ) {
+                        if( $job->is_expired() ){
+                            $args['post__not_in'][] = $job->id;
+                        }
+                    }
+                }
+                
 		$args              = apply_filters( 'jbp_job_search_params', $args );
 		$instance          = je();
 

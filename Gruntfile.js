@@ -46,14 +46,69 @@ module.exports = function (grunt) {
                     updatePoFiles: false              // Whether to update PO files in the same directory as the POT file.
                 }
             }
+        },
+        
+        clean: {
+            main: {
+                src: ['release/<%= pkg.version %>']
+            },
+            temp: {
+                src: [
+                    '**/*.tmp',
+                    '**/.afpDeleted*',
+                    '**/.DS_Store'
+                ],
+                dot: true,
+                filter: 'isFile'
+            }
+        },
+        
+        copy: {
+                // Copy the plugin to a versioned release directory
+            main: {
+                src:  [
+                    '**',
+                    '!.git/**',
+                    '!.git*',
+                    '!**/node_modules/**',
+                    '!**/releases/**',
+                    '!**/.sass-cache/**',
+                    '!**/package.json',
+                    '!**/css/sass/**',
+                    '!**/js/src/**',
+                    '!**/js/vendor/**',
+                    '!**/img/src/**',
+                    '!**/Gruntfile.js',
+                    '!**/.log',
+                    '!tests/**'
+                ],
+                dest: 'releases/<%= pkg.version %>/'
+            }
+        },
+        
+        compress: {
+                main: {
+                        options: {
+                                mode: 'zip',
+                                archive: './releases/<%= pkg.name %>-<%= pkg.version %>.zip'
+                        },
+                        expand: true,
+                        cwd: 'releases/<%= pkg.version %>/',
+                        src: [ '**/*' ],
+                        dest: 'jobs-plus'
+                }
         }
     });
 
     // Load the plugin that provides the "uglify" task.
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-wp-i18n');
+    grunt.loadNpmTasks('grunt-contrib-clean');
+    grunt.loadNpmTasks('grunt-contrib-copy');
+    grunt.loadNpmTasks('grunt-contrib-compress');
 
     // Default task(s).
     grunt.registerTask('default', ['cssmin']);
+    grunt.registerTask( 'build', ['cssmin', 'makepot', 'copy', 'clean', 'compress'] );
 
 };

@@ -42,6 +42,7 @@ class JE_Job_Recent_Widget_Controller extends WP_Widget
         }
 
         $show_cat = isset($instance['show_cat']) ? $instance['show_cat'] : false;
+        $show_img = isset($instance['show_img']) ? $instance['show_img'] : false;
 
         $post_args = array(
             'post_type' => 'jbp_job',
@@ -90,6 +91,14 @@ class JE_Job_Recent_Widget_Controller extends WP_Widget
                     <div class="jbp-recent-job-widget">
                         <?php foreach ($data as $job): ?>
                             <div class="jbp-job-widget <?php echo $colors[array_rand($colors)] ?>">
+                                <?php
+                                    if( $show_img && isset( $job->job_img ) && $job->job_img != '' ) {
+                                        $image = wp_get_attachment_url( $job->job_img );
+                                        ?>
+                                        <img src="<?php echo $image ?>" alt="<?php echo wp_trim_words($job->job_title, 10) ?>" style="width: 40px">
+                                        <?php
+                                    }
+                                ?>
                                 <a href="<?php echo get_permalink($job->id) ?>">
                                     <?php echo wp_trim_words($job->job_title, 4) ?>
                                 </a>
@@ -115,6 +124,7 @@ class JE_Job_Recent_Widget_Controller extends WP_Widget
         $instance['title'] = strip_tags($new_instance['title']);
         $instance['number'] = (int)$new_instance['number'];
         $instance['show_cat'] = (bool)$new_instance['show_cat'];
+        $instance['show_img'] = (bool)$new_instance['show_img'];
         $instance['order_by'] = $new_instance['order_by'];
         $instance['category_val'] = $new_instance['category_val'];
         $this->flush_widget_cache();
@@ -137,6 +147,7 @@ class JE_Job_Recent_Widget_Controller extends WP_Widget
         $title = isset($instance['title']) ? esc_attr($instance['title']) : '';
         $number = isset($instance['number']) ? absint($instance['number']) : 5;
         $show_cat = isset($instance['show_cat']) ? (bool)$instance['show_cat'] : false;
+        $show_img = isset($instance['show_img']) ? (bool)$instance['show_img'] : false;
         $order_by = isset($instance['order_by']) ? $instance['order_by'] : 'latest';
         $category_val = isset($instance['category_val']) ? $instance['category_val'] : array();
 
@@ -163,6 +174,13 @@ class JE_Job_Recent_Widget_Controller extends WP_Widget
                    name="<?php echo esc_attr($this->get_field_name('show_cat')); ?>"/>
             <label
                 for="<?php echo esc_attr($this->get_field_id('show_cat')); ?>"><?php _e('Display job categories?', je()->domain); ?></label>
+        </p>
+        <p>
+            <input class="checkbox" type="checkbox" <?php checked($show_img); ?>
+                   id="<?php echo esc_attr($this->get_field_id('show_img')); ?>"
+                   name="<?php echo esc_attr($this->get_field_name('show_img')); ?>"/>
+            <label
+                for="<?php echo esc_attr($this->get_field_id('show_img')); ?>"><?php _e('Display featured image?', je()->domain); ?></label>
         </p>
         <p>
             <label

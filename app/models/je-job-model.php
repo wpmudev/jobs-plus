@@ -13,6 +13,7 @@ class JE_Job_Model extends IG_Post_Model {
 	public $budget;
 	public $contact_email;
 	public $dead_line;
+        public $job_img;
 	public $open_for;
 	public $portfolios;
 	public $status;
@@ -51,6 +52,11 @@ class JE_Job_Model extends IG_Post_Model {
 			'type' => 'meta',
 			'key'  => '_ct_jbp_job_Due',
 			'map'  => 'dead_line'
+		),
+                array(
+			'type' => 'meta',
+			'key'  => '_ct_jbp_job_img',
+			'map'  => 'job_img'
 		),
 		array(
 			'type' => 'meta',

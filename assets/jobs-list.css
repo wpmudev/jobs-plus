@@ -104,6 +104,11 @@
     font-size: 14px;
 }
 
+.entry-content .jbp_inside img, .jbp_inside img, .entry-content .ig-container img{
+    border-radius: 3px;
+    box-shadow: none;
+}
+
 @media (min-width: 992px) {
     .jbp-job-list .col-md-6 {
         width: 49.25%;

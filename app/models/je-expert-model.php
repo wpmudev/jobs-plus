@@ -136,7 +136,11 @@ class JE_Expert_Model extends IG_Post_Model
 
     public function get_view_count()
     {
-        return intval(get_post_meta($this->id, 'jbp_pro_view_count', true));
+        if( $this->_alternate_view_count_method() ) {
+            return intval( get_post_meta( $this->id, 'jbp_pro_alt_view_count', true ) );
+        }else{
+            return intval( get_post_meta( $this->id, 'jbp_pro_view_count', true ) );
+        }
     }
 
     public function get_like_count()
@@ -223,6 +227,18 @@ class JE_Expert_Model extends IG_Post_Model
 
     public function add_view_count()
     {
+        
+        if( $this->_alternate_view_count_method() ) {
+            if( ! isset( $_COOKIE['jbp_pro_alt_view_count_cookie'] ) ) {
+                $view = get_post_meta( $this->id, 'jbp_pro_alt_view_count', true );
+                if( ! isset( $view ) ) $view = 0;
+                update_post_meta( $this->id, 'jbp_pro_alt_view_count', $view + 1 );
+                
+                $cookie_duration = apply_filters( 'je_view_count_cookie_duration', HOUR_IN_SECONDS );
+                setcookie( 'jbp_pro_alt_view_count_cookie', 1, time() + $cookie_duration, "/" );
+            }
+        }
+        
         $all_views = array_filter(get_post_meta($this->id, '_jbp_pro_view_count'));
 
         //gather information
@@ -263,6 +279,10 @@ class JE_Expert_Model extends IG_Post_Model
             $view = count($all_views);
             update_post_meta($this->id, 'jbp_pro_view_count', $view + 1);
         }
+    }
+    
+    private function _alternate_view_count_method() {
+            return defined( 'JS_ALTERNATE_VIEW_COUNT' ) && JS_ALTERNATE_VIEW_COUNT;
     }
 
     function is_current_owner()

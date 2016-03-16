@@ -3,7 +3,7 @@
         <!--Search section-->
         <div class="expert-search">
             <form method="get"
-                  action="<?php echo is_singular() ? get_permalink(get_the_ID()) : get_post_type_archive_link('jbp_expert') ?>">
+                  action="<?php echo is_singular() ? get_permalink(get_the_ID()) : get_post_type_archive_link('jbp_pro') ?>">
                 <div class="search input-group input-group-lg has-feedback" role="search" id="mySearch">
                     <input style="box-sizing:border-box;border-radius: 0" name="query" value="<?php echo $search ?>" type="search"
                            class="form-control pro-search"

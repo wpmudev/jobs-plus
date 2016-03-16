@@ -15,7 +15,17 @@
         <?php if ($models): ?>
             <?php foreach ($models as $model): ?>
             <tr>
-                <td><a href="<?php echo get_permalink($model->id) ?>"><?php echo $model->job_title ?></a>
+                <td>
+                    <?php
+                        if( isset( $model->job_img ) && $model->job_img != '' ) {
+                            $image = wp_get_attachment_url( $model->job_img );
+                            ?>
+                            <img src="<?php echo $image ?>" alt="<?php echo wp_trim_words($model->job_title, 10) ?>" style="width: 40px">
+                            <?php
+                        }
+                    ?>
+                    <a href="<?php echo get_permalink($model->id) ?>"><?php echo $model->job_title ?>
+                </a>
                 </td>
                 <td><?php echo $model->render_prices() ?></td>
                 <td><?php echo ucfirst($model->get_status()) ?></td>

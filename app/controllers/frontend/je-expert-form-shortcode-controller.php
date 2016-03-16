@@ -103,6 +103,7 @@ class JE_Expert_Form_Shortcode_Controller extends IG_Request
                         if (!is_object($model)) {
                             $model = new JE_Expert_Model();
                             $model->status = 'je-draft';
+                            $model->biography = '';
                             $model->user_id = get_current_user_id();
                             $model->save();
                         }

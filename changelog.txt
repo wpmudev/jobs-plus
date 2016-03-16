@@ -1,4 +1,28 @@
 Jobs+ Change Log
+Developers: Hoang NGO, Ashok Kumar Nath
+
+
+== 1.0.2.2 ==
+Added: Missing text for translation
+Added: Expert search form shortcode - "[jbp-expert-search]"
+Added: Option to exclude expired jobs from archive
+Added: Constant 'JS_ALTERNATE_VIEW_COUNT' to use alternate method for expert view count
+Fixed: Avatar was not uploading
+Fixed: Disable contact form doesn't work
+Fixed: Database error in add new expert page (admin)
+Fixed: Data insertion problem in add expert front page
+Fixed: Database error in add job front page
+Fixed: Cannot properly save skills from the back end
+Fixed: Cannot upload avatar image from front end
+Fixed: Credit can't be sent to any user
+Fixed: Post type error for jbp_expert, changed into jbp_pro
+Fixed: Message that keeps popping up to ask to complete the Messaging setup even though the options are set
+Fixed: Job is still displays in Recently posted Jobs tab after the deletion
+Fixed: SSL Bug in google font
+Fixed: Text formating in Jobs display
+Fixed: Demo data addon was not working
+Fixed: Multiple images can't be added in job form
+
 
 ==1.0==
 Initial Release
@@ -54,7 +78,3 @@ Show notification when user deactivate MarketPress plugin while MarketPress inte
 Integration with MarketPress 3.0
 ==1.0.2.1
 Fix backward issue with MarketPress 2.9
-==1.0.2.2
-Add missing text for translation
-Fix bug avatar not upload
-Fix bug disable contact form doesn't work

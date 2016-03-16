@@ -187,7 +187,39 @@
 	<?php do_action( 'je_job_after_form', $model, $form ) ?>
 	<?php $form->hidden( 'portfolios' );
 	wp_nonce_field( 'je_job_form' ) ?>
-	<div class="row">
+	<div class="form-group">
+            
+            <?php $form->label( "job_img", array(
+			"text"       => __( "Featured Image", je()->domain ),
+			"attributes" => array( "class" => "col-lg-3 control-label" )
+	    ) ) ?>
+            
+            <div class="col-md-9">
+                
+                <?php
+                    $class = 'hidden';
+                    if( isset( $model->job_img ) && $model->job_img != '' && is_numeric( $model->job_img ) ) {
+                        $class = '';
+                    }
+                ?>
+                <p class="hide-if-no-js">
+                    <?php $form->hidden( 'job_img', array( 'attributes' => array( 'id' => 'job_img' ) ) ) ?>
+                    <a title="Set Featured Image" href="javascript:;" id="je_ftr_img" class="btn btn-primary"><?php _e( 'Set image', je()->domain ) ?></a>
+                    <a title="Remove Featured Image" href="javascript:;" id="je_ftr_img_rmv" class="btn btn-primary <?php echo $class; ?>"><?php _e( 'Remove image', je()->domain ) ?></a>
+                </p>
+                <?php
+                    $image = wp_get_attachment_url( $model->job_img );
+                ?>
+                <div id="je_ftr_img_container" class="<?php echo $class ?>">
+                    <img src="<?php echo $image; ?>" alt="" title="" width="100" />
+                </div>
+            
+            
+            
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="row">
 		<div class="col-md-12">
 			<?php ig_uploader()->show_upload_control( $model, 'portfolios', false, array(
 				'title' => __( "Attach specs examples or extra information", je()->domain )
