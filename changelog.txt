@@ -2,6 +2,10 @@ Jobs+ Change Log
 Developers: Hoang NGO, Ashok Kumar Nath
 
 
+== 1.0.2.3 ==
+Fixed: Quotes are not escaped in company name field for Experts in some cases.
+
+
 == 1.0.2.2 ==
 Added: Missing text for translation
 Added: Expert search form shortcode - "[jbp-expert-search]"
