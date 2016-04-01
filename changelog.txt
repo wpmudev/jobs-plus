@@ -6,6 +6,7 @@ Developers: Hoang NGO, Ashok Kumar Nath
 Fixed: Quotes are not escaped in company name field for Experts in some cases.
 Fixed: Warning on MarketPress addon integration
 Fixed: Problem uploading files while adding expert from front end
+Fixed: Missing translated string
 
 
 == 1.0.2.2 ==
