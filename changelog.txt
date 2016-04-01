@@ -2,6 +2,18 @@ Jobs+ Change Log
 Developers: Hoang NGO, Ashok Kumar Nath
 
 
+== 1.0.2.3 ==
+Fixed: Quotes are not escaped in company name field for Experts in some cases.
+Fixed: Warning on MarketPress addon integration
+Fixed: Problem uploading files while adding expert from front end
+Fixed: Missing translated string
+Fixed: BP Profile picture can't be updated
+Fixed: Fatal error in Add New Expert page
+Fixed: General category can't be deleted
+Fixed: Expert was not able to change avatar in some cases
+
+
+
 == 1.0.2.2 ==
 Added: Missing text for translation
 Added: Expert search form shortcode - "[jbp-expert-search]"

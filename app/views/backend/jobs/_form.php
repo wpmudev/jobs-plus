@@ -265,7 +265,7 @@
         });
         $('#jbp_skill_tag').select2({
             tags: <?php echo json_encode(get_terms('jbp_skills_tag', array('fields'=>'names', 'get' => 'all' ) ) ); ?>,
-            placeholder: "<?php esc_attr_e('Add a tag, use commas to separate'); ?>",
+            placeholder: "<?php esc_attr_e('Add a tag, use commas to separate', je()->domain); ?>",
             tokenSeparators: [","]
         });
     })

@@ -116,7 +116,7 @@ class Expert_Saved_Controller extends IG_Request
 
     function count_paid()
     {
-        $models = JE_Expert_Model::model()->all_with_conditions(array(
+        $models = JE_Expert_Model::model()->all_with_condition(array(
             'meta_key' => 'je_expert_paid',
             'nopaging' => true
         ));

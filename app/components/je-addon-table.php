@@ -67,9 +67,12 @@ class JE_AddOn_Table extends WP_List_Table
                 } else {
                     //find the required plugin data
                     $plugin_path = ABSPATH . 'wp-content/plugins/' . $item['required'];
-                    $plugin_data = get_plugin_data($plugin_path);
+                    $plugin_data = null;
+                    if( file_exists( $plugin_path ) ) {
+                        $plugin_data = get_plugin_data($plugin_path);
+                    }
                     $text = '';
-                    if (is_array($plugin_data) && count($plugin_data)) {
+                    if ( is_array( $plugin_data ) && count( $plugin_data ) ) {
                         $text = sprintf(__("Plugin <strong>%s</strong> required", je()->domain), $plugin_data['Name']);
                     } else {
                         $text = sprintf(__("Plugin <strong>%s</strong> required", je()->domain), $item['required']);
