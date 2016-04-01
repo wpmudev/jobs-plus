@@ -73,9 +73,12 @@ jQuery(function ($) {
             attachment = file_frame.state().get('selection').first().toJSON();
             // Do something with attachment.id and/or attachment.url here
             $('#attachment').first().val(attachment.id);
+            
             $('.file-upload-name').first().text(attachment.filename);
             if( $( '.file-upload-name' ).closest( '.webui-popover' ).length ) {
-                $( '.file-upload-name' ).closest( '.webui-popover' ).show();
+                //console.log( $( '.file-upload-name' ).closest( '.webui-popover' ).html() );
+                //$( '.file-upload-name' ).closest( '.webui-popover' ).show();
+                $('.add-file').click();
             }
         });
 
