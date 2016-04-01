@@ -104,7 +104,7 @@ class Job_Saved_Controller extends IG_Request
 
     function count_paid()
     {
-        $models = JE_Job_Model::model()->all_with_conditions(array(
+        $models = JE_Job_Model::model()->all_with_condition(array(
             'meta_key' => 'je_job_paid',
             'nopaging' => true
         ));

@@ -7,6 +7,8 @@ Fixed: Quotes are not escaped in company name field for Experts in some cases.
 Fixed: Warning on MarketPress addon integration
 Fixed: Problem uploading files while adding expert from front end
 Fixed: Missing translated string
+Fixed: BP Profile picture can't be updated
+Fixed: Fatal error in Add New Expert page
 
 
 == 1.0.2.2 ==
