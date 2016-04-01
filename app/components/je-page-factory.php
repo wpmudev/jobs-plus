@@ -47,7 +47,8 @@ class JE_Page_Factory
      */
     public function default_category()
     {
-        $count = get_terms('jbp_category');
+        $count = get_terms('jbp_category', array( 'hide_empty' => false ));
+        
         if (count($count) == 0) {
             //we will create default terms
             wp_insert_term('General', 'jbp_category');
