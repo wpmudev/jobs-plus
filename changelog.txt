@@ -60,11 +60,11 @@ Update PM to latest release
 Add ability for developer can add additions fields, CRUD and validation support for additions fields
 Separate view file, can replace native view and custom theme
 Ability for update field name, example job_title=>Job Name
-Attachment now need permission for upload
+Attachment now needs permission for upload
 Improve assets processing
 Grunt Support
 ==1.0.1.5
-Fix Private Message add-on not store db version properly
+Fix bug extend jobs expired date properly
 ==1.0.1.6
 Fix search job widget price slider
 Add ability for admin can on/off job discussion
@@ -77,15 +77,15 @@ Fix: Social & Skill js bug
 ==1.0.1.8
 Some more hooks & filters
 Fix bug extend jobs expired date
-Fix bug job search widget wrong parameter
-Fix bug expert widget not assign profile to owner
+Fix bug with incorrect parameter in job search widget
+Fix bug expert widget not assigning profile to owner
 Add MarketPress integration (wallets)
 Add charging when saving new expert profile
 Add charging when saving new job
 Fix bug recent job widget not showing
 Some other minor bugs fix
 ==1.0.1.9
-Show notification when user deactivate MarketPress plugin while MarketPress integration add-on still enable
+Show notification when user deactivates MarketPress plugin while MarketPress integration add-on still enable
 ==1.0.2.0
 Integration with MarketPress 3.0
 ==1.0.2.1
