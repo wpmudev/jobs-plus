@@ -150,6 +150,11 @@ class JE_Advanced_Search
                 });
             })
         </script>
+        <style>
+        .post-type-archive-jbp_pro .webui-popover{
+                width: 40% !important;
+        }
+        </style>
     <?php
     }
 
