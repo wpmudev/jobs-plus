@@ -14,9 +14,17 @@
 			<?php
 			$cats = get_terms( "jbp_category", array( "hide_empty" => false ) );
 			?>
+                        <?php
+                            foreach ((array)$model->categories as $k => $cat) {
+                                $c = term_exists($cat, 'jbp_category');
+                                if (is_array($c)) {
+                                    $model->categories[$k] = $c['term_id'];
+                                }
+                            }
+                        ?>
 			<?php $form->select( "categories", array(
 				"attributes" => array( "class" => "form-control" ),
-				"data"       => array_combine( wp_list_pluck( $cats, "term_id" ), wp_list_pluck( $cats, "name" ) )
+				"data"       => array_combine(wp_list_pluck(get_terms('jbp_category', 'hide_empty=0'), 'term_id'), wp_list_pluck(get_terms('jbp_category', 'hide_empty=0'), 'name'))
 			) ) ?>
 			<span class="help-block m-b-none error-categories"><?php $form->error( "categories" ) ?></span>
 		</div>
