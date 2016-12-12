@@ -219,7 +219,7 @@ class JE_Expert_Demo_Data {
 
 	function content_bank( $type ) {
 		$plugin = je();
-		$data   = file_get_contents( $plugin->plugin_path . 'app/addons/je-expert-demo/data.txt' );
+		$data   = file_get_contents( $plugin->plugin_path . 'app/addons/je-expert-demo/data.json' );
 		$data   = json_decode( $data, true );
 
 		switch ( $type ) {

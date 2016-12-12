@@ -144,7 +144,7 @@ class JE_Job_Demo_Data
 
     function content_bank($type)
     {
-        $data = file_get_contents(dirname(__FILE__) . '/je-job-demo/data.txt');
+        $data = file_get_contents(dirname(__FILE__) . '/je-job-demo/data.json');
         $data = json_decode($data, true);
 
         switch ($type) {
