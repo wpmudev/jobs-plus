@@ -78,7 +78,7 @@ jQuery(function ($) {
             if( $( '.file-upload-name' ).closest( '.webui-popover' ).length ) {
                 //console.log( $( '.file-upload-name' ).closest( '.webui-popover' ).html() );
                 //$( '.file-upload-name' ).closest( '.webui-popover' ).show();
-                $('.add-file').click();
+                //$('.add-file').click();
             }
         });
 
