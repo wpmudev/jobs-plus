@@ -106,7 +106,7 @@
 				</div>
 				<div class="col-md-8">
 					<div class="page-header">
-						<h2><?php echo $model->first_name . ' ' . $model->last_name ?></h2>
+						<h2><?php echo esc_html($model->first_name . ' ' . $model->last_name) ?></h2>
 						<h4><?php echo sprintf( __( 'Member since %s', je()->domain ), date( "M Y", strtotime( get_the_author_meta( 'user_registered', $model->user_id ) ) ) ) ?></h4>
 					</div>
 					<?php if ( ! empty( $model->company ) ): ?>
@@ -118,7 +118,7 @@
 								</label>
 							</div>
 							<div class="col-md-8 col-md-8 col-sm-8">
-								<a href="<?php echo $model->company_url ?>"><?php echo $model->company ?></a>
+								<a href="<?php echo $model->company_url ?>"><?php echo esc_html($model->company) ?></a>
 							</div>
 							<div class="clearfix"></div>
 						</div>
