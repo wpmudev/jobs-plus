@@ -150,6 +150,8 @@ jQuery(function ($) {
     });
     $('body').on('click', '.igu-file-delete', function (e) {
         e.preventDefault();
+        var key = 'igu_uploader_' + $(this).closest('section').parent().parent().attr('id');
+        igu_uploader = window[key];
         var id = $(this).data('id');
         var that = $(this);
         var parent = $('#igu-media-file-' + id);

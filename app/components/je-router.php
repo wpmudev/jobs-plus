@@ -38,7 +38,7 @@ class JE_Router
             } elseif (is_singular('jbp_job') && in_the_loop() && !JE_Page_Factory::is_core_page(get_the_ID())) {
                 global $wp_query;
                 if ($wp_query->is_main_query()) {
-                    $title = do_shortcode('<p style="text-align: center">' . $shortcodes . '</p>') . $title;
+                    $title = do_shortcode('<p style="text-align: center">' . $shortcodes . '</p>') . esc_html($title);
                     remove_filter('the_title', array(&$this, 'je_single_title'));
                 }
             } elseif (is_singular('jbp_pro') && in_the_loop() && !JE_Page_Factory::is_core_page(get_the_ID())) {
