@@ -1,5 +1,9 @@
 Jobs+ Change Log
-Developers: Hoang NGO, Ashok Kumar Nath
+Developers: Hoang Ngo, Ashok Kumar Nath
+
+== 1.0.2.4 ==
+Fixed: Uploading files issue while adding expert from frontend.
+Fixed: Fully integrated with Smart Crawl
 
 
 == 1.0.2.3 ==
