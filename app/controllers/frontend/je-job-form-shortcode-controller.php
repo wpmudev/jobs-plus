@@ -23,7 +23,7 @@ class JE_Job_Form_Shortcode_Controller extends IG_Request {
 			$model = new JE_Job_Model();
 		}
 		$model->import( $data );
-		$model->description = wp_kses( stripslashes( $model->description ), wp_kses_allowed_html() );
+		$model->description = jbp_filter_text( stripslashes( $model->description ) );
 		$model->job_title   = strip_tags( $model->job_title );
 		//
 		if ( $model->validate() ) {

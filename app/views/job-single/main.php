@@ -54,7 +54,7 @@
 			</div>
 			<div class="row job-content">
 				<div class="col-md-12">
-					<?php echo $model->description ?>
+					<?php echo wpautop( JobsExperts_Helper::jbp_html_beautifier( jbp_filter_text( $model->description ) ) ) ?>
 				</div>
 				<div class="col-md-12">
 					<?php

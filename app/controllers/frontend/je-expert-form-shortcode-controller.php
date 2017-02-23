@@ -50,8 +50,8 @@ class JE_Expert_Form_Shortcode_Controller extends IG_Request {
 			$model->import( $data );
 			$model->status    = je()->post( 'status' );
 			$model->name      = $model->first_name . ' ' . $model->last_name;
-			$model->biography = wp_kses( $model->biography, wp_kses_allowed_html() );
-			$model->short_description = wp_kses( $model->short_description, wp_kses_allowed_html() );
+			$model->biography = jbp_filter_text( $model->biography);
+			$model->short_description = jbp_filter_text( $model->short_description );
 
 			if ( $model->validate() ) {
 				do_action( 'je_expert_saving_process', $model );
