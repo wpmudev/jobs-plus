@@ -43,7 +43,7 @@ class JE_WYSIWYG
                                 resizeMaxHeight: '100%',
                                 resizeMinHeight: '50%',
                                 emoticonsEnabled: false,
-                                toolbar: "bold,italic,underline,strike|left,center,right,justify",
+                                toolbar: "bold,italic,underline,strike|left,center,right,justify|source",
                                 style: '<?php echo je()->plugin_url . 'app/addons/je-wysiwyg/sceditor/minified/jquery.sceditor.default.min.css'?>'
                             });
                         }
@@ -72,7 +72,7 @@ class JE_WYSIWYG
                                 resizeMinHeight: '-1',
                                 readOnly: false,
                                 emoticonsEnabled: false,
-                                toolbar: "bold,italic,underline,strike|left,center,right,justify|font,size,color,removeformat|cut,copy,paste,pastetext|bulletlist,orderedlist,indent,outdent|link,unlink|date,time",
+                                toolbar: "bold,italic,underline,strike|left,center,right,justify|font,size,color,removeformat|cut,copy,paste,pastetext|bulletlist,orderedlist,indent,outdent|link,unlink|date,time|source",
                                 style: '<?php echo je()->plugin_url . 'app/addons/je-wysiwyg/sceditor/minified/jquery.sceditor.default.min.css'?>'
                             });
                         }
