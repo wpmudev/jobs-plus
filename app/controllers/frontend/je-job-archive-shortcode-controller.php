@@ -16,8 +16,8 @@ class JE_Job_Archive_Shortcode_Controller extends IG_Request {
 
 		//get jobs
 		$post_per_page = $a['post_per_page'];
-
-		$paged = get_query_var( 'je-paged' );
+		$paged_query_var = ! is_front_page() ? 'je-paged' : 'page';
+		$paged = get_query_var( $paged_query_var );
 
 		$args      = array(
 			'post_status'    => 'publish',

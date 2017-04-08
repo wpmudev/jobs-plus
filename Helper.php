@@ -107,4 +107,22 @@ class JobsExperts_Helper
         ));
         return apply_filters('je_pro_can_contact', is_object($model));
     }
+
+	public static function add_query_arg( $args = array() ){
+
+		$defaults = array(
+			'query_vars' => '',
+			'paged' => 1,
+			'uri' => false
+		);
+
+		$args = array_merge( $defaults, $args );
+
+		if( is_front_page() && ! $args['uri'] ){
+			$args['uri'] = get_permalink();
+		}
+
+		return add_query_arg( $args['query_vars'], $args['paged'], $args['uri'] );
+
+	}
 }
