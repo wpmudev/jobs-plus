@@ -291,7 +291,7 @@ div.sceditor-dropdown {
     border: 1px solid #ccc;
     background: #fff;
     color: #333;
-    z-index: 4000;
+    z-index: 10000;
     padding: 10px;
     line-height: 1;
     -webkit-border-radius: 2px;
