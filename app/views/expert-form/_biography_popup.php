@@ -1,5 +1,5 @@
 <div class="hide" id="biography-template">
-    <form class="can-edit-form form-horizontal" style="width100%;max-width: 350px">
+    <form class="can-edit-form form-horizontal" style="width100%;">
         <div class="form-group">
             <div class="col-lg-12">
                 <textarea name="biography" class="form-control input-sm validate[required]" style="height: 150px"><?php echo $model->biography ?></textarea>

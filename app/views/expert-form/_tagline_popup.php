@@ -1,5 +1,5 @@
 <div class="hide" id="tagline-template">
-    <form class="can-edit-form form-horizontal" style="width100%;max-width: 350px">
+    <form class="can-edit-form form-horizontal" style="width100%;">
         <div class="form-group">
             <div class="col-lg-12">
                 <textarea name="tagline" class="form-control input-sm validate[required]"

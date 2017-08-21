@@ -1,5 +1,5 @@
 <div class="hide" id="location-template">
-    <form class="can-edit-form form-horizontal" style="width100%;max-width: 350px">
+    <form class="can-edit-form form-horizontal" style="width100%;">
         <div class="form-group">
             <label class="col-md-3 control-label"><?php _e("Location", je()->domain) ?></label>
 
