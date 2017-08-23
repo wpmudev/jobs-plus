@@ -48,10 +48,10 @@ class JE_Expert_Form_Shortcode_Controller extends IG_Request {
 
 		if ( is_object( $model ) ) {
 			$model->import( $data );
-			$model->status    = je()->post( 'status' );
-			$model->name      = $model->first_name . ' ' . $model->last_name;
-			$model->biography = jbp_filter_text( $model->biography);
-			$model->short_description = jbp_filter_text( $model->short_description );
+			$model->status            = je()->post( 'status' );
+			$model->name              = $model->first_name . ' ' . $model->last_name;
+			$model->biography         = jbp_filter_text( stripslashes( $model->biography ) );
+			$model->short_description = jbp_filter_text( stripslashes( $model->short_description ) );
 
 			if ( $model->validate() ) {
 				do_action( 'je_expert_saving_process', $model );
@@ -140,32 +140,32 @@ class JE_Expert_Form_Shortcode_Controller extends IG_Request {
 	function avatar_form() {
 		$model = $this->model;
 		?>
-		<div class="ig-container">
-			<div class="hide" id="je_avatar_uploader">
-				<div class="file-uploader-form" style="position: relative">
-					<form class="">
-						<label>
+        <div class="ig-container">
+            <div class="hide" id="je_avatar_uploader">
+                <div class="file-uploader-form" style="position: relative">
+                    <form class="">
+                        <label>
 							<?php _e( 'Select image or file', je()->domain ) ?>
-						</label>
-						<input type="file" class="hn_uploader_element" name="hn_uploader">
+                        </label>
+                        <input type="file" class="hn_uploader_element" name="hn_uploader">
 
-						<div class="clearfix" style="margin-top: 5px"></div>
-						<input type="hidden" name="parent_id" value="<?php echo $model->id ?>">
-						<button class="btn btn-primary btn-sm hn-upload-avatar"
-						        type="submit"><?php _e( 'Submit', je()->domain ) ?></button>
+                        <div class="clearfix" style="margin-top: 5px"></div>
+                        <input type="hidden" name="parent_id" value="<?php echo $model->id ?>">
+                        <button class="btn btn-primary btn-sm hn-upload-avatar"
+                                type="submit"><?php _e( 'Submit', je()->domain ) ?></button>
 						<?php if ( $model->has_avatar() ): ?>
-							<button class="btn btn-danger btn-sm hn-delete-avatar"
-							        type="button"><?php _e( 'Delete Uploaded Avatar', je()->domain ) ?></button>
+                            <button class="btn btn-danger btn-sm hn-delete-avatar"
+                                    type="button"><?php _e( 'Delete Uploaded Avatar', je()->domain ) ?></button>
 						<?php else: ?>
-							<button class="btn btn-danger btn-sm hn-delete-avatar hide"
-							        type="button"><?php _e( 'Delete Uploaded Avatar', je()->domain ) ?></button>
+                            <button class="btn btn-danger btn-sm hn-delete-avatar hide"
+                                    type="button"><?php _e( 'Delete Uploaded Avatar', je()->domain ) ?></button>
 						<?php endif; ?>
-						<button class="btn btn-default btn-sm hn-cancel-avatar"
-						        type="button"><?php _e( 'Cancel', je()->domain ) ?></button>
-					</form>
-				</div>
-			</div>
-		</div>
+                        <button class="btn btn-default btn-sm hn-cancel-avatar"
+                                type="button"><?php _e( 'Cancel', je()->domain ) ?></button>
+                    </form>
+                </div>
+            </div>
+        </div>
 		<?php
 	}
 }
