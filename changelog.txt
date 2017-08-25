@@ -1,10 +1,14 @@
 Jobs+ Change Log
 Developers: Hoang Ngo, Ashok Kumar Nath
 
+== 1.0.2.5 ==
+Fixed: Text editor container doesn't expand with the text editor when you make it bigger
+Fixed: Advanced text editor format options popup behind the text area
+Fixed: Advanced text editor line breaks don't display properly on front-end
+
 == 1.0.2.4 ==
 Fixed: Uploading files issue while adding expert from frontend.
 Fixed: Fully integrated with Smart Crawl
-
 
 == 1.0.2.3 ==
 Fixed: Quotes are not escaped in company name field for Experts in some cases.
@@ -15,8 +19,6 @@ Fixed: BP Profile picture can't be updated
 Fixed: Fatal error in Add New Expert page
 Fixed: General category can't be deleted
 Fixed: Expert was not able to change avatar in some cases
-
-
 
 == 1.0.2.2 ==
 Added: Missing text for translation
@@ -38,7 +40,6 @@ Fixed: SSL Bug in google font
 Fixed: Text formating in Jobs display
 Fixed: Demo data addon was not working
 Fixed: Multiple images can't be added in job form
-
 
 ==1.0==
 Initial Release
