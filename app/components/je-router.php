@@ -65,7 +65,13 @@ class JE_Router
     {
         global $wp_query;
         //this is for jobs section
-        if (get_query_var('post_type') == 'jbp_job' && !is_404()) {
+
+        $post_type = get_query_var('post_type');
+		if ( is_array( $post_type ) && count( $post_type ) > 0 ) {
+			$post_type = $post_type[0];
+        }
+
+        if ( $post_type == 'jbp_job' && !is_404() ) {
             global $wp_query;
             $template = array('single-jbp_job.php', 'page.php', 'index.php');
             if (is_archive('jbp_job')) {
@@ -77,7 +83,7 @@ class JE_Router
             $template = locate_template($template);
         }
         //yah, experts time
-        if (get_query_var('post_type') == 'jbp_pro') {
+        if ( $post_type == 'jbp_pro') {
             $template = locate_template(array('page.php', 'index.php'));
             $template = array('single-jbp_pro.php', 'page.php', 'index.php');
             if (is_archive('jbp_pro')) {
