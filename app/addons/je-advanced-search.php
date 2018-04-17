@@ -369,7 +369,7 @@ INNER JOIN ' . $wpdb->prefix . 'postmeta max_price ON max_price.post_id = posts.
         $job_min_price = $plugin->settings()->job_min_search_budget;
         //get the max price
         global $wpdb;
-        $job_max_price = $plugin->settings()->job_max_search_budget;
+        $job_max_price = PHP_INT_MAX;
         if (isset($_GET['min_price']) && !empty($_GET['min_price'])) {
             $job_min_price = $_GET['min_price'];
         }
