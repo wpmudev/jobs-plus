@@ -158,7 +158,8 @@
 		<div class="col-lg-9">
 			<div class="input-group">
 				<span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-				<?php $form->text( "dead_line", array( "attributes" => array( "class" => "form-control datepicker" ) ) ) ?>
+				<?php $attributes = apply_filters( 'je_completion_date_attributes', array( "attributes" => array( "class" => "form-control datepicker" ) ) ) ?>
+				<?php $form->text( "dead_line", $attributes ) ?>
 			</div>
 			<span class="help-block m-b-none error-dead_line"><?php $form->error( "dead_line" ) ?></span>
 		</div>
