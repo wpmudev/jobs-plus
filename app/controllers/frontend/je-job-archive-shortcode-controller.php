@@ -15,9 +15,9 @@ class JE_Job_Archive_Shortcode_Controller extends IG_Request {
 		), $atts );
 
 		//get jobs
-		$post_per_page = $a['post_per_page'];
+		$post_per_page   = $a['post_per_page'];
 		$paged_query_var = ! is_front_page() ? 'je-paged' : 'page';
-		$paged = get_query_var( $paged_query_var );
+		$paged           = get_query_var( $paged_query_var );
 
 		$args      = array(
 			'post_status'    => 'publish',
@@ -49,18 +49,18 @@ class JE_Job_Archive_Shortcode_Controller extends IG_Request {
 			$search = $args['s'] = $_GET['query'];
 		}
 		$args['tax_query'] = $tax_query;
-                
-                if (je()->settings()->hide_expired_from_archive == 1) {
-                    $jobs = JE_Job_Model::model()->all();
-                    foreach ( $jobs as $job ) {
-                        if( $job->is_expired() ){
-                            $args['post__not_in'][] = $job->id;
-                        }
-                    }
-                }
-                
-		$args              = apply_filters( 'jbp_job_search_params', $args );
-		$instance          = je();
+
+		if ( je()->settings()->hide_expired_from_archive == 1 ) {
+			$jobs = JE_Job_Model::model()->all();
+			foreach ( $jobs as $job ) {
+				if ( $job->is_expired() ) {
+					$args['post__not_in'][] = $job->id;
+				}
+			}
+		}
+
+		$args     = apply_filters( 'jbp_job_search_params', $args );
+		$instance = je();
 
 		$models      = JE_Job_Model::model()->all_with_condition( $args, $instance );
 		$query       = je()->global['wp_query'];
