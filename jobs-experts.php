@@ -405,6 +405,8 @@ class Jobs_Experts {
 		$landing = new JE_Landing_Shortcode_Controller();
 		$shared  = new JE_Shared_Controller();
 
+		//GDPR
+		new JE_GDPR_Controller();
 		//load addon
 		//load add on
 		$addons = $this->settings()->plugins;

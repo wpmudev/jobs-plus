@@ -13,7 +13,7 @@ class JE_Job_Model extends IG_Post_Model {
 	public $budget;
 	public $contact_email;
 	public $dead_line;
-        public $job_img;
+	public $job_img;
 	public $open_for;
 	public $portfolios;
 	public $status;
@@ -53,7 +53,7 @@ class JE_Job_Model extends IG_Post_Model {
 			'key'  => '_ct_jbp_job_Due',
 			'map'  => 'dead_line'
 		),
-                array(
+		array(
 			'type' => 'meta',
 			'key'  => '_ct_jbp_job_img',
 			'map'  => 'job_img'
@@ -162,6 +162,7 @@ class JE_Job_Model extends IG_Post_Model {
 	public function render_prices( $return = '' ) {
 		$prices   = $this->get_price();
 		$currency = je()->settings()->currency;
+		ob_start();
 		if ( is_array( $prices ) ) {
 			?>
 			<?php if ( empty( $return ) ): ?>
@@ -176,6 +177,11 @@ class JE_Job_Model extends IG_Post_Model {
 			<?php echo JobsExperts_Helper::format_currency( $currency, $this->budget ) ?>
 			<?php
 		}
+		$content = ob_get_clean();
+		if ( $return == true ) {
+			return $content;
+		}
+		echo $content;
 	}
 
 	public function get_due_day() {
