@@ -9,7 +9,7 @@
 	</p>
 	<p class="privacy-policy-tutorial">
 		<strong><?php _e( 'Full set of data gathered for Experts:', je()->domain ); ?></strong><br/>
-		<?php _e( 'Name, Biography, Tag Line, Company, Location, Email, Skills, Social Profiles', je()->domain ); ?>
+		<?php _e( 'Name, Biography, Tag Line, Company, Company URL, Location, Email, Skills, Social Media', je()->domain ); ?>
 	</p>
 	<p>
 		<strong class="privacy-policy-tutorial"><?php esc_html_e( 'Suggested text: ', je()->domain ); ?></strong>
