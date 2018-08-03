@@ -1,7 +1,7 @@
 <div class="wp-suggested-text">
 	<h2><?php esc_html_e( 'What personal data do we collect and why?', je()->domain ); ?></h2>
 	<p class="privacy-policy-tutorial">
-		<?php _e( 'Jobs & Experts keeps the data submitted through either the Jobs or Experts new listing forms as well as an <strong>encrypted IP Address</strong> of visitors and members when viewing a Listing to retain and count the correct Views per listing.', je()->domain ); ?>
+		<?php _e( 'Jobs & Experts stores data submitted through both the Jobs and Experts new listing forms. It also stores an <strong>encrypted version of the IP address</strong> for anyone viewing a listing in order to track user stats.', je()->domain ); ?>
 	</p>
 	<p class="privacy-policy-tutorial">
 		<strong><?php _e( 'Full set of data gathered for Jobs:', je()->domain ); ?></strong><br/>
@@ -13,24 +13,24 @@
 	</p>
 	<p>
 		<strong class="privacy-policy-tutorial"><?php esc_html_e( 'Suggested text: ', je()->domain ); ?></strong>
-		<?php _e( 'When visitors or members view our Listings the IP Address is encrypted and kept for statistical purposes. When you submit a Job or an Expert all data filled in the forms are gathered and kept until deletion.', je()->domain );  ?>
+		<?php _e( 'When visitors or members view a listing the IP address is encrypted and kept for tracking statistics. When a Jobs or an Experts form is submitted the data is kept until it is deleted.', je()->domain );  ?>
 	</p>
 
 	<h2><?php esc_html_e( 'How long we retain your data', je()->domain ); ?></h2>
 	<p class="privacy-policy-tutorial">
-		<?php _e( 'Until the listings are deleted.', je()->domain ); ?>
+		<?php _e( 'Until a listing is deleted.', je()->domain ); ?>
 	</p>
 	<p>
 		<strong class="privacy-policy-tutorial"><?php esc_html_e( 'Suggested text: ', je()->domain ); ?></strong>
-		<?php esc_html_e( 'The data are kept until the listings are deleted by either the Author or the Administrator.', je()->domain ); ?>
+		<?php esc_html_e( 'Data is kept until the listing is deleted by either the Author or the Administrator.', je()->domain ); ?>
 	</p>
 
 	<h2><?php esc_html_e( 'Where we send your data', je()->domain ); ?></h2>
 	<p class="privacy-policy-tutorial">
-		<?php esc_html_e( 'All collected data regarding Jobs & Experts listings might be displayed publicly for all visitors -or- privately for the members depending on the websites settings.', je()->domain ); ?>
+		<?php esc_html_e( 'Jobs & Experts listings can be displayed publicly, for all visitors, or privately, for members only, depending on the website\'s settings.', je()->domain ); ?>
 	</p>
 	<p>
 		<strong class="privacy-policy-tutorial"><?php esc_html_e( 'Suggested text: ', je()->domain ); ?></strong>
-		<?php esc_html_e( 'All collected data regarding Jobs & Experts listings are displayed publicly.', je()->domain ); ?>
+		<?php esc_html_e( 'Information submitted to Jobs & Experts may be displayed publicly.', je()->domain ); ?>
 	</p>
 </div>
