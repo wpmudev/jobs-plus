@@ -227,23 +227,23 @@ class JE_Expert_Model extends IG_Post_Model
 
     public function add_view_count()
     {
-        
+
         if( $this->_alternate_view_count_method() ) {
             if( ! isset( $_COOKIE['jbp_pro_alt_view_count_cookie'] ) ) {
                 $view = get_post_meta( $this->id, 'jbp_pro_alt_view_count', true );
                 if( ! isset( $view ) ) $view = 0;
                 update_post_meta( $this->id, 'jbp_pro_alt_view_count', $view + 1 );
-                
+
                 $cookie_duration = apply_filters( 'je_view_count_cookie_duration', HOUR_IN_SECONDS );
                 setcookie( 'jbp_pro_alt_view_count_cookie', 1, time() + $cookie_duration, "/" );
             }
         }
-        
+
         $all_views = array_filter(get_post_meta($this->id, '_jbp_pro_view_count'));
 
         //gather information
         $view = array(
-            'ip' => $_SERVER['REMOTE_ADDR'],
+            'ip' => md5( $_SERVER['REMOTE_ADDR'] ),
             'user_id' => is_user_logged_in() ? get_current_user_id() : 0,
             'date_view' => date('Y-m-d H:i:s')
         );
@@ -280,7 +280,7 @@ class JE_Expert_Model extends IG_Post_Model
             update_post_meta($this->id, 'jbp_pro_view_count', $view + 1);
         }
     }
-    
+
     private function _alternate_view_count_method() {
             return defined( 'JS_ALTERNATE_VIEW_COUNT' ) && JS_ALTERNATE_VIEW_COUNT;
     }
