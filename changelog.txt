@@ -1,6 +1,11 @@
 Jobs+ Change Log
 Developers: Hoang Ngo, Ashok Kumar Nath
 
+== 1.0.3 ==
+Add: GDPR - export user personal data
+Add: GDPR - erase user personal data
+Add: GDPR - insert plugin information to "Privacy Policy Guide" page
+
 == 1.0.2.5 ==
 Fixed: Text editor container doesn't expand with the text editor when you make it bigger
 Fixed: Advanced text editor format options popup behind the text area
