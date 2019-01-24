@@ -531,8 +531,11 @@ class JE_Pages_Manager
                         },
                         success: function (data) {
                             var element = that.parent().parent().find('select').first();
-							<?php $ssl = ( is_ssl() ) ? 'https://' : 'http'; ?>
-                            $.get('<?php echo $ssl . $_SERVER[HTTP_HOST] . $_SERVER[REQUEST_URI]; ?>', function (html) {
+							<?php 
+								$ssl = ( is_ssl() ) ? 'https://' : 'http';
+								$url = $ssl . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+							?>
+                            $.get('<?php echo $url; ?>', function (html) {
                                 html = $(html);
                                 var clone = html.find('select[name="' + element.attr('name') + '"]');
                                 element.replaceWith(clone);
