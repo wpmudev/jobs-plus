@@ -226,6 +226,7 @@ if (!class_exists('IG_Form')) {
         public static function country()
         {
             $countries = array(
+				"nlc" => "-",
                 "AF" => "Afghanistan",
                 "AL" => "Albania",
                 "DZ" => "Algeria",

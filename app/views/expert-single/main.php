@@ -124,6 +124,7 @@
                             <div class="clearfix"></div>
                         </div>
 					<?php endif; ?>
+					<?php if ( '-' !== $model->get_location() ): ?>
                     <div class="row">
                         <div class="col-md-4 col-xs-4 col-sm-4">
                             <label>
@@ -135,6 +136,7 @@
                         </div>
                         <div class="clearfix"></div>
                     </div>
+					<?php endif; ?>
                     <div class="row">
                         <div class="col-md-12">
                             <!-- Nav tabs -->
