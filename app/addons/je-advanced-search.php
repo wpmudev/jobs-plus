@@ -535,7 +535,14 @@ INNER JOIN ' . $wpdb->prefix . 'postmeta max_price ON max_price.post_id = posts.
         <style>
             .post-type-archive-jbp_job .webui-popover {
                 width: 40% !important;
-            }
+			}
+			@media ( max-width: 768px  ) {
+				.post-type-archive-jbp_job .webui-popover {
+					width: 100vw !important;
+					left: 0 !important;
+					max-width: 100vw !important;
+				}
+			}
         </style>
 		<?php
 	}
