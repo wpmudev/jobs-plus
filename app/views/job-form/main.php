@@ -150,7 +150,7 @@
 	</div>
 	<?php do_action( 'je_after_email_field', $model, $form ) ?>
 	<?php do_action( 'je_before_complete_date_field', $model, $form ) ?>
-	<div class="form-group <?php echo $model->has_error( "dead_line" ) ? "has-error" : null ?>">
+	<div class="form-group">
 		<?php $form->label( "dead_line", array(
 			"text"       => __( "Completion Date", je()->domain ),
 			"attributes" => array( "class" => "col-lg-3 control-label" )
@@ -161,7 +161,6 @@
 				<?php $attributes = apply_filters( 'je_completion_date_attributes', array( "attributes" => array( "class" => "form-control datepicker" ) ) ) ?>
 				<?php $form->text( "dead_line", $attributes ) ?>
 			</div>
-			<span class="help-block m-b-none error-dead_line"><?php $form->error( "dead_line" ) ?></span>
 		</div>
 		<div class="clearfix"></div>
 	</div>

@@ -75,7 +75,10 @@ class JE_Settings_Model extends IG_Option_Model
     public function __construct()
     {
         parent::__construct();
-        //$can_load=false;
+		//$can_load=false;
+		
+		// Adds filter to add the open-ended to avoid upgrade conflicts.
+		add_filter( 'je_open_days_limit', array( $this, 'add_open_ended_limit' ), 10, 1 );
 
         //no init, now we do the setting
         $this->theme = 'dark';
@@ -289,5 +292,17 @@ class JE_Settings_Model extends IG_Option_Model
 		);
 
 		return apply_filters( 'je_currencies', $currences );
+	}
+
+	/**
+	 * Filters the array of limit days. Added for the Open-ended addition.
+	 * 
+	 * @param array $limit_days Array of limit days.
+	 * 
+	 * @return array $new_limit_days Filtered array with Open-ended option.
+	 */
+	public function add_open_ended_limit( $limit_days ) {
+		$new_limit_days = array( 'openended' => 'Open-ended' ) + $limit_days;
+		return $new_limit_days;
 	}
 }

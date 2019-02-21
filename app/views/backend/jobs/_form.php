@@ -121,7 +121,7 @@
                         </div>
                         <div class="clearfix"></div>
                     </div>
-                    <div class="form-group <?php echo $model->has_error("dead_line") ? "has-error" : null ?>">
+                    <div class="form-group">
                         <label
                             class="col-sm-2 control-label"><?php _e('Completion Date', je()->domain) ?>
                         </label>
@@ -133,7 +133,6 @@
                                     'class' => 'datepicker regular-text form-control'
                                 )
                             )) ?>
-                            <span class="help-block m-b-none error-job_title"><?php $form->error("dead_line") ?></span>
                         </div>
                         <div class="clearfix"></div>
                     </div>

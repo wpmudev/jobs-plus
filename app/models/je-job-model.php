@@ -101,7 +101,6 @@ class JE_Job_Model extends IG_Post_Model {
 		$rules = array(
 			'job_title'     => 'required',
 			'contact_email' => 'required|valid_email',
-			'dead_line'     => 'required',
 			'open_for'      => 'required',
 			'description'   => 'required',
 		);
@@ -191,6 +190,11 @@ class JE_Job_Model extends IG_Post_Model {
 			if ( ! $created_date ) {
 				$created_date = $post->post_date;
 			}
+
+			if ( 'openended' === $this->open_for ) {
+				return __( 'Open-ended', je()->domain );
+			}
+
 			$expire_date = strtotime( '+ ' . $this->open_for . ' days', strtotime( $created_date ) );
 
 			return $this->days_hours( $expire_date );
@@ -219,6 +223,11 @@ class JE_Job_Model extends IG_Post_Model {
 	}
 
 	function get_end_date() {
+		// Returns N/A if the Completion Date isn't filled since it's not required any more.
+		if ( empty( $this->dead_line ) ) {
+			return __( 'N/A', je()->domain );
+		}
+
 		return date_i18n( get_option( 'date_format' ), strtotime( $this->dead_line ) );
 	}
 
